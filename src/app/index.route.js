@@ -21,7 +21,7 @@
         controllerAs: 'modulo1'
       })
       .state('modulo1-edit', {
-        url: '/modulo1/:id',
+        url: '/modulo1/{id:[0-9]{1,8}}',
         templateUrl: 'app/modulo1/edit.html',
         controller: 'Modulo1Controller',
         controllerAs: 'modulo1'
@@ -33,7 +33,8 @@
         controllerAs: 'modulo1'
       });
 
-  }    $urlRouterProvider.otherwise('/');
+      $urlRouterProvider.otherwise('/');
+  }    
 
 
 })();
