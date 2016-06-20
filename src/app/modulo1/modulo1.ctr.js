@@ -4,8 +4,8 @@
 	angular
 		.module('marketplace')
 		.controller('Modulo1Controller', Modulo1Controller);
-	Modulo1Controller.$inject = ['$scope'];
-	function Modulo1Controller ($scope){
+	Modulo1Controller.$inject = [];
+	function Modulo1Controller (){
 		var vm = this;
 
 		vm.texto = "Index modulo1. Controller";
