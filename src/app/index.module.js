@@ -2,6 +2,7 @@
   'use strict';
 
   angular
-    .module('marketplace', ['ngAnimate', 'ngSanitize', 'ngMessages', 'ngAria', 'ngResource', 'ui.router', 'toastr']);
+    .module('marketplace', ['ngAnimate','ngSanitize','ngMessages','ngAria','ngResource','ui.router','toastr','pascalprecht.translate'
+    	]);
 
 })();
