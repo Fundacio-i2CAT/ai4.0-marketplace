@@ -16,12 +16,24 @@
       })
       .state('modulo1', {
         url: '/modulo1',
-        templateUrl: 'app/modulo1/entidad.html',
+        templateUrl: 'app/modulo1/index.html',
+        controller: 'Modulo1Controller',
+        controllerAs: 'modulo1'
+      })
+      .state('modulo1-edit', {
+        url: '/modulo1/:id',
+        templateUrl: 'app/modulo1/edit.html',
+        controller: 'Modulo1Controller',
+        controllerAs: 'modulo1'
+      })
+      .state('modulo1-add', {
+        url: '/modulo1/add',
+        templateUrl: 'app/modulo1/add.html',
         controller: 'Modulo1Controller',
         controllerAs: 'modulo1'
       });
 
-    $urlRouterProvider.otherwise('/');
-  }
+  }    $urlRouterProvider.otherwise('/');
+
 
 })();
