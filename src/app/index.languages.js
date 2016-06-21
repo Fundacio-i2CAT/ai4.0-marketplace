@@ -8,11 +8,9 @@
 				.translations('cat', {
 					'HELLO': 'Hola a tothom'
 				})
-
 				.translations('es', {
 					'HELLO': 'Hola a todo el mundo'
 				})
-
 				.translations('en', {
 					'HELLO': 'Hello to everybody'
 				})
@@ -20,3 +18,4 @@
 		}]);
 
 })();
+

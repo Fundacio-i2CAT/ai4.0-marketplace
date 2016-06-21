@@ -9,5 +9,9 @@
     "angular": true,
     "module": true,
     "inject": true
-  }
+  },
+  "rules": { //to allow array syntax for dependency injectioninde
+       "angular/di": [2, "array"], // configure array syntax
+       "angular/di": [0] // turn it off completely
+    }
 }
