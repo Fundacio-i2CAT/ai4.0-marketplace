@@ -12,10 +12,10 @@
 	function idosnavbar(){
 		var directive = {
 			restrict: 'E',
-			templateUrl: 'app/main/navbar.tpl.html',
+			templateUrl: 'app/main/navbar.tpl.html'/*,
 			link: function (scope, element, attrs) {
 				
-			}
+			}*/
 		};
 		return directive;
 	}

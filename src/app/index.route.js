@@ -21,7 +21,7 @@
         controllerAs: 'modulo1'
       })
       .state('modulo1-edit', {
-        url: '/modulo1/{id:[0-9]{1,8}}',
+        url: '/modulo1/:id',///{id:[0-9]{1,8}}
         templateUrl: 'app/modulo1/edit.html',
         controller: 'Modulo1Controller',
         controllerAs: 'modulo1'
@@ -31,6 +31,18 @@
         templateUrl: 'app/modulo1/add.html',
         controller: 'Modulo1Controller',
         controllerAs: 'modulo1'
+      })
+      .state('login', {
+        url: '/login',
+        templateUrl: 'app/user/login.tpl.html',
+        controller: 'UserController',
+        controllerAs: 'user'
+      })
+      .state('register', {
+        url: '/register',
+        templateUrl: 'app/user/register.tpl.html',
+        controller: 'UserController',
+        controllerAs: 'user'
       });
 
       $urlRouterProvider.otherwise('/');
