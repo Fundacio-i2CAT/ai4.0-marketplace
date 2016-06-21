@@ -5,8 +5,7 @@
 		.module('marketplace')
 		.factory('ConnectionFactory', ['$http', '$q', function ($scope, $q){
 
-			var token,
-				defaultUrl;
+			var token;
 
 			var headers = {
 				'Content-Type': 'application/json; charset=utf-8',
@@ -16,14 +15,12 @@
 			/**
 			* obtener el token del currentUser
 			* @return el token	
-			*/
+			*/			
 			function getToken() {
 				var security; //get data from cookie or localstorage
 				if (security) token = security.token;
 				return token;	
 			}
-
-
 
 		}]);
 
