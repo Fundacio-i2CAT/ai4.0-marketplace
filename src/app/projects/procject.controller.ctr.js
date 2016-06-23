@@ -3,13 +3,13 @@
 	
 	angular
 		.module('marketplace')
-		.controller('Modulo1Controller', Modulo1Controller);
+		.controller('ProjectController', ProjectController);
 
-	Modulo1Controller.$inject = ['toastr'];
-	function Modulo1Controller (toastr){
+	ProjectController.$inject = ['toastr'];
+	function ProjectController (toastr){
 		var vm = this;
 
-		vm.texto = "Index modulo1. Controller";
+		vm.texto = "Index projects. Controller";
 	
 		function showToastr() {
 			toastr.info('Fork <a href="https://github.com/Swiip/generator-gulp-angular" target="_blank"><b>generator-gulp-angular</b></a>');

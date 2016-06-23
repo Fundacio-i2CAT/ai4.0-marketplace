@@ -1,0 +1,38 @@
+<div class="container">
+	<div class="page-header">
+		<h3>All users</h3>
+	</div>
+
+	<div class="row">
+		
+		<ul class="col-xs-12 col-md-12 list-unstyled" ng-repeat="user in user.allUsers">
+			<h4 class="text-success">user</h4>	
+			<li class="id">
+				<strong>id:</strong> {{user._id}}
+			</li>
+			<li>
+				<strong>mail:</strong> {{user.email}}
+			</li>
+			<li>
+				<strong>language:</strong> {{user.idiom}}
+			</li>
+			<li>
+				<strong>lastname:</strong> {{user.lastName}}
+			</li>
+			<li>
+				<strong>partner:</strong> {{(user.partner) ? user.partner : 'no'}}
+			</li>
+			<li>
+				<strong>username:</strong> {{user.user_name}}
+			</li>
+			<li>
+				<div class="row">
+					<div class="col-xs-12">
+						<button class="btn-success" ng-click="user.openSession(user)">Open session for this User</button>
+					</div>
+				</div>
+			</li>
+			<hr/>
+		</ul>
+	</div> 
+</div>
