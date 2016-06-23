@@ -18,4 +18,5 @@
     toastrConfig.progressBar = true;
   }
 
+
 })();

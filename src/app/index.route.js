@@ -21,7 +21,7 @@
         controllerAs: 'modulo1'
       })
       .state('modulo1-edit', {
-        url: '/modulo1/:id',///{id:[0-9]{1,8}}
+        url: '/modulo1',///{id:[0-9]{1,8}}
         templateUrl: 'app/modulo1/edit.html',
         controller: 'Modulo1Controller',
         controllerAs: 'modulo1'
@@ -35,12 +35,18 @@
       .state('login', {
         url: '/login',
         templateUrl: 'app/user/login.tpl.html',
-        controller: 'UserController',
-        controllerAs: 'user'
+        controller: 'LoginController',
+        controllerAs: 'login'
       })
       .state('register', {
         url: '/register',
         templateUrl: 'app/user/register.tpl.html',
+        controller: 'LoginController',
+        controllerAs: 'login'
+      })
+      .state('users', {
+        url: '/users',
+        templateUrl: 'app/user/users.tpl.html',
         controller: 'UserController',
         controllerAs: 'user'
       });

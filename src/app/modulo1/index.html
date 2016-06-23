@@ -1,7 +1,17 @@
-<div class="page-header">
-	<h3>Modulo1</h3>
-	<h4>index.html</h4>
-	<h5>{{modulo1.texto}}</h5>
-	<h5>{{ 'HELLO' | translate }}</h5>
-	<button ng-click="modulo1.showToastr()">Clique aquí</button>
+<div class="container">
+	<div class="page-header">
+		<h3>Modulo1</h3>
+		<h4>index.html</h4>
+		<h5>{{modulo1.texto}}</h5>
+		<h5>{{ 'HELLO' | translate }}</h5>
+		<button ng-click="modulo1.showToastr()">trigger toastr</button>
+	</div>
+	
+
+
+	<div class="row">
+		<a class="col-xs-1 col-md-1"><div class="btn btn-primary" ui-sref="modulo1-add">add view</div></a>
+		<a class="col-xs-1 col-md-1"><div class="btn btn-primary" ui-sref="modulo1-edit">edit view</div></a>
+	</div>
+
 </div>
