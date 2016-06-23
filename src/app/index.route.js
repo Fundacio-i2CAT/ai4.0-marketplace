@@ -14,23 +14,29 @@
         controller: 'MainController',
         controllerAs: 'main'
       })
-      .state('modulo1', {
-        url: '/modulo1',
-        templateUrl: 'app/modulo1/index.html',
-        controller: 'Modulo1Controller',
-        controllerAs: 'modulo1'
+      .state('projects', {
+        url: '/projects',
+        templateUrl: 'app/projects/index.tpl.html',
+        controller: 'ProjectController',
+        controllerAs: 'projects'
       })
-      .state('modulo1-edit', {
-        url: '/modulo1',///{id:[0-9]{1,8}}
-        templateUrl: 'app/modulo1/edit.html',
-        controller: 'Modulo1Controller',
-        controllerAs: 'modulo1'
+      .state('project-edit', {
+        url: '/projects/edit'/*/{id:[0-9]}*/,
+        templateUrl: 'app/projects/edit.tpl.html',
+        controller: 'ProjectController',
+        controllerAs: 'projects'
       })
-      .state('modulo1-add', {
-        url: '/modulo1/add',
-        templateUrl: 'app/modulo1/add.html',
-        controller: 'Modulo1Controller',
-        controllerAs: 'modulo1'
+      .state('services', {
+        url: '/services',
+        templateUrl: 'app/services/index.tpl.html',
+        controller: 'ServiceController',
+        controllerAs: 'services'
+      })
+      .state('service-edit', {
+        url: '/services/edit'/*/{id:[0-9]}*/,
+        templateUrl: 'app/services/edit.tpl.html',
+        controller: 'ServiceController',
+        controllerAs: 'services'
       })
       .state('login', {
         url: '/login',
