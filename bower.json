@@ -6,10 +6,10 @@
     "angular-sanitize": "~1.5.3",
     "angular-messages": "~1.5.3",
     "angular-aria": "~1.5.3",
-    "jquery": "~1.11.3",
+    "jquery": "~2.2.4",
     "angular-resource": "~1.5.3",
     "angular-ui-router": "~0.2.15",
-    "bootstrap": "~3.3.5",
+    "bootstrap": "3.3.5",
     "malarkey": "yuanqing/malarkey#~1.3.1",
     "angular-toastr": "~1.5.0",
     "moment": "~2.10.6",
@@ -33,7 +33,8 @@
     }
   },
   "resolutions": {
-    "jquery": "~1.11.3",
+    "jquery": "~2.2.4",
+    "bootstrap": "3.3.5",
     "angular": "~1.5.3"
   }
 }

@@ -1,8 +1,8 @@
 (function() {
-  'use strict';
+	'use strict';
 
-  angular
-    .module('marketplace', ['ngAnimate',
+	angular
+		.module('marketplace', ['ngAnimate',
 							'ngSanitize',
 							'ngMessages',
 							'ngAria',
