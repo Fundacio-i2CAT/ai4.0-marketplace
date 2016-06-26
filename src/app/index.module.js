@@ -9,6 +9,7 @@
 							'ngResource',
 							'ui.router',
 							'toastr',
-							'pascalprecht.translate']);
+							'pascalprecht.translate',
+							'ngProgress']);
 
 })();
