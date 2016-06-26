@@ -10,9 +10,13 @@
 		var vm = this;
 
 		vm.texto = "Index projects. Controller";
-	
+
 		function showToastr() {
-			toastr.info('Fork <a href="https://github.com/Swiip/generator-gulp-angular" target="_blank"><b>generator-gulp-angular</b></a>');
+			
+			// toastr.info('Info');
+			toastr.success('Info');
+			// toastr.warning('Info');
+			// toastr.error('Info');
 		}
 
 		vm.showToastr = showToastr;
