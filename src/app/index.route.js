@@ -40,13 +40,13 @@
       })
       .state('login', {
         url: '/login',
-        templateUrl: 'app/user/login.tpl.html',
+        templateUrl: 'app/login/login.tpl.html',
         controller: 'LoginController',
         controllerAs: 'login'
       })
       .state('register', {
         url: '/register',
-        templateUrl: 'app/user/register.tpl.html',
+        templateUrl: 'app/login/register.tpl.html',
         controller: 'LoginController',
         controllerAs: 'login'
       })
