@@ -10,6 +10,7 @@
 							'ui.router',
 							'toastr',
 							'pascalprecht.translate',
-							'ngProgress']);
+							'ngProgress',
+							'ui.bootstrap']);
 
 })();
