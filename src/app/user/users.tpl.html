@@ -5,7 +5,7 @@
 
 	<div class="row">
 		
-		<ul class="col-xs-12 col-md-12 list-unstyled" ng-repeat="user in user.allUsers">
+		<ul class="col-xs-12 col-md-12 list-unstyled" ng-repeat="user in users.allUsers">
 			<h4 class="text-success">user</h4>	
 			<li class="id">
 				<strong>id:</strong> {{user._id}}
@@ -20,7 +20,7 @@
 				<strong>lastname:</strong> {{user.lastName}}
 			</li>
 			<li>
-				<strong>partner:</strong> {{(user.partner) ? user.partner : 'no'}}
+				<strong>partner:</strong> {{(user.partner) ? user.partner : 'No partner registered'}}
 			</li>
 			<li>
 				<strong>username:</strong> {{user.user_name}}
@@ -28,7 +28,8 @@
 			<li>
 				<div class="row">
 					<div class="col-xs-12">
-						<button class="btn-success" ng-click="user.openSession(user)">Open session for this User</button>
+						<button type="button" class="btn-success" ng-click="users.openSession(user)">Open session for this User</button>
+						<button type="button" class="btn-danger" ng-click="users.deleteSession(user)">Delete session</button>
 					</div>
 				</div>
 			</li>

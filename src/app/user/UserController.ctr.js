@@ -9,7 +9,6 @@
 	
 	function UserController ($http, ConnectionFactory, $log){
 		var vm = this;
-		vm.texto = "User controller";
 
 		var host = ConnectionFactory.host;
 		var sessionUrl = host + 'api/session';
@@ -30,30 +29,42 @@
 
 		vm.openSession = function(user) {
 			var userSession = {
-				pasword: user.user_name,
+				password: user.user_name,
 				user_name: user.user_name
 			};
 			$http.post(sessionUrl, userSession).then(function (response){
 				vm.openedSession = response;
 			}, function (error){
-				if (error) $log(error);
+				if (error) $log.log(error);
 			});
 		};
 
-		vm.setUser = function(){
+		vm.setUser = function(user){
 			var userInfo ={
 					"password": "user3.prov1",
 					"user_name": "user3.prov1",
 					"email": "user3.prov1@prov1.com"
 				};
 
-			$http.post(host + 'api/users', userInfo).then(function(response){
+			$http.post(host + 'api/users', userInfo)
+				.then(function(response){
 				vm.algo = response;
 			}, function (error){
 				if (error) $log(error);
 			})
 		};	
 		
+		vm.deleteSession = function(user){
+			$http.delete(host + 'api/session')
+				.then(function(response){
+					if (response) $log.log(response);
+				}, function (error) {
+					if (error) $log.log(error);
+				});
+		}
+
+
+
 		//llamada al getAll de users
 		vm.getAllUsers();
 
