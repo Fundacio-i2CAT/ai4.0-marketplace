@@ -5,8 +5,8 @@
 		.module('marketplace')
 		.controller('ServiceController', ServiceController);
 
-		ServiceController.$inject = ['ServicesMock', '$timeout', 'ngProgressFactory', 'toastr', '$log'];
-		function ServiceController (ServicesMock, $timeout, ngProgressFactory, toastr, $log){
+		ServiceController.$inject = ['ServicesMock', '$timeout', 'ngProgressFactory', 'toastr'];
+		function ServiceController (ServicesMock, $timeout, ngProgressFactory, toastr){
 			var vm = this;
 			vm.txt = 'Services Controller';
 			vm.services = ServicesMock;
@@ -35,7 +35,6 @@
 
 			function showToast(service) {
 				toastr.info('Confirmació enviada', service.name);
-				$log(service);
 				
 			}
 		
