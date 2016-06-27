@@ -54,7 +54,7 @@
         url: '/users',
         templateUrl: 'app/user/users.tpl.html',
         controller: 'UserController',
-        controllerAs: 'user'
+        controllerAs: 'users'
       });
 
       $urlRouterProvider.otherwise('/');
