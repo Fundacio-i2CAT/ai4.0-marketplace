@@ -5,65 +5,51 @@
 		.module('marketplace')
 		.controller('UserController', UserController);
 
-	UserController.$inject = ['$http','ConnectionFactory', '$log'];
+	UserController.$inject = ['UserFactory'];
 	
-	function UserController ($http, ConnectionFactory, $log){
+	function UserController (UserFactory){
 		var vm = this;
-
-		var host = ConnectionFactory.host;
-		var sessionUrl = host + 'api/session';
-
-		/*var headers = {
-				'Access-Control-Allow-Credentials': true,
-				'Access-Control-Allow-Origin' : '*',
-				'Access-Control-Allow-Methods' : 'POST, GET, OPTIONS, PUT',
-				'Content-Type': 'application/json'
-			};*/
+		vm.openedSession;
+		vm.savedUser;
+		vm.deletedSession;
 
 		//get all users
 		vm.getAllUsers = function(){
-			$http.get(host + 'api/users').then(function (response){
-				vm.allUsers = response.data.result;
+			UserFactory.getAllUsers().then(function(response) {
+				if (!response.success) {
+					//do something like show toastr
+				} else {
+					vm.allUsers = response.result;	
+				}
 			});
 		};
 
+		//open session for this user
 		vm.openSession = function(user) {
-			var userSession = {
-				password: user.user_name,
-				user_name: user.user_name
-			};
-			$http.post(sessionUrl, userSession).then(function (response){
-				vm.openedSession = response;
-			}, function (error){
-				if (error) $log.log(error);
+			UserFactory.openSession(user).then(function(response) {
+				if (response) {
+					vm.openedSession = response;
+				}
 			});
-		};
-
-		vm.setUser = function(user){
-			var userInfo ={
-					"password": "user3.prov1",
-					"user_name": "user3.prov1",
-					"email": "user3.prov1@prov1.com"
-				};
-
-			$http.post(host + 'api/users', userInfo)
-				.then(function(response){
-				vm.algo = response;
-			}, function (error){
-				if (error) $log(error);
-			})
 		};	
 		
-		vm.deleteSession = function(user){
-			$http.delete(host + 'api/session')
-				.then(function(response){
-					if (response) $log.log(response);
-				}, function (error) {
-					if (error) $log.log(error);
-				});
-		}
+		//store user in bbdd
+		vm.setuser = function (user) {
+			UserFactory.setUser(user).then(function(response) {
+				if (response) {
+					vm.savedUser = response;
+				}
+			});
+		};
 
-
+		//delete session for current user
+		vm.deleteSession = function () {
+			UserFactory.deleteSession().then(function(response){
+				if (response) {
+					vm.deletedSession = response;
+				}
+			});
+		};
 
 		//llamada al getAll de users
 		vm.getAllUsers();
