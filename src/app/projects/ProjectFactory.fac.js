@@ -11,18 +11,26 @@
 
 		var factory = {};
 		factory.getAll = getAll;
+		factory.getProjectsByPartnerId = getProjectsByPartnerId;
 
 		/*
 			clientProjectsRest
 			api/clients/<id>/projects
+
+			tempId: 5772623079374a27ad8a393f
 		*/
-		function getAll(partnerId) {
-			var url = [host, 'api/clients/', partnerId, '/projects'].join('');
-			return $http.get(url).then(handleSuccess, handleError('Error getting al projects'));
+		function getAll() {
+			var allProjectsUrl = [host, 'api/projects'].join('');
+			return $http.get(allProjectsUrl).then(handleSuccess, handleError('Error getting al projects'));
 		}
 
-
-
+		/* 	Client
+			get all projects by partnerId
+		*/
+		function getProjectsByPartnerId (partnerId) {
+			var url = [host, 'api/clients/', partnerId, '/projects'].join('');
+			return $http.get(url).then(handleSuccess, handleError('Error getting Projectes from client.'));
+		}
 
 
 
@@ -34,7 +42,7 @@
 		function handleError(error){
 			return function(){
 				return {success: false, message: error};
-			};w
+			};
 		}
 
 		return factory;

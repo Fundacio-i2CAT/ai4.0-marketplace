@@ -30,6 +30,16 @@
 				}
 			});
 		};
+
+		vm.getProjectsByPartnerId = function(partnerId) {
+			ProjectFactory.getProjectsByPartnerId(partnerId).then(function(response) {
+				if (response.success === false) {
+					//
+				} else {
+					vm.allClientProjects = response.result;
+				}
+			});
+		};
 	}
 
 })();
