@@ -13,11 +13,26 @@
 	</div>
 
 	<!--  Twitter Bootstrap 3.0 -->	
-	
-	<button type="button" ng-click="projects.getAll()">getAllUsers</button>
+	<button class="btn btn-info" type="button" ng-click="projects.getUserByName()">get User By Name</button>
 
-	<div ng-repeat="user in projects.allUsers">
-		{{ user }}
+	<button class="btn btn-warning" type="button" ng-click="projects.getAll()">Get All Client Projects</button>
+	<hr/>
+	<div class="row col-xs-4 col-sm-4" ng-show="projects.currentUser">
+		<div class="well">
+			<h4>User: </h4>
+			<ul class="list list-unstyled">
+				<li>admin: {{projects.currentUser.admin}}</li>
+				<li>email: {{projects.currentUser.email}}</li>
+				<li>user_name: {{projects.currentUser.user_name}}</li>
+				<li>partner_id: {{projects.currentUser.partner._id}}</li>
+				<li>partner_name: {{projects.currentUser.partner.name}}</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="row col-xs-12 col-sm-12" ng-show="projects.allProjects">
+		list of projects for this client:
+		{{projects.allProjects}}
 	</div>
 
 </div>

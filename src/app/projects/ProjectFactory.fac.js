@@ -14,23 +14,27 @@
 
 		/*
 			clientProjectsRest
-			
 			api/clients/<id>/projects
 		*/
-		function getAll(userId) {
-			var url = [host, 'api/clients/', userId, '/projects'].join('');
+		function getAll(partnerId) {
+			var url = [host, 'api/clients/', partnerId, '/projects'].join('');
 			return $http.get(url).then(handleSuccess, handleError('Error getting al projects'));
 		}
 
-		//private functions
+
+
+
+
+
+		///////////////////////////////   private functions   ///////////////////////////////////////////////////
 		function handleSuccess(response){
 			return response.data;	
 		}
 
 		function handleError(error){
 			return function(){
-				return {message: error};
-			}
+				return {success: false, message: error};
+			};w
 		}
 
 		return factory;
