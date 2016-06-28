@@ -1,6 +1,6 @@
 <div class="container">
 	<div class="page-header">
-			<h2>Service Provider <small>Index</small></h2>
+			<h2>Services <small>Index</small></h2>
 	</div>
 		
 	<!-- <a class="btn btn-danger" ui-sref="service-edit">edit view</a> -->
@@ -10,42 +10,75 @@
 		<div ng-if="true">
 			<div class="alert alert-danger alert-dismissible" role="alert">
 			  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			  <strong>Atenció</strong> Hi ha projectes pendents de validació. <a href="">Clica aquí per veure'ls</a>
+			  <strong>Atenció</strong> Hi ha serveis pendents de validació. <a href="">Clica aquí per veure'ls</a>
 			</div>
 		</div>
 	</div>
 
-	<div ng-if="services.show" class="col-xs-12 col-md-12">
-		<table class="table table-hover table-stripped">
-		  <thead>
-		  	<tr>
-		  		<th>Nom</th>
-		  		<th>Creació</th>
-		  		<th>Sectors</th>
-		  		<th>Tipus de Servei</th>
-		  		<th>Proveïdor</th>
-		  		<th>Summary</th>
-		  		<th>Actions</th>
-		  	</tr>
-		  </thead>
-		  <tbody>
-		  	<tr ng-repeat="service in services.services">
-		  		<td><strong>{{service.name}}</strong></td>
-		  		<td><span ng-bind="service.created_at | date"></span></td>
-		  		<td>
-		  			<ul class="list list-unstyled">
-		  				<li ng-repeat="sector in service.sectors">{{sector}}</li>	
-		  			</ul>
-		  		</td>
-		  		<td>{{service.service_type}}</td>
-		  		<td>{{service.provider}}</td>
-		  		<td>{{service.summary}}</td> 
-		  		<td><a class="btn btn-xs btn-primary" ng-class="(service.service_type == 'generic') ? 'disabled' : ''" ng-click="services.showToast(service);">Confirmar</a></td>
-		  	</tr>
-		  </tbody>
-		</table>
+	<!-- Twitter Bootstrap 3.0 -->
+	<div class="row col-xs-12" ng-if="services.show">
+		<!-- <uib-accordion class="col-xs-12 col-md-12">
+			<uib-accordion-group heading="Twitter Bootstrap 3.0" is-open="services.panelStatus.isOpened" is-disabled="services.panelStatus.isDisabled" ng-click="toggleOpen()"> -->
+		    	<div class="col-xs-12 col-md-12">
+					<table class="table table-hover">
+					  <thead>
+					  	<tr>
+					  		<th>Nom</th>
+					  		<th>Creació</th>
+					  		<th>Sectors</th>
+					  		<th>Tipus de Servei</th>
+					  		<th>Proveïdor</th>
+					  		<th>Summary</th>
+					  		<th>Actions</th>
+					  	</tr>
+					  </thead>
+					  <tbody>
+					  <!-- <tr>
+							<td><button type="button" ng-click="services.isFilterActive = !services.isFilterActive" class="btn btn-default btn-sm">
+								iFilter
+							</button>
+							</td>
+						</tr> -->
+					  <tr ng-show="true">
+						  	<td>
+						  		<input class="form-control input-sm" type="text" ng-model="searchword.name">
+							</td>
+							<td>
+						  		<input class="form-control input-sm" type="text" ng-model="searchword.created_at">
+							</td>
+							<td>
+						  		<input class="form-control input-sm" type="text" ng-model="searchword.sectors">
+							</td>
+							<td>
+						  		<input class="form-control input-sm" type="text" ng-model="searchword.service_type">
+							</td>
+							<td>
+						  		<input class="form-control input-sm" type="text" ng-model="searchword.provider">
+							</td>
+							<td>
+						  		<input class="form-control input-sm" type="text" ng-model="searchword.summary">
+							</td>
+							<td>
+							</td>
+					  	</tr>
+					  	<tr ng-repeat="service in services.services | filter: searchword">
+					  		<td><strong>{{service.name}}</strong></td>
+					  		<td><span>{{ service.created_at | date }}</span></td>
+					  		<td>
+					  			<ul class="list list-unstyled">
+					  				<li ng-repeat="sector in service.sectors">{{sector}}</li>	
+					  			</ul>
+					  		</td>
+					  		<td>{{service.service_type}}</td>
+					  		<td>{{service.provider}}</td>
+					  		<td>{{service.summary}}</td> 
+					  		<td><a class="btn btn-xs btn-primary" ng-class="(service.service_type == 'generic') ? 'disabled' : ''" ng-click="services.showToast(service);">Confirmar</a></td>
+					  	</tr>
+					  </tbody>
+					</table>
+				</div>
+		    <!-- </uib-accordion-group>
+	   </uib-accordion> -->
 	</div>
-
-
 	
 </div>

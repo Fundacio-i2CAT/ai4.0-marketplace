@@ -12,6 +12,7 @@
 			vm.services = ServicesMock;
 			vm.showTable = showTable;
 			vm.showToast = showToast;
+			vm.isFilterActive = false;
 
 			function progressBarConfigure (){
 				var progressbar = ngProgressFactory.createInstance();
@@ -37,7 +38,21 @@
 				toastr.info('Confirmació enviada', service.name);
 				
 			}
+
+			//panel
+			vm.panelStatus = {
+				isDisabled: false,
+				isOpened: false
+			};
+
+			vm.displayed = ServicesMock;
+
 		
+			vm.toggleFilter = function() {
+
+			}
+
+
 		}
 
 })();
