@@ -20,6 +20,7 @@
 		factory.openSession = openSession;
 		factory.setUser = setUser;
 		factory.deleteSession = deleteSession;
+		factory.getUserByName = getUserByName;
 
 
 		//get all users
@@ -43,16 +44,25 @@
 					"user_name": "user3.prov1",
 					"email": "user3.prov1@prov1.com"
 				};
-			return $http.post(setUserUrl, userInfo).then(handleSuccess, handleError('Error al gravar el Usuario.'));
+			return $http.post(setUserUrl, userInfo).then(handleSuccess, handleError('Error saving user.'));
 
 		}
 
 		// delete opened session
 		function deleteSession(){
-			return $http.delete(deleteSessionUrl).then(handleSuccess, handleError('Error al eliminar la session.'));
+			return $http.delete(deleteSessionUrl).then(handleSuccess, handleError('Error deleting session.'));
 		}
 
-		//////////////////////////private functions
+		//getUserByName
+		function getUserByName(name){
+			var url = [host, 'api/users?user_name=', name].join('');
+			return $http.get(url).then(handleSuccess, handleError('Error getting user.'));
+		}
+
+
+
+
+		///////////////////////////////   private functions   ///////////////////////////////////////////////////
 		function handleSuccess(response){
 			return response.data;	
 		}
@@ -60,7 +70,7 @@
 		function handleError(error){
 			return function(){
 				return {success: false, message: error};
-			}
+			};
 		}
 
 		return factory;	
