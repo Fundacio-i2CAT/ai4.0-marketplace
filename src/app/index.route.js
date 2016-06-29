@@ -52,7 +52,7 @@
       })
       .state('users', {
         url: '/users',
-        templateUrl: 'app/user/users.tpl.html',
+        templateUrl: 'app/users/users.tpl.html',
         controller: 'UserController',
         controllerAs: 'users'
       });
