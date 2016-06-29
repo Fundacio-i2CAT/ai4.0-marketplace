@@ -8,6 +8,7 @@
 	ProjectController.$inject = ['toastr', 'ProjectFactory', '$log', 'UserFactory'];
 	function ProjectController (toastr, ProjectFactory, $log, UserFactory){
 		var vm = this;
+		vm.model = {};
 
 		//getAll de projects (url falsa de users)
 		vm.getAll = function(){
@@ -21,7 +22,8 @@
 		};
 
 		vm.getUserByName = function (){
-			var user_name = 'user.client1';
+			var user_name = vm.model.username || 'user.client1';
+			console.log(user_name);
 			UserFactory.getUserByName(user_name).then(function(response){
 				if (response.success === false) {
 					//
@@ -37,6 +39,7 @@
 					//
 				} else {
 					vm.allClientProjects = response.result;
+					$log.log(response.result);
 				}
 			});
 		};
