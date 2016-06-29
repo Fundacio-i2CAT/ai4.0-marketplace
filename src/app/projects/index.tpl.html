@@ -12,11 +12,14 @@
 		</div>
 	</div>
 
-	<!--  Twitter Bootstrap 3.0 -->	
-	<button class="btn btn-info" type="button" ng-click="projects.getUserByName()">get User By Name</button>
-	<button ng-show="projects.currentUser" class="btn btn-warning" type="button" ng-click="projects.getProjectsByPartnerId(projects.currentUser.partner._id)">Get All Client Projects</button>
+	<div class="row">
+		<p class="col-xs-6 col-md-6">Username: <input type="text" placeholder="default is user.client1" class="form-control" ng-model="projects.model.username"></p>
+		<p>
+	</div>		
+		<button class="btn btn-info" type="button" ng-click="projects.getUserByName()">get User By Name</button>
+		<button ng-show="projects.currentUser" class="btn btn-warning" type="button" ng-click="projects.getProjectsByPartnerId(projects.currentUser.partner._id)">Get All Client Projects</button>
+	</p>
 
-	<hr/>
 	<div class="row">
 		<div class="col-xs-4 col-sm-4" ng-show="projects.currentUser">
 			<div class="well">
@@ -48,7 +51,8 @@
 				 <tbody>
 				 	<tr ng-repeat="proj in projects.allClientProjects">
 				 		<td>{{proj.client}}</td>
-				 		<td>{{proj.created_at}}</td>
+				 		<td>{{proj.created_at | date: 'dd-MM-yyyy'}}<br/>
+				 		</td>
 				 		<td>{{proj.name}}</td>
 				 		<td>
 				 			<ul class="list list-unstyled" ng-repeat="srv in proj.services">
@@ -56,14 +60,14 @@
 				 				<li><strong>Nom:</strong> {{srv.name}}</li>
 				 				<li>
 					 				<ul class="list list-unstyled">
-					 					<li><strong>Provider:</strong> {{srv.provider}}</li>
+					 					<li><strong>Provider:</strong> {{srv.provider.name}}</li>
 					 					<li><strong>Nom:</strong> {{srv.name}}</li>
 					 				</ul>
 				 				</li>
 				 				<li><strong>Status:</strong> {{srv.status}}</li>	
 				 			</ul>
 				 		</td>
-				 		<td>{{(proj.summary) ? proj.sumary : 'non che'}}</td>
+				 		<td>{{(proj.summary) ? proj.sumary : '--'}}</td>
 				 	</tr>
 				 </tbody>
 			</table>
