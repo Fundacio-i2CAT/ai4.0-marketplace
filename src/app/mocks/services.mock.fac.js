@@ -14,7 +14,7 @@
 					"industry",
 					"technology"
 				], 
-				"created_at": "2016-06-10 14:11:36.379000", 
+				"created_at": "2016-06-10T14:11:36.379000", 
 				"updated_at": null, 
 				"summary": "summary 1", 
 				"provider": "575aca9876e63a3a870ee462", 
@@ -26,7 +26,7 @@
 				"sectors": [
 					"cities"
 				], 
-				"created_at": "2016-06-10 14:11:36.390000", 
+				"created_at": "2016-06-10T14:11:36.390000", 
 				"updated_at": null, 
 				"summary": "summary 2", 
 				"provider": "575aca9876e63a3a870ee462", 
@@ -40,7 +40,7 @@
 					"application",
 					"web technology"
 				], 
-				"created_at": "2016-06-10 14:11:36.379000", 
+				"created_at": "2016-06-10T14:11:36.379000", 
 				"updated_at": null, 
 				"summary": "summary 3", 
 				"provider": "575aca9876e63a3a870ee462", 
@@ -52,7 +52,7 @@
 				"sectors": [
 					"automotion"
 				], 
-				"created_at": "2016-06-10 14:11:36.390000", 
+				"created_at": "2016-06-10T14:11:36.390000", 
 				"updated_at": null, 
 				"summary": "summary 4", 
 				"provider": "575aca9876e63a3a870ee462", 
