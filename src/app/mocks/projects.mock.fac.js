@@ -3,11 +3,11 @@
 
 	angular
 		.module('marketplace')
-		.factory('ProjectsMock', ProjecstMock);
+		.factory('ProjectsMock', ProjectsMock);
 
-		ProjecstMock.$inject = [];
+		ProjectsMock.$inject = [];
 
-	function ProjecstMock(){
+	function ProjectsMock(){
 		var projects = [
 			{
 				"_id": "5770f22079374a13daa9838c",
