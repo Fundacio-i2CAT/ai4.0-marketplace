@@ -5,33 +5,48 @@
 		.module('marketplace')
 		.controller('LoginController', LoginController);
 
-		LoginController.$inject=['$location', 'toastr', 'CurrentUserFactory'];
+		LoginController.$inject=['$location', 'toastr', 'CurrentUserFactory', 'UserFactory', '$log'];
 
-		function LoginController ($location, toastr, CurrentUserFactory){
+		function LoginController ($location, toastr, CurrentUserFactory, UserFactory, $log){
 			var vm = this;
 			vm.logModel = {};
-			vm.doLogin = doLogin;
+			vm.doLoginFake = doLoginFake;
 
-			function doLogin () {
-				var username = vm.logModel.username;
-				var pass = vm.logModel.password;
+			function doLoginFake () {
 				var user = {
-					username: username,
-					password: pass
-				}
-				if (username === 'admin' && pass === 'admin') {
+					username: vm.logModel.username,
+					password: vm.logModel.password
+				};
+				if (user.username === 'user.prov1' && user.password === 'user.prov1') {
+					toastr.info('Hola de nou ' + user.username);
 					CurrentUserFactory.setUser(user);
 					$location.path('services');
 				} else {
-					toastr.info('El username o el password no coincideixen', 'Error de Login');
+					toastr.info('El username o el password no coincideixen', 'Error al accedir');
 					$location.path('login');
 					vm.logModel = {};
 				}
 			}
 
-			function doRegister () {
-				
-			}
+			vm.doLogin = function (){
+				var user = {
+					username: vm.logModel.username,
+					password: vm.logModel.password
+				};
+				UserFactory.openSession(user).then(function(response){
+					if (response.data.status === 'fail') {
+						vm.logModel = {};
+					} else {
+						CurrentUserFactory.setUser(user);
+						$log.log(response);
+						$location.path('projects');
+					}	
+				})
+
+			};
+
+
+
 
 		}
 
