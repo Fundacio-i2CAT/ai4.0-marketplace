@@ -12,6 +12,7 @@
 		var factory = {};
 		factory.getAll = getAll;
 		factory.getClientProjectsByPartnerId = getClientProjectsByPartnerId;
+		factory.getProviderProjectsByPartnerId = getProviderProjectsByPartnerId;
 
 		/*
 			clientProjectsRest
@@ -32,7 +33,14 @@
 			return $http.get(url).then(handleSuccess, handleError);
 		}
 
-
+		/*
+			Provider
+			get all projects by partnerId
+		*/
+		function getProviderProjectsByPartnerId (partnerId) {
+			var url = [host, 'api/providers/', partnerId, '/projects'].join('');
+			return $http.get(url).then(handleSuccess, handleError);
+		}
 
 		///////////////////////////////   private functions   ///////////////////////////////////////////////////
 		function handleSuccess(response){
