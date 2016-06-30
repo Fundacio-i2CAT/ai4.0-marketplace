@@ -11,7 +11,7 @@
 
 		var factory = {};
 		factory.getAll = getAll;
-		factory.getProjectsByPartnerId = getProjectsByPartnerId;
+		factory.getClientProjectsByPartnerId = getClientProjectsByPartnerId;
 
 		/*
 			clientProjectsRest
@@ -21,28 +21,29 @@
 		*/
 		function getAll() {
 			var allProjectsUrl = [host, 'api/projects'].join('');
-			return $http.get(allProjectsUrl).then(handleSuccess, handleError('Error getting al projects'));
+			return $http.get(allProjectsUrl).then(handleSuccess, handleError);
 		}
 
 		/* 	Client
 			get all projects by partnerId
 		*/
-		function getProjectsByPartnerId (partnerId) {
+		function getClientProjectsByPartnerId (partnerId) {
 			var url = [host, 'api/clients/', partnerId, '/projects'].join('');
-			return $http.get(url).then(handleSuccess, handleError('Error getting Projectes from client.'));
+			return $http.get(url).then(handleSuccess, handleError);
 		}
 
 
 
 		///////////////////////////////   private functions   ///////////////////////////////////////////////////
 		function handleSuccess(response){
-			return response.data;	
+			return response;	
 		}
 
 		function handleError(error){
-			return function(){
+			/*return function(){
 				return {success: false, message: error};
-			};
+			};*/
+			return error;
 		}
 
 		return factory;
