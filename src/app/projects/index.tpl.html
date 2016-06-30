@@ -15,9 +15,10 @@
 	<div class="row">
 		<form>
 			<p class="col-xs-4 col-md-4">Username:
-					<input type="text" placeholder="enter username" class="form-control" ng-model="projects.model.username" />
-				<p>
+					<input type="text" placeholder="enter username" class="form-control fake" ng-model="projects.model.username" />
+					<!-- <div class="clearfix"></div> -->
 					<button class="btn btn-info" type="button" ng-click="projects.getUserByName()">get User By Name</button>
+					
 					<button
 						ng-show="projects.currentUser && projects.currentUser.partner._cls === 'Partner.Client'"
 						class="btn btn-warning" type="button"
@@ -30,10 +31,12 @@
 						ng-click="projects.getProviderProjectsByPartnerId(projects.currentUser.partner._id)">
 							Get All Provider Projects
 					</button>
-				</p>
+					
+					
+				
 			</p>
 		</form>
-
+		
 		<div class="col-xs-4 col-sm-4" ng-show="projects.currentUser">
 			<div class="well">
 				<ul class="list list-unstyled">

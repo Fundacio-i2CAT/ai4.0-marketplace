@@ -34,36 +34,39 @@
 		};
 
 		vm.getClientProjectsByPartnerId = function(partnerId) {
+			var progressbar = progressBarConfigure();
 			progressbar.start();
 			ProjectFactory.getClientProjectsByPartnerId(partnerId).then(function(response) {
 				if (response.data.status === 'fail') {
-					toastr.info('Hi ha hagut un errror al obtenir els projectes...', 'Nasti de plasti');
+					toastr.error('Hi ha hagut un errror al obtenir els projectes...', 'Hi ha un problema');
 				} else {
 					vm.allClientProjects = response.data.result;
-					toastr.info('Projectes relacionats amb el seu compte de client', 'Everything flows');
+					toastr.success('Projectes relacionats amb el seu compte de client', 'Everything flows');
 				}
 			});
-			vm.progressbar.complete();
+			progressbar.complete();
 		};
 
 		vm.getProviderProjectsByPartnerId = function (partnerId){
+			var progressbar = progressBarConfigure();
+			progressbar.start();
 			ProjectFactory.getProviderProjectsByPartnerId(partnerId).then(function(response) {
 				if (response.data.status === 'fail') {
-					toastr.info('Hi ha hagut un errror al obtenir els projectes...', 'Nasti de plasti');
+					toastr.error('Hi ha hagut un errror al obtenir els projectes...', 'Hi ha un problema');
 				} else {
-					toastr.info('Projectes relacionats amb el seu compte de proveïdor', 'Everything flows');
+					toastr.success('Projectes relacionats amb el seu compte de proveïdor', 'Everything flows');
 					vm.allProviderProjects = ProjectsMock;
 					// vm.allProviderProjects = response.data.result;					
 				}
 			});
+			progressbar.complete();
 		};
 
 		function progressBarConfigure (){
 			var progressbar = ngProgressFactory.createInstance();
-			progressbar.setHeight('4px');
-			progressbar.setColor('#00802b');
+			progressbar.setHeight('3px');
+			progressbar.setColor('#ff1ab3');
 
-			vm.progressbar = progressbar;
 			return progressbar;
 		}
 	}

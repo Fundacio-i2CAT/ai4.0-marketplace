@@ -5,8 +5,8 @@
 		.module('marketplace')
 		.factory('ProjectFactory', ProjectFactory);
 
-	ProjectFactory.$inject = ['$http','ngProgressFactory', 'toastr', 'ConnectionFactory'];
-	function ProjectFactory($http, ngProgressFactory, toastr, ConnectionFactory){
+	ProjectFactory.$inject = ['$http', 'ConnectionFactory'];
+	function ProjectFactory($http, ConnectionFactory){
 		var host = ConnectionFactory.host;
 
 		var factory = {};
