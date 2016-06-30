@@ -6,7 +6,8 @@
 	<div class="row">
 		
 		<ul class="col-xs-12 col-md-12 list-unstyled" ng-repeat="user in users.allUsers">
-			<h4 class="text-success">user</h4>	
+			<h4 class="text-success">user</h4>
+			<li><strong>rol:</strong> {{user.partner._cls}}</li>
 			<li class="id">
 				<strong>id:</strong> {{user._id}}
 			</li>

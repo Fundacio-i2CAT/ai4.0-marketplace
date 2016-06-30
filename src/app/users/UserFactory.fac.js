@@ -25,16 +25,12 @@
 
 		//get all users
 		function getAllUsers () {
-			return $http.get(getAllUsersUrl).then(handleSuccess, handleError('Error getting all users.'));
+			return $http.get(getAllUsersUrl).then(handleSuccess, handleError);
 		}
 
 		//open session
 		function openSession(user) {
-			var sessionUser = {
-				password: user.user_name,
-				user_name: user.user_name
-			};
-			return $http.post(openSessionUrl, sessionUser).then(handleSuccess, handleError('Error opening user session.'));
+			return $http.post(openSessionUrl, user).then(handleSuccess, handleError);
 		}
 
 		//setUser
@@ -44,19 +40,20 @@
 					"user_name": "user3.prov1",
 					"email": "user3.prov1@prov1.com"
 				};
-			return $http.post(setUserUrl, userInfo).then(handleSuccess, handleError('Error saving user.'));
+			user = userInfo;
+			return $http.post(setUserUrl, user).then(handleSuccess, handleError);
 
 		}
 
 		// delete opened session
 		function deleteSession(){
-			return $http.delete(deleteSessionUrl).then(handleSuccess, handleError('Error deleting session.'));
+			return $http.delete(deleteSessionUrl).then(handleSuccess, handleError);
 		}
 
 		//getUserByName
 		function getUserByName(name){
 			var url = [host, 'api/users?user_name=', name].join('');
-			return $http.get(url).then(handleSuccess, handleError('Error getting user.'));
+			return $http.get(url).then(handleSuccess, handleError);
 		}
 
 
@@ -64,13 +61,14 @@
 
 		///////////////////////////////   private functions   ///////////////////////////////////////////////////
 		function handleSuccess(response){
-			return response.data;	
+			return response;	
 		}
 
 		function handleError(error){
-			return function(){
+			/*return function(){
 				return {success: false, message: error};
-			};
+			};*/
+			return error;
 		}
 
 		return factory;	

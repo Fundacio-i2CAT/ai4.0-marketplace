@@ -5,9 +5,9 @@
 		.module('marketplace')
 		.controller('UserController', UserController);
 
-	UserController.$inject = ['UserFactory'];
+	UserController.$inject = ['UserFactory', 'CurrentUserFactory', '$log'];
 	
-	function UserController (UserFactory){
+	function UserController (UserFactory, CurrentUserFactory, $log){
 		var vm = this;
 		vm.openedSession;
 		vm.savedUser;
@@ -17,21 +17,26 @@
 		//get all users
 		vm.getAllUsers = function(){
 			UserFactory.getAllUsers().then(function(response) {
-				if (!response.success) {
+				if (response.success === false) {
 					//do something like show toastr
 				} else {
-					vm.allUsers = response.result;	
+					vm.allUsers = response.data.result;	
 				}
 			});
 		};
 
 		//open session for this user
 		vm.openSession = function(user) {
-			UserFactory.openSession(user).then(function(response) {
-				if (response.success === false) {
+			var sessionUser = {
+				password: user.user_name,
+				user_name: user.user_name
+			};
+			UserFactory.openSession(sessionUser).then(function(response) {
+				if (response.data.status === 'fail') {
 					//todo
 				} else {
-					vm.openedSession = response;
+					CurrentUserFactory.setUser(user);
+					vm.openedSession = response.data;
 				}
 			});
 		};	
@@ -39,10 +44,10 @@
 		//store user in bbdd
 		vm.setuser = function (user) {
 			UserFactory.setUser(user).then(function(response) {
-				if (response.success === false) {
+				if (response.data.status === 'fail') {
 					//todo
 				} else {
-					vm.savedUser = response;
+					vm.savedUser = response.data;
 				}
 			});
 		};
@@ -50,10 +55,10 @@
 		//delete session for current user
 		vm.deleteSession = function () {
 			UserFactory.deleteSession().then(function(response){
-				if (response.success === false) {
-					//todo
+				if (response.data.status === 'fail') {
+					$log.log('Ha petado', response);
 				} else {
-					vm.deletedSession = response;
+					vm.deletedSession = response.data;
 				}
 			});
 		};
@@ -61,10 +66,10 @@
 		//get user by name
 		vm.gerUserByName = function () {
 			UserFactory.getUserByName().then(function(response){
-				if (response.success === true) {
+				if (response.data.status === 'fail') {
 					//do something
 				} else {
-					vm.currentUser = response.result;
+					vm.currentUser = response.data.result;
 				}
 			});
 		}
