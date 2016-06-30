@@ -20,35 +20,30 @@
 		<!-- <uib-accordion class="col-xs-12 col-md-12">
 			<uib-accordion-group heading="Twitter Bootstrap 3.0" is-open="services.panelStatus.isOpened" is-disabled="services.panelStatus.isDisabled" ng-click="toggleOpen()"> -->
 		    	<div class="col-xs-12 col-md-12">
-					<table class="table table-hover">
+					<table class="table table-hover table-responsive">
+					<button type="button" ng-click="services.isFilterActive = !services.isFilterActive" class="btn btn-sm" ng-class="(services.isFilterActive) ? 'btn-danger' : 'btn-success' ">
+							<span ng-if="services.isFilterActive">Amagar filtres</span>
+							<span ng-if="!services.isFilterActive">Veure filtres</span>
+					</button>
 					  <thead>
 					  	<tr>
-					  		<th>Nom</th>
-					  		<th>Creació</th>
-					  		<th>Sectors</th>
-					  		<th>Tipus de Servei</th>
-					  		<th>Proveïdor</th>
-					  		<th>Summary</th>
+					  		<th class="service">Nom</th>
+					  		<th class="service">Creació</th>
+					  		<th class="service">Sectors</th>
+					  		<th class="service">Tipus de Servei</th>
+					  		<th class="service">Proveïdor</th>
+					  		<th class="service">Summary</th>
 					  		<th>Actions</th>
 					  	</tr>
 					  </thead>
 					  <tbody>
-					  <tr>
-							<td>
-								<button type="button" ng-click="services.isFilterActive = !services.isFilterActive" class="btn btn-default btn-sm">
-								iFilter</button>
-							</td>
-						</tr>
-					  <tr ng-show="services.isFilterActive">
+					  
+					  <tr ng-show="services.isFilterActive" class="difuminar">
 						  	<td>
-						  		<div class="col-sm-10">
-						  			<input class="form-control input-sm" type="text" ng-model="searchword.name">
-						  		</div>
+						  		<input class="form-control input-sm" type="text" ng-model="searchword.name">
 							</td>
 							<td>
-						  		<div class="col-sm-10">
-						  			<input class="form-control input-sm" type="text" ng-model="searchword.created_at">
-						  		</div>
+						  		<input class="form-control input-sm" type="text" ng-model="searchword.created_at">
 							</td>
 							<td>
 						  		<input class="form-control input-sm" type="text" ng-model="searchword.sectors">
@@ -62,8 +57,6 @@
 							<td>
 						  		<input class="form-control input-sm" type="text" ng-model="searchword.summary">
 							</td>
-							<td>
-							</td>
 					  	</tr>
 					  	<tr ng-repeat="service in services.services | filter: searchword">
 					  		<td><strong>{{service.name}}</strong></td>
@@ -76,7 +69,12 @@
 					  		<td>{{service.service_type}}</td>
 					  		<td>{{service.provider}}</td>
 					  		<td>{{service.summary}}</td> 
-					  		<td><a class="btn btn-xs btn-primary" ng-class="(service.service_type == 'generic') ? 'disabled' : ''" ng-click="services.showToast(service);">Confirmar</a></td>
+					  		<td><a 	class="btn btn-xs btn-primary"
+					  				ng-class="(service.service_type == 'generic') ? 'disabled' : ''"
+					  				ng-click="services.showToast(service);">
+					  					Confirma
+					  			</a>
+					  		</td>
 					  	</tr>
 					  </tbody>
 					</table>
