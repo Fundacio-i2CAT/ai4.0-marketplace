@@ -31,6 +31,7 @@ var buildStyles = function() {
 
   var injectFiles = gulp.src([
     path.join(conf.paths.src, '/app/**/*.less'),
+    path.join(conf.paths.src, '/assets/style/*.less'), //added by Enric for inject custom less styles
     path.join('!' + conf.paths.src, '/app/index.less')
   ], { read: false });
 
