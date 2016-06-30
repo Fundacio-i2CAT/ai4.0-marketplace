@@ -39,18 +39,7 @@
 				
 			}
 
-			//panel
-			vm.panelStatus = {
-				isDisabled: false,
-				isOpened: false
-			};
-
 			vm.displayed = ServicesMock;
-
-		
-			vm.toggleFilter = function() {
-
-			}
 
 
 		}
