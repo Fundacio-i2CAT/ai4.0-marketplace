@@ -17,7 +17,7 @@
 			function progressBarConfigure (){
 				var progressbar = ngProgressFactory.createInstance();
 				progressbar.setHeight('4px');
-				progressbar.setColor('#00802b');
+				progressbar.setColor('#ff1ab3');
 
 				return progressbar;
 			}
@@ -29,7 +29,7 @@
 				$timeout(function(){
 					vm.progressbar.complete();
 					vm.show = true;
-				}, 2000);
+				}, 1500);
 				
 			}
 			vm.showTable();
