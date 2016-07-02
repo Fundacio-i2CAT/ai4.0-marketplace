@@ -26,7 +26,7 @@
       })
       .state('services', {
         url: '/services',
-        templateUrl: 'app/services/index.tpl.html', controller: 'ServiceController', controllerAs: 'services' , need: 'client'
+        templateUrl: 'app/services/index.tpl.html', controller: 'ServiceController', controllerAs: 'services'//, need: 'client'
       })
       .state('service-edit', {
         url: '/services/edit'/*/{id:[0-9]}*/,
@@ -58,13 +58,15 @@
     .run(setStatePermission)
 
     function setStatePermission ($rootScope, $state, CurrentUserFactory){
-          $rootScope.$on('$stateChangeStart', function(event, destiny) {
+          var allowView = $rootScope.$on('$stateChangeStart', function(event, destiny) {
             var userRole = CurrentUserFactory.getRole();
             if (destiny.need && userRole !== destiny.need) {
               event.preventDefault();
               $state.go('tatami');
             }
           });
+
+          allowView();
     }
     
 })();

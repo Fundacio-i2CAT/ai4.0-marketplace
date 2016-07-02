@@ -76,7 +76,6 @@
 
 		vm.getCurrentUser= function() {
 			vm.userr = CurrentUserFactory.getUser() || {};
-			console.log(vm.userr);
 		}
 
 

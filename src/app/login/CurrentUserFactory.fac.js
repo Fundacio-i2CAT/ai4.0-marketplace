@@ -5,8 +5,8 @@
 		.module('marketplace')
 		.factory('CurrentUserFactory', CurrentUserFactory);
 
-	CurrentUserFactory.$inject = [];
-	function CurrentUserFactory() {
+	CurrentUserFactory.$inject = ['$log'];
+	function CurrentUserFactory($log) {
 		var currentUser = {
 			user: {},
 			role: {}
@@ -18,7 +18,7 @@
 
 		function setUser(user) {
 			currentUser.user = user;
-			console.log(user);
+			$log.log(user);
 		}
 
 		function removeCurrentUser() {
@@ -42,7 +42,8 @@
 			setUser: setUser,
 			removeCurrentUser: removeCurrentUser,
 			setProviderRole: setProviderRole,
-			getRole: getRole
+			getRole: getRole,
+			setClientRole: setClientRole
 		};
 
 	}
