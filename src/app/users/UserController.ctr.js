@@ -35,7 +35,7 @@
 				if (response.data.status === 'fail') {
 					//todo
 				} else {
-					CurrentUserFactory.setUser(user);
+					CurrentUserFactory.setUser(response.data);
 					vm.openedSession = response.data;
 				}
 			});
@@ -54,7 +54,7 @@
 
 		//delete session for current user
 		vm.deleteSession = function () {
-			UserFactory.deleteSession().then(function(response){
+			UserFactory.deleteSession(CurrentUserFactory.getUser()).then(function(response){
 				if (response.data.status === 'fail') {
 					$log.log('Ha petado', response);
 				} else {
@@ -73,6 +73,12 @@
 				}
 			});
 		}
+
+		vm.getCurrentUser= function() {
+			vm.userr = CurrentUserFactory.getUser() || {};
+			console.log(vm.userr);
+		}
+
 
 		//llamada al getAll de users
 		vm.getAllUsers();

@@ -46,8 +46,8 @@
 		}
 
 		// delete opened session
-		function deleteSession(){
-			return $http.delete(deleteSessionUrl).then(handleSuccess, handleError);
+		function deleteSession(user){
+			return $http.delete(deleteSessionUrl, user).then(handleSuccess, handleError);
 		}
 
 		//getUserByName

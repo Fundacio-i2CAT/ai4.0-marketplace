@@ -4,7 +4,12 @@
 	</div>
 
 	<div class="row">
-		
+		<div class="well">
+			<h4>GetCurrentUser</h4>
+			<button class="btn btn-danger" ng-click="users.getCurrentUser()">getCurrentUser</button>
+			<p>{{users.userr}}</p>
+		</div>
+		<div class="clear-fix"></div>
 		<ul class="col-xs-12 col-md-12 list-unstyled" ng-repeat="user in users.allUsers">
 			<h4 class="text-success">user</h4>
 			<li><strong>rol:</strong> {{user.partner._cls}}</li>
@@ -29,8 +34,8 @@
 			<li>
 				<div class="row">
 					<div class="col-xs-12">
-						<button type="button" class="btn-success" ng-click="users.openSession(user)">Open session for this User</button>
-						<button type="button" class="btn-danger" ng-click="users.deleteSession(user)">Delete session</button>
+						<button type="button" class="btn-primary" ng-click="users.openSession(user)">Open session for this User</button>
+						<button type="button" class="btn-warning" ng-click="users.deleteSession(user)">Delete session</button>
 					</div>
 				</div>
 			</li>
