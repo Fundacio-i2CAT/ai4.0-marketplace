@@ -22,8 +22,14 @@
 		    	<div class="col-xs-12 col-md-12">
 					<table class="table table-hover table-responsive">
 					<button type="button" ng-click="services.isFilterActive = !services.isFilterActive" class="btn btn-sm" ng-class="(services.isFilterActive) ? 'btn-danger' : 'btn-success' ">
-							<span ng-if="services.isFilterActive">Amagar filtres</span>
-							<span ng-if="!services.isFilterActive">Veure filtres</span>
+							<span ng-if="services.isFilterActive">
+								<i class="fa fa-ban" aria-hidden="true"></i>
+								 Amagar filtres
+							</span>
+							<span ng-if="!services.isFilterActive">
+								<i class="fa fa-filter" aria-hidden="true"></i>
+								 Veure filtres
+							</span>
 					</button>
 					  <thead>
 					  	<tr>
@@ -72,6 +78,7 @@
 					  		<td><a 	class="btn btn-xs btn-primary"
 					  				ng-class="(service.service_type == 'generic') ? 'disabled' : ''"
 					  				ng-click="services.showToast(service);">
+					  				<i class="fa fa-check-square-o" aria-hidden="true"></i>
 					  					Confirma
 					  			</a>
 					  		</td>
@@ -82,5 +89,9 @@
 		    <!-- </uib-accordion-group>
 	   </uib-accordion> -->
 	</div>
+
+<div class="clearfix"></div>
+<hr/>
+
 	
 </div>
