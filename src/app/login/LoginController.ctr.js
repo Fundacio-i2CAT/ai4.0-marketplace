@@ -9,13 +9,12 @@
 
 		function LoginController ($location, toastr, CurrentUserFactory, UserFactory, $log){
 			var vm = this;
-			vm.logModel = {};
-			vm.doLoginFake = doLoginFake;
+			vm.credentials = {};
 
-			function doLoginFake () {
+			/*function doLoginFake () {
 				var user = {
-					username: vm.logModel.username,
-					password: vm.logModel.password
+					username: vm.credentials.username,
+					password: vm.credentials.password
 				};
 				if (user.username === 'user.prov1' && user.password === 'user.prov1') {
 					toastr.info('Hola de nou ' + user.username);
@@ -24,20 +23,21 @@
 				} else {
 					toastr.info('El username o el password no coincideixen', 'Error al accedir');
 					$location.path('login');
-					vm.logModel = {};
+					vm.credentials = {};
 				}
-			}
+			}*/
 
 			vm.doLogin = function (){
 				var user = {
-					username: vm.logModel.username,
-					password: vm.logModel.password
+					user_name: vm.credentials.username,
+					password: vm.credentials.password
 				};
 				UserFactory.openSession(user).then(function(response){
 					if (response.data.status === 'fail') {
-						vm.logModel = {};
+						vm.credentials = {};
 					} else {
-						CurrentUserFactory.setUser(user);
+						CurrentUserFactory.setUser(response.data);
+						CurrentUserFactory.setProviderRole();
 						$log.log(response);
 						$location.path('projects');
 					}	

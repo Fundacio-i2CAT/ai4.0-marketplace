@@ -3,17 +3,17 @@
 			<h2>Login <small>Form</small></h2>
 	</div>
 
-	<form id="login" ng-submit="login.doLoginFake()">
+	<form id="login" name="logUser" ng-submit="login.doLogin()">
 	  <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
 	  	<div class="form-group">
 	    <label for="loginusername">Username</label>
-	    <input type="text" class="form-control" ng-model="login.logModel.username" id="loginusername" placeholder="Username">
+	    <input type="text" class="form-control" ng-model="login.credentials.username" id="loginusername" placeholder="Username" required>
 	  </div>
 	  <div class="form-group">
 	    <label for="loginpassword">Password</label>
-	    <input type="password" ng-model="login.logModel.password" class="form-control" id="loginpassword" placeholder="Password">
+	    <input type="password" ng-model="login.credentials.password" class="form-control" id="loginpassword" placeholder="Password" required>
 	  </div>
-	  <button type="submit" class="btn btn-primary btn-block">Accedir</button>
+	  <button type="submit" class="btn btn-primary btn-block" ng-disabled="logUser.$invalid">Accedir</button>
 	  </div>
 	</form>
 </div>
