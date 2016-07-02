@@ -6,7 +6,6 @@
 							'ngSanitize',
 							'ngMessages',
 							'ngAria',
-							'ngResource',
 							'ui.router',
 							'toastr',
 							'pascalprecht.translate',
