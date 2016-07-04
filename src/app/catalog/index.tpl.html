@@ -2,99 +2,103 @@
 	<div class="page-header">
 		<h3>Catalog <small>View</small></h3>
 	</div>
-
-
 	<div class="row">
-	    <div class="col-lg-3 col-md-6">
-	        <div class="panel panel-primary">
-	            <div class="panel-heading">
-	                <div class="row">
-	                    <div class="col-xs-3">
-	                        <i class="fa fa-comments fa-5x"></i>
-	                    </div>
-	                    <div class="col-xs-9 text-right">
-	                        <div class="huge">26</div>
-	                        <div>New Comments!</div>
-	                    </div>
-	                </div>
-	            </div>
-	            <a href="#">
-	                <div class="panel-footer">
-	                    <span class="pull-left">View Details</span>
-	                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-	                    <div class="clearfix"></div>
-	                </div>
-	            </a>
-	        </div>
-	    </div>
-	    <div class="col-lg-3 col-md-6">
-	        <div class="panel panel-">
-	            <div class="panel-heading">
-	                <div class="row">
-	                    <div class="col-xs-3">
-	                        <i class="fa fa-tasks fa-5x"></i>
-	                    </div>
-	                    <div class="col-xs-9 text-right">
-	                        <div class="huge">12</div>
-	                        <div>New Tasks!</div>
-	                    </div>
-	                </div>
-	            </div>
-	            <a href="#">
-	                <div class="panel-footer">
-	                    <span class="pull-left">View Details</span>
-	                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-	                    <div class="clearfix"></div>
-	                </div>
-	            </a>
-	        </div>
-	    </div>
-	    <div class="col-lg-3 col-md-6">
-	        <div class="panel panel-yellow">
-	            <div class="panel-heading">
-	                <div class="row">
-	                    <div class="col-xs-3">
-	                        <i class="fa fa-shopping-cart fa-5x"></i>
-	                    </div>
-	                    <div class="col-xs-9 text-right">
-	                        <div class="huge">124</div>
-	                        <div>New Orders!</div>
-	                    </div>
-	                </div>
-	            </div>
-	            <a href="#">
-	                <div class="panel-footer">
-	                    <span class="pull-left">View Details</span>
-	                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-	                    <div class="clearfix"></div>
-	                </div>
-	            </a>
-	        </div>
-	    </div>
-	    <div class="col-lg-3 col-md-6">
-	        <div class="panel panel-red">
-	            <div class="panel-heading">
-	                <div class="row">
-	                    <div class="col-xs-3">
-	                        <i class="fa fa-support fa-5x"></i>
-	                    </div>
-	                    <div class="col-xs-9 text-right">
-	                        <div class="huge">13</div>
-	                        <div>Support Tickets!</div>
-	                    </div>
-	                </div>
-	            </div>
-	            <a href="#">
-	                <div class="panel-footer">
-	                    <span class="pull-left">View Details</span>
-	                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-	                    <div class="clearfix"></div>
-	                </div>
-	            </a>
-	        </div>
-	    </div>
+		<ul class="nav nav-tabs">
+		  <li class="active"><a data-target="#all" data-toggle="tab">Tots</a></li>
+		  <li ng-click="catalog.getAllServicesByService_type(type.name)" ng-repeat="type in catalog.allTypes"><a data-target="#{{type.name}}" data-toggle="tab">{{type.name}}</a></li>
+		  
+		</ul>
 	</div>
 
+	<div class="tab-content">
+		<!-- tab1  -->
+		<div class="tab-pane fade in active" id="all"> <!-- inici tab1  -->
+			<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3" ng-repeat="one in catalog.allServices">
+				<div class="panel panel-info">
+				  <div class="panel-heading clearfix">
+				    <h3 class="panel-title pull-left"><strong>{{one.name}}</strong></h3>
+				      <a class="btn btn-default btn-xs pull-right" href="#">
+				        <i class="fa fa-check"></i>
+				        Action
+				      </a>
+				  </div>
+				  <div class="panel-body">
+					<p><strong>Tipus de servei:</strong> <span class="label" ng-class="(one.service_type === 'cloud') ? 'label-primary' : 'label-danger'">{{one.service_type}}</span></p>
+					<!-- <p><strong>Sumari: </strong> {{one.summary}}</p> -->
+				  	<p><img class="img img-responsive thumbnail" src="http://lorempixel.com/technics/200/200" alt=""></p>
+				  	<p><strong>Sectors: </strong>
+						<span ng-repeat="sec in one.sectors">
+							<span class="label label-default">{{sec}}</span>
+						</span>
+				  	</p>
+				  	<p><strong>Provider: </strong>{{one.provider}}</p>
+				  </div>
+				  <!-- <div class="panel-footer">
+				    <small><strong>Sectors: </strong>{{one.sectors}}</small>
+				  </div> -->
+				</div>
+			</div>
+		</div> <!--final tab1  -->
+		
+
+		<!-- tab2  -->
+		<div class="tab-pane" id="generic"> <!-- inici tab2 -->
+			<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3" ng-repeat="one in catalog.genericServices">
+				<div class="panel panel-danger">
+				  <div class="panel-heading clearfix">
+				    <h3 class="panel-title pull-left"><strong>{{one.name}}</strong></h3>
+				      <a class="btn btn-default btn-xs pull-right" href="#">
+				        <i class="fa fa-check"></i>
+				        Action
+				      </a>
+				  </div>
+				  <div class="panel-body">
+					<p><strong>Tipus de servei:</strong> <span class="label label-danger">{{one.service_type}}</span></p>
+					<!-- <p><strong>Sumari: </strong> {{one.summary}}</p> -->
+				  	<p><img class="img img-responsive thumbnail" src="http://lorempixel.com/technics/200/200" alt=""></p>
+				  	<p><strong>Sectors: </strong>
+						<span ng-repeat="sec in one.sectors">
+							<span class="label label-default">{{sec}}</span>
+						</span>
+				  	</p>
+				  	<p><strong>Provider: </strong>{{one.provider}}</p>
+				  </div>
+				  <!-- <div class="panel-footer">
+				    <small><strong>Sectors: </strong>{{one.sectors}}</small>
+				  </div> -->
+				</div>
+			</div>
+		</div> <!--final tab2  -->
+
+		<!-- tab2  -->
+		<div class="tab-pane" id="cloud">
+			<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3" ng-repeat="one in catalog.genericServices">
+				<div class="panel panel-primary">
+				  <div class="panel-heading clearfix">
+				    <h3 class="panel-title pull-left"><strong>{{one.name}}</strong></h3>
+				      <a class="btn btn-default btn-xs pull-right" href="#">
+				        <i class="fa fa-check"></i>
+				        Action
+				      </a>
+				  </div>
+				  <div class="panel-body">
+					<p><strong>Tipus de servei:</strong> <span class="label label-primary">{{one.service_type}}</span></p>
+					<!-- <p><strong>Sumari: </strong> {{one.summary}}</p> -->
+				  	<p><img class="img img-responsive thumbnail" src="http://lorempixel.com/technics/200/200" alt=""></p>
+				  	<p><strong>Sectors: </strong>
+						<span ng-repeat="sec in one.sectors">
+							<span class="label label-default">{{sec}}</span>
+						</span>
+				  	</p>
+				  	<p><strong>Provider: </strong>{{one.provider}}</p>
+				  </div>
+				  <!-- <div class="panel-footer">
+				    <small><strong>Sectors: </strong>{{one.sectors}}</small>
+				  </div> -->
+				</div>
+			</div>
+		</div> <!--final tab3 -->
+	</div>
 
 
 </div>
