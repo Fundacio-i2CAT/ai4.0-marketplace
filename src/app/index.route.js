@@ -20,9 +20,13 @@
         url: '/projects',
         templateUrl: 'app/projects/index.tpl.html', controller: 'ProjectController', controllerAs: 'projects', need: 'provider'
       })
-      .state('project-edit', {
-        url: '/projects/edit/:id',
-        templateUrl: 'app/projects/edit.tpl.html', controller: 'ProjectController', controllerAs: 'projects'
+      .state('provprojects', {
+        url: '/provprojects',
+        templateUrl: 'app/projects/provider/index-prov.tpl.html', controller: 'ProjectController', controllerAs: 'projects'
+      })
+      .state('clientprojects', {
+        url: '/clientprojects',
+        templateUrl: 'app/projects/client/index-client.tpl.html', controller: 'ProjectController', controllerAs: 'projects'
       })
       .state('services', {
         url: '/services',
