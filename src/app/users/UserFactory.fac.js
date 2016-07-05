@@ -21,7 +21,7 @@
 		factory.setUser = setUser;
 		factory.deleteSession = deleteSession;
 		factory.getUserByName = getUserByName;
-
+		factory.getUserById = getUserById;
 
 		//get all users
 		function getAllUsers () {
@@ -56,7 +56,11 @@
 			return $http.get(url).then(handleSuccess, handleError);
 		}
 
-
+		//getUserById
+		function getUserById(id){
+			var url = [host,'api/users/', id].join('');
+			return $http.get(url).then(handleSuccess, handleError);
+		}
 
 
 		///////////////////////////////   private functions   ///////////////////////////////////////////////////
