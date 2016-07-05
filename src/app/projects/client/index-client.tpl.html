@@ -2,6 +2,27 @@
 	<div class="page-header">
 			<h3>Client Projects <small>Index</small></h3>
 	</div>
-	
+	<div class="row">
+		<form name="provProjects">
+			<div class="col-lg-6">
+			    <div class="input-group">
+			      <input type="text" class="form-control" ng-model="client.id" placeholder="Client id..">
+			      <span class="input-group-btn">
+			        <button class="btn btn-default" type="button" ng-click="projects.getClientProjectsByPartnerId(client.id)">GetClientProjects</button>
+			      </span>
+			    </div><!-- /input-group -->
+			</div>
+		</form>
+	</div>
+	<hr/>
+	<div class="row">
+		<div class="well clearfix">
+			
+			<p ng-repeat="one in projects.allClientProjects">
+				{{one}}
+				<hr/>
+			</p>
+		</div>
+	</div>
 
 </div>

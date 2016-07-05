@@ -5,8 +5,8 @@
 		.module('marketplace')
 		.factory('ProgressFactory', ProgressFactory);
 
-	ProgressFactory.$inject = [];
-	function ProgressFactory () {
+	ProgressFactory.$inject = ['ngProgressFactory'];
+	function ProgressFactory (ngProgressFactory) {
 		var factory = {};
 		factory.progressBarConfigure = progressBarConfigure;
 

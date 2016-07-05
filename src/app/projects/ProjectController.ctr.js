@@ -5,8 +5,8 @@
 		.module('marketplace')
 		.controller('ProjectController', ProjectController);
 
-	ProjectController.$inject = ['toastr', 'ProjectFactory', '$log', 'UserFactory', 'ProjectsMock', 'ProgressFactory'];
-	function ProjectController (toastr, ProjectFactory, $log, UserFactory, ProjectsMock, ProgressFactory){
+	ProjectController.$inject = ['toastr', 'ProjectFactory', '$log', 'UserFactory', 'ProviderProjectsMockFactory', 'ClientProjectsMockFactory', 'ProgressFactory'];
+	function ProjectController (toastr, ProjectFactory, $log, UserFactory, ProviderProjectsMockFactory, ClientProjectsMockFactory, ProgressFactory){
 		var vm = this;
 		vm.model = {};
 
@@ -34,12 +34,13 @@
 		};
 
 		vm.getClientProjectsByPartnerId = function(partnerId) {
-			var progressbar = progressBarConfigure();
+			var progressbar = ProgressFactory.progressBarConfigure();
 			progressbar.start();
 			ProjectFactory.getClientProjectsByPartnerId(partnerId).then(function(response) {
 				if (response.data.status === 'fail') {
 					toastr.error('Hi ha hagut un errror al obtenir els projectes...', 'Hi ha un problema');
 				} else {
+					// vm.allClientProjects = ClientProjectsMockFactory;
 					vm.allClientProjects = response.data.result;
 					toastr.success('Projectes relacionats amb el seu compte de client', 'Everything flows');
 				}
@@ -53,14 +54,19 @@
 			ProjectFactory.getProviderProjectsByPartnerId(partnerId).then(function(response) {
 				if (response.data.status === 'fail') {
 					toastr.error('Hi ha hagut un errror al obtenir els projectes...', 'Hi ha un problema');
+					vm.allProviderProjects = ProviderProjectsMockFactory;
 				} else {
 					toastr.success('Projectes relacionats amb el seu compte de proveïdor', 'Everything flows');
-					vm.allProviderProjects = ProjectsMock;
+					vm.allProviderProjects = ProviderProjectsMockFactory;
 					// vm.allProviderProjects = response.data.result;					
 				}
 			});
 			progressbar.complete();
 		};
+
+		vm.saludo = function (id) {
+			alert(id);
+		}
 
 	}
 
