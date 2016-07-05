@@ -4,8 +4,8 @@
 	angular
 		.module('marketplace')
 		.controller('CatalogController', CatalogController);
-	CatalogController.$inject = ['CatalogFactory', '$location', '$uibModal', 'ngProgressFactory'];
-	function CatalogController(CatalogFactory, $location, $uibModal, ngProgressFactory) {
+	CatalogController.$inject = ['CatalogFactory', '$location', 'ngProgressFactory'];
+	function CatalogController(CatalogFactory, $location, ngProgressFactory) {
 		var vm = this;
 		vm.allService_typeServices = [];
 
@@ -48,13 +48,21 @@
 		};
 
 		vm.seeDetail = function (srv) {
-			/*var url = 'services/edit/' + srv._id;
-			$location.path(url);*/
+			var url = 'services/edit/' + srv._id;
+			$location.path(url);
+			
+			/*var service = srv;
 			var modalInstance = $uibModal.open({
 				animation: true,
-				templateUrl: '/app/common/modal/modal.tpl.html'			 	
-			});
-
+				templateUrl: '/app/common/modal/modal.tpl.html',
+				controller: 'ModalController',
+				controllerAs: 'modal',
+				resolve: {
+					item: function () {
+						return service;
+					}
+				}			 	
+			});*/
 		};
 
 		function progressBarConfigure (){
