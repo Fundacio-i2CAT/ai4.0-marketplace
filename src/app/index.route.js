@@ -18,7 +18,7 @@
       })
       .state('projects', {
         url: '/projects',
-        templateUrl: 'app/projects/index.tpl.html', controller: 'ProjectController', controllerAs: 'projects', need: 'provider'
+        templateUrl: 'app/projects/index.tpl.html', controller: 'ProjectController', controllerAs: 'projects'//, need: 'provider'
       })
       .state('provprojects', {
         url: '/provprojects',
