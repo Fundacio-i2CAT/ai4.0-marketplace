@@ -5,8 +5,8 @@
 		.module('marketplace')
 		.controller('ProjectController', ProjectController);
 
-	ProjectController.$inject = ['toastr', 'ProjectFactory', '$log', 'UserFactory', 'ProjectsMock', 'ngProgressFactory'];
-	function ProjectController (toastr, ProjectFactory, $log, UserFactory, ProjectsMock, ngProgressFactory){
+	ProjectController.$inject = ['toastr', 'ProjectFactory', '$log', 'UserFactory', 'ProjectsMock', 'ProgressFactory'];
+	function ProjectController (toastr, ProjectFactory, $log, UserFactory, ProjectsMock, ProgressFactory){
 		var vm = this;
 		vm.model = {};
 
@@ -48,7 +48,7 @@
 		};
 
 		vm.getProviderProjectsByPartnerId = function (partnerId){
-			var progressbar = progressBarConfigure();
+			var progressbar = ProgressFactory.progressBarConfigure();
 			progressbar.start();
 			ProjectFactory.getProviderProjectsByPartnerId(partnerId).then(function(response) {
 				if (response.data.status === 'fail') {
@@ -62,13 +62,6 @@
 			progressbar.complete();
 		};
 
-		function progressBarConfigure (){
-			var progressbar = ngProgressFactory.createInstance();
-			progressbar.setHeight('3px');
-			progressbar.setColor('#ff1ab3');
-
-			return progressbar;
-		}
 	}
 
 })();
