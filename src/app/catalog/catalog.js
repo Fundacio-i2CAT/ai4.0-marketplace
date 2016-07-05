@@ -1,6 +1,6 @@
 (function(){
-	$('li a').on('click', function(){
-		$('li a').removeClass('active');
-		$(this).addClass('active');
+	angular.element('li a').on('click', function(){
+		angular.element('li a').removeClass('active');
+		angular.element(this).addClass('active');
 	})
 })();
