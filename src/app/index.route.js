@@ -30,7 +30,7 @@
       })
       .state('service-edit', {
         url: '/services/edit/:id',
-        templateUrl: 'app/services/edit.tpl.html', controller: 'ServiceController', controllerAs: 'services'
+        templateUrl: 'app/services/edit.tpl.html', controller: 'ServiceEditController', controllerAs: 'editservice'
       })
       .state('login', {
         url: '/login',
