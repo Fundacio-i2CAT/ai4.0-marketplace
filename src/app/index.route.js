@@ -21,7 +21,7 @@
         templateUrl: 'app/projects/index.tpl.html', controller: 'ProjectController', controllerAs: 'projects', need: 'provider'
       })
       .state('project-edit', {
-        url: '/projects/edit'/*/{id:[0-9]}*/,
+        url: '/projects/edit/:id',
         templateUrl: 'app/projects/edit.tpl.html', controller: 'ProjectController', controllerAs: 'projects'
       })
       .state('services', {
@@ -29,7 +29,7 @@
         templateUrl: 'app/services/index.tpl.html', controller: 'ServiceController', controllerAs: 'services'//, need: 'client'
       })
       .state('service-edit', {
-        url: '/services/edit'/*/{id:[0-9]}*/,
+        url: '/services/edit/:id',
         templateUrl: 'app/services/edit.tpl.html', controller: 'ServiceController', controllerAs: 'services'
       })
       .state('login', {
