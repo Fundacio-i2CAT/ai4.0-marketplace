@@ -25,7 +25,7 @@
 				  <div class="panel-body">
 					<p><strong>Tipus de servei:</strong> <span class="label" ng-class="(one.service_type === 'cloud') ? 'label-primary' : 'label-danger'">{{one.service_type}}</span></p>
 					<!-- <p><strong>Sumari: </strong> {{one.summary}}</p> -->
-				  	<p><img class="img img-responsive thumbnail" src="http://lorempixel.com/technics/200/200" alt=""></p>
+				  	<p><img class="img-responsive thumbnail" src="http://lorempixel.com/technics/200/200" alt=""></p>
 				  	<p><strong>Sectors: </strong>
 						<span ng-repeat="sec in one.sectors">
 							<span class="label label-default">{{sec}}</span>
@@ -43,7 +43,7 @@
 
 		<!-- tab2  -->
 		<div class="tab-pane" id="generic"> <!-- inici tab2 -->
-			<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3" ng-repeat="one in catalog.genericServices">
+			<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" ng-repeat="one in catalog.genericServices">
 				<div class="panel panel-danger">
 				  <div class="panel-heading clearfix">
 				    <h3 class="panel-title pull-left"><strong>{{one.name}}</strong></h3>
@@ -72,7 +72,7 @@
 
 		<!-- tab2  -->
 		<div class="tab-pane" id="cloud">
-			<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3" ng-repeat="one in catalog.genericServices">
+			<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" ng-repeat="one in catalog.genericServices">
 				<div class="panel panel-primary">
 				  <div class="panel-heading clearfix">
 				    <h3 class="panel-title pull-left"><strong>{{one.name}}</strong></h3>
@@ -84,7 +84,7 @@
 				  <div class="panel-body">
 					<p><strong>Tipus de servei:</strong> <span class="label label-primary">{{one.service_type}}</span></p>
 					<!-- <p><strong>Sumari: </strong> {{one.summary}}</p> -->
-				  	<p><img class="img img-responsive thumbnail" src="http://lorempixel.com/technics/200/200" alt=""></p>
+				  	<p><img class="img-responsive img-thumbnail" src="http://lorempixel.com/technics/200/200" alt=""></p>
 				  	<p><strong>Sectors: </strong>
 						<span ng-repeat="sec in one.sectors">
 							<span class="label label-default">{{sec}}</span>
