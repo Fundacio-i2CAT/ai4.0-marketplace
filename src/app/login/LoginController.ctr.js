@@ -38,7 +38,6 @@
 					} else {
 						CurrentUserFactory.setUser(response.data);
 						CurrentUserFactory.setProviderRole();
-						$log.log(response);
 						$location.path('projects');
 					}	
 				})

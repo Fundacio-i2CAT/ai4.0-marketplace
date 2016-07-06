@@ -4,8 +4,35 @@
 	</div>
 	
 	<div class="row">
-		<div class="col-xs-12 col-md-12">
-			{{editservice.currentUser}}
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<ul class="list list-unstyled">
+				<li><strong>ID: </strong>{{editservice.currentUser._id}}</li>
+				<li><strong>Nom: </strong>{{editservice.currentUser.name}}</li>
+				<li><strong>Descripció: </strong> {{editservice.currentUser.description}}</li>
+				<li>
+					<ul class="list list-unstyled list-inline">
+						<li><strong>Sectors:</strong></li>
+						<li ng-repeat="one in editservice.currentUser.sectors">
+							{{one}}
+						</li>
+					</ul>
+				</li>
+				<li><strong>Data creació: </strong>{{editservice.currentUser.created_at | date: 'dd-MM-yyyy'}}</li>
+				<li><strong>Data actualització: </strong>{{editservice.currentUser.updated_at | date: 'dd-MM-yyyy'}}</li>
+				<li><strong>Creat per :</strong>{{editservice.currentUser.created_by}}</li>
+				<li><strong>Sumari: </strong>{{editservice.currentUser.summary}}</li>
+				<li>
+					<ul class="list list-unstyled list-inline">
+						<li><strong>Paraules clau: </strong></li>
+						<li ng-repeat="key in editservice.currentUser.keywords">
+							{{key}}
+						</li>
+					</ul>
+				</li>
+				<li><strong>Link: </strong>{{editservice.currentUser.link}}</li>
+				<li><strong>Proveïdor: </strong>{{editservice.currentUser.provider}}</li>
+				<li><strong>Tipus de servei: </strong>{{editservice.currentUser.service_type}}</li>
+			</ul>
 		</div>
 	</div>
 	<br/><br/><br/>
