@@ -8,11 +8,16 @@
 		ServiceController.$inject = ['ServicesMock', '$timeout', 'ngProgressFactory', 'toastr'];
 		function ServiceController (ServicesMock, $timeout, ngProgressFactory, toastr){
 			var vm = this;
-			vm.txt = 'Services Controller';
+
+			
+			///////////////////////////////////////////////// FAKE PART will be deprecated  /////////////////////////////////////
+			//remove dependences
 			vm.services = ServicesMock;
 			vm.showTable = showTable;
 			vm.showToast = showToast;
 			vm.isFilterActive = false;
+			vm.displayed = ServicesMock;
+
 
 			function progressBarConfigure (){
 				var progressbar = ngProgressFactory.createInstance();
@@ -39,7 +44,7 @@
 				
 			}
 
-			vm.displayed = ServicesMock;
+			
 
 
 		}

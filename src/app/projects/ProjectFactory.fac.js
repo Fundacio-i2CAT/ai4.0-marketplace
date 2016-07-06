@@ -13,7 +13,7 @@
 		factory.getAll = getAll;
 		factory.getClientProjectsByPartnerId = getClientProjectsByPartnerId;
 		factory.getProviderProjectsByPartnerId = getProviderProjectsByPartnerId;
-
+		factory.confirmProviderProject = confirmProviderProject;
 		/*
 			clientProjectsRest
 			api/clients/<id>/projects
@@ -44,7 +44,7 @@
 
 		/*
 			ProviderProject
-			confirmació projecte
+			confirmació projecte (edicio de prop 'status')
 		*/
 		function confirmProviderProject(srv) {
 			var url = [host, 'api/sprojects/', srv._id].join('');

@@ -10,7 +10,7 @@
 		var vm = this;
 		vm.model = {};
 
-		//getAll de projects (url falsa de users)
+		//getAll projects
 		vm.getAll = function(){
 			ProjectFactory.getAll().then(function(response){
 					if (response.data.status === 'fail') {
@@ -75,7 +75,8 @@
 					toastr.success('Servei confirmat correctament.', 'Confirmació Servei');
 				}
 			});*/
-		}
+		};
+
 
 	}
 
