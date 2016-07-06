@@ -1,8 +1,9 @@
 <div class="container">
+<!--
 	<div class="page-header">
 			<h2>Services <small>Detail</small></h2>
 	</div>
-	
+
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<ul class="list list-unstyled">
@@ -39,6 +40,75 @@
 	<div class="row">
 		<div class="col-xs-1 col-xs-offset-10 col-sm-1 col-sm-offset-10 col-md-1 col-md-offset-10">
 			<a class="btn btn-primary" ui-sref="catalog"><i class="fa fa-close" aria-hidden="true"></i>Tancar</a>
+		</div>
+	</div>
+-->
+
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<div class="caption">
+				<div class="title-name text-font-family">
+					{{editservice.currentService.name}}
+				</div>
+				<div class="panel panel-info">
+					<div class="panel-heading">
+					    <h3 class="panel-title panel-title-personalized">Descripció</h3>
+					  </div>
+					<div class="panel-body">
+						{{editservice.currentService.description}}
+					</div>
+				</div>
+				<!--
+				<div class="panel panel-info">
+					<div class="panel-heading">
+					    <h3 class="panel-title panel-title-personalized">Sectors</h3>
+					</div>
+					<div class="panel-body">
+						<ul class="list-group text-font-family">
+							<li class="list-group-item" ng-repeat="one in editservice.currentService.sectors">
+								{{one}}
+							</li>
+						</ul>
+					</div>
+				</div>
+				-->
+				<div class="panel panel-info">
+					<div class="panel-heading">
+					    <h3 class="panel-title panel-title-personalized">Sectors</h3>
+					</div>
+					<div class="panel-body">
+						<ul class="list list-unstyled list-inline">
+							<li ng-repeat="one in editservice.currentService.sectors">
+								{{one}}
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="panel panel-info">
+					<div class="panel-heading">
+					    <h3 class="panel-title panel-title-personalized">Summary</h3>
+					</div>
+					<div class="panel-body">
+						{{editservice.currentService.summary}}
+					</div>
+				</div>
+				<div class="panel panel-info">
+					<div class="panel-heading">
+					    <h3 class="panel-title panel-title-personalized">Tipus de servei</h3>
+					</div>
+					<div class="panel-body">
+						{{editservice.currentService.service_type}}
+					</div>
+				</div>
+				<div class="panel panel-info">
+					<div class="panel-heading">
+					    <h3 class="panel-title panel-title-personalized">Link</h3>
+					</div>
+					<div class="panel-body">
+						<a href="{{editservice.currentService.link}}" target="_blank"> {{editservice.currentService.link}} </a>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
