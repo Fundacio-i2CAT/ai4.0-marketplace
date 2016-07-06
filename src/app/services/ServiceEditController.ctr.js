@@ -14,7 +14,7 @@
 		vm.getServiceById = function (id){
 			ServiceFactory.getServiceById(id).then(function(response){
 				if (response.status === 200) {
-					vm.currentUser = response.data;
+					vm.currentService = response.data;
 				}
 			});
 		};
