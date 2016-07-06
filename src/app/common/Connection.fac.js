@@ -9,6 +9,7 @@
 	function ConnectionFactory (){
 
 		var host = "http://anella.i2cat.net:8010/";
+		//var host = "http://localhost:3010/";
 
 		/*
 		var headers = {
