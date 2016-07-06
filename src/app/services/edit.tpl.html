@@ -50,6 +50,19 @@
 				<div class="title-name text-font-family">
 					{{editservice.currentService.name}}
 				</div>
+
+				<div class="row">
+					<a ng-click="editservice.getProviderById(editservice.currentService.provider)" class="btn btn-info btn-md">
+						Provider del Servei
+					</a>
+				</div>
+				<div class="row" ng-if="editservice.currentServiceProvider">
+					<div>
+						{{editservice.currentServiceProvider}}
+					</div>
+				</div>
+
+
 				<div class="panel panel-info">
 					<div class="panel-heading">
 					    <h3 class="panel-title panel-title-personalized">Descripció</h3>
@@ -72,6 +85,11 @@
 					</div>
 				</div>
 				-->
+
+				
+
+
+
 				<div class="panel panel-info">
 					<div class="panel-heading">
 					    <h3 class="panel-title panel-title-personalized">Sectors</h3>
