@@ -22,11 +22,11 @@
       })
       .state('provprojects', {
         url: '/provprojects',
-        templateUrl: 'app/projects/provider/index-prov.tpl.html', controller: 'ProjectController', controllerAs: 'projects'
+        templateUrl: 'app/projects/provider/index-prov.tpl.html', controller: 'ProjectController', controllerAs: 'provprojects'
       })
       .state('clientprojects', {
         url: '/clientprojects',
-        templateUrl: 'app/projects/client/index-client.tpl.html', controller: 'ProjectController', controllerAs: 'projects'
+        templateUrl: 'app/projects/client/index-client.tpl.html', controller: 'ProjectController', controllerAs: 'clientprojects'
       })
       .state('services', {
         url: '/services',
