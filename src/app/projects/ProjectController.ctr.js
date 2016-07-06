@@ -36,22 +36,24 @@
 		vm.getClientProjectsByPartnerId = function(partnerId) {
 			var progressbar = ProgressFactory.progressBarConfigure();
 			progressbar.start();
-			ProjectFactory.getClientProjectsByPartnerId(partnerId).then(function(response) {
+			/*ProjectFactory.getClientProjectsByPartnerId(partnerId).then(function(response) {
 				if (response.data.status === 'fail') {
 					toastr.error('Hi ha hagut un errror al obtenir els projectes...', 'Hi ha un problema');
 				} else {
-					// vm.allClientProjects = ClientProjectsMockFactory;
-					vm.allClientProjects = response.data.result;
+					vm.allClientProjects = ClientProjectsMockFactory;
+					// vm.allClientProjects = response.data.result;
 					toastr.success('Projectes relacionats amb el seu compte de client', 'Everything flows');
 				}
-			});
+			});*/
+			vm.allClientProjects = ClientProjectsMockFactory;
 			progressbar.complete();
 		};
 
 		vm.getProviderProjectsByPartnerId = function (partnerId){
 			var progressbar = ProgressFactory.progressBarConfigure();
 			progressbar.start();
-			ProjectFactory.getProviderProjectsByPartnerId(partnerId).then(function(response) {
+			vm.allProviderProjects = ProviderProjectsMockFactory;
+			/*ProjectFactory.getProviderProjectsByPartnerId(partnerId).then(function(response) {
 				if (response.data.status === 'fail') {
 					toastr.error('Hi ha hagut un errror al obtenir els projectes...', 'Hi ha un problema');
 					vm.allProviderProjects = ProviderProjectsMockFactory;
@@ -60,12 +62,19 @@
 					vm.allProviderProjects = ProviderProjectsMockFactory;
 					// vm.allProviderProjects = response.data.result;					
 				}
-			});
+			});*/
 			progressbar.complete();
 		};
 
-		vm.saludo = function (id) {
-			alert(id);
+		vm.confirmProviderProject = function (srv) {
+			console.log('crida al servei api/sprojects/<id> amb objecte {status: 3(confirmed)}');
+			console.log(srv);
+			/*ProjectFactory.confirmProviderProject(srv).then(function(response){
+				if (response) {
+					// alert('response');
+					toastr.success('Servei confirmat correctament.', 'Confirmació Servei');
+				}
+			});*/
 		}
 
 	}

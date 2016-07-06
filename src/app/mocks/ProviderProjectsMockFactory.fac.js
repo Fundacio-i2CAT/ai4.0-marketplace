@@ -26,7 +26,7 @@
 					"_id": "577b8f2079374a0dd556cd20"
 				}, 
 				{
-					"status": 1, 
+					"status": 3, 
 					"service": {
 						"_id": "577b8f2079374a0dd556cd1e", 
 						"name": "cloud_service2"

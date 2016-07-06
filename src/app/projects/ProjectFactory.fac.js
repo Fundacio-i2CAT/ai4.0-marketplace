@@ -42,6 +42,18 @@
 			return $http.get(url).then(handleSuccess, handleError);
 		}
 
+		/*
+			ProviderProject
+			confirmació projecte
+		*/
+		function confirmProviderProject(srv) {
+			var url = [host, 'api/sprojects/', srv._id].join('');
+			var status = {
+				status: 3
+			};
+			return $http.put(url, status).then(handleSuccess, handleError);
+		}
+
 		///////////////////////////////   private functions   ///////////////////////////////////////////////////
 		function handleSuccess(response){
 			return response;	
