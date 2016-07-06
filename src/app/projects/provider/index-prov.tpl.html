@@ -9,7 +9,7 @@
 			    <div class="input-group">
 			      <input type="text" class="form-control" ng-model="provider.id" placeholder="Provider id..">
 			      <span class="input-group-btn">
-			        <button class="btn btn-default" type="button" ng-click="projects.getProviderProjectsByPartnerId(provider.id)">GetProviderProjects</button>
+			        <button class="btn btn-default" type="button" ng-click="provprojects.getProviderProjectsByPartnerId(provider.id)">GetProviderProjects</button>
 			      </span>
 			    </div><!-- /input-group -->
 			</div>
@@ -42,7 +42,7 @@
 
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-			<div class="panel panel-default difuminar" ng-repeat="srv in projects.allProviderProjects">
+			<div class="panel panel-default difuminar" ng-repeat="srv in provprojects.allProviderProjects">
 			  <div class="panel-heading">
 			    <h3 class="panel-title">Servei <strong>{{srv.service.name}}</strong></h3>
 			  </div>
@@ -72,7 +72,7 @@
 							</li>
 							<li class="prov-lists">
 								<p>Actions</p>
-								<button ng-click="projects.confirmProviderProject(srv)" class="btn btn-primary btn-sm" ng-class="(srv.status < 3) ? '' : 'disabled'">
+								<button ng-click="provprojects.confirmProviderProject(srv)" class="btn btn-primary btn-sm" ng-class="(srv.status < 3) ? '' : 'disabled'">
 									<i class="fa fa-check"></i>
 									Confirmar
 								</button>
