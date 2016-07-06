@@ -9,7 +9,11 @@
 
 	function ServiceEditController ($stateParams, ServiceFactory, ProviderFactory, toastr) {
 		var vm = this;
-		var serviceId = $stateParams.id;
+		var serviceId;
+		
+		if($stateParams.id) {
+			serviceId = $stateParams.id;
+		}
 
 		vm.getServiceById = function (id){
 			ServiceFactory.getServiceById(id).then(function(response){
@@ -28,9 +32,6 @@
 				}
 			})
 		};
-
-
-
 
 		vm.getServiceById(serviceId);
 	}

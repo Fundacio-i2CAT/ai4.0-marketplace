@@ -8,7 +8,7 @@
 			    <div class="input-group">
 			      <input type="text" class="form-control" ng-model="client.id" placeholder="Client id..">
 			      <span class="input-group-btn">
-			        <button class="btn btn-default" type="button" ng-click="projects.getClientProjectsByPartnerId(client.id)">GetClientProjects</button>
+			        <button class="btn btn-default" type="button" ng-click="clientprojects.getClientProjectsByPartnerId(client.id)">GetClientProjects</button>
 			      </span>
 			    </div><!-- /input-group -->
 			</div>
@@ -18,7 +18,7 @@
 	<div class="row">
 		<div class="well clearfix">
 			
-			<p ng-repeat="one in projects.allClientProjects">
+			<p ng-repeat="one in clientprojects.allClientProjects">
 				{{one}}
 				<hr/>
 			</p>
@@ -27,7 +27,7 @@
 
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-			<div class="panel panel-default difuminar" ng-repeat="srv in projects.allClientProjects">
+			<div class="panel panel-default difuminar" ng-repeat="srv in clientprojects.allClientProjects">
 			  <div class="panel-heading">
 			    <h3 class="panel-title">Projecte <strong>{{srv.name}}</strong></h3>
 			  </div>
@@ -61,10 +61,19 @@
 						<hr/>
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								Serveis	
+								Serveis	 <span class="badge pull-right clearfix">{{srv.services.length}}</span>
 							</div>
-							<div class="panel-body">
-								holasdjf
+							<div class="panel-body" ng-repeat="one in srv.services">
+								<ul class="list list-inline">
+									<li>Nom <span class="label label-default">{{one.name}}</span></li>
+									<li>Tipus de Servei <span class="label label-default">{{one.service_type}}</span></li>
+									<li>Proveïdor <span class="label label-default">{{one.provider.name}}</span></li>
+									<li class="pull-right clearfix">
+										<a ng-click="clientprojects.goServiceDetail(srv._id)" class="btn btn-default btn-xs">
+											<i class="fa fa-eye"></i> Veure
+										</a>
+									</li>
+								</ul>
 							</div>
 						</div>
 					</div>

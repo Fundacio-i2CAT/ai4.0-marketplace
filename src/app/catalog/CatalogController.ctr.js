@@ -47,8 +47,8 @@
 			vm.genericServices = genericServices;
 		};
 
-		vm.seeDetail = function (srv) {
-			var url = 'services/edit/' + srv._id;
+		vm.seeDetail = function (id) {
+			var url = 'services/edit/' + id;
 			$location.path(url);
 			
 			/*var service = srv;

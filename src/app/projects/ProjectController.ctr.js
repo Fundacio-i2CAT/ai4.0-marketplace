@@ -5,8 +5,8 @@
 		.module('marketplace')
 		.controller('ProjectController', ProjectController);
 
-	ProjectController.$inject = ['toastr', 'ProjectFactory', '$log', 'UserFactory', 'ProviderProjectsMockFactory', 'ClientProjectsMockFactory', 'ProgressFactory'];
-	function ProjectController (toastr, ProjectFactory, $log, UserFactory, ProviderProjectsMockFactory, ClientProjectsMockFactory, ProgressFactory){
+	ProjectController.$inject = ['toastr', 'ProjectFactory', '$log', 'UserFactory', 'ProviderProjectsMockFactory', 'ClientProjectsMockFactory', 'ProgressFactory', '$location'];
+	function ProjectController (toastr, ProjectFactory, $log, UserFactory, ProviderProjectsMockFactory, ClientProjectsMockFactory, ProgressFactory, $location){
 		var vm = this;
 		vm.model = {};
 
@@ -75,6 +75,12 @@
 					toastr.success('Servei confirmat correctament.', 'Confirmació Servei');
 				}
 			});*/
+		};
+
+		//ir a vista detalle del servicio host/services/edit/:id
+		vm.goServiceDetail = function(id) {
+			var url = ['services/edit/', id].join('');
+			$location.path(url);
 		};
 
 
