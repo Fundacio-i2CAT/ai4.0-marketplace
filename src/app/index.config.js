@@ -13,11 +13,11 @@
     //set localStorage configuration
     localStorageServiceProvider
         .setPrefix('mkp')
-        .setStorageType('localStorage') //available: sessionStorage and localStorage
+        .setStorageType('sessionStorage') //available: sessionStorage and localStorage
         .setNotify(true, true);
 
     //$http
-    /*$httpProvider.defaults.headers.common.algo = 'your_token';
+    /*$httpProvider.defaults.headers.common['Set-Cookie'] = 'anella=';
     console.log($httpProvider);*/
 
 

@@ -14,10 +14,10 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a ui-sref="catalog">Catalog</a></li>
+        <li><a class="toclose" ui-sref="catalog">Catalog</a></li>
         <!-- <li><a ui-sref="users">Users</a></li> -->
-        <li><a ui-sref="provprojects">provProjects</a></li>
-        <li><a ui-sref="clientprojects">clientProjects</a></li>
+        <li><a class="toclose" ng-if="menuUser.user.user_id==='577cc12f79374a61dacb1fbe'" ui-sref="provprojects">provProjects</a></li>
+        <li><a class="toclose" ng-if="menuUser.user.user_id==='577cc12f79374a61dacb1fc0'" ui-sref="clientprojects">clientProjects</a></li>
         <!-- <li><a ui-sref="projects">Projectes</a></li>
         <li><a ui-sref="services">Serveis</a></li>
         <li><a ui-sref="users">Usuaris</a></li> -->
@@ -25,11 +25,14 @@
   <ul class="nav navbar-nav navbar-right">
   <!-- <li><a ui-sref="tatami">Tatami</a></li> -->
     <li class="dropdown">
-      <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Accés <span class="caret"></span></a>
-      <ul class="dropdown-menu">
-        <li><a ui-sref="login">Accedir</a></li>
+      <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Accés <span class="caret"></span></a>
+      <ul class="dropdown-menu" ng-if="!menuUser.isLogged">
+        <li><a class="toclose" ui-sref="login">Accedir</a></li>
         <!-- <li role="separator" class="divider"></li> -->
-        <li><a ui-sref="register">Registre</a></li>
+        <li><a class="toclose" ui-sref="register">Registre</a></li>
+      </ul>
+      <ul class="dropdown-menu" ng-if="menuUser.isLogged">
+        <li><a class="toclose" ng-click="logout">Tancar Sessio</a></li>
       </ul>
     </li>
   </ul>
