@@ -6,11 +6,13 @@
     .run(runBlock);
 
   /** @ngInject */
-  function runBlock($log, $http) {
+  function runBlock($log, $http, localStorageService) {
 
     $log.debug('runBlock end');
-    // $http.defaults.headers.common.Authorization = 'holaaaaa';
-
+    var user = localStorageService.get('user');
+    console.log('desde index.run.js', user);
+    // $http.defaults.headers.common.Authorization = user.session_id;
+    $http.defaults.headers.common.Authorization = 'anella=' + user.session_id;
 
   }
 

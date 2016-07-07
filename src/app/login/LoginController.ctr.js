@@ -5,9 +5,9 @@
 		.module('marketplace')
 		.controller('LoginController', LoginController);
 
-		LoginController.$inject=['$location', 'toastr', 'CurrentUserFactory', 'UserFactory'];
+		LoginController.$inject=['$location', 'toastr', 'CurrentUserFactory', 'UserFactory', 'LocalStorageFactory'];
 
-		function LoginController ($location, toastr, CurrentUserFactory, UserFactory){
+		function LoginController ($location, toastr, CurrentUserFactory, UserFactory, LocalStorageFactory){
 			var vm = this;
 			vm.credentials = {};
 
@@ -34,15 +34,23 @@
 				};
 				UserFactory.openSession(user).then(function(response){
 					if (response.data.status === 'fail') {
+						toastr.error("L'usuari i el password no coincideixen.", 'Accés incorrecte');
 						vm.credentials = {};
 					} else {
+						toastr.success("Hola, " + user.user_name, 'Accés correcte');
 						CurrentUserFactory.setUser(response.data);
-						CurrentUserFactory.setProviderRole();
-						$location.path('projects');
+						LocalStorageFactory.setValue('user', response.data);
+						$location.path('catalog');
 					}	
 				})
 
 			};
+
+			vm.doLogout = function () {
+				 CurrentUserFactory.removeCurrentUser();
+				 LocalStorageFactoryremoveItem('user');
+				 $location.path('catalog');
+			}
 
 
 
