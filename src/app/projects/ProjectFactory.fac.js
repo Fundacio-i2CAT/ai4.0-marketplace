@@ -14,6 +14,7 @@
 		factory.getClientProjectsByPartnerId = getClientProjectsByPartnerId;
 		factory.getProviderProjectsByPartnerId = getProviderProjectsByPartnerId;
 		factory.confirmProviderProject = confirmProviderProject;
+		factory.createClientProject = createClientProject;
 		/*
 			clientProjectsRest
 			api/clients/<id>/projects
@@ -56,7 +57,7 @@
 
 		//create new client project
 		function createClientProject(model){
-			var url = [host,'api/services'].join('');
+			var url = [host,'api/projects'].join('');
 			var objectToSave = {};
 			objectToSave = model;
 			return $http.post(url, objectToSave).then(handleSuccess, handleError);
