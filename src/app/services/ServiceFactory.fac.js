@@ -12,10 +12,16 @@
 
 		var factory = {};
 		factory.getServiceById = getServiceById;
+		factory.getAllServices = getAllServices;
 
 		//getServiceById
 		function getServiceById (id){
 			var url = [host, 'api/services/', id].join('');
+			return $http.get(url).then(handleSuccess, handleError);
+		}
+		//Get tots els serveis
+		function getAllServices (){
+			var url = [host, 'api/services'].join('');
 			return $http.get(url).then(handleSuccess, handleError);
 		}
 

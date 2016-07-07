@@ -5,10 +5,11 @@
 		.module('marketplace')
 		.controller('ProjectController', ProjectController);
 
-	ProjectController.$inject = ['toastr', 'ProjectFactory', '$log', 'UserFactory', 'ProviderProjectsMockFactory', 'ClientProjectsMockFactory', 'ProgressFactory', '$location'];
-	function ProjectController (toastr, ProjectFactory, $log, UserFactory, ProviderProjectsMockFactory, ClientProjectsMockFactory, ProgressFactory, $location){
+	ProjectController.$inject = ['toastr', 'ProjectFactory', '$log', 'UserFactory', 'ProviderProjectsMockFactory', 'ClientProjectsMockFactory', 'ProgressFactory', '$location', 'ServiceFactory'];
+	function ProjectController (toastr, ProjectFactory, $log, UserFactory, ProviderProjectsMockFactory, ClientProjectsMockFactory, ProgressFactory, $location, ServiceFactory){
 		var vm = this;
 		vm.model = {};
+		var services = [];
 
 		//getAll projects
 		vm.getAll = function(){
@@ -66,6 +67,14 @@
 			progressbar.complete();
 		};
 
+		vm.getAllServices = function(){
+			ServiceFactory.getAllServices().then(function(response){
+				if (response.status === 200) {
+					vm.allServices = response.data.result;
+				}
+			});
+		}
+
 		vm.confirmProviderProject = function (srv) {
 			/*ProjectFactory.confirmProviderProject(srv).then(function(response){
 				if (response) {
@@ -81,7 +90,19 @@
 			$location.path(url);
 		};
 
+		//Crear Projecte
+		vm.createClientProject = function(model){
+			var service = {"service": model.services};
+			services.push(service);
+			model.services = services;
+			ProjectFactory.createClientProject(model).then(function(response){
+				//TODO
+			});
+		}
 
+
+		//Crida desde project-new.tpi.html per obtenir tots els serveis
+		vm.getAllServices();
 	}
 
 })();
