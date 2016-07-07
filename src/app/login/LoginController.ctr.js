@@ -11,7 +11,7 @@
 			var vm = this;
 			vm.credentials = {};
 
-			/*function doLoginFake () {
+			function doLoginFake () {
 				var user = {
 					username: vm.credentials.username,
 					password: vm.credentials.password
@@ -25,7 +25,7 @@
 					$location.path('login');
 					vm.credentials = {};
 				}
-			}*/
+			}
 
 			vm.doLogin = function (){
 				var user = {

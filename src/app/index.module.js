@@ -2,7 +2,8 @@
 	'use strict';
 
 	angular
-		.module('marketplace', ['ngAnimate',
+		.module('marketplace', [
+							'ngAnimate',
 							'ngSanitize',
 							'ngMessages',
 							'ngAria',
@@ -10,6 +11,8 @@
 							'toastr',
 							'pascalprecht.translate',
 							'ngProgress',
-							'ui.bootstrap']);
+							'ui.bootstrap'.
+							'LocalStorageModule'
+							]);
 
 })();
