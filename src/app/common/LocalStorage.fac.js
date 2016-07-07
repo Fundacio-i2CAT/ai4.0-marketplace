@@ -17,47 +17,36 @@
 
 
 			//get value from key. return string
-			function getValue() {
-				return function (key) {
-					return localStorageService.set(key);
-				} 
+			function getValue(key) {
+				return localStorageService.get(key); 
 			}
 
 			//set values
-			function setValue() {
-				return function (key, val) {
-					return localStorageService.set(key, val);
-				}
+			function setValue(key, val) {
+				return localStorageService.set(key, val);
 			}
 
 			//get storage type
 			function getStorageType() {
-				return function() {
-					return localStorageService.getStorageType();
-				}
+				return localStorageService.getStorageType();
 			}
 
 			//get all storage keys
 			function getKeys() {
-				return function () {
-					return localStorageService.keys();
-				}
+				return localStorageService.keys();
 			}
 
 			//removeItem by key
-			function removeItem() {
-				return function (key) {
-					return localStorageService.remove(key);
-				}
+			function removeItem(key) {
+				return localStorageService.remove(key);
 			}
 
 			//removeListOfItems
 			function removeListOfItems() {
-				return function (keysArray) {
-					return localStorageService.remove(keysArray);
-				}
+				return localStorageService.remove(keysArray);
 			}
 
 			return factory;
+
 		}
 })();
