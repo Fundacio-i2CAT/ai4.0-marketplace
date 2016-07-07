@@ -6,15 +6,20 @@
     .config(config);
 
   /** @ngInject */
-  function config($logProvider, toastrConfig, $httpProvider) {
+  function config($logProvider, toastrConfig, $httpProvider, localStorageServiceProvider) {
     // Enable log
     $logProvider.debugEnabled(true);
+
+    //set localStorage configuration
+    localStorageServiceProvider
+        .setPrefix('mkplace')
+        .setStorageType('localStorage'); //available: sessionStorage and localStorage
+        // .setNotify(true, true);
 
     //$http credentials
     // $httpProvider.defaults.withCredentials = true;
 
-
-    // Set options third-party lib
+    // toastr / Set options third-party lib
     toastrConfig.allowHtml = true;
     toastrConfig.timeOut = 4000;
     toastrConfig.positionClass = 'toast-top-right';

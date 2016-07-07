@@ -10,6 +10,9 @@
 			var factory = {};
 
 			//set
+			function setValue() {
+				
+			}
 
 
 			return factory;
