@@ -54,6 +54,15 @@
 			return $http.put(url, status).then(handleSuccess, handleError);
 		}
 
+		//create new client project
+		function createClientProject(model){
+			var url = [host,'api/services'].join('');
+			var objectToSave = {};
+			objectToSave = model;
+			return $http.post(url, objectToSave).then(handleSuccess, handleError);
+		}
+
+
 		///////////////////////////////   private functions   ///////////////////////////////////////////////////
 		function handleSuccess(response){
 			return response;	
