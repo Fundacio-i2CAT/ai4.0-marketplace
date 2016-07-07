@@ -36,6 +36,10 @@
         url: '/services/edit/:id',
         templateUrl: 'app/services/edit.tpl.html', controller: 'ServiceEditController', controllerAs: 'editservice'
       })
+      .state('provinstances', {
+        url: '/provinstances',
+        templateUrl: 'app/projects/provider/provinstances.tpl.html', controller: 'ProvInstancesController', controllerAs: 'provinstances'
+      })
       .state('login', {
         url: '/login',
         templateUrl: 'app/login/login.tpl.html', controller: 'LoginController', controllerAs: 'login'
