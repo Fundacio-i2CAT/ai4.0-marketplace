@@ -28,6 +28,10 @@
         url: '/clientprojects',
         templateUrl: 'app/projects/client/index-client.tpl.html', controller: 'ProjectController', controllerAs: 'clientprojects'
       })
+      .state('project-new', {
+        url: '/clientproject/new',
+        templateUrl: 'app/projects/client/project-new.tpl.html', controller: 'ProjectController', controllerAs: 'newproject'
+      })
       .state('services', {
         url: '/services',
         templateUrl: 'app/services/index.tpl.html', controller: 'ServiceController', controllerAs: 'services'//, need: 'client'
