@@ -1,55 +1,13 @@
 <div class="container">
-<!--
-	<div class="page-header">
-			<h2>Services <small>Detail</small></h2>
-	</div>
-
-	<div class="row">
-		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-			<ul class="list list-unstyled">
-				<li><strong>ID: </strong>{{editservice.currentService._id}}</li>
-				<li><strong>Nom: </strong>{{editservice.currentService.name}}</li>
-				<li><strong>Descripció: </strong> {{editservice.currentService.description}}</li>
-				<li>
-					<ul class="list list-unstyled list-inline">
-						<li><strong>Sectors:</strong></li>
-						<li ng-repeat="one in editservice.currentService.sectors">
-							{{one}}
-						</li>
-					</ul>
-				</li>
-				<li><strong>Data creació: </strong>{{editservice.currentService.created_at | date: 'dd-MM-yyyy'}}</li>
-				<li><strong>Data actualització: </strong>{{editservice.currentService.updated_at | date: 'dd-MM-yyyy'}}</li>
-				<li><strong>Creat per :</strong>{{editservice.currentService.created_by}}</li>
-				<li><strong>Sumari: </strong>{{editservice.currentService.summary}}</li>
-				<li>
-					<ul class="list list-unstyled list-inline">
-						<li><strong>Paraules clau: </strong></li>
-						<li ng-repeat="key in editservice.currentService.keywords">
-							{{key}}
-						</li>
-					</ul>
-				</li>
-				<li><strong>Link: </strong>{{editservice.currentService.link}}</li>
-				<li><strong>Proveïdor: </strong>{{editservice.currentService.provider}}</li>
-				<li><strong>Tipus de servei: </strong>{{editservice.currentService.service_type}}</li>
-			</ul>
-		</div>
-	</div>
-	<br/><br/><br/>
-	<div class="row">
-		<div class="col-xs-1 col-xs-offset-10 col-sm-1 col-sm-offset-10 col-md-1 col-md-offset-10">
-			<a class="btn btn-primary" ui-sref="catalog"><i class="fa fa-close" aria-hidden="true"></i>Tancar</a>
-		</div>
-	</div>
--->
-
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<div class="caption">
 				<div class="title-name text-font-family">
 					<div class="well clearfix">
+					<!--
 						<h3>{{editservice.currentService.name}} <small>Service</small> <a  class="btn btn-danger pull-right" ui-sref="catalog"><i class="fa fa-mail-reply"></i>Tornar</a></h3>
+					-->
+					<h3 class="text-uppercase">{{editservice.currentService.name}} <a class="btn btn-danger pull-right" ui-sref="catalog"><i class="fa fa-mail-reply"></i>Tornar</a></h3>
 					</div>
 				</div>
 
@@ -61,25 +19,6 @@
 						{{editservice.currentService.description}}
 					</div>
 				</div>
-				<!--
-				<div class="panel panel-info">
-					<div class="panel-heading">
-					    <h3 class="panel-title panel-title-personalized">Sectors</h3>
-					</div>
-					<div class="panel-body">
-						<ul class="list-group text-font-family">
-							<li class="list-group-item" ng-repeat="one in editservice.currentService.sectors">
-								{{one}}
-							</li>
-						</ul>
-					</div>
-				</div>
-				-->
-
-				
-
-
-
 				<div class="panel panel-info">
 					<div class="panel-heading">
 					    <h3 class="panel-title panel-title-personalized">Sectors</h3>
@@ -116,22 +55,15 @@
 						<a href="{{editservice.currentService.link}}" target="_blank"> {{editservice.currentService.link}} </a>
 					</div>
 				</div>
-			</div>
-		</div>
-		<div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
-			<div class="well clearfix">
-				<div class="row">
-					<a ng-click="editservice.getProviderById(editservice.currentService.provider)" class="btn btn-info btn-xs">
-						Provider del Servei
-					</a>
-				</div>
-				<br/>
-				<div class="row" ng-if="editservice.currentServiceProvider">
-					<div>
-						{{editservice.currentServiceProvider}}
+				<div class="panel panel-info">
+					<div class="panel-heading">
+					    <h3 class="panel-title panel-title-personalized">Proveidor</h3>
+					</div>
+					<div class="panel-body">
+						{{editservice.currentServiceProvider.name}}
 					</div>
 				</div>
-			</div>	
+			</div>
 		</div>
 	</div>
 </div>

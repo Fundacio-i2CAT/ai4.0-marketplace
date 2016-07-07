@@ -19,6 +19,7 @@
 			ServiceFactory.getServiceById(id).then(function(response){
 				if (response.status === 200) {
 					vm.currentService = response.data;
+					vm.getProviderById(response.data.provider);
 				}
 			});
 		};
@@ -28,7 +29,7 @@
 				if (response.status === 200) {
 					vm.currentServiceProvider = response.data;
 				} else {
-					toastr.error('Hi ha hagut un errror al obtenir els proveïdor...', 'Hi ha un problema');
+					toastr.error('Hi ha hagut un error al obtenir els proveïdor...', 'Hi ha un problema');
 				}
 			})
 		};
