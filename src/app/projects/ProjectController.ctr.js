@@ -67,8 +67,6 @@
 		};
 
 		vm.confirmProviderProject = function (srv) {
-			console.log('crida al servei api/sprojects/<id> amb objecte {status: 3(confirmed)}');
-			console.log(srv);
 			/*ProjectFactory.confirmProviderProject(srv).then(function(response){
 				if (response) {
 					// alert('response');

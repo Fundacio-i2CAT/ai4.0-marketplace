@@ -5,13 +5,13 @@
 		.module('marketplace')
 		.controller('LoginController', LoginController);
 
-		LoginController.$inject=['$location', 'toastr', 'CurrentUserFactory', 'UserFactory', '$log'];
+		LoginController.$inject=['$location', 'toastr', 'CurrentUserFactory', 'UserFactory'];
 
-		function LoginController ($location, toastr, CurrentUserFactory, UserFactory, $log){
+		function LoginController ($location, toastr, CurrentUserFactory, UserFactory){
 			var vm = this;
 			vm.credentials = {};
 
-			function doLoginFake () {
+			/*vm.doLoginFake = function () {
 				var user = {
 					username: vm.credentials.username,
 					password: vm.credentials.password
@@ -25,7 +25,7 @@
 					$location.path('login');
 					vm.credentials = {};
 				}
-			}
+			};*/
 
 			vm.doLogin = function (){
 				var user = {

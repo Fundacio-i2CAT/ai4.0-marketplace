@@ -5,9 +5,9 @@
 		.module('marketplace')
 		.controller('UserController', UserController);
 
-	UserController.$inject = ['UserFactory', 'CurrentUserFactory', '$log'];
+	UserController.$inject = ['UserFactory', 'CurrentUserFactory', '$log', 'LocalStorageFactory'];
 	
-	function UserController (UserFactory, CurrentUserFactory, $log){
+	function UserController (UserFactory, CurrentUserFactory, $log, LocalStorageFactory){
 		var vm = this;
 		vm.openedSession;
 		vm.savedUser;
@@ -36,6 +36,7 @@
 					//todo
 				} else {
 					CurrentUserFactory.setUser(response.data);
+					LocalStorageFactory.setValue('user', response.data);
 					vm.openedSession = response.data;
 				}
 			});
