@@ -32,13 +32,17 @@
         url: '/clientproject/new',
         templateUrl: 'app/projects/client/project-new.tpl.html', controller: 'ProjectController', controllerAs: 'newproject'
       })
+      .state('project-edit', {
+        url: '/clientproject/edit/:id',
+        templateUrl: 'app/projects/client/project-edit.tpl.html', controller: 'ProjectController', controllerAs: 'editproject'
+      })
       .state('services', {
         url: '/services',
         templateUrl: 'app/services/index.tpl.html', controller: 'ServiceController', controllerAs: 'services'//, need: 'client'
       })
       .state('service-edit', {
-        url: '/services/edit/:id',
-        templateUrl: 'app/services/edit.tpl.html', controller: 'ServiceEditController', controllerAs: 'editservice'
+        url: '/services/detail/:id',
+        templateUrl: 'app/services/detail.tpl.html', controller: 'ServiceEditController', controllerAs: 'detailsrv'
       })
       .state('provinstances', {
         url: '/provinstances',
@@ -67,8 +71,8 @@
 
   angular
     .module('marketplace')
-    .run(setStatePermission)
-    .run(lookAtLocationChange);
+    .run(setStatePermission);
+    // .run(lookAtLocationChange)
 
     function setStatePermission ($rootScope, $state, CurrentUserFactory){
         $rootScope.$on('$stateChangeStart', function(event, destiny) {

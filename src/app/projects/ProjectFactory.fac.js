@@ -15,6 +15,9 @@
 		factory.getProviderProjectsByPartnerId = getProviderProjectsByPartnerId;
 		factory.confirmProviderProject = confirmProviderProject;
 		factory.createClientProject = createClientProject;
+		factory.getProjectById = getProjectById;
+
+
 		/*
 			clientProjectsRest
 			api/clients/<id>/projects
@@ -62,6 +65,13 @@
 			objectToSave = model;
 			return $http.post(url, objectToSave).then(handleSuccess, handleError);
 		}
+		//get Project by id
+		function getProjectById(id) {
+			id = '577cc13079374a61dacb1fc6';
+			var url = [host, 'api/projects/', id].join('');
+			return $http.get(url).then(handleSuccess, handleError);
+		}
+
 
 
 		///////////////////////////////   private functions   ///////////////////////////////////////////////////

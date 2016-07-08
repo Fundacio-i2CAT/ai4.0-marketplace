@@ -5,9 +5,9 @@
 				<div class="title-name text-font-family">
 					<div class="well clearfix">
 					<!--
-						<h3>{{editservice.currentService.name}} <small>Service</small> <a  class="btn btn-danger pull-right" ui-sref="catalog"><i class="fa fa-mail-reply"></i>Tornar</a></h3>
+						<h3>{{detailsrv.currentService.name}} <small>Service</small> <a  class="btn btn-danger pull-right" ui-sref="catalog"><i class="fa fa-mail-reply"></i>Tornar</a></h3>
 					-->
-					<h3 class="text-uppercase">{{editservice.currentService.name}} <a class="btn btn-danger btn-xs pull-right" ui-sref="catalog"><i class="fa fa-mail-reply"></i>Tornar</a></h3>
+					<h3 class="text-uppercase">{{detailsrv.currentService.name}} <a class="btn btn-danger btn-xs pull-right" ui-sref="catalog"><i class="fa fa-mail-reply"></i>Tornar</a></h3>
 					</div>
 				</div>
 
@@ -16,7 +16,7 @@
 					    <h3 class="panel-title panel-title-personalized">Descripció</h3>
 					  </div>
 					<div class="panel-body">
-						{{editservice.currentService.description}}
+						{{detailsrv.currentService.description}}
 					</div>
 				</div>
 				<div class="panel panel-info">
@@ -25,7 +25,7 @@
 					</div>
 					<div class="panel-body">
 						<ul class="list list-unstyled list-inline">
-							<li ng-repeat="one in editservice.currentService.sectors">
+							<li ng-repeat="one in detailsrv.currentService.sectors">
 								{{one}}
 							</li>
 						</ul>
@@ -36,7 +36,7 @@
 					    <h3 class="panel-title panel-title-personalized">Summary</h3>
 					</div>
 					<div class="panel-body">
-						{{editservice.currentService.summary}}
+						{{detailsrv.currentService.summary}}
 					</div>
 				</div>
 				<div class="panel panel-info">
@@ -44,7 +44,7 @@
 					    <h3 class="panel-title panel-title-personalized">Tipus de servei</h3>
 					</div>
 					<div class="panel-body">
-						{{editservice.currentService.service_type}}
+						{{detailsrv.currentService.service_type}}
 					</div>
 				</div>
 				<div class="panel panel-info">
@@ -52,7 +52,7 @@
 					    <h3 class="panel-title panel-title-personalized">Link</h3>
 					</div>
 					<div class="panel-body">
-						<a href="{{editservice.currentService.link}}" target="_blank"> {{editservice.currentService.link}} </a>
+						<a href="{{detailsrv.currentService.link}}" target="_blank"> {{detailsrv.currentService.link}} </a>
 					</div>
 				</div>
 				<div class="panel panel-info">

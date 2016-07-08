@@ -5,8 +5,8 @@
 		.module('marketplace')
 		.controller('ProjectController', ProjectController);
 
-	ProjectController.$inject = ['toastr', 'ProjectFactory', '$log', 'UserFactory', 'ProviderProjectsMockFactory', 'ClientProjectsMockFactory', 'ProgressFactory', '$location', 'ServiceFactory'];
-	function ProjectController (toastr, ProjectFactory, $log, UserFactory, ProviderProjectsMockFactory, ClientProjectsMockFactory, ProgressFactory, $location, ServiceFactory){
+	ProjectController.$inject = ['toastr', 'ProjectFactory', '$log', 'UserFactory', 'ProviderProjectsMockFactory', 'ClientProjectsMockFactory', 'ProgressFactory', '$location', 'ServiceFactory', '$stateParams'];
+	function ProjectController (toastr, ProjectFactory, $log, UserFactory, ProviderProjectsMockFactory, ClientProjectsMockFactory, ProgressFactory, $location, ServiceFactory, $stateParams){
 		var vm = this;
 		vm.model = {};
 		var services = [];
@@ -84,9 +84,15 @@
 			});*/
 		};
 
-		//ir a vista detalle del servicio host/services/edit/:id
-		vm.goServiceDetail = function(id) {
-			var url = ['services/edit/', id].join('');
+		//ir a vista detalle del servicio host/services/detail/:id
+		vm.goServiceDetail = function(servId) {
+			var url = ['services/detail/', servId].join('');
+			$location.path(url);
+		};
+
+		//ir a vista edicion del servicio host/services/edit/:id
+		vm.goEditProject = function(projectId) {
+			var url = ['clientproject/edit/', projectId].join('');
 			$location.path(url);
 		};
 
@@ -100,7 +106,22 @@
 			ProjectFactory.createClientProject(model).then(function(response){
 				//TODO
 			});
+		};
+
+		//getProjectById
+		vm.getProjectById = function (id){
+			ProjectFactory.getProjectById(id).then(function (response){
+				console.log(response);
+				if (response.status === 200) {
+					vm.projectToEdit = response.data;
+				}
+			});
+		};
+
+		if ($stateParams.id) {
+			vm.getProjectById($stateParams.id);
 		}
+
 
 
 		//Crida desde project-new.tpi.html per obtenir tots els serveis
