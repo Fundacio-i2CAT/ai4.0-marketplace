@@ -92,8 +92,10 @@
 
 		//Crear Projecte
 		vm.createClientProject = function(model){
-			var service = {"service": model.services};
-			services.push(service);
+			angular.forEach(model.services, function(serv){
+				var service = {"service": serv};
+				services.push(service);
+			});			
 			model.services = services;
 			ProjectFactory.createClientProject(model).then(function(response){
 				//TODO
