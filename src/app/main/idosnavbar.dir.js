@@ -4,12 +4,12 @@
 		.module('marketplace')
 		.directive('idosnavbar', idosnavbar);
 
-	idosnavbar.$inject = ['LocalStorageFactory', '$rootScope'];
+	idosnavbar.$inject = ['LocalStorageFactory'];
 	
 	/**
 	* Directiva que proporciona el template del header de la aplicacion
 	*/
-	function idosnavbar(LocalStorageFactory, $rootScope){
+	function idosnavbar(LocalStorageFactory){
 		var directive = {
 			restrict: 'E',
 			templateUrl: 'app/main/navbar.tpl.html',
@@ -17,11 +17,11 @@
 			controllerAs: 'logindirective',
 			scope: false,
 			link: function (scope, element, attrs) {
+
 				var menuUser = {
 					isLogged : null	
 				};
 
-				
 				/*
 					Tancar collapsed menu despres de clicar un menu item
 				*/

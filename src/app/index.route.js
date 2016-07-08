@@ -68,17 +68,25 @@
   angular
     .module('marketplace')
     .run(setStatePermission)
+    .run(lookAtLocationChange);
 
     function setStatePermission ($rootScope, $state, CurrentUserFactory){
-          var allowView = $rootScope.$on('$stateChangeStart', function(event, destiny) {
+        $rootScope.$on('$stateChangeStart', function(event, destiny) {
             var userRole = CurrentUserFactory.getRole();
             if (destiny.need && userRole !== destiny.need) {
               event.preventDefault();
               $state.go('tatami');
             }
-          });
+        });
+    }
 
-          allowView();
+    function lookAtLocationChange($rootScope) {
+      //$routeChangeStart
+      //$locationChangeStart, $locationChangeSuccess
+      $rootScope.$on('$locationChangeStart', function (event, next) {
+          console.log('event', event);
+          console.log('next', next);
+      });
     }
     
 })();
