@@ -41,8 +41,9 @@
 						toastr.success("Hola, " + user.user_name, 'Accés correcte');
 						CurrentUserFactory.setUser(response.data);
 						LocalStorageFactory.setValue('user', response.data);
-						$location.path('catalog');
 						$rootScope.$digest();
+						$location.path('catalog');
+						
 					}	
 				})
 

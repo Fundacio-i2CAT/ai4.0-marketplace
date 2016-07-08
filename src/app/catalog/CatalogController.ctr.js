@@ -48,7 +48,7 @@
 		};
 
 		vm.seeDetail = function (id) {
-			var url = 'services/edit/' + id;
+			var url = 'services/detail/' + id;
 			$location.path(url);
 			
 			/*var service = srv;
