@@ -104,7 +104,11 @@
 			});			
 			model.services = services;
 			ProjectFactory.createClientProject(model).then(function(response){
-				//TODO
+				if(response.status == 201){
+					$location.path("/clientprojects");
+				}else{
+					toastr.error('Problema al crear projectes', response.data.msg);
+				}
 			});
 		};
 
