@@ -18,15 +18,18 @@
       })
       .state('projects', {
         url: '/projects',
-        templateUrl: 'app/projects/index.tpl.html', controller: 'ProjectController', controllerAs: 'projects'//, need: 'provider'
+        templateUrl: 'app/projects/index.tpl.html', controller: 'ProjectController', controllerAs: 'projects'/*,
+        need: 'admindoscat'*/
       })
       .state('provprojects', {
         url: '/provprojects',
-        templateUrl: 'app/projects/provider/index-prov.tpl.html', controller: 'ProjectController', controllerAs: 'provprojects'
+        templateUrl: 'app/projects/provider/index-prov.tpl.html', controller: 'ProjectController', controllerAs: 'provprojects',
+        need: 'Partner.Provider'
       })
       .state('clientprojects', {
         url: '/clientprojects',
-        templateUrl: 'app/projects/client/index-client.tpl.html', controller: 'ProjectController', controllerAs: 'clientprojects'
+        templateUrl: 'app/projects/client/index-client.tpl.html', controller: 'ProjectController', controllerAs: 'clientprojects',
+        need: 'Partner.Client'
       })
       .state('project-new', {
         url: '/clientproject/new',
@@ -38,7 +41,8 @@
       })
       .state('services', {
         url: '/services',
-        templateUrl: 'app/services/index.tpl.html', controller: 'ServiceController', controllerAs: 'services'//, need: 'client'
+        templateUrl: 'app/services/index.tpl.html', controller: 'ServiceController', controllerAs: 'services'/*,
+        need: 'admindoscat'*/
       })
       .state('service-edit', {
         url: '/services/detail/:id',
@@ -46,7 +50,8 @@
       })
       .state('provinstances', {
         url: '/provinstances',
-        templateUrl: 'app/projects/provider/provinstances.tpl.html', controller: 'ProvInstancesController', controllerAs: 'provinstances'
+        templateUrl: 'app/projects/provider/provinstances.tpl.html', controller: 'ProvInstancesController', controllerAs: 'provinstances',
+        need: 'Partner.Provider'
       })
       .state('login', {
         url: '/login',
@@ -58,11 +63,13 @@
       })
       .state('users', {
         url: '/users',
-        templateUrl: 'app/users/users.tpl.html', controller: 'UserController', controllerAs: 'users'
+        templateUrl: 'app/users/users.tpl.html', controller: 'UserController', controllerAs: 'users'/*,
+        need: 'admindoscat'*/
       })
       .state('tatami', {
         url: '/tatami',
-        templateUrl: 'app/tatami/tatami.tpl.html', controller: 'TatamiController', controllerAs: 'tatami'
+        templateUrl: 'app/tatami/tatami.tpl.html', controller: 'TatamiController', controllerAs: 'tatami'/*,
+        need: 'admindoscat'*/
       });
 
       $urlRouterProvider.otherwise('/');
@@ -79,18 +86,18 @@
             var userRole = CurrentUserFactory.getRole();
             if (destiny.need && userRole !== destiny.need) {
               event.preventDefault();
-              $state.go('tatami');
+              $state.go('catalog');
             }
         });
     }
 
-    function lookAtLocationChange($rootScope) {
+    /*function lookAtLocationChange($rootScope) {
       //$routeChangeStart
       //$locationChangeStart, $locationChangeSuccess
       $rootScope.$on('$locationChangeStart', function (event, next) {
           console.log('event', event);
           console.log('next', next);
       });
-    }
+    }*/
     
 })();

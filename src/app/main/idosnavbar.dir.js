@@ -31,28 +31,28 @@
 
 				scope.isUserSession = function() {
 					var user = localStorageService.get('user');
-				    if (user) {
-				      CurrentUserFactory.setLocalStorageCurrentUser(user);
-				      menuUser.user = user.user;
-				      menuUser.role = user.role;
-				      menuUser.isLogged = true;
-				      scope.menuUser = menuUser;
-				    }
+					if (user) {
+						CurrentUserFactory.setLocalStorageCurrentUser(user);
+						menuUser.user = user.user;
+						menuUser.role = user.role;
+						menuUser.isLogged = true;
+						scope.menuUser = menuUser;
+					}
 				}
 				
 
 				scope.$on('userrole', function (event, data) {
-				    menuUser = data;
-				    if (menuUser.user && menuUser.role) {
+					menuUser = data;
+					if (menuUser.user && menuUser.role) {
 						menuUser.isLogged = true;
 						scope.menuUser = menuUser;
 					} else {
 						scope.menuUser = {};
 					}
 					
-				 });
+				});
 
-				scope.logout = function (user) {
+				scope.logout = function () {
 					scope.logindirective.doLogout(menuUser);
 				};
 

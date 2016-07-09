@@ -5,8 +5,8 @@
 		.module('marketplace')
 		.controller('ProjectController', ProjectController);
 
-	ProjectController.$inject = ['toastr', 'ProjectFactory', '$log', 'UserFactory', 'ProviderProjectsMockFactory', 'ClientProjectsMockFactory', 'ProgressFactory', '$location', 'ServiceFactory', '$stateParams'];
-	function ProjectController (toastr, ProjectFactory, $log, UserFactory, ProviderProjectsMockFactory, ClientProjectsMockFactory, ProgressFactory, $location, ServiceFactory, $stateParams){
+	ProjectController.$inject = ['toastr', 'ProjectFactory', '$log', 'UserFactory', 'ProviderProjectsMockFactory', 'ClientProjectsMockFactory', 'ProgressFactory', '$location', 'ServiceFactory', '$stateParams', 'CurrentUserFactory'];
+	function ProjectController (toastr, ProjectFactory, $log, UserFactory, ProviderProjectsMockFactory, ClientProjectsMockFactory, ProgressFactory, $location, ServiceFactory, $stateParams, CurrentUserFactory){
 		var vm = this;
 		vm.model = {};
 		var services = [];
@@ -53,17 +53,15 @@
 		vm.getProviderProjectsByPartnerId = function (partnerId){
 			var progressbar = ProgressFactory.progressBarConfigure();
 			progressbar.start();
-			vm.allProviderProjects = ProviderProjectsMockFactory;
-			/*ProjectFactory.getProviderProjectsByPartnerId(partnerId).then(function(response) {
+			
+			ProjectFactory.getProviderProjectsByPartnerId(partnerId).then(function(response) {
 				if (response.data.status === 'fail') {
 					toastr.error('Hi ha hagut un errror al obtenir els projectes...', 'Hi ha un problema');
-					vm.allProviderProjects = ProviderProjectsMockFactory;
 				} else {
 					toastr.success('Projectes relacionats amb el seu compte de proveïdor', 'Everything flows');
-					vm.allProviderProjects = ProviderProjectsMockFactory;
-					// vm.allProviderProjects = response.data.result;					
+					vm.allProviderProjects = response.data.result;					
 				}
-			});*/
+			});
 			progressbar.complete();
 		};
 
@@ -115,7 +113,6 @@
 		//getProjectById
 		vm.getProjectById = function (id){
 			ProjectFactory.getProjectById(id).then(function (response){
-				console.log(response);
 				if (response.status === 200) {
 					vm.projectToEdit = response.data;
 				}
@@ -128,8 +125,16 @@
 
 
 
-		//Crida desde project-new.tpi.html per obtenir tots els serveis
-		vm.getAllServices();
+		//Crida desde project-new.tpl.html per obtenir tots els serveis
+		vm.getAllServices()
+
+		//crida desde projects/providers/index-prov.tpl.html
+		var user = CurrentUserFactory.getCurrentUser();
+		
+		if (user) {
+			$log.log('ProjectController', user);
+			$log.debug('ProjectController', user);
+		}
 	}
 
 })();

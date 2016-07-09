@@ -42,7 +42,7 @@
 			}
 
 			//removeListOfItems
-			function removeListOfItems() {
+			function removeListOfItems(keysArray) {
 				return localStorageService.remove(keysArray);
 			}
 

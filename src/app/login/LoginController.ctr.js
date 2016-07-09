@@ -10,24 +10,7 @@
 		function LoginController ($location, toastr, CurrentUserFactory, UserFactory, LocalStorageFactory){
 			var vm = this;
 			vm.credentials = {};
-			vm.paladire = null;
-
-			//fake login
-			/*vm.doLoginFake = function () {
-				var user = {
-					username: vm.credentials.username,
-					password: vm.credentials.password
-				};
-				if (user.username === 'user.prov1' && user.password === 'user.prov1') {
-					toastr.info('Hola de nou ' + user.username);
-					CurrentUserFactory.setUser(user);
-					$location.path('services');
-				} else {
-					toastr.info('El username o el password no coincideixen', 'Error al accedir');
-					$location.path('login');
-					vm.credentials = {};
-				}
-			};*/
+			// vm.paladire = null;
 
 			vm.doLogin = function (){
 				var user = {
@@ -48,14 +31,12 @@
 
 			};
 
-			vm.doLogout = function (user) {
-				 CurrentUserFactory.removeCurrentUser();
-				 LocalStorageFactory.removeItem('user');
-				 toastr.info("Sessió tancada correctament.", 'Fins aviat');
-				 $location.path('login');
+			vm.doLogout = function () {
+				CurrentUserFactory.removeCurrentUser();
+				LocalStorageFactory.removeItem('user');
+				toastr.info("Sessió tancada correctament.", 'Adéu');
+				$location.path('login');
 			}
-
-
 
 
 		}

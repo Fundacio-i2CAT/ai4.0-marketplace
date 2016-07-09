@@ -13,7 +13,7 @@
 		};
 
 
-		function getUser() {
+		function getCurrentUser() {
 			return currentUser;
 		}
 
@@ -58,7 +58,7 @@
 
 
 		return {
-			getUser:					getUser,
+			getCurrentUser:				getCurrentUser,
 			setUser:					setUser,
 			removeCurrentUser:			removeCurrentUser,
 			setProviderRole:			setProviderRole,

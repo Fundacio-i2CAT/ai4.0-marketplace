@@ -1,14 +1,14 @@
 (function() {
 	'use strict';
 
-	angular
+	/*angular
 		.module('marketplace')
 		.controller('ModalController', ModalController);
 
-	ModalController.$inject = ['$modalInstance', 'item', '$modal'];
+	ModalController.$inject = ['$modalInstance', 'item'/*, '$modal'];
 
 	function ModalController($modalInstance, item, $modal) {
-		/*var vm = this;
+		var vm = this;
 
 		vm.srv = item;
 
@@ -18,7 +18,7 @@
 
 		vm.cancel = function (){
 			alert('cancel');
-		}*/
-	}
+		}
+	}*/
 
 })();
