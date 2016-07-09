@@ -27,7 +27,7 @@
     <li class="dropdown">
       <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Accés <span class="caret"></span></a>
       <ul class="dropdown-menu">
-        <li><a class="toclose" ui-sref="login"><i class="fa fa-user"></i> Accedir</a></li>
+        <li><a class="toclose" ui-sref="login"><i class="fa fa-sign-in"></i> Accedir</a></li>
         <!-- <li role="separator" class="divider"></li> -->
         <li><a class="toclose" ui-sref="register"><i class="fa fa-user-plus"></i> Registre</a></li>
       </ul>
@@ -37,9 +37,14 @@
   <!-- <li><a ui-sref="tatami">Tatami</a></li> -->
     <li class="dropdown">
       <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-        <span class="hellouser">Hola <small class="text text-danger">{{menuUser.user.name}}</small></span><span class="caret"></span></a>
+        <span class="hellouser">
+          <small class="text text-warning">
+            <i class="fa fa-check-square"></i>&nbsp;{{menuUser.user.name}}<!-- <span class="caret"></span> -->
+          </small>
+        </span>
+      </a>
       <ul class="dropdown-menu">
-        <li><a class="toclose" ng-click="logout"><i class="fa fa-user-times"></i> Sortir</a></li>
+        <li><a class="toclose" ng-click="logout(menuUser)"><i class="fa fa-sign-out"></i> Sortir</a></li>
       </ul>
     </li>
   </ul>

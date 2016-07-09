@@ -5,9 +5,9 @@
 		.module('marketplace')
 		.controller('LoginController', LoginController);
 
-		LoginController.$inject=['$location', 'toastr', 'CurrentUserFactory', 'UserFactory'];
+		LoginController.$inject=['$location', 'toastr', 'CurrentUserFactory', 'UserFactory', 'LocalStorageFactory'];
 
-		function LoginController ($location, toastr, CurrentUserFactory, UserFactory){
+		function LoginController ($location, toastr, CurrentUserFactory, UserFactory, LocalStorageFactory){
 			var vm = this;
 			vm.credentials = {};
 			vm.paladire = null;
@@ -48,10 +48,11 @@
 
 			};
 
-			vm.doLogout = function () {
+			vm.doLogout = function (user) {
 				 CurrentUserFactory.removeCurrentUser();
-				 LocalStorageFactoryremoveItem('user');
-				 $location.path('catalog');
+				 LocalStorageFactory.removeItem('user');
+				 toastr.info("Sessió tancada correctament.", 'Fins aviat');
+				 $location.path('login');
 			}
 
 

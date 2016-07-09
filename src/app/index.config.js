@@ -6,7 +6,7 @@
     .config(config);
 
   /** @ngInject */
-  function config($logProvider, toastrConfig, $httpProvider, localStorageServiceProvider) {
+  function config($logProvider, toastrConfig, localStorageServiceProvider) {
     // Enable log
     $logProvider.debugEnabled(true);
 
@@ -16,14 +16,13 @@
         .setStorageType('sessionStorage') //available: sessionStorage and localStorage
         .setNotify(true, true);
 
-    //$http
+    //$http, $httpProvider
     /*$httpProvider.defaults.headers.common['Set-Cookie'] = 'anella=';
     console.log($httpProvider);*/
 
-
     // toastr / Set options third-party lib
     toastrConfig.allowHtml = true;
-    toastrConfig.timeOut = 4000;
+    toastrConfig.timeOut = 3000;
     toastrConfig.positionClass = 'toast-top-right';
     toastrConfig.preventDuplicates = false;
     toastrConfig.newestOnTop = true,

@@ -33,9 +33,15 @@
 			//final de temporal
 		}
 
+		function setLocalStorageCurrentUser(user) {
+			var temp = user;
+			currentUser.user = temp.user;
+			currentUser.role = temp.role;
+		}
+
 		function removeCurrentUser() {
-			currentUser.user = {};
-			currentUser.role = {};
+			currentUser = {};
+			$rootScope.$broadcast('userrole', currentUser);
 		}
 
 		function setProviderRole(){
@@ -49,13 +55,16 @@
 		function getRole() {
 			return (currentUser.role) ? currentUser.role : null;
 		}
+
+
 		return {
-			getUser: getUser,
-			setUser: setUser,
-			removeCurrentUser: removeCurrentUser,
-			setProviderRole: setProviderRole,
-			getRole: getRole,
-			setClientRole: setClientRole
+			getUser:					getUser,
+			setUser:					setUser,
+			removeCurrentUser:			removeCurrentUser,
+			setProviderRole:			setProviderRole,
+			getRole:					getRole,
+			setClientRole:				setClientRole,
+			setLocalStorageCurrentUser:	setLocalStorageCurrentUser
 		};
 
 	}

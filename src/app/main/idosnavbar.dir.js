@@ -4,19 +4,18 @@
 		.module('marketplace')
 		.directive('idosnavbar', idosnavbar);
 
-	idosnavbar.$inject = [];
+	idosnavbar.$inject = ['localStorageService', 'CurrentUserFactory'];
 	
 	/**
 	* Directiva que proporciona el template del header de la aplicacion
 	*/
-	function idosnavbar(){
+	function idosnavbar(localStorageService, CurrentUserFactory){
 		var directive = {
 			restrict: 'E',
 			templateUrl: 'app/main/navbar.tpl.html',
 			controller: 'LoginController',
 			controllerAs: 'logindirective',
-			scope: false,
-			link: function (scope, element, attrs, ctr) {
+			link: function (scope, element, attrs) {
 
 				/*
 					Tancar collapsed menu despres de clicar un menu item
@@ -30,17 +29,35 @@
 					isLogged : null	
 				};
 
+				scope.isUserSession = function() {
+					var user = localStorageService.get('user');
+				    if (user) {
+				      CurrentUserFactory.setLocalStorageCurrentUser(user);
+				      menuUser.user = user.user;
+				      menuUser.role = user.role;
+				      menuUser.isLogged = true;
+				      scope.menuUser = menuUser;
+				    }
+				}
+				
+
 				scope.$on('userrole', function (event, data) {
 				    menuUser = data;
 				    if (menuUser.user && menuUser.role) {
 						menuUser.isLogged = true;
 						scope.menuUser = menuUser;
+					} else {
+						scope.menuUser = {};
 					}
-
 					
 				 });
 
-				
+				scope.logout = function (user) {
+					scope.logindirective.doLogout(menuUser);
+				};
+
+				scope.isUserSession();
+	
 			}
 		};
 		return directive;
