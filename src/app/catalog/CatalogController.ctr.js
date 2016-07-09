@@ -4,8 +4,8 @@
 	angular
 		.module('marketplace')
 		.controller('CatalogController', CatalogController);
-	CatalogController.$inject = ['CatalogFactory', '$location', 'ngProgressFactory'];
-	function CatalogController(CatalogFactory, $location, ngProgressFactory) {
+	CatalogController.$inject = ['CatalogFactory', '$location', 'ProgressFactory'];
+	function CatalogController(CatalogFactory, $location, ProgressFactory) {
 		var vm = this;
 		vm.allService_typeServices = [];
 
@@ -20,13 +20,13 @@
 		};
 
 		vm.getAllServices = function () {
-			vm.progressbar = progressBarConfigure();
-				
-			vm.progressbar.start();
+			var progressbar = ProgressFactory.progressBarConfigure();
+			progressbar.start();
+
 			CatalogFactory.getAllServices().then(function (response) {
 				if (response.data.status === 'ok'){
 					vm.allServices = response.data.result;
-					vm.progressbar.complete();
+					progressbar.complete();
 				}
 			});
 
@@ -64,14 +64,6 @@
 				}			 	
 			});*/
 		};
-
-		function progressBarConfigure (){
-			var progressbar = ngProgressFactory.createInstance();
-			progressbar.setHeight('4px');
-			progressbar.setColor('#ff6600');
-
-			return progressbar;
-		}
 
 		vm.getAllTypes();
 		vm.getAllServices();

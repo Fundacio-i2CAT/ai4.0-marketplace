@@ -13,7 +13,8 @@
 		function progressBarConfigure (){
 			var progressbar = ngProgressFactory.createInstance();
 			progressbar.setHeight('2px');
-			progressbar.setColor('#ff1ab3');
+			progressbar.setColor('#ff8000'); //orange
+			// progressbar.setColor('#ff1ab3'); //pink
 
 			return progressbar;
 		}
