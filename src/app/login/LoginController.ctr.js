@@ -5,13 +5,14 @@
 		.module('marketplace')
 		.controller('LoginController', LoginController);
 
-		LoginController.$inject=['$rootScope', '$location', 'toastr', 'CurrentUserFactory', 'UserFactory', 'LocalStorageFactory'];
+		LoginController.$inject=['$location', 'toastr', 'CurrentUserFactory', 'UserFactory'];
 
-		function LoginController ($rootScope, $location, toastr, CurrentUserFactory, UserFactory, LocalStorageFactory){
+		function LoginController ($location, toastr, CurrentUserFactory, UserFactory){
 			var vm = this;
 			vm.credentials = {};
 			vm.paladire = null;
 
+			//fake login
 			/*vm.doLoginFake = function () {
 				var user = {
 					username: vm.credentials.username,
@@ -39,11 +40,7 @@
 						vm.credentials = {};
 					} else {
 						toastr.success("Hola, " + user.user_name, 'Accés correcte');
-						CurrentUserFactory.setUser(response.data);
-						LocalStorageFactory.setValue('user', response.data);
-						$rootScope.$digest();
-						$location.path('catalog');
-						
+						CurrentUserFactory.setUser(response.data);	//sessionStorage y  	
 					}	
 				})
 

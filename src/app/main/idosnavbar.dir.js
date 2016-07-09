@@ -16,11 +16,7 @@
 			controller: 'LoginController',
 			controllerAs: 'logindirective',
 			scope: false,
-			link: function (scope, element, attrs) {
-
-				var menuUser = {
-					isLogged : null	
-				};
+			link: function (scope, element, attrs, ctr) {
 
 				/*
 					Tancar collapsed menu despres de clicar un menu item
@@ -30,7 +26,15 @@
 					but.collapse('hide');
 				});
 
+				var menuUser = {
+					isLogged : null	
+				};
+
 				menuUser.user = LocalStorageFactory.getValue('user');
+
+				scope.$on('userrole', function (event, data) {
+				    console.log(data); // 'Some data'
+				 });
 
 				if (menuUser.user) {
 					menuUser.isLogged = true;
