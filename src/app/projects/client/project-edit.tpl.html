@@ -8,3 +8,40 @@
 	</div>
 
 </div>
+
+
+<div class="container">
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<div class="caption">
+				<div class="title-name text-font-family">
+					<div class="well clearfix">
+					<h3 class="text-uppercase">Editar Projecte <a class="btn btn-danger pull-right" ui-sref="clientprojects"><i class="fa fa-mail-reply"></i>Tornar</a></h3>
+					</div>
+				</div>
+		<form id="edit_project" name="edit_project" ng-submit="editproject.createClientProject(project)">
+			<div class="row">
+				<div class="form-group">
+					<label for="nomprojecte">Nom</label>
+				    <input type="text" class="form-control" id="nomprojecte" ng-model="editproject.projectToEdit.name" placeholder="Nom Projecte" required>
+				</div>				
+				<div class="form-group">
+					<label for="nomprojecte">Servei</label>
+				    	<select ng-model="project.services" class="form-control" multiple required="true">
+				 	 		<option ng-repeat="serv in editproject.allServices" value="{{serv._id}}" 
+				 	 				ng-selected="{{serv._id === editproject.projectToEdit.service._id}}">
+				 	 				{{serv.name}}
+				 	 		</option>
+						</select>
+				</div> 
+				<div class="form-group">
+					<input type="hidden" class="form-control" id="idclient" ng-model="project.client" ng-init="project.client='577cc12f79374a61dacb1fbf'">
+					<span class="input-group-btn">
+				        <button class="btn btn-primary" type="submit">
+				        	Guardar
+				    	</button>
+				    </span>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
