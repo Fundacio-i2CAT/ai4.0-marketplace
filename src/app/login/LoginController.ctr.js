@@ -39,8 +39,10 @@
 						toastr.error("L'usuari i el password no coincideixen.", 'Accés incorrecte');
 						vm.credentials = {};
 					} else {
+						//sessionStorage y $emit userrole
+						CurrentUserFactory.setUser(response.data);
 						toastr.success("Hola, " + user.user_name, 'Accés correcte');
-						CurrentUserFactory.setUser(response.data);	//sessionStorage y  	
+						$location.path('catalog');		
 					}	
 				})
 

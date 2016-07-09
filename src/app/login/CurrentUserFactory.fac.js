@@ -21,14 +21,15 @@
 			//temporal hasta que back devuelva el objeto user entero after login
 			//obtener el role del usuario loggeado
 			var temp = user;
-			UserFactory.getUserById(temp.user_id).then(function (response){
-				$log.log(response);
-				// LocalStorageFactory.setValue('user', response.data);
-				// $rootScope.$broadcast('userrole', response.data);
-			});
+			UserFactory.getUserById(temp.user_id)
+				.then(function (response){
+					var role = response.data.partner._cls;
+					currentUser.user = temp;
+					currentUser.role = role;
+					LocalStorageFactory.setValue('user', currentUser);
+					$rootScope.$broadcast('userrole', currentUser);
+				});
 			//final de temporal
-
-			currentUser.user = user;
 		}
 
 		function removeCurrentUser() {

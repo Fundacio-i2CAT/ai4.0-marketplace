@@ -4,12 +4,12 @@
 		.module('marketplace')
 		.directive('idosnavbar', idosnavbar);
 
-	idosnavbar.$inject = ['LocalStorageFactory'];
+	idosnavbar.$inject = [];
 	
 	/**
 	* Directiva que proporciona el template del header de la aplicacion
 	*/
-	function idosnavbar(LocalStorageFactory){
+	function idosnavbar(){
 		var directive = {
 			restrict: 'E',
 			templateUrl: 'app/main/navbar.tpl.html',
@@ -30,17 +30,17 @@
 					isLogged : null	
 				};
 
-				menuUser.user = LocalStorageFactory.getValue('user');
-
 				scope.$on('userrole', function (event, data) {
-				    console.log(data); // 'Some data'
+				    menuUser = data;
+				    if (menuUser.user && menuUser.role) {
+						menuUser.isLogged = true;
+						scope.menuUser = menuUser;
+					}
+
+					
 				 });
 
-				if (menuUser.user) {
-					menuUser.isLogged = true;
-				}
-
-				scope.menuUser = menuUser;
+				
 			}
 		};
 		return directive;
