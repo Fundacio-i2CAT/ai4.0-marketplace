@@ -25,6 +25,7 @@
 				.then(function (response){
 					var role = response.data.partner._cls;
 					currentUser.user = temp;
+					currentUser.user.name = response.data.user_name;
 					currentUser.role = role;
 					LocalStorageFactory.setValue('user', currentUser);
 					$rootScope.$broadcast('userrole', currentUser);

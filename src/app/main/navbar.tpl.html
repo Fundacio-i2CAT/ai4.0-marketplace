@@ -20,18 +20,26 @@
         <!-- <li><a ui-sref="projects">Projectes</a></li>
         <li><a ui-sref="services">Serveis</a></li>
         <li><a ui-sref="users">Usuaris</a></li> -->
-      </ul>
-  <ul class="nav navbar-nav navbar-right">
+      </ul>     
+      
+  <ul ng-if="!menuUser.isLogged" class="nav navbar-nav navbar-right">
   <!-- <li><a ui-sref="tatami">Tatami</a></li> -->
     <li class="dropdown">
       <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Accés <span class="caret"></span></a>
-      <ul class="dropdown-menu" ng-if="!menuUser.isLogged">
-        <li><a class="toclose" ui-sref="login">Accedir</a></li>
+      <ul class="dropdown-menu">
+        <li><a class="toclose" ui-sref="login"><i class="fa fa-user"></i> Accedir</a></li>
         <!-- <li role="separator" class="divider"></li> -->
-        <li><a class="toclose" ui-sref="register">Registre</a></li>
+        <li><a class="toclose" ui-sref="register"><i class="fa fa-user-plus"></i> Registre</a></li>
       </ul>
-      <ul class="dropdown-menu" ng-if="menuUser.isLogged">
-        <li><a class="toclose" ng-click="logout">Tancar Sessio</a></li>
+    </li>
+  </ul>
+  <ul ng-if="menuUser.isLogged" class="nav navbar-nav navbar-right">
+  <!-- <li><a ui-sref="tatami">Tatami</a></li> -->
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+        <span class="hellouser">Hola <small class="text text-danger">{{menuUser.user.name}}</small></span><span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a class="toclose" ng-click="logout"><i class="fa fa-user-times"></i> Sortir</a></li>
       </ul>
     </li>
   </ul>
