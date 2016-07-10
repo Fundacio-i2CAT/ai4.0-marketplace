@@ -1,10 +1,17 @@
-/* global malarkey:false, moment:false */
-(function() {
-  'use strict';
+(function(){
+	'use strict';
 
-  angular
-    .module('marketplace')
-    .constant('malarkey', malarkey)
-    .constant('moment', moment);
+	angular
+		.module('marketplace')
+		.constant('ROLES', {
+			provider: {
+				role: 'Partner.Provider',
+				state: 'provprojects'
+			},
+			client: {
+				role: 'Partner.Client',
+				state: 'clientprojects'
+			}
+		});
 
 })();
