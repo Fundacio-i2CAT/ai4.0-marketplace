@@ -5,8 +5,8 @@
 		.module('marketplace')
 		.controller('ProjectController', ProjectController);
 
-	ProjectController.$inject = ['toastr', 'ProjectFactory', '$log', 'UserFactory', 'ProviderProjectsMockFactory', 'ClientProjectsMockFactory', 'ProgressFactory', '$location', 'ServiceFactory', '$stateParams', 'CurrentUserFactory'];
-	function ProjectController (toastr, ProjectFactory, $log, UserFactory, ProviderProjectsMockFactory, ClientProjectsMockFactory, ProgressFactory, $location, ServiceFactory, $stateParams, CurrentUserFactory){
+	ProjectController.$inject = ['toastr', 'ProjectFactory', '$log', '$state', 'UserFactory', 'ProviderProjectsMockFactory', 'ClientProjectsMockFactory', 'ProgressFactory', '$location', 'ServiceFactory', '$stateParams', 'CurrentUserFactory', 'ROLES'];
+	function ProjectController (toastr, ProjectFactory, $log, $state, UserFactory, ProviderProjectsMockFactory, ClientProjectsMockFactory, ProgressFactory, $location, ServiceFactory, $stateParams, CurrentUserFactory, ROLES){
 		var vm = this;
 		vm.model = {};
 		var services = [];
@@ -37,16 +37,14 @@
 		vm.getClientProjectsByPartnerId = function(partnerId) {
 			var progressbar = ProgressFactory.progressBarConfigure();
 			progressbar.start();
-			/*ProjectFactory.getClientProjectsByPartnerId(partnerId).then(function(response) {
+			ProjectFactory.getClientProjectsByPartnerId(partnerId).then(function(response) {
 				if (response.data.status === 'fail') {
 					toastr.error('Hi ha hagut un errror al obtenir els projectes...', 'Hi ha un problema');
 				} else {
-					vm.allClientProjects = ClientProjectsMockFactory;
-					// vm.allClientProjects = response.data.result;
+					vm.allClientProjects = response.data.result;
 					toastr.success('Projectes relacionats amb el seu compte de client', 'Everything flows');
 				}
-			});*/
-			vm.allClientProjects = ClientProjectsMockFactory;
+			});
 			progressbar.complete();
 		};
 
@@ -131,9 +129,12 @@
 		//crida desde projects/providers/index-prov.tpl.html
 		var user = CurrentUserFactory.getCurrentUser();
 		
-		if (user) {
-			$log.log('ProjectController', user);
-			$log.debug('ProjectController', user);
+		if (user.role === ROLES.provider.role && $state.current.name === ROLES.provider.state) {
+			vm.getProviderProjectsByPartnerId(user.user.provider_id);
+		}
+
+		if (user.role === ROLES.client.role && $state.current.name === ROLES.client.state) {
+			vm.getClientProjectsByPartnerId(user.user.provider_id);
 		}
 	}
 

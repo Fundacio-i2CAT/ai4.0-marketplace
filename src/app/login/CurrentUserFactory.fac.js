@@ -23,10 +23,10 @@
 			var temp = user;
 			UserFactory.getUserById(temp.user_id)
 				.then(function (response){
-					var role = response.data.partner._cls;
 					currentUser.user = temp;
 					currentUser.user.name = response.data.user_name;
-					currentUser.role = role;
+					currentUser.role = response.data.partner._cls;
+					currentUser.user.provider_id = response.data.partner._id;
 					LocalStorageFactory.setValue('user', currentUser);
 					$rootScope.$broadcast('userrole', currentUser);
 				});
