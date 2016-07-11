@@ -2,15 +2,6 @@
 	<div class="page-header">
 			<h3>Client Projects <small>Index</small> <span class="pull-right"><a ui-sref="project-new" class="btn btn-primary btn-xs">Crear Projecte</a></span></h3>
 	</div>
-	<!--<div class="row">
-		<div class="well clearfix">
-			
-			<p ng-repeat="one in clientprojects.allClientProjects">
-				{{one}}
-				<hr/>
-			</p>
-		</div>
-	</div> -->
 
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -39,11 +30,11 @@
 							</li>
 							<li class="prov-lists">
 								<p>Accions</p>
-								<button ng-if="srv.status < 3" class="btn btn-primary btn-sm">
+								<button ng-if="srv.status === 3" class="btn btn-primary btn-sm" ng-click="clientprojects.runProject(srv._id)">
 									<i class="fa fa-play"></i>
 									Arrencar
 								</button> 
-								<button ng-if="srv.status >= 3"class="btn btn-primary btn-sm">
+								<button ng-if="srv.status >= 5"class="btn btn-primary btn-sm">
 									<i class="fa fa-stop"></i>
 									Aturar
 								</button>
@@ -56,7 +47,7 @@
 							</div>
 							<div class="panel-body" ng-repeat="one in srv.services">
 								<ul class="list list-inline">
-									<li>Nom <span class="label label-default">{{one.name}}</span></li>
+									<li>Nom <span class="label label-default">{{one.service.name}}</span></li>
 									<li>Tipus de Servei <span class="label label-default">{{one.service_type}}</span></li>
 									<li>Proveïdor <span class="label label-default">{{one.provider.name}}</span></li>
 									<li class="pull-right clearfix">

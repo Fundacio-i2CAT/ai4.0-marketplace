@@ -117,11 +117,29 @@
 			});
 		};
 
-		if ($stateParams.id) {
-			vm.getProjectById($stateParams.id);
+		//runProject (by Client user)
+		vm.runProject = function (id) {
+			ProjectFactory.runProject(id).then(function (response){
+				if (response.data.status === 'ok') {
+					$log.log(response);
+				}
+			});
+		}
+
+		//stopProject (by Client user)
+		vm.stopProject = function (id) {
+			ProjectFactory.stopProject(id).then(function (response){
+				if (response) {
+					$log.log(response);
+				}
+			});
 		}
 
 
+
+		if ($stateParams.id) {
+			vm.getProjectById($stateParams.id);
+		}
 
 		//Crida desde project-new.tpl.html per obtenir tots els serveis
 		vm.getAllServices()

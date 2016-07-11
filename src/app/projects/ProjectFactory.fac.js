@@ -16,6 +16,7 @@
 		factory.confirmProviderProject = confirmProviderProject;
 		factory.createClientProject = createClientProject;
 		factory.getProjectById = getProjectById;
+		factory.runProject = runProject;
 
 
 		/*
@@ -65,12 +66,19 @@
 			objectToSave = model;
 			return $http.post(url, objectToSave).then(handleSuccess, handleError);
 		}
+
 		//get Project by id
 		function getProjectById(id) {
-			id = '577cc13079374a61dacb1fc6';
 			var url = [host, 'api/projects/', id].join('');
 			return $http.get(url).then(handleSuccess, handleError);
 		}
+
+		//runProject(by Client id)
+		function runProject(id) {
+			var url = [host, 'api/projects/', id, '/state'].join('');
+			return $http.put(url, {"status": 5}).then(handleSuccess, handleError);
+		}
+
 
 
 
