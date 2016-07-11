@@ -28,8 +28,8 @@
 					<label for="nomprojecte">Servei</label>
 				    	<select ng-model="project.services" class="form-control" multiple required="true">
 				 	 		<option ng-repeat="serv in editproject.allServices" value="{{serv._id}}" 
-				 	 				ng-selected="{{serv._id === editproject.projectToEdit.service._id}}">
-				 	 				{{serv.name}}
+				 	 				ng-selected="{{serv._id == editproject.projectToEdit.services[0].service._id}}">
+				 	 				{{serv.name}} {{editproject.projectToEdit.services[0].service._id}}
 				 	 		</option>
 						</select>
 				</div> 
@@ -45,3 +45,4 @@
 		</form>
 	</div>
 </div>
+
