@@ -39,11 +39,11 @@
 							</li>
 							<li class="prov-lists">
 								<p>Accions</p>
-								<button class="btn btn-primary btn-sm">
+								<button ng-if="srv.status < 3" class="btn btn-primary btn-sm">
 									<i class="fa fa-play"></i>
 									Arrencar
 								</button> 
-								<button class="btn btn-primary btn-sm">
+								<button ng-if="srv.status >= 3"class="btn btn-primary btn-sm">
 									<i class="fa fa-stop"></i>
 									Aturar
 								</button>
