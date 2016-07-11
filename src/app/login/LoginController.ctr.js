@@ -22,10 +22,10 @@
 						toastr.error("L'usuari i el password no coincideixen.", 'Accés incorrecte');
 						vm.credentials = {};
 					} else {
-						//sessionStorage y $emit userrole
+						//local storage and broadcoast userrole
 						CurrentUserFactory.setUser(response.data);
 						toastr.success("Hola, " + user.user_name, 'Accés correcte');
-						$location.path('catalog');		
+		
 					}	
 				})
 

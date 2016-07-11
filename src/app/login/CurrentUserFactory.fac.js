@@ -5,8 +5,8 @@
 		.module('marketplace')
 		.factory('CurrentUserFactory', CurrentUserFactory);
 
-	CurrentUserFactory.$inject = ['$log', 'LocalStorageFactory', '$rootScope', 'UserFactory'];
-	function CurrentUserFactory($log, LocalStorageFactory, $rootScope, UserFactory) {
+	CurrentUserFactory.$inject = ['$log', 'LocalStorageFactory', '$rootScope', 'UserFactory', '$location', 'ROLES'];
+	function CurrentUserFactory($log, LocalStorageFactory, $rootScope, UserFactory, $location, ROLES) {
 		var currentUser = {
 			user: {},
 			role: {}
@@ -29,6 +29,14 @@
 					currentUser.user.provider_id = response.data.partner._id;
 					LocalStorageFactory.setValue('user', currentUser);
 					$rootScope.$broadcast('userrole', currentUser);
+
+					if (currentUser.role === ROLES.provider.role) {
+						$location.path(ROLES.provider.state);
+					}
+					if (currentUser.role === ROLES.client.role) {
+						$location.path(ROLES.client.state);
+					}
+
 				});
 			//final de temporal
 		}
