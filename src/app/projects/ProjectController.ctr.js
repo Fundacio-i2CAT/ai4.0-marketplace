@@ -72,12 +72,12 @@
 		}
 
 		vm.confirmProviderProject = function (srv) {
-			/*ProjectFactory.confirmProviderProject(srv).then(function(response){
+			/////////////////////////////////////////////////////////////////////
+			ProjectFactory.confirmProviderProject(srv).then(function(response){
 				if (response) {
-					// alert('response');
-					toastr.success('Servei confirmat correctament.', 'Confirmació Servei');
+					// toastr.success('Servei confirmat correctament.', 'Confirmació Servei');
 				}
-			});*/
+			});
 		};
 
 		//ir a vista detalle del servicio host/services/detail/:id

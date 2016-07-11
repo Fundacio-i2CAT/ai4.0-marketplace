@@ -36,18 +36,22 @@
 								<p>Nom Projecte</p>
 			    				<h4>{{srv.project.name}}</h4>
 							</li>
-							<li class="prov-lists">
+							<!-- <li class="prov-lists">
 								<p>Contexte</p>
 			    				<h4>{{srv.context_type}}</h4>
-							</li>
+							</li> -->
 							
 							<li class="prov-lists">
 								<p>Nom client</p>
 								<h4>{{srv.client.name}}</h4>
 							</li>
 							<li class="prov-lists">
+								<p>Creació</p>
+			    				<h4><span class="label label-default">{{srv.create_at}}</span></h4>
+							</li>
+							<li class="prov-lists">
 								<p>Status</p>
-			    				<h4><span class="label label-default">{{srv.status}}</span></h4>
+			    				<h4><span class="label label-default">{{(srv.status < 3)? 'Pendent Confirmació' : 'Confirmat'}}</span></h4>
 							</li>
 							<li class="prov-lists">
 								<p>Actions</p>
