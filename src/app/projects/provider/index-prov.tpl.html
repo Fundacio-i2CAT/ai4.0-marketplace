@@ -28,13 +28,13 @@
 			  <div class="panel-body">
 			    <div class="row">
 			    	<div class="col-xs-2">
-			    		<img class="img-thumbnail" src="http://lorempixel.com/200/150" alt="Imatge fake" />
+			    		<img class="img-thumbnail" src="assets/logos_mkp/{{provprojects.getImage(srv.service.name)}}" alt="Imatge fake" />
 			    	</div>
 					<div class="col-xs-10">
 						<ul class="list-inline">
 							<li class="prov-lists">	
 								<p>Nom Projecte</p>
-			    				<h4>{{srv.project.name}}</h4>
+			    				<h4><span class="label label-primary">{{srv.project.name}}</span></h4>
 							</li>
 							<!-- <li class="prov-lists">
 								<p>Contexte</p>
@@ -43,19 +43,19 @@
 							
 							<li class="prov-lists">
 								<p>Nom client</p>
-								<h4>{{srv.client.name}}</h4>
+								<h4><span class="label label-success">{{srv.client.name}}</span></h4>
 							</li>
 							<li class="prov-lists">
 								<p>Creació</p>
-			    				<h4><span class="label label-default">{{srv.create_at}}</span></h4>
+			    				<h4><span class="label label-default">{{srv.created_at | date: 'dd-MM-yyyy'}}</span></h4>
 							</li>
 							<li class="prov-lists">
 								<p>Status</p>
-			    				<h4><span class="label label-default">{{(srv.status < 3)? 'Pendent Confirmació' : 'Confirmat'}}</span></h4>
+			    				<h4><span class="label label-default">{{(srv.status < 3) ? 'Pendent Confirmació' : 'Confirmat'}}</span></h4>
 							</li>
 							<li class="prov-lists">
 								<p>Actions</p>
-								<button ng-click="provprojects.confirmProviderProject(srv)" class="btn btn-primary btn-sm" ng-class="(srv.status < 3) ? '' : 'disabled'">
+								<button ng-click="provprojects.confirmProviderProject(srv)" class="btn btn-default btn-xs" ng-class="(srv.status < 3) ? '' : 'disabled'">
 									<i class="fa fa-check"></i>
 									Confirmar
 								</button>
