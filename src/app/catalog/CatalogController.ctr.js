@@ -50,20 +50,29 @@
 		vm.seeDetail = function (id) {
 			var url = 'services/detail/' + id;
 			$location.path(url);
-			
-			/*var service = srv;
-			var modalInstance = $uibModal.open({
-				animation: true,
-				templateUrl: '/app/common/modal/modal.tpl.html',
-				controller: 'ModalController',
-				controllerAs: 'modal',
-				resolve: {
-					item: function () {
-						return service;
-					}
-				}			 	
-			});*/
 		};
+
+		/*
+			Devuelve una imagen u otra según el tipo de servicio (actualmente se mira por el nombre)
+		*/
+		vm.getImage = function (name) {
+			var image = null;
+			switch(name) {
+				case 'apache':
+					image = 'apache.png';
+					break;
+				case 'cloud_service2':
+					image = 'cloud-services2.jpg';
+					break;
+				case 'service1':
+					image = 'services01.jpg'
+					break;
+				default:
+					image = 'services01.jpg'
+					break;
+			}
+			return image;
+		}
 
 		vm.getAllTypes();
 		vm.getAllServices();

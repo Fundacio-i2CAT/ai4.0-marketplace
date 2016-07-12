@@ -48,6 +48,25 @@
 			progressbar.complete();
 		};
 
+		/*
+			Devuelve una imagen u otra según el tipo de servicio (actualmente se mira por el nombre)
+		*/
+		vm.getImage = function (name) {
+			var image = null;
+			switch(name) {
+				case 'apache':
+					image = 'apache.png';
+					break;
+				case 'cloud_service2':
+					image = 'cloud-services2.jpg';
+					break;
+				case 'service1':
+					image = 'services01.jpg'
+					break;
+			}
+			return image;
+		}
+
 		vm.getProviderProjectsByPartnerId = function (partnerId){
 			var progressbar = ProgressFactory.progressBarConfigure();
 			progressbar.start();
