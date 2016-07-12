@@ -9,7 +9,6 @@
 		  
 		</ul>
 	</div>
-
 	<div class="tab-content">
 		<!-- tab1  -->
 		<div class="tab-pane fade in active difuminar" id="all"> <!-- inici tab1  -->
@@ -23,7 +22,8 @@
 				  <div class="panel-body">
 					<p><strong>Tipus de servei:</strong> <span class="label" ng-class="(one.service_type === 'cloud') ? 'label-primary' : 'label-danger'">{{one.service_type}}</span></p>
 					<!-- <p><strong>Sumari: </strong> {{one.summary}}</p> -->
-				  	<p><img class="img-responsive thumbnail" src="http://lorempixel.com/technics/200/200" alt=""></p>
+				  	<p><img class="img-thumbnail catalog" src="assets/logos_mkp/{{catalog.getImage(one.name)}}" alt="Imatge servei"></p>
+
 				  	<p><strong>Sectors: </strong>
 						<span ng-repeat="sec in one.sectors">
 							<span class="label label-default">{{sec}}</span>
@@ -53,7 +53,7 @@
 				  <div class="panel-body">
 					<p><strong>Tipus de servei:</strong> <span class="label label-danger">{{one.service_type}}</span></p>
 					<!-- <p><strong>Sumari: </strong> {{one.summary}}</p> -->
-				  	<p><img class="img img-responsive thumbnail" src="http://lorempixel.com/technics/200/200" alt=""></p>
+				  	<p><img class="img-thumbnail catalog" src="assets/logos_mkp/{{catalog.getImage(one.name)}}" alt="Imatge servei"></p>
 				  	<p><strong>Sectors: </strong>
 						<span ng-repeat="sec in one.sectors">
 							<span class="label label-default">{{sec}}</span>
@@ -82,7 +82,7 @@
 				  <div class="panel-body">
 					<p><strong>Tipus de servei:</strong> <span class="label label-primary">{{one.service_type}}</span></p>
 					<!-- <p><strong>Sumari: </strong> {{one.summary}}</p> -->
-				  	<p><img class="img-responsive img-thumbnail" src="http://lorempixel.com/technics/200/200" alt=""></p>
+				  	<p><img class="img-thumbnail catalog" src="assets/logos_mkp/{{catalog.getImage(one.name)}}" alt="Imatge servei"></p>
 				  	<p><strong>Sectors: </strong>
 						<span ng-repeat="sec in one.sectors">
 							<span class="label label-default">{{sec}}</span>
