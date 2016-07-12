@@ -33,7 +33,7 @@
       })
       .state('project-new', {
         url: '/clientproject/new',
-        templateUrl: 'app/projects/client/project-new.tpl.html', controller: 'ProjectController', controllerAs: 'newproject'
+        templateUrl: 'app/projects/client/project-new.tpl.html', controller: 'NewProjectController', controllerAs: 'newproject'
       })
       .state('project-edit', {
         url: '/clientproject/edit/:id',
