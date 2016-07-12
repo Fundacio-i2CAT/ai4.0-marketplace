@@ -10,7 +10,6 @@
 		var vm = this;
 		vm.model = {};
 		var services = [];
-
 		//getAll projects
 		vm.getAll = function(){
 			ProjectFactory.getAll().then(function(response){
@@ -111,26 +110,10 @@
 			$location.path(url);
 		};
 
-		//Crear Projecte
-		vm.createClientProject = function(model){
-			angular.forEach(model.services, function(serv){
-				var service = {"service": serv};
-				services.push(service);
-			});			
-			model.services = services;
-			ProjectFactory.createClientProject(model).then(function(response){
-				if(response.status == 201){
-					$location.path("/clientprojects");
-				}else{
-					toastr.error('Problema al crear projectes', response.data.msg);
-				}
-			});
-		};
-
 		vm.editClientProject = function(model){
 			if (model.services  != null){
 				angular.forEach(model.services, function(serv){
-					var service = {"service": serv._id};
+					var service = {"service": serv};
 					services.push(service);
 				});
 				model.services = services;
@@ -199,9 +182,9 @@
 
 		vm.hasChanged = function(){
 			var css_selected =  document.getElementsByClassName("selected");
-			angular.forEach(css_selected, function(css_new){
-				css_new.className = "";
-			});
+			for (var i = 0; i<=css_selected.length; i++){
+				css_selected[0].className = "";
+			}
 		}
 	}
 

@@ -5,17 +5,46 @@
 		.module('marketplace')
 		.controller('NewProjectController', NewProjectController);
 
-		NewProjectController.$inject = ['CurrentUserFactory', 'ROLES', '$log'];
+		NewProjectController.$inject = ['toastr','CurrentUserFactory', 'ROLES', '$log', 'ServiceFactory', 'ProjectFactory'];
 
-		function NewProjectController(CurrentUserFactory, ROLES, $log) {
+		function NewProjectController(toastr, CurrentUserFactory, ROLES, $log, ServiceFactory, ProjectFactory) {
 			var vm = this;
 
 			var user = CurrentUserFactory.getCurrentUser();
+			var client_id;
+			var services = [];
 		
 			if (user.role === ROLES.client.role) {
-				var currentUser = user.user.user_id;
-				$log.log('NewProjectController:::', currentUser);
+				client_id = user.user.client_id;
 			}
+
+			//Crear Projecte
+			vm.createClientProject = function(model){
+				angular.forEach(model.services, function(serv){
+					var service = {"service": serv};
+					services.push(service);
+				});			
+				model.services = services;
+				model.client = client_id;
+				ProjectFactory.createClientProject(model).then(function(response){
+					if(response.status == 201){
+						$location.path("/clientprojects");
+					}else{
+						toastr.error('Problema al crear projectes', response.data.msg);
+					}
+				});
+			};
+
+			vm.getAllServices = function(){
+				ServiceFactory.getAllServices().then(function(response){
+					if (response.status === 200) {
+						vm.allServices = response.data.result;
+					}
+				});
+			}
+
+			//Crida desde project-new.tpl.html per obtenir tots els serveis
+			vm.getAllServices()
 
 		}
 
