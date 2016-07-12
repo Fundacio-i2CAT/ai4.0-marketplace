@@ -108,11 +108,34 @@
 			});
 		};
 
+		vm.editClientProject = function(model){
+			if (model.services  != null){
+				angular.forEach(model.services, function(serv){
+					var service = {"service": serv._id};
+					services.push(service);
+				});
+				model.services = services;
+			}						
+			
+			ProjectFactory.editClientProject(model).then(function(response){
+				if(response.status == 201){
+					$location.path("/clientprojects");
+				}else{
+					toastr.error('Problema al editar projectes', response.data.msg);
+				}
+			});
+		};
+
 		//getProjectById
 		vm.getProjectById = function (id){
 			ProjectFactory.getProjectById(id).then(function (response){
 				if (response.status === 200) {
 					vm.projectToEdit = response.data;
+					var aServices = [];
+					angular.forEach(response.data.services, function(serv){
+						aServices.push(serv._id);
+					});
+					vm.array_services = aServices;
 				}
 			});
 		};
@@ -153,6 +176,13 @@
 
 		if (user.role === ROLES.client.role && $state.current.name === ROLES.client.state) {
 			vm.getClientProjectsByPartnerId(user.user.provider_id);
+		}
+
+		vm.hasChanged = function(){
+			var css_selected =  document.getElementsByClassName("selected");
+			angular.forEach(css_selected, function(css_new){
+				css_new.className = "";
+			});
 		}
 	}
 

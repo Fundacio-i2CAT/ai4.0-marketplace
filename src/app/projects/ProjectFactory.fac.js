@@ -15,6 +15,7 @@
 		factory.getProviderProjectsByPartnerId = getProviderProjectsByPartnerId;
 		factory.confirmProviderProject = confirmProviderProject;
 		factory.createClientProject = createClientProject;
+		factory.editClientProject = editClientProject;
 		factory.getProjectById = getProjectById;
 		factory.runProject = runProject;
 
@@ -65,6 +66,14 @@
 			var objectToSave = {};
 			objectToSave = model;
 			return $http.post(url, objectToSave).then(handleSuccess, handleError);
+		}
+
+		//edit client project
+		function editClientProject(model){
+			var url = [host,'api/projects'].join('');
+			var objectToSave = {};
+			objectToSave = model;
+			return $http.put(url, objectToSave).then(handleSuccess, handleError);
 		}
 
 		//get Project by id
