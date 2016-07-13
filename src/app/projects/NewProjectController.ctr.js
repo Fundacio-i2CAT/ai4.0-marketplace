@@ -5,9 +5,9 @@
 		.module('marketplace')
 		.controller('NewProjectController', NewProjectController);
 
-		NewProjectController.$inject = ['toastr','CurrentUserFactory', 'ROLES', '$log', 'ServiceFactory', 'ProjectFactory'];
+		NewProjectController.$inject = ['toastr','CurrentUserFactory', 'ROLES', '$log', 'ServiceFactory', 'ProjectFactory', '$location'];
 
-		function NewProjectController(toastr, CurrentUserFactory, ROLES, $log, ServiceFactory, ProjectFactory) {
+		function NewProjectController(toastr, CurrentUserFactory, ROLES, $log, ServiceFactory, ProjectFactory, $location) {
 			var vm = this;
 
 			var user = CurrentUserFactory.getCurrentUser();
@@ -17,7 +17,9 @@
 			vm.getCurrentClientId = function() {
 				var user = CurrentUserFactory.getCurrentUser();
 				if (user.role === ROLES.client.role) {
-					var currentUser = user.user.client_id;
+					if (user.user.hasOwnProperty('client_id')) client_id = user.user.client_id;
+					else client_id = user.user.provider_id
+					
 				}
 			};
 
