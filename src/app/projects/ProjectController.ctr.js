@@ -91,12 +91,16 @@
 			/////////////////////////////////////////////////////////////////////
 			ProjectFactory.confirmProviderProject(srv).then(function(response){
 				if (response.status === 'ok') {
-					//crida desde projects/providers/index-prov.tpl.html
-					var user = CurrentUserFactory.getCurrentUser();
-					
-					if (user.role === ROLES.provider.role && $state.current.name === ROLES.provider.state) {
-						vm.getProviderProjectsByPartnerId(user.user.provider_id);
-					}
+					//Si tot va be s'hauria de refrescar la vista amb el estat del projecte canviat	
+				}
+			});
+		};
+
+		vm.disableProviderProject = function (srv) {
+			/////////////////////////////////////////////////////////////////////
+			ProjectFactory.disableProviderProject(srv).then(function(response){
+				if (response.status === 'ok') {
+					//Si tot va be s'hauria de refrescar la vista amb el estat del projecte canviat	
 				}
 			});
 		};
