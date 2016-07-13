@@ -17,12 +17,16 @@
         <li><a class="toclose" ui-sref="catalog">Catalog</a></li>
         <li><a ng-if="menuUser.role==='Partner.Provider'" class="toclose" ui-sref="provprojects">Serveis</a></li>
         <li><a ng-if="menuUser.role==='Partner.Client'" class="toclose" ui-sref="clientprojects">Projectes</a></li>
-        <!-- <li><a ui-sref="projects">Projectes</a></li>
-        <li><a ui-sref="services">Serveis</a></li>
-        <li><a ui-sref="users">Usuaris</a></li> -->
       </ul>     
       <ul class="nav navbar-nav navbar-right">
         <li ng-if="!menuUser.isLogged"><a class="toclose" ui-sref="login"><i class="fa fa-sign-in"></i> Accedir</a></li>
+        <li ng-if="menuUser.isLogged" class="user">
+          <a class="username">
+            <small class="text text-warning">
+              <i class="fa fa-user"></i>&nbsp;{{menuUser.user.name}}
+            </small>
+          </a>
+        </li>
         <li ng-if="menuUser.isLogged"><a class="toclose" ng-click="logout()"><i class="fa fa-sign-out"></i> Sortir</a></li>
       </ul>
 <!--   <ul ng-if="!menuUser.isLogged" class="nav navbar-nav navbar-right">
