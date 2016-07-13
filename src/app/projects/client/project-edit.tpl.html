@@ -16,10 +16,6 @@
 		<form id="edit_project" name="edit_project" ng-submit="editproject.editClientProject(editproject.projectToEdit)">
 			<div class="row">
 				<div class="form-group">
-					<label for="nomprojecte">ID Projecte</label>
-				    <input type="text" class="form-control" id="nomprojecte" ng-model="editproject.projectToEdit._id" placeholder="ID Projecte" readonly="true" ng-init="project.id = editproject.projectToEdit._id">
-				</div>	
-				<div class="form-group">
 					<label for="nomprojecte">Nom</label>
 				    <input type="text" class="form-control" id="nomprojecte" ng-model="editproject.projectToEdit.name" placeholder="Nom Projecte" required 
 				    		ng-init="editproject.setNameProject(project, editproject.projectToEdit.name)	">
