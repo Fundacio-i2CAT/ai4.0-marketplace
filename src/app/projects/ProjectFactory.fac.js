@@ -18,6 +18,7 @@
 		factory.editClientProject = editClientProject;
 		factory.getProjectById = getProjectById;
 		factory.runProject = runProject;
+		factory.disableProviderProject = disableProviderProject;
 
 
 		/*
@@ -55,9 +56,17 @@
 		function confirmProviderProject(srv) {
 			var url = [host, 'api/sprojects/', srv._id].join('');
 			var status = {
-				status: 3
+				status: 2
 			};
 			return $http.put(url, status).then(handleSuccess, handleError);
+		}
+
+		/*
+			ProviderProject
+			deshabilitació projecte ()
+		*/
+		function disableProviderProject(srv) {
+			var url = [host, '', srv_id].join('');
 		}
 
 		//create new client project
