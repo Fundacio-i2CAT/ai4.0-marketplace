@@ -125,7 +125,7 @@
 			}						
 			new_model.name = model.name;
 			ProjectFactory.editClientProject(new_model, model._id).then(function(response){
-				if(response.status == 201){
+				if(response.status == 200){
 					$location.path("/clientprojects");
 				}else{
 					toastr.error('Problema al editar projectes', response.data.msg);
