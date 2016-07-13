@@ -65,10 +65,10 @@
 					image = 'cloud-services2.jpg';
 					break;
 				case 'service1':
-					image = 'services01.jpg'
+					image = 'services01.jpg';
 					break;
 				default:
-					image = 'services01.jpg'
+					image = 'services01.jpg';
 					break;
 			}
 			return image;
