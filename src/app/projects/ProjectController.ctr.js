@@ -5,8 +5,8 @@
 		.module('marketplace')
 		.controller('ProjectController', ProjectController);
 
-	ProjectController.$inject = ['toastr', 'ProjectFactory', '$log', '$state', 'UserFactory', 'ProviderProjectsMockFactory', 'ClientProjectsMockFactory', 'ProgressFactory', '$location', 'ServiceFactory', '$stateParams', 'CurrentUserFactory', 'ROLES'];
-	function ProjectController (toastr, ProjectFactory, $log, $state, UserFactory, ProviderProjectsMockFactory, ClientProjectsMockFactory, ProgressFactory, $location, ServiceFactory, $stateParams, CurrentUserFactory, ROLES){
+	ProjectController.$inject = ['$rootScope', 'toastr', 'ProjectFactory', '$log', '$state', 'UserFactory', 'ProviderProjectsMockFactory', 'ClientProjectsMockFactory', 'ProgressFactory', '$location', 'ServiceFactory', '$stateParams', 'CurrentUserFactory', 'ROLES'];
+	function ProjectController ($rootScope, toastr, ProjectFactory, $log, $state, UserFactory, ProviderProjectsMockFactory, ClientProjectsMockFactory, ProgressFactory, $location, ServiceFactory, $stateParams, CurrentUserFactory, ROLES){
 		var vm = this;
 		vm.model = {};
 		var services = [];
@@ -92,8 +92,13 @@
 		vm.confirmProviderProject = function (srv) {
 			/////////////////////////////////////////////////////////////////////
 			ProjectFactory.confirmProviderProject(srv).then(function(response){
-				if (response) {
-					// toastr.success('Servei confirmat correctament.', 'Confirmació Servei');
+				if (response.status === 'ok') {
+					//crida desde projects/providers/index-prov.tpl.html
+					var user = CurrentUserFactory.getCurrentUser();
+					
+					if (user.role === ROLES.provider.role && $state.current.name === ROLES.provider.state) {
+						vm.getProviderProjectsByPartnerId(user.user.provider_id);
+					}
 				}
 			});
 		};
