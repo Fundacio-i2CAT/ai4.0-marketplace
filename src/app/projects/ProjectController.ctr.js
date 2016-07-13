@@ -192,7 +192,10 @@
 		vm.hasChanged = function(){
 			var css_selected =  document.getElementsByClassName("selected");
 			for (var i = 0; i<=css_selected.length; i++){
-				css_selected[0].className = "";
+				if (css_selected[0] != null){
+					css_selected[0].className = "";
+				}
+				
 			}
 		}
 	}
