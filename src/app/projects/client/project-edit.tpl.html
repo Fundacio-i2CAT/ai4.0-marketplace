@@ -28,7 +28,7 @@
 					<label for="nomprojecte">Servei</label>
 				    	<select ng-model="editproject.projectToEdit.services" class="form-control" multiple ng-change="editproject.hasChanged()">
 				 	 		<option ng-repeat="serv in editproject.allServices" value="{{serv._id}}" 
-				 	 				class="{{(editproject.array_services.indexOf(serv._id)?'selected':'')}}">
+				 	 				class="{{(editproject.array_services.indexOf(serv._id) > -1 ?'selected':'')}}">
 				 	 				{{serv.name}}
 				 	 		</option>
 						</select>

@@ -140,7 +140,7 @@
 					vm.projectToEdit = response.data;
 					var aServices = [];
 					angular.forEach(response.data.services, function(serv){
-						aServices.push(serv._id);
+						aServices.push(serv.service._id);
 					});
 					vm.array_services = aServices;
 				}
