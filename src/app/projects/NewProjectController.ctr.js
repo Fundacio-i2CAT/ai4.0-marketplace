@@ -13,10 +13,15 @@
 			var user = CurrentUserFactory.getCurrentUser();
 			var client_id;
 			var services = [];
-		
-			if (user.role === ROLES.client.role) {
-				client_id = user.user.client_id;
-			}
+			
+			vm.getCurrentClientId = function() {
+				var user = CurrentUserFactory.getCurrentUser();
+				if (user.role === ROLES.client.role) {
+					var currentUser = user.user.client_id;
+				}
+			};
+
+			vm.getCurrentClientId();
 
 			//Crear Projecte
 			vm.createClientProject = function(model){
