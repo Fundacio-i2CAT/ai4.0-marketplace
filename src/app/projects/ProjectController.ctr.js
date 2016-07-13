@@ -41,7 +41,6 @@
 					toastr.error('Hi ha hagut un errror al obtenir els projectes...', 'Hi ha un problema');
 				} else {
 					vm.allClientProjects = response.data.result;
-					toastr.success('Projectes relacionats amb el seu compte de client', 'Everything flows');
 				}
 			});
 			progressbar.complete();
@@ -74,7 +73,6 @@
 				if (response.data.status === 'fail') {
 					toastr.error('Hi ha hagut un errror al obtenir els projectes...', 'Hi ha un problema');
 				} else {
-					toastr.success('Projectes relacionats amb el seu compte de proveïdor', 'Everything flows');
 					vm.allProviderProjects = response.data.result;					
 				}
 			});
