@@ -1,11 +1,12 @@
 <div class="container">
 	<div class="page-header">
-		<h2>Register <small>Form</small></h2>
+		<h2>Accés <small>Registre</small></h2>
 	</div>
 
 	<form id="register" name="registerForm" ng-submit="login.doRegister()">
 		<div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
-			<div class="form-group">
+			<div class="well">
+				<div class="form-group">
 				<label for="registermail">Email</label>
 				<input type="text" class="form-control" ng-model="register.logModel.email" id="registermail" placeholder="Mail" required>
 			</div>
@@ -32,6 +33,7 @@
 			</div>
 			<br/><br/>
 			<button type="submit" class="btn btn-success btn-block" ng-disabled="registerForm.$invalid">Enviar dades</button>
+			</div>
 		</div>
 	</form>
 </div>

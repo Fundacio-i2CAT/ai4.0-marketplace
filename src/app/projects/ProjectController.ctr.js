@@ -5,8 +5,8 @@
 		.module('marketplace')
 		.controller('ProjectController', ProjectController);
 
-	ProjectController.$inject = ['toastr', 'ProjectFactory', '$log', '$state', 'UserFactory', 'ProviderProjectsMockFactory', 'ClientProjectsMockFactory', 'ProgressFactory', '$location', 'ServiceFactory', '$stateParams', 'CurrentUserFactory', 'ROLES'];
-	function ProjectController (toastr, ProjectFactory, $log, $state, UserFactory, ProviderProjectsMockFactory, ClientProjectsMockFactory, ProgressFactory, $location, ServiceFactory, $stateParams, CurrentUserFactory, ROLES){
+	ProjectController.$inject = ['$rootScope', 'toastr', 'ProjectFactory', '$log', '$state', 'UserFactory', 'ProviderProjectsMockFactory', 'ClientProjectsMockFactory', 'ProgressFactory', '$location', 'ServiceFactory', '$stateParams', 'CurrentUserFactory', 'ROLES'];
+	function ProjectController ($rootScope, toastr, ProjectFactory, $log, $state, UserFactory, ProviderProjectsMockFactory, ClientProjectsMockFactory, ProgressFactory, $location, ServiceFactory, $stateParams, CurrentUserFactory, ROLES){
 		var vm = this;
 		vm.model = {};
 		var services = [];
@@ -41,7 +41,6 @@
 					toastr.error('Hi ha hagut un errror al obtenir els projectes...', 'Hi ha un problema');
 				} else {
 					vm.allClientProjects = response.data.result;
-					toastr.success('Projectes relacionats amb el seu compte de client', 'Everything flows');
 				}
 			});
 			progressbar.complete();
@@ -74,7 +73,6 @@
 				if (response.data.status === 'fail') {
 					toastr.error('Hi ha hagut un errror al obtenir els projectes...', 'Hi ha un problema');
 				} else {
-					toastr.success('Projectes relacionats amb el seu compte de proveïdor', 'Everything flows');
 					vm.allProviderProjects = response.data.result;					
 				}
 			});
@@ -92,8 +90,13 @@
 		vm.confirmProviderProject = function (srv) {
 			/////////////////////////////////////////////////////////////////////
 			ProjectFactory.confirmProviderProject(srv).then(function(response){
-				if (response) {
-					// toastr.success('Servei confirmat correctament.', 'Confirmació Servei');
+				if (response.status === 'ok') {
+					//crida desde projects/providers/index-prov.tpl.html
+					var user = CurrentUserFactory.getCurrentUser();
+					
+					if (user.role === ROLES.provider.role && $state.current.name === ROLES.provider.state) {
+						vm.getProviderProjectsByPartnerId(user.user.provider_id);
+					}
 				}
 			});
 		};
