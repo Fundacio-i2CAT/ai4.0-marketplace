@@ -118,15 +118,17 @@
 		};
 
 		vm.editClientProject = function(model){
+			var new_model = {}
+			services = [];
 			if (model.services  != null){
 				angular.forEach(model.services, function(serv){
 					var service = {"service": serv};
 					services.push(service);
 				});
-				model.services = services;
+				new_model.services = services;
 			}						
-			
-			ProjectFactory.editClientProject(model).then(function(response){
+			new_model.name = model.name;
+			ProjectFactory.editClientProject(new_model, model._id).then(function(response){
 				if(response.status == 201){
 					$location.path("/clientprojects");
 				}else{

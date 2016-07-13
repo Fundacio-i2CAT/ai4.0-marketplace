@@ -78,8 +78,8 @@
 		}
 
 		//edit client project
-		function editClientProject(model){
-			var url = [host,'api/projects'].join('');
+		function editClientProject(model, id){
+			var url = [host,'api/projects/', id].join('');
 			var objectToSave = {};
 			objectToSave = model;
 			return $http.put(url, objectToSave).then(handleSuccess, handleError);
