@@ -20,6 +20,7 @@
 		factory.runProject = runProject;
 		factory.disableProviderProject = disableProviderProject;
 		factory.deleteProject = deleteProject;
+		factory.getProjectState = getProjectState;
 
 
 		/*
@@ -112,6 +113,12 @@
 		function deleteProject(id) {
 			var url = [host, 'api/projects/', id].join('');
 			return $http.delete(url).then(handleSuccess, handleError);
+		}
+
+		//obtenir l'estat actual d'un projecte
+		function getProjectState(id) {
+			var url = [host, 'api/projects/', id, '/state'].join('');
+			return $http.get(url).then(handleSuccess, handleError);
 		}
 
 
