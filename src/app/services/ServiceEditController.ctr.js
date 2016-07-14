@@ -19,7 +19,7 @@
 			ServiceFactory.getServiceById(id).then(function(response){
 				if (response.status === 200) {
 					vm.currentService = response.data;
-					vm.getProviderById(response.data.provider);
+					vm.nameProvider = response.data.provider.name;
 				}
 			});
 		};
