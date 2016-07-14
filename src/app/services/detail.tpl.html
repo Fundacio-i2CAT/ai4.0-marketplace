@@ -10,13 +10,36 @@
 					<h3 class="text-uppercase">{{detailsrv.currentService.name}} <a class="btn btn-danger btn-xs pull-right" ui-sref="catalog"><i class="fa fa-mail-reply"></i>Tornar</a></h3>
 					</div>
 				</div>
-
+				<div class="panel panel-info">
+					<div class="panel-heading">
+					    <h3 class="panel-title panel-title-personalized">Summary</h3>
+					</div>
+					<div class="panel-body">
+						{{detailsrv.currentService.summary}}
+					</div>
+				</div>
 				<div class="panel panel-info">
 					<div class="panel-heading">
 					    <h3 class="panel-title panel-title-personalized">Descripció</h3>
 					  </div>
 					<div class="panel-body">
 						{{detailsrv.currentService.description}}
+					</div>
+				</div>
+				<div class="panel panel-info">
+					<div class="panel-heading">
+					    <h3 class="panel-title panel-title-personalized">Tipus de servei</h3>
+					</div>
+					<div class="panel-body">
+						{{detailsrv.currentService.service_type}}
+					</div>
+				</div>
+				<div class="panel panel-info">
+					<div class="panel-heading">
+					    <h3 class="panel-title panel-title-personalized">Proveidor</h3>
+					</div>
+					<div class="panel-body">
+						{{detailsrv.nameProvider}}
 					</div>
 				</div>
 				<div class="panel panel-info">
@@ -33,34 +56,10 @@
 				</div>
 				<div class="panel panel-info">
 					<div class="panel-heading">
-					    <h3 class="panel-title panel-title-personalized">Summary</h3>
-					</div>
-					<div class="panel-body">
-						{{detailsrv.currentService.summary}}
-					</div>
-				</div>
-				<div class="panel panel-info">
-					<div class="panel-heading">
-					    <h3 class="panel-title panel-title-personalized">Tipus de servei</h3>
-					</div>
-					<div class="panel-body">
-						{{detailsrv.currentService.service_type}}
-					</div>
-				</div>
-				<div class="panel panel-info">
-					<div class="panel-heading">
 					    <h3 class="panel-title panel-title-personalized">Link</h3>
 					</div>
 					<div class="panel-body">
 						<a href="{{detailsrv.currentService.link}}" target="_blank"> {{detailsrv.currentService.link}} </a>
-					</div>
-				</div>
-				<div class="panel panel-info">
-					<div class="panel-heading">
-					    <h3 class="panel-title panel-title-personalized">Proveidor</h3>
-					</div>
-					<div class="panel-body">
-						{{editservice.currentServiceProvider.name}}
 					</div>
 				</div>
 			</div>

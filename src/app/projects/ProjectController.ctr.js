@@ -198,6 +198,18 @@
 				
 			}
 		}
+
+		/*
+		ESTA FUNCIÓN HA DE IR FUERA.
+		Se ha de crear un servicio, en el catálogo, que devuelva el nombre en catalán.		
+		*/
+		vm.getLiteralStatus = function(status){
+			if (status === 1){
+				return "Emmagatzemat";
+			}else if(status == 3){
+				return "Confirmat";
+			}
+		}
 	}
 
 })();
