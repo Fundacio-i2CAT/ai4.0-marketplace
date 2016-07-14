@@ -154,8 +154,8 @@
 		//runProject (by Client user)
 		vm.runProject = function (id) {
 			ProjectFactory.runProject(id).then(function (response){
-				if (response.data.status === 'ok') {
-					$log.log(response);
+				if (response.status === 200) {
+					$state.reload();
 				}
 			});
 		}
@@ -163,8 +163,8 @@
 		//stopProject (by Client user)
 		vm.stopProject = function (id) {
 			ProjectFactory.stopProject(id).then(function (response){
-				if (response) {
-					$log.log(response);
+				if (response.status === 200) {
+					$state.reload();
 				}
 			});
 		}
@@ -204,11 +204,18 @@
 		Se ha de crear un servicio, en el catálogo, que devuelva el nombre en catalán.		
 		*/
 		vm.getLiteralStatus = function(status){
-			if (status === 1){
-				return "Emmagatzemat";
-			}else if(status == 3){
-				return "Confirmat";
+			var output;
+			switch(status) {
+				case 1: output = 'Emmagatzemat';
+					break;
+				case 3: output = 'Confirmat';
+					break;
+				case 5: output = 'Engegat';
+					break;
+				case 6: output = 'Parat';
+					break;
 			}
+			return output;
 		}
 	}
 

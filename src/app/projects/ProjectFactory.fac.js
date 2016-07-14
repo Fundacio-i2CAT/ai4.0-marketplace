@@ -104,7 +104,7 @@
 		//stopProject(by Client id)
 		function stopProject() {
 			var url = [host, 'api/projects/', id, '/state'].join('');
-			
+			return $http.put(url, {"status": 6}).then(handleSuccess, handleError);
 		}
 
 

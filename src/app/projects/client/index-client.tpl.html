@@ -1,6 +1,6 @@
 <div class="container">
 	<div class="page-header">
-			<h3>Client Projects <small>Index</small> <span class="pull-right"><a ui-sref="project-new" class="btn btn-primary btn-xs">Crear Projecte</a></span></h3>
+			<h3>CProjectes de Client <small>Index</small> <span class="pull-right"><a ui-sref="project-new" class="btn btn-primary btn-xs">Crear Projecte</a></span></h3>
 	</div>
 
 	<div class="row">
@@ -17,29 +17,25 @@
 			  <div class="panel-body">
 			    <div class="row">
 			    	<div class="col-xs-1">
-			    		<img class="img-thumbnail" src="assets/logos_mkp/project.png" alt="Imatge Projecte" />
+			    		<img class="img" width="60px" height="auto" src="assets/logos_mkp/project.png" alt="Imatge Projecte" />
 			    	</div>
 					<div class="col-xs-11">
 						<ul class="list-inline">
-							<li class="prov-lists">	
-								<p>Projecte</p>
-			    				<h4><span class="label label-primary">{{srv.name}}</span></h4>
-							</li>
 							<li class="prov-lists">
 								<p>Status</p>
-			    				<h4><span class="label label-default">{{clientprojects.getLiteralStatus(srv.status)}}</span></h4>
+			    				<h4><span class="label" ng-class="(srv.status === 1) ? 'label-success' : 'label-danger'">{{clientprojects.getLiteralStatus(srv.status)}}</span></h4>
 							</li>
 							<li class="prov-lists">
 								<p>Creació</p>
 			    				<h4><span class="label label-default">{{srv.created_at | date: 'dd-MM-yyyy'}}</span></h4>
 							</li>
-							<li class="prov-lists">
+							<li class="prov-lists pull-right" ng-if="srv.status === 3">
 								<p>Accions</p>
-								<button ng-if="srv.status === 3" class="btn btn-primary btn-sm" ng-click="clientprojects.runProject(srv._id)">
+								<button ng-if="srv.status === 3 || srv.status === 5 || srv.status === 6" class="btn btn-default btn-xs" ng-click="clientprojects.runProject(srv._id)">
 									<i class="fa fa-play"></i>
 									Arrencar
 								</button> 
-								<button ng-if="srv.status >= 5"class="btn btn-primary btn-sm">
+								<button ng-if="srv.status >= 5" class="btn btn-default btn-xs">
 									<i class="fa fa-stop"></i>
 									Aturar
 								</button>
@@ -48,7 +44,9 @@
 						<hr/>
 					</div>
 						<div class="row">
-							<!-- <div class="col-xs-10 col-xs-offset-1">
+							<!-- Opció panel per cada un dels serveis del projecte...
+
+							<div class="col-xs-10 col-xs-offset-1">
 								<div class="panel panel-default" ng-repeat="one in srv.services">
 								<div class="panel-heading">
 									<span class="label label-default">{{one.service.name}}</span>	 <span class="badge pull-right clearfix">{{srv.services.length}}</span>
@@ -68,7 +66,6 @@
 							</div>
 							</div> -->
 
-						
 							<div class="col-xs-11 col-xs-offset-1">
 								<div class="media" ng-repeat="one in srv.services">
 									<div class="media-left col-xs-2">
@@ -83,18 +80,6 @@
 								</div>	
 							</div>
 							
-
-
-
-
-
-
-
-
-
-
-
-
 						</div>
 					
 				</div>
