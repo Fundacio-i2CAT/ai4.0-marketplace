@@ -90,8 +90,8 @@
 		vm.confirmProviderProject = function (srv) {
 			/////////////////////////////////////////////////////////////////////
 			ProjectFactory.confirmProviderProject(srv).then(function(response){
-				if (response.status === 'ok') {
-					//Si tot va be s'hauria de refrescar la vista amb el estat del projecte canviat	
+				if (response.status === 200) {
+					$state.reload();
 				}
 			});
 		};
@@ -99,8 +99,8 @@
 		vm.disableProviderProject = function (srv) {
 			/////////////////////////////////////////////////////////////////////
 			ProjectFactory.disableProviderProject(srv).then(function(response){
-				if (response.status === 'ok') {
-					//Si tot va be s'hauria de refrescar la vista amb el estat del projecte canviat	
+				if (response.status === 200) {
+					$state.reload();
 				}
 			});
 		};

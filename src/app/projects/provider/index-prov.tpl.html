@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="page-header">
 			<h3>
-				Provider Services <small>Index</small> <span class="pull-right"><a class="btn btn-primary btn-xs" ui-sref="provinstances">Instàncies de projecte</a></span>
+				Serveis de Proveïdor <small>Index</small> <!-- <span class="pull-right"><a class="btn btn-primary btn-xs" ui-sref="provinstances">Instàncies de projecte</a></span> -->
 			</h3>
 	</div>
 
@@ -19,7 +19,7 @@
 					<div class="col-xs-10">
 						<ul class="list-inline">
 							<li class="col-xs-2 prov-lists">	
-								<p>Nom Projecte</p>
+								<p>Projecte</p>
 			    				<h4><span class="label label-primary">{{srv.project.name}}</span></h4>
 							</li>
 							<!-- <li class="prov-lists">
@@ -28,7 +28,7 @@
 							</li> -->
 							
 							<li class="prov-lists">
-								<p>Nom client</p>
+								<p>Client</p>
 								<h4><span class="label label-success">{{srv.client.name}}</span></h4>
 							</li>
 							<li class=" prov-lists">
@@ -37,16 +37,16 @@
 							</li>
 							<li class="prov-lists">
 								<p>Status</p>
-			    				<h4><span class="label" ng-class="(srv.status < 3) ? 'label-danger' : 'label-info'"><i class="fa" ng-class="(srv.status < 3) ? 'fa-exclamation-triangle' : 'fa-check-square-o'"></i> {{(srv.status < 3) ? 'Pendent' : 'Confirmat'}}</span></h4>
+			    				<h4 ng-if="srv.status !== 8" ><span class="label" ng-class="(srv.status < 3) ? 'label-danger' : 'label-info'"><i class="fa" ng-class="(srv.status < 3) ? 'fa-exclamation-triangle' : 'fa-check-square-o'"></i> {{(srv.status < 3) ? 'Pendent' : 'Confirmat'}}</span></h4>
+			    				<h4 ng-if="srv.status === 8"><span class="label label-warning"><i class="fa fa-user"></i>Deshabilitat</span></h4>
 							</li>
-							<li class="prov-lists pull-right">
-								<p>Actions</p>
+							<li class="prov-lists pull-right" ng-if="srv.status !== 8">
+								<br/><br/>
 								<button ng-click="provprojects.confirmProviderProject(srv)" class="btn btn-default btn-sm" ng-if='srv.status <= 2'>
 									<i class="fa fa-check"></i>
 									Confirmar
 								</button>
-
-								<button ng-click="" class="btn btn-default btn-sm" ng-if='srv.status >= 3'>
+								<button ng-click="provprojects.disableProviderProject(srv)" class="btn btn-default btn-sm" ng-if='srv.status >= 3'>
 									<i class="fa fa-remove"></i>
 									Deshabilitar
 								</button>

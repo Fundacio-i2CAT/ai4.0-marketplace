@@ -56,7 +56,7 @@
 		function confirmProviderProject(srv) {
 			var url = [host, 'api/sprojects/', srv._id].join('');
 			var status = {
-				status: 2
+				status: 3
 			};
 			return $http.put(url, status).then(handleSuccess, handleError);
 		}
@@ -66,7 +66,11 @@
 			deshabilitació projecte ()
 		*/
 		function disableProviderProject(srv) {
-			var url = [host, '', srv_id].join('');
+			var url = [host, 'api/sprojects/', srv._id].join('');
+			var status = {
+				status: 8
+			};
+			return $http.put(url, status).then(handleSuccess, handleError);
 		}
 
 		//create new client project
@@ -97,6 +101,11 @@
 			return $http.put(url, {"status": 5}).then(handleSuccess, handleError);
 		}
 
+		//stopProject(by Client id)
+		function stopProject() {
+			var url = [host, 'api/projects/', id, '/state'].join('');
+			
+		}
 
 
 
@@ -106,9 +115,6 @@
 		}
 
 		function handleError(error){
-			/*return function(){
-				return {success: false, message: error};
-			};*/
 			return error;
 		}
 
