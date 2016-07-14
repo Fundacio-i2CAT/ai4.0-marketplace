@@ -5,8 +5,8 @@
 		.module('marketplace')
 		.controller('ProjectController', ProjectController);
 
-	ProjectController.$inject = ['$rootScope', 'toastr', 'ProjectFactory', '$log', '$state', 'UserFactory', 'ProviderProjectsMockFactory', 'ClientProjectsMockFactory', 'ProgressFactory', '$location', 'ServiceFactory', '$stateParams', 'CurrentUserFactory', 'ROLES'];
-	function ProjectController ($rootScope, toastr, ProjectFactory, $log, $state, UserFactory, ProviderProjectsMockFactory, ClientProjectsMockFactory, ProgressFactory, $location, ServiceFactory, $stateParams, CurrentUserFactory, ROLES){
+	ProjectController.$inject = ['$rootScope', '$timeout', 'toastr', 'ProjectFactory', '$log', '$state', 'UserFactory', 'ProviderProjectsMockFactory', 'ClientProjectsMockFactory', 'ProgressFactory', '$location', 'ServiceFactory', '$stateParams', 'CurrentUserFactory', 'ROLES'];
+	function ProjectController ($rootScope, $timeout, toastr, ProjectFactory, $log, $state, UserFactory, ProviderProjectsMockFactory, ClientProjectsMockFactory, ProgressFactory, $location, ServiceFactory, $stateParams, CurrentUserFactory, ROLES){
 		var vm = this;
 		vm.model = {};
 		var services = [];
@@ -51,16 +51,21 @@
 		*/
 		vm.getImage = function (name) {
 			var image = null;
-			switch(name) {
+			var lowerName = name.toLowerCase();
+			switch(lowerName) {
 				case 'apache':
 					image = 'apache.png';
 					break;
-				case 'cloud_service2':
+				case 'cloud':
 					image = 'cloud-services2.jpg';
 					break;
+				case 'openstack':
+					image = 'cloud-services2.jpg'
 				case 'service1':
 					image = 'services01.jpg'
 					break;
+				default:
+					image = 'services01.jpg'
 			}
 			return image;
 		}
@@ -155,7 +160,12 @@
 		vm.runProject = function (id) {
 			ProjectFactory.runProject(id).then(function (response){
 				if (response.status === 200) {
-					$state.reload();
+					$timeout( function(){
+						ProjectFactory.getProjectState(id).then(function(response){
+							$log.log('getProjectState response', response);
+						});
+					}, 3000);
+					
 				}
 			});
 		}
@@ -173,31 +183,11 @@
 			ProjectFactory.deleteProject(id).then(function(response){
 				if(response.status===200){
 					$location.path("/clientprojects");
-					$state.reload();
+					// $state.reload();
 				}else{
 					toastr.error("No s'ha pogut borrar el projecte");
 				}
 			});
-		}
-
-
-
-		if ($stateParams.id) {
-			vm.getProjectById($stateParams.id);
-		}
-
-		//Crida desde project-new.tpl.html per obtenir tots els serveis
-		vm.getAllServices()
-
-		//crida desde projects/providers/index-prov.tpl.html
-		var user = CurrentUserFactory.getCurrentUser();
-		
-		if (user.role === ROLES.provider.role && $state.current.name === ROLES.provider.state) {
-			vm.getProviderProjectsByPartnerId(user.user.provider_id);
-		}
-
-		if (user.role === ROLES.client.role && $state.current.name === ROLES.client.state) {
-			vm.getClientProjectsByPartnerId(user.user.provider_id);
 		}
 
 		vm.hasChanged = function(){
@@ -228,6 +218,36 @@
 			}
 			return output;
 		}
+
+		vm.getProjectState = function(id){
+			ProjectFactory.getProjectState(id).then(function(response){
+				$log.log(response);
+			});
+		}
+
+
+
+		if ($stateParams.id) {
+			vm.getProjectById($stateParams.id);
+		}
+
+		//Crida desde project-new.tpl.html per obtenir tots els serveis
+		vm.getAllServices()
+
+		//crida desde projects/providers/index-prov.tpl.html
+		var user = CurrentUserFactory.getCurrentUser();
+		
+		if (user.role === ROLES.provider.role && $state.current.name === ROLES.provider.state) {
+			vm.getProviderProjectsByPartnerId(user.user.provider_id);
+		}
+
+		if (user.role === ROLES.client.role && $state.current.name === ROLES.client.state) {
+			vm.getClientProjectsByPartnerId(user.user.provider_id);
+		}
+
+
+
+
 	}
 
 })();
