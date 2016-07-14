@@ -11,7 +11,11 @@
 			<div class="panel panel-default difuminar" ng-repeat="srv in clientprojects.allClientProjects">
 			  <div class="panel-heading">
 			    <h3 class="panel-title"><strong>{{srv.name}}</strong>
-			    	<span class="pull-right"><a ng-click="clientprojects.goEditProject(srv._id)" class="btn btn-default btn-xs" ng-if="srv.status !== 3"><i class="fa fa-pencil"></i>Editar</a></span>
+			    <span class="pull-right"><a ng-click="clientprojects.deleteProject(srv._id)" class="btn btn-default btn-xs">
+			    		<i class="fa fa-pencil"></i>Borrar</a></span>
+			    	<span class="pull-right"><a ng-click="clientprojects.goEditProject(srv._id)" class="btn btn-default btn-xs" ng-if="srv.status !== 3">
+			    		<i class="fa fa-pencil"></i>Editar</a></span>
+			    	
 			    </h3>
 			  </div>
 			  <div class="panel-body">

@@ -19,6 +19,7 @@
 		factory.getProjectById = getProjectById;
 		factory.runProject = runProject;
 		factory.disableProviderProject = disableProviderProject;
+		factory.deleteProject = deleteProject;
 
 
 		/*
@@ -107,6 +108,11 @@
 			
 		}
 
+		//delete Project by id
+		function deleteProject(id) {
+			var url = [host, 'api/projects/', id].join('');
+			return $http.delete(url).then(handleSuccess, handleError);
+		}
 
 
 		///////////////////////////////   private functions   ///////////////////////////////////////////////////

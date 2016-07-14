@@ -169,6 +169,17 @@
 			});
 		}
 
+		vm.deleteProject = function(id){
+			ProjectFactory.deleteProject(id).then(function(response){
+				if(response.status===200){
+					$location.path("/clientprojects");
+					$state.reload();
+				}else{
+					toastr.error("No s'ha pogut borrar el projecte");
+				}
+			});
+		}
+
 
 
 		if ($stateParams.id) {
