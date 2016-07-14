@@ -42,11 +42,11 @@
 							</li>
 							<li class="prov-lists pull-right" ng-if="srv.status !== 8">
 								<br/><br/>
-								<button ng-click="provprojects.confirmProviderProject(srv)" class="btn btn-default btn-sm" ng-if='srv.status <= 2'>
+								<button ng-click="provprojects.confirmProviderProject(srv)" class="btn btn-success btn-sm" ng-if='srv.status <= 2'>
 									<i class="fa fa-check"></i>
 									Confirmar
 								</button>
-								<button ng-click="provprojects.disableProviderProject(srv)" class="btn btn-default btn-sm" ng-if='srv.status >= 3'>
+								<button ng-click="provprojects.disableProviderProject(srv)" class="btn btn-danger btn-sm" ng-if='srv.status >= 3'>
 									<i class="fa fa-remove"></i>
 									Deshabilitar
 								</button>
