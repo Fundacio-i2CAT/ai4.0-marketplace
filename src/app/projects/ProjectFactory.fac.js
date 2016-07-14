@@ -99,13 +99,13 @@
 		//runProject(by Client id)
 		function runProject(id) {
 			var url = [host, 'api/projects/', id, '/state'].join('');
-			return $http.put(url, {"status": 5}).then(handleSuccess, handleError);
+			return $http.put(url, {status: 5}).then(handleSuccess, handleError);
 		}
 
 		//stopProject(by Client id)
 		function stopProject() {
 			var url = [host, 'api/projects/', id, '/state'].join('');
-			
+			return $http.put(url, {status: 6}).then(handleSuccess, handleError);
 		}
 
 		//delete Project by id
