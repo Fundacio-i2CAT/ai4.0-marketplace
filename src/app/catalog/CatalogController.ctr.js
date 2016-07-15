@@ -32,6 +32,7 @@
 		vm.getAllServicesByService_type = function (name) {
 			var services = [],
 				genericServices = [];
+			
 			CatalogFactory.getAllServices().then(function (response) {
 				if (response.data.status === 'ok') {
 					services = response.data.result;
