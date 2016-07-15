@@ -20,7 +20,7 @@
 				      <i class="fa fa-plus"></i>...</a>
 				  </div>
 				  <div show-hover class="panel-body">
-					<p><strong>Tipus de servei:</strong> <span class="label" ng-class="(one.service_type === 'cloud') ? 'label-primary' : 'label-danger'">{{one.service_type}}</span></p>
+					<p><strong>Tipus de servei</strong> <span class="label" ng-class="(one.service_type === 'cloud') ? 'label-primary' : 'label-danger'">{{one.service_type}}</span></p>
 					<!-- <p><strong>Sumari: </strong> {{one.summary}}</p> -->
 				  	<p><img class="img-thumbnail catalog" src="assets/logos_mkp/{{catalog.getImage(one.name)}}" alt="Imatge servei"></p>
 
@@ -29,7 +29,8 @@
 							<span class="label label-default">{{sec}}</span>
 						</span>
 				  	</p>
-				  	<p><strong>Provider: </strong>{{one.provider.name}}</p>
+				  	<p><strong>Sumari </strong>{{one.summary}}</p>
+				  	<p><strong>Provider </strong>{{one.provider.name}}</p>
 				  </div>
 				  <!-- <div class="panel-footer">
 				    <small><strong>Sectors: </strong>{{one.sectors}}</small>
