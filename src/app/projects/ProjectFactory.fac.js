@@ -21,6 +21,7 @@
 		factory.disableProviderProject = disableProviderProject;
 		factory.deleteProject = deleteProject;
 		factory.getProjectState = getProjectState;
+		factory.stopProject = stopProject;
 
 
 		/*
@@ -104,7 +105,7 @@
 		}
 
 		//stopProject(by Client id)
-		function stopProject() {
+		function stopProject(id) {
 			var url = [host, 'api/projects/', id, '/state'].join('');
 			return $http.put(url, {status: 6}).then(handleSuccess, handleError);
 		}
