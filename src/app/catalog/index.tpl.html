@@ -19,7 +19,7 @@
 				      <a class="btn btn-default btn-xs pull-right"  ng-click="catalog.seeDetail(one._id)">
 				      <i class="fa fa-plus"></i>...</a>
 				  </div>
-				  <div class="panel-body">
+				  <div show-hover class="panel-body">
 					<p><strong>Tipus de servei:</strong> <span class="label" ng-class="(one.service_type === 'cloud') ? 'label-primary' : 'label-danger'">{{one.service_type}}</span></p>
 					<!-- <p><strong>Sumari: </strong> {{one.summary}}</p> -->
 				  	<p><img class="img-thumbnail catalog" src="assets/logos_mkp/{{catalog.getImage(one.name)}}" alt="Imatge servei"></p>

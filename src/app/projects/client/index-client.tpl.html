@@ -35,11 +35,11 @@
 							</li>
 							<li class="prov-lists pull-right" ng-if="srv.status === 3">
 								<p>Accions</p>
-								<button ng-if="srv.status === 3 || srv.status === 5 || srv.status === 6" class="btn btn-default btn-xs" ng-click="clientprojects.runProject(srv._id)">
+								<button ng-if="srv.status === 3 || srv.status === 5 || srv.status === 6" class="btn btn-success btn-xs" ng-click="clientprojects.runProject(srv._id)">
 									<i class="fa fa-play"></i>
 									Arrencar
 								</button> 
-								<button ng-if="srv.status >= 5" class="btn btn-default btn-xs">
+								<button ng-if="srv.status >= 5" class="btn btn-danger btn-xs">
 									<i class="fa fa-stop"></i>
 									Aturar
 								</button>

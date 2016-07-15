@@ -1,5 +1,5 @@
 <div class="container">
-	<!-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 		<div class="caption">
 			<div class="title-name text-font-family">
 				<div class="well clearfix">
@@ -28,8 +28,8 @@
 				</div>
 			</form>
 		</div>
-	</div> -->
-
+	</div>
+-------------------------------------------------------------------------------------------------------------------
 	<div class="page-header">
 		<h3>Nou Projecte</h3>
 	</div>
@@ -50,7 +50,7 @@
 			</div>
 			<div class="form-group">
 				<label for="nomprojecte">Servei</label>
-				<select ng-model="project.services" class="form-control" multiple required="true">
+				<select ng-model="project.services" class="form-control" multiple required>
 					<option ng-repeat="serv in newproject.allServices" value="{{serv._id}}">{{serv.name}}</option>
 				</select>
 			</div> 
@@ -63,6 +63,14 @@
 			</div>
 		</form>
 	</div>
+
+
+---------------------------------------------------------------------------------------------------
+
+ <span ng-repeat="serv in newproject.allServices">
+ 	<p>serv</p>
+ </span>
+
 
 
 
