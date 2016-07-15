@@ -7,13 +7,10 @@
 	CatalogController.$inject = ['CatalogFactory', '$location', 'ProgressFactory'];
 	function CatalogController(CatalogFactory, $location, ProgressFactory) {
 		var vm = this;
-		vm.allService_typeServices = [];
 
 		vm.getAllTypes = function () {
 			CatalogFactory.getAllTypes().then(function (response){
-				if (response.data.status === 'fail') {
-					//Gestionar error
-				} else {
+				if (response.status === 200) {
 					vm.allTypes = response.data;
 				}
 			});
@@ -33,7 +30,8 @@
 		};
 
 		vm.getAllServicesByService_type = function (name) {
-			var services = [], genericServices = [];
+			var services = [],
+				genericServices = [];
 			CatalogFactory.getAllServices().then(function (response) {
 				if (response.data.status === 'ok') {
 					services = response.data.result;
@@ -42,9 +40,11 @@
 							genericServices.push(each);
 						}
 					});
+					vm.genericServices = genericServices;
 				}
+
 			});
-			vm.genericServices = genericServices;
+			
 		};
 
 		vm.seeDetail = function (id) {

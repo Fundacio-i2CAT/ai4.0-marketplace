@@ -25,7 +25,7 @@
 						//local storage and broadcoast userrole
 						CurrentUserFactory.setUser(response.data);
 						toastr.success("Hola, " + user.user_name, 'Accés correcte');
-		
+						$location.path('catalog');
 					}	
 				})
 

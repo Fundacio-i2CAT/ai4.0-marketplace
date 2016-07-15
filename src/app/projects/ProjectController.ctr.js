@@ -87,7 +87,6 @@
 		vm.getAllServices = function(){
 			ServiceFactory.getAllServices().then(function(response){
 				if (response.status === 200) {
-					vm.allServices = response.data.result;
 				}
 			});
 		}
@@ -163,12 +162,25 @@
 					$timeout( function(){
 						ProjectFactory.getProjectState(id).then(function(response){
 							$log.log('getProjectState response', response);
+							vm.allClientProjects.forEach(function(each) {
+								if (each._id === id) {
+									each.status = 5;
+								}
+							});
 						});
 					}, 3000);
 					
 				}
 			});
 		}
+
+		vm.getStatus = function (id){
+			ProjectFactory.getProjectState(id).then(function(response){
+				if (response) {
+					vm.kk = response;
+				}
+			});
+		};
 
 		//stopProject (by Client user)
 		vm.stopProject = function (id) {
@@ -182,8 +194,8 @@
 		vm.deleteProject = function(id){
 			ProjectFactory.deleteProject(id).then(function(response){
 				if(response.status===200){
-					$location.path("/clientprojects");
-					// $state.reload();
+					// $location.path("/clientprojects");
+					$state.reload();
 				}else{
 					toastr.error("No s'ha pogut borrar el projecte");
 				}
@@ -232,7 +244,8 @@
 		}
 
 		//Crida desde project-new.tpl.html per obtenir tots els serveis
-		vm.getAllServices()
+		// vm.getAllServices();
+		vm.getAll();
 
 		//crida desde projects/providers/index-prov.tpl.html
 		var user = CurrentUserFactory.getCurrentUser();
