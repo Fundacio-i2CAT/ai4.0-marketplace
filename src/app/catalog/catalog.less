@@ -2,12 +2,16 @@ li a {
 	cursor: pointer;
 }
 
+body {
+	/*background-color: #eee;*/
+	min-height: 900px;
+}
 
 .tab-pane {
 	margin-top: 3em;
 }
 
-.overf h2 {
+.overf h2, h4.overf, h3.overf {
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
@@ -18,5 +22,53 @@ li a {
 	height: 150px;
 }
 
+.catalog-item {
+	overflow: hidden;
+}
 
-	
+.panel-catalog {
+	-webkit-box-shadow: 3px 3px 3px 0px rgba(128,129,133,1);
+	-moz-box-shadow: 3px 3px 3px 0px rgba(128,129,133,1);
+	box-shadow: 3px 3px 3px 0px rgba(128,129,133,1);
+}
+.panel-catalog:active,
+.panel-catalog:focus,
+.panel-catalog.active {
+  outline: 0;
+  -webkit-box-shadow:none;
+	-moz-box-shadow:none;
+	box-shadow:none;
+}
+
+.panel-catalog:hover,
+.panel-catalog.hover {
+ 
+  -webkit-box-shadow: 1px 1px 3px 0px rgba(128,129,133,1);
+	-moz-box-shadow: 1px 1px 3px 0px rgba(128,129,133,1);
+	box-shadow: 1px 1px 3px 0px rgba(128,129,133,1);
+}
+
+li:active,
+li:focus,
+li.active {
+	outline: 0
+}
+
+.panel-body {
+	height: 150px;
+	overflow: auto;
+}
+
+.panel-catalog:active {
+	box-shadow: 0px;
+}
+
+.panel-footer {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.panel-footer span {
+	margin-left: .2em;
+}
