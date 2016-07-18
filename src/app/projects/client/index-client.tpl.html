@@ -12,16 +12,16 @@
 			  <div class="panel-heading">
 			    <h3 class="panel-title"><strong>{{srv.name}}</strong>
 			    <span class="pull-right"><a ng-click="clientprojects.deleteProject(srv._id)" class="btn btn-default btn-xs">
-			    		<i class="fa fa-pencil"></i>Borrar</a></span>
+			    		<i class="fa fa-pencil"></i> Borrar</a></span>
 			    	<span class="pull-right"><a ng-click="clientprojects.goEditProject(srv._id)" class="btn btn-default btn-xs" ng-if="srv.status !== 3">
-			    		<i class="fa fa-pencil"></i>Editar</a></span>
+			    		<i class="fa fa-pencil"></i> Editar</a></span>
 			    	
 			    </h3>
 			  </div>
 			  <div class="panel-body">
 			    <div class="row">
 			    	<div class="col-xs-1">
-			    		<img class="img" width="60px" height="auto" src="assets/logos_mkp/project.png" alt="Imatge Projecte" />
+			    		<img class="img" width="60px" height="auto" ng-src="assets/logos_mkp/project.png" alt="Imatge Projecte" />
 			    	</div>
 					<div class="col-xs-11">
 						<ul class="list-inline">
@@ -48,33 +48,11 @@
 						<hr/>
 					</div>
 						<div class="row">
-							<!-- Opció panel per cada un dels serveis del projecte...
-
-							<div class="col-xs-10 col-xs-offset-1">
-								<div class="panel panel-default" ng-repeat="one in srv.services">
-								<div class="panel-heading">
-									<span class="label label-default">{{one.service.name}}</span>	 <span class="badge pull-right clearfix">{{srv.services.length}}</span>
-								</div>
-								<div class="panel-body">
-										<ul class="list list-inline">
-											<li><img src="assets/logos_mkp/{{clientprojects.getImage(one.service.name)}}" alt="Service little image" class="img-thumbnail little-service"></li>
-											<li>Proveïdor <span class="label label-default">{{one.provider.name}}</span></li>
-											<li class="pull-right clearfix">
-												<a ng-click="clientprojects.goServiceDetail(srv._id)" class="btn btn-default btn-xs">
-													<i class="fa fa-eye"></i> Veure
-												</a>
-											</li>
-										</ul>
-									
-								</div>
-							</div>
-							</div> -->
-
 							<div class="col-xs-11 col-xs-offset-1">
 								<div class="media" ng-repeat="one in srv.services">
 									<div class="media-left col-xs-2">
 								    	<a href="#">
-											<img src="assets/logos_mkp/{{clientprojects.getImage(one.service.name)}}" alt="Service little image" class="media-object little-service">
+											<img ng-src="assets/logos_mkp/{{clientprojects.getImage(one.service.name)}}" alt="Service little image" class="media-object little-service">
 										</a>
 									</div>
 									<div class="media-body">

@@ -72,7 +72,7 @@
         need: 'admindoscat'*/
       });
 
-      $urlRouterProvider.otherwise('/');
+      $urlRouterProvider.otherwise('/catalog');
   }    
 
 

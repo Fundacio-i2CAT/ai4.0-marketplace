@@ -160,6 +160,8 @@
 
 		//runProject (by Client user)
 		vm.runProject = function (id) {
+			var progressbar = ProgressFactory.progressBarConfigure();
+			progressbar.start();
 			ProjectFactory.runProject(id).then(function (response){
 				if (response.status === 200) {
 					$timeout( function(){
@@ -175,6 +177,7 @@
 					
 				}
 			});
+			progressbar.complete();
 		}
 
 		vm.getStatus = function (id){
@@ -222,11 +225,11 @@
 		vm.getLiteralStatus = function(status){
 			var output;
 			switch(status) {
-				case 1: output = 'Emmagatzemat';
+				case 1: output = 'Pendent';
 					break;
 				case 3: output = 'Confirmat';
 					break;
-				case 5: output = 'Engegat';
+				case 5: output = 'Actiu';
 					break;
 				case 6: output = 'Parat';
 					break;
