@@ -48,6 +48,9 @@
 
 		/*
 			Devuelve una imagen u otra según el tipo de servicio (actualmente se mira por el nombre)
+
+			TODO
+			Mover esta funcion a una factoría común en lugar de un controlador
 		*/
 		vm.getImage = function (name) {
 			var image = null;
