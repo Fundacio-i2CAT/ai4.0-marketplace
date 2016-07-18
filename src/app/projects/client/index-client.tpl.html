@@ -1,6 +1,6 @@
 <div class="container">
 	<div class="page-header">
-			<h2>Projectes de Client <small>Index</small> <span class="pull-right"><a ui-sref="project-new" class="btn btn-primary btn-xs">Crear Projecte</a></span></h2>
+			<h2>Projectes de Client <small>Index</small> <span class="pull-right"><a ui-sref="project-new" class="btn btn-primary btn-xs"><i class="fa fa-plus"></i>&nbsp;Crear Projecte</a></span></h2>
 	</div>
 
 	<div class="row">
@@ -12,9 +12,10 @@
 			  <div class="panel-heading">
 			    <h3 class="panel-title"><strong>{{srv.name}}</strong>
 			    <span class="pull-right"><a ng-click="clientprojects.deleteProject(srv._id)" class="btn btn-default btn-xs">
-			    		<i class="fa fa-pencil"></i> Borrar</a></span>
-			    	<span class="pull-right"><a ng-click="clientprojects.goEditProject(srv._id)" class="btn btn-default btn-xs" ng-if="srv.status !== 3">
-			    		<i class="fa fa-pencil"></i> Editar</a></span>
+			    		<i class="fa fa-trash-o"></i>&nbsp;Borrar</a></span>
+
+			    <span class="project-actions pull-right"><a ng-click="clientprojects.goEditProject(srv._id)" class="btn btn-default btn-xs" ng-if="srv.status !== 3">
+			    		<i class="fa fa-pencil"></i>&nbsp;Editar</a></span>
 			    	
 			    </h3>
 			  </div>
