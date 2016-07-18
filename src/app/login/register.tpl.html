@@ -2,39 +2,37 @@
 	<div class="page-header">
 		<h3>Registre <small>Usuari</small></h3>
 	</div>
-
 	<form id="register" name="registerForm" ng-submit="login.doRegister()">
 		<div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
 			<div class="well">
 				<div class="form-group">
-				<label for="registermail">Email</label>
-				<input type="text" class="form-control" ng-model="register.logModel.email" id="registermail" placeholder="Mail" required>
-			</div>
-			<div class="form-group">
-				<label for="registerusername">Username</label>
-				<input type="text" class="form-control" ng-model="register.logModel.username" id="registerusername" placeholder="Username" required>
-			</div>
-			<div class="form-group">
-				<label for="registerpassword">Password</label>
-				<input type="password" ng-model="register.logModel.password" class="form-control" id="registerpassword" placeholder="Password" required>
-			</div>
-			<div class="form-group">
-				<label for="registerrole">Role</label><br/>
-				
+					<label for="registermail">Email</label>
+					<input type="text" class="form-control" ng-model="register.logModel.email" id="registermail" placeholder="Mail" required>
+				</div>
+				<div class="form-group">
+					<label for="registerusername">Username</label>
+					<input type="text" class="form-control" ng-model="register.logModel.username" id="registerusername" placeholder="Username" required>
+				</div>
+				<div class="form-group">
+					<label for="registerpassword">Password</label>
+					<input type="password" ng-model="register.logModel.password" class="form-control" id="registerpassword" placeholder="Password" required>
+				</div>
+				<div class="form-group">
+					<label for="registerrole">Role</label><br/>
+					
 					<label class="checkbox-inline">
 						<input type="checkbox" ng-model="register.provider" />
-							<span>PROVEÏDOR</span>
+						<span>PROVEÏDOR</span>
 					</label>
-					 <label class="checkbox-inline">
+					<label class="checkbox-inline">
 						<input type="checkbox" ng-model="register.client"/>
-							<span>CLIENT</span>
+						<span>CLIENT</span>
 					</label>
-				
-			</div>
-
-			<button type="submit" class="btn btn-success btn-block" ng-disabled="registerForm.$invalid">Enviar dades</button>
+					
+				</div>
+				<button type="submit" class="btn btn-success btn-block" ng-disabled="registerForm.$invalid">Enviar dades</button>
 			</div>
 		</div>
 	</form>
 </div>
-	º
+º

@@ -1,63 +1,61 @@
 <div class="container">
 	<div class="page-header">
-			<h2>
-				Serveis de Proveïdor <small>Index</small> <!-- <span class="pull-right"><a class="btn btn-primary btn-xs" ui-sref="provinstances">Instàncies de projecte</a></span> -->
-			</h2>
+		<h2>
+		Serveis de Proveïdor <small>Index</small> <!-- <span class="pull-right"><a class="btn btn-primary btn-xs" ui-sref="provinstances">Instàncies de projecte</a></span> -->
+		</h2>
 	</div>
-
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<div class="panel panel-default difuminar" ng-repeat="srv in provprojects.allProviderProjects">
-			  <div class="panel-heading">
-			    <h3 class="panel-title">Servei <strong>{{srv.service.name}}</strong></h3>
-			  </div>
-			  <div class="panel-body">
-			    <div class="row">
-			    	<div class="col-xs-2">
-			    		<img class="img-thumbnail" src="assets/logos_mkp/{{provprojects.getImage(srv.service.name)}}" alt="Imatge fake" />
-			    	</div>
-					<div class="col-xs-10">
-						<ul class="list-inline">
-						<li class="prov-lists">
-								<p>Client</p>
-								<h4><span class="label label-success">{{srv.client.name}}</span></h4>
-							</li>
-							<li class="col-xs-2 prov-lists">	
-								<p>Projecte</p>
-			    				<h4><span class="label label-primary">{{srv.project.name}}</span></h4>
-							</li>
-							<!-- <li class="prov-lists">
-								<p>Contexte</p>
-			    				<h4>{{srv.context_type}}</h4>
-							</li> -->
-							
-							
-							<li class=" prov-lists">
-								<p>Creació</p>
-			    				<h4><span class="label label-default">{{srv.created_at | date: 'dd-MM-yyyy'}}</span></h4>
-							</li>
-							<li class="prov-lists">
-								<p>Status</p>
-			    				<h4 ng-if="srv.status !== 8" ><span class="label" ng-class="(srv.status < 3) ? 'label-danger' : 'label-info'"><i class="fa" ng-class="(srv.status < 3) ? 'fa-exclamation-triangle' : 'fa-check-square-o'"></i> {{(srv.status < 3) ? 'Pendent' : 'Confirmat'}}</span></h4>
-			    				<h4 ng-if="srv.status === 8"><span class="label label-warning"><i class="fa fa-user"></i>Deshabilitat</span></h4>
-							</li>
-							<li class="prov-lists pull-right" ng-if="srv.status !== 8">
-								<br/><br/>
-								<button ng-click="provprojects.confirmProviderProject(srv)" class="btn btn-success btn-sm" ng-if='srv.status <= 2'>
+				<div class="panel-heading">
+					<h3 class="panel-title">Servei <strong>{{srv.service.name}}</strong></h3>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-xs-2">
+							<img class="img-thumbnail" src="assets/logos_mkp/{{provprojects.getImage(srv.service.name)}}" alt="Imatge fake" />
+						</div>
+						<div class="col-xs-10">
+							<ul class="list-inline">
+								<li class="prov-lists">
+									<p>Client</p>
+									<h4><span class="label label-success">{{srv.client.name}}</span></h4>
+								</li>
+								<li class="col-xs-2 prov-lists">
+									<p>Projecte</p>
+									<h4><span class="label label-primary">{{srv.project.name}}</span></h4>
+								</li>
+								<!-- <li class="prov-lists">
+										<p>Contexte</p>
+									<h4>{{srv.context_type}}</h4>
+								</li> -->
+								
+								
+								<li class=" prov-lists">
+									<p>Creació</p>
+									<h4><span class="label label-default">{{srv.created_at | date: 'dd-MM-yyyy'}}</span></h4>
+								</li>
+								<li class="prov-lists">
+									<p>Status</p>
+									<h4 ng-if="srv.status !== 8" ><span class="label" ng-class="(srv.status < 3) ? 'label-danger' : 'label-info'"><i class="fa" ng-class="(srv.status < 3) ? 'fa-exclamation-triangle' : 'fa-check-square-o'"></i> {{(srv.status < 3) ? 'Pendent' : 'Confirmat'}}</span></h4>
+									<h4 ng-if="srv.status === 8"><span class="label label-warning"><i class="fa fa-user"></i>Deshabilitat</span></h4>
+								</li>
+								<li class="prov-lists pull-right" ng-if="srv.status !== 8">
+									<br/><br/>
+									<button ng-click="provprojects.confirmProviderProject(srv)" class="btn btn-success btn-sm" ng-if='srv.status <= 2'>
 									<i class="fa fa-check"></i>
 									Confirmar
-								</button>
-								<button ng-click="provprojects.disableProviderProject(srv)" class="btn btn-danger btn-sm" ng-if='srv.status >= 3'>
+									</button>
+									<button ng-click="provprojects.disableProviderProject(srv)" class="btn btn-danger btn-sm" ng-if='srv.status >= 3'>
 									<i class="fa fa-remove"></i>
 									Deshabilitar
-								</button>
-							</li>
-						</ul>
+									</button>
+								</li>
+							</ul>
+						</div>
 					</div>
-			    </div>
-			  </div>
+				</div>
 			</div>
 		</div>
 	</div>
-
 </div>

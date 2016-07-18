@@ -2,85 +2,74 @@
 	<div class="page-header">
 		<h2  class="text text-danger">Catàleg </h2>
 	</div>
-
-
 	<div class="row">
 		<ul class="nav nav-tabs">
-		  <li class="active"><a data-target="#all" data-toggle="tab">Tots</a></li>
-		  <li ng-click="catalog.getAllServicesByService_type(type.name)" ng-repeat="type in catalog.allTypes"><a data-target="#{{type.name}}" data-toggle="tab">{{type.name}}</a></li>
-		  
+			<li class="active"><a data-target="#all" data-toggle="tab">Tots</a></li>
+			<li ng-click="catalog.getAllServicesByService_type(type.name)" ng-repeat="type in catalog.allTypes"><a data-target="#{{type.name}}" data-toggle="tab">{{type.name}}</a></li>
+			
 		</ul>
 	</div>
 	<div class="tab-content">
 		<!-- tab1  -->
 		<div class="tab-pane fade in active difuminar" id="all"> <!-- inici tab1  -->
-			<div class="pull-left catalog-item" ng-repeat="one in catalog.allServices">
-				<div class="panel panel-default panel-catalog" ng-click="catalog.seeDetail(one._id)">
-				  <div show-hover class="panel-body cata">
-				  <h3 class="panel-title overf"><strong>{{one.name}}</strong></h3>
+		<div class="pull-left catalog-item" ng-repeat="one in catalog.allServices">
+			<div class="panel panel-default panel-catalog" ng-click="catalog.seeDetail(one._id)">
+				<div show-hover class="panel-body cata">
+					<h3 class="panel-title overf"><strong>{{one.name}}</strong></h3>
 					<br/>
-				  	<!-- <p><img class="img-thumbnail catalog" ng-src="assets/logos_mkp/{{catalog.getImage(one.name)}}" alt="Imatge servei"></p> --> 
-				  	<p>{{one.summary}}</p>
-				  	<p><strong>Provider </strong>{{one.provider.name}}</p>
-				  </div>
-				  <div class="panel-footer">
-				  <span class="label" ng-class="(one.service_type === 'iss') ? 'label-primary' : 'label-danger'">{{one.service_type}}</span>
-					<span ng-repeat="sec in one.sectors">
-							<span class="label label-default">{{sec}}</span>
-						</span>
-				  </div>
+					<!-- <p><img class="img-thumbnail catalog" ng-src="assets/logos_mkp/{{catalog.getImage(one.name)}}" alt="Imatge servei"></p> -->
+					<p>{{one.summary}}</p>
+					<p><strong>Provider </strong>{{one.provider.name}}</p>
 				</div>
-			</div>
-		</div> <!--final tab1  -->
-		
-
-		<!-- tab2  -->
-		<div class="tab-pane difuminar" id="app"> <!-- inici tab2 -->
-
-
-		<div class="catalog-item pull-left" ng-repeat="one in catalog.genericServices">
-			<div class="panel panel-danger panel-catalog" ng-click="catalog.seeDetail(one._id)">
-			  <div show-hover class="panel-body cata">
-			  <h3 class="panel-title overf"><strong>{{one.name}}</strong></h3>
-				<br/>
-			  	<!--  <p><img class="img-thumbnail catalog" src="assets/logos_mkp/{{catalog.getImage(one.name)}}" alt="Imatge servei"></p> -->
-
-			  	<p>{{one.summary}}</p>
-			  	<p><strong>Provider </strong>{{one.provider.name}}</p>
-			  </div>
-			  <div class="panel-footer">
-			  <span class="label" ng-class="(one.service_type === 'iss') ? 'label-primary' : 'label-danger'">{{one.service_type}}</span>
-				<span ng-repeat="sec in one.sectors">
+				<div class="panel-footer">
+					<span class="label" ng-class="(one.service_type === 'iss') ? 'label-primary' : 'label-danger'">{{one.service_type}}</span>
+					<span ng-repeat="sec in one.sectors">
 						<span class="label label-default">{{sec}}</span>
 					</span>
-			  </div>
-			</div>
-		</div>
-
-		</div>
-
-		<div class="tab-pane" id="iss">
-			<div class="catalog-item pull-left" ng-repeat="one in catalog.genericServices">
-				<div class="panel panel-primary panel-catalog" ng-click="catalog.seeDetail(one._id)">
-				  <div show-hover class="panel-body cata">
-				  <h3 class="panel-title overf"><strong>{{one.name}}</strong></h3>
-					<br/>
-				  	<!--< p><img class="img-thumbnail catalog" src="assets/logos_mkp/{{catalog.getImage(one.name)}}" alt="Imatge servei"></p> -->
-
-				  	<p>{{one.summary}}</p>
-				  	<p><strong>Provider </strong>{{one.provider.name}}</p>
-				  </div>
-				  <div class="panel-footer">
-				  <span class="label" ng-class="(one.service_type === 'iss') ? 'label-primary' : 'label-danger'">{{one.service_type}}</span>
-					<span ng-repeat="sec in one.sectors">
-							<span class="label label-default">{{sec}}</span>
-						</span>
-				    <!-- <a class="btn btn-default btn-xs"  ng-click="catalog.seeDetail(one._id)"><i class="fa fa-plus"></i> Ver</a> -->
-				  </div>
 				</div>
 			</div>
+		</div>
+		</div> <!--final tab1  -->
+		
+		<!-- tab2  -->
+		<div class="tab-pane difuminar" id="app"> <!-- inici tab2 -->
+		<div class="catalog-item pull-left" ng-repeat="one in catalog.genericServices">
+			<div class="panel panel-danger panel-catalog" ng-click="catalog.seeDetail(one._id)">
+				<div show-hover class="panel-body cata">
+					<h3 class="panel-title overf"><strong>{{one.name}}</strong></h3>
+					<br/>
+					<!--  <p><img class="img-thumbnail catalog" src="assets/logos_mkp/{{catalog.getImage(one.name)}}" alt="Imatge servei"></p> -->
+					<p>{{one.summary}}</p>
+					<p><strong>Provider </strong>{{one.provider.name}}</p>
+				</div>
+				<div class="panel-footer">
+					<span class="label" ng-class="(one.service_type === 'iss') ? 'label-primary' : 'label-danger'">{{one.service_type}}</span>
+					<span ng-repeat="sec in one.sectors">
+						<span class="label label-default">{{sec}}</span>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tab-pane" id="iss">
+		<div class="catalog-item pull-left" ng-repeat="one in catalog.genericServices">
+			<div class="panel panel-primary panel-catalog" ng-click="catalog.seeDetail(one._id)">
+				<div show-hover class="panel-body cata">
+					<h3 class="panel-title overf"><strong>{{one.name}}</strong></h3>
+					<br/>
+					<!--< p><img class="img-thumbnail catalog" src="assets/logos_mkp/{{catalog.getImage(one.name)}}" alt="Imatge servei"></p> -->
+					<p>{{one.summary}}</p>
+					<p><strong>Provider </strong>{{one.provider.name}}</p>
+				</div>
+				<div class="panel-footer">
+					<span class="label" ng-class="(one.service_type === 'iss') ? 'label-primary' : 'label-danger'">{{one.service_type}}</span>
+					<span ng-repeat="sec in one.sectors">
+						<span class="label label-default">{{sec}}</span>
+					</span>
+					<!-- <a class="btn btn-default btn-xs"  ng-click="catalog.seeDetail(one._id)"><i class="fa fa-plus"></i> Ver</a> -->
+				</div>
+			</div>
+		</div>
 		</div> <!--final tab3 -->
 	</div>
-
-
 </div>

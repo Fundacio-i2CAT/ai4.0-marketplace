@@ -3,55 +3,54 @@
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" id="collapsebutton" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
       </button>
       <a  class="navbar-brand navlogo" ui-sref="home"><img src="../../assets/images/logos/Anella4_temporal.png" alt="Anella 4.0"></a>
     </div>
-
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><a class="toclose" ui-sref="catalog">Catàleg</a></li>
         <li><a ng-if="menuUser.role==='Partner.Provider'" class="toclose" ui-sref="provprojects">Serveis</a></li>
         <li><a ng-if="menuUser.role==='Partner.Client'" class="toclose" ui-sref="clientprojects">Projectes</a></li>
-      </ul>     
+      </ul>
       <ul class="nav navbar-nav navbar-right">
         <li ng-if="!menuUser.isLogged"><a class="toclose" ui-sref="login"><i class="fa fa-sign-in"></i> Accedir</a></li>
         <li ng-if="menuUser.isLogged" class="user">
           <a class="username">
             <small class="text text-warning">
-              <i class="fa fa-user"></i>&nbsp;{{menuUser.user.name}}
+            <i class="fa fa-user"></i>&nbsp;{{menuUser.user.name}}
             </small>
           </a>
         </li>
         <li ng-if="menuUser.isLogged"><a class="toclose" ng-click="logout()"><i class="fa fa-sign-out"></i> Sortir</a></li>
       </ul>
-<!--   <ul ng-if="!menuUser.isLogged" class="nav navbar-nav navbar-right">
-    <li class="dropdown">
-      <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Accés <span class="caret"></span></a>
-      <ul class="dropdown-menu">
-        <li><a class="toclose" ui-sref="login"><i class="fa fa-sign-in"></i> Accedir</a></li>
-        <li><a class="toclose" ui-sref="register"><i class="fa fa-user-plus"></i> Registre</a></li>
+      <!--   <ul ng-if="!menuUser.isLogged" class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Accés <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a class="toclose" ui-sref="login"><i class="fa fa-sign-in"></i> Accedir</a></li>
+            <li><a class="toclose" ui-sref="register"><i class="fa fa-user-plus"></i> Registre</a></li>
+          </ul>
+        </li>
       </ul>
-    </li>
-  </ul>
-  <ul ng-if="menuUser.isLogged" class="nav navbar-nav navbar-right">
-    <li class="dropdown">
-      <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-        <span class="hellouser">
-          <small class="text text-warning">
-            <i class="fa fa-user"></i>&nbsp;{{menuUser.user.name}}
-          </small>
-        </span>
-      </a>
-      <ul class="dropdown-menu">
-        <li><a class="toclose" ng-click="logout()"><i class="fa fa-sign-out"></i> Sortir</a></li>
-      </ul>
-    </li>
-  </ul> -->
+      <ul ng-if="menuUser.isLogged" class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <span class="hellouser">
+              <small class="text text-warning">
+              <i class="fa fa-user"></i>&nbsp;{{menuUser.user.name}}
+              </small>
+            </span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="toclose" ng-click="logout()"><i class="fa fa-sign-out"></i> Sortir</a></li>
+          </ul>
+        </li>
+      </ul> -->
     </div>
   </div>
 </nav>

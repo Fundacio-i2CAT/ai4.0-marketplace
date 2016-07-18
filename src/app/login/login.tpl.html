@@ -1,34 +1,32 @@
 <div class="container">
 	<div class="page-header">
-			<h3>Accés<small> Usuari</small></h3>
+		<h3>Accés<small> Usuari</small></h3>
 	</div>
-
+	
+	<form id="login" name="logUser" ng-submit="login.doLogin()">
+		<div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
+			<div class="well clearfix">
+				<div class="form-group">
+					<label for="loginusername">Username</label>
+					<input type="text" class="form-control" ng-model="login.credentials.username" id="loginusername" placeholder="Username" required>
+				</div>
+				<div class="form-group">
+					<label for="loginpassword">Password</label>
+					<input type="password" ng-model="login.credentials.password" class="form-control" id="loginpassword" placeholder="Password" required>
+					
+				</div>
+				
+				<button type="submit" class="btn btn-primary btn-block" ng-disabled="logUser.$invalid">Accedir</button>
+			</div></div>
+		</form>
 		
-			<form id="login" name="logUser" ng-submit="login.doLogin()">
-			  <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
-			  <div class="well clearfix">
-			  	<div class="form-group">
-			    <label for="loginusername">Username</label>
-			    <input type="text" class="form-control" ng-model="login.credentials.username" id="loginusername" placeholder="Username" required>
-			  </div>
-			  <div class="form-group">
-			    <label for="loginpassword">Password</label>
-			    <input type="password" ng-model="login.credentials.password" class="form-control" id="loginpassword" placeholder="Password" required>
-			  
-			  </div>
-			  
-			  <button type="submit" class="btn btn-primary btn-block" ng-disabled="logUser.$invalid">Accedir</button>
-			  </div></div>
-			</form>
-		
-	<div class="row">
-		<div class="col-xs-6 col-xs-offset-3 col-sm-6 col-sm-offset-3 col-sm-6 col-sm-offset-3 col-lg-6 col-lg-offset-3">
+		<div class="row">
+			<div class="col-xs-6 col-xs-offset-3 col-sm-6 col-sm-offset-3 col-sm-6 col-sm-offset-3 col-lg-6 col-lg-offset-3">
 				<div class="well clearfix centered">
 					<h4>Si no disposes d'usuari, clica per registrar-te</h4>
 					<br/>
 					<a ui-sref="register" class="btn btn-success"><i class="fa fa-user-plus"></i> Registre</a>
 				</div>
+			</div>
 		</div>
 	</div>
-
-</div>

@@ -4,100 +4,95 @@
 	</div>
 	<div class="row">
 		<ul class="nav nav-tabs">
-		  <li class="active"><a data-target="#all" data-toggle="tab">Tots</a></li>
-		  <li ng-click="catalog.getAllServicesByService_type(type.name)" ng-repeat="type in catalog.allTypes"><a data-target="#{{type.name}}" data-toggle="tab">{{type.name}}</a></li>
-		  
+			<li class="active"><a data-target="#all" data-toggle="tab">Tots</a></li>
+			<li ng-click="catalog.getAllServicesByService_type(type.name)" ng-repeat="type in catalog.allTypes"><a data-target="#{{type.name}}" data-toggle="tab">{{type.name}}</a></li>
+			
 		</ul>
 	</div>
 	<div class="tab-content">
 		<!-- tab1  -->
 		<div class="tab-pane fade in active difuminar" id="all"> <!-- inici tab1  -->
-			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" ng-repeat="one in catalog.allServices">
-				<div class="panel panel-default">
-				  <div class="panel-heading clearfix overf">
-				    <h3 class="panel-title pull-left "><strong>{{one.name}}</strong></h3>
-				      <a class="btn btn-default btn-xs pull-right"  ng-click="catalog.seeDetail(one._id)">
-				      <i class="fa fa-plus"></i>...</a>
-				  </div>
-				  <div show-hover class="panel-body">
+		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" ng-repeat="one in catalog.allServices">
+			<div class="panel panel-default">
+				<div class="panel-heading clearfix overf">
+					<h3 class="panel-title pull-left "><strong>{{one.name}}</strong></h3>
+					<a class="btn btn-default btn-xs pull-right"  ng-click="catalog.seeDetail(one._id)">
+					<i class="fa fa-plus"></i>...</a>
+				</div>
+				<div show-hover class="panel-body">
 					<p><strong>Tipus de servei</strong> <span class="label" ng-class="(one.service_type === 'cloud') ? 'label-primary' : 'label-danger'">{{one.service_type}}</span></p>
 					<!-- <p><strong>Sumari: </strong> {{one.summary}}</p> -->
-				  	<p><img class="img-thumbnail catalog" src="assets/logos_mkp/{{catalog.getImage(one.name)}}" alt="Imatge servei"></p>
-
-				  	<p><strong>Sectors: </strong>
+					<p><img class="img-thumbnail catalog" src="assets/logos_mkp/{{catalog.getImage(one.name)}}" alt="Imatge servei"></p>
+					<p><strong>Sectors: </strong>
 						<span ng-repeat="sec in one.sectors">
 							<span class="label label-default">{{sec}}</span>
 						</span>
-				  	</p>
-				  	<p><strong>Sumari </strong>{{one.summary}}</p>
-				  	<p><strong>Provider </strong>{{one.provider.name}}</p>
-				  </div>
-				  <!-- <div class="panel-footer">
-				    <small><strong>Sectors: </strong>{{one.sectors}}</small>
-				  </div> -->
+					</p>
+					<p><strong>Sumari </strong>{{one.summary}}</p>
+					<p><strong>Provider </strong>{{one.provider.name}}</p>
 				</div>
+				<!-- <div class="panel-footer">
+					<small><strong>Sectors: </strong>{{one.sectors}}</small>
+				</div> -->
 			</div>
+		</div>
 		</div> <!--final tab1  -->
 		
-
 		<!-- tab2  -->
 		<div class="tab-pane difuminar" id="app"> <!-- inici tab2 -->
-			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" ng-repeat="one in catalog.genericServices">
-				<div class="panel panel-danger">
-				  <div class="panel-heading clearfix">
-				    <h3 class="panel-title pull-left"><strong>{{one.name}}</strong></h3>
-				      <a class="btn btn-default btn-xs pull-right" href="#">
-				        <i class="fa fa-check"></i>
-				        Action
-				      </a>
-				  </div>
-				  <div class="panel-body">
+		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" ng-repeat="one in catalog.genericServices">
+			<div class="panel panel-danger">
+				<div class="panel-heading clearfix">
+					<h3 class="panel-title pull-left"><strong>{{one.name}}</strong></h3>
+					<a class="btn btn-default btn-xs pull-right" href="#">
+						<i class="fa fa-check"></i>
+						Action
+					</a>
+				</div>
+				<div class="panel-body">
 					<p><strong>Tipus de servei:</strong> <span class="label label-danger">{{one.service_type}}</span></p>
 					<!-- <p><strong>Sumari: </strong> {{one.summary}}</p> -->
-				  	<p><img class="img-thumbnail catalog" src="assets/logos_mkp/{{catalog.getImage(one.name)}}" alt="Imatge servei"></p>
-				  	<p><strong>Sectors: </strong>
+					<p><img class="img-thumbnail catalog" src="assets/logos_mkp/{{catalog.getImage(one.name)}}" alt="Imatge servei"></p>
+					<p><strong>Sectors: </strong>
 						<span ng-repeat="sec in one.sectors">
 							<span class="label label-default">{{sec}}</span>
 						</span>
-				  	</p>
-				  	<p><strong>Provider: </strong>{{one.provider.name}}</p>
-				  </div>
-				  <!-- <div class="panel-footer">
-				    <small><strong>Sectors: </strong>{{one.sectors}}</small>
-				  </div> -->
+					</p>
+					<p><strong>Provider: </strong>{{one.provider.name}}</p>
 				</div>
+				<!-- <div class="panel-footer">
+					<small><strong>Sectors: </strong>{{one.sectors}}</small>
+				</div> -->
 			</div>
+		</div>
 		</div> <!--final tab2  -->
-
 		<!-- tab3  -->
 		<div class="tab-pane difuminar" id="iss">
 			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" ng-repeat="one in catalog.genericServices">
 				<div class="panel panel-primary">
-				  <div class="panel-heading clearfix">
-				    <h3 class="panel-title pull-left"><strong>{{one.name}}</strong></h3>
-				      <a class="btn btn-default btn-xs pull-right" href="#">
-				        <i class="fa fa-check"></i>
-				        Action
-				      </a>
-				  </div>
-				  <div class="panel-body">
-					<p><strong>Tipus de servei:</strong> <span class="label label-primary">{{one.service_type}}</span></p>
-					<!-- <p><strong>Sumari: </strong> {{one.summary}}</p> -->
-				  	<p><img class="img-thumbnail catalog" src="assets/logos_mkp/{{catalog.getImage(one.name)}}" alt="Imatge servei"></p>
-				  	<p><strong>Sectors: </strong>
-						<span ng-repeat="sec in one.sectors">
-							<span class="label label-default">{{sec}}</span>
-						</span>
-				  	</p>
-				  	<p><strong>Provider: </strong>{{one.provider.name}}</p>
-				  </div>
-				  <!-- <div class="panel-footer">
-				    <small><strong>Sectors: </strong>{{one.sectors}}</small>
-				  </div> -->
+					<div class="panel-heading clearfix">
+						<h3 class="panel-title pull-left"><strong>{{one.name}}</strong></h3>
+						<a class="btn btn-default btn-xs pull-right" href="#">
+							<i class="fa fa-check"></i>
+							Action
+						</a>
+					</div>
+					<div class="panel-body">
+						<p><strong>Tipus de servei:</strong> <span class="label label-primary">{{one.service_type}}</span></p>
+						<!-- <p><strong>Sumari: </strong> {{one.summary}}</p> -->
+						<p><img class="img-thumbnail catalog" src="assets/logos_mkp/{{catalog.getImage(one.name)}}" alt="Imatge servei"></p>
+						<p><strong>Sectors: </strong>
+							<span ng-repeat="sec in one.sectors">
+								<span class="label label-default">{{sec}}</span>
+							</span>
+						</p>
+						<p><strong>Provider: </strong>{{one.provider.name}}</p>
+					</div>
+					<!-- <div class="panel-footer">
+						<small><strong>Sectors: </strong>{{one.sectors}}</small>
+					</div> -->
 				</div>
 			</div>
-		</div> <!--final tab3 -->
+			</div> <!--final tab3 -->
+		</div>
 	</div>
-
-
-</div>

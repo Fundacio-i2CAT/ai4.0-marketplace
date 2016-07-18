@@ -2,73 +2,65 @@
 	<div class="page-header">
 		<h2>Editar Projecte</h2>
 	</div>
-
-
-<!-- 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		<div class="caption">
-			<div class="title-name text-font-family">
-				<div class="well clearfix">
-				<h3 class="text-uppercase">Editar Projecte <a class="btn btn-danger btn-xs pull-right" ui-sref="clientprojects"><i class="fa fa-mail-reply"></i>Tornar</a></h3>
-				</div>
+	<!-- 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<div class="caption">
+					<div class="title-name text-font-family">
+							<div class="well clearfix">
+								<h3 class="text-uppercase">Editar Projecte <a class="btn btn-danger btn-xs pull-right" ui-sref="clientprojects"><i class="fa fa-mail-reply"></i>Tornar</a></h3>
+							</div>
+					</div>
+					<form id="edit_project" name="edit_project" ng-submit="editproject.editClientProject(editproject.projectToEdit)">
+							<div class="row">
+									<div class="form-group">
+											<label for="nomprojecte">Nom</label>
+										<input type="text" class="form-control" id="nomprojecte" ng-model="editproject.projectToEdit.name" placeholder="Nom Projecte" required
+													ng-init="editproject.setNameProject(project, editproject.projectToEdit.name)	">
+									</div>
+									<div class="form-group">
+											<label for="nomprojecte">Servei</label>
+											<select ng-model="editproject.projectToEdit.services" class="form-control" multiple ng-change="editproject.hasChanged()">
+														<option ng-repeat="serv in editproject.allServices" value="{{serv._id}}"
+																	class="{{(editproject.array_services.indexOf(serv._id) > -1 ?'selected':'')}}">
+																	{{serv.name}}
+														</option>
+												</select>
+									</div>
+									<div class="form-group">
+											<input type="hidden" class="form-control" id="idclient" ng-model="editproject.projectToEdit.client">
+											<span class="input-group-btn">
+											<button class="btn btn-primary" type="submit">
+												Guardar
+												</button>
+										</span>
+									</div>
+							</div>
+					</form>
 			</div>
-			<form id="edit_project" name="edit_project" ng-submit="editproject.editClientProject(editproject.projectToEdit)">
-				<div class="row">
-					<div class="form-group">
-						<label for="nomprojecte">Nom</label>
-					    <input type="text" class="form-control" id="nomprojecte" ng-model="editproject.projectToEdit.name" placeholder="Nom Projecte" required 
-					    		ng-init="editproject.setNameProject(project, editproject.projectToEdit.name)	">
-					</div>
-					<div class="form-group">
-						<label for="nomprojecte">Servei</label>
-					    	<select ng-model="editproject.projectToEdit.services" class="form-control" multiple ng-change="editproject.hasChanged()">
-					 	 		<option ng-repeat="serv in editproject.allServices" value="{{serv._id}}" 
-					 	 				class="{{(editproject.array_services.indexOf(serv._id) > -1 ?'selected':'')}}">
-					 	 				{{serv.name}}
-					 	 		</option>
-							</select>
-					</div> 
-					<div class="form-group">
-						<input type="hidden" class="form-control" id="idclient" ng-model="editproject.projectToEdit.client">
-						<span class="input-group-btn">
-					        <button class="btn btn-primary" type="submit">
-					        	Guardar
-					    	</button>
-					    </span>
-					</div>
-				</div>
-			</form>
-		</div>
 	</div> -->
-
-
 	<div class="well clear-fix">
 		<form id="edit_project" name="edit_project" ng-submit="editproject.editClientProject(editproject.projectToEdit)">
 			<div class="form-group">
 				<label for="nomprojecte">Nom</label>
-			    <input type="text" class="form-control" id="nomprojecte" ng-model="editproject.projectToEdit.name" placeholder="Nom Projecte" required 
-			    		ng-init="editproject.setNameProject(project, editproject.projectToEdit.name)	">
+				<input type="text" class="form-control" id="nomprojecte" ng-model="editproject.projectToEdit.name" placeholder="Nom Projecte" required
+				ng-init="editproject.setNameProject(project, editproject.projectToEdit.name)	">
 			</div>
 			<div class="form-group">
 				<label for="nomprojecte">Servei</label>
-			    	<select ng-model="editproject.projectToEdit.services" class="form-control" multiple ng-change="editproject.hasChanged()">
-			 	 		<option ng-repeat="serv in editproject.allServices" value="{{serv._id}}" 
-			 	 				class="{{(editproject.array_services.indexOf(serv._id) > -1 ?'selected':'')}}">
-			 	 				{{serv.name}}
-			 	 		</option>
-					</select>
-			</div> 
+				<select ng-model="editproject.projectToEdit.services" class="form-control" multiple ng-change="editproject.hasChanged()">
+					<option ng-repeat="serv in editproject.allServices" value="{{serv._id}}"
+						class="{{(editproject.array_services.indexOf(serv._id) > -1 ?'selected':'')}}">
+						{{serv.name}}
+					</option>
+				</select>
+			</div>
 			<div class="form-group">
 				<input type="hidden" class="form-control" id="idclient" ng-model="editproject.projectToEdit.client">
 				<span class="input-group-btn">
-			        <button class="btn btn-primary" type="submit">
-			        	Guardar
-			    	</button>
-			    </span>
+					<button class="btn btn-primary" type="submit">
+					Guardar
+					</button>
+				</span>
 			</div>
 		</form>
 	</div>
-
-
-
-
 </div>
