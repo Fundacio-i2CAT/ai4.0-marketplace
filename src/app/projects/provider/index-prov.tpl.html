@@ -7,14 +7,63 @@
 
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-			<div class="panel panel-default difuminar" ng-repeat="srv in provprojects.allProviderProjects">
+			<table id="provservices" class="table table-responsive table-hover">
+				<thead>
+					<tr>
+						<th></th>
+						<th>Servei</th>
+						<th>Client</th>
+						<th>Estat</th>
+						<th>Projecte</th>
+						<th>Creació</th>
+						<th>Accions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="srv in provprojects.allProviderProjects">
+						<td>
+							<img width="60px" class="img-thumbnail" ng-src="assets/logos_mkp/{{provprojects.getImage(srv.service.name)}}" alt="Imatge servei" />
+						</td>
+						<td class="vert-align">
+							{{srv.service.name}}
+						</td>
+						<td class="vert-align">
+							{{srv.client.name}}
+						</td>
+						<td class="vert-align">
+							<p ng-if="srv.status !== 8" ><span class="label" ng-class="(srv.status < 3) ? 'label-danger' : 'label-success'"><i class="fa" ng-class="(srv.status < 3) ? 'fa-exclamation-triangle' : 'fa-check-square-o'"></i> {{(srv.status < 3) ? 'Pendent' : 'Confirmat'}}</span></p>
+			    			<p ng-if="srv.status === 8"><span class="label label-danger"><i class="fa fa-stop-circle"></i> Inactiu</span></p>
+						</td>
+						<td class="vert-align">
+							{{srv.project.name}}
+						</td>
+						<td class="vert-align">
+							{{srv.created_at | date: 'dd-MM-yyyy'}}
+						</td>
+						<td class="vert-align">
+							<button ng-click="provprojects.confirmProviderProject(srv)" class="btn btn-success btn-xs" ng-if='srv.status <= 2'>
+								<i class="fa fa-check"></i>
+								Confirmar
+							</button>
+							<button ng-click="provprojects.disableProviderProject(srv)" class="btn btn-danger btn-xs" ng-if='srv.status >= 3 && srv.status <= 5'>
+								<i class="fa fa-remove"></i>
+								Deshabilitar
+							</button>
+						</td>
+					</tr>
+				</tbody>
+
+			</table>
+
+
+			<!-- <div class="panel panel-default difuminar" ng-repeat="srv in provprojects.allProviderProjects">
 			  <div class="panel-heading">
 			    <h3 class="panel-title">Servei <strong>{{srv.service.name}}</strong></h3>
 			  </div>
 			  <div class="panel-body">
 			    <div class="row">
 			    	<div class="col-xs-2">
-			    		<img class="img-thumbnail" ng-src="assets/logos_mkp/{{provprojects.getImage(srv.service.name)}}" alt="Imatge fake" />
+			    		<img class="img-thumbnail" ng-src="assets/logos_mkp/{{provprojects.getImage(srv.service.name)}}" alt="Imatge servei" />
 			    	</div>
 					<div class="col-xs-10">
 						<ul class="list-inline">
@@ -50,8 +99,13 @@
 					</div>
 			    </div>
 			  </div>
-			</div>
+			</div> -->
 		</div>
 	</div>
 
 </div>
+
+<script type="text/javascript" src="assets/js/jquery.tablesorter.min.js"></script>
+<script>
+	angular.element('#provservices').tablesorter();
+</script>

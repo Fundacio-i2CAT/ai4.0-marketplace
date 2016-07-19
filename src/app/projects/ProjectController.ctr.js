@@ -63,12 +63,14 @@
 					image = 'cloud-services2.jpg';
 					break;
 				case 'openstack':
-					image = 'cloud-services2.jpg'
+					image = 'cloud-services2.jpg';
+					break;
 				case 'service1':
-					image = 'services01.jpg'
+					image = 'services01.jpg';
 					break;
 				default:
-					image = 'services01.jpg'
+					image = 'services01.jpg';
+					break;
 			}
 			return image;
 		}
@@ -87,12 +89,12 @@
 			progressbar.complete();
 		};
 
-		vm.getAllServices = function(){
+		/*vm.getAllServices = function(){
 			ServiceFactory.getAllServices().then(function(response){
 				if (response.status === 200) {
 				}
 			});
-		}
+		}*/
 
 		vm.confirmProviderProject = function (srv) {
 			/////////////////////////////////////////////////////////////////////
@@ -173,7 +175,7 @@
 								}
 							});
 						});
-					}, 3000);
+					}, 5000);
 					
 				}
 			});

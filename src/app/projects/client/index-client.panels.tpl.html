@@ -1,0 +1,67 @@
+<div class="container">
+	<div class="page-header">
+		<h2>Projectes de Client <small>Index</small> <span class="pull-right"><a ui-sref="project-new" class="btn btn-primary btn-xs"><i class="fa fa-plus"></i>&nbsp;Crear Projecte</a></span></h2>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<div class="panel panel-default difuminar" ng-repeat="srv in clientprojects.allClientProjects">
+				<div class="panel-heading">
+					<h3 class="panel-title"><strong>{{srv.name}}</strong>
+					<span class="pull-right"><a ng-click="clientprojects.deleteProject(srv._id)" class="btn btn-default btn-xs">
+					<i class="fa fa-trash-o"></i>&nbsp;Borrar</a></span>
+					<span class="project-actions pull-right"><a ng-click="clientprojects.goEditProject(srv._id)" class="btn btn-default btn-xs" ng-if="srv.status !== 3">
+					<i class="fa fa-pencil"></i>&nbsp;Editar</a></span>
+					</h3>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-xs-1">
+							<img class="img" width="60px" height="auto" ng-src="assets/logos_mkp/project.png" alt="Imatge Projecte" />
+						</div>
+						<div class="col-xs-11">
+							<ul class="list-inline">
+								<li class="prov-lists">
+									<p>Status</p>
+									<h4><span class="label" ng-class="(srv.status === 1) ? 'label-success' : 'label-danger'">{{clientprojects.getLiteralStatus(srv.status)}}</span></h4>
+								</li>
+								<li class="prov-lists">
+									<p>Creació</p>
+									<h4><span class="label label-default">{{srv.created_at | date: 'dd-MM-yyyy'}}</span></h4>
+								</li>
+								<li class="prov-lists pull-right" ng-if="srv.status >= 3 || srv.status < 6">
+									<p>Accions</p>
+									<button ng-show="srv.status === 3 || srv.status === 4 || srv.status === 6" class="btn btn-success btn-xs" ng-click="clientprojects.runProject(srv._id)">
+									<i class="fa fa-play"></i>
+									Arrencar
+									</button>
+									<button ng-show="srv.status === 5" class="btn btn-danger btn-xs" ng-click="clientprojects.stopProject(srv._id)">
+									<i class="fa fa-stop"></i>
+									Aturar
+									</button>
+								</li>
+							</ul>
+							<hr/>
+						</div>
+						<div class="row">
+							<div class="col-xs-11 col-xs-offset-1">
+								<div class="media" ng-repeat="one in srv.services">
+									<div class="media-left col-xs-2">
+										<a href="#">
+											<img ng-src="assets/logos_mkp/{{clientprojects.getImage(one.service.name)}}" alt="Service little image" class="media-object little-service">
+										</a>
+									</div>
+									<div class="media-body">
+										<h4 class="media-heading">{{one.service.name}}</h4>
+										{{one.summary}}
+									</div>
+								</div>
+							</div>
+							
+						</div>
+						
+					</div>
+				</div>
+				</div> <!-- final panel -->
+			</div>
+		</div>
+	</div>

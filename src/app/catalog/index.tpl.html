@@ -1,6 +1,6 @@
 <div class="container">
 	<div class="page-header">
-		<h2  class="text text-danger">Catàleg </h2>
+		<h2  class="text text-danger"><strong>CATÀLEG</strong></h2>
 	</div>
 	<div class="row">
 		<ul class="nav nav-tabs">
@@ -19,7 +19,8 @@
 					<br/>
 					<!-- <p><img class="img-thumbnail catalog" ng-src="assets/logos_mkp/{{catalog.getImage(one.name)}}" alt="Imatge servei"></p> -->
 					<p>{{one.summary}}</p>
-					<p><strong>Provider </strong>{{one.provider.name}}</p>
+					<p><strong>Proveïdor </strong>{{one.provider.name}}</p>
+					<!-- <img width="100px" height="auto" ng-src="assets/images/logos/{{catalog.getProviderImage(one.provider.name)}}" alt=""> -->
 				</div>
 				<div class="panel-footer">
 					<span class="label" ng-class="(one.service_type === 'iss') ? 'label-primary' : 'label-danger'">{{one.service_type}}</span>
