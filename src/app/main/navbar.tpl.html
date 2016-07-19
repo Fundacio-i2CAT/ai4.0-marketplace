@@ -8,7 +8,7 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
       </button>
-      <a  class="navbar-brand navlogo" ui-sref="home"><img src="../../assets/images/logos/Anella4_temporal.png" alt="Anella 4.0"></a>
+      <a  class="navbar-brand navlogo" ui-sref="home"><img src="../../assets/images/logos/Plataforma4_o_logo.png" alt="Anella 4.0"></a>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -16,6 +16,15 @@
         <li><a class="toclose" ui-sref="catalog">Catàleg</a></li>
         <li><a ng-if="menuUser.role==='Partner.Provider'" class="toclose" ui-sref="provprojects">Serveis</a></li>
         <li><a ng-if="menuUser.role==='Partner.Client'" class="toclose" ui-sref="clientprojects">Projectes</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Llengua <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li class="pull-right"><a class="toclose" ui-sref="login"><i class="fa fa-check"></i>&nbsp;&nbsp;CAT</a></li>
+            <li class="pull-right"><a class="toclose" ui-sref="register">CAST</a></li>
+          </ul>
+        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li ng-if="!menuUser.isLogged"><a class="toclose" ui-sref="login"><i class="fa fa-sign-in"></i> Accedir</a></li>
@@ -28,7 +37,11 @@
         </li>
         <li ng-if="menuUser.isLogged"><a class="toclose" ng-click="logout()"><i class="fa fa-sign-out"></i> Sortir</a></li>
       </ul>
-      <!--   <ul ng-if="!menuUser.isLogged" class="nav navbar-nav navbar-right">
+
+      
+
+
+      <!-- <ul ng-if="!menuUser.isLogged" class="nav navbar-nav navbar-right">
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Accés <span class="caret"></span></a>
           <ul class="dropdown-menu">
