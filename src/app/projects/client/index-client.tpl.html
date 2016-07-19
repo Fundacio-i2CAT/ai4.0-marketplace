@@ -1,9 +1,6 @@
 <div class="container">
-<script>
-	// $(document).ready(function() {
- 		$("#clientprojectstable").tablesorter();
-    // });
-</script>
+
+<!-- <a id="element" class="btn btn-primary btn-xs" data-toggle="popover" tabindex="0" data-trigger="focus" title="Popover title" data-content="Here's some amazing content.">Dismissible popover</a> -->
 	<div class="page-header">
 		<h2>Projectes de Client <small>Index</small> <span class="pull-right"><a ui-sref="project-new" class="btn btn-primary btn-xs"><i class="fa fa-plus"></i>&nbsp;Crear Projecte</a></span></h2>
 	</div>
@@ -12,15 +9,15 @@
 			<table id="clientprojectstable" class="table table-responsive table-hover">
 				<thead>
 					<tr>
-						<th>Projecte</th>
-						<th>Estat</th>
-						<th>Sol·licitud</th>
-						<th>Serveis</th>
-						<th>Accions</th>
+						<th class="col-xs-3">Projecte</th>
+						<th class="col-xs-2">Estat</th>
+						<th class="col-xs-2">Sol·licitud</th>
+						<th class="col-xs-3">Serveis</th>
+						<th class="col-xs-2">Accions</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="srv in clientprojects.allClientProjects | filter: searchword">
+					<tr show-services ng-repeat="srv in clientprojects.allClientProjects | filter: searchword">
 						<td class="vert-align">{{srv.name}}</td>
 						<td class="vert-align"><span class="label" ng-class="(srv.status === 1) ? 'label-success' : 'label-danger'">{{clientprojects.getLiteralStatus(srv.status)}}</span></td>
 						<td class="vert-align">{{srv.created_at | date: 'dd-MM-yyyy'}}</td>
@@ -44,6 +41,7 @@
 					</tr>
 				</tbody>
 			</table>
+
 			<!-- opcio table amb collapsable panels
 			
 			<table class="table table-responsive">
@@ -101,3 +99,9 @@
 		</div>
 	</div>
 </div>
+<script>
+	// $(document).ready(function() {
+ 		// $("#clientprojectstable").tablesorter();
+    // });
+    // $('#element').popover();
+</script>

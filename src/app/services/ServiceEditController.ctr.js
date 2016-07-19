@@ -38,10 +38,10 @@
 			var image = null;
 			switch(name) {
 				case 'Eurecat':
-					image = 'eurecat-logotip.jpg';
+					image = 'logo_degradat_72.jpg';
 				break;
 				case 'Adam':
-					image = 'logo_adam.png';
+					image = 'Adam_72.jpg';
 				break;
 			}
 			return image;
