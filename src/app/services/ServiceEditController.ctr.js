@@ -34,6 +34,21 @@
 			})
 		};
 
+		vm.getProviderImage = function (name) {
+			var image = null;
+			switch(name) {
+				case 'Eurecat':
+					image = 'eurecat-logotip.jpg';
+				break;
+				case 'Adam':
+					image = 'logo_adam.png';
+				break;
+			}
+			return image;
+		}
+
+
+
 		vm.getServiceById(serviceId);
 	}
 })();

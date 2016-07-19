@@ -16,10 +16,24 @@
 					
 					<!-- <p><img class="img-thumbnail catalog" src="assets/logos_mkp/{{catalog.getImage(one.name)}}" alt="Imatge servei"></p> -->
 					<p><strong><span class="text text-primary">PROVEIDOR</span></strong></p>
-					<p>{{detailsrv.nameProvider}}</p><br/>
+					<div class="row">
+						<div class="col-xs-2">
+							<p>{{detailsrv.nameProvider}}</p><br/>
+						</div>
+						<div class="col-xs-2">
+							<img ng-src="assets/images/Logos/{{detailsrv.getProviderImage(detailsrv.nameProvider)}}" alt="Imatge Proveïdor">
+						</div>
+					</div>
+					
+
+
 					<p><strong><span class="text text-primary">TIPUS DE SERVEI</span></strong></p>
 					<p>{{detailsrv.currentService.service_type}}</p><br/>
-					
+
+					<p><strong><span class="text text-primary">PREUS</span></strong></p>
+					<p>Detall de Preus</p><br/>
+
+
 					<p><strong><span class="text text-primary">SECTORS</span></strong></p>
 					<ul class="list list-unstyled list-inline">
 						<li ng-repeat="one in detailsrv.currentService.sectors">
