@@ -10,8 +10,9 @@
 		function NewProjectController(toastr, CurrentUserFactory, ROLES, $log, ServiceFactory, ProjectFactory, $location) {
 			var vm = this;
 			vm.allServices = [];
-
+			
 			var user = CurrentUserFactory.getCurrentUser();
+			
 			var client_id;
 			var services = [];
 			
