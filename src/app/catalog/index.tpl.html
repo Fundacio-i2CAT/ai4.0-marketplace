@@ -5,7 +5,7 @@
 	<div class="row">
 		<ul class="nav nav-tabs">
 			<li class="active"><a data-target="#all" data-toggle="tab">Tots</a></li>
-			<li ng-click="catalog.getAllServicesByService_type(type.name)" ng-repeat="type in catalog.allTypes"><a data-target="#{{type.name}}" data-toggle="tab">{{type.name}}</a></li>
+			<li ng-click="catalog.getAllServicesByService_type(type.name)" ng-repeat="type in catalog.allTypes"><a data-target="#{{type.name}}" data-toggle="tab">{{catalog.getDescriptionServiceType(type.name)}}</a></li>
 			
 		</ul>
 	</div>
@@ -22,7 +22,7 @@
 					<p><strong>Provider </strong>{{one.provider.name}}</p>
 				</div>
 				<div class="panel-footer">
-					<span class="label" ng-class="(one.service_type === 'iss') ? 'label-primary' : 'label-danger'">{{one.service_type}}</span>
+					<span class="label" ng-class="(one.service_type === 'iss') ? 'label-primary' : 'label-danger'">{{catalog.getDescriptionServiceType(one.service_type)}}</span>
 					<span ng-repeat="sec in one.sectors">
 						<span class="label label-default">{{sec}}</span>
 					</span>
@@ -43,7 +43,7 @@
 					<p><strong>Provider </strong>{{one.provider.name}}</p>
 				</div>
 				<div class="panel-footer">
-					<span class="label" ng-class="(one.service_type === 'iss') ? 'label-primary' : 'label-danger'">{{one.service_type}}</span>
+					<span class="label" ng-class="(one.service_type === 'iss') ? 'label-primary' : 'label-danger'">{{catalog.getDescriptionServiceType(one.service_type)}}</span>
 					<span ng-repeat="sec in one.sectors">
 						<span class="label label-default">{{sec}}</span>
 					</span>
@@ -62,7 +62,7 @@
 					<p><strong>Provider </strong>{{one.provider.name}}</p>
 				</div>
 				<div class="panel-footer">
-					<span class="label" ng-class="(one.service_type === 'iss') ? 'label-primary' : 'label-danger'">{{one.service_type}}</span>
+					<span class="label" ng-class="(one.service_type === 'iss') ? 'label-primary' : 'label-danger'">{{catalog.getDescriptionServiceType(one.service_type)}}</span>
 					<span ng-repeat="sec in one.sectors">
 						<span class="label label-default">{{sec}}</span>
 					</span>
