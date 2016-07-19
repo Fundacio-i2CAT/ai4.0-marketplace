@@ -1,24 +1,37 @@
 (function() {
 	'use strict';
 
-	/*angular
+	angular
 		.module('marketplace')
 		.controller('ModalController', ModalController);
 
-	ModalController.$inject = ['$modalInstance', 'item'/*, '$modal'];
+	ModalController.$inject = ['$scope', 'item'];
 
-	function ModalController($modalInstance, item, $modal) {
-		var vm = this;
+	function ModalController($scope, item) {
 
-		vm.srv = item;
+		$scope.item = item;
 
-		vm.ok = function (){
-			alert('ok');
+		$scope.getProviderImage = function (name) {
+			var image = null;
+			switch(name) {
+				case 'Eurecat':
+					image = 'logo_degradat_72.jpg';
+				break;
+				case 'Adam':
+					image = 'Adam_72.jpg';
+				break;
+			}
+			return image;
 		}
 
-		vm.cancel = function (){
-			alert('cancel');
+
+		/*$scope.ok = function (){
+			$close();
 		}
-	}*/
+
+		$scope.cancel = function (){
+			$uibModal.close('cancel');
+		}*/
+	}
 
 })();

@@ -1,13 +1,36 @@
 <div class="modal-header">
-	<h3 class="modal-title">I'm a modal!</h3>
+	<h4 class="modal-title">
+		<strong>{{item.name}}</strong>
+	</h4>
 </div>
 <div class="modal-body">
-	{{modal.item}}
-	{{modal.srv}}
-	{{catalog.item}}
-	{{catalog.srv}}
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th></th>
+					<th>Servei</th>
+					<th>Proveïdor</th>
+					<th>Inici</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="srv in item.services">
+					<td>
+						
+					</td>
+					<td>
+						{{srv.service.name}}
+					</td>
+					<td>
+						<img width="50" ng-src="assets/images/Logos/{{getProviderImage(srv.provider.name)}}" alt="">
+					</td>
+					<td>{{srv.created_at | date: 'dd-MM-yyyy'}}</td>
+				</tr>
+			</tbody>
+		</table>
 </div>
-<div class="modal-footer">
+<!-- <div class="modal-footer">
 	<button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
 	<button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
-</div>
+</div> -->
