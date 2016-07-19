@@ -8,6 +8,9 @@
 	ProjectController.$inject = ['$rootScope', '$timeout', 'toastr', 'ProjectFactory', '$log', '$state', 'UserFactory', 'ProviderProjectsMockFactory', 'ClientProjectsMockFactory', 'ProgressFactory', '$location', 'ServiceFactory', '$stateParams', 'CurrentUserFactory', 'ROLES'];
 	function ProjectController ($rootScope, $timeout, toastr, ProjectFactory, $log, $state, UserFactory, ProviderProjectsMockFactory, ClientProjectsMockFactory, ProgressFactory, $location, ServiceFactory, $stateParams, CurrentUserFactory, ROLES){
 		var vm = this;
+		vm.sortType = 'srv.project.name';
+		vm.sortReverse = true;
+
 		vm.model = {};
 		var services = [];
 		//getAll projects

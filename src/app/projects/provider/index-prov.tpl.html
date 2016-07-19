@@ -4,7 +4,10 @@
 				Serveis de Proveïdor <small>Index</small> <!-- <span class="pull-right"><a class="btn btn-primary btn-xs" ui-sref="provinstances">Instàncies de projecte</a></span> -->
 			</h2>
 	</div>
-
+	<p>
+		{{provprojects.sortType}}
+		{{provprojects.sortReverse}}
+	</p>
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<table id="provservices" class="table table-responsive table-hover">
@@ -13,19 +16,37 @@
 						<th></th>
 						<th>Servei</th>
 						<th>Client</th>
-						<th>Estat</th>
-						<th>Projecte</th>
-						<th>Creació</th>
+						<th>
+							<a ng-click="provprojects.sortType = 'srv.status'; provprojects.sortReverse = !provprojects.sortReverse">
+				            Estat 
+				            <span ng-show="provprojects.sortType == 'srv.status' && !provprojects.sortReverse" class="fa fa-caret-down"></span>
+				            <span ng-show="provprojects.sortType == 'srv.status' && provprojects.sortReverse" class="fa fa-caret-down"></span>
+				          </a>
+						</th>
+						<th>
+							<a ng-click="provprojects.sortType = 'srv.project.name'; provprojects.sortReverse = !provprojects.sortReverse">
+				            Projecte 
+				            <span ng-show="provprojects.sortType == 'srv.project.name' && !provprojects.sortReverse" class="fa fa-caret-down"></span>
+				            <span ng-show="provprojects.sortType == 'srv.project.name' && provprojects.sortReverse" class="fa fa-caret-down"></span>
+				          </a>
+						</th>
+						<th>
+							<a ng-click="provprojects.sortType = 'srv.created_at'; provprojects.sortReverse = !provprojects.sortReverse">
+					            Creació 
+					            <span ng-show="provprojects.sortType == 'srv.created_at' && !provprojects.sortReverse" class="fa fa-caret-down"></span>
+					            <span ng-show="provprojects.sortType == 'srv.created_at' && provprojects.sortReverse" class="fa fa-caret-up"></span>
+					          </a>
+						</th>
 						<th>Accions</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="srv in provprojects.allProviderProjects">
+					<tr ng-repeat="srv in provprojects.allProviderProjects | orderBy:provprojects.sortType:provprojects.sortReverse">
 						<td>
 							<img width="60px" class="img-thumbnail" ng-src="assets/logos_mkp/{{provprojects.getImage(srv.service.name)}}" alt="Imatge servei" />
 						</td>
 						<td class="vert-align">
-							{{srv.service.name}}
+					        {{srv.service.name}} 
 						</td>
 						<td class="vert-align">
 							{{srv.client.name}}
@@ -105,7 +126,3 @@
 
 </div>
 
-<script type="text/javascript" src="assets/js/jquery.tablesorter.min.js"></script>
-<script>
-	angular.element('#provservices').tablesorter();
-</script>
