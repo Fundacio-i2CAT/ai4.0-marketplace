@@ -23,13 +23,13 @@
       })
       .state('provprojects', {
         url: '/provprojects',
-        templateUrl: 'app/projects/provider/index-prov.tpl.html', controller: 'ProjectController', controllerAs: 'provprojects',
-        need: 'Partner.Provider'
+        templateUrl: 'app/projects/provider/index-prov.tpl.html', controller: 'ProjectController', controllerAs: 'provprojects'/*,
+        need: 'Partner.Provider'*/
       })
       .state('clientprojects', {
         url: '/clientprojects',
-        templateUrl: 'app/projects/client/index-client.tpl.html', controller: 'ProjectController', controllerAs: 'clientprojects',
-        need: 'Partner.Client'
+        templateUrl: 'app/projects/client/index-client.tpl.html', controller: 'ProjectController', controllerAs: 'clientprojects'/*,
+        need: 'Partner.Client'*/
       })
       .state('project-new', {
         url: '/clientproject/new',
