@@ -7,13 +7,22 @@
 	CatalogController.$inject = ['CatalogFactory', '$location', 'ProgressFactory'];
 	function CatalogController(CatalogFactory, $location, ProgressFactory) {
 		var vm = this;
+		var servicesTypes = [];
 
 		vm.getAllTypes = function () {
-			CatalogFactory.getAllTypes().then(function (response){
-				if (response.status === 200) {
-					vm.allTypes = response.data;
-				}
-			});
+			if (servicesTypes.length == 0){
+				CatalogFactory.getAllTypes().then(function (response){
+					if (response.status === 200) {
+						vm.allTypes = response.data;
+						vm.allTypes.forEach(function (each){
+							var o = {};
+							o.name = each.name;
+							o.description = each.description;
+							servicesTypes.push(o);
+						});
+					}
+				});
+			}			
 		};
 
 		vm.getAllServices = function () {
@@ -74,6 +83,14 @@
 					break;
 			}
 			return image;
+		}
+
+		vm.getDescriptionServiceType = function(name){
+			var description;
+			servicesTypes.forEach(function(item){				
+				if (item.name === name) description = item.description;				
+			});
+			return description;
 		}
 
 		vm.getAllTypes();
