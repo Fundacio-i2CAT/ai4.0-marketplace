@@ -5,8 +5,8 @@
 		.module('marketplace')
 		.controller('ProjectController', ProjectController);
 
-	ProjectController.$inject = ['$rootScope', '$timeout', 'toastr', 'ProjectFactory', '$log', '$state', 'UserFactory', 'ProviderProjectsMockFactory', 'ClientProjectsMockFactory', 'ProgressFactory', '$location', 'ServiceFactory', '$stateParams', 'CurrentUserFactory', 'ROLES'];
-	function ProjectController ($rootScope, $timeout, toastr, ProjectFactory, $log, $state, UserFactory, ProviderProjectsMockFactory, ClientProjectsMockFactory, ProgressFactory, $location, ServiceFactory, $stateParams, CurrentUserFactory, ROLES){
+	ProjectController.$inject = ['$rootScope', '$timeout', 'toastr', 'ProjectFactory', '$log', '$state', 'UserFactory', 'ProviderProjectsMockFactory', 'ClientProjectsMockFactory', 'ProgressFactory', '$location', 'ServiceFactory', '$stateParams', 'CurrentUserFactory', 'ROLES', 'usSpinnerService'];
+	function ProjectController ($rootScope, $timeout, toastr, ProjectFactory, $log, $state, UserFactory, ProviderProjectsMockFactory, ClientProjectsMockFactory, ProgressFactory, $location, ServiceFactory, $stateParams, CurrentUserFactory, ROLES, usSpinnerService){
 		var vm = this;
 		vm.sortType = 'srv.project.name';
 		vm.sortReverse = true;
@@ -178,8 +178,10 @@
 
 		//runProject (by Client user)
 		vm.runProject = function (id) {
-			var progressbar = ProgressFactory.progressBarConfigure();
-			progressbar.start();
+			// var progressbar = ProgressFactory.progressBarConfigure();
+			// progressbar.start();
+			usSpinnerService.spin('spinner-1');
+			usSpinnerService
 			ProjectFactory.runProject(id).then(function (response){
 				if (response.status === 200) {
 					$timeout( function(){
@@ -195,7 +197,8 @@
 					
 				}
 			});
-			progressbar.complete();
+			usSpinnerService.stop('spinner-1');
+			// progressbar.complete();
 		}
 
 		vm.getStatus = function (id){

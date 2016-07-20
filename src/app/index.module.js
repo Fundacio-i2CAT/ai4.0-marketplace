@@ -11,6 +11,7 @@
 								'pascalprecht.translate',
 								'ngProgress',
 								'ui.bootstrap',
-								'LocalStorageModule']);
+								'LocalStorageModule',
+								'angularSpinner']);
 
 })();

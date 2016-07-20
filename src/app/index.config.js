@@ -6,7 +6,7 @@
     .config(config);
 
   /** @ngInject */
-  function config($logProvider, toastrConfig, localStorageServiceProvider) {
+  function config($logProvider, toastrConfig, localStorageServiceProvider, usSpinnerConfigProvider) {
     // Enable log
     $logProvider.debugEnabled(true);
 
@@ -28,5 +28,12 @@
     toastrConfig.newestOnTop = true,
     toastrConfig.maxOpened = 5;
     toastrConfig.progressBar = false;
+
+
+
+
+
+    //spinner
+    usSpinnerConfigProvider.setDefaults({color: 'blue'});
   }
 })();
