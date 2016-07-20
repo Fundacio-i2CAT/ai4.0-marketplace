@@ -1,12 +1,17 @@
 <div class="container">
 	<div class="page-header">
 			<h2>
-				Serveis de Proveïdor <small>Index</small> <!-- <span class="pull-right"><a class="btn btn-primary btn-xs" ui-sref="provinstances">Instàncies de projecte</a></span> -->
+				Serveis <!-- <span class="pull-right"><a class="btn btn-primary btn-xs" ui-sref="provinstances">Instàncies de projecte</a></span> -->
 			</h2>
 	</div>
 
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<div class="row">
+				<div class="col-xs-6 col-xs-offset-6">
+					<input class="form-control input-sm" placeholder="Filtrar Serveis" type="text" ng-model="searchingWord">
+				</div>
+			</div>
 			<table id="provservices" class="table table-responsive table-hover">
 				<thead>
 					<tr>
@@ -50,7 +55,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
+					<!-- <tr>
 						<td></td>
 						<td>
 							<input class="form-control input-sm" type="text" ng-model="searchingWord.service.name">
@@ -65,7 +70,7 @@
 						<td>
 							<input class="form-control input-sm" type="text" ng-model="searchingWord.created_at">
 						</td>
-					</tr>
+					</tr> -->
 					<tr ng-repeat="srv in provprojects.allProviderProjects | orderBy:provprojects.sortType:provprojects.sortReverse | filter: searchingWord">
 						<td>
 							<img width="60px" class="img-thumbnail" ng-src="assets/logos_mkp/{{provprojects.getImage(srv.service.name)}}" alt="Imatge servei" />
@@ -77,8 +82,8 @@
 							{{srv.client.name}}
 						</td>
 						<td class="vert-align">
-							<p ng-if="srv.status !== 8" ><span class="label" ng-class="(srv.status < 3) ? 'label-danger' : 'label-success'"><i class="fa" ng-class="(srv.status < 3) ? 'fa-exclamation-triangle' : 'fa-check-square-o'"></i> {{(srv.status < 3) ? 'Pendent' : 'Confirmat'}}</span></p>
-			    			<p ng-if="srv.status === 8"><span class="label label-danger"><i class="fa fa-stop-circle"></i> Inactiu</span></p>
+							<p ng-if="srv.status !== 8" ><span class="label label-status" ng-class="(srv.status < 3) ? 'label-danger' : 'label-success'">{{(srv.status < 3) ? 'Pendent' : 'Confirmat'}}</span></p>
+			    			<p ng-if="srv.status === 8"><span class="label label-danger">Inactiu</span></p>
 						</td>
 						<td class="vert-align">
 							{{srv.project.name}}

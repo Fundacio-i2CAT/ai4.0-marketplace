@@ -2,10 +2,16 @@
 
 <!-- <a id="element" class="btn btn-primary btn-xs" data-toggle="popover" tabindex="0" data-trigger="focus" title="Popover title" data-content="Here's some amazing content.">Dismissible popover</a> -->
 	<div class="page-header">
-		<h2>Projectes de Client <small>Index</small> <span class="pull-right"><a ui-sref="project-new" class="btn btn-primary btn-xs"><i class="fa fa-plus"></i>&nbsp;Crear Projecte</a></span></h2>
+		<h2>Projectes <span class="pull-right"><a ui-sref="project-new" class="btn btn-primary btn-xs"><i class="fa fa-plus"></i>&nbsp;Crear Projecte</a></span></h2>
 	</div>
 	<div class="row tabla-client">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<div class="row">
+				<div class="col-xs-6 col-xs-offset-6">
+					<input type="text" placeholder="Filtrar Projectes" class="form-control input-sm" ng-model="searchword" />
+					<br/>
+				</div>
+			</div>
 			<table id="clientprojectstable" class="table table-responsive table-hover">
 				<thead>
 					<tr>
@@ -41,12 +47,12 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
+					<!-- <tr>
 						<td><input type="text" placeholder="Filtrar Projecte" class="form-control input-sm" ng-model="searchword.name" /></td>
 						<td></td>
 						<td><input type="text" placeholder="Filtrar Data sol·licitud" class="form-control input-sm" ng-model="searchword.created_at" /></td>
 						<td><input type="text" placeholder="Filtrar Servei" class="form-control input-sm" ng-model="searchword.service.name" /></td>
-					</tr>
+					</tr> -->
 					<tr ng-repeat="srv in clientprojects.allClientProjects | orderBy:clientprojects.sortTypeClient:clientprojects.sortReverseClient | filter: searchword">
 						<td show-services class="vert-align">{{srv.name}}</td>
 						<td show-services class="vert-align"><span class="label label-status" ng-class="(srv.status === 1) ? 'label-success' : 'label-danger'">{{clientprojects.getLiteralStatus(srv.status)}}</span></td>
