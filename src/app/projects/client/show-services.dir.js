@@ -14,6 +14,7 @@
 			link: function (scope, element, attrs) {
 				element.on('click', function(){
 					var modalInstance = $uibModal.open({
+						animation: true,
 						controller: 'ModalController',
 				    	templateUrl: 'app/common/modal/modal.tpl.html',
 				    	backdropClass: 'modal-position',

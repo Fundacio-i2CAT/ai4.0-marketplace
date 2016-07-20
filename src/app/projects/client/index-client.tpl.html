@@ -17,11 +17,17 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr show-services ng-repeat="srv in clientprojects.allClientProjects | filter: searchword">
-						<td class="vert-align">{{srv.name}}</td>
-						<td class="vert-align"><span class="label" ng-class="(srv.status === 1) ? 'label-success' : 'label-danger'">{{clientprojects.getLiteralStatus(srv.status)}}</span></td>
-						<td class="vert-align">{{srv.created_at | date: 'dd-MM-yyyy'}}</td>
-						<td class="vert-align">
+					<tr>
+						<td><input type="text" placeholder="Filtrar Projecte" class="form-control input-sm" ng-model="searchword.name" /></td>
+						<td></td>
+						<td><input type="text" placeholder="Filtrar Data sol·licitud" class="form-control input-sm" ng-model="searchword.created_at" /></td>
+						<td><input type="text" placeholder="Filtrar Servei" class="form-control input-sm" ng-model="searchword.service.name" /></td>
+					</tr>
+					<tr ng-repeat="srv in clientprojects.allClientProjects | filter: searchword">
+						<td show-services class="vert-align">{{srv.name}}</td>
+						<td show-services class="vert-align"><span class="label label-status" ng-class="(srv.status === 1) ? 'label-success' : 'label-danger'">{{clientprojects.getLiteralStatus(srv.status)}}</span></td>
+						<td show-services class="vert-align">{{srv.created_at | date: 'dd-MM-yyyy'}}</td>
+						<td show-services class="vert-align">
 							<ul class="list list-unstyled">
 								<li ng-repeat="one in srv.services">{{one.service.name}}</li>
 							</ul>
