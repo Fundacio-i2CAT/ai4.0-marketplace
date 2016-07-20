@@ -7,8 +7,8 @@
 	<div class="row tabla-client">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<div class="row">
-				<div class="col-xs-6 col-xs-offset-6">
-					<input type="text" placeholder="Filtrar Projectes" class="form-control input-sm" ng-model="searchword" />
+				<div class="col-xs-4 col-xs-offset-8">
+					<input type="text" placeholder="Filtrar Projectes" class="form-control input-sm pull-left" ng-model="searchword" />
 					<br/>
 				</div>
 			</div>
@@ -55,7 +55,7 @@
 					</tr> -->
 					<tr ng-repeat="srv in clientprojects.allClientProjects | orderBy:clientprojects.sortTypeClient:clientprojects.sortReverseClient | filter: searchword">
 						<td show-services class="vert-align">{{srv.name}}</td>
-						<td show-services class="vert-align"><span class="label label-status" ng-class="(srv.status === 1) ? 'label-success' : 'label-danger'">{{clientprojects.getLiteralStatus(srv.status)}}</span></td>
+						<td show-services class="vert-align"><span class="label label-status" ng-class="(srv.status === 1) ? 'label-danger' : 'label-success'">{{clientprojects.getLiteralStatus(srv.status)}}</span></td>
 						<td show-services class="vert-align">{{srv.created_at | date: 'dd-MM-yyyy'}}</td>
 						<td show-services class="vert-align">
 							<ul class="list list-unstyled">

@@ -8,7 +8,7 @@
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<div class="row">
-				<div class="col-xs-6 col-xs-offset-6">
+				<div class="col-xs-4 col-xs-offset-8">
 					<input class="form-control input-sm" placeholder="Filtrar Serveis" type="text" ng-model="searchingWord">
 				</div>
 			</div>
@@ -83,7 +83,7 @@
 						</td>
 						<td class="vert-align">
 							<p ng-if="srv.status !== 8" ><span class="label label-status" ng-class="(srv.status < 3) ? 'label-danger' : 'label-success'">{{(srv.status < 3) ? 'Pendent' : 'Confirmat'}}</span></p>
-			    			<p ng-if="srv.status === 8"><span class="label label-danger">Inactiu</span></p>
+			    			<p ng-if="srv.status === 8"><span class="label label-status label-success">Inactiu</span></p>
 						</td>
 						<td class="vert-align">
 							{{srv.project.name}}
