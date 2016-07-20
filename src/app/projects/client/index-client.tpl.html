@@ -9,10 +9,34 @@
 			<table id="clientprojectstable" class="table table-responsive table-hover">
 				<thead>
 					<tr>
-						<th class="col-xs-3">Projecte</th>
-						<th class="col-xs-2">Estat</th>
-						<th class="col-xs-2">Sol·licitud</th>
-						<th class="col-xs-3">Serveis</th>
+						<th class="col-xs-3">
+							<a ng-click="clientprojects.sortTypeClient = 'name'; clientprojects.sortReverseClient = !clientprojects.sortReverseClient">
+				            	Projecte 
+				            	<span ng-show="clientprojects.sortTypeClient == 'name' && !clientprojects.sortReverseClient" class="fa fa-caret-down"></span>
+				            	<span ng-show="clientprojects.sortTypeClient == 'name' && clientprojects.sortReverseClient" class="fa fa-caret-up"></span>
+				            <a/>
+						</th>
+						<th class="col-xs-2">
+							<a ng-click="clientprojects.sortTypeClient = 'status'; clientprojects.sortReverseClient = !clientprojects.sortReverseClient">
+				            	Estat 
+				            	<span ng-show="clientprojects.sortTypeClient == 'status' && !clientprojects.sortReverseClient" class="fa fa-caret-down"></span>
+				            	<span ng-show="clientprojects.sortTypeClient == 'status' && clientprojects.sortReverseClient" class="fa fa-caret-up"></span>
+				            <a/>
+						</th>
+						<th class="col-xs-2">
+							<a ng-click="clientprojects.sortTypeClient = 'created_at'; clientprojects.sortReverseClient = !clientprojects.sortReverseClient">
+				            	Sol·licitud 
+				            	<span ng-show="clientprojects.sortTypeClient == 'created_at' && !clientprojects.sortReverseClient" class="fa fa-caret-down"></span>
+				            	<span ng-show="clientprojects.sortTypeClient == 'created_at' && clientprojects.sortReverseClient" class="fa fa-caret-up"></span>
+				            <a/>
+						</th>
+						<th class="col-xs-3">
+							<a ng-click="clientprojects.sortTypeClient = 'service.name'; clientprojects.sortReverseClient = !clientprojects.sortReverseClient">
+				            	Serveis
+				            	<span ng-show="clientprojects.sortTypeClient == 'service.name' && !clientprojects.sortReverseClient" class="fa fa-caret-down"></span>
+				            	<span ng-show="clientprojects.sortTypeClient == 'service.name' && clientprojects.sortReverseClient" class="fa fa-caret-up"></span>
+				            <a/>
+						</th>
 						<th class="col-xs-2">Accions</th>
 					</tr>
 				</thead>
@@ -23,7 +47,7 @@
 						<td><input type="text" placeholder="Filtrar Data sol·licitud" class="form-control input-sm" ng-model="searchword.created_at" /></td>
 						<td><input type="text" placeholder="Filtrar Servei" class="form-control input-sm" ng-model="searchword.service.name" /></td>
 					</tr>
-					<tr ng-repeat="srv in clientprojects.allClientProjects | filter: searchword">
+					<tr ng-repeat="srv in clientprojects.allClientProjects | orderBy:clientprojects.sortTypeClient:clientprojects.sortReverseClient | filter: searchword">
 						<td show-services class="vert-align">{{srv.name}}</td>
 						<td show-services class="vert-align"><span class="label label-status" ng-class="(srv.status === 1) ? 'label-success' : 'label-danger'">{{clientprojects.getLiteralStatus(srv.status)}}</span></td>
 						<td show-services class="vert-align">{{srv.created_at | date: 'dd-MM-yyyy'}}</td>
@@ -33,7 +57,11 @@
 							</ul>
 						</td>
 						<td class="vert-align">
-							<span  ng-if="srv.status >= 3 || srv.status < 6">
+							<span class="pull-right">&nbsp;&nbsp;&nbsp;<a ng-click="clientprojects.deleteProject(srv._id)" class="btn btn-default btn-xs">
+								<i class="fa fa-trash-o"></i></a>
+								
+							</span>
+							<span  class="pull-right" ng-if="srv.status >= 3 || srv.status < 6">
 								<button ng-show="srv.status === 3 || srv.status === 4 || srv.status === 6" class="btn btn-success btn-xs" ng-click="clientprojects.runProject(srv._id)">
 									<i class="fa fa-play"></i>
 									Arrencar
@@ -43,6 +71,9 @@
 									Aturar
 								</button>
 							</span>
+							
+							<!-- <span class="project-actions pull-right"><a ng-click="clientprojects.goEditProject(srv._id)" class="btn btn-default btn-xs" ng-if="srv.status !== 3">
+							<i class="fa fa-pencil"></i></a></span> -->
 						</td>
 					</tr>
 				</tbody>
@@ -105,9 +136,3 @@
 		</div>
 	</div>
 </div>
-<script>
-	// $(document).ready(function() {
- 		// $("#clientprojectstable").tablesorter();
-    // });
-    // $('#element').popover();
-</script>
