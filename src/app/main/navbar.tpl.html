@@ -17,6 +17,7 @@
         <li><a ng-if="menuUser.role==='Partner.Provider'" class="toclose" ui-sref="provprojects">Serveis</a></li>
         <li><a ng-if="menuUser.role==='Partner.Client'" class="toclose" ui-sref="clientprojects">Projectes</a></li>
       </ul>
+      <!-- 
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Llengua <span class="caret"></span></a>
@@ -26,6 +27,7 @@
           </ul>
         </li>
       </ul>
+      -->
       <ul class="nav navbar-nav navbar-right">
         <li ng-if="!menuUser.isLogged"><a class="toclose" ui-sref="login"><i class="fa fa-sign-in"></i> Accedir</a></li>
         <li ng-if="menuUser.isLogged" class="user">
@@ -37,9 +39,10 @@
         </li>
         <li ng-if="menuUser.isLogged"><a class="toclose" ng-click="logout()"><i class="fa fa-sign-out"></i> Sortir</a></li>
       </ul>
-
-      
-
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#" style="font-size: smaller; color:#DF7401; font-weight:bold">CAT</a></li>
+        <li><a href="#" style="font-size: smaller;">CAST</a></li> 
+      </ul>
 
       <!-- <ul ng-if="!menuUser.isLogged" class="nav navbar-nav navbar-right">
         <li class="dropdown">
