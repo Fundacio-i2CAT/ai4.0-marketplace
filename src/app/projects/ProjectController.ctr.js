@@ -10,6 +10,8 @@
 		var vm = this;
 		vm.sortType = 'srv.project.name';
 		vm.sortReverse = true;
+		vm.sortTypeClient = '';
+		vm.sortReverseClient = false;
 
 		vm.model = {};
 		var services = [];
