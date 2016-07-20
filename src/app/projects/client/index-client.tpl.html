@@ -18,10 +18,10 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td><input type="text" placeholder="Filtrar Projecte" class="form-control input-sm" ng-model="searchword.name"></td>
-						<td><input type="text" placeholder="Filtrar Estat" class="form-control input-sm" ng-model="searchword.status"></td>
+						<td><input type="text" placeholder="Filtrar Projecte" class="form-control input-sm" ng-model="searchword.name" /></td>
 						<td></td>
-						<td><input type="text" placeholder="Filtrar Servei" class="form-control input-sm" ng-model="searchword"></td>
+						<td><input type="text" placeholder="Filtrar Data sol·licitud" class="form-control input-sm" ng-model="searchword.created_at" /></td>
+						<td><input type="text" placeholder="Filtrar Servei" class="form-control input-sm" ng-model="searchword.service.name" /></td>
 					</tr>
 					<tr ng-repeat="srv in clientprojects.allClientProjects | filter: searchword">
 						<td show-services class="vert-align">{{srv.name}}</td>
