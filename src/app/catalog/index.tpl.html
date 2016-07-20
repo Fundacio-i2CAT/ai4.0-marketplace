@@ -24,9 +24,10 @@
 				</div>
 				<div class="panel-footer">
 					<span class="label" ng-class="(one.service_type === 'iss') ? 'label-primary' : 'label-danger'">{{catalog.getDescriptionServiceType(one.service_type)}}</span>
-					<span ng-repeat="sec in one.sectors">
+					<!-- <span ng-repeat="sec in one.sectors">
 						<span class="label label-default">{{sec}}</span>
-					</span>
+					</span> -->
+					<img height="25" class="pull-right" ng-src="assets/images/Logos/{{catalog.getProviderImage(one.provider.name)}}" alt="">
 				</div>
 			</div>
 		</div>

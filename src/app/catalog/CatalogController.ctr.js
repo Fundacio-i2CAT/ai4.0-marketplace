@@ -91,7 +91,21 @@
 				if (item.name === name) description = item.description;				
 			});
 			return description;
-		}
+		};
+
+		vm.getProviderImage = function (name) {
+			var image = null;
+			switch(name) {
+				case 'Eurecat':
+					image = 'logo_degradat_72.jpg';
+				break;
+				case 'Adam':
+					image = 'Adam_72.jpg';
+				break;
+			}
+			return image;
+		};
+
 
 		vm.getAllTypes();
 		vm.getAllServices();
