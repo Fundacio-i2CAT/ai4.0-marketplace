@@ -84,9 +84,20 @@
 			
 			ProjectFactory.getProviderProjectsByPartnerId(partnerId).then(function(response) {
 				if (response.data.status === 'fail') {
-					toastr.error('Hi ha hagut un errror al obtenir els projectes...', 'Hi ha un problema');
+					toastr.error('Hi ha hagut un error al obtenir els projectes...', 'Hi ha un problema');
 				} else {
-					vm.allProviderProjects = response.data.result;					
+					vm.allProviderProjects = response.data.result;
+					var hasPendings = false;
+					var i = 0;
+					vm.allProviderProjects.forEach(function(each){
+						if (each.status === 1){
+							hasPendings = true;
+							i = i +1;
+						} 
+
+					});
+					if (hasPendings) toastr.info("Té " + i + " projectes(s) per confirmar");
+					
 				}
 			});
 			progressbar.complete();

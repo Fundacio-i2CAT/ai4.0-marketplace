@@ -22,13 +22,11 @@
 
     // toastr / Set options third-party lib
     toastrConfig.allowHtml = true;
-    toastrConfig.timeOut = 25000;
+    toastrConfig.timeOut = 1500;
     toastrConfig.positionClass = 'toast-top-right';
     toastrConfig.preventDuplicates = false;
     toastrConfig.newestOnTop = true,
     toastrConfig.maxOpened = 5;
-    toastrConfig.progressBar = true;
+    toastrConfig.progressBar = false;
   }
-
-
 })();
