@@ -178,7 +178,7 @@
 								}
 							});
 						});
-					}, 5000);
+					}, 3000);
 					
 				}
 			});
@@ -197,7 +197,16 @@
 		vm.stopProject = function (id) {
 			ProjectFactory.stopProject(id).then(function (response){
 				if (response.status === 200) {
-					$state.reload();
+					$timeout( function(){
+						ProjectFactory.getProjectState(id).then(function(response){
+							$log.log('getProjectState response', response);
+							vm.allClientProjects.forEach(function(each) {
+								if (each._id === id) {
+									each.status = 6;
+								}
+							});
+						});
+					}, 3000);
 				}
 			});
 		}
