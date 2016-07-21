@@ -40,7 +40,9 @@
 						$location.path("/clientprojects");
 					}else{
 						toastr.error('Problema al crear projectes', response.data.msg);
+
 					}
+					$location.path("/clientprojects");
 				});
 			};
 

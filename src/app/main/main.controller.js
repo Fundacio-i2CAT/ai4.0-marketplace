@@ -6,10 +6,10 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($timeout, webDevTec, toastr) {
+  function MainController() {
     var vm = this;
 
-    vm.awesomeThings = [];
+    /*vm.awesomeThings = [];
     vm.classAnimation = '';
     vm.creationDate = 1466420758414;
     vm.showToastr = showToastr;
@@ -34,6 +34,6 @@
       angular.forEach(vm.awesomeThings, function(awesomeThing) {
         awesomeThing.rank = Math.random();
       });
-    }
+    }*/
   }
 })();

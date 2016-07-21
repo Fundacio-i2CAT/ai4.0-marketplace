@@ -5,13 +5,14 @@
 		.module('marketplace')
 		.controller('ProjectController', ProjectController);
 
-	ProjectController.$inject = ['$rootScope', '$timeout', 'toastr', 'ProjectFactory', '$log', '$state', 'UserFactory', 'ProviderProjectsMockFactory', 'ClientProjectsMockFactory', 'ProgressFactory', '$location', 'ServiceFactory', '$stateParams', 'CurrentUserFactory', 'ROLES', 'usSpinnerService'];
-	function ProjectController ($rootScope, $timeout, toastr, ProjectFactory, $log, $state, UserFactory, ProviderProjectsMockFactory, ClientProjectsMockFactory, ProgressFactory, $location, ServiceFactory, $stateParams, CurrentUserFactory, ROLES, usSpinnerService){
+	ProjectController.$inject = ['$rootScope', '$timeout', '$interval', 'toastr', 'ProjectFactory', '$log', '$state', 'UserFactory', 'ProviderProjectsMockFactory', 'ClientProjectsMockFactory', 'ProgressFactory', '$location', 'ServiceFactory', '$stateParams', 'CurrentUserFactory', 'ROLES', 'usSpinnerService'];
+	function ProjectController ($rootScope, $timeout, $interval, toastr, ProjectFactory, $log, $state, UserFactory, ProviderProjectsMockFactory, ClientProjectsMockFactory, ProgressFactory, $location, ServiceFactory, $stateParams, CurrentUserFactory, ROLES, usSpinnerService){
 		var vm = this;
 		vm.sortType = 'srv.project.name';
 		vm.sortReverse = true;
 		vm.sortTypeClient = '';
 		vm.sortReverseClient = false;
+		vm.showIp = false;
 
 		vm.model = {};
 		var services = [];
@@ -117,6 +118,8 @@
 			ProjectFactory.confirmProviderProject(srv).then(function(response){
 				if (response.status === 200) {
 					$state.reload();
+				} else {
+					toastr.error("No s'ha pogut confirmar el Servei...", 'Hi ha un error');
 				}
 			});
 		};
@@ -180,7 +183,7 @@
 		vm.runProject = function (id) {
 			// var progressbar = ProgressFactory.progressBarConfigure();
 			// progressbar.start();
-			usSpinnerService.spin('spinner-1');
+			
 
 			ProjectFactory.runProject(id).then(function (response){
 				if (response.status === 200) {
@@ -194,13 +197,22 @@
 							});
 						});
 					}, 3000);*/
-
-					ProjectFactory.getProjectState(id).then(function(response){
-						$log.log('getProjectState response', response);
-					});
+					var internalPromise = $interval(function(){
+						ProjectFactory.getProjectState(id).then(function(response){
+							$log.log('getProjectState Run response', response);
+							if (response.data.status === 5) {
+								$interval.cancel(internalPromise);
+								console.log('cancelado');
+								vm.stopSpin();
+								$state.reload();
+							}
+						});
+					}, 1000);
+					
+					
 				}
 			});
-			usSpinnerService.stop('spinner-1');
+			
 			// progressbar.complete();
 		}
 
@@ -216,7 +228,7 @@
 		vm.stopProject = function (id) {
 			ProjectFactory.stopProject(id).then(function (response){
 				if (response.status === 200) {
-					$timeout( function(){
+					/*$timeout( function(){
 						ProjectFactory.getProjectState(id).then(function(response){
 							$log.log('getProjectState response', response);
 							vm.allClientProjects.forEach(function(each) {
@@ -225,7 +237,20 @@
 								}
 							});
 						});
-					}, 3000);
+					}, 3000);*/
+
+					var internalPromiseStop = $interval(function(){
+						ProjectFactory.getProjectState(id).then(function(response){
+							$log.log('getProjectState Stop response', response);
+							if (response.data.status === 6) {
+								$interval.cancel(internalPromiseStop);
+								console.log('cancelado');
+								vm.stopSpin();
+								$state.reload();
+							}
+						});
+					}, 1000);
+
 				}
 			});
 		}

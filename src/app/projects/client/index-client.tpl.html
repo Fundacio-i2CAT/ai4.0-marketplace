@@ -57,7 +57,10 @@
 						<td><input type="text" placeholder="Filtrar Servei" class="form-control input-sm" ng-model="searchword.service.name" /></td>
 					</tr> -->
 					<tr ng-repeat="srv in clientprojects.allClientProjects | orderBy:clientprojects.sortTypeClient:clientprojects.sortReverseClient | filter: searchword">
-						<td show-services class="vert-align">{{srv.name}}</td>
+						<td show-services class="vert-align">
+							{{srv.name}}<br/>
+							<span ng-if="clientprojects.showIp"><a href="http://87.236.219.21:5006/stream_plot"> Gràfica</a></span>
+						</td>
 						<td show-services class="vert-align"><span class="label label-status" ng-class="(srv.status === 1) ? 'label-danger' : 'label-success'">{{clientprojects.getLiteralStatus(srv.status)}}</span></td>
 						<td show-services class="vert-align">{{srv.created_at | date: 'dd-MM-yyyy'}}</td>
 						<td show-services class="vert-align">
@@ -71,11 +74,11 @@
 								
 							</span>
 							<span  class="pull-right" ng-if="srv.status >= 3 || srv.status < 6">
-								<button ng-show="srv.status === 3 || srv.status === 4 || srv.status === 6" class="btn btn-success btn-xs" ng-click="clientprojects.runProject(srv._id)">
+								<button ng-show="srv.status === 3 || srv.status === 4 || srv.status === 6" class="btn btn-success btn-xs" ng-click="clientprojects.runProject(srv._id); clientprojects.startSpin()">
 									<i class="fa fa-play"></i>
 									Arrencar
 								</button>
-								<button ng-show="srv.status === 5" class="btn btn-danger btn-xs" ng-click="clientprojects.stopProject(srv._id)">
+								<button ng-show="srv.status === 5" class="btn btn-danger btn-xs" ng-click="clientprojects.stopProject(srv._id); clientprojects.startSpin()">
 									<i class="fa fa-stop"></i>
 									Aturar
 								</button>
