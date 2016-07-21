@@ -12,6 +12,9 @@
 					<br/>
 				</div>
 			</div>
+			<input type="button" ng-click="clientprojects.startSpin()" value="Start spinner" />
+			<input type="button" ng-click="clientprojects.stopSpin()" value="Stop spinner" />
+			<span us-spinner="{radius:30, width:8, length: 16}" spinner-key="spinner-1"></span>
 			<table id="clientprojectstable" class="table table-responsive table-hover">
 				<thead>
 					<tr>
@@ -84,61 +87,6 @@
 					</tr>
 				</tbody>
 			</table>
-
-			<!-- opcio table amb collapsable panels
-			
-			<table class="table table-responsive">
-				<thead>
-					<tr>
-						<th>
-							<span class="col-xs-2">Projecte</span>
-							<span class="col-xs-2">Estat</span>
-							<span class="col-xs-2">Sol·licitud</span>
-							<span class="col-xs-2">Serveis</span>
-							<div class="col-xs-4 pull-right">
-								<input class="form-control input-sm" placeholder="Filtrar per Projecte" type="text" ng-model="searchword.name">
-							</div>
-						</th>
-						
-					</tr>
-				</thead>
-				<tbody>
-					<tr ng-repeat="srv in clientprojects.allClientProjects | filter: searchword">
-						<td>
-							 <a class="list-group-item" data-toggle="collapse" data-target="#{{$index}}" data-parent="#menu">
-							 
-							 	<ul class="list list-inline row">
-							 		<li class="col-xs-2"><strong>{{srv.name}}</strong></li>
-							 		<li class="col-xs-2"><span class="label" ng-class="(srv.status === 1) ? 'label-success' : 'label-danger'">{{clientprojects.getLiteralStatus(srv.status)}}</span></li>
-							 		<li class="col-xs-2">{{srv.created_at | date: 'dd-MM-yyyy'}}</li>
-							 		<li class="col-xs-2"><span class="badge">{{srv.services.length}}</span></li>
-							 		<li class="col-xs-4" ng-if="srv.status >= 3 || srv.status < 6">
-							 			<button ng-show="srv.status === 3 || srv.status === 4 || srv.status === 6" class="btn btn-default btn-xs" ng-click="clientprojects.runProject(srv._id)">
-											<i class="fa fa-play"></i>
-											Arrencar
-										</button>
-										<button ng-show="srv.status === 5" class="btn btn-default btn-xs" ng-click="clientprojects.stopProject(srv._id)">
-											<i class="fa fa-stop"></i>
-											Aturar
-										</button>
-							 		</li>
-							 	</ul>
-							 </a>
-								 <div id="{{$index}}" class="sublinks collapse">
-									  <a class="list-group-item small pad" ng-repeat="one in srv.services">
-									  	<span class="glyphicon glyphicon-chevron-right"></span>
-									  	{{one.service.name}}
-									  </a>
-									  
-								 </div>
-						</td>
-					</tr>
-				</tbody>
-			</table> -->
-
-
-
-
 		</div>
 	</div>
 </div>

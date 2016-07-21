@@ -181,10 +181,10 @@
 			// var progressbar = ProgressFactory.progressBarConfigure();
 			// progressbar.start();
 			usSpinnerService.spin('spinner-1');
-			usSpinnerService
+
 			ProjectFactory.runProject(id).then(function (response){
 				if (response.status === 200) {
-					$timeout( function(){
+					/*$timeout( function(){
 						ProjectFactory.getProjectState(id).then(function(response){
 							$log.log('getProjectState response', response);
 							vm.allClientProjects.forEach(function(each) {
@@ -193,8 +193,11 @@
 								}
 							});
 						});
-					}, 3000);
-					
+					}, 3000);*/
+
+					ProjectFactory.getProjectState(id).then(function(response){
+						$log.log('getProjectState response', response);
+					});
 				}
 			});
 			usSpinnerService.stop('spinner-1');
@@ -279,10 +282,6 @@
 			vm.getProjectById($stateParams.id);
 		}
 
-		//Crida desde project-new.tpl.html per obtenir tots els serveis
-		// vm.getAllServices();
-		vm.getAll();
-
 		//crida desde projects/providers/index-prov.tpl.html
 		var user = CurrentUserFactory.getCurrentUser();
 		
@@ -294,8 +293,13 @@
 			vm.getClientProjectsByPartnerId(user.user.provider_id);
 		}
 
+		vm.startSpin = function() {
+	      usSpinnerService.spin('spinner-1');
+	    };
 
-
+	    vm.stopSpin = function() {
+	      usSpinnerService.stop('spinner-1');
+	    };
 
 	}
 
