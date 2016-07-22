@@ -5,23 +5,14 @@
 		.module('marketplace')
 		.controller('ModalController', ModalController);
 
-	ModalController.$inject = ['$scope', 'item'];
+	ModalController.$inject = ['$scope', 'item', 'ImageProviderFactory'];
 
-	function ModalController($scope, item) {
+	function ModalController($scope, item, ImageProviderFactory) {
 
 		$scope.item = item;
 
 		$scope.getProviderImage = function (name) {
-			var image = null;
-			switch(name) {
-				case 'Eurecat':
-					image = 'logo_degradat_72.jpg';
-				break;
-				case 'Adam':
-					image = 'Adam_72.jpg';
-				break;
-			}
-			return image;
+			return ImageProviderFactory.getProviderImage(name);
 		}
 	}
 
