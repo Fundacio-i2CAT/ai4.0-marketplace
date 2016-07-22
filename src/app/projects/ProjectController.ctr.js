@@ -5,8 +5,8 @@
 		.module('marketplace')
 		.controller('ProjectController', ProjectController);
 
-	ProjectController.$inject = ['$rootScope', '$timeout', '$interval', 'toastr', 'ProjectFactory', '$log', '$state', 'UserFactory', 'ProviderProjectsMockFactory', 'ClientProjectsMockFactory', 'ProgressFactory', '$location', 'ServiceFactory', '$stateParams', 'CurrentUserFactory', 'ROLES', 'usSpinnerService'];
-	function ProjectController ($rootScope, $timeout, $interval, toastr, ProjectFactory, $log, $state, UserFactory, ProviderProjectsMockFactory, ClientProjectsMockFactory, ProgressFactory, $location, ServiceFactory, $stateParams, CurrentUserFactory, ROLES, usSpinnerService){
+	ProjectController.$inject = ['$rootScope', '$timeout', '$interval', 'toastr', 'ProjectFactory', '$log', '$state', 'UserFactory', 'ProgressFactory', '$location', 'ServiceFactory', '$stateParams', 'CurrentUserFactory', 'ROLES', 'usSpinnerService'];
+	function ProjectController ($rootScope, $timeout, $interval, toastr, ProjectFactory, $log, $state, UserFactory, ProgressFactory, $location, ServiceFactory, $stateParams, CurrentUserFactory, ROLES, usSpinnerService){
 		var vm = this;
 		vm.sortType = 'srv.project.name';
 		vm.sortReverse = true;
@@ -202,7 +202,7 @@
 							$log.log('getProjectState Run response', response);
 							if (response.data.status === 5) {
 								$interval.cancel(internalPromise);
-								console.log('cancelado');
+								$log.log('cancelado');
 								vm.stopSpin();
 								$state.reload();
 							}
@@ -244,7 +244,7 @@
 							$log.log('getProjectState Stop response', response);
 							if (response.data.status === 6) {
 								$interval.cancel(internalPromiseStop);
-								console.log('cancelado');
+								$log.log('cancelado');
 								vm.stopSpin();
 								$state.reload();
 							}
@@ -301,8 +301,6 @@
 			});
 		}
 
-
-
 		if ($stateParams.id) {
 			vm.getProjectById($stateParams.id);
 		}
@@ -319,12 +317,12 @@
 		}
 
 		vm.startSpin = function() {
-	      usSpinnerService.spin('spinner-1');
-	    };
-
-	    vm.stopSpin = function() {
-	      usSpinnerService.stop('spinner-1');
-	    };
+			usSpinnerService.spin('spinner-1');
+		};
+		
+		vm.stopSpin = function() {
+			usSpinnerService.stop('spinner-1');
+		};
 
 	}
 
