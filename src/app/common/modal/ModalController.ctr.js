@@ -23,15 +23,6 @@
 			}
 			return image;
 		}
-
-
-		/*$scope.ok = function (){
-			$close();
-		}
-
-		$scope.cancel = function (){
-			$uibModal.close('cancel');
-		}*/
 	}
 
 })();
