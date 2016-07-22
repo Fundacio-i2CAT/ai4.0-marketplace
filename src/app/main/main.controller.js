@@ -7,9 +7,9 @@
 
   /** @ngInject */
   function MainController() {
-    var vm = this;
+    /*var vm = this;
 
-    /*vm.awesomeThings = [];
+    vm.awesomeThings = [];
     vm.classAnimation = '';
     vm.creationDate = 1466420758414;
     vm.showToastr = showToastr;
