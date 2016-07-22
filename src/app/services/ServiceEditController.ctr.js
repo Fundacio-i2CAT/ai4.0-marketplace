@@ -5,9 +5,9 @@
 		.module('marketplace')
 		.controller('ServiceEditController', ServiceEditController);
 
-	ServiceEditController.$inject = ['$stateParams', 'ServiceFactory', 'ProviderFactory', 'toastr'];
+	ServiceEditController.$inject = ['$stateParams', 'ServiceFactory', 'ProviderFactory', 'toastr', 'ImageProviderFactory'];
 
-	function ServiceEditController ($stateParams, ServiceFactory, ProviderFactory, toastr) {
+	function ServiceEditController ($stateParams, ServiceFactory, ProviderFactory, toastr, ImageProviderFactory) {
 		var vm = this;
 		var serviceId;
 		
@@ -35,16 +35,7 @@
 		};
 
 		vm.getProviderImage = function (name) {
-			var image = null;
-			switch(name) {
-				case 'Eurecat':
-					image = 'logo_degradat_72.jpg';
-				break;
-				case 'Adam':
-					image = 'Adam_72.jpg';
-				break;
-			}
-			return image;
+			return ImageProviderFactory.getProviderImage(name);
 		}
 
 
