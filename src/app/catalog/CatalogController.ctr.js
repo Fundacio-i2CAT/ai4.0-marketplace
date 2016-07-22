@@ -4,8 +4,8 @@
 	angular
 		.module('marketplace')
 		.controller('CatalogController', CatalogController);
-	CatalogController.$inject = ['CatalogFactory', '$location', 'ProgressFactory'];
-	function CatalogController(CatalogFactory, $location, ProgressFactory) {
+	CatalogController.$inject = ['CatalogFactory', '$location', 'ProgressFactory', 'ImageProviderFactory'];
+	function CatalogController(CatalogFactory, $location, ProgressFactory, ImageProviderFactory) {
 		var vm = this;
 		var servicesTypes = [];
 
@@ -53,9 +53,7 @@
 					});
 					vm.genericServices = genericServices;
 				}
-
 			});
-			
 		};
 
 		vm.seeDetail = function (id) {
@@ -64,25 +62,10 @@
 		};
 
 		/*
-			Devuelve una imagen u otra según el tipo de servicio (actualmente se mira por el nombre)
+			Devuelve una imagen u otra según servicio
 		*/
 		vm.getImage = function (name) {
-			var image = null;
-			switch(name) {
-				case 'apache':
-					image = 'apache.png';
-					break;
-				case 'cloud_service2':
-					image = 'cloud-services2.jpg';
-					break;
-				case 'service1':
-					image = 'services01.jpg';
-					break;
-				default:
-					image = 'services01.jpg';
-					break;
-			}
-			return image;
+			return ImageProviderFactory.getServiceImage(name);
 		}
 
 		vm.getDescriptionServiceType = function(name){
@@ -93,17 +76,11 @@
 			return description;
 		};
 
+		/*
+			obtener logo de proveedor
+		*/
 		vm.getProviderImage = function (name) {
-			var image = null;
-			switch(name) {
-				case 'Eurecat':
-					image = 'logo_degradat_72.jpg';
-				break;
-				case 'Adam':
-					image = 'Adam_72.jpg';
-				break;
-			}
-			return image;
+			return ImageProviderFactory.getProviderImage(name);
 		};
 
 
