@@ -11,18 +11,18 @@
 		var directive ={
 			restrict: 'A',
 			scope: false,
-			link: function (scope, element, attrs) {
+			link: function (scope, element) {
 				element.on('click', function(){
 					var modalInstance = $uibModal.open({
 						animation: true,
 						controller: 'ModalController',
-				    	templateUrl: 'app/common/modal/modal.tpl.html',
-				    	backdropClass: 'modal-position',
-				    	resolve: {
-					        item: function () {
-					        	return scope.srv;
-					        }
-				    	}
+						templateUrl: 'app/common/modal/modal.tpl.html',
+						backdropClass: 'modal-position',
+						resolve: {
+							item: function () {
+								return scope.srv;
+							}
+						}
 					});
 				});
 

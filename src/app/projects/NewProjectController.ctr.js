@@ -20,8 +20,7 @@
 				var user = CurrentUserFactory.getCurrentUser();
 				if (user.role === ROLES.client.role) {
 					if (user.user.hasOwnProperty('client_id')) client_id = user.user.client_id;
-					else client_id = user.user.provider_id
-					
+					else client_id = user.user.provider_id	
 				}
 			};
 
