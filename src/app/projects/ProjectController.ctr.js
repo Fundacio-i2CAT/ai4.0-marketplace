@@ -5,8 +5,8 @@
 		.module('marketplace')
 		.controller('ProjectController', ProjectController);
 
-	ProjectController.$inject = ['$rootScope', '$timeout', '$interval', 'toastr', 'ProjectFactory', '$log', '$state', 'UserFactory', 'ProgressFactory', '$location', 'ServiceFactory', '$stateParams', 'CurrentUserFactory', 'ROLES', 'usSpinnerService'];
-	function ProjectController ($rootScope, $timeout, $interval, toastr, ProjectFactory, $log, $state, UserFactory, ProgressFactory, $location, ServiceFactory, $stateParams, CurrentUserFactory, ROLES, usSpinnerService){
+	ProjectController.$inject = ['$rootScope', '$interval', 'toastr', 'ProjectFactory', '$log', '$state', 'UserFactory', 'ProgressFactory', '$location', 'ServiceFactory', '$stateParams', 'CurrentUserFactory', 'ROLES', 'usSpinnerService', 'ImageProviderFactory', 'LiteralFactory'];
+	function ProjectController ($rootScope, $interval, toastr, ProjectFactory, $log, $state, UserFactory, ProgressFactory, $location, ServiceFactory, $stateParams, CurrentUserFactory, ROLES, usSpinnerService, ImageProviderFactory, LiteralFactory){
 		var vm = this;
 		vm.sortType = 'srv.project.name';
 		vm.sortReverse = true;
@@ -53,32 +53,10 @@
 		};
 
 		/*
-			Devuelve una imagen u otra según el tipo de servicio (actualmente se mira por el nombre)
-
-			TODO
-			Mover esta funcion a una factoría común en lugar de un controlador
+			Devuelve una imagen u otra según el tipo de servicio
 		*/
 		vm.getImage = function (name) {
-			var image = null;
-			var lowerName = name.toLowerCase();
-			switch(lowerName) {
-				case 'apache':
-					image = 'apache.png';
-					break;
-				case 'cloud':
-					image = 'cloud-services2.jpg';
-					break;
-				case 'openstack':
-					image = 'cloud-services2.jpg';
-					break;
-				case 'service1':
-					image = 'services01.jpg';
-					break;
-				default:
-					image = 'services01.jpg';
-					break;
-			}
-			return image;
+			return ImageProviderFactory.getServiceImage(name);
 		}
 
 		vm.getProviderProjectsByPartnerId = function (partnerId){
@@ -105,13 +83,6 @@
 			});
 			progressbar.complete();
 		};
-
-		/*vm.getAllServices = function(){
-			ServiceFactory.getAllServices().then(function(response){
-				if (response.status === 200) {
-				}
-			});
-		}*/
 
 		vm.confirmProviderProject = function (srv) {
 			/////////////////////////////////////////////////////////////////////
@@ -212,7 +183,6 @@
 					
 				}
 			});
-			
 			// progressbar.complete();
 		}
 
@@ -276,23 +246,8 @@
 			}
 		}
 
-		/*
-		ESTA FUNCIÓN HA DE IR FUERA.
-		Se ha de crear un servicio, en el catálogo, que devuelva el nombre en catalán.		
-		*/
 		vm.getLiteralStatus = function(status){
-			var output;
-			switch(status) {
-				case 1: output = 'Pendent';
-					break;
-				case 3: output = 'Confirmat';
-					break;
-				case 5: output = 'Actiu';
-					break;
-				case 6: output = 'Parat';
-					break;
-			}
-			return output;
+			return LiteralFactory.getLiteralStatus(status);
 		}
 
 		vm.getProjectState = function(id){

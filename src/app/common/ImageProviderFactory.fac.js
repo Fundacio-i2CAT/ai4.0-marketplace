@@ -36,6 +36,8 @@
 						image = 'apache.png';
 						break;
 					case 'cloud_service2':
+					case 'cloud':
+					case 'openstack':
 						image = 'cloud-services2.jpg';
 						break;
 					case 'service1':
