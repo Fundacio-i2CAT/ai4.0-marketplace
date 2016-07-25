@@ -38,6 +38,13 @@
 			return ImageProviderFactory.getProviderImage(name);
 		}
 
+		/*
+			solicitar servicio desde vista detalle de Service-Catalog
+		*/
+		vm.contractService = function (srv) {
+			console.log('Lo quiero', srv);
+		}
+
 
 
 		vm.getServiceById(serviceId);

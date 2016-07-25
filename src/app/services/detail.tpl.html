@@ -3,93 +3,96 @@
 		<div class="row">
 			<br/><a ui-sref="catalog" class="btn btn-link"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Catàleg</a><br/>
 		</div>
-		<div class="panel panel-default panel-detail" ng-click="catalog.seeDetail(one._id)">
-			<div class="panel-heading">
-				<h2 class="panel-title panel-title-personalized">{{detailsrv.currentService.name}}</h2>
-			</div>
-			<div show-hover class="panel-body">
-				<a class="btn btn-default btn-xs pull-right backbutton" ui-sref="catalog"><i class="fa fa-times fa-2x"></i></a>
-				<div class="col-xs-10">
-					<h2><small>{{detailsrv.currentService.summary}}</small></h2>
-					<br/>
-					<p>{{detailsrv.currentService.description}}</p><br/>
-					
-					<!-- <p><img class="img-thumbnail catalog" src="assets/logos_mkp/{{catalog.getImage(one.name)}}" alt="Imatge servei"></p> -->
-					<p><strong><span class="text text-primary">PROVEIDOR</span></strong></p>
-					<div class="row">
-						<div class="col-xs-1">
-							<p>{{detailsrv.nameProvider}}</p><br/>
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<div class="panel panel-default panel-detail" ng-click="catalog.seeDetail(one._id)">
+				<div class="panel-heading">
+					<h2 class="panel-title panel-title-personalized">{{detailsrv.currentService.name}}</h2>
+				</div>
+				<div class="panel-body">
+					<a class="btn btn-default btn-xs pull-right backbutton" ui-sref="catalog"><i class="fa fa-times fa-2x"></i></a>
+					<div class="col-xs-10">
+						<h2><small>{{detailsrv.currentService.summary}}</small></h2>
+						<br/>
+						<p>{{detailsrv.currentService.description}}</p><br/>
+						
+						<!-- <p><img class="img-thumbnail catalog" src="assets/logos_mkp/{{catalog.getImage(one.name)}}" alt="Imatge servei"></p> -->
+						<p><strong><span class="text text-primary">PROVEIDOR</span></strong></p>
+						<div class="row">
+							<div class="col-xs-12 col-sm-1 col-md-1 col-lg-1">
+								<p>{{detailsrv.nameProvider}}</p><br/>
+							</div>
+							<div class="col-xs-12 col-sm-2 col-sm-offset-1 col-md-2 col-md-offset-1 col-lg-2 col-lg-offset-1">
+								<img class="logo-prov-detail" width="150" ng-src="assets/images/Logos/{{detailsrv.getProviderImage(detailsrv.nameProvider)}}" alt="Imatge Proveïdor">
+							</div>
 						</div>
-						<div class="col-xs-2 col-xs-offset-1">
-							<img class="logo-prov-detail" width="150" ng-src="assets/images/Logos/{{detailsrv.getProviderImage(detailsrv.nameProvider)}}" alt="Imatge Proveïdor">
-						</div>
-					</div>
-					
-
-
-					<p><strong><span class="text text-primary">TIPUS DE SERVEI</span></strong></p>
-					<p>{{detailsrv.currentService.service_type}}</p><br/>
-
-					<p><strong><span class="text text-primary">PREUS</span></strong></p>
-
-					<div class="row">
-						<div class="col-xs-8">
-							<table id="pricing" class="table">
-								<thead>
-									<tr>
-										<th>CPU</th>
-										<th>MEMORIA</th>
-										<th>EMMAGATZAMENT</th>
-										<th>COST</th>
+						
+						<p><strong><span class="text text-primary">TIPUS DE SERVEI</span></strong></p>
+						<p>{{detailsrv.currentService.service_type}}</p><br/>
+						<p><strong><span class="text text-primary">PREUS</span></strong></p>
+						<div class="row">
+							<div class="col-xs-8">
+								<table id="pricing" class="table">
+									<thead>
+										<tr>
+											<th>CPU</th>
+											<th>MEMORIA</th>
+											<th>EMMAGATZAMENT</th>
+											<th>COST</th>
 										</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>small</td>
-										<td>1</td>
-										<td>1 x 4 SSD</td>
-										<td>0.067 € Hora</td>	
-									</tr>
-									<tr>
-										<td>medium</td>
-										<td>2</td>
-										<td>1 x 32 SSD</td>	
-										<td>0.133 € Hora</td>
-									</tr>
-									<tr>
-										<td>large</td>	
-										<td>4</td>
-										<td>2 x 40 SSD</td>
-										<td>0.266 € Hora</td>
-									</tr>
-									<tr>
-										<td>xlarge</td>	
-										<td>8</td>
-										<td>2 x 80 SSD</td>
-										<td>0.532 € Hora</td>
-									</tr>
-								</tbody>
-							</table>
+									</thead>
+									<tbody>
+										<tr>
+											<td>small</td>
+											<td>1</td>
+											<td>1 x 4 SSD</td>
+											<td>0.067 € Hora</td>
+										</tr>
+										<tr>
+											<td>medium</td>
+											<td>2</td>
+											<td>1 x 32 SSD</td>
+											<td>0.133 € Hora</td>
+										</tr>
+										<tr>
+											<td>large</td>
+											<td>4</td>
+											<td>2 x 40 SSD</td>
+											<td>0.266 € Hora</td>
+										</tr>
+										<tr>
+											<td>xlarge</td>
+											<td>8</td>
+											<td>2 x 80 SSD</td>
+											<td>0.532 € Hora</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<p><strong><span class="text text-primary">SECTORS</span></strong></p>
+						<ul class="list list-unstyled list-inline">
+							<li ng-repeat="one in detailsrv.currentService.sectors">
+								{{one}}
+							</li>
+						</ul>
+						<br/>
+						<p><strong><span class="text text-primary">LINK</span></strong></p>
+						<p ng-if="detailsrv.nameProvider == 'Eurecat'"><a target="_blank" href="http://eurecat.org/es/">{{detailsrv.currentService.link}}</a></p>
+						<p ng-if="detailsrv.nameProvider != 'Eurecat'"><a target="_blank" href="{{detailsrv.currentService.link}}">{{detailsrv.currentService.link}}</a></p>
+					</div>	
+					<div class="col-xs-12">
+						<div class="row boton-contractar">
+							<div ng-if="true" class="col-xs-4 col-xs-offset-4">
+								<a ng-click="detailsrv.contractService(detailsrv.currentService)" class="btn btn-success btn-md btn-block">Contractar</a>
+							</div>
 						</div>
 					</div>
-
-
-
-					<p><strong><span class="text text-primary">SECTORS</span></strong></p>
-					<ul class="list list-unstyled list-inline">
-						<li ng-repeat="one in detailsrv.currentService.sectors">
-							{{one}}
-						</li>
-					</ul>
-					<br/>
-					<p><strong><span class="text text-primary">LINK</span></strong></p>
-					<p><a target="_blank" href="{{detailsrv.currentService.link}}">{{detailsrv.currentService.link}}</a></p>
+					
+				</div>
+				<div class="panel-footer">
 					
 				</div>
 			</div>
-			<!-- <div class="panel-footer">
-						<a href="" class="btn btn-danger btn-xs">Contractar</a>
-			</div> -->
 		</div>
 	</div>
 </div>
