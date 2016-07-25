@@ -5,10 +5,23 @@
 		.module('marketplace')
 		.config(['$translateProvider', function($translateProvider){
 			$translateProvider
-				.translations('ca', {
-					'HELLO': 'Hola a tothom'
+				.translations('CAT', {
+					//navbar
+					'CATALEG-MENU': 'Catàleg',
+					//catalog
+					'CATALEG': 'CATÀLEG'
 				})
-				.preferredLanguage('en');
-		}]);
+				.preferredLanguage('CAT');
+		}]);	
 
 })();
+
+
+
+/*angular.module('myApp').controller('Ctrl', ['$translate', '$scope', function ($translate, $scope) {
+ 
+  $scope.changeLanguage = function (langKey) {
+    $translate.use(langKey);
+  };
+ 
+}]);*/

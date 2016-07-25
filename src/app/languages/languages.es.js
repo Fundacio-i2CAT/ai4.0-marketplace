@@ -5,8 +5,11 @@
 		.module('marketplace')
 		.config(['$translateProvider', function($translateProvider){
 			$translateProvider
-				.translations('es', {
-					'HELLO': 'Hola a todo el mundo'
+				.translations('CAST', {
+					//navbar
+					'CATALEG-MENU': 'Catálogo',
+					//catalog
+					'CATALEG': 'CATÁLOGO'
 				});
 		}]);
 

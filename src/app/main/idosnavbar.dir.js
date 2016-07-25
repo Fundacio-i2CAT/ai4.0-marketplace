@@ -4,18 +4,30 @@
 		.module('marketplace')
 		.directive('idosnavbar', idosnavbar);
 
-	idosnavbar.$inject = ['localStorageService', 'CurrentUserFactory'];
+	idosnavbar.$inject = ['localStorageService', 'CurrentUserFactory', '$translate'];
 	
 	/**
 	* Directiva que proporciona el template del header de la aplicacion
 	*/
-	function idosnavbar(localStorageService, CurrentUserFactory){
+	function idosnavbar(localStorageService, CurrentUserFactory, $translate){
 		var directive = {
 			restrict: 'E',
 			templateUrl: 'app/main/navbar.tpl.html',
 			controller: 'LoginController',
 			controllerAs: 'logindirective',
 			link: function (scope, element, attrs) {
+
+				$('.lang.catala').addClass('active');
+
+				//Marcar como 'active' cuando clicamos sobre un idioma
+				$(function(){
+				    $('.lang').click(function(){
+				        $('.lang.active').removeClass('active');
+				        $(this).addClass('active');
+				    });
+				});
+
+
 
 				/*
 					Tancar collapsed menu despres de clicar un menu item
@@ -54,6 +66,10 @@
 
 				scope.logout = function () {
 					scope.logindirective.doLogout(menuUser);
+				};
+
+				scope.setLanguage = function (langKey){
+					$translate.use(langKey);
 				};
 
 				scope.isUserSession();
