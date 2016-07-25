@@ -28,6 +28,7 @@
     toastrConfig.newestOnTop = true,
     toastrConfig.maxOpened = 5;
     toastrConfig.progressBar = false;
+    toastrConfig.closeButton = true;
 
 
 
