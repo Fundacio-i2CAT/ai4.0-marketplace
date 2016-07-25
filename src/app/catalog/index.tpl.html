@@ -1,10 +1,10 @@
 <div class="container">
 	<div class="page-header">
-		<h2  class="text text-danger"><strong>{{ 'CATALEG' | translate }}</strong></h2>
+		<h2  class="text text-danger"><strong>{{ 'CATAL-TITOL' | translate }}</strong></h2>
 	</div>
 	<div class="row">
 		<ul class="nav nav-tabs">
-			<li class="active"><a data-target="#all" data-toggle="tab">Tots</a></li>
+			<li class="active"><a data-target="#all" data-toggle="tab">{{ 'CATAL-TOTS' | translate }}</a></li>
 			<li ng-click="catalog.getAllServicesByService_type(type.name)" ng-repeat="type in catalog.allTypes"><a data-target="#{{type.name}}" data-toggle="tab">{{catalog.getDescriptionServiceType(type.name)}}</a></li>
 			
 		</ul>
@@ -21,7 +21,7 @@
 					<div style="height: 65px; margin-bottom: 5px;" class="sumary kkk">
 						<p>{{one.summary}}</p>
 					</div>
-					<div><strong>Proveïdor </strong>{{one.provider.name}}</div>
+					<div><strong>{{ 'CATAL-PROVEIDOR' | translate }} </strong>{{one.provider.name}}</div>
 					
 				</div>
 				<div class="panel-footer">
@@ -46,7 +46,7 @@
 					<div style="height: 65px; margin-bottom: 5px;" class="sumary kkk">
 						<p>{{one.summary}}</p>
 					</div>
-					<div><strong>Proveïdor </strong>{{one.provider.name}}</div>
+					<div><strong>{{ 'CATAL-PROVEIDOR' | translate }} </strong>{{one.provider.name}}</div>
 					
 				</div>
 				<div class="panel-footer">
@@ -68,7 +68,7 @@
 					<div style="height: 65px; margin-bottom: 5px;" class="sumary kkk">
 						<p>{{one.summary}}</p>
 					</div>
-					<div><strong>Proveïdor </strong>{{one.provider.name}}</div>
+					<div><strong>{{ 'CATAL-PROVEIDOR' | translate }} </strong>{{one.provider.name}}</div>
 					
 				</div>
 				<div class="panel-footer">

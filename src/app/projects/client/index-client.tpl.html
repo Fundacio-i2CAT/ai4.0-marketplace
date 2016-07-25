@@ -2,13 +2,13 @@
 
 <!-- <a id="element" class="btn btn-primary btn-xs" data-toggle="popover" tabindex="0" data-trigger="focus" title="Popover title" data-content="Here's some amazing content.">Dismissible popover</a> -->
 	<div class="page-header">
-		<h2>Projectes <span class="pull-right"><a ui-sref="project-new" class="btn btn-primary btn-xs"><i class="fa fa-plus"></i>&nbsp;Crear Projecte</a></span></h2>
+		<h2 class="text text-danger"><strong>{{ 'PROJ-CLIENT' | translate }}</strong> <span class="pull-right"><a ui-sref="project-new" class="btn btn-primary btn-xs"><i class="fa fa-plus"></i>&nbsp;{{ 'CREAR-PROJ' | translate}}</a></span></h2>
 	</div>
 	<div class="row tabla-client">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<div class="row">
 				<div class="col-xs-4 col-xs-offset-8">
-					<input type="text" placeholder="Filtrar Projectes" class="form-control input-sm pull-left" ng-model="searchword" />
+					<input type="text" placeholder="{{ 'FILTER-PLACEHOLDER-PROJ' | translate}}" class="form-control input-sm pull-left" ng-model="searchword" />
 					<br/>
 				</div>
 			</div>
@@ -20,33 +20,33 @@
 					<tr>
 						<th class="col-xs-3">
 							<a ng-click="clientprojects.sortTypeClient = 'name'; clientprojects.sortReverseClient = !clientprojects.sortReverseClient">
-				            	Projecte 
+				            	{{ 'SRV-PROJECTE' | translate}} 
 				            	<span ng-show="clientprojects.sortTypeClient == 'name' && !clientprojects.sortReverseClient" class="fa fa-caret-down"></span>
 				            	<span ng-show="clientprojects.sortTypeClient == 'name' && clientprojects.sortReverseClient" class="fa fa-caret-up"></span>
 				            <a/>
 						</th>
 						<th class="col-xs-2">
 							<a ng-click="clientprojects.sortTypeClient = 'status'; clientprojects.sortReverseClient = !clientprojects.sortReverseClient">
-				            	Estat 
+				            	{{ 'SRV-ESTAT' | translate}}  
 				            	<span ng-show="clientprojects.sortTypeClient == 'status' && !clientprojects.sortReverseClient" class="fa fa-caret-down"></span>
 				            	<span ng-show="clientprojects.sortTypeClient == 'status' && clientprojects.sortReverseClient" class="fa fa-caret-up"></span>
 				            <a/>
 						</th>
 						<th class="col-xs-2">
 							<a ng-click="clientprojects.sortTypeClient = 'created_at'; clientprojects.sortReverseClient = !clientprojects.sortReverseClient">
-				            	Sol·licitud 
+				            	{{ 'SRV-SOLICITUD' | translate}}  
 				            	<span ng-show="clientprojects.sortTypeClient == 'created_at' && !clientprojects.sortReverseClient" class="fa fa-caret-down"></span>
 				            	<span ng-show="clientprojects.sortTypeClient == 'created_at' && clientprojects.sortReverseClient" class="fa fa-caret-up"></span>
 				            <a/>
 						</th>
 						<th class="col-xs-3">
 							<a ng-click="clientprojects.sortTypeClient = 'service.name'; clientprojects.sortReverseClient = !clientprojects.sortReverseClient">
-				            	Serveis
+				            	{{ 'SERV-TITOL' | translate}}
 				            	<span ng-show="clientprojects.sortTypeClient == 'service.name' && !clientprojects.sortReverseClient" class="fa fa-caret-down"></span>
 				            	<span ng-show="clientprojects.sortTypeClient == 'service.name' && clientprojects.sortReverseClient" class="fa fa-caret-up"></span>
 				            <a/>
 						</th>
-						<th class="col-xs-2">Accions</th>
+						<th class="col-xs-2">{{ 'SRV-ACCIONS' | translate}}</th>
 					</tr>
 				</thead>
 				<tbody>

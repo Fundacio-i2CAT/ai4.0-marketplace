@@ -7,9 +7,30 @@
 			$translateProvider
 				.translations('CAT', {
 					//navbar
-					'CATALEG-MENU': 'Catàleg',
+					'CATALEG-NAV': 'Catàleg',
+					'PROJECTES-NAV': 'Projectes',
+					'SERVEIS-NAV': 'Serveis',
+					'ACCEDIR-NAV': 'Accedir',
+					'SORTIR-NAV': 'Sortir',
 					//catalog
-					'CATALEG': 'CATÀLEG'
+					'CATAL-TITOL': 'CATÀLEG',
+					'CATAL-PROVEIDOR': 'Proveïdor',
+					'CATAL-TOTS': 'Tots',
+					//serveis
+					'SERV-TITOL': 'Serveis',
+					'FILTER-PLACEHOLDER': 'Filtrar Serveis',
+					'SRV-CLIENT':'Client',
+					'SRV-ESTAT':'Estat',
+					'SRV-SOLICITUD':'Sol·licitud',
+					'SRV-PROJECTE':'Projecte',
+					'SRV-CREACIO':'Creació',
+					'SRV-ACCIONS':'Accions',
+					//projectes
+					'PROJ-CLIENT':'Projectes',
+					'FILTER-PLACEHOLDER-PROJ': 'Filtrar Projectes',
+					'CREAR-PROJ': 'Crear Projecte'
+
+
 				})
 				.preferredLanguage('CAT');
 		}]);	
@@ -17,11 +38,3 @@
 })();
 
 
-
-/*angular.module('myApp').controller('Ctrl', ['$translate', '$scope', function ($translate, $scope) {
- 
-  $scope.changeLanguage = function (langKey) {
-    $translate.use(langKey);
-  };
- 
-}]);*/
