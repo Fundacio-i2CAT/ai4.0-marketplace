@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -13,7 +14,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a class="toclose" ui-sref="catalog">Catàleg</a></li>
+        <li><a class="toclose" ui-sref="catalog">{{ 'CATALEG-MENU' | translate }}</a></li>
         <li><a ng-if="menuUser.role==='Partner.Provider'" class="toclose" ui-sref="provprojects">Serveis</a></li>
         <li><a ng-if="menuUser.role==='Partner.Client'" class="toclose" ui-sref="clientprojects">Projectes</a></li>
       </ul>
@@ -40,8 +41,8 @@
         <li ng-if="menuUser.isLogged"><a class="toclose" ng-click="logout()"><i class="fa fa-sign-out"></i> Sortir</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a style="font-size: smaller; color:#DF7401; font-weight:bold; margin-right: -25px">CAT</a></li>
-        <li><a style="font-size: smaller;margin-right: 10px">CAST</a></li> 
+        <li ng-click="setLanguage('CAT')"><a class="lang catala">CAT</a></li>
+        <li ng-click="setLanguage('CAST')"><a class="lang castella">CAST</a></li> 
       </ul>
 
       <!-- <ul ng-if="!menuUser.isLogged" class="nav navbar-nav navbar-right">
