@@ -28,7 +28,12 @@
 					//projectes
 					'PROJ-CLIENT':'Proyectos',
 					'FILTER-PLACEHOLDER-PROJ': 'Filtrar Proyectos',
-					'CREAR-PROJ': 'Crear Proyecto'
+					'CREAR-PROJ': 'Crear Proyecto',
+					'PROJ-ARRENCAR': 'LANZAR',
+					'PROJ-ATURAR': 'PARAR',
+					//estats
+					'PENDENT': 'Pendiente'
+
 				});
 		}]);
 

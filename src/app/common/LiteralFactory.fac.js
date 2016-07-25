@@ -16,13 +16,13 @@
 			var output = null;
 			
 			switch(status) {
-				case 1: output = 'Pendent';
+				case 1: output = "PENDENT";
 					break;
-				case 3: output = 'Confirmat';
+				case 3: output = 'CONFIRMAT';
 					break;
-				case 5: output = 'Actiu';
+				case 5: output = 'ACTIU';
 					break;
-				case 6: output = 'Parat';
+				case 6: output = 'PARAT';
 					break;
 			}
 			return output;
