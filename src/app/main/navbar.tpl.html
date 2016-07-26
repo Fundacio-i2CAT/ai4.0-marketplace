@@ -18,56 +18,21 @@
         <li><a ng-if="menuUser.role==='Partner.Provider'" class="toclose" ui-sref="provprojects">{{ 'SERVEIS-NAV' | translate }}</a></li>
         <li><a ng-if="menuUser.role==='Partner.Client'" class="toclose" ui-sref="clientprojects">{{ 'PROJECTES-NAV' | translate }}</a></li>
       </ul>
-      <!-- 
       <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Llengua <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li class="pull-right"><a class="toclose"><i class="fa fa-check"></i>&nbsp;&nbsp;CAT</a></li>
-            <li class="pull-right"><a class="toclose">CAST</a></li>
-          </ul>
-        </li>
+        <li ng-click="setLanguage('CAT')"><a class="lang catala">CAT</a></li>
+        <li ng-click="setLanguage('CAST')"><a class="lang castella">CAST</a></li> 
       </ul>
-      -->
       <ul class="nav navbar-nav navbar-right">
         <li ng-if="!menuUser.isLogged"><a class="toclose" ui-sref="login"><i class="fa fa-sign-in"></i> {{ 'ACCEDIR-NAV' | translate }}</a></li>
         <li ng-if="menuUser.isLogged" class="user">
           <a class="username">
-            <small class="text text-warning">
+            <small class="text text-info">
             <i class="fa fa-user"></i>&nbsp;{{menuUser.user.name}}
             </small>
           </a>
         </li>
         <li ng-if="menuUser.isLogged"><a class="toclose" ng-click="logout()"><i class="fa fa-sign-out"></i> {{ 'SORTIR-NAV' | translate }}</a></li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li ng-click="setLanguage('CAT')"><a class="lang catala">CAT</a></li>
-        <li ng-click="setLanguage('CAST')"><a class="lang castella">CAST</a></li> 
-      </ul>
-
-      <!-- <ul ng-if="!menuUser.isLogged" class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Accés <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a class="toclose" ui-sref="login"><i class="fa fa-sign-in"></i> Accedir</a></li>
-            <li><a class="toclose" ui-sref="register"><i class="fa fa-user-plus"></i> Registre</a></li>
-          </ul>
-        </li>
-      </ul>
-      <ul ng-if="menuUser.isLogged" class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-            <span class="hellouser">
-              <small class="text text-warning">
-              <i class="fa fa-user"></i>&nbsp;{{menuUser.user.name}}
-              </small>
-            </span>
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="toclose" ng-click="logout()"><i class="fa fa-sign-out"></i> Sortir</a></li>
-          </ul>
-        </li>
-      </ul> -->
     </div>
   </div>
 </nav>
