@@ -237,7 +237,7 @@
 		}
 
 		vm.hasChanged = function(){
-			var css_selected =  document.getElementsByClassName("selected");
+			var css_selected =  angular.element("selected");
 			for (var i = 0; i<=css_selected.length; i++){
 				if (css_selected[0] != null){
 					css_selected[0].className = "";
