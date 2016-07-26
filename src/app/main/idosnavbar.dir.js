@@ -17,17 +17,15 @@
 			controllerAs: 'logindirective',
 			link: function (scope, element, attrs) {
 
-				$('.lang.catala').addClass('active');
+				angular.element('.lang.catala').addClass('active');
 
 				//Marcar como 'active' cuando clicamos sobre un idioma
-				$(function(){
-				    $('.lang').click(function(){
-				        $('.lang.active').removeClass('active');
-				        $(this).addClass('active');
-				    });
+				angular.element(function(){
+					angular.element('.lang').click(function(){
+						angular.element('.lang.active').removeClass('active');
+						angular.element(this).addClass('active');
+					});
 				});
-
-
 
 				/*
 					Tancar collapsed menu despres de clicar un menu item
@@ -52,7 +50,6 @@
 					}
 				}
 				
-
 				scope.$on('userrole', function (event, data) {
 					menuUser = data;
 					if (menuUser.user && menuUser.role) {
