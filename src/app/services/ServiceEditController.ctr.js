@@ -5,9 +5,9 @@
 		.module('marketplace')
 		.controller('ServiceEditController', ServiceEditController);
 
-	ServiceEditController.$inject = ['$stateParams', 'ServiceFactory', 'ProviderFactory', 'toastr', 'ImageProviderFactory'];
+	ServiceEditController.$inject = ['$stateParams', 'ServiceFactory', 'ProviderFactory', 'toastr', 'ImageProviderFactory', '$log'];
 
-	function ServiceEditController ($stateParams, ServiceFactory, ProviderFactory, toastr, ImageProviderFactory) {
+	function ServiceEditController ($stateParams, ServiceFactory, ProviderFactory, toastr, ImageProviderFactory, $log) {
 		var vm = this;
 		var serviceId;
 		
@@ -42,7 +42,7 @@
 			solicitar servicio desde vista detalle de Service-Catalog
 		*/
 		vm.contractService = function (srv) {
-			console.log('Lo quiero', srv);
+			$log.log('Lo quiero', srv);
 		}
 
 

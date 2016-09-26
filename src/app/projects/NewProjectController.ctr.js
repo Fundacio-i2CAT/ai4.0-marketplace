@@ -52,6 +52,13 @@
 				});
 			}
 
+			vm.selected = false;
+			vm.clickService = function (srv) {
+				$log.log(srv)
+			}
+
+
+
 			//Crida desde project-new.tpl.html per obtenir tots els serveis
 			vm.getAllServices()
 

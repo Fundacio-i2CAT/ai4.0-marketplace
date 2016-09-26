@@ -13,9 +13,10 @@
 			scope: false,
 			link: function (scope, element) {
 				element.on('click', function(){
-					var modalInstance = $uibModal.open({
+					$uibModal.open({
 						animation: true,
 						controller: 'ModalController',
+						controllerAs: 'srvmodal',
 						templateUrl: 'app/common/modal/modal.tpl.html',
 						backdropClass: 'modal-position',
 						resolve: {
