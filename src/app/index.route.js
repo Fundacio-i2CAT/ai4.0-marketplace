@@ -82,6 +82,7 @@
 
   angular
     .module('marketplace')
+    .run(scrollToTop)
     .run(setStatePermission);
     // .run(lookAtLocationChange)
 
@@ -93,6 +94,15 @@
               $state.go('catalog');
             }
         });
+    }
+
+    function scrollToTop ($rootScope, $window) {
+      $rootScope.$on('$stateChangeSuccess', function (event, currentRoute, previousRoute) {
+        // $window.scrollTo(0,0);
+        // document.body.scrollTop = document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+      });
     }
 
     /*function lookAtLocationChange($rootScope) {
