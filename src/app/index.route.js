@@ -6,7 +6,11 @@
     .config(routerConfig);
 
   /** @ngInject */
-  function routerConfig($stateProvider, $urlRouterProvider) {
+  function routerConfig($stateProvider, $locationProvider, $urlRouterProvider) {
+    $locationProvider.html5Mode({
+      enabled: true,
+      requireBase: false
+    });
     $stateProvider
       .state('home', {
         url: '/',
@@ -59,7 +63,7 @@
       })
       .state('register', {
         url: '/register',
-        templateUrl: 'app/login/register.tpl.html', controller: 'LoginController', controllerAs: 'login'
+        templateUrl: 'app/login/register.tpl.html', controller: 'RegisterController', controllerAs: 'register'
       })
       .state('users', {
         url: '/users',
