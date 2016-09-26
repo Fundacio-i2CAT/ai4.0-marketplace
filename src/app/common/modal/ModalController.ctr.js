@@ -5,13 +5,14 @@
 		.module('marketplace')
 		.controller('ModalController', ModalController);
 
-	ModalController.$inject = ['$scope', 'item', 'ImageProviderFactory'];
+	ModalController.$inject = ['item', 'ImageProviderFactory'];
 
-	function ModalController($scope, item, ImageProviderFactory) {
+	function ModalController(item, ImageProviderFactory) {
+		var vm = this;
 
-		$scope.item = item;
+		vm.item = item;
 
-		$scope.getProviderImage = function (name) {
+		vm.getProviderImage = function (name) {
 			return ImageProviderFactory.getProviderImage(name);
 		}
 	}
