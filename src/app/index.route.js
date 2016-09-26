@@ -7,10 +7,10 @@
 
   /** @ngInject */
   function routerConfig($stateProvider, $locationProvider, $urlRouterProvider) {
-    $locationProvider.html5Mode({
+    /*$locationProvider.html5Mode({
       enabled: true,
       requireBase: false
-    });
+    });*/
     $stateProvider
       .state('home', {
         url: '/',
