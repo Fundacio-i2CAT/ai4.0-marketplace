@@ -27,8 +27,7 @@
 						toastr.success("Hola, " + user.user_name, 'Accés correcte');
 						$location.path('catalog');
 					}	
-				})
-
+				});
 			};
 
 			vm.doLogout = function () {
@@ -36,7 +35,7 @@
 				LocalStorageFactory.removeItem('user');
 				toastr.info("Sessió tancada correctament.", 'Adéu');
 				$location.path('login');
-			}
+			};
 
 
 		}
