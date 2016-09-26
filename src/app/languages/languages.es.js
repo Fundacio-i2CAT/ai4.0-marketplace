@@ -26,13 +26,28 @@
 					'SRV-CREACIO':'Creación',
 					'SRV-ACCIONS':'Acciones',
 					//projectes
-					'PROJ-CLIENT':'Proyectos',
+					'PROJ-CLIENT':'PROYECTOS',
 					'FILTER-PLACEHOLDER-PROJ': 'Filtrar Proyectos',
-					'CREAR-PROJ': 'Crear Proyecto',
+					'CREAR-PROJ': 'Nuevo Proyecto',
 					'PROJ-ARRENCAR': 'LANZAR',
 					'PROJ-ATURAR': 'PARAR',
 					//estats
-					'PENDENT': 'Pendiente'
+					'PENDENT': 'Pendiente',
+					'CONFIRMAT': 'Confirmado',
+					'ACTIU': 'Activo',
+					'PARAT': 'Inactivo',
+					'ACTIVAR': 'Habilitar',
+					'DESACTIVAR': 'Deshabilitar',
+					//new project
+					'NEWPROJ': 'NUEVO PROYECTO',
+					'LABEL-NOM': 'Nombre',
+					'LABEL-SUMARI': 'Sumario',
+					'LABEL-DESC': 'Descripción',
+					'LABEL-SERV': 'Servicios',
+					'BTN-SAVE': 'Crear Proyecto',
+					'PLACEHOLDER-NAME': 'Nombre proyecto',
+					'PLACEHOLDER-SUMARI': 'Resumen descriptivo',
+					'PLACEHOLDER-DESC': 'Descripción del proyecto'
 
 				});
 		}]);
