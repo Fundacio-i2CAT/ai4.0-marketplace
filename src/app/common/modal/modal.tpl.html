@@ -1,6 +1,6 @@
 <div class="modal-header">
 	<h4 class="modal-title">
-		<strong>{{item.name}}</strong>
+		<strong>{{srvmodal.item.name}}</strong>
 	</h4>
 </div>
 <div class="modal-body">
@@ -15,7 +15,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="srv in item.services">
+				<tr ng-repeat="srv in srvmodal.item.services">
 					<td>
 						
 					</td>
@@ -23,7 +23,7 @@
 						{{srv.service.name}}
 					</td>
 					<td>
-						<img width="50" ng-src="assets/images/Logos/{{getProviderImage(srv.provider.name)}}" alt="">
+						<img width="50" ng-src="assets/images/Logos/{{srvmodal.getProviderImage(srv.provider.name)}}" alt="">
 					</td>
 					<td>{{srv.created_at | date: 'dd-MM-yyyy'}}</td>
 				</tr>

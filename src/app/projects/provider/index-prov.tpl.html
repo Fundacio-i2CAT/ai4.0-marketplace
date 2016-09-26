@@ -16,13 +16,7 @@
 				<thead>
 					<tr>
 						<th></th>
-						<th>
-							<!-- <a ng-click="provprojects.sortType = 'project.name'; provprojects.sortReverse = !provprojects.sortReverse">
-				            	Prveïdor 
-				            	<span ng-show="provprojects.sortType == 'project.name' && !provprojects.sortReverse" class="fa fa-caret-down"></span>
-				            	<span ng-show="provprojects.sortType == 'project.name' && provprojects.sortReverse" class="fa fa-caret-up"></span>
-				            <a/> -->
-						</th>
+						<th></th>
 						<th>
 							<a ng-click="provprojects.sortType = 'client.name'; provprojects.sortReverse = !provprojects.sortReverse">
 				            {{ 'SRV-CLIENT' | translate }} 
@@ -55,22 +49,6 @@
 					</tr>
 				</thead>
 				<tbody>
-					<!-- <tr>
-						<td></td>
-						<td>
-							<input class="form-control input-sm" type="text" ng-model="searchingWord.service.name">
-						</td>
-						<td>
-							<input class="form-control input-sm" type="text" ng-model="searchingWord.client.name">
-						</td>
-						<td></td>
-						<td>
-							<input class="form-control input-sm" type="text" ng-model="searchingWord.project.name">
-						</td>
-						<td>
-							<input class="form-control input-sm" type="text" ng-model="searchingWord.created_at">
-						</td>
-					</tr> -->
 					<tr ng-repeat="srv in provprojects.allProviderProjects | orderBy:provprojects.sortType:provprojects.sortReverse | filter: searchingWord">
 						<td>
 							<img width="60px" class="img-thumbnail" ng-src="assets/logos_mkp/{{provprojects.getImage(srv.service.name)}}" alt="Imatge servei" />
@@ -82,7 +60,7 @@
 							{{srv.client.name}}
 						</td>
 						<td class="vert-align">
-							<p ng-if="srv.status !== 8" ><span class="label label-status" ng-class="(srv.status < 3) ? 'label-danger' : 'label-success'">{{(srv.status < 3) ? 'Pendent' : 'Confirmat'}}</span></p>
+							<p ng-if="srv.status !== 8" ><span translate="{{provprojects.getLiteralStatus(srv.status)}}" class="label label-status" ng-class="(srv.status < 3) ? 'label-danger' : 'label-success'">{{(srv.status < 3) ? 'Pendent' : 'Confirmat'}}</span></p>
 			    			<p ng-if="srv.status === 8"><span class="label label-status label-success">Inactiu</span></p>
 						</td>
 						<td class="vert-align">
@@ -94,11 +72,11 @@
 						<td class="vert-align">
 							<button ng-click="provprojects.confirmProviderProject(srv)" class="btn btn-success btn-xs" ng-if='srv.status <= 2'>
 								<i class="fa fa-check"></i>
-								Confirmar
+								{{ 'ACTIVAR' | translate }}
 							</button>
 							<button ng-click="provprojects.disableProviderProject(srv)" class="btn btn-danger btn-xs" ng-if='srv.status >= 3 && srv.status <= 5'>
 								<i class="fa fa-remove"></i>
-								Deshabilitar
+								{{ 'DESACTIVAR' | translate }}
 							</button>
 						</td>
 					</tr>
@@ -106,51 +84,6 @@
 
 			</table>
 			<span us-spinner="{radius:30, width:8, length: 16}" spinner-key="spinner-1"></span>
-
-			<!-- <div class="panel panel-default difuminar" ng-repeat="srv in provprojects.allProviderProjects">
-			  <div class="panel-heading">
-			    <h3 class="panel-title">Servei <strong>{{srv.service.name}}</strong></h3>
-			  </div>
-			  <div class="panel-body">
-			    <div class="row">
-			    	<div class="col-xs-2">
-			    		<img class="img-thumbnail" ng-src="assets/logos_mkp/{{provprojects.getImage(srv.service.name)}}" alt="Imatge servei" />
-			    	</div>
-					<div class="col-xs-10">
-						<ul class="list-inline">
-							<li class="col-xs-1 prov-lists">
-								<p>Client</p>
-								<h4><span class="label label-success">{{srv.client.name}}</span></h4>
-							</li>
-							<li class="col-xs-2 prov-lists">	
-								<p>Projecte</p>
-			    				<h4><span class="label label-primary">{{srv.project.name}}</span></h4>
-							</li>
-							<li class="prov-lists">
-								<p>Creació</p>
-			    				<h4><span class="label label-default">{{srv.created_at | date: 'dd-MM-yyyy'}}</span></h4>
-							</li>
-							<li class="prov-lists">
-								<p>Status</p>
-			    				<h4 ng-if="srv.status !== 8" ><span class="label" ng-class="(srv.status < 3) ? 'label-danger' : 'label-info'"><i class="fa" ng-class="(srv.status < 3) ? 'fa-exclamation-triangle' : 'fa-check-square-o'"></i> {{(srv.status < 3) ? 'Pendent' : 'Confirmat'}}</span></h4>
-			    				<h4 ng-if="srv.status === 8"><span class="label label-warning"><i class="fa fa-user"></i>Deshabilitat</span></h4>
-							</li>
-							<li class="prov-lists pull-right" ng-if="srv.status !== 8">
-								<br/><br/>
-								<button ng-click="provprojects.confirmProviderProject(srv)" class="btn btn-success btn-sm" ng-if='srv.status <= 2'>
-									<i class="fa fa-check"></i>
-									Confirmar
-								</button>
-								<button ng-click="provprojects.disableProviderProject(srv)" class="btn btn-danger btn-sm" ng-if='srv.status >= 3'>
-									<i class="fa fa-remove"></i>
-									Deshabilitar
-								</button>
-							</li>
-						</ul>
-					</div>
-			    </div>
-			  </div>
-			</div> -->
 		</div>
 	</div>
 
