@@ -5,9 +5,9 @@
 		.module('marketplace')
 		.controller('ServiceEditController', ServiceEditController);
 
-	ServiceEditController.$inject = ['$stateParams', 'ServiceFactory', 'ProviderFactory', 'toastr', 'ImageProviderFactory', '$log'];
+	ServiceEditController.$inject = ['$stateParams', '$state', 'ServiceFactory', 'ProviderFactory', 'toastr', 'ImageProviderFactory', '$log'];
 
-	function ServiceEditController ($stateParams, ServiceFactory, ProviderFactory, toastr, ImageProviderFactory, $log) {
+	function ServiceEditController ($stateParams, $state, ServiceFactory, ProviderFactory, toastr, ImageProviderFactory, $log) {
 		var vm = this;
 		var serviceId;
 		
@@ -43,6 +43,7 @@
 		*/
 		vm.contractService = function (srv) {
 			$log.log('Lo quiero', srv);
+			$state.go('register');
 		}
 
 
