@@ -5,9 +5,9 @@
 	 	.module('marketplace')
 	 	.controller('RegisterController', RegisterController);
 
-	 	RegisterController.$inject = [];
+	 	RegisterController.$inject = ['RegisterFactory'];
 
-	 	function RegisterController () {
+	 	function RegisterController (RegisterFactory) {
 	 		var vm = this;
 	 		var passwordOk;
 	 		var showRegisterError = false;
@@ -22,13 +22,18 @@
 	 			//and ask for repeat password again
 	 			passwordOk = validPassword(credentials.password, credentials.repeatpassword);
 	 			if (!passwordOk) {
-	 				// vm.credentials = credentials;
 	 				vm.showRegisterError = true;
 	 				vm.credentials.repeatpassword = '';
 	 				vm.credentials.password = '';
 	 				return;
 	 			} else {
-	 				
+	 				RegisterFactory.doRegister(credentials).then(function (response){
+	 					console.log(response);
+	 					//show message with register confirmation
+	 				}, function (error){
+	 					console.log(error);
+	 					//show message with register error
+	 				});
 	 			}
 
 	 		};

@@ -1,37 +1,71 @@
 <div class="container">
 	<div class="page-header">
-		<h3>Registre <small>Usuari</small></h3>
+		<h3>{{'REG-TITLE' | translate}} <small>{{'REG-SUBTITLE' | translate}}</small></h3>
 	</div>
 	<form id="register" name="registerForm" ng-submit="register.doRegister(register.credentials)">
 		<div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
 			<div class="well">
 				<div class="form-group">
-					<label for="registermail">Email *</label>
-					<input type="email" class="form-control" ng-model="register.credentials.email" id="registermail" placeholder="Mail" required>
+					<label for="registermail">{{ 'REG-MAIL' | translate }} *</label>
+					<input type="email" class="form-control input-sm" ng-model="register.credentials.email" id="registermail" placeholder="{{'REG-MAIL-PLACEHOLDER' | translate}}" required
+					data-toggle="tooltip" data-placement="top" title="{{ 'REG-TOOLTIP-MAIL' | translate }}">
 				</div>
 				<div class="form-group">
-					<label for="registerusername">Usuari *</label>
-					<input type="text" class="form-control" ng-model="register.credentials.username" id="registerusername" placeholder="Username" required>
+					<label for="registername">{{ 'REG-NAME' | translate }} *</label>
+					<input type="text" class="form-control input-sm" ng-model="register.credentials.name" id="registername" placeholder="{{'REG-NAME-PLACEHOLDER' | translate}}" required>
 				</div>
 				<div class="form-group">
-					<label for="registerpassword">Password *</label>
-					<input type="password" ng-model="register.credentials.password" class="form-control" id="registerpassword" placeholder="Password" required>
+					<label for="registersecondname">{{ 'REG-SECONDNAME' | translate }} *</label>
+					<input type="text" class="form-control input-sm" ng-model="register.credentials.secondname" id="registersecondname" placeholder="{{'REG-SECONDNAME-PLACEHOLDER' | translate}}" required>
 				</div>
 				<div class="form-group">
-					<label for="repiteRegisterpassword">Confirma Password *</label>
-					<input type="password" ng-model="register.credentials.repeatpassword" class="form-control" id="repiteRegisterpassword" placeholder="Repeat Password" required>
+					<label for="registerlastname">{{ 'REG-LASTNAME' | translate }} *</label>
+					<input type="text" class="form-control input-sm" ng-model="register.credentials.lastname" id="registerlastname" placeholder="{{'REG-LASTNAME-PLACEHOLDER' | translate}}" required>
+				</div>
+				<div class="form-group">
+					<label for="registercompany">{{ 'REG-COMPANY' | translate }} *</label>
+					<input type="text" class="form-control input-sm" ng-model="register.credentials.company" id="registercompany" placeholder="{{'REG-COMPANY-PLACEHOLDER' | translate}}" required>
+				</div>
+				<div class="form-group">
+					<label for="registerposition">{{ 'REG-COMPANY-POSITION' | translate }} *</label>
+					<input type="text" class="form-control input-sm" ng-model="register.credentials.comp_position" id="registerposition" placeholder="{{'REG-COMPANY-POSITION-PLACEHOLDER' | translate}}" required>
+				</div>
+				<div class="form-group">
+					<label for="registercompanylegal">{{ 'REG-LEGAL-LABEL' | translate }} *</label><br/>
+					<label class="radio-inline">
+				    	<input ng-model="register.credentials.legal" value="true" name="registercompanylegal" type="radio">SI
+				    </label>
+				    <label class="radio-inline">
+				    	<input ng-model="register.credentials.legal" value="false" name="registercompanylegal" type="radio">NO
+				    </label>
+				</div>
+				<div class="form-group">
+					<label for="registercompanyaddress">{{ 'REG-COMPANY-ADDRESS' | translate }} *</label>
+					<input type="text" class="form-control input-sm" ng-model="register.credentials.comp_address" id="registercompanyaddress" placeholder="{{'REG-COMPANY-ADDRESS-PLACEHOLDER' | translate}}" required>
+				</div>
+				<div class="form-group">
+					<label for="registercompanyaddress">{{ 'REG-COMPANY-PHONE' | translate }} *</label>
+					<input type="text" class="form-control input-sm" ng-model="register.credentials.comp_phone" id="registercompanyaddress" placeholder="{{'REG-COMPANY-PHONE-PLACEHOLDER' | translate}}" required>
+				</div>
+				<div class="form-group">
+					<label for="registerpassword">{{ 'REG-PASSWORD' | translate }} *</label>
+					<input type="password" ng-model="register.credentials.password" class="form-control input-sm" id="registerpassword" placeholder="{{'REG-PASSWORD-PLACEHOLDER' | translate}}" required>
+				</div>
+				<div class="form-group">
+					<label for="repiteRegisterpassword">{{ 'REG-CONFIRM-PASSWORD' | translate }} *</label>
+					<input type="password" ng-model="register.credentials.repeatpassword" class="form-control input-sm" id="repiteRegisterpassword" placeholder="{{'REG-CONFIRM-PASSWORD-PLACEHOLDER' | translate}}" required>
 					<div ng-if="register.showRegisterError" class="alert alert-danger alert-dismissible register-error-message" role="alert">
 						<button ng-click="register.showRegisterError = !register.showRegisterError" type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						El Password i la Confirmació de password no coincideixen
+						{{ 'REG-PASSWORD-ERROR' | translate }}
 					</div>
 				</div>
 				<div class="form-group">
-				<label for="repiteRegisterpassword">Rol d'Usuari *</label><br/>
+				<label for="repiteRegisterpassword">{{ 'REG-USER-ROLE' | translate }} *</label><br/>
 					<label class="checkbox-inline">
-						<input ng-model="register.credentials.client" type="checkbox" id="inlineCheckbox1" value="option1"> CLIENT
+						<input ng-model="register.credentials.client_role" type="checkbox" id="inlineCheckbox1"> CLIENT
 					</label>
 					<label class="checkbox-inline">
-						<input ng-model="register.credentials.provider" type="checkbox" id="inlineCheckbox2" value="option2"> PROVEÏDOR
+						<input ng-model="register.credentials.provider_role" type="checkbox" id="inlineCheckbox2"> PROVEÏDOR
 					</label>
 				</div>
 				<!-- 
@@ -45,8 +79,18 @@
 				    	<input ng-model="register.credentials.client" name="registerrole" type="radio">CLIENT
 				    </label>
 				</div> -->
-				<button type="submit" class="btn btn-success btn-block" ng-disabled="registerForm.$invalid || (!register.credentials.client && !register.credentials.provider)">Enviar dades</button>
+				<button type="submit" class="btn btn-success btn-block" ng-disabled="registerForm.$invalid || (!register.credentials.client_role && !register.credentials.provider_role)">Enviar dades</button>
 			</div>
 		</div>
 	</form>
+<script>
+	$(document).ready(function(){
+	    $('[data-toggle="tooltip"]').tooltip({
+	    								trigger: "mouseout",
+	    								animation: true,
+	    								delay: {show: 500, hide: 100}
+	    							});
+	});
+</script>
+
 </div>
