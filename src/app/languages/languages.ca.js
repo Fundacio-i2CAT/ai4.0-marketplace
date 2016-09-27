@@ -47,8 +47,35 @@
 					'BTN-SAVE': 'Crear Projecte',
 					'PLACEHOLDER-NAME': 'Nom projecte',
 					'PLACEHOLDER-SUMARI': 'Resum descriptiu',
-					'PLACEHOLDER-DESC': 'Descripció del projecte'
-
+					'PLACEHOLDER-DESC': 'Descripció del projecte',
+					//register
+					'REG-TITLE': 'Registre',
+					'REG-SUBTITLE': 'Usuari',
+					'REG-MAIL': 'Correu',
+					'REG-MAIL-PLACEHOLDER': 'El teu correu electrònic',
+					'REG-NAME': 'Nom',
+					'REG-NAME-PLACEHOLDER': 'El teu nom',
+					'REG-SECONDNAME': 'Cognom',
+					'REG-SECONDNAME-PLACEHOLDER': 'El teu cognom',
+					'REG-LASTNAME': 'Segon cognom',
+					'REG-LASTNAME-PLACEHOLDER': 'El teu segon cognom',
+					'REG-COMPANY': 	'Empresa',
+					'REG-COMPANY-PLACEHOLDER': 	'La teva empresa',
+					'REG-LEGAL': 'Responsable legal',
+					'REG-LEGAL-LABEL': 'Ets el responsable legal de l\'empresa?',
+					'REG-COMPANY-ADDRESS': 'Adreça empresa',
+					'REG-COMPANY-ADDRESS-PLACEHOLDER': 'Adreça de la teva empresa',
+					'REG-COMPANY-POSITION': 'Càrrec',
+					'REG-COMPANY-POSITION-PLACEHOLDER': 'El teu càrrec a l\'empresa',
+					'REG-COMPANY-PHONE': 'Telèfon',
+					'REG-COMPANY-PHONE-PLACEHOLDER': 'Telèfon de l\'empresa',
+					'REG-PASSWORD': 'Contrasenya',
+					'REG-PASSWORD-PLACEHOLDER': 'Contrasenya del teu compte',
+					'REG-CONFIRM-PASSWORD': 'Confirma contrasenya',
+					'REG-CONFIRM-PASSWORD-PLACEHOLDER': 'Confirma la contrasenya del teu compte',
+					'REG-USER-ROLE': 'Rol d\'usuari',
+					'REG-TOOLTIP-MAIL': 	'example@gmail.com',
+					'REG-PASSWORD-ERROR': 'El Password i la Confirmació de password no coincideixen.'
 				})
 				.preferredLanguage('CAT');
 		}]);	

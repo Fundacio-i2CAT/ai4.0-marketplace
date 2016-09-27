@@ -47,7 +47,35 @@
 					'BTN-SAVE': 'Crear Proyecto',
 					'PLACEHOLDER-NAME': 'Nombre proyecto',
 					'PLACEHOLDER-SUMARI': 'Resumen descriptivo',
-					'PLACEHOLDER-DESC': 'Descripción del proyecto'
+					'PLACEHOLDER-DESC': 'Descripción del proyecto',
+					//register
+					'REG-TITLE': 'Registro',
+					'REG-SUBTITLE': 'Usuario',
+					'REG-MAIL': 'Correo',
+					'REG-MAIL-PLACEHOLDER': 'Tu correo electrónico',
+					'REG-NAME': 'Nombre',
+					'REG-NAME-PLACEHOLDER': 'Tu nombre',
+					'REG-SECONDNAME': 'Apellido',
+					'REG-SECONDNAME-PLACEHOLDER': 'Tu apellido',
+					'REG-LASTNAME': 'Segundo apellido',
+					'REG-LASTNAME-PLACEHOLDER': 'Tu segundo apellido',
+					'REG-COMPANY': 	'Empresa',
+					'REG-COMPANY-PLACEHOLDER': 	'Tu empresa',
+					'REG-LEGAL': 'Responsable legal',
+					'REG-LEGAL-LABEL': 'Eres el responsable legal de la empresa?',
+					'REG-COMPANY-ADDRESS': 'Dirección empresa',
+					'REG-COMPANY-ADDRESS-PLACEHOLDER': 'Dirección de tu empresa',
+					'REG-COMPANY-POSITION': 'Cargo',
+					'REG-COMPANY-POSITION-PLACEHOLDER': 'Tu cargo en la empresa',
+					'REG-COMPANY-PHONE': 'Teléfono',
+					'REG-COMPANY-PHONE-PLACEHOLDER': 'Teléfono de la empresa',
+					'REG-PASSWORD': 'Contraseña',
+					'REG-PASSWORD-PLACEHOLDER': 'Contraseña de tu cuenta',
+					'REG-CONFIRM-PASSWORD': 'Confirma contraseña',
+					'REG-CONFIRM-PASSWORD-PLACEHOLDER': 'Confirma la contraseña de tu cuenta',
+					'REG-USER-ROLE': 'Rol de usuario',
+					'REG-TOOLTIP-MAIL': 'ejemplo@gmail.com',
+					'REG-PASSWORD-ERROR': 'El Password y la Confirmación de password no coinciden.'
 
 				});
 		}]);
