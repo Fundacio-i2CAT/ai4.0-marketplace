@@ -79,6 +79,12 @@
 				    	<input ng-model="register.credentials.client" name="registerrole" type="radio">CLIENT
 				    </label>
 				</div> -->
+				<div class="form-group">
+					<div
+					    vc-recaptcha
+					    key="'6LfvygcUAAAAAPiXKoN5mZ29Blny9qDjOs5sEW3Z'"
+					></div>
+				</div>
 				<button type="submit" class="btn btn-success btn-block" ng-disabled="registerForm.$invalid || (!register.credentials.client_role && !register.credentials.provider_role)">Enviar dades</button>
 			</div>
 		</div>
