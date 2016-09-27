@@ -12,6 +12,7 @@
 								'ngProgress',
 								'ui.bootstrap',
 								'LocalStorageModule',
-								'angularSpinner']);
+								'angularSpinner',
+								'vcRecaptcha']);
 
 })();
