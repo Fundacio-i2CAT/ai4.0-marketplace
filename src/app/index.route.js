@@ -79,7 +79,6 @@
       $urlRouterProvider.otherwise('/catalog');
   }    
 
-
   angular
     .module('marketplace')
     .run(scrollToTop)
@@ -96,12 +95,10 @@
         });
     }
 
-    function scrollToTop ($rootScope, $window) {
+    function scrollToTop ($rootScope, $document) {
       $rootScope.$on('$stateChangeSuccess', function (event, currentRoute, previousRoute) {
-        // $window.scrollTo(0,0);
-        // document.body.scrollTop = document.documentElement.scrollTop = 0;
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
+        $document.body.scrollTop = 0;
+        $document.documentElement.scrollTop = 0;
       });
     }
 
