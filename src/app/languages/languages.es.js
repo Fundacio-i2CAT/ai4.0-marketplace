@@ -49,6 +49,10 @@
 					'PLACEHOLDER-SUMARI': 'Resumen descriptivo',
 					'PLACEHOLDER-DESC': 'Descripción del proyecto',
 					//register
+					'REG-ROLE-LABEL': 'Quiero',
+					'REG-ROLE-TITLE': 'Selecciona tu Perfil',
+					'REG-ROLE-PROVIDER': 'Ofrecer mis servicios como proveedor de software',
+					'REG-ROLE-CLIENT': 'Utilizar los servicios de software que ofrecen en la plataforma',
 					'REG-TITLE': 'Registro',
 					'REG-SUBTITLE': 'Usuario',
 					'REG-MAIL': 'Correo',

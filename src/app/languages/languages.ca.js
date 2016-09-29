@@ -49,6 +49,10 @@
 					'PLACEHOLDER-SUMARI': 'Resum descriptiu',
 					'PLACEHOLDER-DESC': 'Descripció del projecte',
 					//register
+					'REG-ROLE-LABEL': 'Vull',
+					'REG-ROLE-TITLE': 'Selecciona el teu Perfil',
+					'REG-ROLE-PROVIDER': 'Oferir els meus serveis com a proveïdor de software',
+					'REG-ROLE-CLIENT': 'Utilitzar els serveis de software que oferten en la plataforma',
 					'REG-TITLE': 'Registre',
 					'REG-SUBTITLE': 'Usuari',
 					'REG-MAIL': 'Correu',
