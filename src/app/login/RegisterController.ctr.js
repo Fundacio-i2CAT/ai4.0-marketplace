@@ -13,6 +13,7 @@
 			vm.showRegisterError = false;
 			vm.cif = false;
 			vm.nif = false;
+			vm.credentials = {};
 			/*vm.focusPassword = false;*/
 
 			vm.setIdentification = function(value) {
