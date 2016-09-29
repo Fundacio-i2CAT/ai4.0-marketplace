@@ -95,10 +95,10 @@
         });
     }
 
-    function scrollToTop ($rootScope, $document) {
+    function scrollToTop ($rootScope) {
       $rootScope.$on('$stateChangeSuccess', function (event, currentRoute, previousRoute) {
-        $document.body.scrollTop = 0;
-        $document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
       });
     }
 
@@ -110,5 +110,5 @@
           console.log('next', next);
       });
     }*/
-    
+
 })();
