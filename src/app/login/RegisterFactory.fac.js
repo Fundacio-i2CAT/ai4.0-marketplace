@@ -12,17 +12,18 @@
 
 		var registerUrl = [host, 'api/register'].join('');
 
-
-
 		function doRegister(credentials) {
 			if (credentials.legal === "true") credentials.legal = true
 			else credentials.legal = false;
-		
+
 			return $http.post(registerUrl, credentials).then(handleSuccess, handleError);
 		}
 
 
 		///////////////////////////////   private functions   ///////////////////////////////////////////////////
+		/*function encryptData(data) {
+		}*/
+
 		function handleSuccess(response){
 			return response;	
 		}

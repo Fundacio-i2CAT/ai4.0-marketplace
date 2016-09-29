@@ -6,9 +6,20 @@
 		<div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
 			<div class="well">
 				<div class="form-group">
+					<label for="registerrole">{{ 'REG-ROLE-LABEL' | translate }} *</label>
+					<select ng-model="register.credentials.role" value="client" class="form-control input-sm">
+						<option value="" disabled selected>{{ 'REG-ROLE-TITLE' | translate }}</option>
+						<option value="client">{{ 'REG-ROLE-CLIENT' | translate }}</option>
+						<option value="provider">{{ 'REG-ROLE-PROVIDER' | translate }}</option>
+					</select>
+				</div>
+				<div class="form-group">
 					<label for="registermail">{{ 'REG-MAIL' | translate }} *</label>
-					<input type="email" class="form-control input-sm" ng-model="register.credentials.email" id="registermail" placeholder="{{'REG-MAIL-PLACEHOLDER' | translate}}" required
-					data-toggle="tooltip" data-placement="top" title="{{ 'REG-TOOLTIP-MAIL' | translate }}">
+					<input type="email" class="form-control input-sm" ng-model="register.credentials.email" id="registermail" placeholder="{{'REG-MAIL-PLACEHOLDER' | translate}}" required data-toggle="tooltip" data-placement="top" title="{{ 'REG-TOOLTIP-MAIL' | translate }}">
+					<div class="alert alert-danger alert-dismissible register-error-message" role="alert">
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						Format de correu electrònic incorrecte
+					</div>
 				</div>
 				<div class="form-group">
 					<label for="registername">{{ 'REG-NAME' | translate }} *</label>
@@ -19,8 +30,26 @@
 					<input type="text" class="form-control input-sm" ng-model="register.credentials.secondname" id="registersecondname" placeholder="{{'REG-SECONDNAME-PLACEHOLDER' | translate}}" required>
 				</div>
 				<div class="form-group">
-					<label for="registerlastname">{{ 'REG-LASTNAME' | translate }} *</label>
+					<label for="registerlastname">{{ 'REG-LASTNAME' | translate }}</label>
 					<input type="text" class="form-control input-sm" ng-model="register.credentials.lastname" id="registerlastname" placeholder="{{'REG-LASTNAME-PLACEHOLDER' | translate}}" required>
+				</div>
+				<div class="form-group">
+					<label for="">CIF - NIF *</label>
+					<select class="form-control input-sm" ng-model="register.credentials.identification" ng-change="register.setIdentification(register.credentials.identification)">
+						<option value="" disabled selected>Escull un tipus d'identificació</option>
+						<option value="cif">CIF</option>
+						<option value="nif">NIF</option>
+					</select>
+
+					<div ng-if="register.cif"><br/>
+						<label for="cif">CIF</label>
+						<input type="text" class="form-control input-sm" ng-model="register.credentials.identificationValue" placeholder="El CIF de la teva empresa" required>
+					</div>
+					<div ng-if="register.nif"><br/>
+						<label for="nif">NIF</label>
+						<input type="text" class="form-control input-sm" ng-model="register.credentials.identificationValue" placeholder="El teu NIF" required>
+					</div>
+
 				</div>
 				<div class="form-group">
 					<label for="registercompany">{{ 'REG-COMPANY' | translate }} *</label>
@@ -54,49 +83,40 @@
 				<div class="form-group">
 					<label for="repiteRegisterpassword">{{ 'REG-CONFIRM-PASSWORD' | translate }} *</label>
 					<input type="password" ng-model="register.credentials.repeatpassword" class="form-control input-sm" id="repiteRegisterpassword" placeholder="{{'REG-CONFIRM-PASSWORD-PLACEHOLDER' | translate}}" required>
-					<div ng-if="register.showRegisterError" class="alert alert-danger alert-dismissible register-error-message" role="alert">
+					<div ng-if="true" class="alert alert-danger alert-dismissible register-error-message" role="alert">
 						<button ng-click="register.showRegisterError = !register.showRegisterError" type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 						{{ 'REG-PASSWORD-ERROR' | translate }}
 					</div>
+					<!-- ng-if="register.showRegisterError" -->
 				</div>
-				<div class="form-group">
-				<label for="repiteRegisterpassword">{{ 'REG-USER-ROLE' | translate }} *</label><br/>
-					<label class="checkbox-inline">
-						<input ng-model="register.credentials.client_role" type="checkbox" id="inlineCheckbox1"> CLIENT
-					</label>
-					<label class="checkbox-inline">
-						<input ng-model="register.credentials.provider_role" type="checkbox" id="inlineCheckbox2"> PROVEÏDOR
-					</label>
-				</div>
-				<!-- 
-				Opcio radio button para seleccionar role d'usuari provider o client
-				<div class="form-group">
-					<label for="registerrole">Role</label><br/>
-					<label class="radio-inline">
-				    	<input ng-model="register.credentials.provider" name="registerrole" type="radio">PROVEÏDOR
-				    </label>
-				    <label class="radio-inline">
-				    	<input ng-model="register.credentials.client" name="registerrole" type="radio">CLIENT
-				    </label>
+				<!-- google recaptcha -->
+				<!-- <div class="form-group clearfix">
+					<div class="col-xs-12 col-sm-10 col-sm-offset-2 col-md-11 col-md-offset-1 col-lg-10 col-lg-offset-2"
+					    vc-recaptcha
+					    key="'6LfvygcUAAAAAPiXKoN5mZ29Blny9qDjOs5sEW3Z'">
+					</div>
 				</div> -->
 				<div class="form-group">
-					<div
-					    vc-recaptcha
-					    key="'6LfvygcUAAAAAPiXKoN5mZ29Blny9qDjOs5sEW3Z'"
-					></div>
+					<p><strong>* Camps Obligatoris</strong></p>
+					<p>
+						Vull rebre correus electrònics des de la PI4.0 i estic d’acord en que la PI4.0 guardi les meves dades personals.<br/>
+						És necessari per processar la sol·licitud.<br/>
+						<input ng-model="register.credentials.recivemails" type="checkbox" id="inlineCheckbox1" required>
+					</p>
 				</div>
-				<button type="submit" class="btn btn-success btn-block" ng-disabled="registerForm.$invalid || (!register.credentials.client_role && !register.credentials.provider_role)">Enviar dades</button>
+				<!-- <button type="submit" class="btn btn-success btn-block" ng-disabled="registerForm.$invalid || (!register.credentials.client_role && !register.credentials.provider_role)">Enviar dades</button> -->
+				<button type="submit" class="btn btn-success btn-block" ng-disabled="registerForm.$invalid">Enviar dades</button>
 			</div>
 		</div>
 	</form>
 <script>
+	//tooltip
 	$(document).ready(function(){
 	    $('[data-toggle="tooltip"]').tooltip({
-	    								trigger: "mouseout",
-	    								animation: true,
-	    								delay: {show: 500, hide: 100}
-	    							});
+			trigger: "mouseout",
+			animation: true,
+			delay: {show: 500, hide: 200}
+		});
 	});
 </script>
-
 </div>
