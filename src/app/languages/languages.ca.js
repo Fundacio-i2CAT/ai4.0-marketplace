@@ -78,8 +78,9 @@
 					'REG-CONFIRM-PASSWORD': 'Confirma contrasenya',
 					'REG-CONFIRM-PASSWORD-PLACEHOLDER': 'Confirma la contrasenya del teu compte',
 					'REG-USER-ROLE': 'Rol d\'usuari',
-					'REG-TOOLTIP-MAIL': 	'example@gmail.com',
-					'REG-PASSWORD-ERROR': 'El Password i la Confirmació de password no coincideixen.'
+					'REG-TOOLTIP-MAIL': 'example@gmail.com',
+					'REG-PASSWORD-ERROR': 'El Password i la Confirmació de password no coincideixen.',
+					'REG-EMAIL-ERROR': 'Format de correu electrònic incorrecte.'
 				})
 				.preferredLanguage('CAT');
 		}]);	
