@@ -8,7 +8,7 @@
 		checkmail.$inject = [];
 		function checkmail () {
 			var directive = {
-				restrict: 'EA',
+				restrict: 'E',
 				scope: false,
 				link: function (scope, element, attrs){
 					element.on('blur', function (event){	
