@@ -5,8 +5,8 @@
 		.module('marketplace')
 		.directive('checknif', checknif);
 
-		checknif.$inject = ['RegisterFactory'];
-		function checknif (RegisterFactory) {
+		checknif.$inject = ['DataValidationFactory'];
+		function checknif (DataValidationFactory) {
 			var directive = {
 				restrict: 'A',
 				scope: false,
@@ -14,7 +14,7 @@
 					scope.showNifError = undefined;
 					element.on('blur', function(event){
 						var temp;
-						var nifRegex = /(([X-Z]{1})([-]?)(\d{7})([-]?)([A-Z]{1}))|((\d{8})([-]?)([A-Z]{1}))/;
+						var nifRegex = DataValidationFactory.nif_validation;
 						var nif = event.currentTarget.value;
 
 						if(nif != null && nif != undefined && nif != '') {
@@ -23,14 +23,11 @@
 								temp = true;
 							} else {
 								//if nif format is correct, then we validate the letter of nif
-								temp = RegisterFactory.checkNifLetter(nif);
+								temp = DataValidationFactory.checkNifLetter(nif);
 							}
 							scope.showNifError = temp;
 						}
-
-						
 					});
-					
 				}
 			};
 			return directive;

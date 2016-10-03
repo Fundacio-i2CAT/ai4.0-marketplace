@@ -21,31 +21,6 @@
 
 
 		///////////////////////////////   private functions   ///////////////////////////////////////////////////
-		function checkNifLetter(nif) {
-			var nifError,
-				listOfLetters = 'TRWAGMYFPDXBNJZSQVHLCKET',
-				letter,
-				position,
-				letterOk,
-				number = nif.substring(0,8),
-				letter = nif.substring(nif.length-1);
-
-			if (number && number > 0 && number < 99999999) {
-				position = number % 23;
-				letterOk = listOfLetters.substring(position, position+1);
-
-				if (letterOk == letter) {
-					nifError = false;	
-				} else {
-					nifError = true;
-				}
-				
-			} else {
-				nifError = true;
-			}
-			return nifError;
-		}
-
 		function handleSuccess(response){
 			return response;	
 		}
@@ -55,8 +30,7 @@
 		}
 
 		return {
-			doRegister: doRegister,
-			checkNifLetter: checkNifLetter
+			doRegister: doRegister
 		};
 
 	}
