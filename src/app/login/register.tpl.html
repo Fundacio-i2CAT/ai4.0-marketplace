@@ -43,15 +43,15 @@
 
 					<div ng-show="register.cif"><br/>
 						<label for="cif">CIF</label>
-						<input type="text" class="form-control input-sm" ng-model="register.credentials.identificationValue" placeholder="El CIF de la teva empresa" required>
+						<input type="text" class="form-control input-sm" ng-model="register.credentials.identificationValue" placeholder="{{ 'REG-CIF-PLACEHOLDER' | translate }}" required>
 					</div>
 					<div ng-show="register.nif"><br/>
 						<label for="nif">NIF</label>
-						<input checknif type="text" class="form-control input-sm" ng-model="register.credentials.identificationValue" placeholder="El teu NIF" required data-toggle="tooltip" data-placement="top" title="Format correcte de NIF">
+						<input checknif type="text" class="form-control input-sm" ng-model="register.credentials.identificationValue" placeholder="{{ 'REG-NIF-PLACEHOLDER' | translate }}" required>
 					</div>
 					<div ng-show="showNifError" class="alert alert-danger alert-dismissible register-error-message" role="alert">
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<i class="fa fa-warning"></i>&nbsp;El Nif introduït és incorrecte
+						<i class="fa fa-warning"></i>&nbsp;{{ 'REG-NIF-ERROR' | translate }}
 					</div>
 				</div>
 				<div class="form-group">
@@ -99,7 +99,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<p><strong>* Camps Obligatoris</strong></p>
+					<p><strong>* {{ 'REG-REQUIRED-FIELDS' | translate }}</strong></p>
 					<p>
 						Vull rebre correus electrònics des de la PI4.0 i estic d’acord en que la PI4.0 guardi les meves dades personals.<br/>
 						És necessari per processar la sol·licitud.<br/>

@@ -81,7 +81,11 @@
 					'REG-TOOLTIP-MAIL': 'example@gmail.com',
 					'REG-PASSWORD-ERROR': 'El Password i la Confirmació de password no coincideixen.',
 					'REG-EMAIL-ERROR': 'Format de correu electrònic incorrecte.',
-					'REG-CHOOSE-IDENTIFICATION-TYPE': 'Escull un tipus d\'identificació'
+					'REG-CHOOSE-IDENTIFICATION-TYPE': 'Escull un tipus d\'identificació',
+					'REG-CIF-PLACEHOLDER': 'El CIF de la teva empresa sense espais ni guions',
+					'REG-NIF-PLACEHOLDER': 'El teu NIF sense espais ni guions',
+					'REG-NIF-ERROR': 'El Nif introducido es incorrecto',
+					'REG-REQUIRED-FIELDS': 'Camps obligatoris'
 				})
 				.preferredLanguage('CAT');
 		}]);	
