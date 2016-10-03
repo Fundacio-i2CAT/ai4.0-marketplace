@@ -5,8 +5,8 @@
 		.module('marketplace')
 		.directive('checknif', checknif);
 
-		checknif.$inject = [];
-		function checknif () {
+		checknif.$inject = ['RegisterFactory'];
+		function checknif (RegisterFactory) {
 			var directive = {
 				restrict: 'A',
 				scope: false,
@@ -22,7 +22,8 @@
 							if (!correctNif) {
 								temp = true;
 							} else {
-								temp = false;
+								//if nif format is correct, then we validate the letter of nif
+								temp = RegisterFactory.checkNifLetter(nif);
 							}
 							scope.showNifError = temp;
 						}
