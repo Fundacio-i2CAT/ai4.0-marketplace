@@ -8,7 +8,7 @@
 	RegisterFactory.$inject = ['$http', 'ConnectionFactory'];
 
 	function RegisterFactory($http, ConnectionFactory) {
-		var host = ConnectionFactory.localHostDavid;
+		var host = ConnectionFactory.host;
 
 		var registerUrl = [host, 'api/register'].join('');
 

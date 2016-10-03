@@ -5,9 +5,9 @@
 			.module('marketplace')
 			.controller('RegisterController', RegisterController);
 
-		RegisterController.$inject = ['RegisterFactory', '$log'];
+		RegisterController.$inject = ['RegisterFactory', '$log', 'toastr'];
 
-		function RegisterController (RegisterFactory, $log) {
+		function RegisterController (RegisterFactory, $log, toastr) {
 			var vm = this;
 			var passwordOk;
 			vm.showRegisterError = false;
@@ -61,10 +61,16 @@
 					};
 					RegisterFactory.doRegister(userInfo).then(function (response){
 						$log.debug(response);
-						//show message with register confirmation
+						if (response && response.status === 201) {
+							//show message with register confirmation
+							toastr.info('Registre realitzat correctament', 'Registre correcte');
+						}
 					}, function (error){
 						$log.debug(error);
-						//show message with register error
+						if (error && error.status === 409) {
+							alert('Error en el registre');
+							toastr.error("L'Usuari ja està registrat", 'Error en el registre');
+						}
 					});
 				}
 			};
