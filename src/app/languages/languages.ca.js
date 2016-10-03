@@ -80,7 +80,8 @@
 					'REG-USER-ROLE': 'Rol d\'usuari',
 					'REG-TOOLTIP-MAIL': 'example@gmail.com',
 					'REG-PASSWORD-ERROR': 'El Password i la Confirmació de password no coincideixen.',
-					'REG-EMAIL-ERROR': 'Format de correu electrònic incorrecte.'
+					'REG-EMAIL-ERROR': 'Format de correu electrònic incorrecte.',
+					'REG-CHOOSE-IDENTIFICATION-TYPE': 'Escull un tipus d\'identificació'
 				})
 				.preferredLanguage('CAT');
 		}]);	

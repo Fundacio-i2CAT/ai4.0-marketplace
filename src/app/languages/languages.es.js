@@ -80,7 +80,8 @@
 					'REG-USER-ROLE': 'Rol de usuario',
 					'REG-TOOLTIP-MAIL': 'ejemplo@gmail.com',
 					'REG-PASSWORD-ERROR': 'El Password y la Confirmación de password no coinciden.',
-					'REG-EMAIL-ERROR': 'Formato de correo electrónico incorrecto.'
+					'REG-EMAIL-ERROR': 'Formato de correo electrónico incorrecto.',
+					'REG-CHOOSE-IDENTIFICATION-TYPE': 'Escoge un tipo de identificación'
 
 				});
 		}]);
