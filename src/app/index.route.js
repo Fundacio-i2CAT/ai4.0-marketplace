@@ -74,6 +74,11 @@
         url: '/tatami',
         templateUrl: 'app/tatami/tatami.tpl.html', controller: 'TatamiController', controllerAs: 'tatami'/*,
         need: 'admindoscat'*/
+      })
+      .state('forgotpass', {
+        url: '/forgot',
+        templateUrl: 'app/login/forgotpass.tpl.html', controller: 'ForgotPassController', controllerAs: 'forgot'/*,
+        need: 'admindoscat'*/
       });
 
       $urlRouterProvider.otherwise('/catalog');
