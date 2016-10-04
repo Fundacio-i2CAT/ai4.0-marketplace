@@ -11,7 +11,7 @@
 				restrict: 'A',
 				scope: false,
 				link: function (scope, element, attrs){
-					element.on('blur', function (event){	
+					element.on('blur change keyup keypress', function (event){	
 						var temp,
 							mailRegex = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/,					
 							mail = event.currentTarget.value;

@@ -12,7 +12,7 @@
 			scope: false,
 			link: function(scope, element, attrs) {
 				scope.showCifError = undefined;
-				element.on('blur', function(event) {
+				element.on('blur change keyup keypress', function(event) {
 					var temp,
 						cifRegex = DataValidationFactory.cif_validation,
 						cif = event.currentTarget.value;
