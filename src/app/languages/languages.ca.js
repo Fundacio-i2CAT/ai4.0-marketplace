@@ -97,8 +97,13 @@
 					'LOG-PASSWORD': 'Contrasenya',
 					'LOG-PASSWORD-PLACEHOLDER': 'Contrasenya del teu compte',
 					'LOG-LOGIN': 'Accedir',
-					'LOG-NOUSER': 'Si no disposes d\'usuari, clica per registrar-te',
-					'LOG-REGISTER-BUTTON': 'Registre'
+					'LOG-NOUSER': 'Si no disposes d\'usuari, fes clic per registrar-te',
+					'LOG-REGISTER-BUTTON': 'Registre',
+					'LOG-CREATE-ACCOUNT': 'Crear comte',
+					'LOG-FORGOT-PASS': 'He olvidado la contraseña',
+					//forgot
+					'FORGOT-SENDMAIL': 'Enviar correu',
+					'FORGOT-MAIL-PLACEHOLDER': 'Introdueix el teu correu'
 
 				})
 				.preferredLanguage('CAT');

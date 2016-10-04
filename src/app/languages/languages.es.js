@@ -97,8 +97,13 @@
 					'LOG-PASSWORD': 'Contraseña',
 					'LOG-PASSWORD-PLACEHOLDER': 'Contraseña de tu cuenta',
 					'LOG-LOGIN': 'Acceder',
-					'LOG-NOUSER': 'Si no dispones de usuario, clica para registrarte',
-					'LOG-REGISTER-BUTTON': 'Registro'
+					'LOG-NOUSER': 'Si no dispones de usuario, haz clic para registrarte',
+					'LOG-REGISTER-BUTTON': 'Registro',
+					'LOG-CREATE-ACCOUNT': 'Crear cuenta',
+					'LOG-FORGOT-PASS': 'He oblidat la contrasenya',
+					//forgot
+					'FORGOT-SENDMAIL': 'Enviar correo',
+					'FORGOT-MAIL-PLACEHOLDER': 'Introduce tu correo'
 
 				});
 		}]);
