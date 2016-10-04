@@ -85,7 +85,21 @@
 					'REG-CIF-PLACEHOLDER': 'El CIF de la teva empresa sense espais ni guions',
 					'REG-NIF-PLACEHOLDER': 'El teu NIF sense espais ni guions',
 					'REG-NIF-ERROR': 'El Nif introducido es incorrecto',
-					'REG-REQUIRED-FIELDS': 'Camps obligatoris'
+					'REG-REQUIRED-FIELDS': 'Camps obligatoris',
+					'REG-NEEDED-TEXT': 'És necessari per processar la sol·licitud.',
+					'REG-RECIVE-MAILS': 'Vull rebre correus electrònics des de la PI4.0 i estic d’acord en que la PI4.0 guardi les meves dades personals.',
+					'REG-REGISTER-BUTTON': 'Registrar-me',
+					//log in
+					'LOG-TITLE': 'Accés',
+					'LOG-SUBTITLE': 'Usuari',
+					'LOG-NAME': 'Nom',
+					'LOG-NAME-PLACEHOLDER': 'El teu nom',
+					'LOG-PASSWORD': 'Contrasenya',
+					'LOG-PASSWORD-PLACEHOLDER': 'Contrasenya del teu compte',
+					'LOG-LOGIN': 'Accedir',
+					'LOG-NOUSER': 'Si no disposes d\'usuari, clica per registrar-te',
+					'LOG-REGISTER-BUTTON': 'Registre'
+
 				})
 				.preferredLanguage('CAT');
 		}]);	

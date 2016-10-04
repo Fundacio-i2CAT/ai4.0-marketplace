@@ -105,13 +105,13 @@
 				<div class="form-group">
 					<p><strong>* {{ 'REG-REQUIRED-FIELDS' | translate }}</strong></p>
 					<p>
-						Vull rebre correus electrònics des de la PI4.0 i estic d’acord en que la PI4.0 guardi les meves dades personals.<br/>
-						És necessari per processar la sol·licitud.<br/>
+						{{ 'REG-RECIVE-MAILS' | translate }}<br/>
+						<i>{{ 'REG-NEEDED-TEXT' | translate }}</i><br/>
 						<input ng-model="register.credentials.recivemails" type="checkbox" id="inlineCheckbox1" required>
 					</p>
 				</div>
 				<!-- <button type="submit" class="btn btn-success btn-block" ng-disabled="registerForm.$invalid || (!register.credentials.client_role && !register.credentials.provider_role)">Enviar dades</button> -->
-				<button type="submit" class="btn btn-success btn-block" ng-disabled="registerForm.$invalid">Enviar dades</button>
+				<button type="submit" class="btn btn-success btn-block" ng-disabled="registerForm.$invalid">{{ 'REG-REGISTER-BUTTON' | translate }}</button>
 			</div>
 		</div>
 	</form>
