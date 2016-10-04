@@ -1,6 +1,8 @@
 <div class="container">
 	<div class="page-header">
-		<h3>{{ 'LOG-TITLE' | translate }}<small> {{ 'LOG-SUBTITLE' | translate }}</small></h3>
+		<h3>
+		<!-- {{ 'LOG-TITLE' | translate }}<small> {{ 'LOG-SUBTITLE' | translate }}</small> -->
+		</h3>
 	</div>
 	
 	<form id="login" name="logUser" ng-submit="login.doLogin()">
@@ -15,18 +17,23 @@
 					<input type="password" ng-model="login.credentials.password" class="form-control" id="loginpassword" placeholder="{{ 'LOG-PASSWORD-PLACEHOLDER' | translate }}" required>
 					
 				</div>
-				
-				<button type="submit" class="btn btn-primary btn-block" ng-disabled="logUser.$invalid">{{ 'LOG-LOGIN' | translate }}</button>
-			</div></div>
-		</form>
-		
-		<div class="row">
-			<div class="col-xs-6 col-xs-offset-3 col-sm-6 col-sm-offset-3 col-sm-6 col-sm-offset-3 col-lg-6 col-lg-offset-3">
-				<div class="well clearfix centered">
-					<h4>{{ 'LOG-NOUSER' | translate }}</h4>
-					<br/>
-					<a ui-sref="register" class="btn btn-success"><i class="fa fa-user-plus"></i> {{ 'LOG-REGISTER-BUTTON' | translate }}</a>
-				</div>
+				<button type="submit" class="btn btn-success btn-block" ng-disabled="logUser.$invalid">{{ 'LOG-LOGIN' | translate }}</button>
+				<br/>
+				<ul class="list list-unstyled">
+					<li class="pull-left"><a ui-sref="register" class="login-link"><strong>{{ 'LOG-CREATE-ACCOUNT' | translate }}</strong></a></li>
+					<li class="pull-right"><a ui-sref="forgotpass" class="login-link"><strong>{{ 'LOG-FORGOT-PASS' | translate }}</strong></a></li>
+				</ul>
 			</div>
 		</div>
-	</div>
+	</form>
+	
+	<!-- <div class="row">
+			<div class="col-xs-6 col-xs-offset-3 col-sm-6 col-sm-offset-3 col-sm-6 col-sm-offset-3 col-lg-6 col-lg-offset-3">
+					<div class="well clearfix centered">
+							<h4>{{ 'LOG-NOUSER' | translate }}</h4>
+							<br/>
+							<a ui-sref="register" class="btn btn-primary"><i class="fa fa-user-plus"></i> {{ 'LOG-REGISTER-BUTTON' | translate }}</a>
+					</div>
+			</div>
+	</div> -->
+</div>
