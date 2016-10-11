@@ -14,7 +14,7 @@
 		var localHostDavid2 = "http://192.168.122.1:8010/";
 
 		return {
-			host: localHostDavid
+			host: development
 		};
 
 
