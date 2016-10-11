@@ -5,11 +5,11 @@
 	<form id="changepass" name="forgotpass" ng-submit="forgot.sendMail(forgot.credentials)">
 		<div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
 			<div class="well clearfix">
-				<h5>Introdueix el teu Correu electrònic i t'enviarem un enllaç per canviar la contrasenya</h5>
+				<h5>{{ 'FORGOT-EXPLANATION' | translate }}</h5>
 				<br/>
 				<div class="form-group">
 					<label for="mail">{{ 'REG-MAIL' | translate }}</label>
-					<input checkmail type="email" class="form-control" ng-model="forgot.credentials.mail" id="mail" placeholder="Introdueix el teu mail" required>
+					<input checkmail type="email" class="form-control" ng-model="forgot.credentials.mail" id="mail" placeholder="{{ 'FORGOT-MAIL-PLACEHOLDER' | translate }}" required>
 					<div ng-show="showMailError" class="alert alert-danger alert-dismissible register-error-message" role="alert">
 						<button ng-click="showMailError = undefined" type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 						<i class="fa fa-warning"></i>&nbsp;{{ 'REG-EMAIL-ERROR' | translate }}
