@@ -5,9 +5,9 @@
 			.module('marketplace')
 			.controller('RegisterController', RegisterController);
 
-		RegisterController.$inject = ['RegisterFactory', '$log', 'toastr'];
+		RegisterController.$inject = ['RegisterFactory', '$log', 'toastr', '$state'];
 
-		function RegisterController (RegisterFactory, $log, toastr) {
+		function RegisterController (RegisterFactory, $log, toastr, $state) {
 			var vm = this;
 			var passwordOk;
 			vm.showRegisterError = false;
@@ -43,8 +43,7 @@
 				} else {
 					userInfo = {
 						name: credentials.name,
-						secondname: credentials.secondname,
-						lastname: credentials.lastname,
+						surname: credentials.surname,
 						email: credentials.email,
 						company: credentials.company,
 						comp_address: credentials.comp_address,
@@ -64,11 +63,11 @@
 						if (response && response.status === 201) {
 							//show message with register confirmation
 							toastr.info('Registre realitzat correctament', 'Registre correcte');
+							$state.go('catalog');
 						}
 					}, function (error){
 						$log.debug(error);
 						if (error && error.status === 409) {
-							alert('Error en el registre');
 							toastr.error("L'Usuari ja està registrat", 'Error en el registre');
 						}
 					});
