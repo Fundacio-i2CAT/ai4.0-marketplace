@@ -82,6 +82,7 @@
 					'REG-CHOOSE-IDENTIFICATION-TYPE': 'Escull un tipus d\'identificació',
 					'REG-CIF-PLACEHOLDER': 'El CIF de la teva empresa sense espais ni guions',
 					'REG-NIF-PLACEHOLDER': 'El teu NIF sense espais ni guions',
+					'REG-CIF-ERROR': 'El Cif introducido es incorrecto',
 					'REG-NIF-ERROR': 'El Nif introducido es incorrecto',
 					'REG-REQUIRED-FIELDS': 'Camps obligatoris',
 					'REG-NEEDED-TEXT': 'És necessari per processar la sol·licitud.',
