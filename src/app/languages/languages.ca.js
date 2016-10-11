@@ -103,7 +103,8 @@
 					'LOG-FORGOT-PASS': 'He olvidado la contraseña',
 					//forgot
 					'FORGOT-SENDMAIL': 'Enviar correu',
-					'FORGOT-MAIL-PLACEHOLDER': 'Introdueix el teu correu'
+					'FORGOT-MAIL-PLACEHOLDER': 'Introdueix el teu correu',
+					'FORGOT-EXPLANATION': 'Introdueix el teu Correu electrònic i t\'enviarem un enllaç per canviar la contrasenya.'
 
 				})
 				.preferredLanguage('CAT');
