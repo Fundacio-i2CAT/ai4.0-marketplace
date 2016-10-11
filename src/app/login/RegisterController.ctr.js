@@ -5,9 +5,9 @@
 			.module('marketplace')
 			.controller('RegisterController', RegisterController);
 
-		RegisterController.$inject = ['RegisterFactory', '$log', 'toastr', '$state'];
+		RegisterController.$inject = ['RegisterFactory', '$log', 'toastr', '$state', 'DataValidationFactory'];
 
-		function RegisterController (RegisterFactory, $log, toastr, $state) {
+		function RegisterController (RegisterFactory, $log, toastr, $state, DataValidationFactory) {
 			var vm = this;
 			var passwordOk;
 			vm.showRegisterError = false;
@@ -31,8 +31,31 @@
 			}
 
 			vm.doRegister = function(credentials) {
-				//if password and repeatpassword not equals an error must be shown
-				//and ask for repeat password again
+
+				if (credentials.identification === 'cif') {
+					var cif = credentials.identificationValue;
+					var cifRegex = DataValidationFactory.cif_validation;
+					var correctCif = cifRegex.test(cif);
+					if (correctCif == false) {
+						vm.credentials.identificationValue = '';
+						vm.showCifError = true;
+						toastr.error('El CIF introduït no és correcte', 'CIF Erroni');
+						return;
+					}
+				} else {
+					var nif = credentials.identificationValue;
+					var nifRegex = DataValidationFactory.nif_validation;
+					var correctNif = nifRegex.test(nif);
+					if (correctNif == false) {
+						vm.credentials.identificationValue = '';
+						vm.showNifError = true;
+						toastr.error('El NIF introduït no és correcte', 'NIF Erroni');
+						return;
+					}
+				}
+
+				
+
 				var userInfo;
 				passwordOk = validPassword(credentials.password, credentials.repeatpassword);
 				if (!passwordOk) {
@@ -66,7 +89,6 @@
 							$state.go('catalog');
 						}
 					}, function (error){
-						$log.debug(error);
 						if (error && error.status === 409) {
 							toastr.error("L'Usuari ja està registrat", 'Error en el registre');
 						}
