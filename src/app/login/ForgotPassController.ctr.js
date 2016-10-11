@@ -11,7 +11,6 @@
 		var vm = this;
 
 		vm.sendMail = function(credentials) {
-			console.log(credentials);
 			var destiny = credentials.mail;
 			var texte = "Texto de prueba";
 			/*var link = "mailto:" + destiny
