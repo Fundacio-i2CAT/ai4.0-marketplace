@@ -12,7 +12,7 @@
 				scope: false,
 				link: function (scope, element, attrs) {
 					scope.showNifError = undefined;
-					element.on('blur', function(event){
+					element.on('blur change keyup keypress', function(event){
 						var temp;
 						var nifRegex = DataValidationFactory.nif_validation;
 						var nif = event.currentTarget.value;
