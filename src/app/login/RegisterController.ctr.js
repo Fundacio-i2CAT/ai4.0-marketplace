@@ -83,14 +83,14 @@
 					};
 					RegisterFactory.doRegister(userInfo).then(function (response){
 						$log.debug(response);
-						if (response && response.status === 201) {
-							//show message with register confirmation
-							toastr.info('Registre realitzat correctament', 'Registre correcte');
-							$state.go('catalog');
-						}
-					}, function (error){
-						if (error && error.status === 409) {
-							toastr.error("L'Usuari ja està registrat", 'Error en el registre');
+						if (response) {
+							if (response.status === 201) {
+								//show message with register confirmation
+								toastr.info('Registre realitzat correctament', 'Registre correcte');
+								$state.go('catalog');
+							} else if (response.status === 409) {
+								toastr.error("L'Usuari ja està registrat", 'Error en el registre');
+							}
 						}
 					});
 				}
