@@ -39,18 +39,18 @@
 
 					<div ng-show="register.cif"><br/>
 						<label for="cif">CIF</label>
-						<input checkcif type="text" class="form-control input-sm" ng-model="register.credentials.identificationValue" placeholder="{{ 'REG-CIF-PLACEHOLDER' | translate }}" required>
+						<input checkcif type="text" id="cif" name="cif" class="form-control input-sm" ng-model="register.credentials.identificationValue" placeholder="{{ 'REG-CIF-PLACEHOLDER' | translate }}" required>
 					</div>
 					<div ng-show="register.nif"><br/>
 						<label for="nif">NIF</label>
-						<input checknif type="text" class="form-control input-sm" ng-model="register.credentials.identificationValue" placeholder="{{ 'REG-NIF-PLACEHOLDER' | translate }}" required>
+						<input checknif type="text" id="nif" class="form-control input-sm" ng-model="register.credentials.identificationValue" placeholder="{{ 'REG-NIF-PLACEHOLDER' | translate }}" required>
 					</div>
 					<div ng-show="showNifError" class="alert alert-danger alert-dismissible register-error-message" role="alert">
-						<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<button ng-click="showNifError = undefined" type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 						<i class="fa fa-warning"></i>&nbsp;{{ 'REG-NIF-ERROR' | translate }}
 					</div>
 					<div ng-show="showCifError" class="alert alert-danger alert-dismissible register-error-message" role="alert">
-						<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<button type="button" ng-click="showCifError = undefined" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 						<i class="fa fa-warning"></i>&nbsp;El CIF introduït no és correcte
 					</div>
 				</div>
