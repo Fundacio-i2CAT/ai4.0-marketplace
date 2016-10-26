@@ -14,12 +14,24 @@
 		vm.deletedSession;
 		vm.obtainedUser;
 
+		function setActive(userlist) {
+			angular.forEach(userlist, function (user) {
+				if(user.admin == false) {
+					user.isActive = false;
+				} else {
+					user.isActive = true;
+				}
+			});
+		}
+
 		//get all users
 		vm.getAllUsers = function(){
 			UserFactory.getAllUsers().then(function(response) {
 				if (response.success === false) {
 					//do something like show toastr
 				} else {
+					console.log(response.data.result);
+					setActive(response.data.result);
 					vm.allUsers = response.data.result;	
 				}
 			});
@@ -82,6 +94,24 @@
 
 		//llamada al getAll de users
 		vm.getAllUsers();
+
+		vm.activateUser = function (user) {
+			vm.allUsers.forEach(function (each){
+				if (each._id === user._id) {
+					each.isActive = true;
+				}
+			});
+		};
+
+		vm.deActivateUser = function (user) {
+			vm.allUsers.forEach(function (each){
+				if (each._id === user._id) {
+					each.isActive = false;
+				}
+			});
+		};
+
+
 
 	}
 

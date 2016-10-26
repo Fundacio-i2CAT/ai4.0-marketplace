@@ -3,42 +3,37 @@
 		<h2>Users <small>Index</small></h2>
 	</div>
 	<div class="row">
-		<div class="well">
-			<h4>GetCurrentUser</h4>
-			<button class="btn btn-danger" ng-click="users.getCurrentUser()">getCurrentUser</button>
-			<p>{{users.userr}}</p>
+		<div class="table-responsive">
+			<table class="table table-hover table-striped">
+				<thead>
+					<tr>
+						<th>Nom</th>
+						<th>Cognom</th>
+						<th>Admin</th>
+						<th>Usuari</th>
+						<th>Activat</th>
+						<th>Partner</th>
+						<th>Email</th>
+						<th>Telèfon</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="user in users.allUsers" ng-class="(user.admin) ? 'success' : ''">
+						<td>{{user.first_name}}</td>
+						<td>{{user.last_name}}</td>
+						<td>{{user.admin}}</td>
+						<td>{{user.user_name}}</td>
+						<td>{{user.isActive}}</td>
+						<td>{{user.partner.name}}</td>
+						<td>{{user.email}}</td>
+						<td>{{user.phone_number}}</td>
+						<td>
+							 <button ng-if="!user.isActive" class="btn-primary btn-xs" ng-click="users.activateUser(user)">Activar</button>
+							 <button ng-if="user.isActive" class="btn-danger btn-xs" ng-click="users.deActivateUser(user)">Desactivar</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
-		<div class="clear-fix"></div>
-		<ul class="col-xs-12 col-md-12 list-unstyled" ng-repeat="user in users.allUsers">
-			<h4 class="text-success">user</h4>
-			<li><strong>rol:</strong> {{user.partner._cls}}</li>
-			<li class="id">
-				<strong>id:</strong> {{user._id}}
-			</li>
-			<li>
-				<strong>mail:</strong> {{user.email}}
-			</li>
-			<li>
-				<strong>language:</strong> {{user.idiom}}
-			</li>
-			<li>
-				<strong>lastname:</strong> {{user.lastName}}
-			</li>
-			<li>
-				<strong>partner:</strong> {{(user.partner) ? user.partner : 'No partner registered'}}
-			</li>
-			<li>
-				<strong>username:</strong> {{user.user_name}}
-			</li>
-			<li>
-				<div class="row">
-					<div class="col-xs-12">
-						<button type="button" class="btn-primary" ng-click="users.openSession(user)">Open session for this User</button>
-						<button type="button" class="btn-warning" ng-click="users.deleteSession(user)">Delete session</button>
-					</div>
-				</div>
-			</li>
-			<hr/>
-		</ul>
 	</div>
 </div>
