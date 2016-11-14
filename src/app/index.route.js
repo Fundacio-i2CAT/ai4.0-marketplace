@@ -14,11 +14,15 @@
     $stateProvider
       .state('home', {
         url: '/',
-        templateUrl: 'app/main/main.html', controller: 'MainController', controllerAs: 'main'
+        templateUrl: 'app/main/main.html',
+        controller: 'MainController',
+        controllerAs: 'main'
       })
       .state('catalog', {
         url: '/catalog',
-        templateUrl: 'app/catalog/index.tpl.html', controller: 'CatalogController', controllerAs: 'catalog'
+        templateUrl: 'app/catalog/index.tpl.html',
+        controller: 'CatalogController',
+        controllerAs: 'catalog'
       })
       .state('projects', {
         url: '/projects',
@@ -27,57 +31,97 @@
       })
       .state('provprojects', {
         url: '/provprojects',
-        templateUrl: 'app/projects/provider/index-prov.tpl.html', controller: 'ProjectController', controllerAs: 'provprojects'/*,
-        need: 'Partner.Provider'*/
+        templateUrl: 'app/projects/provider/index-prov.tpl.html',
+        controller: 'ProjectController',
+        controllerAs: 'provprojects',
+        need: 'Partner.Provider'
       })
+
+
+
+
+      
+      .state('publishsrv', {
+        url: '/publishsrv',
+        templateUrl: 'app/projects/provider/publishsrv.tpl.html',
+        controller: 'PublishSrvController',
+        controllerAs: 'publishsrv',
+        need: 'Partner.Provider'
+      })
+
+
+
+
       .state('clientprojects', {
         url: '/clientprojects',
-        templateUrl: 'app/projects/client/index-client.tpl.html', controller: 'ProjectController', controllerAs: 'clientprojects'/*,
+        templateUrl: 'app/projects/client/index-client.tpl.html',
+        controller: 'ProjectController',
+        controllerAs: 'clientprojects'/*,
         need: 'Partner.Client'*/
       })
       .state('project-new', {
         url: '/clientproject/new',
-        templateUrl: 'app/projects/client/project-new.tpl.html', controller: 'NewProjectController', controllerAs: 'newproject'
+        templateUrl: 'app/projects/client/project-new.tpl.html',
+        controller: 'NewProjectController',
+        controllerAs: 'newproject'
       })
       .state('project-edit', {
         url: '/clientproject/edit/:id',
-        templateUrl: 'app/projects/client/project-edit.tpl.html', controller: 'ProjectController', controllerAs: 'editproject'
+        templateUrl: 'app/projects/client/project-edit.tpl.html',
+        controller: 'ProjectController',
+        controllerAs: 'editproject'
       })
       .state('services', {
         url: '/services',
-        templateUrl: 'app/services/index.tpl.html', controller: 'ServiceController', controllerAs: 'services'/*,
+        templateUrl: 'app/services/index.tpl.html',
+        controller: 'ServiceController',
+        controllerAs: 'services'/*,
         need: 'admindoscat'*/
       })
       .state('service-edit', {
         url: '/services/detail/:id',
-        templateUrl: 'app/services/detail.tpl.html', controller: 'ServiceEditController', controllerAs: 'detailsrv'
+        templateUrl: 'app/services/detail.tpl.html',
+        controller: 'ServiceEditController',
+        controllerAs: 'detailsrv'
       })
       .state('provinstances', {
         url: '/provinstances',
-        templateUrl: 'app/projects/provider/provinstances.tpl.html', controller: 'ProvInstancesController', controllerAs: 'provinstances',
+        templateUrl: 'app/projects/provider/provinstances.tpl.html',
+        controller: 'ProvInstancesController',
+        controllerAs: 'provinstances',
         need: 'Partner.Provider'
       })
       .state('login', {
         url: '/login',
-        templateUrl: 'app/login/login.tpl.html', controller: 'LoginController', controllerAs: 'login'
+        templateUrl: 'app/login/login.tpl.html',
+        controller: 'LoginController',
+        controllerAs: 'login'
       })
       .state('register', {
         url: '/register',
-        templateUrl: 'app/login/register.tpl.html', controller: 'RegisterController', controllerAs: 'register'
+        templateUrl: 'app/login/register.tpl.html',
+        controller: 'RegisterController',
+        controllerAs: 'register'
       })
       .state('users', {
         url: '/users',
-        templateUrl: 'app/users/users.tpl.html', controller: 'UserController', controllerAs: 'users'/*,
+        templateUrl: 'app/users/users.tpl.html',
+        controller: 'UserController',
+        controllerAs: 'users'/*,
         need: 'admindoscat'*/
       })
       .state('tatami', {
         url: '/tatami',
-        templateUrl: 'app/tatami/tatami.tpl.html', controller: 'TatamiController', controllerAs: 'tatami'/*,
+        templateUrl: 'app/tatami/tatami.tpl.html',
+        controller: 'TatamiController',
+        controllerAs: 'tatami'/*,
         need: 'admindoscat'*/
       })
       .state('forgotpass', {
         url: '/forgot',
-        templateUrl: 'app/login/forgotpass.tpl.html', controller: 'ForgotPassController', controllerAs: 'forgot'/*,
+        templateUrl: 'app/login/forgotpass.tpl.html',
+        controller: 'ForgotPassController',
+        controllerAs: 'forgot'/*,
         need: 'admindoscat'*/
       });
 
