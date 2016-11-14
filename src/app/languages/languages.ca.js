@@ -98,7 +98,7 @@
 					'LOG-LOGIN': 'Accedir',
 					'LOG-NOUSER': 'Si no disposes d\'usuari, fes clic per registrar-te',
 					'LOG-REGISTER-BUTTON': 'Registre',
-					'LOG-CREATE-ACCOUNT': 'Crear comte',
+					'LOG-CREATE-ACCOUNT': 'Crear compte',
 					'LOG-FORGOT-PASS': 'He olvidado la contraseña',
 					//forgot
 					'FORGOT-SENDMAIL': 'Enviar correu',
