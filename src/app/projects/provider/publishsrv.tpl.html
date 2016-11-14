@@ -1,0 +1,56 @@
+<div class="container">
+	<div class="page-header">
+		<h2 class="text text-danger"><strong>Publicar Servei --nt</strong></h2>
+	</div>
+	<div class="row">
+		<div class="pull-right">
+			<a ui-sref="provprojects" class="btn btn-danger btn-xs">Cancel --nt</a>
+		</div>
+	</div>
+	<div class="row">
+		<div ng-if="publishsrv.explanation">
+			<p>Explicació</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum asperiores libero eaque, eum at aliquam officiis eos nisi, optio sint, temporibus vel, beatae aspernatur! Sint rem accusamus aspernatur, repellat enim.</p>
+			<button ng-click="publishsrv.createTemplate()" class="btn-primary btn-md">Crear Plantilla</button>
+		</div>
+	</div>
+	<div class="row">
+		<div ng-if="!publishsrv.explanation">
+				<form name="srvTemplate" ng-submit="publishsrv.launchTemplate()">
+					<label for="">Nom Servei</label>
+					<input type="text" class="form-control" placeholder="Nom del servei">
+					<br/>
+					<div class="col-xs-10 col-sm-10">
+						<div class="oneTemplate" class="well clearfix" ng-repeat="one in publishsrv.plantilles">
+						<h4>Template {{$index}}</h4>
+							<div class="col-xs-8 col-sm-8" ng-repeat="field in publishsrv.allFields">
+								<select>
+									<option>Mobile</option>
+									<option>Office</option>
+									<option>Home</option>
+								</select>
+								<input type="text" ng-model="plantilles.name" name="" placeholder="Enter mobile number">
+								
+							</div>
+							<div class="col-xs-4 col-xs-4">
+								<button class="btn-primary"><i class="fa fa-plus"></i></button>
+							</div>
+							<br/><br/>
+							<button class="remove pull-right" ng-show="$last" ng-click="publishsrv.removeChoice()">-</button>
+							<br/><br/>
+						</div>
+						
+					
+					<div id="choicesDisplay" class="well">
+					<h4>Json</h4>
+				      {{ publishsrv.plantilles }}
+				   </div>
+				</div>
+				<div class="col-xs-2">
+					<button class="addfields btn btn-success btn-xs" ng-click="publishsrv.addNewChoice()"><i class="fa fa-plus"></i> Add template</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+</div>
