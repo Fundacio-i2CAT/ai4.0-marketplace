@@ -145,7 +145,7 @@
     }
 
     function scrollToTop ($rootScope) {
-      $rootScope.$on('$stateChangeSuccess', function (event, currentRoute, previousRoute) {
+      $rootScope.$on('$stateChangeSuccess', function () {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
       });

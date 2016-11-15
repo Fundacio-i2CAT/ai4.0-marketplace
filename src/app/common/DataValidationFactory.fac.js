@@ -92,7 +92,6 @@
 			function checkNifLetter(nif) {
 				var nifError,
 					listOfLetters = 'TRWAGMYFPDXBNJZSQVHLCKET',
-					letter,
 					position,
 					letterOk,
 					number = nif.substring(0,8),
