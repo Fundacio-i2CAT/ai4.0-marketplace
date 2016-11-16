@@ -1,58 +1,63 @@
 <div class="container">
 	<div class="page-header">
-		<h2 class="text text-danger"><strong>Publicar Servei --nt</strong></h2>
+		<h2 class="text text-danger"><strong>Publicar Servei</strong></h2>
 	</div>
 	<div class="row">
 		<div class="pull-right">
-			<a ui-sref="provprojects" class="btn btn-danger btn-xs">Cancel --nt</a>
+			<a class="btn btn-default btn-xs pull-right backbutton" ui-sref="provprojects"><i class="fa fa-times fa-2x"></i></a>
 		</div>
 	</div>
 	<div class="row">
-		<div ng-if="publishsrv.explanation">
+		<div class="col-xs-12" ng-if="publishsrv.explanation">
 			<p>Explicació</p>
 			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum asperiores libero eaque, eum at aliquam officiis eos nisi, optio sint, temporibus vel, beatae aspernatur! Sint rem accusamus aspernatur, repellat enim.</p>
 			<button ng-click="publishsrv.createTemplate()" class="btn-primary btn-md">Crear Plantilla</button>
 		</div>
 	</div>
 	<div class="row">
-		<div ng-if="!publishsrv.explanation">
-				<form name="srvTemplate" ng-submit="publishsrv.launchTemplate()">
-					<div class="col-xs-10 col-xs-10-offset-1 col-sm-10 col-sm-offset-1">
-						<label for="">Nom Servei</label>
-						<input type="text" class="form-control" placeholder="Nom del servei">
-					</div>
-					<br/>
-					<div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1">
-						<div class="oneTemplate" class="well clearfix" ng-repeat="one in publishsrv.plantilles">
-						<h4>Template {{$index + 1}}</h4>
-							<div class="col-xs-10 col-sm-10" ng-repeat="field in publishsrv.allFields">
-								<select>
-									<option>Mobile</option>
-									<option>Office</option>
-									<option>Home</option>
-								</select>
-								<input type="text" ng-model="plantilles.name" name="" placeholder="Enter mobile number">
-								
-							</div>
-							<div class="col-xs-2 col-xs-2">
-								<button class="btn-primary"><i class="fa fa-plus"></i></button>
-							</div>
-							<br/><br/>
-							<button class="remove pull-right" ng-show="$last" ng-click="publishsrv.removeChoice()">Eliminar</button>
-							<br/><br/>
-						</div>
-						
-					
-					<div id="choicesDisplay" class="well">
-						<h4>Json</h4>
-				    	{{ publishsrv.plantilles }}
-				   </div>
+		<div ng-if="!publishsrv.explanation" class="difuminar">
+			<form name="srvTemplate" ng-submit="publishsrv.launchTemplate()">
+				<div class="col-xs-10 col-xs-10-offset-1 col-sm-10 col-sm-offset-1">
+					<label for="">Nom Servei</label>
+					<input type="text" class="form-control" ng-model="publishsrv.srv.title" placeholder="Nom del servei">
 				</div>
-				<div class="col-xs-1">
-					<button class="addfields btn btn-success btn-sm" ng-click="publishsrv.addNewChoice()"><i class="fa fa-plus"></i> Add template</button>
+				<br/>
+				<div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1">
+					<div class="oneTemplate" class="well clearfix" ng-repeat="one in publishsrv.plantilles">
+						<a class="btn btn-success btn-xs close-button pull-right" ng-show="$last" ng-click="publishsrv.addTemplate()"><i class="fa fa-plus"></i></a>
+						<a class="btn btn-default btn-xs pull-right" ng-show="$last" ng-click="publishsrv.removeTemplate()"><i class="fa fa-times"></i></a>
+						<h4 class="templateTitle">Template {{$index + 1}}</h4>
+						<br/>
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-repeat="field in publishsrv.allFields">
+							<ul class="list list-inline">
+								<li class="col-xs-1">
+									<button class="btn-primary addFieldButton"><i class="fa fa-plus"></i></button>
+								</li>
+								<li class="col-xs-3">
+									<input type="text" ng-model="publishsrv.srv.field" placeholder="Nombre campo" class="form-control"/>
+								</li>
+								<li class="col-xs-2">
+									<select class="form-control" ng-options="item.name for item in publishsrv.types" ng-model="publishsrv.srv.type">
+										<option value="" disabled>Tipo</option>
+									</select>
+								</li>
+								<li class="col-xs-6 col-sm-6">
+									<input type="text" class="form-control" ng-model="publishsrv.srv.desc" placeholder="Descripción" />
+								</li>
+							</ul>
+						</div>
+						<br/><br/>
+					</div>
+					
+					
+					<div ng-if="false" id="choicesDisplay" class="well">
+						<h4>Json</h4>
+						{{ publishsrv.plantilles }}
+
+						<!-- {{ publishsrv.json }} -->
+					</div>
 				</div>
 			</form>
 		</div>
 	</div>
-</div>
 </div>

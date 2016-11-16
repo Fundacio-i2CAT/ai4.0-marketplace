@@ -9,34 +9,35 @@
 	function PublishSrvController() {
 		var vm = this;
 		vm.explanation = true;
-		vm.template = false;
-		vm.types = ['int', 'string', 'file'];
-		vm.allTemplates = [
-		];
+		vm.types = [{name: 'int'}, {name: 'string'}, {name: 'file'}, {name: 'vdi'}];
+		vm.allTemplates = [];
 		vm.template = {};
+		vm.srv = {};
 
 		vm.createTemplate = function() {
 			vm.explanation = false;
-			vm.template = true;
 		};
-
-
-
-
-
 
 		vm.plantilles = [{id: 'plantilla1'}];
   		vm.allFields = [{id: 'field1'}];
 
-		  vm.addNewChoice = function() {
-		    var newItemNo = vm.plantilles.length+1;
-		    vm.plantilles.push({'id':'plantilla'+newItemNo});
-		  };
-		    
-		  vm.removeChoice = function() {
-		    var lastItem = vm.plantilles.length-1;
-		    vm.plantilles.splice(lastItem);
-		  };
+  		vm.json = [
+  			vm.srv.title,
+  			vm.plantilles,
+  			vm.allFields
+  		];
+
+		vm.addTemplate = function() {
+			var newItemNo = vm.plantilles.length+1;
+			vm.plantilles.push({'id':'plantilla'+newItemNo});
+		};
+
+		vm.removeTemplate = function() {
+			if (vm.plantilles.length != 1) {
+				var lastItem = vm.plantilles.length-1;
+				vm.plantilles.splice(lastItem);
+			}
+		};
 
 
 
