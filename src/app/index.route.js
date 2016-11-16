@@ -36,22 +36,13 @@
         controllerAs: 'provprojects',
         need: 'Partner.Provider'
       })
-
-
-
-
-      
       .state('publishsrv', {
         url: '/publishsrv',
-        templateUrl: 'app/projects/provider/publishsrv.tpl.html',
+        templateUrl: 'app/projects/publish_service/publishsrv.tpl.html',
         controller: 'PublishSrvController',
         controllerAs: 'publishsrv',
         need: 'Partner.Provider'
       })
-
-
-
-
       .state('clientprojects', {
         url: '/clientprojects',
         templateUrl: 'app/projects/client/index-client.tpl.html',
