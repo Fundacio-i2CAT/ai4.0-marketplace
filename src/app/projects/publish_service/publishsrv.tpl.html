@@ -17,13 +17,15 @@
 	<div class="row">
 		<div ng-if="!publishsrv.explanation">
 				<form name="srvTemplate" ng-submit="publishsrv.launchTemplate()">
-					<label for="">Nom Servei</label>
-					<input type="text" class="form-control" placeholder="Nom del servei">
+					<div class="col-xs-10 col-xs-10-offset-1 col-sm-10 col-sm-offset-1">
+						<label for="">Nom Servei</label>
+						<input type="text" class="form-control" placeholder="Nom del servei">
+					</div>
 					<br/>
-					<div class="col-xs-10 col-sm-10">
+					<div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1">
 						<div class="oneTemplate" class="well clearfix" ng-repeat="one in publishsrv.plantilles">
-						<h4>Template {{$index}}</h4>
-							<div class="col-xs-8 col-sm-8" ng-repeat="field in publishsrv.allFields">
+						<h4>Template {{$index + 1}}</h4>
+							<div class="col-xs-10 col-sm-10" ng-repeat="field in publishsrv.allFields">
 								<select>
 									<option>Mobile</option>
 									<option>Office</option>
@@ -32,22 +34,22 @@
 								<input type="text" ng-model="plantilles.name" name="" placeholder="Enter mobile number">
 								
 							</div>
-							<div class="col-xs-4 col-xs-4">
+							<div class="col-xs-2 col-xs-2">
 								<button class="btn-primary"><i class="fa fa-plus"></i></button>
 							</div>
 							<br/><br/>
-							<button class="remove pull-right" ng-show="$last" ng-click="publishsrv.removeChoice()">-</button>
+							<button class="remove pull-right" ng-show="$last" ng-click="publishsrv.removeChoice()">Eliminar</button>
 							<br/><br/>
 						</div>
 						
 					
 					<div id="choicesDisplay" class="well">
-					<h4>Json</h4>
-				      {{ publishsrv.plantilles }}
+						<h4>Json</h4>
+				    	{{ publishsrv.plantilles }}
 				   </div>
 				</div>
-				<div class="col-xs-2">
-					<button class="addfields btn btn-success btn-xs" ng-click="publishsrv.addNewChoice()"><i class="fa fa-plus"></i> Add template</button>
+				<div class="col-xs-1">
+					<button class="addfields btn btn-success btn-sm" ng-click="publishsrv.addNewChoice()"><i class="fa fa-plus"></i> Add template</button>
 				</div>
 			</form>
 		</div>
