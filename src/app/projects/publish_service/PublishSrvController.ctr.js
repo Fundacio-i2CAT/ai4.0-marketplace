@@ -18,14 +18,14 @@
 			vm.explanation = false;
 		};
 
-		vm.plantilles = [{id: 'plantilla1'}];
-  		vm.allFields = [{id: 'field1'}];
-
-  		vm.json = [
+		/*vm.json = [
   			vm.srv.title,
   			vm.plantilles,
   			vm.allFields
-  		];
+  		];*/
+
+		vm.plantilles = [{id: 'plantilla1'}];
+  		vm.allFields = [{id: 'field1'}];
 
 		vm.addTemplate = function() {
 			var newItemNo = vm.plantilles.length+1;
@@ -36,6 +36,18 @@
 			if (vm.plantilles.length != 1) {
 				var lastItem = vm.plantilles.length-1;
 				vm.plantilles.splice(lastItem);
+			}
+		};
+
+		vm.addField = function() {
+			var fieldNum = vm.allFields.length+1;
+			vm.allFields.push({'id':'fields'+fieldNum});
+		};
+
+		vm.removeField = function() {
+			if (vm.allFields.length != 1) {
+				var lastItem = vm.allFields.length-1;
+				vm.allFields.splice(lastItem);
 			}
 		};
 

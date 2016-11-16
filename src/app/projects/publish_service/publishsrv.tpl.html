@@ -9,8 +9,11 @@
 	</div>
 	<div class="row">
 		<div class="col-xs-12" ng-if="publishsrv.explanation">
-			<p>Explicació</p>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum asperiores libero eaque, eum at aliquam officiis eos nisi, optio sint, temporibus vel, beatae aspernatur! Sint rem accusamus aspernatur, repellat enim.</p>
+			<h3 class="text text-primary">Explicació</h3>
+			<p>Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit​​, morbo vel maleficia? De apocalypsi gorger omero undead survivor dictum mauris. Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus resi dentevil vultus comedat cerebella viventium. Qui animated corpse, cricket bat max brucks terribilem incessu zomby. The voodoo sacerdos flesh eater, suscitat mortuos comedere carnem virus. Zonbi tattered for solum oculi eorum defunctis go lum cerebro. Nescio brains an Undead zombies. Sicut malus putrid voodoo horror. Nigh tofth eliv ingdead.
+			</p>
+			<p>Cum horribilem walking dead resurgere de crazed sepulcris creaturis, zombie sicut de grave feeding iride et serpens. Pestilentia, shaun ofthe dead scythe animated corpses ipsa screams. Pestilentia est plague haec decaying ambulabat mortuos. Sicut zeder apathetic malus voodoo. Aenean a dolor plan et terror soulless vulnerum contagium accedunt, mortui iam vivam unlife. Qui tardius moveri, brid eof reanimator sed in magna copia sint terribiles undeath legionis. Alii missing oculis aliorum sicut serpere crabs nostram. Putridi braindead odores kill and infect, aere implent left four dead.</p>
+			<br/>
 			<button ng-click="publishsrv.createTemplate()" class="btn-primary btn-md">Crear Plantilla</button>
 		</div>
 	</div>
@@ -23,17 +26,18 @@
 				</div>
 				<br/>
 				<div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1">
-					<div class="oneTemplate" class="well clearfix" ng-repeat="one in publishsrv.plantilles">
+					<div class="oneTemplate clearfix" ng-repeat="one in publishsrv.plantilles">
 						<a class="btn btn-success btn-xs close-button pull-right" ng-show="$last" ng-click="publishsrv.addTemplate()"><i class="fa fa-plus"></i></a>
 						<a class="btn btn-default btn-xs pull-right" ng-show="$last" ng-click="publishsrv.removeTemplate()"><i class="fa fa-times"></i></a>
 						<h4 class="templateTitle">Template {{$index + 1}}</h4>
 						<br/>
-						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-repeat="field in publishsrv.allFields">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fieldblock" ng-repeat="field in publishsrv.allFields">
 							<ul class="list list-inline">
-								<li class="col-xs-1">
-									<button class="btn-primary addFieldButton"><i class="fa fa-plus"></i></button>
+								<li class="col-xs-2">
+									<button class="btn-primary addFieldButton" ng-show="$last" ng-click="publishsrv.addField()"><i class="fa fa-plus"></i></button>	
+									<button class="btn-default addFieldButton" ng-show="$last" ng-click="publishsrv.removeField()"><i class="fa fa-minus"></i></button>
 								</li>
-								<li class="col-xs-3">
+								<li class="col-xs-2">
 									<input type="text" ng-model="publishsrv.srv.field" placeholder="Nombre campo" class="form-control"/>
 								</li>
 								<li class="col-xs-2">
@@ -41,8 +45,9 @@
 										<option value="" disabled>Tipo</option>
 									</select>
 								</li>
-								<li class="col-xs-6 col-sm-6">
+								<li class="col-xs-6">
 									<input type="text" class="form-control" ng-model="publishsrv.srv.desc" placeholder="Descripción" />
+									
 								</li>
 							</ul>
 						</div>
