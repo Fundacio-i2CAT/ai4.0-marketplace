@@ -154,20 +154,23 @@
 		vm.runProject = function (id) {
 			// var progressbar = ProgressFactory.progressBarConfigure();
 			// progressbar.start();
-			
-
 			ProjectFactory.runProject(id).then(function (response){
-				if (response.status === 200) {
-					/*$timeout( function(){
+				if(response.status === 200) {
+					var exit;
+					do {
 						ProjectFactory.getProjectState(id).then(function(response){
-							$log.log('getProjectState response', response);
-							vm.allClientProjects.forEach(function(each) {
-								if (each._id === id) {
-									each.status = 5;
-								}
-							});
+							exit = response.data.status;
 						});
-					}, 3000);*/
+					} while(exit !== 5);
+					
+					if (exit === 5) {
+						$log.log('cancelado');
+						vm.stopSpin();
+						$state.reload();
+					}
+				}
+				
+				/*if (response.status === 200) {
 					var internalPromise = $interval(function(){
 						ProjectFactory.getProjectState(id).then(function(response){
 							$log.log('getProjectState Run response', response);
@@ -179,9 +182,7 @@
 							}
 						});
 					}, 12000);
-					
-					
-				}
+				}*/
 			});
 			// progressbar.complete();
 		}
