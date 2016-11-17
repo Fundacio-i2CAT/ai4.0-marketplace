@@ -154,23 +154,8 @@
 		vm.runProject = function (id) {
 			// var progressbar = ProgressFactory.progressBarConfigure();
 			// progressbar.start();
-			ProjectFactory.runProject(id).then(function (response){
-				if(response.status === 200) {
-					var exit;
-					do {
-						ProjectFactory.getProjectState(id).then(function(response){
-							exit = response.data.status;
-						});
-					} while(exit !== 5);
-					
-					if (exit === 5) {
-						$log.log('cancelado');
-						vm.stopSpin();
-						$state.reload();
-					}
-				}
-				
-				/*if (response.status === 200) {
+			ProjectFactory.runProject(id).then(function (response){			
+				if (response.status === 200) {
 					var internalPromise = $interval(function(){
 						ProjectFactory.getProjectState(id).then(function(response){
 							$log.log('getProjectState Run response', response);
@@ -181,8 +166,8 @@
 								$state.reload();
 							}
 						});
-					}, 12000);
-				}*/
+					}, 30000);
+				}
 			});
 			// progressbar.complete();
 		}
@@ -199,7 +184,7 @@
 		vm.stopProject = function (id) {
 			ProjectFactory.stopProject(id).then(function (response){
 				if (response.status === 200) {
-					/*$timeout( function(){
+					$timeout( function(){
 						ProjectFactory.getProjectState(id).then(function(response){
 							$log.log('getProjectState response', response);
 							vm.allClientProjects.forEach(function(each) {
@@ -208,7 +193,7 @@
 								}
 							});
 						});
-					}, 3000);*/
+					}, 30000);
 
 					var internalPromiseStop = $interval(function(){
 						ProjectFactory.getProjectState(id).then(function(response){
@@ -220,7 +205,7 @@
 								$state.reload();
 							}
 						});
-					}, 5000);
+					}, 30000);
 
 				}
 			});
