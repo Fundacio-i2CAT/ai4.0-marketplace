@@ -1,0 +1,47 @@
+<div class="row">
+	<div ng-if="!publishsrv.explanation" class="difuminar">
+		<form name="srvTemplate" ng-submit="publishsrv.launchTemplate()">
+			<div class="col-xs-10 col-xs-10-offset-1 col-sm-10 col-sm-offset-1">
+				<label for="">Nom Servei</label>
+				<input type="text" class="form-control" ng-model="publishsrv.srv.title" placeholder="Nom del servei">
+			</div>
+			<br/>
+			<div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1">
+				<div class="oneTemplate clearfix" ng-repeat="one in publishsrv.plantilles">
+					<a class="btn btn-success btn-xs close-button pull-right" ng-show="$last" ng-click="publishsrv.addTemplate()"><i class="fa fa-plus"></i></a>
+					<a class="btn btn-default btn-xs pull-right" ng-show="$last" ng-click="publishsrv.removeTemplate()"><i class="fa fa-times"></i></a>
+					<h4 class="templateTitle">Template {{$index + 1}}</h4>
+					<br/>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fieldblock" ng-repeat="field in publishsrv.allFields">
+						<ul class="list list-inline">
+							<li class="col-xs-2">
+								<button class="btn-primary addFieldButton" ng-show="$last" ng-click="publishsrv.addField()"><i class="fa fa-plus"></i></button>
+								<button class="btn-default addFieldButton" ng-show="$last" ng-click="publishsrv.removeField()"><i class="fa fa-minus"></i></button>
+							</li>
+							<li class="col-xs-2">
+								<input type="text" ng-model="publishsrv.srv.field" placeholder="Nombre campo" class="form-control"/>
+							</li>
+							<li class="col-xs-2">
+								<select class="form-control" ng-options="item.name for item in publishsrv.types" ng-model="publishsrv.srv.type">
+									<option value="" disabled>Tipo</option>
+								</select>
+							</li>
+							<li class="col-xs-6">
+								<input type="text" class="form-control" ng-model="publishsrv.srv.desc" placeholder="Descripción" />
+								
+							</li>
+						</ul>
+					</div>
+					<br/><br/>
+				</div>
+				
+				
+				<div ng-if="false" id="choicesDisplay" class="well">
+					<h4>Json</h4>
+					{{ publishsrv.plantilles }}
+					<!-- {{ publishsrv.json }} -->
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
