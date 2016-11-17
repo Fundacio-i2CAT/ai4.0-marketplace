@@ -1,0 +1,95 @@
+<div ng-controller="PublishSrvController as staticform">
+	<div>
+		<form name="srvTemplate" ng-submit="staticform.launchTemplate()">
+			<div class="col-xs-11 col-xs-10-offset-1 col-sm-11 col-sm-offset-1">
+				<label for="">Nom Servei</label>
+				<input type="text" class="form-control" ng-model="staticform.srv.title" placeholder="Nom del servei">
+			</div>
+			<br/>
+			<div class="col-xs-11 col-xs-offset-1 col-sm-11 col-sm-offset-1">
+				<div class="row">
+					<div class="col-xs-12 confpath1">
+						<label for="filepath">Configuració</label>
+						<input type="text" ng-model="staticform.srv.path1" placeholder="Ruta arxiu configuració" class="form-control">
+					</div>
+				</div>
+				<div class="oneTemplate clearfix">
+					<h4 class="templateTitle">Variables</h4>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fieldblock">
+						<ul class="list list-inline publish">
+							<li class="col-xs-12 col-sm-12 col-md-3">
+							<label for="name">Nom</label>
+								<input type="text" name="name" ng-model="staticform.srv.name" placeholder="Nom del camp" class="form-control"/>
+							</li>
+							<li class="col-xs-12 col-sm-12 col-md-2">
+							<label for="type">Tipus</label>
+								<select class="form-control" ng-options="item.name for item in staticform.types" ng-model="staticform.srv.type">
+									<option value="" disabled>Tipus de dada</option>
+								</select>
+							</li>
+							<li class="col-xs-12 col-sm-12 col-md-1">
+								<label for="required">Oblig.</label><br/>
+								<input type="checkbox" class="form-control centered check-required" name="required" ng-model="staticform.srv.required">
+							</li>
+							<li class="col-xs-12 col-sm-12 col-md-6">
+								<label for="description">Descripció</label>
+								<input type="text" name="description" class="form-control" ng-model="staticform.srv.desc" placeholder="Descripción" />
+							</li>
+						</ul>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fieldblock">
+						<ul class="list list-inline publish">
+							<li class="col-xs-12 col-sm-12 col-md-3">
+
+								<input type="text" name="name" ng-model="staticform.srv.name2" placeholder="Nom del camp" class="form-control"/>
+							</li>
+							<li class="col-xs-12 col-sm-12 col-md-2">
+
+								<select class="form-control" ng-options="item.name for item in staticform.types" ng-model="staticform.srv.type2">
+									<option value="" disabled>Tipus de dada</option>
+								</select>
+							</li>
+							<li class="col-xs-12 col-sm-12 col-md-1">
+
+								<input type="checkbox" class="form-control centered check-required" name="required" ng-model="staticform.srv.required2">
+							</li>
+							<li class="col-xs-12 col-sm-12 col-md-6">
+
+								<input type="text" name="description" class="form-control" ng-model="staticform.srv.desc2" placeholder="Descripción" />
+							</li>
+						</ul>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fieldblock">
+						<ul class="list list-inline publish">
+							<li class="col-xs-12 col-sm-12 col-md-3">
+
+								<input type="text" name="name" ng-model="staticform.srv.name3" placeholder="Nom del camp" class="form-control"/>
+							</li>
+							<li class="col-xs-12 col-sm-12 col-md-2">
+
+								<select class="form-control" ng-options="item.name for item in staticform.types" ng-model="staticform.srv.type3">
+									<option value="" disabled>Tipus de dada</option>
+								</select>
+							</li>
+							<li class="col-xs-12 col-sm-12 col-md-1">
+
+								<input type="checkbox" class="form-control centered check-required" name="required" ng-model="staticform.srv.required3">
+							</li>
+							<li class="col-xs-12 col-sm-12 col-md-6">
+
+								<input type="text" name="description" class="form-control" ng-model="staticform.srv.desc3" placeholder="Descripción" />
+							</li>
+						</ul>
+					</div>
+					<br/>
+					<br/>
+				</div>
+				<div class="row">
+					<div class="col-xs-6 col-xs-offset-3">
+						<button type="submit" class="btn btn-success btn-block">Publicar Servei</button>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
