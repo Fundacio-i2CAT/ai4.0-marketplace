@@ -30,11 +30,10 @@
     toastrConfig.progressBar = false;
     toastrConfig.closeButton = true;
 
-
-
-
-
     //spinner
     // usSpinnerConfigProvider.setDefaults({color: 'orange'});
   }
+
 })();
+
+
