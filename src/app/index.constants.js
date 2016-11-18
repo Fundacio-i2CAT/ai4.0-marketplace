@@ -11,6 +11,9 @@
 			client: {
 				role: 'Partner.Client',
 				state: 'clientprojects'
+			},
+			admin: {
+				role: 'Admin'
 			}
 		});
 
