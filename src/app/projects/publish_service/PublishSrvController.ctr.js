@@ -9,10 +9,11 @@
 	function PublishSrvController(fileUpload, CatalogFactory) {
 		var vm = this;
 		vm.explanation = true;
-		vm.types = [{name: 'Number'}, {name: 'String'}, {name: 'File'}, {name: 'Vdi'}];
+		vm.types = [{name: 'Number'}, {name: 'String'}, {name: 'Url'}, {name: 'Vdi'}];
 		vm.allTemplates = [];
 		vm.template = {};
 		vm.srv = {};
+
 
 		vm.flavors = [
 			{
@@ -50,8 +51,8 @@
 		};
 
 		/* codigo para formulario estatico*/
-		vm.launchTemplate = function() {
-			alert('holaaaaa');
+		vm.launchTemplate = function(srv) {
+			console.log(srv);
 		};
 
 		vm.uploadFile = function(){
