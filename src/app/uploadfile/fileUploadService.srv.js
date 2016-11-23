@@ -4,8 +4,8 @@
 	angular
 		.module('marketplace')
 		.service('fileUpload', fileUpload);
-		fileUpload.$inject = ['$http', 'SaveImageDataService', 'toastr'];
-		function fileUpload($http, SaveImageDataService, toastr) {
+		fileUpload.$inject = ['$http', 'SaveImageDataService', 'toastr', '$rootScope'];
+		function fileUpload($http, SaveImageDataService, toastr, $rootScope) {
 			this.uploadFileToUrl = function(file, uploadUrl){
 		        var fd = new FormData();
 		        fd.append('file', file);
@@ -14,6 +14,7 @@
 		            headers: {'Content-Type': undefined}
 		        })
 		        .success(function(response){
+		        	$rootScope.$broadcast('uploadOk', response);
 	        		SaveImageDataService.saveImageData(response);
 	        		toastr.success('Imatge de disc carregada amb èxit','Càrrega Imatge Disc');
 		        })
