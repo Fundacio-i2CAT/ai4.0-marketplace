@@ -13,6 +13,7 @@
 		var factory = {};
 		factory.getServiceById = getServiceById;
 		factory.getAllServices = getAllServices;
+		factory.createService = createService;
 
 		//getServiceById
 		function getServiceById (id){
@@ -25,6 +26,11 @@
 			return $http.get(url).then(handleSuccess, handleError);
 		}
 
+		function createService (srv) {
+			var url = [host, 'api/services'].join('');
+			return $http.post(url, srv).then(handleSuccess, handleError);
+
+		}
 
 		///////////////////////////////   private functions   ///////////////////////////////////////////////////
 		function handleSuccess(response){
