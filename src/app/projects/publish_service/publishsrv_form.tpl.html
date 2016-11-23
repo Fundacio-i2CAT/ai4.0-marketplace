@@ -4,11 +4,11 @@
 			<div class="col-xs-11 col-xs-offset-1 col-sm-11 col-sm-offset-1">
 					<div class="col-xs-8" id="servicename">
 						<label for="name">Nom Servei</label>
-						<input type="text" name="name" class="form-control" ng-model="staticform.srv.title" placeholder="Nom del servei">
+						<input type="text" name="name" class="form-control" ng-model="staticform.srv.title" placeholder="Nom del servei" required>
 					</div>
 					<div class="col-xs-4">
 						<label for="type">Tipus de Servei</label>
-						<select name="type" class="form-control" ng-options="item.description for item in staticform.allTypes" ng-model="staticform.srv.type">
+						<select name="type" class="form-control" ng-options="item.description for item in staticform.allTypes" ng-model="staticform.srv.type" required>
 							<option value="" disabled>Selecciona un tipus de servei</option>
 						</select>
 					</div>
@@ -17,19 +17,19 @@
 			
 			<div class="col-xs-11 col-xs-10-offset-1 col-sm-11 col-sm-offset-1 confpath1">
 				<label for="">Descripció</label>
-				<textarea rows="2" type="text" class="form-control" ng-model="staticform.srv.description" placeholder="Descripció servei"></textarea>
+				<textarea rows="2" type="text" class="form-control" ng-model="staticform.srv.description" placeholder="Descripció servei" required></textarea required>
 			</div>
 			
 			<div class="col-xs-11 col-xs-10-offset-1 col-sm-11 col-sm-offset-1 confpath1">
 				<label for="">Sumari</label>
-				<input type="text" class="form-control" ng-model="staticform.srv.summary" placeholder="Nom del servei">
+				<input type="text" class="form-control" ng-model="staticform.srv.summary" placeholder="Nom del servei" required>
 			</div>
 			<br/>
 			<div class="col-xs-11 col-xs-offset-1 col-sm-11 col-sm-offset-1">
 				<div class="row">
 					<div class="col-xs-12 confpath1">
 						<label for="filepath">Configuració</label>
-						<input type="text" ng-model="staticform.srv.path" placeholder="Ruta arxiu configuració" class="form-control">
+						<input type="text" ng-model="staticform.srv.path" placeholder="Ruta arxiu configuració" class="form-control" required>
 					</div>
 				</div>
 				<div class="oneTemplate clearfix">
@@ -38,11 +38,11 @@
 						<ul class="list list-inline publish">
 							<li class="col-xs-12 col-sm-12 col-md-3">
 							<label for="name">Nom</label>
-								<input type="text" name="name" ng-model="staticform.srv.field1.name" placeholder="Nom del camp" class="form-control"/>
+								<input type="text" name="name" ng-model="staticform.srv.field1.name" placeholder="Nom del camp" class="form-control" required/>
 							</li>
 							<li class="col-xs-12 col-sm-12 col-md-2">
 							<label for="type">Tipus</label>
-								<select class="form-control" ng-options="item.name for item in staticform.types" ng-model="staticform.srv.field1.type">
+								<select class="form-control" ng-options="item.name for item in staticform.types" ng-model="staticform.srv.field1.type" required>
 									<option value="" disabled>Tipus de dada</option>
 								</select>
 							</li>
@@ -52,14 +52,13 @@
 							</li>
 							<li class="col-xs-12 col-sm-12 col-md-6">
 								<label for="description">Descripció</label>
-								<input type="text" name="description" class="form-control" ng-model="staticform.srv.field1.desc" placeholder="Descripción" />
+								<input type="text" name="description" class="form-control" ng-model="staticform.srv.field1.desc" placeholder="Descripción"  required/>
 							</li>
 						</ul>
 					</div>
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fieldblock">
 						<ul class="list list-inline publish">
 							<li class="col-xs-12 col-sm-12 col-md-3">
-
 								<input type="text" name="name" ng-model="staticform.srv.field2.name" placeholder="Nom del camp" class="form-control"/>
 							</li>
 							<li class="col-xs-12 col-sm-12 col-md-2">
@@ -106,7 +105,7 @@
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fieldblock">
 						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 							<br/>
-							<select class="form-control" ng-options="fl.name for fl in staticform.flavors" ng-model="staticform.srv.flavor"></select>
+							<select class="form-control" ng-options="fl.name for fl in staticform.flavors" ng-model="staticform.srv.flavor" required></select>
 						</div>
 						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 							<table class="table table-striped" ng-show="staticform.srv.flavor">
@@ -133,17 +132,23 @@
 				<div class="oneTemplate clearfix">
 					<h4 class="templateTitle">Imatge de Disc</h4>
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fieldblock">
-						<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
-							<input type="file" file-model="staticform.myFile" />
-						</div>
-    					<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-    						<button ng-disabled="!staticform.myFile" class="btn-primary btn-xs" ng-click="staticform.uploadFile()">Pujar imatge</button>
-    					</div>
+						<form name="imageUploader">
+							<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+								<input type="file" file-model="staticform.myFile" required />
+							</div>
+	    					<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+	    						<a ng-if="!imageUploader.$invalid" class="btn btn-primary btn-xs" ng-click="staticform.uploadFile()">Pujar imatge</a>
+	    					</div>
+	    					<div class="col-xs-12">
+	    						<br/>
+	    						<span class="text text-primary uploadOk" ng-if="staticform.isLoadedImage"><i class="fa fa-check"></i>&nbsp;Imatge carregada</span>
+	    					</div>
+						</form>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-xs-6 col-xs-offset-3">
-						<button ng-click="staticform.launchTemplate(staticform.srv)" class="btn btn-success btn-block">Publicar Servei</button>
+						<button ng-disabled="srvTemplate.$invalid || !staticform.isLoadedImage" ng-click="staticform.launchTemplate(staticform.srv)" class="btn btn-success btn-block">Publicar Servei</button>
 					</div>
 				</div>
 			</div>
