@@ -60,6 +60,7 @@
 	        var file = vm.myFile;
 	        console.log('file is ', file);
 	        var uploadUrl = host + "api/services/vmimage";
+	        // fileUpload.uploadFileToUrl(file, uploadUrl);
 	        fileUpload.uploadFileToUrl(file, uploadUrl);
 	    };
 
