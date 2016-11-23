@@ -77,9 +77,6 @@
 
 
 
-
-
-
 		/* codigo para formulario dinamico */
 		vm.plantilles = [{id: 'plantilla1'}];
   		vm.allFields = [{id: 'field1'}];

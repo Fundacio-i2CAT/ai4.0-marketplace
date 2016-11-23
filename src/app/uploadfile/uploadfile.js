@@ -1,23 +1,6 @@
 (function() {
 	'use strict';
 
-	/*angular
-		.module('marketplace')
-		.controller('UploadFileController', UploadFileController);
-
-	UploadFileController.$inject = ['fileUpload'];
-	function UploadFileController(fileUpload) {
-		var vm = this;
-
-		 vm.uploadFile = function(){
-	        var file = vm.myFile;
-	        console.log('file is ' );
-	        console.dir(file);
-	        var uploadUrl = "/fileUpload";
-	        fileUpload.uploadFileToUrl(file, uploadUrl);
-	    };
-	}*/
-
 	angular
 		.module('marketplace')
 		.service('fileUpload', fileUpload);
