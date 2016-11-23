@@ -7,10 +7,12 @@
 
 		SaveImageDataService.$inject=[];
 		function SaveImageDataService() {
-			var _data = {};
+			var _data = {},
+				_uploadOk = {};
 
 			var saveImageData = function(data) {
 				_data = data;
+				_uploadOk = true;
 			}
 
 			var getImageData = function () {
@@ -19,6 +21,10 @@
 
 			var removeImageData = function () {
 				_data = {};
+			}
+
+			var isUploadedImage = function (){
+				return _uploadOk;
 			}
 
 			return {
@@ -30,6 +36,9 @@
 				},
 				removeImageData: function () {
 					return removeImageData();
+				},
+				isUploadedImage: function () {
+					return isUploadedImage();
 				}
 
 			};
