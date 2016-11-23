@@ -4,10 +4,11 @@
 	angular
 		.module('marketplace')
 		.controller('PublishSrvController', PublishSrvController);
-	PublishSrvController.$inject = ['fileUpload', 'CatalogFactory'];
+	PublishSrvController.$inject = ['fileUpload', 'CatalogFactory', 'ConnectionFactory'];
 
-	function PublishSrvController(fileUpload, CatalogFactory) {
+	function PublishSrvController(fileUpload, CatalogFactory, ConnectionFactory) {
 		var vm = this;
+		var host = ConnectionFactory.host;
 		vm.explanation = true;
 		vm.types = [{name: 'Number'}, {name: 'String'}, {name: 'Url'}, {name: 'Vdi'}];
 		vm.allTemplates = [];
@@ -58,7 +59,7 @@
 		vm.uploadFile = function(){
 	        var file = vm.myFile;
 	        console.log('file is ', file);
-	        var uploadUrl = "/fileUpload";
+	        var uploadUrl = host + "api/services/vmimage";
 	        fileUpload.uploadFileToUrl(file, uploadUrl);
 	    };
 
