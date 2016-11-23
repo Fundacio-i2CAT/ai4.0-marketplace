@@ -16,11 +16,9 @@
 		        .success(function(response){
 	        		SaveImageDataService.saveImageData(response);
 	        		toastr.success('Imatge de disc carregada amb èxit','Càrrega Imatge Disc');
-	        		console.log(response);
 		        })
 		        .error(function(error){
 		        	toastr.error('Hi ha hagut un error i no s\'ha pogut pujar la Imatge','Càrrega Imatge Disc');
-		        	console.log(error);
 		        });
 		    }
 
