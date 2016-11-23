@@ -4,9 +4,9 @@
 	angular
 		.module('marketplace')
 		.controller('PublishSrvController', PublishSrvController);
-	PublishSrvController.$inject = ['fileUpload', 'CatalogFactory', 'ServiceFactory', 'ConnectionFactory', 'LocalStorageFactory', 'SaveImageDataService'];
+	PublishSrvController.$inject = ['$scope', 'fileUpload', 'CatalogFactory', 'ServiceFactory', 'ConnectionFactory', 'LocalStorageFactory', 'SaveImageDataService'];
 
-	function PublishSrvController(fileUpload, CatalogFactory, ServiceFactory, ConnectionFactory, LocalStorageFactory, SaveImageDataService) {
+	function PublishSrvController($scope, fileUpload, CatalogFactory, ServiceFactory, ConnectionFactory, LocalStorageFactory, SaveImageDataService) {
 		var vm = this;
 		var host = ConnectionFactory.host;
 		vm.explanation = true;
@@ -15,6 +15,8 @@
 		vm.template = {};
 		vm.srv = {};
 		vm.isLoadedImage = false;
+		vm.showbar = false;
+
 
 		vm.flavors = [
 			{
@@ -46,6 +48,12 @@
 				cpus: 4
 			}
 		];
+
+		$scope.$on('uploadOk', function (event, data) {
+			console.log(data);
+			vm.showbar = false;
+	        vm.isLoadedImage = SaveImageDataService.isUploadedImage();
+		});
 
 		vm.createTemplate = function() {
 			vm.explanation = false;
@@ -115,7 +123,7 @@
 	        var uploadUrl = host + "api/services/vmimage";
 	        // fileUpload.uploadFileToUrl(file, uploadUrl);
 	        fileUpload.uploadFileToUrl(file, uploadUrl);
-	        vm.isLoadedImage = SaveImageDataService.isUploadedImage();
+	        vm.showbar = true;
 	    };
 
 	    vm.getAllTypes = function () {
