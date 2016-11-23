@@ -4,9 +4,9 @@
 	angular
 		.module('marketplace')
 		.controller('PublishSrvController', PublishSrvController);
-	PublishSrvController.$inject = ['fileUpload', 'CatalogFactory', 'ConnectionFactory'];
+	PublishSrvController.$inject = ['fileUpload', 'CatalogFactory', 'ServiceFactory', 'ConnectionFactory', 'LocalStorageFactory', 'SaveImageDataService'];
 
-	function PublishSrvController(fileUpload, CatalogFactory, ConnectionFactory) {
+	function PublishSrvController(fileUpload, CatalogFactory, ServiceFactory, ConnectionFactory, LocalStorageFactory, SaveImageDataService) {
 		var vm = this;
 		var host = ConnectionFactory.host;
 		vm.explanation = true;
@@ -14,7 +14,7 @@
 		vm.allTemplates = [];
 		vm.template = {};
 		vm.srv = {};
-
+		vm.isLoadedImage = false;
 
 		vm.flavors = [
 			{
@@ -53,8 +53,61 @@
 
 		/* codigo para formulario estatico*/
 		vm.launchTemplate = function(srv) {
-			console.log(srv);
+			var provider = getCurrentProvider('user');
+			var imageData = SaveImageDataService.getImageData();
+			
+			var srvToSave = {
+				name: srv.title,
+				description: srv.description,
+				summary: srv.summary,
+				service_type: srv.type.name,
+				provider: provider.user.provider_id,
+				consumer_params: [
+					{
+						path: srv.path,
+						fields: [
+							{
+								name: srv.field1.name,
+								required: srv.field1.required,
+								desc: srv.field1.desc
+							},
+							{
+								name: srv.field2.name,
+								required: srv.field2.required,
+								desc: srv.field2.desc
+							},
+							{
+								name: srv.field3.name,
+								required: srv.field3.required,
+								desc: srv.field3.desc
+							}
+						]
+					}
+				],
+				flavor: srv.flavor.name,
+				name_image: imageData.name_image,
+				vm_image: imageData.vm_image,
+				vm_image_format: imageData.vm_image_format,
+				runtime_params: [
+					{
+						name: srv.field1.name,
+						required: srv.field1.required,
+						desc: srv.field1.desc
+					}
+				]
+			};
+			ServiceFactory.createService(srvToSave).then(function (response){
+				console.log(response);
+			}, function (error) {
+				console.log(error);
+			});
 		};
+
+		function buildJson() {}
+
+		function getCurrentProvider(key) {
+			return LocalStorageFactory.getValue(key);
+		}
 
 		vm.uploadFile = function(){
 	        var file = vm.myFile;
@@ -62,6 +115,7 @@
 	        var uploadUrl = host + "api/services/vmimage";
 	        // fileUpload.uploadFileToUrl(file, uploadUrl);
 	        fileUpload.uploadFileToUrl(file, uploadUrl);
+	        vm.isLoadedImage = SaveImageDataService.isUploadedImage();
 	    };
 
 	    vm.getAllTypes = function () {
