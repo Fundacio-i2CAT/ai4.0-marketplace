@@ -144,7 +144,8 @@
         		template: 'app/projects/publish_service/explanationModal/explanation-modal.tpl.html',
         		className: 'ngdialog-theme-default',
         		controller: 'PublishSrvController',
-        		controllerAs: 'publishsrv'
+        		controllerAs: 'publishsrv',
+        		appendClassName: 'ngdialog-publish'
         	});
 		};
 		
