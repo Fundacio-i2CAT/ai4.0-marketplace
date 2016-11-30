@@ -5,15 +5,25 @@
 		.module('marketplace')
 		.controller('ServiceEditController', ServiceEditController);
 
-	ServiceEditController.$inject = ['$stateParams', '$state', 'ServiceFactory', 'ProviderFactory', 'toastr', 'ImageProviderFactory', '$log'];
+	ServiceEditController.$inject = ['$stateParams', '$state', 'ServiceFactory', 'ProviderFactory', 'toastr', 'ImageProviderFactory', '$log', 'CurrentUserFactory'];
 
-	function ServiceEditController ($stateParams, $state, ServiceFactory, ProviderFactory, toastr, ImageProviderFactory, $log) {
+	function ServiceEditController ($stateParams, $state, ServiceFactory, ProviderFactory, toastr, ImageProviderFactory, $log, CurrentUserFactory) {
 		var vm = this;
+		vm.currentUser = {};
 		var serviceId;
 		
+
 		if($stateParams.id) {
 			serviceId = $stateParams.id;
 		}
+
+		vm.getCurrentUser = function() {
+			var currentUser = CurrentUserFactory.getCurrentUser();
+			vm.currentUser = currentUser;
+			$log.log(vm.currentUser);
+		}
+
+		vm.getCurrentUser();
 
 		vm.getServiceById = function (id){
 			ServiceFactory.getServiceById(id).then(function(response){

@@ -82,7 +82,7 @@
 					</div>	
 					<div class="col-xs-12">
 						<div class="row boton-contractar">
-							<div ng-if="true" class="col-xs-4 col-xs-offset-4">
+							<div ng-if="!detailsrv.currentUser.role" class="col-xs-4 col-xs-offset-4">
 								<a ng-click="detailsrv.contractService(detailsrv.currentService)" class="btn btn-primary btn-md btn-block">Registre</a>
 							</div>
 						</div>
