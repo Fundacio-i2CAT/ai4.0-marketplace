@@ -4,9 +4,9 @@
 	angular
 		.module('marketplace')
 		.controller('PublishSrvController', PublishSrvController);
-	PublishSrvController.$inject = ['$scope', 'fileUpload', 'CatalogFactory', 'ServiceFactory', 'ConnectionFactory', 'LocalStorageFactory', 'SaveImageDataService'];
+	PublishSrvController.$inject = ['$scope', 'fileUpload', 'CatalogFactory', 'ServiceFactory', 'ConnectionFactory', 'LocalStorageFactory', 'SaveImageDataService', 'ngDialog'];
 
-	function PublishSrvController($scope, fileUpload, CatalogFactory, ServiceFactory, ConnectionFactory, LocalStorageFactory, SaveImageDataService) {
+	function PublishSrvController($scope, fileUpload, CatalogFactory, ServiceFactory, ConnectionFactory, LocalStorageFactory, SaveImageDataService, ngDialog) {
 		var vm = this;
 		var host = ConnectionFactory.host;
 		vm.types = [{name: 'Number'}, {name: 'String'}, {name: 'Url'}, {name: 'Vdi'}];
@@ -84,9 +84,9 @@
 								desc: srv.field2.desc
 							},
 							{
-								name: srv.field3.name,
-								required: srv.field3.required,
-								desc: srv.field3.desc
+								name: (srv.field3.name) ? srv.field3.name : '',
+								required: (srv.field3.required) ? srv.field3.required : '',
+								desc: (srv.field3.desc) ? srv.field3.desc : '' 
 							}
 						]
 					}
@@ -138,7 +138,19 @@
 
 
 
+		/* ngDialog Explanation modal */
+		vm.showExplanationModal = function() {
+			ngDialog.open({
+        		template: 'app/projects/publish_service/explanationModal/explanation-modal.tpl.html',
+        		className: 'ngdialog-theme-default',
+        		controller: 'PublishSrvController',
+        		controllerAs: 'publishsrv'
+        	});
+		};
+		
 
+
+		
 		/* codigo para formulario dinamico */
 		vm.plantilles = [{id: 'plantilla1'}];
   		vm.allFields = [{id: 'field1'}];
