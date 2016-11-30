@@ -7,7 +7,6 @@
 	<div class="row">
 		<div class="col-xs-12">
 			<span class="pull-right clearfix">
-				<a ui-sref="project-new" class="btn btn-default btn-xs pull-right icon-left"><i class="fa fa-plug"></i><span class="icon-left">Instanciar Servei</span></a>
 				<a ui-sref="project-new" class="btn btn-default btn-xs pull-right"><i class="fa fa-plus"></i><span class="icon-left">{{ 'CREAR-PROJ' | translate}}</span></a>
 			</span>
 		</div>
@@ -76,6 +75,7 @@
 								
 							</span>
 							<span  class="pull-right" ng-if="srv.status >= 3 || srv.status < 6">
+								<button ng-if="srv.status ===3" class="btn-xs btn-default" ng-click="clientprojects.instantiateService(srv)"><i class="fa fa-plug"></i>&nbsp;&nbsp;Inst</button>
 								<button ng-show="srv.status === 3 || srv.status === 4 || srv.status === 6" class="btn btn-success btn-xs" ng-click="clientprojects.runProject(srv._id); clientprojects.startSpin()">
 									<i class="fa fa-play"></i>
 									{{ 'PROJ-ARRENCAR' | translate }}
