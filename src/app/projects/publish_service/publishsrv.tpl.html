@@ -2,27 +2,17 @@
 	<div class="page-header">
 		<h2 class="text text-danger"><strong>Publicar Servei</strong></h2>
 	</div>
-	<!-- <div class="row">
-		<div class="col-xs-12" ng-if="publishsrv.explanation">
-			<h3 class="text text-primary">Explicació</h3>
-			<p>Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit​​, morbo vel maleficia? De apocalypsi gorger omero undead survivor dictum mauris. Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus resi dentevil vultus comedat cerebella viventium. Qui animated corpse, cricket bat max brucks terribilem incessu zomby. The voodoo sacerdos flesh eater, suscitat mortuos comedere carnem virus. Zonbi tattered for solum oculi eorum defunctis go lum cerebro. Nescio brains an Undead zombies. Sicut malus putrid voodoo horror. Nigh tofth eliv ingdead.
-			</p>
-			
-			<div class="row">
-				<p class="col-xs-10 col-xs-offset-1">
-				<img class="form-explanation" src="assets/images/publish-form/publish-form.PNG" alt="Formulari publicació servei">
-			</p>
-			</div>
-
-			<p>Cum horribilem walking dead resurgere de crazed sepulcris creaturis, zombie sicut de grave feeding iride et serpens. Pestilentia, shaun ofthe dead scythe animated corpses ipsa screams. Pestilentia est plague haec decaying ambulabat mortuos. Sicut zeder apathetic malus voodoo. Aenean a dolor plan et terror soulless vulnerum contagium accedunt, mortui iam vivam unlife. Qui tardius moveri, brid eof reanimator sed in magna copia sint terribiles undeath legionis. Alii missing oculis aliorum sicut serpere crabs nostram. Putridi braindead odores kill and infect, aere implent left four dead.</p>
-			<br/>
-			<a ng-click="publishsrv.createTemplate()" class="btn btn-primary btn-xs">Crear Plantilla</a>
+	<div class="row clearfix">
+		<div class="col-xs-11 col-xs-offset-1 col-sm-11 col-sm-offset-1 col-md-11 col-md-offset-1 col-lg-11 col-lg-offset-1">
+			<button class="btn-default pull-left explanation" ng-click="publishsrv.showExplanationModal()"><i class="fa fa-info-circle"></i><span class="info">Com publicar un Servei</span></button>
 		</div>
-	</div> -->
+	</div>
+	
 	<div class="row">
 		<div ng-include="'app/projects/publish_service/publishsrv_form.tpl.html'"></div>
+	</div>
+	<div class="row">
 		<!-- formulario dinamico  -->
 		<!-- <div ng-include="'app/projects/publish_service/publishsrv-dynamicform.tpl.html'"></div> -->
-
 	</div>
 </div>
