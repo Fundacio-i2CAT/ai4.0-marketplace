@@ -13,6 +13,7 @@
 								'ui.bootstrap',
 								'LocalStorageModule',
 								'angularSpinner',
-								'vcRecaptcha']);
+								'vcRecaptcha',
+								'ngDialog']);
 
 })();
