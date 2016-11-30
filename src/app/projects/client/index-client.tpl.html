@@ -2,7 +2,15 @@
 
 <!-- <a id="element" class="btn btn-primary btn-xs" data-toggle="popover" tabindex="0" data-trigger="focus" title="Popover title" data-content="Here's some amazing content.">Dismissible popover</a> -->
 	<div class="page-header">
-		<h2 class="text text-danger"><strong>{{ 'PROJ-CLIENT' | translate }}</strong> <span class="pull-right"><a ui-sref="project-new" class="btn btn-primary btn-xs"><i class="fa fa-plus"></i>&nbsp;{{ 'CREAR-PROJ' | translate}}</a></span></h2>
+		<h2 class="text text-danger"><strong>{{ 'PROJ-CLIENT' | translate }}</strong></h2>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<span class="pull-right clearfix">
+				<a ui-sref="project-new" class="btn btn-default btn-xs pull-right icon-left"><i class="fa fa-plug"></i><span class="icon-left">Instanciar Servei</span></a>
+				<a ui-sref="project-new" class="btn btn-default btn-xs pull-right"><i class="fa fa-plus"></i><span class="icon-left">{{ 'CREAR-PROJ' | translate}}</span></a>
+			</span>
+		</div>
 	</div>
 	<div class="row tabla-client">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
