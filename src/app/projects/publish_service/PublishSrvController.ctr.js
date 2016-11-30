@@ -9,7 +9,6 @@
 	function PublishSrvController($scope, fileUpload, CatalogFactory, ServiceFactory, ConnectionFactory, LocalStorageFactory, SaveImageDataService) {
 		var vm = this;
 		var host = ConnectionFactory.host;
-		vm.explanation = true;
 		vm.types = [{name: 'Number'}, {name: 'String'}, {name: 'Url'}, {name: 'Vdi'}];
 		vm.allTemplates = [];
 		vm.template = {};
