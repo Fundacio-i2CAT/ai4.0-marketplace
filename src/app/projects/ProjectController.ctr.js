@@ -5,8 +5,8 @@
 		.module('marketplace')
 		.controller('ProjectController', ProjectController);
 
-	ProjectController.$inject = ['$rootScope', '$interval', 'toastr', 'ProjectFactory', '$log', '$state', 'UserFactory', 'ProgressFactory', '$location', 'ServiceFactory', '$stateParams', 'CurrentUserFactory', 'ROLES', 'usSpinnerService', 'ImageProviderFactory', 'LiteralFactory', 'ngDialog'];
-	function ProjectController ($rootScope, $interval, toastr, ProjectFactory, $log, $state, UserFactory, ProgressFactory, $location, ServiceFactory, $stateParams, CurrentUserFactory, ROLES, usSpinnerService, ImageProviderFactory, LiteralFactory, ngDialog){
+	ProjectController.$inject = ['$rootScope', '$interval', 'toastr', 'ProjectFactory', '$log', '$state', 'UserFactory', 'ProgressFactory', '$location', 'ServiceFactory', '$stateParams', 'CurrentUserFactory', 'ROLES', 'usSpinnerService', 'ImageProviderFactory', 'LiteralFactory', 'ngDialog', 'ShareDataFactory'];
+	function ProjectController ($rootScope, $interval, toastr, ProjectFactory, $log, $state, UserFactory, ProgressFactory, $location, ServiceFactory, $stateParams, CurrentUserFactory, ROLES, usSpinnerService, ImageProviderFactory, LiteralFactory, ngDialog, ShareDataFactory){
 		var vm = this;
 		vm.sortType = 'srv.project.name';
 		vm.sortReverse = true;
@@ -268,14 +268,13 @@
 		vm.instantiateService = function(srv) {
 			var service_id = srv.services[0].service._id
 			ServiceFactory.instantiateService(service_id).then(function(response) {
-				$log.log(response);
-				vm.consumerParams = response.data;
-				launchDialog(vm.consumerParams);
+				ShareDataFactory.setData(response.data);
+				launchDialog();
 			});
 		};
 
 		//launch dialog
-		function launchDialog (data) {
+		function launchDialog () {
 			ngDialog.open({
 				template: 'app/services/instantiateService/instantiateSrv-dialog.tpl.html',
 				className: 'ngdialog-theme-default',
