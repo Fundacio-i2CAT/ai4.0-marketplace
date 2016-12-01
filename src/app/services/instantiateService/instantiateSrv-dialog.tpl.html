@@ -5,11 +5,22 @@
 		overflow:hidden;
 		padding: 2em !important;
 	}
+	.form-group {
+		margin-bottom: 0;
+	}
 </style>
 <div class="container" style="width:100%">
 	<div class="row">
 		<h4 class="text text-danger">Instanciar Servei<br/><br/><small>Paràmetres del consumidor</small></h4>
-		<p>{{instancesrv.service}}</p>
-		
+		<div class="top3">
+		    <form sf-schema="instancesrv.schema" sf-form="instancesrv.form" sf-model="instancesrv.model"></form>
+		</div>
 	</div>
+	<br/>
+		<div class="row">
+			<div class="well">
+				Model<br/>
+				{{instancesrv.model}}
+			</div>
+		</div>
 </div>
