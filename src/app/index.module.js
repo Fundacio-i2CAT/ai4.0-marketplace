@@ -14,6 +14,7 @@
 								'LocalStorageModule',
 								'angularSpinner',
 								'vcRecaptcha',
-								'ngDialog']);
+								'ngDialog',
+								'schemaForm']);
 
 })();
