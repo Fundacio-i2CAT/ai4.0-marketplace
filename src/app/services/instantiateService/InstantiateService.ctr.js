@@ -8,9 +8,63 @@
 		InstantiateServiceController.$inject = ['ShareDataFactory'];
 		function InstantiateServiceController(ShareDataFactory) {
 			var vm = this;
-			var service = ShareDataFactory.getData();
 			vm.service = service;
 			vm.model={};
+			var service = ShareDataFactory.getData();
+
+			//build form
+			if (angular.isArray(service.data[0])) {
+				alert('es un array');
+			} else {
+				vm.form = buildFormFromJson(service.data[0]);
+				vm.schema = buildSchemaFromJson(service.data[0]);
+			}
+
+			function buildFormFromJson(srv) {
+				var listOfFields = [];
+				angular.forEach(srv.fields, function(field, index){
+					var form = {
+						"key": field.name,
+	    				"type": (field.type == 'integer') ? 'number' : field.type,
+	    				"placeholder": field.desc
+					}
+					listOfFields.push(form);
+				});
+
+				return listOfFields;
+			}
+
+			function buildSchemaFromJson(srv) {
+
+				var tempSchema = {
+					"type": "object",
+					"title": "consumerParams",
+					"properties": {}
+				};
+
+				angular.forEach(srv.fields, function(field, index){
+					tempSchema.properties[field.name] = {
+						"title": field.name,
+						"type": field.type
+					}
+
+				});
+
+				return tempSchema;
+			}
+
+
+
+
+
+
+
+
+
+
+
+
+
 			/*vm.form = [
 				"name",
 				{
@@ -57,69 +111,6 @@
 				"comment"
 				]
 			};*/
-
-			//build form
-			var srv = service.data[0];
-			console.log('srv', srv);
-			
-			function buildFormFromJson(srv) {
-				var listOfFields = [];
-				angular.forEach(srv.fields, function(field, index){
-					var form = {
-						"key": field.name,
-	    				"type": (field.type == 'integer') ? 'number' : field.type,
-	    				"placeholder": field.desc
-					}
-					listOfFields.push(form);
-				});
-
-				return listOfFields;
-			}
-
-			console.log('tempForm:::', tempForm)
-
-
-			function buildSchemaFromJson(srv) {
-
-				var tempSchema = {
-					"type": "object",
-					"title": "consumerParams",
-					"properties": {}
-				};
-
-				angular.forEach(srv.fields, function(field, index){
-					tempSchema.properties[field.name] = {
-						"title": field.name,
-						"type": field.type
-					}
-
-				});
-
-				return tempSchema;
-			}
-
-
-			var tempForm = buildFormFromJson(srv);
-			var tempSchema = buildSchemaFromJson(srv);
-			vm.form = tempForm;
-			vm.schema = tempSchema;
-
-			console.log('tempForm:::', tempForm);
-			console.log('tempSchema:::', tempSchema);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 		}
