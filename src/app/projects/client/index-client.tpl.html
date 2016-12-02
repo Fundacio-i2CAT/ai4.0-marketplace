@@ -75,7 +75,7 @@
 								
 							</span>
 							<span  class="pull-right" ng-if="srv.status >= 3 || srv.status < 6">
-								<button ng-if="srv.status ===3" class="btn-xs btn-default" ng-click="clientprojects.instantiateService(srv)"><i class="fa fa-plug"></i>&nbsp;&nbsp;Inst</button>
+								<a ng-if="srv.status ===3" class="btn btn-xs btn-default" ng-click="clientprojects.instantiateService(srv)"><i class="fa fa-plug"></i>&nbsp;&nbsp;Inst</a>
 								<button ng-show="srv.status === 3 || srv.status === 4 || srv.status === 6" class="btn btn-success btn-xs" ng-click="clientprojects.runProject(srv._id); clientprojects.startSpin()">
 									<i class="fa fa-play"></i>
 									{{ 'PROJ-ARRENCAR' | translate }}
