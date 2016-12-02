@@ -5,16 +5,22 @@
 		.module('marketplace')
 		.controller('InstantiateServiceController', InstantiateServiceController);
 
-		InstantiateServiceController.$inject = ['ShareDataFactory'];
-		function InstantiateServiceController(ShareDataFactory) {
+		InstantiateServiceController.$inject = ['ShareDataFactory', '$log', 'ngDialog'];
+		function InstantiateServiceController(ShareDataFactory, $log, ngDialog) {
 			var vm = this;
-			vm.service = service;
-			vm.model={};
+			vm.model = {}, vm.form = {}, vm.schema = {};
 			var service = ShareDataFactory.getData();
 
 			//build form
-			if (angular.isArray(service.data[0])) {
-				alert('es un array');
+			if (angular.isArray(service.data)) {
+				var fields = [], kk = [];
+				angular.forEach(service.data, function(each, index){
+					angular.forEach(each, function (field, index){
+						fields.push(field);
+					});
+					kk.push(fields);
+				});
+				console.log(kk);
 			} else {
 				vm.form = buildFormFromJson(service.data[0]);
 				vm.schema = buildSchemaFromJson(service.data[0]);
@@ -30,30 +36,28 @@
 					}
 					listOfFields.push(form);
 				});
-
 				return listOfFields;
 			}
 
 			function buildSchemaFromJson(srv) {
-
 				var tempSchema = {
 					"type": "object",
 					"title": "consumerParams",
 					"properties": {}
 				};
-
 				angular.forEach(srv.fields, function(field, index){
 					tempSchema.properties[field.name] = {
 						"title": field.name,
 						"type": field.type
 					}
-
 				});
-
 				return tempSchema;
 			}
 
-
+			vm.closeDialog = function() {
+				vm.model = {};
+				ngDialog.close({});
+			}
 
 
 
@@ -83,7 +87,6 @@
 					"title": "Enviar dades"
 				}
 			];
-
 			vm.schema = {
 				"type": "object",
 				"title": "consumerParams",
@@ -111,7 +114,5 @@
 				"comment"
 				]
 			};*/
-
-
 		}
 })();
