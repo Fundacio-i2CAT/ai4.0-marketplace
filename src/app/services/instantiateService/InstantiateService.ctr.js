@@ -5,8 +5,8 @@
 		.module('marketplace')
 		.controller('InstantiateServiceController', InstantiateServiceController);
 
-		InstantiateServiceController.$inject = ['ShareDataFactory', '$log', 'ngDialog'];
-		function InstantiateServiceController(ShareDataFactory, $log, ngDialog) {
+		InstantiateServiceController.$inject = ['ShareDataFactory', '$log', 'ngDialog', 'ServiceFactory'];
+		function InstantiateServiceController(ShareDataFactory, $log, ngDialog, ServiceFactory) {
 			var vm = this;
 			vm.model = {}, vm.form = {}, vm.schema = {};
 			var service = ShareDataFactory.getData();
@@ -14,17 +14,20 @@
 			//build form
 			if (angular.isArray(service.data)) {
 				var allFields = getFieldsFromJson(service.data);
-				console.log('obj:::', allFields);
 				vm.form = buildFormFromJson(allFields);
 				vm.schema = buildSchemaFromJson(allFields);
 			} else {
-				vm.form = buildFormFromJson(service.data[0]);
-				vm.schema = buildSchemaFromJson(service.data[0]);
+				vm.form = buildFormFromJson(service.data);
+				vm.schema = buildSchemaFromJson(service.data);
 			}
 
 			function getFieldsFromJson (services) {
 				var obj = {}, kk = [];
 				angular.forEach(service.data, function(each, index){
+					if (each.path) {
+						obj[index] = each.path;	
+					}
+					
 					angular.forEach(each.fields, function (field, index){
 						kk.push(field);
 					});
@@ -52,14 +55,16 @@
 				var tempSchema = {
 					"type": "object",
 					"title": "consumerParams",
-					"properties": {}
+					"properties": {},
+					"required": []
 				};
 				angular.forEach(srv.fields, function(field, index){
 					tempSchema.properties[field.name] = {
-						"title": field.name,
-						"type": (field.type == 'text') ? 'string' : field.type,
+						"title": (field.required) ? field.name + ' *': field.name,
+						"type": field.type,
 						"description": field.desc
 					}
+					if (field.required) tempSchema.required.push(field.name);
 				});
 				return tempSchema;
 			}
@@ -69,7 +74,35 @@
 				ngDialog.close({});
 			}
 
+			function buildModelFromForm (srvModel, service) {
+				var serv = {
+					status: 5,
+					consumer_params: []
+				};				
 
+				angular.forEach(service.data, function (each, index){
+					var temp = {
+						path: each.path,
+						fields: []
+					};
+					angular.forEach(each.fields, function (field, index){
+						var field = {
+							name: field.name,
+							value: srvModel[field.name]
+						};
+						temp.fields.push(field);
+					});
+					serv.consumer_params.push(temp);
+				});
+
+				return serv;
+			}
+
+			vm.InstantiateSrv = function(srvModel) {
+				var model = buildModelFromForm(srvModel, service);
+				console.log(model);
+
+			}
 
 
 
