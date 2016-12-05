@@ -15,11 +15,17 @@
 		factory.getAllServices = getAllServices;
 		factory.createService = createService;
 		factory.instantiateService = instantiateService;
+		factory.instantiateSrvConsumerParams = instantiateSrvConsumerParams;
+
 
 		//instantiateService
 		function instantiateService (id) {
 			var url = [host, 'api/services/consumer/params/', id].join('');
 			return $http.get(url).then(handleSuccess, handleError);
+		}
+
+		function instantiateSrvConsumerParams (data, id) {
+			var url = [host, ''].join('');
 		}
 
 		//getServiceById
