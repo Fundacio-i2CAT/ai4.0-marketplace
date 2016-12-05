@@ -134,10 +134,10 @@
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fieldblock">
 						<form name="imageUploader">
 							<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
-								<input type="file" file-model="staticform.myFile" required />
+								<input type="file" file-model="staticform.myFile"/>
 							</div>
 	    					<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-	    						<button ng-if="!imageUploader.$invalid" class="btn-default btn-xs" ng-click="staticform.uploadFile()"><i class="fa fa-upload"></i><span class="icon-left">Pujar imatge</span></button>
+	    						<button ng-if="!imageUploader.$invalid" class="btn btn-default btn-xs" ng-click="staticform.uploadFile()"><i class="fa fa-upload"></i><span class="icon-left">Pujar imatge</span></button>
 	    					</div>
 	    					<div class="col-xs-12">
 	    							<div ng-if="staticform.showbar">
@@ -156,7 +156,8 @@
 				</div>
 				<div class="row">
 					<div class="col-xs-3 col-xs-offset-3">
-						<button ng-disabled="srvTemplate.$invalid || !staticform.isLoadedImage" ng-click="staticform.launchTemplate(staticform.srv)" class="btn btn-success btn-block">Publicar Servei</button>
+						<!-- <button ng-disabled="srvTemplate.$invalid || !staticform.isLoadedImage" ng-click="staticform.launchTemplate(staticform.srv)" class="btn btn-success btn-block">Publicar Servei</button> -->
+						<button ng-click="staticform.launchTemplate(staticform.srv)" class="btn btn-success btn-block">Publicar Servei</button>
 					</div>
 					<div class="col-xs-3">
 						<a ui-sref="provprojects" class="btn btn-danger btn-block">&nbsp;&nbsp;Cancelar</a>
