@@ -9,14 +9,14 @@
 	function PublishSrvController($scope, fileUpload, CatalogFactory, ServiceFactory, ConnectionFactory, LocalStorageFactory, SaveImageDataService, ngDialog) {
 		var vm = this;
 		var host = ConnectionFactory.host;
-		vm.types = [{name: 'Number'}, {name: 'String'}, {name: 'Url'}, {name: 'Vdi'}];
 		vm.allTemplates = [];
 		vm.template = {};
 		vm.srv = {};
 		vm.isLoadedImage = false;
 		vm.showbar = false;
 
-
+		vm.types = [{name: 'Number'}, {name: 'String'}, {name: 'Url'}, {name: 'Vdi'}];
+		vm.discImageFormat = [{name: 'QCOW'}, {name: 'VDI'}];
 		vm.flavors = [
 			{
 				id: 1,
