@@ -1,6 +1,6 @@
 <style>
 	.ngdialog.ngdialog-theme-default .ngdialog-content {
-		width: 80%;
+		width: 50%;
 		height: 400px;
 		overflow:scroll;
 		padding: 2em !important;
@@ -13,11 +13,11 @@
 	<div class="row">
 		<h4 class="text text-danger">Instanciar Servei<br/><br/><small>Paràmetres del consumidor</small></h4>
 		<div class="top3">
-		    <form>
+		    <form name="instantiate_service">
 		    	<div sf-schema="instancesrv.schema" sf-form="instancesrv.form" sf-model="instancesrv.model"></div>
 		    	<div class="row">
 		    		<div class="col-xs-3 col-xs-offset-3">
-			    		<a class="btn btn-success btn-sm btn-block" type="submit">Enviar Dades</a>
+			    		<a class="btn btn-success btn-sm btn-block" ng-disabled="instantiate_service.$invalid || instantiate_service.$pristine" ng-click="instancesrv.InstantiateSrv(instancesrv.model)" type="submit">Enviar Dades</a>
 			    	</div>
 			    	<div class="col-xs-3">
 			    		<a class="btn btn-danger btn-sm btn-block" ng-click="instancesrv.closeDialog()" type="button">Cancelar</a>
@@ -26,11 +26,12 @@
 		    </form>
 		</div>
 	</div>
-	<br/>
+	<!--
 		<div class="row">
 			<div class="well">
 				Model<br/>
 				{{instancesrv.model}}
 			</div>
 		</div>
+	-->
 </div>
