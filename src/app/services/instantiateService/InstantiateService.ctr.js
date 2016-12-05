@@ -10,23 +10,28 @@
 			var vm = this;
 			vm.model = {}, vm.form = {}, vm.schema = {};
 			var service = ShareDataFactory.getData();
-			console.log(service.data);
 
 			//build form
 			if (angular.isArray(service.data)) {
+				var allFields = getFieldsFromJson(service.data);
+				console.log('obj:::', allFields);
+				vm.form = buildFormFromJson(allFields);
+				vm.schema = buildSchemaFromJson(allFields);
+			} else {
+				vm.form = buildFormFromJson(service.data[0]);
+				vm.schema = buildSchemaFromJson(service.data[0]);
+			}
+
+			function getFieldsFromJson (services) {
 				var obj = {}, kk = [];
 				angular.forEach(service.data, function(each, index){
 					angular.forEach(each.fields, function (field, index){
 						kk.push(field);
 					});
-				obj.fields = kk;
 				});
-				console.log('obj:::', obj);
-				vm.form = buildFormFromJson(obj);
-				vm.schema = buildSchemaFromJson(obj);
-			} else {
-				vm.form = buildFormFromJson(service.data[0]);
-				vm.schema = buildSchemaFromJson(service.data[0]);
+				obj.fields = kk;
+
+				return obj;
 			}
 
 			function buildFormFromJson(srv) {
@@ -36,7 +41,7 @@
 					var form = {
 						"key": field.name,
 	    				"type": (field.type == 'integer') ? 'number' : field.type,
-	    				"placeholder": field.desc
+	    				"placeholder": field.name
 					}
 					listOfFields.push(form);
 				});
@@ -52,7 +57,8 @@
 				angular.forEach(srv.fields, function(field, index){
 					tempSchema.properties[field.name] = {
 						"title": field.name,
-						"type": field.type
+						"type": (field.type == 'text') ? 'string' : field.type,
+						"description": field.desc
 					}
 				});
 				return tempSchema;
