@@ -268,6 +268,10 @@
 		vm.instantiateService = function(srv) {
 			var service_id = srv.services[0].service._id
 			ServiceFactory.instantiateService(service_id).then(function(response) {
+				var dataToSend = {
+					json: response.data,
+					service_id: service_id
+				}
 				ShareDataFactory.setData(response.data);
 				launchDialog();
 			});
