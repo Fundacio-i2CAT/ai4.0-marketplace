@@ -13,7 +13,7 @@
 				templateUrl: 'app/uploadfile/chunkUploader/chunk-uploader.tpl.html',
 				link: function (scope, element, attrs) {
 
-					ChunkUploader.chunk();
+					ChunkUploader.chunk(scope);
 				}
 			};
 			return directive;
