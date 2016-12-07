@@ -38,42 +38,42 @@
 						<ul class="list list-inline publish">
 							<li class="col-xs-12 col-sm-12 col-md-3">
 							<label for="name">Nom</label>
-								<input type="text" name="name" ng-model="staticform.srv.field1.name" placeholder="Nom del camp" class="form-control" required/>
+								<input type="text" name="name" ng-model="staticform.srv.fields.field1.name" placeholder="Nom del camp" class="form-control" required/>
 							</li>
 							<li class="col-xs-12 col-sm-12 col-md-2">
 							<label for="type">Tipus</label>
-								<select class="form-control" ng-options="item.name for item in staticform.types" ng-model="staticform.srv.field1.type" required>
+								<select class="form-control" ng-options="item.name for item in staticform.types" ng-model="staticform.srv.fields.field1.type" required>
 									<option value="" disabled>Tipus de dada</option>
 								</select>
 							</li>
 							<li class="col-xs-12 col-sm-12 col-md-1">
 								<label for="required">Oblig.</label><br/>
-								<input type="checkbox" class="form-control centered check-required" name="required" ng-model="staticform.srv.field1.required">
+								<input type="checkbox" class="form-control centered check-required" name="required" ng-model="staticform.srv.fields.field1.required">
 							</li>
 							<li class="col-xs-12 col-sm-12 col-md-6">
 								<label for="description">Descripció</label>
-								<input type="text" name="description" class="form-control" ng-model="staticform.srv.field1.desc" placeholder="Descripción"  required/>
+								<input type="text" name="description" class="form-control" ng-model="staticform.srv.fields.field1.desc" placeholder="Descripción"  required/>
 							</li>
 						</ul>
 					</div>
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fieldblock">
 						<ul class="list list-inline publish">
 							<li class="col-xs-12 col-sm-12 col-md-3">
-								<input type="text" name="name" ng-model="staticform.srv.field2.name" placeholder="Nom del camp" class="form-control"/>
+								<input type="text" name="name" ng-model="staticform.srv.fields.field2.name" placeholder="Nom del camp" class="form-control"/>
 							</li>
 							<li class="col-xs-12 col-sm-12 col-md-2">
 
-								<select class="form-control" ng-options="item.name for item in staticform.types" ng-model="staticform.srv.field2.type">
+								<select class="form-control" ng-options="item.name for item in staticform.types" ng-model="staticform.srv.fields.field2.type">
 									<option value="" disabled>Tipus de dada</option>
 								</select>
 							</li>
 							<li class="col-xs-12 col-sm-12 col-md-1">
 
-								<input type="checkbox" class="form-control centered check-required" name="required" ng-model="staticform.srv.field2.required">
+								<input type="checkbox" class="form-control centered check-required" name="required" ng-model="staticform.srv.fields.field2.required">
 							</li>
 							<li class="col-xs-12 col-sm-12 col-md-6">
 
-								<input type="text" name="description" class="form-control" ng-model="staticform.srv.field2.desc" placeholder="Descripción" />
+								<input type="text" name="description" class="form-control" ng-model="staticform.srv.fields.field2.desc" placeholder="Descripción" />
 							</li>
 						</ul>
 					</div>
@@ -81,21 +81,21 @@
 						<ul class="list list-inline publish">
 							<li class="col-xs-12 col-sm-12 col-md-3">
 
-								<input type="text" name="name" ng-model="staticform.srv.field3.name" placeholder="Nom del camp" class="form-control"/>
+								<input type="text" name="name" ng-model="staticform.srv.fields.field3.name" placeholder="Nom del camp" class="form-control"/>
 							</li>
 							<li class="col-xs-12 col-sm-12 col-md-2">
 
-								<select class="form-control" ng-options="item.name for item in staticform.types" ng-model="staticform.srv.field3.type">
+								<select class="form-control" ng-options="item.name for item in staticform.types" ng-model="staticform.srv.fields.field3.type">
 									<option value="" disabled>Tipus de dada</option>
 								</select>
 							</li>
 							<li class="col-xs-12 col-sm-12 col-md-1">
 
-								<input type="checkbox" class="form-control centered check-required" name="required" ng-model="staticform.srv.field3.required">
+								<input type="checkbox" class="form-control centered check-required" name="required" ng-model="staticform.srv.fields.field3.required">
 							</li>
 							<li class="col-xs-12 col-sm-12 col-md-6">
 
-								<input type="text" name="description" class="form-control" ng-model="staticform.srv.field3.desc" placeholder="Descripción" />
+								<input type="text" name="description" class="form-control" ng-model="staticform.srv.fields.field3.desc" placeholder="Descripción" />
 							</li>
 						</ul>
 					</div>
@@ -141,14 +141,12 @@
 								</select>
 								<br/>
 							</div>
-	    					<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-	    						<button class="btn btn-default btn-md" ng-click="staticform.uploadFile()"><i class="fa fa-upload"></i><span class="icon-left">Pujar imatge</span></button>
+	    					<!-- <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+	    						<button id="upload_button" class="btn btn-default btn-md" ng-click="staticform.uploadFile()"><i class="fa fa-upload"></i><span class="icon-left">Pujar imatge</span></button>
 	    						<br/>
-	    					</div>
+	    					</div> -->
 	    					<div class="col-xs-12">
 	    						<div id="progressbar"></div>
-	    						<br/>
-	    						<span class="text text-primary uploadOk" ng-if="staticform.isLoadedImage"><i class="fa fa-check"></i>&nbsp;Imatge carregada</span>
 	    					</div>
 					</div>
 				</div>
