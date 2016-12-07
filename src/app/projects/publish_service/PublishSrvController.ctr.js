@@ -15,8 +15,8 @@
 		vm.isLoadedImage = false;
 		vm.showbar = false;
 
-		vm.types = [{name: 'Number'}, {name: 'String'}, {name: 'Url'}, {name: 'Vdi'}];
-		vm.discImageFormat = [{name: 'QCOW2'}, {name: 'VDI'}];
+		vm.types = [{name: 'Number'}, {name: 'String'}, {name: 'Boolean'}];
+		vm.discImageFormat = [{name: 'QCOW2'}, {name: 'VDI'}, {name: 'IMG'}];
 		vm.flavors = [
 			{
 				id: 1,
@@ -87,28 +87,32 @@
 				flavor: srv.flavor.name,
 				name_image: imageData.name_image,
 				vm_image: imageData.vm_image,
-				vm_image_format: (srv.diskImageType == undefined || srv.diskImageType == null) ? 'qcow2' : srv.diskImageType,
+				vm_image_format: (srv.diskImageType.name == undefined || srv.diskImageType.name == null) ? 'qcow2' : srv.diskImageType.name,
 				runtime_params: [
 					{
-						name: srv.fields.field1.name,
-						required: srv.fields.field1.required,
-						desc: srv.fields.field1.desc
+						name: srv.rtime.name,
+						type: srv.rtime.type.name,
+						required: srv.rtime.required,
+						desc: srv.rtime.desc
 					}
 				]
 			};
 
 			//obtenir els templates dinamicament
 			if (srv.fields) {
+				var listOfFields = [];
 				angular.forEach(srv.fields, function (field, index){
-					console.log(field);
-					var field = {
+					var fieldOK = {
 						name: field.name,
+						type: field.type.name,
 						required: field.required,
 						desc: field.type.name
 					};
-					srvToSave.consumer_params.fields.push(field);
+					listOfFields.push(fieldOK);
 				});
+				srvToSave.consumer_params[0].fields = listOfFields;
 			}
+			console.log(srvToSave);
 			return srvToSave;
 		}
 
