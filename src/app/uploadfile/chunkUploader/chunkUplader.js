@@ -5,17 +5,17 @@
 		.module('marketplace')
 		.factory('ChunkUploader', ChunkUploader);
 
-		ChunkUploader.$inject = ['ConnectionFactory'];
-		function ChunkUploader (ConnectionFactory) {
-			function chunk() {
+		ChunkUploader.$inject = ['ConnectionFactory', 'SaveImageDataService'];
+		function ChunkUploader (ConnectionFactory, SaveImageDataService) {
+			function chunk(scope) {
 				$(document).ready(function() {
 				    var total_steps = 0;
 				    var chunk_size = 10000000;
 				    var final_filename = "";
 				    var spark = new SparkMD5.ArrayBuffer();
-				    var backend_url = "", barValue = 0;
-				    // backend_url = "http://dev.anella.i2cat.net:9999/api/services/vmimage";
-				    backend_url = ConnectionFactory.host;
+				    var backend_url = "";
+				    backend_url = "http://dev.anella.i2cat.net:9999/api/services/vmimage";
+				    // backend_url = ConnectionFactory.host;
 
 
 				    var progress_bar = '<div class="progress">';
@@ -55,7 +55,7 @@
 								}
 
 								$("#progress").html('Uploaded file parts: '+step+' / '+total_steps+' completed');
-								barValue = step;
+				
 								$("#file_upload_result").html('submitted successfully');
 
 								if ( step === total_steps ) {
@@ -64,37 +64,42 @@
 								    $("#end").html('Successfully uploaded <strong>'+
 										   final_filename+'</strong> with id=<i>'+
 										   uuid+'</i> in <strong>'+total_steps+'</strong> steps');
-								    var md5sum = spark.end();
-								    
-								    $("#md5").html('<strong style="color:olive">md5sum</strong>: '+md5sum);
-								    $.ajax({
-									url: backend_url+"/unchunked",
-									timeout: 10*60*1000,
-									type: "post",
-									contentType: "application/json",
-									data: JSON.stringify({ "filename": final_filename,
-											       "uuid": uuid,
-											       "md5sum": md5sum
-											     }),
-									dataType: "json",
-									success: function() {
-									    $.ajax({
-										url: backend_url+"/upload",
-										type: "post",
-										timeout: 10*60*1000,
-										contentType: "application/json",
-										data: JSON.stringify({ "filename": final_filename }),
-										dataType: "json",
-										success: function() {
-										    $("#upload").html("<h3 style=\"color:olive\">"+final_filename+" database upload performed</h3>");
+										    var md5sum = spark.end();
+										    $('#progressbar').hide();
+
+										    //save to imageData in ImageDataService
+										    //SaveImageDataService.saveImageData(file);
+
+										    $("#md5").html('<strong style="color:olive">md5sum</strong>: '+md5sum);
+										    $.ajax({
+											url: backend_url+"/unchunked",
+											timeout: 10*60*1000,
+											type: "post",
+											contentType: "application/json",
+											data: JSON.stringify({ "filename": final_filename,
+													       "uuid": uuid,
+													       "md5sum": md5sum
+													     }),
+											dataType: "json",
+											success: function() {
+											    $.ajax({
+												url: backend_url+"/upload",
+												type: "post",
+												timeout: 10*60*1000,
+												contentType: "application/json",
+												data: JSON.stringify({ "filename": final_filename }),
+												dataType: "json",
+												success: function(response) {
+												    $("#upload").html("<h3 style=\"color:olive\">"+final_filename+" database upload performed</h3>");
+												    SaveImageDataService.saveImageData(response);
+												}
+											    });
+											},
+										    	error: function() {
+											    $("#upload").html("<h3 style=\"color:red\">md5sums don't match or there was an error computing the md5sum!!!</h3>");
+											}
+										    })
 										}
-									    });
-									},
-								    	error: function() {
-									    $("#upload").html("<h3 style=\"color:red\">md5sums don't match or there was an error computing the md5sum!!!</h3>");
-									}
-								    })
-								}
 							    },
 							    error:function(){
 								$("#progress").html('There was an error while uploading');
@@ -118,6 +123,8 @@
 
 				    function onFileSelected(e) {
 				        var files = e.target.files;
+				        /*var files = $('#file_input')[0].files;*/
+				        scope.file = files;
 						var i = 0;
 						var file, j;
 						$("#progress").html('');
@@ -144,6 +151,11 @@
 
 					    var file_input = $('#file_input');
 					    file_input.on("change", onFileSelected);
+					    file_input.on('click mouseover', function(){
+					    	$('#help-text').html('Formats Imatge de Disc: .vid, .qcow2, .img')
+					    });
+					    /*var upload_button = $('#upload_button');
+					    upload_button.on('click', onFileSelected);*/
 
 				});
 			}
