@@ -5,17 +5,21 @@
 		.module('marketplace')
 		.factory('ChunkUploader', ChunkUploader);
 
-		ChunkUploader.$inject = [];
-		function ChunkUploader () {
-			function chunk(scope) {
+		ChunkUploader.$inject = ['ConnectionFactory'];
+		function ChunkUploader (ConnectionFactory) {
+			function chunk() {
 				$(document).ready(function() {
 				    var total_steps = 0;
 				    var chunk_size = 10000000;
 				    var final_filename = "";
 				    var spark = new SparkMD5.ArrayBuffer();
-				    var backend_url = "";
-				    // backend_url = "http://192.168.10.70:9999/api/services/vmimage";
-				    backend_url = "http://dev.anella.i2cat.net:9999/api/services/vmimage";
+				    var backend_url = "", barValue = 0;
+				    // backend_url = "http://dev.anella.i2cat.net:9999/api/services/vmimage";
+				    backend_url = ConnectionFactory.host;
+
+
+				    var progress_bar = '<div class="progress">';
+				    progress_bar += '<div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="100" style="width:100%"></div></div>';
 
 				    function pad(num, size) {
 						var s = num+"";
@@ -49,9 +53,11 @@
 								    // Subimos el siguiente trozo
 								    readBlob(file,uuid,step,start,stop);
 								}
+
 								$("#progress").html('Uploaded file parts: '+step+' / '+total_steps+' completed');
-								scope.pardillo = true;
+								barValue = step;
 								$("#file_upload_result").html('submitted successfully');
+
 								if ( step === total_steps ) {
 								    // Si step === total_steps hemos acabado y lanzamos el post final
 								    //       con los datos para que el backend recomponga y verifique
@@ -128,6 +134,8 @@
 						var start = j*chunk_size;
 						var stop = (j+1)*chunk_size-1;
 						$("#init").html('Starting the upload in '+total_steps+' parts');
+
+						$('#progressbar').html(progress_bar);
 
 						// Llamada para subir la primera parte (el resto sube recursivamente
 						//    en el on_success del post de jquery para que vaya secuencial)
