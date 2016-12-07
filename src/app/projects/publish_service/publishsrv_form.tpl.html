@@ -26,15 +26,15 @@
 			</div>
 			<br/>
 			<div class="col-xs-11 col-xs-offset-1 col-sm-11 col-sm-offset-1">
-				<div class="row">
-					<div class="col-xs-12 confpath1">
-						<label for="filepath">Configuració</label>
-						<input type="text" ng-model="staticform.srv.path" placeholder="Ruta arxiu configuració" class="form-control" required>
-					</div>
-				</div>
 				<div class="oneTemplate clearfix">
-					<h4 class="templateTitle">Variables</h4>
+					<h4 class="templateTitle">Paràmetres del consumidor</h4>
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fieldblock">
+					<div class="row">
+						<div class="col-xs-12 confpath1">
+							<label for="filepath">Configuració</label>
+							<input type="text" ng-model="staticform.srv.path" placeholder="Ruta arxiu configuració" class="form-control" required>
+						</div>
+					</div>
 						<ul class="list list-inline publish">
 							<li class="col-xs-12 col-sm-12 col-md-3">
 							<label for="name">Nom</label>
@@ -105,7 +105,9 @@
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fieldblock">
 						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 							<br/>
-							<select class="form-control" ng-options="fl.name for fl in staticform.flavors" ng-model="staticform.srv.flavor" required></select>
+							<select class="form-control" ng-options="fl.name for fl in staticform.flavors" ng-model="staticform.srv.flavor" required>
+								<option value="" disabled>Característiques de la màquina</option>
+							</select>
 						</div>
 						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 							<table class="table table-striped" ng-show="staticform.srv.flavor">
@@ -118,7 +120,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr class="default">
+									<tr class="info">
 										<td>{{staticform.srv.flavor.name}}</td>
 										<td>{{staticform.srv.flavor.memory}}</td>
 										<td>{{staticform.srv.flavor.disk}}</td>
@@ -127,6 +129,31 @@
 								</tbody>
 							</table>
 						</div>
+					</div>
+				</div>
+				<div class="oneTemplate clearfix">
+					<h4 class="templateTitle">Paràmetres de Runtime</h4>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fieldblock">
+						<ul class="list list-inline publish">
+							<li class="col-xs-12 col-sm-12 col-md-3">
+							<label for="name">Nom</label>
+								<input type="text" name="name" ng-model="staticform.srv.rtime.name" placeholder="Nom del camp" class="form-control" required/>
+							</li>
+							<li class="col-xs-12 col-sm-12 col-md-2">
+							<label for="type">Tipus</label>
+								<select class="form-control" ng-options="item.name for item in staticform.types" ng-model="staticform.srv.rtime.type" required>
+									<option value="" disabled>Tipus de dada</option>
+								</select>
+							</li>
+							<li class="col-xs-12 col-sm-12 col-md-1">
+								<label for="required">Oblig.</label><br/>
+								<input type="checkbox" class="form-control centered check-required" name="required" ng-model="staticform.srv.rtime.required">
+							</li>
+							<li class="col-xs-12 col-sm-12 col-md-6">
+								<label for="description">Descripció</label>
+								<input type="text" name="description" class="form-control" ng-model="staticform.srv.rtime.desc" placeholder="Descripción"  required/>
+							</li>
+						</ul>
 					</div>
 				</div>
 				<div class="oneTemplate clearfix">
