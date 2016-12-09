@@ -25,7 +25,8 @@
 		}
 
 		function instantiateSrvConsumerParams (data, id) {
-			var url = [host, ''].join('');
+			var url = [host, 'api/services/consumer/params/', id].join('');
+			return  $http.put(url, data).then(handleSuccess, handleError);
 		}
 
 		//getServiceById
