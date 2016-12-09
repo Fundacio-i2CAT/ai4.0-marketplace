@@ -29,8 +29,9 @@
 				<div class="oneTemplate clearfix">
 					<h4 class="templateTitle">Paràmetres del consumidor</h4>
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fieldblock">
+					<br/>
 					<div class="row">
-						<div class="col-xs-12 confpath1">
+						<div class="col-xs-12">
 							<label for="filepath">Configuració</label>
 							<input type="text" ng-model="staticform.srv.path" placeholder="Ruta arxiu configuració" class="form-control" required>
 						</div>
@@ -110,7 +111,7 @@
 							</select>
 						</div>
 						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-							<table class="table table-striped" ng-show="staticform.srv.flavor">
+							<table class="table table-striped flavor-table" ng-show="staticform.srv.flavor">
 								 <thead> 
 									<tr>
 										<th>Nom</th>
