@@ -163,7 +163,7 @@
 								<chunkdirective></chunkdirective>
 							</div>
 							<div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
-								<select name="" class="form-control" ng-model="staticform.srv.diskImageType" ng-options="item.name for item in staticform.discImageFormat">
+								<select name="" class="form-control" ng-model="staticform.srv.diskImageType" ng-options="item.name for item in staticform.discImageFormat" required>
 									<option value="" disabled>Tipus d'imatge de disc</option>
 								</select>
 								<br/>
@@ -180,7 +180,7 @@
 				<div class="row">
 					<div class="col-xs-3 col-xs-offset-3">
 						<!-- <button ng-disabled="srvTemplate.$invalid || !staticform.isLoadedImage" ng-click="staticform.launchTemplate(staticform.srv)" class="btn btn-success btn-block">Publicar Servei</button> -->
-						<button ng-click="staticform.launchTemplate(staticform.srv)" class="btn btn-success btn-block">Publicar Servei</button>
+						<button ng-disabled="srvTemplate.$invalid" ng-click="staticform.launchTemplate(staticform.srv)" class="btn btn-success btn-block">Publicar Servei</button>
 					</div>
 					<div class="col-xs-3">
 						<a ui-sref="provprojects" class="btn btn-danger btn-block">&nbsp;&nbsp;Cancelar</a>
