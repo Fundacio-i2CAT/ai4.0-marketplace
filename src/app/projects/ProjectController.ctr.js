@@ -29,7 +29,6 @@
 
 		vm.getUserByName = function (){
 			var user_name = vm.model.username;
-			$log.log(user_name);
 			UserFactory.getUserByName(user_name).then(function(response){
 				if (response.data.status === 'fail') {
 					//
@@ -158,10 +157,8 @@
 				if (response.status === 200) {
 					var internalPromise = $interval(function(){
 						ProjectFactory.getProjectState(id).then(function(response){
-							$log.log('getProjectState Run response', response);
 							if (response.data.status === 5) {
 								$interval.cancel(internalPromise);
-								$log.log('cancelado');
 								vm.stopSpin();
 								$state.reload();
 							}
@@ -186,7 +183,6 @@
 				if (response.status === 200) {
 					$timeout( function(){
 						ProjectFactory.getProjectState(id).then(function(response){
-							$log.log('getProjectState response', response);
 							vm.allClientProjects.forEach(function(each) {
 								if (each._id === id) {
 									each.status = 6;
@@ -197,10 +193,8 @@
 
 					var internalPromiseStop = $interval(function(){
 						ProjectFactory.getProjectState(id).then(function(response){
-							$log.log('getProjectState Stop response', response);
 							if (response.data.status === 6) {
 								$interval.cancel(internalPromiseStop);
-								$log.log('cancelado');
 								vm.stopSpin();
 								$state.reload();
 							}
