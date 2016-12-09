@@ -266,7 +266,7 @@
 					json: response.data,
 					service_id: service_id
 				}
-				ShareDataFactory.setData(response.data);
+				ShareDataFactory.setData(dataToSend);
 				launchDialog();
 			});
 		};
