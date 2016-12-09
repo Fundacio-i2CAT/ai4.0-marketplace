@@ -12,20 +12,25 @@
 			var service = ShareDataFactory.getData();
 
 			//build form
-			if (angular.isArray(service.data)) {
+			/*if (angular.isArray(service.data)) {
 				var allFields = getFieldsFromJson(service.data);
 				vm.form = buildFormFromJson(allFields);
 				vm.schema = buildSchemaFromJson(allFields);
 			} else {
 				vm.form = buildFormFromJson(service.data);
 				vm.schema = buildSchemaFromJson(service.data);
-			}
+			}*/
+
+			var allFields = getFieldsFromJson(service.json.data);
+			vm.form = buildFormFromJson(allFields);
+			vm.schema = buildSchemaFromJson(allFields);
+
 
 			function getFieldsFromJson (services) {
 				var obj = {}, kk = [];
-				angular.forEach(service.data, function(each, index){
+				angular.forEach(services, function(each, index){
 					if (each.path) {
-						obj[index] = each.path;	
+						obj.path = each.path;	
 					}
 					
 					angular.forEach(each.fields, function (field, index){
@@ -40,14 +45,15 @@
 			function buildFormFromJson(srv) {
 				var listOfFields = [];
 				angular.forEach(srv.fields, function(field, index){
-					if (field.type == undefined) field.type = 'text';
+					if (field.type == undefined) field.type = 'String';
 					var form = {
-						"key": field.name,
-	    				"type": (field.type == 'integer') ? 'number' : field.type,
-	    				"placeholder": field.name
+						key: field.name,
+	    				type: (field.type == 'integer') ? 'number' : field.type,
+	    				placeholder: field.name
 					}
 					listOfFields.push(form);
 				});
+				console.log('buildFormFromJson', listOfFields);
 				return listOfFields;
 			}
 
@@ -60,12 +66,13 @@
 				};
 				angular.forEach(srv.fields, function(field, index){
 					tempSchema.properties[field.name] = {
-						"title": (field.required) ? field.name + ' *': field.name,
+						"title": (field.required) ? field.name + ' *' : field.name,
 						"type": field.type,
 						"description": field.desc
 					}
 					if (field.required) tempSchema.required.push(field.name);
 				});
+				console.log('buildSchemaFromJson',tempSchema);
 				return tempSchema;
 			}
 
@@ -99,8 +106,11 @@
 			}
 
 			vm.InstantiateSrv = function(srvModel) {
-				var model = buildModelFromForm(srvModel, service);
-				console.log(model);
+				var model = buildModelFromForm(srvModel, service.json);
+				var servId = service.service_id;
+				ServiceFactory.instantiateSrvConsumerParams(model, servId).then(function(response) {
+					console.log('instantiateSrvConsumerParams:::', response);
+				});
 
 			}
 
