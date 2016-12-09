@@ -25,6 +25,7 @@
 					'SRV-PROJECTE':'Proyecto',
 					'SRV-CREACIO':'Creación',
 					'SRV-ACCIONS':'Acciones',
+					'SRV-SERVEI': 'Servicio',
 					//projectes
 					'PROJ-CLIENT':'PROYECTOS',
 					'FILTER-PLACEHOLDER-PROJ': 'Filtrar Proyectos',
