@@ -107,8 +107,8 @@
 
 			vm.InstantiateSrv = function(srvModel) {
 				var model = buildModelFromForm(srvModel, service.json);
-				var servId = service.service_id;
-				ServiceFactory.instantiateSrvConsumerParams(model, servId).then(function(response) {
+				var projId = service.project_id;
+				ServiceFactory.instantiateSrvConsumerParams(model, projId).then(function(response) {
 					console.log('instantiateSrvConsumerParams:::', response);
 				});
 
