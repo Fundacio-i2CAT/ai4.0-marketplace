@@ -20,28 +20,28 @@
 		vm.flavors = [
 			{
 				id: 1,
-				name: 'id.tiny',
+				name: 'm1.tiny',
 				memory: 512,
 				disk: 1,
 				cpus: 1
 			},
 			{
 				id: 2,
-				name: 'id.small',
+				name: 'm1.small',
 				memory: 2048,
 				disk: 20,
 				cpus: 1
 			},
 			{
 				id: 3,
-				name: 'id.medium',
+				name: 'm1.medium',
 				memory: 4096,
 				disk: 40,
 				cpus: 2
 			},
 			{
 				id: 4,
-				name: 'id.large',
+				name: 'm1.large',
 				memory: 8192,
 				disk: 80,
 				cpus: 4
