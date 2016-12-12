@@ -1,10 +1,9 @@
 <div class="container">
 	<div class="page-header">
-			<h2 class="text text-danger">
-				<strong>{{ 'SERV-TITOL' | translate }}</strong> <!-- <span class="pull-right"><a class="btn btn-primary btn-xs" ui-sref="provinstances">Instàncies de projecte</a></span> -->
-			</h2>
+		<h2 class="text text-danger">
+		<strong>{{ 'SERV-TITOL' | translate }}</strong> <!-- <span class="pull-right"><a class="btn btn-primary btn-xs" ui-sref="provinstances">Instàncies de projecte</a></span> -->
+		</h2>
 	</div>
-
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<div class="row">
@@ -23,80 +22,173 @@
 						<th></th>
 						<th>
 							<a ng-click="provprojects.sortType = 'service.name'; provprojects.sortReverse = !provprojects.sortReverse">
-				            {{ 'SRV-SERVEI' | translate }} 
-				            	<span ng-show="provprojects.sortType == 'service.name' && !provprojects.sortReverse" class="fa fa-caret-down"></span>
-				            	<span ng-show="provprojects.sortType == 'service.name' && provprojects.sortReverse" class="fa fa-caret-up"></span>
-				            <a/>
-						</th>
-						<th>
-							<a ng-click="provprojects.sortType = 'client.name'; provprojects.sortReverse = !provprojects.sortReverse">
-				            {{ 'SRV-CLIENT' | translate }} 
-				            	<span ng-show="provprojects.sortType == 'client.name' && !provprojects.sortReverse" class="fa fa-caret-down"></span>
-				            	<span ng-show="provprojects.sortType == 'client.name' && provprojects.sortReverse" class="fa fa-caret-up"></span>
-				            <a/>
-						</th>
-						<th>
-							<a ng-click="provprojects.sortType = 'status'; provprojects.sortReverse = !provprojects.sortReverse">
-				            {{ 'SRV-ESTAT' | translate }} 
-				            	<span ng-show="provprojects.sortType == 'status' && !provprojects.sortReverse" class="fa fa-caret-down"></span>
-				            	<span ng-show="provprojects.sortType == 'status' && provprojects.sortReverse" class="fa fa-caret-up"></span>
-				          	</a>
-						</th>
-						<th>
-							<a ng-click="provprojects.sortType = 'srv.project.name'; provprojects.sortReverse = !provprojects.sortReverse">
-				            {{ 'SRV-PROJECTE' | translate }} 
-				            	<span ng-show="provprojects.sortType == 'srv.project.name' && !provprojects.sortReverse" class="fa fa-caret-down"></span>
-				           		<span ng-show="provprojects.sortType == 'srv.project.name' && provprojects.sortReverse" class="fa fa-caret-up"></span>
-				         	 </a>
-						</th>
-						<th>
-							<a ng-click="provprojects.sortType = 'created_at'; provprojects.sortReverse = !provprojects.sortReverse">
-					            {{ 'SRV-CREACIO' | translate }} 
-					            <span ng-show="provprojects.sortType == 'created_at' && !provprojects.sortReverse" class="fa fa-caret-down"></span>
-					            <span ng-show="provprojects.sortType == 'created_at' && provprojects.sortReverse" class="fa fa-caret-up"></span>
-					        </a>
-						</th>
-						<th>{{ 'SRV-ACCIONS' | translate }}</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr ng-repeat="srv in provprojects.allProviderProjects | orderBy:provprojects.sortType:provprojects.sortReverse | filter: searchingWord">
-						<td>
-							<img width="60px" class="img-thumbnail" ng-src="assets/logos_mkp/{{provprojects.getImage(srv.service.name)}}" alt="Imatge servei" />
-						</td>
-						<td class="vert-align">
-					        {{srv.service.name}} 
-						</td>
-						<td class="vert-align">
-							{{srv.client.name}}
-						</td>
-						<td class="vert-align">
-							<p ng-if="srv.status !== 8" ><span translate="{{provprojects.getLiteralStatus(srv.status)}}" class="label label-status" ng-class="(srv.status < 3) ? 'label-danger' : 'label-success'">{{(srv.status < 3) ? 'Pendent' : 'Confirmat'}}</span></p>
-			    			<p ng-if="srv.status === 8"><span class="label label-status label-success">Inactiu</span></p>
-						</td>
-						<td class="vert-align">
-							{{srv.project.name}}
-						</td>
-						<td class="vert-align">
-							{{srv.created_at | date: 'dd-MM-yyyy'}}
-						</td>
-						<td class="vert-align">
-							<button ng-click="provprojects.confirmProviderProject(srv)" class="btn btn-success btn-xs" ng-if='srv.status <= 2'>
-								<i class="fa fa-check"></i>
-								{{ 'ACTIVAR' | translate }}
-							</button>
-							<button ng-click="provprojects.disableProviderProject(srv)" class="btn btn-danger btn-xs" ng-if='srv.status >= 3 && srv.status <= 5'>
-								<i class="fa fa-remove"></i>
-								{{ 'DESACTIVAR' | translate }}
-							</button>
-						</td>
-					</tr>
-				</tbody>
+								{{ 'SRV-SERVEI' | translate }}
+								<span ng-show="provprojects.sortType == 'service.name' && !provprojects.sortReverse" class="fa fa-caret-down"></span>
+								<span ng-show="provprojects.sortType == 'service.name' && provprojects.sortReverse" class="fa fa-caret-up"></span>
+								<a/>
+								</th>
+								<th>
+									<a ng-click="provprojects.sortType = 'client.name'; provprojects.sortReverse = !provprojects.sortReverse">
+										{{ 'SRV-CLIENT' | translate }}
+										<span ng-show="provprojects.sortType == 'client.name' && !provprojects.sortReverse" class="fa fa-caret-down"></span>
+										<span ng-show="provprojects.sortType == 'client.name' && provprojects.sortReverse" class="fa fa-caret-up"></span>
+										<a/>
+										</th>
+										<th>
+											<a ng-click="provprojects.sortType = 'status'; provprojects.sortReverse = !provprojects.sortReverse">
+												{{ 'SRV-ESTAT' | translate }}
+												<span ng-show="provprojects.sortType == 'status' && !provprojects.sortReverse" class="fa fa-caret-down"></span>
+												<span ng-show="provprojects.sortType == 'status' && provprojects.sortReverse" class="fa fa-caret-up"></span>
+											</a>
+										</th>
+										<th>
+											<a ng-click="provprojects.sortType = 'srv.project.name'; provprojects.sortReverse = !provprojects.sortReverse">
+												{{ 'SRV-PROJECTE' | translate }}
+												<span ng-show="provprojects.sortType == 'srv.project.name' && !provprojects.sortReverse" class="fa fa-caret-down"></span>
+												<span ng-show="provprojects.sortType == 'srv.project.name' && provprojects.sortReverse" class="fa fa-caret-up"></span>
+											</a>
+										</th>
+										<th>
+											<a ng-click="provprojects.sortType = 'created_at'; provprojects.sortReverse = !provprojects.sortReverse">
+												{{ 'SRV-CREACIO' | translate }}
+												<span ng-show="provprojects.sortType == 'created_at' && !provprojects.sortReverse" class="fa fa-caret-down"></span>
+												<span ng-show="provprojects.sortType == 'created_at' && provprojects.sortReverse" class="fa fa-caret-up"></span>
+											</a>
+										</th>
+										<th>{{ 'SRV-ACCIONS' | translate }}</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="srv in provprojects.allProviderProjects | orderBy:provprojects.sortType:provprojects.sortReverse | filter: searchingWord">
+										<td>
+											<img width="60px" class="img-thumbnail" ng-src="assets/logos_mkp/{{provprojects.getImage(srv.service.name)}}" alt="Imatge servei" />
+										</td>
+										<td class="vert-align">
+											{{srv.service.name}}
+										</td>
+										<td class="vert-align">
+											{{srv.client.name}}
+										</td>
+										<td class="vert-align">
+											<p ng-if="srv.status !== 8" ><span translate="{{provprojects.getLiteralStatus(srv.status)}}" class="label label-status" ng-class="(srv.status < 3) ? 'label-danger' : 'label-success'">{{(srv.status < 3) ? 'Pendent' : 'Confirmat'}}</span></p>
+											<p ng-if="srv.status === 8"><span class="label label-status label-success">Inactiu</span></p>
+										</td>
+										<td class="vert-align">
+											{{srv.project.name}}
+										</td>
+										<td class="vert-align">
+											{{srv.created_at | date: 'dd-MM-yyyy'}}
+										</td>
+										<td class="vert-align">
+											<button ng-click="provprojects.confirmProviderProject(srv)" class="btn btn-success btn-xs" ng-if='srv.status <= 2'>
+											<i class="fa fa-check"></i>
+											{{ 'ACTIVAR' | translate }}
+											</button>
+											<button ng-click="provprojects.disableProviderProject(srv)" class="btn btn-danger btn-xs" ng-if='srv.status >= 3 && srv.status <= 5'>
+											<i class="fa fa-remove"></i>
+											{{ 'DESACTIVAR' | translate }}
+											</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							<span us-spinner="{radius:30, width:8, length: 16}" spinner-key="spinner-1"></span>
+						</div>
+					</div>
 
-			</table>
-			<span us-spinner="{radius:30, width:8, length: 16}" spinner-key="spinner-1"></span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+					<div class="col-lg-6">
+						<div class="panel panel-default">
+							<div class="panel-heading"><h3>Object Store</h3></div>
+							<div class="panel-body">
+								<table class="table table-condensed" style="border-collapse:collapse;">
+									<thead>
+										<tr><th>&nbsp;</th>
+										<th>Job Name</th>
+										<th>Description</th>
+										<th>Provider Name</th>
+										<th>Region</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr data-toggle="collapse" data-target="#demo1" class="accordion-toggle">
+										<td><button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-eye-open"></span></button></td>
+										<td>OBS Name</td>
+										<td>OBS Description</td>
+										<td>hpcloud</td>
+										<td>nova</td>
+										<td> created</td>
+									</tr>
+									<tr>
+										<td colspan="12" class="hiddenRow"><div class="accordian-body collapse" id="demo1">
+											<table class="table table-striped">
+												<thead>
+													<tr><td><a href="WorkloadURL">Workload link</a></td><td>Bandwidth: Dandwidth Details</td><td>OBS Endpoint: end point</td></tr>
+													<tr><th>Access Key</th><th>Secret Key</th><th>Status </th><th> Created</th><th> Expires</th><th>Actions</th></tr>
+												</thead>
+												<tbody>
+													<tr><td>access-key-1</td><td>secretKey-1</td><td>Status</td><td>some date</td><td>some date</td><td><a href="#" class="btn btn-default btn-sm">
+												<i class="glyphicon glyphicon-cog"></i></a></td></tr>
+												
+												
+												
+											</tbody>
+										</table>
+										
+									</div> </td>
+								</tr>
+								<tr data-toggle="collapse" data-target="#demo2" class="accordion-toggle">
+									<td><button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-eye-open"></span></button></td>
+									<td>OBS Name</td>
+									<td>OBS Description</td>
+									<td>hpcloud</td>
+									<td>nova</td>
+									<td> created</td>
+								</tr>
+								<tr>
+									<td colspan="6" class="hiddenRow"><div id="demo2" class="accordian-body collapse">Demo2</div></td>
+								</tr>
+								<tr data-toggle="collapse" data-target="#demo3" class="accordion-toggle">
+									<td><button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-eye-open"></span></button></td>
+									<td>OBS Name</td>
+									<td>OBS Description</td>
+									<td>hpcloud</td>
+									<td>nova</td>
+									<td> created</td>
+								</tr>
+								<tr>
+									<td colspan="6" class="hiddenRow"><div id="demo3" class="accordian-body collapse">Demo3</div></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					
+				</div>
+				
+			</div>
+
+
+
+
+
+
+
+
+			
 		</div>
-	</div>
-
-</div>
-
