@@ -54,7 +54,7 @@
 								    readBlob(file,uuid,step,start,stop);
 								}
 
-								$("#progress").html('Uploaded file parts: '+step+' / '+total_steps+' completed');
+								$("#progress").html('Completades: '+step+' / '+total_steps+' parts');
 				
 								$("#file_upload_result").html('submitted successfully');
 
@@ -90,13 +90,13 @@
 												data: JSON.stringify({ "filename": final_filename }),
 												dataType: "json",
 												success: function(response) {
-												    $("#upload").html("<h3 style=\"color:olive\">"+final_filename+" database upload performed</h3>");
-												    SaveImageDataService.saveImageData(response);
+												    $("#upload").html('<span class="text text-success"><i class="fa fa-check"></i>Imatge carregada amb èxit.</span>');
 												}
 											    });
 											},
 										    	error: function() {
-											    $("#upload").html("<h3 style=\"color:red\">md5sums don't match or there was an error computing the md5sum!!!</h3>");
+											    $("#upload").html('<span class="text text-danger"><i class="fa fa-close"></i>No s\'ha pogut carregar la imatge.</span>');
+											
 											}
 										    })
 										}
@@ -140,7 +140,7 @@
 						j = 0;
 						var start = j*chunk_size;
 						var stop = (j+1)*chunk_size-1;
-						$("#init").html('Starting the upload in '+total_steps+' parts');
+						$("#init").html('La imatge es pujarà en '+total_steps+' parts');
 
 						$('#progressbar').html(progress_bar);
 
@@ -152,7 +152,7 @@
 					    var file_input = $('#file_input');
 					    file_input.on("change", onFileSelected);
 					    file_input.on('click mouseover', function(){
-					    	$('#help-text').html('Formats Imatge de Disc: .vid, .qcow2, .img')
+					    	$('#help-text').html('Formats Imatge de Disc: .vdi, .qcow2')
 					    });
 					    /*var upload_button = $('#upload_button');
 					    upload_button.on('click', onFileSelected);*/

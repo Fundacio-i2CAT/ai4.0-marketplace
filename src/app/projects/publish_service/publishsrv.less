@@ -65,7 +65,17 @@ ul.publish li {
 
 
 .staticform {
-	height: 1500px;
+	height: 1600px;
+}
+
+@media (max-width: 1000px) {
+  .static-form {
+    min-height: 2500px;
+  }
+}
+
+.botones {
+	margin-bottom: 5em;
 }
 
 .publishsrv-bg {
@@ -100,8 +110,7 @@ ul.publish li {
 		width: 90%;
 		
 		.modal-img {
-			overflow: scroll;	
-			height: 250px;
+			overflow: hidden;	
 			margin-top: 1em;
 			margin-bottom: 2em;
 		}

@@ -15,8 +15,8 @@
 		vm.isLoadedImage = false;
 		vm.showbar = false;
 
-		vm.types = [{name: 'Number'}, {name: 'String'}, {name: 'Boolean'}];
-		vm.discImageFormat = [{name: 'QCOW2'}, {name: 'VDI'}, {name: 'IMG'}];
+		vm.types = [{name: 'Number'}, {name: 'String'}];
+		vm.discImageFormat = [{name: 'QCOW2'}, {name: 'VDI'}];
 		vm.flavors = [
 			{
 				id: 1,

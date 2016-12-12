@@ -1,14 +1,22 @@
 <div>
 	<form name="upload_form" id="upload_form">
-		<!-- <input class="form-control" accept=".vdi, .VDI, .img, .IMG, .qcow2, .QCOW2" name="file_input" id="file_input" type="file" class="file" placeholder="files"> -->
-		<input class="form-control" name="file_input" id="file_input" type="file" class="file" placeholder="files">
+		<input class="form-control" accept=".vdi, .VDI, .img, .IMG, .qcow2, .QCOW2" name="file_input" id="file_input" type="file" class="file" placeholder="files">
 	</form>
 	<small id="help-text" class="form-text text-muted"></small>
 	<br/>
+	<br/>
 	<!-- <div id="progressbar"></div> -->
-	<p name="init" id="init"></p>
-	<p name="progress" id="progress"></p>
+	<div class="row">
+		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+			<p name="init" id="init"></p>
+			<p name="progress" id="progress"></p>
+		</div>
+
+		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+			<p name="upload" id="upload"></p>
+		</div>
+	</div>
 	<!-- <p name="end" id="end"></p> -->
 	<!-- <p name="md5" id="md5"></p> -->
-	<p name="upload" id="upload"></p>
+	
 </div>

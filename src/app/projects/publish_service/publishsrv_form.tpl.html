@@ -22,7 +22,7 @@
 			
 			<div class="col-xs-11 col-xs-10-offset-1 col-sm-11 col-sm-offset-1 confpath1">
 				<label for="">Sumari</label>
-				<input type="text" class="form-control" ng-model="staticform.srv.summary" placeholder="Nom del servei" required>
+				<input type="text" class="form-control" ng-model="staticform.srv.summary" placeholder="Sumari del servei" required>
 			</div>
 			<br/>
 			<div class="col-xs-11 col-xs-offset-1 col-sm-11 col-sm-offset-1">
@@ -53,7 +53,7 @@
 							</li>
 							<li class="col-xs-12 col-sm-12 col-md-6">
 								<label for="description">Descripció</label>
-								<input type="text" name="description" class="form-control" ng-model="staticform.srv.fields.field1.desc" placeholder="Descripción"  required/>
+								<input type="text" name="description" class="form-control" ng-model="staticform.srv.fields.field1.desc" placeholder="Descripció del camp"  required/>
 							</li>
 						</ul>
 					</div>
@@ -74,7 +74,7 @@
 							</li>
 							<li class="col-xs-12 col-sm-12 col-md-6">
 
-								<input type="text" name="description" class="form-control" ng-model="staticform.srv.fields.field2.desc" placeholder="Descripción" />
+								<input type="text" name="description" class="form-control" ng-model="staticform.srv.fields.field2.desc" placeholder="Descripció del camp" />
 							</li>
 						</ul>
 					</div>
@@ -96,7 +96,7 @@
 							</li>
 							<li class="col-xs-12 col-sm-12 col-md-6">
 
-								<input type="text" name="description" class="form-control" ng-model="staticform.srv.fields.field3.desc" placeholder="Descripción" />
+								<input type="text" name="description" class="form-control" ng-model="staticform.srv.fields.field3.desc" placeholder="Descripció del camp" />
 							</li>
 						</ul>
 					</div>
@@ -152,15 +152,15 @@
 							</li>
 							<li class="col-xs-12 col-sm-12 col-md-6">
 								<label for="description">Descripció</label>
-								<input type="text" name="description" class="form-control" ng-model="staticform.srv.rtime.desc" placeholder="Descripción"  required/>
+								<input type="text" name="description" class="form-control" ng-model="staticform.srv.rtime.desc" placeholder="Descripció del camp"  required/>
 							</li>
 						</ul>
 					</div>
 				</div>
 				<div class="oneTemplate clearfix">
-					<h4 class="templateTitle">Imatge de Disc - SuperChunk</h4>
+					<h4 class="templateTitle">Imatge de Disc</h4>
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fieldblock">
-							<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+							<div class="col-xs-12 col-sm-12 col-md-8 col-lg-9">
 								<chunkdirective></chunkdirective>
 							</div>
 							<div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
@@ -178,7 +178,7 @@
 	    					</div>
 					</div>
 				</div>
-				<div class="row">
+				<div class="row botones">
 					<div class="col-xs-3 col-xs-offset-3">
 						<!-- <button ng-disabled="srvTemplate.$invalid || !staticform.isLoadedImage" ng-click="staticform.launchTemplate(staticform.srv)" class="btn btn-success btn-block">Publicar Servei</button> -->
 						<button ng-disabled="srvTemplate.$invalid" ng-click="staticform.launchTemplate(staticform.srv)" class="btn btn-success btn-block">Publicar Servei</button>
