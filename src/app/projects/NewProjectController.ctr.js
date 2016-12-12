@@ -5,9 +5,9 @@
 		.module('marketplace')
 		.controller('NewProjectController', NewProjectController);
 
-		NewProjectController.$inject = ['toastr','CurrentUserFactory', 'ROLES', '$log', 'ServiceFactory', 'ProjectFactory', '$location'];
+		NewProjectController.$inject = ['toastr','CurrentUserFactory', 'ROLES', '$log', 'ServiceFactory', 'ProjectFactory', '$location', '$state'];
 
-		function NewProjectController(toastr, CurrentUserFactory, ROLES, $log, ServiceFactory, ProjectFactory, $location) {
+		function NewProjectController(toastr, CurrentUserFactory, ROLES, $log, ServiceFactory, ProjectFactory, $location, $state) {
 			var vm = this;
 			vm.allServices = [];
 			
@@ -35,10 +35,10 @@
 				model.client = client_id;
 				ProjectFactory.createClientProject(model).then(function(response){
 					if(response.status == 201){
-						$location.path("/clientprojects");
+						toastr.info('Projecte creat correctament', 'Creació de Projecte');
 					}else{
-						toastr.error('Problema al crear projectes', response.data.msg);
-
+						toastr.error('Problema al crear projecte', 'Error en Creació de Projecte');
+						$state.go("clientprojects");
 					}
 					$location.path("/clientprojects");
 				});
