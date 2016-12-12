@@ -4,9 +4,9 @@
 	angular
 		.module('marketplace')
 		.controller('PublishSrvController', PublishSrvController);
-	PublishSrvController.$inject = ['$scope', 'fileUpload', 'CatalogFactory', 'ServiceFactory', 'ConnectionFactory', 'LocalStorageFactory', 'SaveImageDataService', 'ngDialog'];
+	PublishSrvController.$inject = ['$scope', '$state', 'toastr', 'fileUpload', 'CatalogFactory', 'ServiceFactory', 'ConnectionFactory', 'LocalStorageFactory', 'SaveImageDataService', 'ngDialog'];
 
-	function PublishSrvController($scope, fileUpload, CatalogFactory, ServiceFactory, ConnectionFactory, LocalStorageFactory, SaveImageDataService, ngDialog) {
+	function PublishSrvController($scope, $state, toastr, fileUpload, CatalogFactory, ServiceFactory, ConnectionFactory, LocalStorageFactory, SaveImageDataService, ngDialog) {
 		var vm = this;
 		var host = ConnectionFactory.host;
 		vm.allTemplates = [];
@@ -63,8 +63,12 @@
 			var model = buildPublishServiceJSON(srv);
 			ServiceFactory.createService(model).then(function (response){
 				console.log(response);
+				toastr.success('Servei publicat correctament', 'Publicació de Servei');
+				$state.go('provprojects');
 			}, function (error) {
 				console.log(error);
+				toastr.error('No s\'ha pogut publicar el Servei', 'Error al publicar el Servei');
+				$state.go('provprojects');
 			});
 		};
 
