@@ -61,7 +61,7 @@
 			}
 
 			vm.cancelCreateProject = function() {
-				$location.path('/catalog');
+				$location.path('/clientprojects');
 			}
 
 			//Crida desde project-new.tpl.html per obtenir tots els serveis
