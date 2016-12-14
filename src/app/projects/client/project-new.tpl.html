@@ -4,7 +4,7 @@
 	</div>
 	<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
 		<div class="well clearfix">
-			<form action="" name="projectnew" ng-submit="newproject.createClientProject(project)">
+			<form action="" name="projectnew">
 				<div class="form-group">
 					<label for="nomprojecte">{{ 'LABEL-NOM' | translate}}</label>
 					<input type="text" class="form-control" id="nomprojecte" ng-model="project.name" placeholder="{{ 'LABEL-NOM' | translate }}" required>
@@ -39,7 +39,7 @@
 				<div class="row">
 					<div class="col-xs-3 col-xs-offset-3">
 						<span class="input-group-btn">
-								<button class="btn btn-success btn-block" type="submit">
+								<button class="btn btn-success btn-block" ng-click="newproject.createClientProject(project)">
 									<i class="fa fa-plus"></i>&nbsp;&nbsp;{{ 'BTN-SAVE' | translate }}
 								</button>
 						</span>
