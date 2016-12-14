@@ -35,13 +35,16 @@
 				model.client = client_id;
 				ProjectFactory.createClientProject(model).then(function(response){
 					if (response.status == 201) {
-						toastr.info('Projecte creat correctament', 'Creació de Projecte');
-					} else {
-						toastr.error('Problema al crear projecte', 'Error en Creació de Projecte');
+						alert(response.status);
+						// toastr.info('Projecte creat correctament', 'Creació de Projecte');
+						$location.path("/clientprojects");
+					}
+					if (response.status != 201) {
+						alert(response.status);
+						// toastr.error('Problema al crear projecte', 'Error en Creació de Projecte');
+						$location.path("/catalog");
 					}
 				});
-				// $state.go("clientprojects");
-				$location.path("/clientprojects");
 			};
 
 			vm.getAllServices = function(){
@@ -57,7 +60,9 @@
 				$log.log(srv)
 			}
 
-
+			vm.cancelCreateProject = function() {
+				$location.path('/catalog');
+			}
 
 			//Crida desde project-new.tpl.html per obtenir tots els serveis
 			vm.getAllServices()
