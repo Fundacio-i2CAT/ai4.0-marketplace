@@ -1,6 +1,6 @@
 (function(){
 	'use strict';
-	
+
 	angular
 		.module('marketplace')
 		.controller('NewProjectController', NewProjectController);
@@ -10,16 +10,16 @@
 		function NewProjectController(toastr, CurrentUserFactory, ROLES, $log, ServiceFactory, ProjectFactory, $location, $state) {
 			var vm = this;
 			vm.allServices = [];
-			
+
 			var user = CurrentUserFactory.getCurrentUser();
-			
+
 			var client_id;
 			var services = [];
-			
+
 			vm.getCurrentClientId = function() {
 				if (user.role === ROLES.client.role) {
 					if (user.user.hasOwnProperty('client_id')) client_id = user.user.client_id;
-					else client_id = user.user.provider_id	
+					else client_id = user.user.provider_id
 				}
 			};
 
@@ -27,21 +27,21 @@
 
 			//Crear Projecte
 			vm.createClientProject = function(model){
-				angular.forEach(model.services, function(serv){
+				angular.forEach(model.services, function(serv) {
 					var service = {"service": serv};
 					services.push(service);
-				});			
+				});
 				model.services = services;
 				model.client = client_id;
 				ProjectFactory.createClientProject(model).then(function(response){
-					if(response.status == 201){
+					if (response.status == 201) {
 						toastr.info('Projecte creat correctament', 'Creació de Projecte');
-					}else{
+					} else {
 						toastr.error('Problema al crear projecte', 'Error en Creació de Projecte');
-						$state.go("clientprojects");
 					}
-					$location.path("/clientprojects");
 				});
+				// $state.go("clientprojects");
+				$location.path("/clientprojects");
 			};
 
 			vm.getAllServices = function(){
