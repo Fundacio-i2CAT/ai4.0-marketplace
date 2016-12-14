@@ -35,13 +35,11 @@
 				model.client = client_id;
 				ProjectFactory.createClientProject(model).then(function(response){
 					if (response.status == 201) {
-						alert(response.status);
-						// toastr.info('Projecte creat correctament', 'Creació de Projecte');
+						toastr.info('Projecte creat correctament', 'Creació de Projecte');
 						$location.path("/clientprojects");
 					}
 					if (response.status != 201) {
-						alert(response.status);
-						// toastr.error('Problema al crear projecte', 'Error en Creació de Projecte');
+						toastr.error('No s\'ha pogut crear el projecte', 'Error en la Creació de Projecte');
 						$location.path("/catalog");
 					}
 				});
