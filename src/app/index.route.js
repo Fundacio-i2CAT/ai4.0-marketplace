@@ -7,10 +7,9 @@
 
   /** @ngInject */
   function routerConfig($stateProvider, $locationProvider, $urlRouterProvider) {
-    /*$locationProvider.html5Mode({
-      enabled: true,
-      requireBase: false
-    });*/
+    $locationProvider.html5Mode({
+      enabled:true
+    });
     $stateProvider
       .state('home', {
         url: '/',
@@ -117,7 +116,7 @@
       });
 
       $urlRouterProvider.otherwise('/catalog');
-  }    
+  }
 
   angular
     .module('marketplace')
