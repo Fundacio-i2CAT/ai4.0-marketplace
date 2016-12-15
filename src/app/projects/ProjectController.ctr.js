@@ -1,12 +1,12 @@
 (function(){
 	'use strict';
-	
+
 	angular
 		.module('marketplace')
 		.controller('ProjectController', ProjectController);
 
-	ProjectController.$inject = ['$rootScope', '$interval', 'toastr', 'ProjectFactory', '$log', '$state', 'UserFactory', 'ProgressFactory', '$location', 'ServiceFactory', '$stateParams', 'CurrentUserFactory', 'ROLES', 'usSpinnerService', 'ImageProviderFactory', 'LiteralFactory', 'ngDialog', 'ShareDataFactory'];
-	function ProjectController ($rootScope, $interval, toastr, ProjectFactory, $log, $state, UserFactory, ProgressFactory, $location, ServiceFactory, $stateParams, CurrentUserFactory, ROLES, usSpinnerService, ImageProviderFactory, LiteralFactory, ngDialog, ShareDataFactory){
+	ProjectController.$inject = ['$rootScope', '$interval', 'toastr', 'ProjectFactory', '$log', '$state', 'UserFactory', 'ProgressFactory', '$location', 'ServiceFactory', '$stateParams', 'CurrentUserFactory', 'ROLES', 'usSpinnerService', 'ImageProviderFactory', 'LiteralFactory', 'ngDialog', 'ShareDataFactory', '$timeout'];
+	function ProjectController ($rootScope, $interval, toastr, ProjectFactory, $log, $state, UserFactory, ProgressFactory, $location, ServiceFactory, $stateParams, CurrentUserFactory, ROLES, usSpinnerService, ImageProviderFactory, LiteralFactory, ngDialog, ShareDataFactory, $timeout){
 		var vm = this;
 		vm.sortType = 'srv.project.name';
 		vm.sortReverse = true;
@@ -61,7 +61,7 @@
 		vm.getProviderProjectsByPartnerId = function (partnerId){
 			var progressbar = ProgressFactory.progressBarConfigure();
 			progressbar.start();
-			
+
 			ProjectFactory.getProviderProjectsByPartnerId(partnerId).then(function(response) {
 				if (response.data.status === 'fail') {
 					toastr.error('Hi ha hagut un error al obtenir els projectes...', 'Hi ha un problema');
@@ -73,11 +73,11 @@
 						if (each.status === 1){
 							hasPendings = true;
 							i = i +1;
-						} 
+						}
 
 					});
 					if (hasPendings) toastr.info("Té " + i + " projectes(s) per confirmar");
-					
+
 				}
 			});
 			progressbar.complete();
@@ -124,7 +124,7 @@
 					services.push(service);
 				});
 				new_model.services = services;
-			}						
+			}
 			new_model.name = model.name;
 			ProjectFactory.editClientProject(new_model, model._id).then(function(response){
 				if(response.status == 200){
@@ -153,7 +153,7 @@
 		vm.runProject = function (id) {
 			// var progressbar = ProgressFactory.progressBarConfigure();
 			// progressbar.start();
-			ProjectFactory.runProject(id).then(function (response){			
+			ProjectFactory.runProject(id).then(function (response){
 				if (response.status === 200) {
 					var internalPromise = $interval(function(){
 						ProjectFactory.getProjectState(id).then(function(response){
@@ -222,7 +222,7 @@
 				if (css_selected[0] != null){
 					css_selected[0].className = "";
 				}
-				
+
 			}
 		}
 
@@ -242,7 +242,7 @@
 
 		//crida desde projects/providers/index-prov.tpl.html
 		var user = CurrentUserFactory.getCurrentUser();
-		
+
 		if (user.role === ROLES.provider.role && $state.current.name === ROLES.provider.state) {
 			vm.getProviderProjectsByPartnerId(user.user.provider_id);
 		}
@@ -254,7 +254,7 @@
 		vm.startSpin = function() {
 			usSpinnerService.spin('spinner-1');
 		};
-		
+
 		vm.stopSpin = function() {
 			usSpinnerService.stop('spinner-1');
 		};
