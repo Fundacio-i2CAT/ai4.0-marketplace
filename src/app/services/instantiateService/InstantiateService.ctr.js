@@ -10,6 +10,7 @@
 			var vm = this;
 			vm.model = {}, vm.form = {}, vm.schema = {};
 			var service = ShareDataFactory.getData();
+			vm.service = service;
 
 			//build form
 			/*if (angular.isArray(service.data)) {
@@ -116,28 +117,32 @@
 						var internalPromise = $interval(function(){
 							ProjectFactory.getProjectState(projId).then(function(response){
 								console.log('getprojectState::::', response);
-								if (response.data.status === 5) {
-									$interval.cancel(internalPromise);
-									vm.stopSpin();
-									vm.closeDialog();
-									toastr.success('El Projecte s\'ha instanciat correctament', 'Instanciar Projecte');
-									$state.reload();
-								} else if (response.data.status === 7) {
-									$interval.cancel(internalPromise);
-									vm.stopSpin();
-									vm.closeDialog();
-									toastr.error('No s\'ha pogut instanciar el projecte perque hi ha hagut un error', 'Error al Instanciar Projecte');
-									$state.reload();
+								if (response.data.status == 'fail') {
+									toastr.error('No s\'ha pogut instanciar el projecte perque s\'ha produït un error', 'Error al Instanciar Projecte');
+									return;
 								}
 
-
-
+								if (response.data.status === 5) {
+									$interval.cancel(internalPromise);
+									toastr.success('El Projecte s\'ha instanciat correctament', 'Instanciar Projecte');
+									close();
+								} else if (response.data.status === 7) {
+									$interval.cancel(internalPromise);
+									toastr.error('No s\'ha pogut instanciar el projecte perque s\'ha produït un error', 'Error al Instanciar Projecte');
+									close();
+								}
 							});
 						}, 30000);
 					}
 				});
 
 			};
+
+			function close() {
+				vm.stopSpin();
+				vm.closeDialog();
+				$state.reload();
+			}
 
 			vm.startSpin = function() {
 				usSpinnerService.spin('spinner-33');
