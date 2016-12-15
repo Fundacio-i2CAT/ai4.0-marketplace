@@ -5,8 +5,8 @@
 		.module('marketplace')
 		.controller('InstantiateServiceController', InstantiateServiceController);
 
-		InstantiateServiceController.$inject = ['ShareDataFactory', '$log', 'ngDialog', 'ServiceFactory'];
-		function InstantiateServiceController(ShareDataFactory, $log, ngDialog, ServiceFactory) {
+		InstantiateServiceController.$inject = ['ShareDataFactory', '$log', 'ngDialog', 'ServiceFactory', '$interval', 'usSpinnerService', 'ProjectFactory', '$state', 'toastr'];
+		function InstantiateServiceController(ShareDataFactory, $log, ngDialog, ServiceFactory, $interval, usSpinnerService, ProjectFactory, $state, toastr) {
 			var vm = this;
 			vm.model = {}, vm.form = {}, vm.schema = {};
 			var service = ShareDataFactory.getData();
@@ -30,9 +30,9 @@
 				var obj = {}, kk = [];
 				angular.forEach(services, function(each, index){
 					if (each.path) {
-						obj.path = each.path;	
+						obj.path = each.path;
 					}
-					
+
 					angular.forEach(each.fields, function (field, index){
 						kk.push(field);
 					});
@@ -85,7 +85,7 @@
 				var serv = {
 					status: 5,
 					consumer_params: []
-				};				
+				};
 
 				angular.forEach(service.data, function (each, index){
 					var temp = {
@@ -108,13 +108,44 @@
 			vm.InstantiateSrv = function(srvModel) {
 				var model = buildModelFromForm(srvModel, service.json);
 				var projId = service.project_id;
+				vm.startSpin();
 				ServiceFactory.instantiateSrvConsumerParams(model, projId).then(function(response) {
 					console.log('instantiateSrvConsumerParams:::', response);
+
+					if (response.status === 200) {
+						var internalPromise = $interval(function(){
+							ProjectFactory.getProjectState(projId).then(function(response){
+								console.log('getprojectState::::', response);
+								if (response.data.status === 5) {
+									$interval.cancel(internalPromise);
+									vm.stopSpin();
+									vm.closeDialog();
+									toastr.success('El Projecte s\'ha instanciat correctament', 'Instanciar Projecte');
+									$state.reload();
+								} else if (response.data.status === 7) {
+									$interval.cancel(internalPromise);
+									vm.stopSpin();
+									vm.closeDialog();
+									toastr.error('No s\'ha pogut instanciar el projecte perque hi ha hagut un error', 'Error al Instanciar Projecte');
+									$state.reload();
+								}
+
+
+
+							});
+						}, 30000);
+					}
 				});
 
-			}
+			};
 
+			vm.startSpin = function() {
+				usSpinnerService.spin('spinner-33');
+			};
 
+			vm.stopSpin = function() {
+				usSpinnerService.stop('spinner-33');
+			};
 
 
 
