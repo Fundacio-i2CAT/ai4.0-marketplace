@@ -17,21 +17,17 @@
 		    	<div sf-schema="instancesrv.schema" sf-form="instancesrv.form" sf-model="instancesrv.model"></div>
 		    	<div class="row">
 		    		<div class="col-xs-3 col-xs-offset-3">
-			    		<a class="btn btn-success btn-sm btn-block" ng-disabled="instantiate_service.$invalid || instantiate_service.$pristine" ng-click="instancesrv.InstantiateSrv(instancesrv.model)" type="submit">Enviar Dades</a>
-			    	</div>
+			    		<button class="btn btn-success btn-sm btn-block" ng-disabled="instantiate_service.$invalid || instantiate_service.$pristine" ng-click="instancesrv.InstantiateSrv(instancesrv.model)" type="submit">Enviar Dades</button>
+						</div>
 			    	<div class="col-xs-3">
-			    		<a class="btn btn-danger btn-sm btn-block" ng-click="instancesrv.closeDialog()" type="button">Cancelar</a>
+			    		<button class="btn btn-danger btn-sm btn-block" ng-click="instancesrv.closeDialog()" type="button">Cancelar</button>
 			    	</div>
 		    	</div>
 		    </form>
+				<div class="row">
+					<span us-spinner="{radius:15, width:8, length: 10}" spinner-key="spinner-33"></span>
+				</div>
+
 		</div>
 	</div>
-	<!--
-		<div class="row">
-			<div class="well">
-				Model<br/>
-				{{instancesrv.model}}
-			</div>
-		</div>
-	-->
 </div>
