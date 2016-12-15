@@ -265,7 +265,8 @@
 				var dataToSend = {
 					json: response.data,
 					service_id: service_id,
-					project_id: srv._id
+					project_id: srv._id,
+					srv: srv
 				}
 				ShareDataFactory.setData(dataToSend);
 				launchDialog();
@@ -282,6 +283,15 @@
 			});
 		}
 
+		// vm.launchDeleteProjectDialog = launchDeleteProjectDialog;
+		// function launchDeleteProjectDialog (srv) {
+		// 	ngDialog.open({
+		// 		template: 'app/projects/client/delete-project/delete_project.tpl.html',
+		// 		className: 'ngdialog-theme-default',
+		// 		controller: 'InstantiateServiceController',
+		// 		controllerAs: 'instancesrv'
+		// 	});
+		// }
 
 	}
 
