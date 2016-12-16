@@ -180,27 +180,40 @@
 		//stopProject (by Client user)
 		vm.stopProject = function (id) {
 			ProjectFactory.stopProject(id).then(function (response){
+				$log.log('stopping project::: ', response);
 				if (response.status === 200) {
-					$timeout( function(){
-						ProjectFactory.getProjectState(id).then(function(response){
-							vm.allClientProjects.forEach(function(each) {
-								if (each._id === id) {
-									each.status = 6;
-								}
-							});
-						});
-					}, 30000);
+					ProjectFactory.getProjectState(id).then(function(response){
+						$log.log('getProjectState::: ', response);
+						if (response.data.status === 6) {
+							$interval.cancel(internalPromiseStop);
+							$state.reload();
+						}
+					});
+					alert('project stopped');
 
-					var internalPromiseStop = $interval(function(){
-						ProjectFactory.getProjectState(id).then(function(response){
-							if (response.data.status === 6) {
-								$interval.cancel(internalPromiseStop);
-								vm.stopSpin();
-								$state.reload();
-							}
-						});
-					}, 30000);
 
+
+					//it works! (this could was inside the 'if (response.status == 5)')
+					
+					// $timeout( function(){
+					// 	ProjectFactory.getProjectState(id).then(function(response){
+					// 		vm.allClientProjects.forEach(function(each) {
+					// 			if (each._id === id) {
+					// 				each.status = 6;
+					// 			}
+					// 		});
+					// 	});
+					// }, 30000);
+					//
+					// var internalPromiseStop = $interval(function(){
+					// 	ProjectFactory.getProjectState(id).then(function(response){
+					// 		if (response.data.status === 6) {
+					// 			$interval.cancel(internalPromiseStop);
+					// 			vm.stopSpin();
+					// 			$state.reload();
+					// 		}
+					// 	});
+					// }, 30000);
 				}
 			});
 		}
