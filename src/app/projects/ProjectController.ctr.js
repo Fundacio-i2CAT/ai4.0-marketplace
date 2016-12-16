@@ -56,7 +56,7 @@
 		*/
 		vm.getImage = function (name) {
 			return ImageProviderFactory.getServiceImage(name);
-		}
+		};
 
 		vm.getProviderProjectsByPartnerId = function (partnerId){
 			var progressbar = ProgressFactory.progressBarConfigure();
@@ -154,12 +154,13 @@
 			// var progressbar = ProgressFactory.progressBarConfigure();
 			// progressbar.start();
 			ProjectFactory.runProject(id).then(function (response){
+				$log.log('running project::: ', response);
 				if (response.status === 200) {
 					var internalPromise = $interval(function(){
 						ProjectFactory.getProjectState(id).then(function(response){
+							$log.log('getProjectState::: ', response);
 							if (response.data.status === 5) {
 								$interval.cancel(internalPromise);
-								vm.stopSpin();
 								$state.reload();
 							}
 						});
@@ -185,7 +186,6 @@
 					ProjectFactory.getProjectState(id).then(function(response){
 						$log.log('getProjectState::: ', response);
 						if (response.data.status === 6) {
-							$interval.cancel(internalPromiseStop);
 							$state.reload();
 						}
 					});
@@ -194,7 +194,7 @@
 
 
 					//it works! (this could was inside the 'if (response.status == 5)')
-					
+
 					// $timeout( function(){
 					// 	ProjectFactory.getProjectState(id).then(function(response){
 					// 		vm.allClientProjects.forEach(function(each) {
@@ -216,7 +216,7 @@
 					// }, 30000);
 				}
 			});
-		}
+		};
 
 		vm.deleteProject = function(id){
 			ProjectFactory.deleteProject(id).then(function(response){
@@ -227,7 +227,7 @@
 					toastr.error("No s'ha pogut borrar el projecte");
 				}
 			});
-		}
+		};
 
 		vm.hasChanged = function(){
 			var css_selected =  angular.element("selected");
@@ -237,17 +237,17 @@
 				}
 
 			}
-		}
+		};
 
 		vm.getLiteralStatus = function(status){
 			return LiteralFactory.getLiteralStatus(status);
-		}
+		};
 
 		vm.getProjectState = function(id){
 			ProjectFactory.getProjectState(id).then(function(response){
 				$log.log(response);
 			});
-		}
+		};
 
 		if ($stateParams.id) {
 			vm.getProjectById($stateParams.id);
