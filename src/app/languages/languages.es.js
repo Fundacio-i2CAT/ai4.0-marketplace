@@ -30,8 +30,8 @@
 					'PROJ-CLIENT':'PROYECTOS',
 					'FILTER-PLACEHOLDER-PROJ': 'Filtrar Proyectos',
 					'CREAR-PROJ': 'Nuevo Proyecto',
-					'PROJ-ARRENCAR': 'LANZAR',
-					'PROJ-ATURAR': 'PARAR',
+					'PROJ-ARRENCAR': 'Lanzar',
+					'PROJ-ATURAR': 'Parar',
 					//estats
 					'PENDENT': 'Pendiente',
 					'CONFIRMAT': 'Confirmado',
@@ -110,4 +110,3 @@
 		}]);
 
 })();
-				

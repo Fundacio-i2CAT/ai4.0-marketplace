@@ -30,8 +30,8 @@
 					'PROJ-CLIENT':'PROJECTES',
 					'FILTER-PLACEHOLDER-PROJ': 'Filtrar Projectes',
 					'CREAR-PROJ': 'Nou Projecte',
-					'PROJ-ARRENCAR': 'ARRENCAR',
-					'PROJ-ATURAR': 'ATURAR',
+					'PROJ-ARRENCAR': 'Arrencar',
+					'PROJ-ATURAR': 'Aturar',
 					//estats
 					'PENDENT': 'Pendent',
 					'CONFIRMAT': 'Confirmat',
@@ -108,8 +108,6 @@
 
 				})
 				.preferredLanguage('CAT');
-		}]);	
+		}]);
 
 })();
-
-
