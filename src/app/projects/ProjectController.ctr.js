@@ -183,15 +183,16 @@
 			ProjectFactory.stopProject(id).then(function (response){
 				$log.log('stopping project::: ', response);
 				if (response.status === 200) {
-					ProjectFactory.getProjectState(id).then(function(response){
-						$log.log('getProjectState::: ', response);
-						if (response.data.status === 6) {
-							$state.reload();
-						}
-					});
-					alert('project stopped');
-
-
+					var internalPromise = $interval(function(){
+						ProjectFactory.getProjectState(id).then(function(response){
+							$log.log('getProjectState::: ', response);
+							if (response.data.status === 6) {
+								$interval.cancel(internalPromise);
+								$state.reload();
+								toastr.success('Serveis del Projecte aturats correctament', 'Aturar Serveis projecte')
+							}
+						});
+					}, 8000);
 
 					//it works! (this could was inside the 'if (response.status == 5)')
 
