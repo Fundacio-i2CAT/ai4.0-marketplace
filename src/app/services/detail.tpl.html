@@ -80,18 +80,16 @@
 					<div class="col-xs-12">
 						<div class="row boton-contractar">
 							<div ng-if="!detailsrv.currentUser.role" class="col-xs-4 col-xs-offset-4">
-								<a ng-click="detailsrv.contractService(detailsrv.currentService)" class="btn btn-primary btn-md btn-block">Registre</a>
+								<a ng-click="detailsrv.goToLogin()" class="btn btn-primary btn-md btn-block">Registre</a>
 							</div>
 							<div ng-if="detailsrv.currentUser.role == 'Partner.Client'" class="col-xs-4 col-xs-offset-4">
-								<a ng-click="detailsrv.contractService(detailsrv.currentService)" class="btn btn-primary btn-md btn-block">Crear Projecte</a>
+								<a ng-click="detailsrv.goToProjects()" class="btn btn-primary btn-md btn-block">Crear Projecte</a>
 							</div>
 						</div>
 					</div>
 
 				</div>
-				<div class="panel-footer">
-
-				</div>
+				<div class="panel-footer"></div>
 			</div>
 		</div>
 	</div>

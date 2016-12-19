@@ -11,7 +11,6 @@
 		var vm = this;
 		vm.currentUser = {};
 		var serviceId;
-		
 
 		if($stateParams.id) {
 			serviceId = $stateParams.id;
@@ -51,9 +50,12 @@
 		/*
 			solicitar servicio desde vista detalle de Service-Catalog
 		*/
-		vm.contractService = function (srv) {
-			$log.log('Lo quiero', srv);
-			$state.go('register');
+		vm.goToLogin = function () {
+			$state.go('login');
+		};
+
+		vm.goToProjects = function() {
+			$state.go('clientprojects');
 		}
 
 
