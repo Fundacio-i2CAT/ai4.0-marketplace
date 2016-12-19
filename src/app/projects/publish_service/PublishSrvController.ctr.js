@@ -75,7 +75,7 @@
 		function buildPublishServiceJSON (srv) {
 			var provider = getCurrentProvider('user');
 			var imageData = SaveImageDataService.getImageData();
-			
+
 			var srvToSave = {
 				name: srv.title,
 				description: srv.description,
@@ -138,7 +138,7 @@
 				if (response.status === 200) {
 					vm.allTypes = response.data;
 				}
-			});		
+			});
 		};
 
 		vm.getAllTypes();
@@ -156,10 +156,10 @@
         		appendClassName: 'ngdialog-publish'
         	});
 		};
-		
 
 
-		
+
+
 		/* codigo para formulario dinamico */
 		vm.plantilles = [{id: 'plantilla1'}];
   		vm.allFields = [{id: 'field1'}];
@@ -186,4 +186,3 @@
 	}
 
 })();
-

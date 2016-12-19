@@ -45,7 +45,7 @@
 							    data: formData,
 							    processData: false,
 							    contentType: false,
-							    success: function(){	
+							    success: function(){
 								step = step+1;
 								if ( step < total_steps ) {
 								    var start = step*chunk_size;
@@ -55,7 +55,7 @@
 								}
 
 								$("#progress").html('Completades: '+step+' / '+total_steps+' parts');
-				
+
 								$("#file_upload_result").html('submitted successfully');
 
 								if ( step === total_steps ) {
@@ -66,9 +66,6 @@
 										   uuid+'</i> in <strong>'+total_steps+'</strong> steps');
 										    var md5sum = spark.end();
 										    $('#progressbar').hide();
-
-										    //save to imageData in ImageDataService
-										    //SaveImageDataService.saveImageData(file);
 
 										    $("#md5").html('<strong style="color:olive">md5sum</strong>: '+md5sum);
 										    $.ajax({
@@ -81,7 +78,7 @@
 													       "md5sum": md5sum
 													     }),
 											dataType: "json",
-											success: function() {
+											success: function(response) {
 											    $.ajax({
 												url: backend_url+"/upload",
 												type: "post",
@@ -90,13 +87,16 @@
 												data: JSON.stringify({ "filename": final_filename }),
 												dataType: "json",
 												success: function(response) {
+													console.log('response2222:::::', response);
+													//save to imageData in ImageDataService
+											    SaveImageDataService.saveImageData(response);
 												    $("#upload").html('<span class="text text-success"><i class="fa fa-check"></i>Imatge carregada amb èxit.</span>');
 												}
 											    });
 											},
 										    	error: function() {
 											    $("#upload").html('<span class="text text-danger"><i class="fa fa-close"></i>No s\'ha pogut carregar la imatge.</span>');
-											
+
 											}
 										    })
 										}
@@ -131,7 +131,7 @@
 						$("#end").html('');
 						$("#md5").html('');
 						$("#upload").html('');
-					
+
 				        file = files[i].name;
 						final_filename = file;
 						var steps = files[i].size/chunk_size;

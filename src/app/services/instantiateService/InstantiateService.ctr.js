@@ -158,7 +158,7 @@
 
 
 
-			/*vm.form = [
+			vm.form2 = [
 				"name",
 				{
 					"key": "email",
@@ -172,11 +172,11 @@
 				},
 				{
 					"type": "submit",
-    				"style": "btn-info btn-block",
+    			"style": "btn-info btn-block",
 					"title": "Enviar dades"
 				}
 			];
-			vm.schema = {
+			vm.schema2 = {
 				"type": "object",
 				"title": "consumerParams",
 				"properties": {
@@ -202,6 +202,6 @@
 				"email",
 				"comment"
 				]
-			};*/
+			};
 		}
 })();
