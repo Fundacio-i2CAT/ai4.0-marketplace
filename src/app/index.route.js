@@ -23,11 +23,11 @@
         controller: 'CatalogController',
         controllerAs: 'catalog'
       })
-      .state('projects', {
-        url: '/projects',
-        templateUrl: 'app/projects/index.tpl.html', controller: 'ProjectController', controllerAs: 'projects'/*,
-        need: 'admindoscat'*/
-      })
+      // .state('projects', {
+      //   url: '/projects',
+      //   templateUrl: 'app/projects/index.tpl.html', controller: 'ProjectController', controllerAs: 'projects'/*,
+      //   need: 'admindoscat'*/
+      // })
       .state('provprojects', {
         url: '/provprojects',
         templateUrl: 'app/projects/provider/index-prov.tpl.html',
