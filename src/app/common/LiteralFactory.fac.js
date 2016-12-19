@@ -14,7 +14,7 @@
 
 		function getLiteralStatus(status) {
 			var output = null;
-			
+
 			switch(status) {
 				case 1: output = "PENDENT";
 					break;
@@ -23,6 +23,8 @@
 				case 5: output = 'ACTIU';
 					break;
 				case 6: output = 'PARAT';
+					break;
+				case 7: output = 'ERROR'
 					break;
 			}
 			return output;
