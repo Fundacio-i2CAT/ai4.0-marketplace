@@ -13,9 +13,7 @@
 				    var chunk_size = 10000000;
 				    var final_filename = "";
 				    var spark = new SparkMD5.ArrayBuffer();
-				    var backend_url = "";
-				    backend_url = "http://dev.anella.i2cat.net:9999/api/services/vmimage";
-				    // backend_url = ConnectionFactory.host;
+				    var backend_url = ConnectionFactory.host+ 'api/services/vmimage';
 
 
 				    var progress_bar = '<div class="progress">';
