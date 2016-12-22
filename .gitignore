@@ -6,4 +6,5 @@ coverage/
 .tmp/
 dist/
 src/app/common/Connection.fac.js
-
+marketplace.sublime-project
+marketplace.sublime-workspace
