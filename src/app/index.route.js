@@ -97,8 +97,8 @@
         url: '/users',
         templateUrl: 'app/users/users.tpl.html',
         controller: 'UserController',
-        controllerAs: 'users'/*,
-        need: 'admindoscat'*/
+        controllerAs: 'users',
+        // need: 'Partner.Provider'
       })
       // .state('tatami', {
       //   url: '/tatami',
