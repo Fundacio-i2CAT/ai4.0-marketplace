@@ -1,12 +1,12 @@
 (function(){
 	'use strict';
-	
+
 	angular
 		.module('marketplace')
 		.controller('UserController', UserController);
 
 	UserController.$inject = ['UserFactory', 'CurrentUserFactory', '$log', 'LocalStorageFactory'];
-	
+
 	function UserController (UserFactory, CurrentUserFactory, $log, LocalStorageFactory){
 		var vm = this;
 		vm.openedSession;
@@ -27,12 +27,11 @@
 		//get all users
 		vm.getAllUsers = function(){
 			UserFactory.getAllUsers().then(function(response) {
-				if (response.success === false) {
-					//do something like show toastr
-				} else {
-					console.log(response.data.result);
+				if (response.status == 200) {
 					setActive(response.data.result);
-					vm.allUsers = response.data.result;	
+					vm.allUsers = response.data._embedded.people;
+				} else {
+					//do something like show toastr
 				}
 			});
 		};
@@ -52,8 +51,8 @@
 					vm.openedSession = response.data;
 				}
 			});
-		};	
-		
+		};
+
 		//store user in bbdd
 		vm.setuser = function (user) {
 			UserFactory.setUser(user).then(function(response) {
@@ -115,4 +114,4 @@
 
 	}
 
-})(); 
+})();
