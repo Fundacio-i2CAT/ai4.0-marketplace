@@ -1,0 +1,146 @@
+<style media="screen">
+  .ngdialog.ngdialog-theme-default .ngdialog-content {
+    width: 80%;
+    overflow: scroll;
+  }
+</style>
+
+<h4 class="text text-primary">Editar Usuari</h4>
+<form class="edit-user-form" name="edituserform">
+  <div class="row">
+    <div class="col-xs-12">
+      <h5 class="form-block-title">Plataforma</h5>
+    </div>
+  </div>
+  <div class="form-fields">
+    <div class="row">
+      <div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
+        <div class="top1">
+          <label for="providerRole">Proveïdor</label><br/>
+            <span class="label" ng-class="ngDialogData.providerRole ? 'label-primary' : 'label-default'"><i class="fa" ng-class="ngDialogData.providerRole ? 'fa-check' : 'fa-close'"></i></span>
+        </div>
+      </div>
+      <div class="col-xs-6 col-sm-6 col-md-2 col-lg-23">
+        <div class="top1">
+          <label for="jobPosition">Client</label><br/>
+          <span class="label" ng-class="ngDialogData.clientRole ? 'label-primary' : 'label-default'"><i class="fa" ng-class="ngDialogData.clientRole ? 'fa-check' : 'fa-close'"></i></span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+        <div class="top1">
+          <label for="activated">Estat perfil</label><br/>
+          <label class="radio-inline">
+            <input type="radio" name="activated" ng-model="ngDialogData.activated" ng-value="true">Actiu
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="activated" ng-model="ngDialogData.activated" ng-value="false">Inactiu
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <h5 class="form-block-title">Dades personals</h5>
+    </div>
+  </div>
+  <div class="form-fields">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <div class="top1">
+          <label for="name">Nom *</label>
+          <input class="form-control" type="text" name="name" ng-model="ngDialogData.name">
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <div class="top1">
+          <label for="surname">Cognom *</label>
+          <input class="form-control" type="text" name="surname" ng-model="ngDialogData.surname">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <div class="top1">
+          <label for="mail">Correo *</label>
+          <input class="form-control" type="text" name="mail" ng-model="ngDialogData.mail">
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <div class="top1">
+          <label for="phone">Telèfon *</label>
+          <input class="form-control" type="text" name="phone" ng-model="ngDialogData.phone">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-xs-12">
+      <h5 class="form-block-title">Empresa</h5>
+    </div>
+  </div>
+  <div class="form-fields">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <div class="top1">
+          <label for="company">Companyia *</label>
+          <input class="form-control" type="text" name="company" ng-model="ngDialogData.company">
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <div class="top1">
+          <label for="jobPosition">Càrreg *</label>
+          <input class="form-control" type="text" name="jobPosition" ng-model="ngDialogData.jobPosition">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-xs-12">
+      <h5 class="form-block-title">General</h5>
+    </div>
+  </div>
+  <div class="form-fields">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <div class="top1">
+          <label for="description">Descripció *</label>
+          <input class="form-control" type="text" name="description" ng-model="ngDialogData.description">
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <div class="top1">
+          <label for="address">Adreça *</label>
+          <input class="form-control" type="text" name="address" ng-model="ngDialogData.address">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-fields">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <div class="top1">
+          <label for="city">Ciutat *</label>
+          <input class="form-control" type="text" name="city" ng-model="ngDialogData.city">
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <div class="top1">
+          <label for="country">País *</label>
+          <input class="form-control" type="text" name="country" ng-model="ngDialogData.country">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 top2">
+        <button type="button" class="btn btn-sm btn-block btn-primary">Guarda Dades</button>
+    </div>
+  </div>
+
+</form>
