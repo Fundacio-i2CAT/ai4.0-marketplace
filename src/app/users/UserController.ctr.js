@@ -5,9 +5,9 @@
 		.module('marketplace')
 		.controller('UserController', UserController);
 
-	UserController.$inject = ['UserFactory', 'CurrentUserFactory', '$log', 'LocalStorageFactory', 'ngDialog', 'UsersMockFacltory'];
+	UserController.$inject = ['UserFactory', 'CurrentUserFactory', '$log', 'LocalStorageFactory', 'ngDialog', 'UsersMockFacltory', 'toastr'];
 
-	function UserController (UserFactory, CurrentUserFactory, $log, LocalStorageFactory, ngDialog, UsersMockFacltory){
+	function UserController (UserFactory, CurrentUserFactory, $log, LocalStorageFactory, ngDialog, UsersMockFacltory, toastr){
 		var vm = this;
 		vm.openedSession;
 		vm.savedUser;
@@ -121,15 +121,42 @@
 			});
 		};
 
-
 		vm.editUser = function(user) {
+			vm.userToEdit = user;
 			ngDialog.open({
 				template: 'app/users/editUser/editUser-dialog.tpl.html',
 				className: 'ngdialog-theme-default',
 				appendClassName: 'edit-user-form',
 				controller: 'UserController',
-				data: user
+				data: vm
 			});
+		};
+
+		vm.updateUser = function(user) {
+			toastr.info('Sorry, this functionality is not implemented yet. Take a look at the console.', 'Nice To have edit user!');
+			$log.log('userToEdit::',user);
+			ngDialog.close();
+		};
+
+		vm.goDeleteUser = function(user) {
+			vm.userToRemove = user;
+			ngDialog.open({
+				template: 'app/users/confirmDeleteUser/deleteUser-dialog.tpl.html',
+				className: 'ngdialog-theme-default',
+				appendClassName: 'delete-user',
+				controller: 'UserController',
+				data: vm
+			});
+		};
+
+		vm.closeDiaglog = function() {
+			ngDialog.close();
+		};
+
+		vm.doDeleteUser = function(user) {
+			toastr.info('Sorry, this functionality is not implemented yet. Take a look at the console.', 'Nice To have, delete user!');
+			$log.log('userToRemove::',user);
+			ngDialog.close();
 		};
 
 
