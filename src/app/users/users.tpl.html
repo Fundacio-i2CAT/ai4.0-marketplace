@@ -1,39 +1,54 @@
 <div class="container">
-	<div class="page-header">
-		<h2>Users <small>Index</small></h2>
-	</div>
-	<div class="row">
-		<div class="table-responsive">
-			<table class="table table-hover table-striped">
-				<thead>
-					<tr>
-						<th>Nom</th>
-						<th>Cognom</th>
-						<th>Admin</th>
-						<th>Usuari</th>
-						<th>Activat</th>
-						<th>Partner</th>
-						<th>Email</th>
-						<th>Telèfon</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr ng-repeat="user in users.allUsers" ng-class="(user.admin) ? 'success' : ''">
-						<td>{{user.first_name}}</td>
-						<td>{{user.last_name}}</td>
-						<td>{{user.admin}}</td>
-						<td>{{user.user_name}}</td>
-						<td>{{user.isActive}}</td>
-						<td>{{user.partner.name}}</td>
-						<td>{{user.email}}</td>
-						<td>{{user.phone_number}}</td>
-						<td>
-							 <button ng-if="!user.isActive" class="btn-primary btn-xs" ng-click="users.activateUser(user)">Activar</button>
-							 <button ng-if="user.isActive" class="btn-danger btn-xs" ng-click="users.deActivateUser(user)">Desactivar</button>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
+  <div class="page-header">
+    <h2>Usuaris de la Plataforma
+    </h2>
+  </div>
+  <div class="row">
+		<!-- <div class="col-xs-2">
+			<h5 class="top1">Filtres</h5>
+			<a class="centered top1">Clients</a><br/>
+			<a class="centered top1">Proveidors</a><br/>
+			<a class="centered top1">Admin</a><br/>
+			<hr/>
+		</div> -->
+    <div class="col-xs-12">
+			<div class="table-responsive">
+	      <table class="table table-hover table-striped">
+	        <thead>
+	          <tr>
+	            <th>Nom</th>
+	            <th class="centered">Cognom</th>
+							<th class="centered">Company</th>
+							<th class="centered">Position</th>
+							<th class="centered">Proveïdor</th>
+							<th class="centered">Client</th>
+	            <th class="centered">Telèfon</th>
+							<th class="centered">Estat</th>
+							<th class="centered">Accions</th>
+	          </tr>
+	        </thead>
+	        <tbody>
+	          <tr ng-repeat="user in users.allUsers">
+	            <td>{{user.name}}</td>
+	            <td class="centered">{{user.surname}}</td>
+							<td class="centered">{{user.company}}</td>
+							<td class="centered">{{user.jobPosition}}</td>
+							<td class="centered text"><span class="label" ng-class="user.providerRole ? 'label-primary' : 'label-default'"><i class="fa" ng-class="user.providerRole ? 'fa-check' : 'fa-close'"></i></span></td>
+							<td class="centered text"><span class="label" ng-class="user.clientRole ? 'label-primary' : 'label-default'"><i class="fa" ng-class="user.clientRole ? 'fa-check' : 'fa-close'"></i></span></td>
+	            <td class="centered">{{user.phone}}</td>
+	            <td class="centered">
+	              <button ng-if="!user.activated" class="btn btn-primary btn-xs" ng-click="users.activateUser(user)">Activar</button>
+	              <button ng-if="user.activated" class="btn btn-danger btn-xs" ng-click="users.deActivateUser(user)">Desactivar</button>
+	            </td>
+							<td class="centered">
+								<button ng-click="users.editUser(user)" type="button" class="btn btn-default btn-xs"><i class="fa fa-pencil"></i></button>
+								<button type="button" class="btn btn-default btn-xs"><i class="fa fa-trash"></i></button>
+							</td>
+	          </tr>
+	        </tbody>
+	      </table>
+	    </div>
+    </div>
+  </div>
+
 </div>
