@@ -1,0 +1,22 @@
+<style media="screen">
+  .ngdialog.ngdialog-theme-default .ngdialog-content {
+    .confirm-dialog {
+        margin-top:2em;
+        padding:2em;
+    }
+
+    margin-top:2em;
+    width: 40%;
+    height: 100px;
+    min-height:100px;
+    overflow:hidden;
+  }
+</style>
+
+<div>
+  <div class="confirm-dialog">
+    <h4>Segur que vols eliminar l'usuari <span class="text text-primary">{{ngDialogData.userToRemove.name}} {{ngDialogData.userToRemove.surname}}</span>?</h4>
+    <button ng-click="ngDialogData.doDeleteUser(ngDialogData.userToRemove)" class="btn btn-sm btn-primary" type="button">Si</button>
+    <button ng-click="ngDialogData.closeDiaglog()" class="btn btn-sm btn-default" type="button">No</button>
+  </div>
+</div>
