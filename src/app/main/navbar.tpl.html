@@ -17,11 +17,11 @@
         <li><a class="toclose" ui-sref="catalog">{{ 'CATALEG-NAV' | translate }}</a></li>
         <li><a ng-if="menuUser.role==='Partner.Provider'" class="toclose" ui-sref="provprojects">{{ 'SERVEIS-NAV' | translate }}</a></li>
         <li><a ng-if="menuUser.role==='Partner.Client'" class="toclose" ui-sref="clientprojects">{{ 'PROJECTES-NAV' | translate }}</a></li>
-        <li><a ng-if="menu.role === 'admin'" class="toclose" ui-sref="users">Usuaris</a></li>
+        <li><a class="toclose" ui-sref="users">Usuaris</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li ng-click="setLanguage('CAT')"><a class="lang catala">CAT</a></li>
-        <li ng-click="setLanguage('CAST')"><a class="lang castella">CAST</a></li> 
+        <li ng-click="setLanguage('CAST')"><a class="lang castella">CAST</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li ng-if="!menuUser.isLogged"><a class="toclose" ui-sref="login"><i class="fa fa-sign-in"></i> {{ 'ACCEDIR-NAV' | translate }}</a></li>
