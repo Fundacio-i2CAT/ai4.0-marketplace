@@ -5,14 +5,16 @@
 		.module('marketplace')
 		.controller('UserController', UserController);
 
-	UserController.$inject = ['UserFactory', 'CurrentUserFactory', '$log', 'LocalStorageFactory'];
+	UserController.$inject = ['UserFactory', 'CurrentUserFactory', '$log', 'LocalStorageFactory', 'ngDialog', 'UsersMockFacltory'];
 
-	function UserController (UserFactory, CurrentUserFactory, $log, LocalStorageFactory){
+	function UserController (UserFactory, CurrentUserFactory, $log, LocalStorageFactory, ngDialog, UsersMockFacltory){
 		var vm = this;
 		vm.openedSession;
 		vm.savedUser;
 		vm.deletedSession;
 		vm.obtainedUser;
+		vm.userToEdit = {};
+		vm.allUsers=[];
 
 		function setActive(userlist) {
 			angular.forEach(userlist, function (user) {
@@ -30,9 +32,18 @@
 				if (response.status == 200) {
 					setActive(response.data.result);
 					vm.allUsers = response.data._embedded.people;
+					var mockusers = UsersMockFacltory;
+					angular.forEach(mockusers, function (each, index){
+						vm.allUsers.push(each);
+					});
 				} else {
 					//do something like show toastr
 				}
+			});
+			//mock data
+			var mockusers = UsersMockFacltory;
+			angular.forEach(mockusers, function (each, index){
+				vm.allUsers.push(each);
 			});
 		};
 
@@ -110,6 +121,16 @@
 			});
 		};
 
+
+		vm.editUser = function(user) {
+			ngDialog.open({
+				template: 'app/users/editUser/editUser-dialog.tpl.html',
+				className: 'ngdialog-theme-default',
+				appendClassName: 'edit-user-form',
+				controller: 'UserController',
+				data: user
+			});
+		};
 
 
 	}
