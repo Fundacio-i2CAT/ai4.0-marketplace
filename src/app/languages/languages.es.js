@@ -119,7 +119,10 @@
 					'USER-DETAIL-ACTIVATED': 'Activado',
 					'USER-DETAIL-UNACTIVATED': 'Desactivado',
 					'EDIT-USER-TITLE': 'Editar Usuario',
-					'EDIT-USER-SAVEDATA': 'Guardar Datos'
+					'EDIT-USER-SAVEDATA': 'Guardar Datos',
+					'SRV-DETAIL-MSG': 'Es necesario cuenta de Cliente per consumir este Servicio'
+
+
 				});
 		}]);
 
