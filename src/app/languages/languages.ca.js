@@ -104,7 +104,24 @@
 					//forgot
 					'FORGOT-SENDMAIL': 'Enviar correu',
 					'FORGOT-MAIL-PLACEHOLDER': 'Introdueix el teu correu',
-					'FORGOT-EXPLANATION': 'Introdueix el teu Correu electrònic i t\'enviarem un enllaç per canviar la contrasenya.'
+					'FORGOT-EXPLANATION': 'Introdueix el teu Correu electrònic i t\'enviarem un enllaç per canviar la contrasenya.',
+					//users management
+					'USERS-NAV': 'Usuaris',
+					'DEL-USER-MSG': 'Segur que vols eliminar l\'usuari',
+					'USERS-TITLE': 'Usuaris de la Plataforma',
+					'DEL-PROJ-MSG': 'Segur que vols eliminar el projecte',
+					'USER-DETAIL-TITLE': 'Informació de l\'Usuari',
+					'USER-DETAIL-PERS-DATA': 'Dades Personals',
+					'USER-DETAIL-DESCRIPTION': 'Descripció',
+					'USER-DETAIL-CITY': 'Ciutat',
+					'USER-DETAIL-COUNTRY': 'País',
+					'PROFILE-STATUS': 'Estat del Perfil',
+					'USER-DETAIL-ACTIVATED': 'Activat',
+					'USER-DETAIL-UNACTIVATED': 'Desactivat',
+					'USER-DETAIL-UNACTIVATED': 'Desactivado',
+					'EDIT-USER-TITLE': 'Editar Usuari',
+					'EDIT-USER-SAVEDATA': 'Guardar Dades'
+
 
 				})
 				.preferredLanguage('CAT');

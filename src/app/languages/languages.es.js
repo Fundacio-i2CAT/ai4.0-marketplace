@@ -104,7 +104,20 @@
 					//forgot
 					'FORGOT-SENDMAIL': 'Enviar correo',
 					'FORGOT-MAIL-PLACEHOLDER': 'Introduce tu correo',
-					'FORGOT-EXPLANATION': 'Introduce tu correo electrónico i te enviaremos un enlace para cambiar la contraseña.'
+					'FORGOT-EXPLANATION': 'Introduce tu correo electrónico i te enviaremos un enlace para cambiar la contraseña.',
+					//users management
+					'USERS-NAV': 'Usuarios',
+					'DEL-USER-MSG': '¿ Seguro que quieres eliminar el usuario',
+					'USERS-TITLE': 'Usuarios de la Plataforma',
+					'DEL-PROJ-MSG': '¿ Seguro que quieres eliminar el proyecto',
+					'USER-DETAIL-TITLE': 'Información del Usuario',
+					'USER-DETAIL-PERS-DATA': 'Datos Personales',
+					'USER-DETAIL-DESCRIPTION': 'Descripción',
+					'USER-DETAIL-CITY': 'Ciudad',
+					'USER-DETAIL-COUNTRY': 'Pais',
+					'PROFILE-STATUS': 'Estado del Perfil',
+					'USER-DETAIL-ACTIVATED': 'Activado',
+					'USER-DETAIL-UNACTIVATED': 'Desactivado'
 
 				});
 		}]);
