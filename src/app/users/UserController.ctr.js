@@ -16,9 +16,6 @@
 		vm.userToEdit = {};
 		vm.allUsers=[];
 
-		// vm.sortType = 'user.name';
-		// vm.sortReverse = true;
-
 		function setActive(userlist) {
 			angular.forEach(userlist, function (user) {
 				if(user.admin == false) {
@@ -134,7 +131,9 @@
 				controller: 'UserController',
 				data: user
 			});
-		};
+
+
+		}
 
 		vm.editUser = function(user) {
 			vm.userToEdit = user;
