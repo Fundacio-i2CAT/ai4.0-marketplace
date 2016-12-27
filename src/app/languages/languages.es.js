@@ -117,8 +117,9 @@
 					'USER-DETAIL-COUNTRY': 'Pais',
 					'PROFILE-STATUS': 'Estado del Perfil',
 					'USER-DETAIL-ACTIVATED': 'Activado',
-					'USER-DETAIL-UNACTIVATED': 'Desactivado'
-
+					'USER-DETAIL-UNACTIVATED': 'Desactivado',
+					'EDIT-USER-TITLE': 'Editar Usuario',
+					'EDIT-USER-SAVEDATA': 'Guardar Datos'
 				});
 		}]);
 
