@@ -5,9 +5,9 @@
 		.module('marketplace')
 		.controller('ServiceEditController', ServiceEditController);
 
-	ServiceEditController.$inject = ['$stateParams', '$state', 'ServiceFactory', 'ProviderFactory', 'toastr', 'ImageProviderFactory', '$log', 'CurrentUserFactory'];
+	ServiceEditController.$inject = ['$stateParams', '$state', 'ServiceFactory', 'ProviderFactory', 'toastr', 'ImageProviderFactory', '$log', 'LocalStorageFactory'];
 
-	function ServiceEditController ($stateParams, $state, ServiceFactory, ProviderFactory, toastr, ImageProviderFactory, $log, CurrentUserFactory) {
+	function ServiceEditController ($stateParams, $state, ServiceFactory, ProviderFactory, toastr, ImageProviderFactory, $log, LocalStorageFactory) {
 		var vm = this;
 		vm.currentUser = {};
 		var serviceId;
@@ -17,7 +17,7 @@
 		}
 
 		vm.getCurrentUser = function() {
-			var currentUser = CurrentUserFactory.getCurrentUser();
+			var currentUser = LocalStorageFactory.getValue('user');
 			vm.currentUser = currentUser;
 			$log.log(vm.currentUser);
 		}
