@@ -121,6 +121,20 @@
 			});
 		};
 
+
+		vm.goUserDetail = function(user) {
+			vm.userDetail = user;
+			ngDialog.open({
+				template: 'app/users/userDetail/userDetail-dialog.tpl.html',
+				className: 'ngdialog-theme-default',
+				appendClassName: 'user-detail',
+				controller: 'UserController',
+				data: user
+			});
+
+
+		}
+
 		vm.editUser = function(user) {
 			vm.userToEdit = user;
 			ngDialog.open({
