@@ -32,15 +32,13 @@
 					'CREAR-PROJ': 'Nuevo Proyecto',
 					'PROJ-ARRENCAR': 'Lanzar',
 					'PROJ-ATURAR': 'Parar',
-					'NEW-PROJ-SUMARI-PHOLDER': 'Breve descripción',
-					'NEW-PROJ-DESC-PHOLDER': 'Descripción del Proyecto',
 					//estats
 					'PENDENT': 'Pendiente',
 					'CONFIRMAT': 'Confirmado',
 					'ACTIU': 'Activo',
 					'PARAT': 'Inactivo',
 					'ACTIVAR': 'Habilitar',
-					'DESACTIVAR': 'Desactivar',
+					'DESACTIVAR': 'Deshabilitar',
 					//new project
 					'NEWPROJ': 'NUEVO PROYECTO',
 					'LABEL-NOM': 'Nombre',
@@ -122,8 +120,7 @@
 					'USER-DETAIL-UNACTIVATED': 'Desactivado',
 					'EDIT-USER-TITLE': 'Editar Usuario',
 					'EDIT-USER-SAVEDATA': 'Guardar Datos',
-					'SRV-DETAIL-MSG': 'Es necesario cuenta de Cliente per consumir este Servicio',
-					'PUBLISH-SRV-BUTTON': 'Publicar Nou Servei'
+					'SRV-DETAIL-MSG': 'Es necesario cuenta de Cliente per consumir este Servicio'
 
 
 				});

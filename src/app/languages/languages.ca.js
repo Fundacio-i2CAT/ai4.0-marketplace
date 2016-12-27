@@ -32,8 +32,6 @@
 					'CREAR-PROJ': 'Nou Projecte',
 					'PROJ-ARRENCAR': 'Arrencar',
 					'PROJ-ATURAR': 'Aturar',
-					'NEW-PROJ-SUMARI-PHOLDER': 'Breu descripció',
-					'NEW-PROJ-DESC-PHOLDER': 'Descripció del Projecte',
 					//estats
 					'PENDENT': 'Pendent',
 					'CONFIRMAT': 'Confirmat',
@@ -123,8 +121,7 @@
 					'USER-DETAIL-UNACTIVATED': 'Desactivado',
 					'EDIT-USER-TITLE': 'Editar Usuari',
 					'EDIT-USER-SAVEDATA': 'Guardar Dades',
-					'SRV-DETAIL-MSG': 'És necessari conte de Client per consumir aquest Servei',
-					'PUBLISH-SRV-BUTTON': 'Publicar Nuevo Servicio'
+					'SRV-DETAIL-MSG': 'És necessari conte de Client per consumir aquest Servei'
 
 
 				})
