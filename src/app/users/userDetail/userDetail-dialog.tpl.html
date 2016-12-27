@@ -10,9 +10,9 @@
 </style>
 
 <div>
-  <h4 class="text text-primary">Detall d'Usuari</h4>
+  <h4 class="text text-primary">{{'USER-DETAIL-TITLE' | translate}}</h4>
   <uib-tabset class="top3">
-    <uib-tab index="0" heading="Dades Personals">
+    <uib-tab index="0" heading="{{'USER-DETAIL-PERS-DATA' | translate}}">
       <div class="panel panel-default">
         <div class="panel-body">
           <div class="row">
@@ -25,13 +25,13 @@
             <div class="row">
               <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                 <div class="top1">
-                  <label for="name">Nom</label>
+                  <label for="name">{{'REG-NAME' | translate}}</label>
                   <h4>{{ngDialogData.name}}</h4>
                 </div>
               </div>
               <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                 <div class="top1">
-                  <label for="surname">Cognom</label>
+                  <label for="surname">{{'REG-SURNAME' | translate}}</label>
                   <h4>{{ngDialogData.surname}}</h4>
                 </div>
               </div>
@@ -39,13 +39,13 @@
             <div class="row">
               <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                 <div class="top1">
-                  <label for="mail">Correo</label>
+                  <label for="mail">{{'REG-MAIL' | translate}}</label>
                   <h4>{{ngDialogData.mail}}</h4>
                 </div>
               </div>
               <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                 <div class="top1">
-                  <label for="phone">Telèfon</label>
+                  <label for="phone">{{'REG-COMPANY-PHONE' | translate}}</label>
                   <h4>{{ngDialogData.phone}}</h4>
                 </div>
               </div>
@@ -66,13 +66,13 @@
             <div class="row">
               <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                 <div class="top1">
-                  <label for="company">Companyia</label>
+                  <label for="company">{{'REG-COMPANY' | translate}}</label>
                   <h4>{{ngDialogData.company}}</h4>
                 </div>
               </div>
               <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                 <div class="top1">
-                  <label for="jobPosition">Càrreg</label>
+                  <label for="jobPosition">{{'REG-COMPANY-POSITION' | translate}}</label>
                   <h4>{{ngDialogData.jobPosition}}</h4>
                 </div>
               </div>
@@ -87,13 +87,13 @@
             <div class="row">
               <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                 <div class="top1">
-                  <label for="description">Descripció</label>
+                  <label for="description">{{'USER-DETAIL-DESCRIPTION' | translate}}</label>
                   <h4>{{ngDialogData.description}}</h4>
                 </div>
               </div>
               <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                 <div class="top1">
-                  <label for="address">Adreça</label>
+                  <label for="address">{{'REG-COMPANY-ADDRESS' | translate}}</label>
                   <h4>{{ngDialogData.address}}</h4>
                 </div>
               </div>
@@ -103,13 +103,13 @@
             <div class="row">
               <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                 <div class="top1">
-                  <label for="city">Ciutat</label>
+                  <label for="city">{{'USER-DETAIL-CITY' | translate}}</label>
                   <h4>{{ngDialogData.city}}</h4>
                 </div>
               </div>
               <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                 <div class="top1">
-                  <label for="country">País</label>
+                  <label for="country">{{'USER-DETAIL-COUNTRY' | translate}}</label>
                   <h4>{{ngDialogData.country}}</h4>
                 </div>
               </div>
@@ -130,18 +130,18 @@
             <div class="row">
               <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                 <div class="top1">
-                  <label for="activated">Estat perfil</label><br/>
+                  <label for="activated">{{'PROFILE-STATUS' | translate}}</label><br/>
                   <div ng-if="ngDialogData.activated">
-                    <span class="label label-primary">Activat</span>
+                    <span class="label label-primary">{{'USER-DETAIL-ACTIVATED' | translate}}</span>
                   </div>
                   <div ng-if="!ngDialogData.activated">
-                    <span class="label label-danger">Desactivat</span>
+                    <span class="label label-danger">{{'USER-DETAIL-UNACTIVATED' | translate}}</span>
                   </div>
                 </div>
               </div>
               <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
                 <div class="top1">
-                  <label for="providerRole">Proveïdor</label><br/>
+                  <label for="providerRole">{{'CATAL-PROVEIDOR' | translate}}</label><br/>
                   <span class="label" ng-class="ngDialogData.providerRole ? 'label-primary' : 'label-default'">
                     <i class="fa" ng-class="ngDialogData.providerRole ? 'fa-check' : 'fa-close'"></i>
                   </span>
@@ -149,7 +149,7 @@
               </div>
               <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
                 <div class="top1">
-                  <label for="jobPosition">Client</label><br/>
+                  <label for="jobPosition">{{'SRV-CLIENT' | translate}}</label><br/>
                   <span class="label" ng-class="ngDialogData.clientRole ? 'label-primary' : 'label-default'">
                     <i class="fa" ng-class="ngDialogData.clientRole ? 'fa-check' : 'fa-close'"></i>
                   </span>

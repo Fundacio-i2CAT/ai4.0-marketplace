@@ -7,11 +7,11 @@
 
 </style>
 
-<h4 class="text text-primary">Editar Usuari</h4>
+<h4 class="text text-primary">{{'EDIT-USER-TITLE' | translate}}</h4>
 <form class="edit-user-form" name="edituserform">
 
   <uib-tabset class="top3">
-    <uib-tab index="0" heading="Dades Personals">
+    <uib-tab index="0" heading="{{'USER-DETAIL-PERS-DATA' | translate}}">
       <div class="panel panel-default">
         <div class="panel-body">
 
@@ -24,13 +24,13 @@
             <div class="row">
               <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                 <div class="top1">
-                  <label for="name">Nom *</label>
+                  <label for="name">{{'REG-NAME' | translate}} *</label>
                   <input class="form-control" type="text" name="name" ng-model="ngDialogData.userToEdit.name">
                 </div>
               </div>
               <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                 <div class="top1">
-                  <label for="surname">Cognom *</label>
+                  <label for="surname">{{'REG-SURNAME' | translate}} *</label>
                   <input class="form-control" type="text" name="surname" ng-model="ngDialogData.userToEdit.surname">
                 </div>
               </div>
@@ -38,13 +38,13 @@
             <div class="row">
               <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                 <div class="top1">
-                  <label for="mail">Correo *</label>
+                  <label for="mail">{{'REG-MAIL' | translate}} *</label>
                   <input class="form-control" type="text" name="mail" ng-model="ngDialogData.userToEdit.mail">
                 </div>
               </div>
               <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                 <div class="top1">
-                  <label for="phone">Telèfon *</label>
+                  <label for="phone">{{'REG-COMPANY-PHONE' | translate}} *</label>
                   <input class="form-control" type="text" name="phone" ng-model="ngDialogData.userToEdit.phone">
                 </div>
               </div>
@@ -65,13 +65,13 @@
             <div class="row">
               <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                 <div class="top1">
-                  <label for="company">Companyia *</label>
+                  <label for="company">{{'REG-COMPANY' | translate}} *</label>
                   <input class="form-control" type="text" name="company" ng-model="ngDialogData.userToEdit.company">
                 </div>
               </div>
               <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                 <div class="top1">
-                  <label for="jobPosition">Càrreg *</label>
+                  <label for="jobPosition">{{'REG-COMPANY-POSITION' | translate}} *</label>
                   <input class="form-control" type="text" name="jobPosition" ng-model="ngDialogData.userToEdit.jobPosition">
                 </div>
               </div>
@@ -87,13 +87,13 @@
             <div class="row">
               <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                 <div class="top1">
-                  <label for="description">Descripció *</label>
+                  <label for="description">{{'USER-DETAIL-DESCRIPTION' | translate}} *</label>
                   <input class="form-control" type="text" name="description" ng-model="ngDialogData.userToEdit.description">
                 </div>
               </div>
               <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                 <div class="top1">
-                  <label for="address">Adreça *</label>
+                  <label for="address">{{'REG-COMPANY-ADDRESS' | translate}} *</label>
                   <input class="form-control" type="text" name="address" ng-model="ngDialogData.userToEdit.address">
                 </div>
               </div>
@@ -103,13 +103,13 @@
             <div class="row">
               <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                 <div class="top1">
-                  <label for="city">Ciutat *</label>
+                  <label for="city">{{'USER-DETAIL-CITY' | translate}} *</label>
                   <input class="form-control" type="text" name="city" ng-model="ngDialogData.userToEdit.city">
                 </div>
               </div>
               <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                 <div class="top1">
-                  <label for="country">País *</label>
+                  <label for="country">{{'USER-DETAIL-COUNTRY' | translate}} *</label>
                   <input class="form-control" type="text" name="country" ng-model="ngDialogData.userToEdit.country">
                 </div>
               </div>
@@ -131,22 +131,22 @@
             <div class="row">
               <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                 <div class="top1">
-                  <label for="activated">Estat perfil</label><br/>
+                  <label for="activated">{{'PROFILE-STATUS' | translate}}</label><br/>
                   <label class="radio-inline">
 
-                    <input type="radio" name="activated" ng-model="ngDialogData.userToEdit.activated" ng-value="true">Actiu
+                    <input type="radio" name="activated" ng-model="ngDialogData.userToEdit.activated" ng-value="true">{{'USER-DETAIL-ACTIVATED' | translate}}
 
                   </label>
                   <label class="radio-inline">
 
-                    <input type="radio" name="activated" ng-model="ngDialogData.userToEdit.activated" ng-value="false">Inactiu
+                    <input type="radio" name="activated" ng-model="ngDialogData.userToEdit.activated" ng-value="false">{{'USER-DETAIL-UNACTIVATED' | translate}}
 
                   </label>
                 </div>
               </div>
               <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
                 <div class="top1">
-                  <label for="providerRole">Proveïdor</label><br/>
+                  <label for="providerRole">{{'CATAL-PROVEIDOR' | translate}}</label><br/>
                   <span class="label" ng-class="ngDialogData.userToEdit.providerRole ? 'label-primary' : 'label-default'">
                     <i class="fa" ng-class="ngDialogData.userToEdit.providerRole ? 'fa-check' : 'fa-close'"></i>
                   </span>
@@ -154,7 +154,7 @@
               </div>
               <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
                 <div class="top1">
-                  <label for="jobPosition">Client</label><br/>
+                  <label for="jobPosition">{{'SRV-CLIENT' | translate}}</label><br/>
                   <span class="label" ng-class="ngDialogData.userToEdit.clientRole ? 'label-primary' : 'label-default'">
                     <i class="fa" ng-class="ngDialogData.userToEdit.clientRole ? 'fa-check' : 'fa-close'"></i>
                   </span>
@@ -170,7 +170,7 @@
 
   <div class="row top3">
     <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 top2 botonaco">
-      <button type="button" ng-disabled="edituserform.$pristine" ng-click="ngDialogData.updateUser(ngDialogData.userToEdit)" class="btn btn-sm btn-block btn-primary">Guarda Dades</button>
+      <button type="button" ng-disabled="edituserform.$pristine" ng-click="ngDialogData.updateUser(ngDialogData.userToEdit)" class="btn btn-sm btn-block btn-primary">{{'EDIT-USER-SAVEDATA' | translate}}</button>
     </div>
   </div>
 

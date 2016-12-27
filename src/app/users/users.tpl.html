@@ -1,6 +1,6 @@
 <div class="container">
   <div class="page-header">
-    <h2>Usuaris de la Plataforma
+    <h2>{{'USERS-TITLE' | translate}}
     </h2>
   </div>
   <div class="row">
@@ -16,19 +16,19 @@
 	      <table class="table table-hover table-striped">
 	        <thead>
 	          <tr>
-	            <th>Nom</th>
-	            <th class="centered">Cognom</th>
-							<th class="centered">Company</th>
-							<th class="centered">Position</th>
-							<th class="centered">Proveïdor</th>
-							<th class="centered">Client</th>
-	            <th class="centered">Telèfon</th>
-							<th class="centered">Estat</th>
-							<th class="centered">Accions</th>
+	            <th>{{'REG-NAME' | translate}}</th>
+	            <th class="centered">{{'REG-SURNAME' | translate}}</th>
+							<th class="centered">{{'REG-COMPANY' | translate}}</th>
+							<th class="centered">{{'REG-COMPANY-POSITION' | translate}}</th>
+							<th class="centered">{{'CATAL-PROVEIDOR' | translate}}</th>
+							<th class="centered">{{'SRV-CLIENT' | translate}}</th>
+	            <th class="centered">{{'REG-COMPANY-PHONE' | translate}}</th>
+							<th class="centered">{{'SRV-ESTAT' | translate}}</th>
+							<th class="centered">{{'SRV-ACCIONS' | translate}}</th>
 	          </tr>
 	        </thead>
 	        <tbody>
-	          <tr ng-repeat="user in users.allUsers" background="warning">
+	          <tr ng-repeat="user in users.allUsers">
 	            <td ng-click="users.goUserDetail(user)">{{user.name}}</td>
 	            <td ng-click="users.goUserDetail(user)" class="centered">{{user.surname}}</td>
 							<td ng-click="users.goUserDetail(user)" class="centered">{{user.company}}</td>
@@ -37,8 +37,8 @@
 							<td ng-click="users.goUserDetail(user)" class="centered text"><span class="label" ng-class="user.clientRole ? 'label-primary' : 'label-default'"><i class="fa" ng-class="user.clientRole ? 'fa-check' : 'fa-close'"></i></span></td>
 	            <td ng-click="users.goUserDetail(user)" class="centered">{{user.phone}}</td>
 	            <td ng-click="users.goUserDetail(user)" class="centered">
-	              <span ng-if="user.activated" class="bg-primary fon12" style="font-size:13px">Actiu</span>
-                <span ng-if="!user.activated" class="bg-danger fon12" style="font-size:13px">Inactiu</span>
+	              <span ng-if="user.activated" class="bg-primary fon12" style="font-size:13px">{{'ACTIU' | translate}}</span>
+                <span ng-if="!user.activated" class="bg-danger fon12" style="font-size:13px">{{'PARAT' | translate}}</span>
 	            </td>
 							<td class="centered">
 								<button ng-click="users.editUser(user)" type="button" class="btn btn-default btn-xs"><i class="fa fa-pencil"></i></button>
