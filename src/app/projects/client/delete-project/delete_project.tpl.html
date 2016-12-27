@@ -18,7 +18,7 @@
 
 <div>
   <div class="confirm-dialog">
-    <h4>Segur que vols eliminar el projecte <span class="text text-primary">{{ngDialogData.projectToRemove.name}}</span>?</h4>
+    <h4>{{'DEL-PROJ-MSG' | translate}} <span class="text text-primary">{{ngDialogData.projectToRemove.name}}</span> ?</h4>
     <br/>
     <button ng-click="ngDialogData.deleteProject(ngDialogData.projectToRemove._id)" class="btn btn-sm btn-primary" type="button">Si</button>
     <button ng-click="ngDialogData.closeDialog()" class="btn btn-sm btn-default" type="button">No</button>
