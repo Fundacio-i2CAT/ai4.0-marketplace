@@ -1,34 +1,165 @@
 <style media="screen">
   .ngdialog.ngdialog-theme-default .ngdialog-content {
     width: 60%;
+    height: 200px;
     overflow: scroll;
     padding: 2em;
   }
+
 </style>
 
 <div>
   <h4 class="text text-primary">Detall d'Usuari</h4>
   <uib-tabset class="top3">
-      <uib-tab index="0" heading="Dades Personals">
-      </uib-tab>
-      <uib-tab index="1" heading="General">
-      </uib-tab>
-      <uib-tab index="2" heading="Plataforma">
-      </uib-tab>
+    <uib-tab index="0" heading="Dades Personals">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-xs-12">
+              <h5 class="text text-primary form-block-title">Personal</h5>
+            </div>
+          </div>
+
+          <div class="form-fields">
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <div class="top1">
+                  <label for="name">Nom</label>
+                  <h4>{{ngDialogData.name}}</h4>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <div class="top1">
+                  <label for="surname">Cognom</label>
+                  <h4>{{ngDialogData.surname}}</h4>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <div class="top1">
+                  <label for="mail">Correo</label>
+                  <h4>{{ngDialogData.mail}}</h4>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <div class="top1">
+                  <label for="phone">Telèfon</label>
+                  <h4>{{ngDialogData.phone}}</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </uib-tab>
+    <uib-tab index="1" heading="General">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-xs-12">
+              <h5 class="text text-primary form-block-title">Empresa</h5>
+            </div>
+          </div>
+          <div class="form-fields">
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <div class="top1">
+                  <label for="company">Companyia</label>
+                  <h4>{{ngDialogData.company}}</h4>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <div class="top1">
+                  <label for="jobPosition">Càrreg</label>
+                  <h4>{{ngDialogData.jobPosition}}</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <h5 class="text text-primary form-block-title">General</h5>
+            </div>
+          </div>
+          <div class="form-fields">
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <div class="top1">
+                  <label for="description">Descripció</label>
+                  <h4>{{ngDialogData.description}}</h4>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <div class="top1">
+                  <label for="address">Adreça</label>
+                  <h4>{{ngDialogData.address}}</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-fields">
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <div class="top1">
+                  <label for="city">Ciutat</label>
+                  <h4>{{ngDialogData.city}}</h4>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <div class="top1">
+                  <label for="country">País</label>
+                  <h4>{{ngDialogData.country}}</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </uib-tab>
+    <uib-tab index="2" heading="Plataforma">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-xs-12">
+              <h5 class="text text-primary form-block-title">Plataforma</h5>
+            </div>
+          </div>
+          <div class="form-fields">
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                <div class="top1">
+                  <label for="activated">Estat perfil</label><br/>
+                  <div ng-if="ngDialogData.activated">
+                    <span class="label label-primary">Activat</span>
+                  </div>
+                  <div ng-if="!ngDialogData.activated">
+                    <span class="label label-danger">Desactivat</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
+                <div class="top1">
+                  <label for="providerRole">Proveïdor</label><br/>
+                  <span class="label" ng-class="ngDialogData.providerRole ? 'label-primary' : 'label-default'">
+                    <i class="fa" ng-class="ngDialogData.providerRole ? 'fa-check' : 'fa-close'"></i>
+                  </span>
+                </div>
+              </div>
+              <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
+                <div class="top1">
+                  <label for="jobPosition">Client</label><br/>
+                  <span class="label" ng-class="ngDialogData.clientRole ? 'label-primary' : 'label-default'">
+                    <i class="fa" ng-class="ngDialogData.clientRole ? 'fa-check' : 'fa-close'"></i>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </uib-tab>
   </uib-tabset>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <pre>{{ngDialogData | json}}</pre>
+  <!-- <pre>{{ngDialogData | json}}</pre> -->
 
 </div>
