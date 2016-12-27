@@ -1,16 +1,26 @@
-<style>
-	.ngdialog.ngdialog-theme-default .ngdialog-content {
-		width: 50%;
-		height: 100px;
-		padding: 2em !important;
-	}
+<style media="screen">
+  .ngdialog.ngdialog-theme-default.delete-project .ngdialog-content {
+    margin-top:2em;
+    padding:2em;
+    margin-top:2em;
+    width: 40%;
+    height: 160px;
+    min-height:160px;
+    overflow:hidden;
+
+    .confirm-dialog {
+        margin-top:2em;
+        padding:2em;
+    }
+
+  }
 </style>
-<div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-sm-12">
-        <h3>Segur que vole eliminar aquest projecte?</h3>
-        <button class="btn btn-primary" type="button">Si</button>
-        <button class="btn btn-default" type="button">No</button>
-      </div>
-    </div>
+
+<div>
+  <div class="confirm-dialog">
+    <h4>Segur que vols eliminar el projecte <span class="text text-primary">{{ngDialogData.projectToRemove.name}}</span>?</h4>
+    <br/>
+    <button ng-click="ngDialogData.deleteProject(ngDialogData.projectToRemove._id)" class="btn btn-sm btn-primary" type="button">Si</button>
+    <button ng-click="ngDialogData.closeDialog()" class="btn btn-sm btn-default" type="button">No</button>
+  </div>
 </div>

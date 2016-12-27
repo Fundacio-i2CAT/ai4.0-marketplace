@@ -223,10 +223,12 @@
 			ProjectFactory.deleteProject(id).then(function(response){
 				if(response.status===200){
 					// $location.path("/clientprojects");
+					toastr.info("Projecte eliminat correctament", "Eliminar Projecte");
 					$state.reload();
 				}else{
 					toastr.error("No s'ha pogut borrar el projecte");
 				}
+				vm.closeDialog();
 			});
 		};
 
@@ -297,15 +299,21 @@
 			});
 		}
 
-		// vm.launchDeleteProjectDialog = launchDeleteProjectDialog;
-		// function launchDeleteProjectDialog (srv) {
-		// 	ngDialog.open({
-		// 		template: 'app/projects/client/delete-project/delete_project.tpl.html',
-		// 		className: 'ngdialog-theme-default',
-		// 		controller: 'InstantiateServiceController',
-		// 		controllerAs: 'instancesrv'
-		// 	});
-		// }
+		vm.confirmDeleteProject = function(project) {
+			vm.projectToRemove = project;
+			ngDialog.open({
+				template: 'app/projects/client/delete-project/delete_project.tpl.html',
+				className: 'ngdialog-theme-default',
+				appendClassName: 'delete-project',
+				controller: 'ProjectController',
+				data: vm
+			});
+		};
+
+		vm.closeDialog = function() {
+			ngDialog.close();
+		}
+
 
 	}
 
