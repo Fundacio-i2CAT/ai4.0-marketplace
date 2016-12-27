@@ -91,9 +91,9 @@
         url: '/users',
         templateUrl: 'app/users/users.tpl.html',
         controller: 'UserController',
-        controllerAs: 'users',
+        controllerAs: 'users'
         // need: 'Partner.Provider'
-      })
+      });
       // .state('tatami', {
       //   url: '/tatami',
       //   templateUrl: 'app/tatami/tatami.tpl.html',
