@@ -55,12 +55,6 @@
         controller: 'NewProjectController',
         controllerAs: 'newproject'
       })
-      .state('project-edit', {
-        url: '/clientproject/edit/:id',
-        templateUrl: 'app/projects/client/project-edit.tpl.html',
-        controller: 'ProjectController',
-        controllerAs: 'editproject'
-      })
       .state('services', {
         url: '/services',
         templateUrl: 'app/services/index.tpl.html',
