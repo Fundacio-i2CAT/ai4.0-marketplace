@@ -37,8 +37,8 @@
 							<td ng-click="users.goUserDetail(user)" class="centered text"><span class="label" ng-class="user.clientRole ? 'label-primary' : 'label-default'"><i class="fa" ng-class="user.clientRole ? 'fa-check' : 'fa-close'"></i></span></td>
 	            <td ng-click="users.goUserDetail(user)" class="centered">{{user.phone}}</td>
 	            <td ng-click="users.goUserDetail(user)" class="centered">
-	              <span ng-if="!user.activated" class="bg-primary fon12" style="font-size:13px">Actiu</span>
-                <span ng-if="user.activated" class="bg-danger fon12" style="font-size:13px">Inactiu</span>
+	              <span ng-if="user.activated" class="bg-primary fon12" style="font-size:13px">Actiu</span>
+                <span ng-if="!user.activated" class="bg-danger fon12" style="font-size:13px">Inactiu</span>
 	            </td>
 							<td class="centered">
 								<button ng-click="users.editUser(user)" type="button" class="btn btn-default btn-xs"><i class="fa fa-pencil"></i></button>
