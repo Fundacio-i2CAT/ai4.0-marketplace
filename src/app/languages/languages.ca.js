@@ -118,7 +118,6 @@
 					'PROFILE-STATUS': 'Estat del Perfil',
 					'USER-DETAIL-ACTIVATED': 'Activat',
 					'USER-DETAIL-UNACTIVATED': 'Desactivat',
-					'USER-DETAIL-UNACTIVATED': 'Desactivado',
 					'EDIT-USER-TITLE': 'Editar Usuari',
 					'EDIT-USER-SAVEDATA': 'Guardar Dades',
 					'SRV-DETAIL-MSG': 'És necessari conte de Client per consumir aquest Servei'
