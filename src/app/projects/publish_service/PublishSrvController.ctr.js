@@ -14,6 +14,8 @@
 		vm.srv = {};
 		vm.isLoadedImage = false;
 		vm.showbar = false;
+		vm.selectedRowId = null;
+
 
 		vm.types = [{name: 'Number'}, {name: 'String'}];
 		vm.discImageFormat = [{name: 'QCOW2'}, {name: 'VDI'}];
@@ -157,8 +159,13 @@
         	});
 		};
 
+		vm.selectFlavor = function(flavor) {
+			console.log(flavor);
+		};
 
-
+		vm.selectedRow = function(id) {
+			vm.selectedRowId = id;
+		};
 
 		/* codigo para formulario dinamico */
 		vm.plantilles = [{id: 'plantilla1'}];
