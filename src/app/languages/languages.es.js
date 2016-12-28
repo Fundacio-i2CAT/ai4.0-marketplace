@@ -108,7 +108,7 @@
 					//users management
 					'USERS-NAV': 'Usuarios',
 					'DEL-USER-MSG': '¿ Seguro que quieres eliminar el usuario',
-					'USERS-TITLE': 'Usuarios de la Plataforma',
+					'USERS-TITLE': 'Gestión de Usuarios',
 					'DEL-PROJ-MSG': '¿ Seguro que quieres eliminar el proyecto',
 					'USER-DETAIL-TITLE': 'Información del Usuario',
 					'USER-DETAIL-PERS-DATA': 'Datos Personales',
