@@ -93,7 +93,7 @@
         controller: 'UserController',
         controllerAs: 'users'
         // need: 'Partner.Provider'
-      });
+      })
       // .state('tatami', {
       //   url: '/tatami',
       //   templateUrl: 'app/tatami/tatami.tpl.html',
