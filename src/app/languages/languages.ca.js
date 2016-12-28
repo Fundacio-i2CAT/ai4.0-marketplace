@@ -121,7 +121,10 @@
 					'EDIT-USER-TITLE': 'Editar Usuari',
 					'EDIT-USER-SAVEDATA': 'Guardar Dades',
 					'SRV-DETAIL-MSG': 'És necessari conte de Client per consumir aquest Servei',
-					'FILTER-PLACEHOLDER-USERS': 'Filtrar Usuaris'
+					'FILTER-PLACEHOLDER-USERS': 'Filtrar Usuaris',
+					//publicar Servei
+					'PUBL-SRV-TITLE': 'Publicar Servei',
+					'PUBL-SRV-BTN': 'Publicar Nou Servei'
 
 
 				})
