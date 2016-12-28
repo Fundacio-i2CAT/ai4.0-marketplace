@@ -120,7 +120,8 @@
 					'USER-DETAIL-UNACTIVATED': 'Desactivado',
 					'EDIT-USER-TITLE': 'Editar Usuario',
 					'EDIT-USER-SAVEDATA': 'Guardar Datos',
-					'SRV-DETAIL-MSG': 'Es necesario cuenta de Cliente per consumir este Servicio'
+					'SRV-DETAIL-MSG': 'Es necesario cuenta de Cliente per consumir este Servicio',
+					'FILTER-PLACEHOLDER-USERS': 'Filtrar Usuarios'
 
 
 				});
