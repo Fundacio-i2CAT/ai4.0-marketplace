@@ -76,7 +76,8 @@
 	          </tr>
 	        </thead>
 	        <tbody>
-	          <tr ng-repeat="user in users.allUsers | orderBy:users.sortType:users.sortReverse| filter: searchingWord">
+	          <!-- <tr ng-repeat="user in users.allUsers | orderBy:users.sortType:users.sortReverse| filter: searchingWord | limitTo : 5"> -->
+            <tr ng-repeat="user in users.allUsers | orderBy:users.sortType:users.sortReverse| filter: searchingWord">
 	            <td ng-click="users.goUserDetail(user)">{{user.name}}</td>
 	            <td ng-click="users.goUserDetail(user)" class="centered">{{user.surname}}</td>
 							<td ng-click="users.goUserDetail(user)" class="centered">{{user.company}}</td>
@@ -95,8 +96,8 @@
 	          </tr>
 	        </tbody>
 	      </table>
+
 	    </div>
     </div>
   </div>
-
 </div>

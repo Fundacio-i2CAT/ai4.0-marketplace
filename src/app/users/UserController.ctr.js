@@ -19,7 +19,6 @@
 		vm.sortType;
 		vm.sortReverse = true;
 
-
 		function setActive(userlist) {
 			angular.forEach(userlist, function (user) {
 				if(user.admin == false) {
