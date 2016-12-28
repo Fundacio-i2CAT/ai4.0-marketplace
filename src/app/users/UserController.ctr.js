@@ -17,7 +17,7 @@
 		vm.allUsers=[];
 
 		vm.sortType;
-		vm.sortReverse;
+		vm.sortReverse = true;
 
 
 		function setActive(userlist) {
@@ -43,11 +43,6 @@
 				} else {
 					//do something like show toastr
 				}
-			});
-			//mock data
-			var mockusers = UsersMockFacltory;
-			angular.forEach(mockusers, function (each, index){
-				vm.allUsers.push(each);
 			});
 		};
 
