@@ -69,7 +69,6 @@
 					//do something like show toastr
 				}
 			});
-<<<<<<< HEAD
 			//mock data
 			var mockusers = UsersMockFacltory;
 			angular.forEach(mockusers, function (each, index){
@@ -78,8 +77,7 @@
 			//table pagination
 			vm.totalItems = vm.allUsers.length;
 			vm.numPages = Math.ceil(vm.allUsers.length/vm.viewby);
-=======
->>>>>>> a62bd52cceecb58d85e59ab80980696c5a662c47
+
 		};
 
 		//open session for this user

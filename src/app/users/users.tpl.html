@@ -83,12 +83,8 @@
 	          </tr>
 	        </thead>
 	        <tbody>
-<<<<<<< HEAD
-	          <tr ng-repeat="user in users.allUsers.slice(((users.currentPage-1)*users.itemsPerPage), ((users.currentPage)*users.itemsPerPage)) | orderBy:users.sortType:users.sortReverse | filter: searchingWord">
-=======
 	          <!-- <tr ng-repeat="user in users.allUsers | orderBy:users.sortType:users.sortReverse| filter: searchingWord | limitTo : 5"> -->
-            <tr ng-repeat="user in users.allUsers | orderBy:users.sortType:users.sortReverse| filter: searchingWord">
->>>>>>> a62bd52cceecb58d85e59ab80980696c5a662c47
+            <tr ng-repeat="user in users.allUsers.slice(((users.currentPage-1)*users.itemsPerPage), ((users.currentPage)*users.itemsPerPage)) | orderBy:users.sortType:users.sortReverse | filter: searchingWord">
 	            <td ng-click="users.goUserDetail(user)">{{user.name}}</td>
 	            <td ng-click="users.goUserDetail(user)" class="centered">{{user.surname}}</td>
 							<td ng-click="users.goUserDetail(user)" class="centered">{{user.company}}</td>
@@ -107,7 +103,6 @@
 	          </tr>
 	        </tbody>
 	      </table>
-<<<<<<< HEAD
         <div class="col-xs-12">
           <div class="pull-left">
             <form class="form-inline">
@@ -136,10 +131,7 @@
   <pre>{{users.allUsers | json}}</pre> -->
 
 
-=======
-
 	    </div>
     </div>
   </div>
->>>>>>> a62bd52cceecb58d85e59ab80980696c5a662c47
 </div>
