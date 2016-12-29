@@ -108,7 +108,7 @@
 					//users management
 					'USERS-NAV': 'Usuaris',
 					'DEL-USER-MSG': 'Segur que vols eliminar l\'usuari',
-					'USERS-TITLE': 'Usuaris de la Plataforma',
+					'USERS-TITLE': 'Gestió d\'Usuaris',
 					'DEL-PROJ-MSG': 'Segur que vols eliminar el projecte',
 					'USER-DETAIL-TITLE': 'Informació de l\'Usuari',
 					'USER-DETAIL-PERS-DATA': 'Dades Personals',
@@ -120,7 +120,11 @@
 					'USER-DETAIL-UNACTIVATED': 'Desactivat',
 					'EDIT-USER-TITLE': 'Editar Usuari',
 					'EDIT-USER-SAVEDATA': 'Guardar Dades',
-					'SRV-DETAIL-MSG': 'És necessari conte de Client per consumir aquest Servei'
+					'SRV-DETAIL-MSG': 'És necessari conte de Client per consumir aquest Servei',
+					'FILTER-PLACEHOLDER-USERS': 'Filtrar Usuaris',
+					//publicar Servei
+					'PUBL-SRV-TITLE': 'Publicar Servei',
+					'PUBL-SRV-BTN': 'Publicar Nou Servei'
 
 
 				})

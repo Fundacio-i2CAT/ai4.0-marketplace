@@ -2,7 +2,7 @@
   <!-- <a id="element" class="btn btn-primary btn-xs" data-toggle="popover" tabindex="0" data-trigger="focus" title="Popover title" data-content="Here's some amazing content.">Dismissible popover</a> -->
   <div class="page-header">
     <h2 class="text text-danger">
-      <strong>{{ 'PROJ-CLIENT' | translate }}</strong>
+      {{ 'PROJ-CLIENT' | translate }}
     </h2>
   </div>
   <div class="row">
@@ -29,29 +29,29 @@
             <th class="col-xs-3">
               <a ng-click="clientprojects.sortTypeClient = 'name'; clientprojects.sortReverseClient = !clientprojects.sortReverseClient">
                 {{ 'SRV-PROJECTE' | translate}}
-                <span ng-show="clientprojects.sortTypeClient == 'name' && !clientprojects.sortReverseClient" class="fa fa-caret-down"></span>
-                <span ng-show="clientprojects.sortTypeClient == 'name' && clientprojects.sortReverseClient" class="fa fa-caret-up"></span>
+                <span ng-show="clientprojects.sortTypeClient == 'name' && !clientprojects.sortReverseClient" class="fa fa-sort-alpha-asc"></span>
+                <span ng-show="clientprojects.sortTypeClient == 'name' && clientprojects.sortReverseClient" class="fa fa-sort-alpha-desc"></span>
                 <a/>
               </th>
-              <th class="col-xs-2">
+              <th>
                 <a ng-click="clientprojects.sortTypeClient = 'status'; clientprojects.sortReverseClient = !clientprojects.sortReverseClient">
                   {{ 'SRV-ESTAT' | translate}}
-                  <span ng-show="clientprojects.sortTypeClient == 'status' && !clientprojects.sortReverseClient" class="fa fa-caret-down"></span>
-                  <span ng-show="clientprojects.sortTypeClient == 'status' && clientprojects.sortReverseClient" class="fa fa-caret-up"></span>
+                  <span ng-show="clientprojects.sortTypeClient == 'status' && !clientprojects.sortReverseClient" class="fa fa-sort-amount-desc"></span>
+                  <span ng-show="clientprojects.sortTypeClient == 'status' && clientprojects.sortReverseClient" class="fa fa-sort-amount-asc"></span>
                   <a/>
                 </th>
                 <th class="col-xs-2">
                   <a ng-click="clientprojects.sortTypeClient = 'created_at'; clientprojects.sortReverseClient = !clientprojects.sortReverseClient">
                     {{ 'SRV-SOLICITUD' | translate}}
-                    <span ng-show="clientprojects.sortTypeClient == 'created_at' && !clientprojects.sortReverseClient" class="fa fa-caret-down"></span>
-                    <span ng-show="clientprojects.sortTypeClient == 'created_at' && clientprojects.sortReverseClient" class="fa fa-caret-up"></span>
+                    <span ng-show="clientprojects.sortTypeClient == 'created_at' && !clientprojects.sortReverseClient" class="fa fa-sort-amount-asc"></span>
+                    <span ng-show="clientprojects.sortTypeClient == 'created_at' && clientprojects.sortReverseClient" class="fa fa-sort-amount-desc"></span>
                     <a/>
                   </th>
                   <th class="col-xs-3">
-                    <a ng-click="clientprojects.sortTypeClient = 'service.name'; clientprojects.sortReverseClient = !clientprojects.sortReverseClient">
+                    <a ng-click="clientprojects.sortTypeClient = 'services[0].service.name'; clientprojects.sortReverseClient = !clientprojects.sortReverseClient">
                       {{ 'SERV-TITOL' | translate}}
-                      <span ng-show="clientprojects.sortTypeClient == 'service.name' && !clientprojects.sortReverseClient" class="fa fa-caret-down"></span>
-                      <span ng-show="clientprojects.sortTypeClient == 'service.name' && clientprojects.sortReverseClient" class="fa fa-caret-up"></span>
+                      <span ng-show="clientprojects.sortTypeClient == 'services[0].service.name' && !clientprojects.sortReverseClient" class="fa fa-sort-alpha-asc"></span>
+                      <span ng-show="clientprojects.sortTypeClient == 'services[0].service.name' && clientprojects.sortReverseClient" class="fa fa-sort-alpha-desc"></span>
                       <a/>
                     </th>
                     <th class="col-xs-2">{{ 'SRV-ACCIONS' | translate}}</th>

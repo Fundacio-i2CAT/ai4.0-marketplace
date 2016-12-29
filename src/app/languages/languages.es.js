@@ -108,7 +108,7 @@
 					//users management
 					'USERS-NAV': 'Usuarios',
 					'DEL-USER-MSG': '¿ Seguro que quieres eliminar el usuario',
-					'USERS-TITLE': 'Usuarios de la Plataforma',
+					'USERS-TITLE': 'Gestión de Usuarios',
 					'DEL-PROJ-MSG': '¿ Seguro que quieres eliminar el proyecto',
 					'USER-DETAIL-TITLE': 'Información del Usuario',
 					'USER-DETAIL-PERS-DATA': 'Datos Personales',
@@ -120,7 +120,11 @@
 					'USER-DETAIL-UNACTIVATED': 'Desactivado',
 					'EDIT-USER-TITLE': 'Editar Usuario',
 					'EDIT-USER-SAVEDATA': 'Guardar Datos',
-					'SRV-DETAIL-MSG': 'Es necesario cuenta de Cliente per consumir este Servicio'
+					'SRV-DETAIL-MSG': 'Es necesario cuenta de Cliente per consumir este Servicio',
+					'FILTER-PLACEHOLDER-USERS': 'Filtrar Usuarios',
+					//publicar Servei
+					'PUBL-SRV-TITLE': 'Publicar Servicio',
+					'PUBL-SRV-BTN': 'Publicar Nuevo Servicio'
 
 
 				});

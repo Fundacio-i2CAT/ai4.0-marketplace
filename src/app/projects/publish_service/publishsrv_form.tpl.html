@@ -3,25 +3,25 @@
 		<form name="srvTemplate">
 			<div class="col-xs-11 col-xs-offset-1 col-sm-11 col-sm-offset-1">
 					<div class="col-xs-8" id="servicename">
-						<label for="name">Nom Servei</label>
+						<label for="name">Nom Servei *</label>
 						<input type="text" name="name" class="form-control" ng-model="staticform.srv.title" placeholder="Nom del servei" required>
 					</div>
 					<div class="col-xs-4">
-						<label for="type">Tipus de Servei</label>
+						<label for="type">Tipus de Servei *</label>
 						<select name="type" class="form-control" ng-options="item.description for item in staticform.allTypes" ng-model="staticform.srv.type" required>
 							<option value="" disabled>Selecciona un tipus de servei</option>
 						</select>
 					</div>
 			</div>
 
-			
+
 			<div class="col-xs-11 col-xs-10-offset-1 col-sm-11 col-sm-offset-1 confpath1">
-				<label for="">Descripció</label>
+				<label for="">Descripció *</label>
 				<textarea rows="2" type="text" class="form-control" ng-model="staticform.srv.description" placeholder="Descripció servei" required></textarea>
 			</div>
-			
+
 			<div class="col-xs-11 col-xs-10-offset-1 col-sm-11 col-sm-offset-1 confpath1">
-				<label for="">Sumari</label>
+				<label for="">Sumari *</label>
 				<input type="text" class="form-control" ng-model="staticform.srv.summary" placeholder="Sumari del servei" required>
 			</div>
 			<br/>
@@ -32,17 +32,17 @@
 					<br/>
 					<div class="row">
 						<div class="col-xs-12">
-							<label for="filepath">Configuració</label>
+							<label for="filepath">Configuració *</label>
 							<input type="text" ng-model="staticform.srv.path" placeholder="Ruta arxiu configuració" class="form-control" required>
 						</div>
 					</div>
 						<ul class="list list-inline publish">
 							<li class="col-xs-12 col-sm-12 col-md-3">
-							<label for="name">Nom</label>
+							<label for="name">Nom *</label>
 								<input type="text" name="name" ng-model="staticform.srv.fields.field1.name" placeholder="Nom del camp" class="form-control" required/>
 							</li>
 							<li class="col-xs-12 col-sm-12 col-md-2">
-							<label for="type">Tipus</label>
+							<label for="type">Tipus *</label>
 								<select class="form-control" ng-options="item.name for item in staticform.types" ng-model="staticform.srv.fields.field1.type" required>
 									<option value="" disabled>Tipus de dada</option>
 								</select>
@@ -52,7 +52,7 @@
 								<input type="checkbox" class="form-control centered check-required" name="required" ng-model="staticform.srv.fields.field1.required">
 							</li>
 							<li class="col-xs-12 col-sm-12 col-md-6">
-								<label for="description">Descripció</label>
+								<label for="description">Descripció *</label>
 								<input type="text" name="description" class="form-control" ng-model="staticform.srv.fields.field1.desc" placeholder="Descripció del camp"  required/>
 							</li>
 						</ul>
@@ -102,8 +102,48 @@
 					</div>
 				</div>
 				<div class="oneTemplate clearfix">
-					<h4 class="templateTitle">Flavors</h4>
+					<h4 class="templateTitle">Flavors *<br/>
+						<small>Clicar una Flavor per seleccionar-lo</small>
+					</h4>
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fieldblock">
+						<table class="table table-striped table-hover flavor-table">
+							<thead>
+								<tr>
+									<th>Nom</th>
+									<th>Memòria MB</th>
+									<th>Disk</th>
+									<th>CUPS</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="flavor in staticform.flavors" id="{{$index}}" ng-model="staticform.srv.flavor" ng-class="(flavor.id == staticform.selectedRowId) ? 'success': ''" ng-click="staticform.srv.flavor = flavor;staticform.selectedRow(flavor.id)">
+									<td>{{flavor.name}}</td>
+									<td>{{flavor.memory}}</td>
+									<td>{{flavor.disk}}</td>
+									<td>{{flavor.cpus}}</td>
+								</tr>
+							</tbody>
+						</table>
+
+						<div ng-show="staticform.srv.flavor">
+							<h5><strong>Flavor seleccionat</strong></h5>
+
+							<table class="table table-striped flavor-table" >
+								<tbody>
+									<tr class="info">
+										<td>{{staticform.srv.flavor.name}}</td>
+										<td>{{staticform.srv.flavor.memory}}</td>
+										<td>{{staticform.srv.flavor.disk}}</td>
+										<td>{{staticform.srv.flavor.cpus}}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+
+					</div>
+
+					<!-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fieldblock">
 						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 							<br/>
 							<select class="form-control" ng-options="fl.name for fl in staticform.flavors" ng-model="staticform.srv.flavor" required>
@@ -112,7 +152,7 @@
 						</div>
 						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 							<table class="table table-striped flavor-table" ng-show="staticform.srv.flavor">
-								 <thead> 
+								 <thead>
 									<tr>
 										<th>Nom</th>
 										<th>Memòria MB</th>
@@ -130,18 +170,18 @@
 								</tbody>
 							</table>
 						</div>
-					</div>
+					</div> -->
 				</div>
 				<div class="oneTemplate clearfix">
-					<h4 class="templateTitle">Paràmetres de Runtime</h4>
+					<h4 class="templateTitle">Paràmetres de Runtime *</h4>
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fieldblock">
 						<ul class="list list-inline publish">
 							<li class="col-xs-12 col-sm-12 col-md-3">
-							<label for="name">Nom</label>
+							<label for="name">Nom *</label>
 								<input type="text" name="name" ng-model="staticform.srv.rtime.name" placeholder="Nom del camp" class="form-control" required/>
 							</li>
 							<li class="col-xs-12 col-sm-12 col-md-2">
-							<label for="type">Tipus</label>
+							<label for="type">Tipus *</label>
 								<select class="form-control" ng-options="item.name for item in staticform.types" ng-model="staticform.srv.rtime.type" required>
 									<option value="" disabled>Tipus de dada</option>
 								</select>
@@ -151,14 +191,14 @@
 								<input type="checkbox" class="form-control centered check-required" name="required" ng-model="staticform.srv.rtime.required">
 							</li>
 							<li class="col-xs-12 col-sm-12 col-md-6">
-								<label for="description">Descripció</label>
+								<label for="description">Descripció *</label>
 								<input type="text" name="description" class="form-control" ng-model="staticform.srv.rtime.desc" placeholder="Descripció del camp"  required/>
 							</li>
 						</ul>
 					</div>
 				</div>
 				<div class="oneTemplate clearfix">
-					<h4 class="templateTitle">Imatge de Disc</h4>
+					<h4 class="templateTitle">Imatge de Disc *</h4>
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fieldblock">
 							<div class="col-xs-12 col-sm-12 col-md-8 col-lg-9">
 								<chunkdirective></chunkdirective>

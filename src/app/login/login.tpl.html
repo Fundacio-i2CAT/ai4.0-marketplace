@@ -4,18 +4,18 @@
 		<!-- {{ 'LOG-TITLE' | translate }}<small> {{ 'LOG-SUBTITLE' | translate }}</small> -->
 		</h3>
 	</div>
-	
+
 	<form id="login" name="logUser" ng-submit="login.doLogin()">
 		<div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
 			<div class="well clearfix">
 				<div class="form-group">
-					<label for="loginusername">{{ 'LOG-NAME' | translate }}</label>
+					<label for="loginusername">{{ 'REG-SUBTITLE' | translate }}</label>
 					<input type="text" class="form-control" ng-model="login.credentials.username" id="loginusername" placeholder="{{ 'LOG-NAME-PLACEHOLDER' | translate }}" required>
 				</div>
 				<div class="form-group">
 					<label for="loginpassword">{{ 'LOG-PASSWORD' | translate }}</label>
 					<input type="password" ng-model="login.credentials.password" class="form-control" id="loginpassword" placeholder="{{ 'LOG-PASSWORD-PLACEHOLDER' | translate }}" required>
-					
+
 				</div>
 				<button type="submit" class="btn btn-success btn-block" ng-disabled="logUser.$invalid">{{ 'LOG-LOGIN' | translate }}</button>
 				<br/>
@@ -26,7 +26,7 @@
 			</div>
 		</div>
 	</form>
-	
+
 	<!-- <div class="row">
 			<div class="col-xs-6 col-xs-offset-3 col-sm-6 col-sm-offset-3 col-sm-6 col-sm-offset-3 col-lg-6 col-lg-offset-3">
 					<div class="well clearfix centered">

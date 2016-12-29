@@ -7,74 +7,74 @@
 
 <div class="container">
   <div class="page-header">
-    <h2>{{'USERS-TITLE' | translate}}
+    <h2 class="text text-danger">{{'USERS-TITLE' | translate}}
     </h2>
   </div>
   <div class="row">
     <div class="col-xs-4 col-xs-offset-8">
-      <input class="form-control input-sm top3" placeholder="{{ 'FILTER-PLACEHOLDER' | translate }}" type="text" ng-model="searchingWord">
+      <input class="form-control input-sm top3" placeholder="{{ 'FILTER-PLACEHOLDER-USERS' | translate }}" type="text" ng-model="searchingWord">
     </div>
   </div>
   <div class="row">
     <div class="col-xs-12">
-			<div class="table-responsive top1">
+			<div class="table-responsive">
 	      <table class="table table-hover table-striped" id="userstable">
 	        <thead>
 	          <tr>
 	            <th>
-                <a ng-click="users.sortType = 'user.name'; users.sortReverse = !users.sortReverse">
+                <a ng-click="users.sortType = 'name'; users.sortReverse = !users.sortReverse">
                   {{'REG-NAME' | translate}}
-                  <span ng-show="users.sortType == 'user.name' && !users.sortReverse" class="fa fa-caret-down"></span>
-                  <span ng-show="users.sortType == 'user.name' && users.sortReverse" class="fa fa-caret-up"></span>
+                  <span ng-show="users.sortType == 'name' && !users.sortReverse" class="fa fa-sort-alpha-asc"></span>
+                  <span ng-show="users.sortType == 'name' && users.sortReverse" class="fa fa-sort-alpha-desc"></span>
                 <a/>
               </th>
 	            <th class="centered">
-                <a ng-click="users.sortType = 'user.surname'; users.sortReverse = !users.sortReverse">
+                <a ng-click="users.sortType = 'surname'; users.sortReverse = !users.sortReverse">
                   {{'REG-SURNAME' | translate}}
-                  <span ng-show="users.sortType == 'user.surname' && !users.sortReverse" class="fa fa-caret-down"></span>
-                  <span ng-show="users.sortType == 'user.surname' && users.sortReverse" class="fa fa-caret-up"></span>
+                  <span ng-show="users.sortType == 'surname' && !users.sortReverse" class="fa fa-sort-alpha-asc"></span>
+                  <span ng-show="users.sortType == 'surname' && users.sortReverse" class="fa fa-sort-alpha-desc"></span>
                 <a/>
               </th>
 							<th class="centered">
-                <a ng-click="users.sortType = 'user.company'; users.sortReverse = !users.sortReverse">
+                <a ng-click="users.sortType = 'company'; users.sortReverse = !users.sortReverse">
                   {{'REG-COMPANY' | translate}}
-                  <span ng-show="users.sortType == 'user.company' && !users.sortReverse" class="fa fa-caret-down"></span>
-                  <span ng-show="users.sortType == 'user.company' && users.sortReverse" class="fa fa-caret-up"></span>
+                  <span ng-show="users.sortType == 'company' && !users.sortReverse" class="fa fa-sort-alpha-asc"></span>
+                  <span ng-show="users.sortType == 'company' && users.sortReverse" class="fa fa-sort-alpha-desc"></span>
                 <a/>
               </th>
 							<th class="centered">
-                <a ng-click="users.sortType = 'user.jobPosition'; users.sortReverse = !users.sortReverse">
+                <a ng-click="users.sortType = 'jobPosition'; users.sortReverse = !users.sortReverse">
                   {{'REG-COMPANY-POSITION' | translate}}
-                  <span ng-show="users.sortType == 'user.jobPosition' && !users.sortReverse" class="fa fa-caret-down"></span>
-                  <span ng-show="users.sortType == 'user.jobPosition' && users.sortReverse" class="fa fa-caret-up"></span>
+                  <span ng-show="users.sortType == 'jobPosition' && !users.sortReverse" class="fa fa-sort-alpha-asc"></span>
+                  <span ng-show="users.sortType == 'jobPosition' && users.sortReverse" class="fa fa-sort-alpha-desc"></span>
                 <a/>
               </th>
 							<th class="centered">
-                <a ng-click="users.sortType = 'user.providerRole'; users.sortReverse = !users.sortReverse">
+                <a ng-click="users.sortType = 'providerRole'; users.sortReverse = !users.sortReverse">
                   {{'CATAL-PROVEIDOR' | translate}}
-                  <span ng-show="users.sortType == 'user.providerRole' && !users.sortReverse" class="fa fa-caret-down"></span>
-                  <span ng-show="users.sortType == 'user.providerRole' && users.sortReverse" class="fa fa-caret-up"></span>
+                  <span ng-show="users.sortType == 'providerRole' && !users.sortReverse" class="fa fa-sort-amount-desc"></span>
+                  <span ng-show="users.sortType == 'providerRole' && users.sortReverse" class="fa fa-sort-amount-asc"></span>
                 <a/>
               </th>
 							<th class="centered">
-                <a ng-click="users.sortType = 'user.clientRole'; users.sortReverse = !users.sortReverse">
+                <a ng-click="users.sortType = 'clientRole'; users.sortReverse = !users.sortReverse">
                   {{'SRV-CLIENT' | translate}}
-                  <span ng-show="users.sortType == 'user.clientRole' && !users.sortReverse" class="fa fa-caret-down"></span>
-                  <span ng-show="users.sortType == 'user.clientRole' && users.sortReverse" class="fa fa-caret-up"></span>
+                  <span ng-show="users.sortType == 'clientRole' && !users.sortReverse" class="fa fa-sort-amount-desc"></span>
+                  <span ng-show="users.sortType == 'clientRole' && users.sortReverse" class="fa fa-sort-amount-asc"></span>
                 <a/>
               </th>
 	            <th class="centered">
-                <a ng-click="users.sortType = 'user.phone'; users.sortReverse = !users.sortReverse">
+                <a ng-click="users.sortType = 'phone'; users.sortReverse = !users.sortReverse">
                   {{'REG-COMPANY-PHONE' | translate}}
-                  <span ng-show="users.sortType == 'user.phone' && !users.sortReverse" class="fa fa-caret-down"></span>
-                  <span ng-show="users.sortType == 'user.phone' && users.sortReverse" class="fa fa-caret-up"></span>
+                  <span ng-show="users.sortType == 'phone' && !users.sortReverse" class="fa fa-sort-amount-desc"></span>
+                  <span ng-show="users.sortType == 'phone' && users.sortReverse" class="fa fa-sort-amount-asc"></span>
                 <a/>
               </th>
 							<th class="centered">
-                <a ng-click="users.sortType = 'user.activated'; users.sortReverse = !users.sortReverse">
+                <a ng-click="users.sortType = 'activated'; users.sortReverse = !users.sortReverse">
                   {{'SRV-ESTAT' | translate}}
-                  <span ng-show="users.sortType == 'user.activated' && !users.sortReverse" class="fa fa-caret-down"></span>
-                  <span ng-show="users.sortType == 'user.activated' && users.sortReverse" class="fa fa-caret-up"></span>
+                  <span ng-show="users.sortType == 'activated' && !users.sortReverse" class="fa fa-sort-amount-desc"></span>
+                  <span ng-show="users.sortType == 'activated' && users.sortReverse" class="fa fa-sort-amount-asc"></span>
                 <a/>
               </th>
 							<th class="centered">
@@ -83,7 +83,12 @@
 	          </tr>
 	        </thead>
 	        <tbody>
+<<<<<<< HEAD
 	          <tr ng-repeat="user in users.allUsers.slice(((users.currentPage-1)*users.itemsPerPage), ((users.currentPage)*users.itemsPerPage)) | orderBy:users.sortType:users.sortReverse | filter: searchingWord">
+=======
+	          <!-- <tr ng-repeat="user in users.allUsers | orderBy:users.sortType:users.sortReverse| filter: searchingWord | limitTo : 5"> -->
+            <tr ng-repeat="user in users.allUsers | orderBy:users.sortType:users.sortReverse| filter: searchingWord">
+>>>>>>> a62bd52cceecb58d85e59ab80980696c5a662c47
 	            <td ng-click="users.goUserDetail(user)">{{user.name}}</td>
 	            <td ng-click="users.goUserDetail(user)" class="centered">{{user.surname}}</td>
 							<td ng-click="users.goUserDetail(user)" class="centered">{{user.company}}</td>
@@ -102,6 +107,7 @@
 	          </tr>
 	        </tbody>
 	      </table>
+<<<<<<< HEAD
         <div class="col-xs-12">
           <div class="pull-left">
             <form class="form-inline">
@@ -130,4 +136,10 @@
   <pre>{{users.allUsers | json}}</pre> -->
 
 
+=======
+
+	    </div>
+    </div>
+  </div>
+>>>>>>> a62bd52cceecb58d85e59ab80980696c5a662c47
 </div>
