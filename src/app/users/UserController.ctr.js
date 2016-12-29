@@ -20,6 +20,31 @@
 		vm.sortReverse;
 
 
+
+		//table pagination
+		vm.viewby = 5;
+		vm.currentPage = 1;
+		vm.itemsPerPage = vm.viewby;
+		vm.maxSize = 8;
+		vm.numPages;
+		vm.setPage = function(pageNum){
+			vm.currentPage = pageNum;
+		}
+
+		vm.pageChanged = function(){
+			console.log('pagina cambiada a...',vm.currentPage);
+		}
+
+		vm.setItemsPerPage = function(num) {
+			vm.itemsPerPage = num;
+			vm.currentPage = 1;
+			vm.numPages=Math.ceil(vm.allUsers.length/num);
+		}
+
+
+
+
+
 		function setActive(userlist) {
 			angular.forEach(userlist, function (user) {
 				if(user.admin == false) {
@@ -29,6 +54,7 @@
 				}
 			});
 		}
+
 
 		//get all users
 		vm.getAllUsers = function(){
@@ -49,6 +75,9 @@
 			angular.forEach(mockusers, function (each, index){
 				vm.allUsers.push(each);
 			});
+			//table pagination
+			vm.totalItems = vm.allUsers.length;
+			vm.numPages = Math.ceil(vm.allUsers.length/vm.viewby);
 		};
 
 		//open session for this user

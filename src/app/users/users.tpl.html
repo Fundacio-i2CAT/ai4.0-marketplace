@@ -1,3 +1,10 @@
+<style>
+<!-- .pagination>li>a, select option {
+  color: #446e9b;
+} -->
+
+</style>
+
 <div class="container">
   <div class="page-header">
     <h2>{{'USERS-TITLE' | translate}}
@@ -76,7 +83,7 @@
 	          </tr>
 	        </thead>
 	        <tbody>
-	          <tr ng-repeat="user in users.allUsers | orderBy:users.sortType:users.sortReverse | filter: searchingWord">
+	          <tr ng-repeat="user in users.allUsers.slice(((users.currentPage-1)*users.itemsPerPage), ((users.currentPage)*users.itemsPerPage)) | orderBy:users.sortType:users.sortReverse | filter: searchingWord">
 	            <td ng-click="users.goUserDetail(user)">{{user.name}}</td>
 	            <td ng-click="users.goUserDetail(user)" class="centered">{{user.surname}}</td>
 							<td ng-click="users.goUserDetail(user)" class="centered">{{user.company}}</td>
@@ -95,8 +102,32 @@
 	          </tr>
 	        </tbody>
 	      </table>
+        <div class="col-xs-12">
+          <div class="pull-left">
+            <form class="form-inline">
+              <div class="form-group">
+                <label for="viewby" style="vertical-align:bottom;">Items per pàgina&nbsp;&nbsp;</label>
+                <select id="viewby" name="viewby" class="form-control input-sm top1" ng-model="users.viewby" ng-change="users.setItemsPerPage(users.viewby)">
+                  <option value="3">3</option>
+                  <option value="5">5</option>
+                  <option value="10">10</option>
+                  <option value="{{users.totalItems}}">Tots</option>
+
+                </select>
+              </div>
+            </form>
+          </div>
+
+         <div class="pull-right">
+           <ul uib-pagination total-items="users.totalItems" items-per-page="users.itemsPerPage" num-pages="users.numPages" max-size="users.maxSize" boundary-links="true" direction-links="true" ng-model="users.currentPage" ng-change="users.pageChanged()"></ul>
+
+         </div>
+           </div>
 	    </div>
     </div>
   </div>
+  <!-- <pre>allUsers.length  {{users.allUsers.length}}  ______ numPages {{users.numPages}}</pre>
+  <pre>{{users.allUsers | json}}</pre> -->
+
 
 </div>
