@@ -25,6 +25,9 @@
 		vm.itemsPerPage = vm.viewby;
 		vm.maxSize = 5;
 		vm.numPages;
+		vm.pageNumberOptions = [{value: 3, name: "3"}, {value: 5, name: "5"}, {value: 10, name: "10"}];
+
+
 		vm.setPage = function(pageNum){
 			vm.currentPage = pageNum;
 		}
@@ -34,9 +37,10 @@
 		}
 
 		vm.setItemsPerPage = function(num) {
-			vm.itemsPerPage = num;
+			vm.itemsPerPage = num.value;
 			vm.currentPage = 1;
-			vm.numPages=Math.ceil(vm.allUsers.length/num);
+			vm.numPages=Math.ceil(vm.allUsers.length/num.value);
+			console.log(num);
 		}
 		//end table pagination
 
@@ -60,18 +64,15 @@
 					angular.forEach(mockusers, function (each, index){
 						vm.allUsers.push(each);
 					});
+
+					//table pagination
+					vm.totalItems = vm.allUsers.length;
+					vm.numPages = Math.ceil(vm.allUsers.length/vm.viewby);
+					vm.pageNumberOptions.push({value: vm.totalItems, name: "Tots"});
 				} else {
 					//do something like show toastr
 				}
 			});
-			//mock data
-			var mockusers = UsersMockFacltory;
-			angular.forEach(mockusers, function (each, index){
-				vm.allUsers.push(each);
-			});
-			//table pagination
-			vm.totalItems = vm.allUsers.length;
-			vm.numPages = Math.ceil(vm.allUsers.length/vm.viewby);
 
 		};
 
