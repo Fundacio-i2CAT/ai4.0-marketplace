@@ -16,7 +16,7 @@
 					<input class="form-control input-sm" placeholder="{{ 'FILTER-PLACEHOLDER' | translate }}" type="text" ng-model="searchingWord">
 				</div>
 			</div>
-			<table id="provservices" class="table table-responsive table-hover">
+			<table id="provservices" class="table table-responsive table-hover table-striped">
 				<thead>
 					<tr>
 						<th></th>
@@ -59,7 +59,7 @@
 									</tr>
 								</thead>
 								<tbody>
-										<tr ng-repeat="srv in provprojects.allProviderProjects | orderBy:provprojects.sortType:provprojects.sortReverse | filter: searchingWord" data-toggle="collapse" data-target="#{{$index}}" class="accordion-toggle">
+										<tr ng-repeat="srv in provprojects.allProviderProjects.slice(((provprojects.currentPage-1)*provprojects.itemsPerPage), ((provprojects.currentPage)*provprojects.itemsPerPage)) | orderBy:provprojects.sortType:provprojects.sortReverse | filter: searchingWord" data-toggle="collapse" data-target="#{{$index}}" class="accordion-toggle">
 											<td>
 												<img width="60px" class="img-thumbnail" ng-src="assets/logos_mkp/{{provprojects.getImage(srv.service.name)}}" alt="Imatge servei" />
 											</td>
@@ -92,6 +92,43 @@
 										</tr>
 								</tbody>
 							</table>
+							<div class="col-xs-6 col-sm-6">
+								<div class="pull-left">
+									<form class="form-inline top1">
+										<div class="form-group">
+											<span for="viewby" class="text text-help">{{'PAGINATION-ROWSXPAGE' | translate}}&nbsp;&nbsp;</span>
+											<select id="viewby" name="viewby" ng-init="provprojects.viewby = provprojects.pageNumberOptions[1]" class="form-control input-sm top05" ng-options="item.value for item in provprojects.pageNumberOptions" ng-model="provprojects.viewby" ng-change="provprojects.setItemsPerPage(provprojects.viewby)">
+												<!-- <option value="" disabled>5</option> -->
+											</select>
+
+										</div>
+									</form>
+								</div>
+							</div>
+							<div class="col-xs-6 col-sm-6">
+								<div class="pull-right">
+									<ul
+										uib-pagination
+										class="pagination-sm"
+										force-ellipses="true"
+										first-text="{{'PAGINATION-START' | translate}}"
+										last-text="Final"
+										previous-text="Anerior"
+										next-text="Següent"
+										total-items="provprojects.totalItems"
+										items-per-page="provprojects.itemsPerPage"
+										num-pages="provprojects.numPages"
+										max-size="provprojects.maxSize"
+										boundary-links="true"
+										direction-links="false"
+										ng-model="provprojects.currentPage"
+										ng-change="provprojects.pageChanged()"></ul>
+
+								</div>
+							</div>
+
+
+
 							<span us-spinner="{radius:30, width:8, length: 16}" spinner-key="spinner-1"></span>
 						</div>
 					</div>

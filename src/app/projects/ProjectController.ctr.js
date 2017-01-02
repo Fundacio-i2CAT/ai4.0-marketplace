@@ -8,6 +8,32 @@
 	ProjectController.$inject = ['$rootScope', '$interval', 'toastr', 'ProjectFactory', '$log', '$state', 'UserFactory', 'ProgressFactory', '$location', 'ServiceFactory', '$stateParams', 'CurrentUserFactory', 'ROLES', 'usSpinnerService', 'ImageProviderFactory', 'LiteralFactory', 'ngDialog', 'ShareDataFactory', '$timeout'];
 	function ProjectController ($rootScope, $interval, toastr, ProjectFactory, $log, $state, UserFactory, ProgressFactory, $location, ServiceFactory, $stateParams, CurrentUserFactory, ROLES, usSpinnerService, ImageProviderFactory, LiteralFactory, ngDialog, ShareDataFactory, $timeout){
 		var vm = this;
+
+		//table pagination
+		vm.viewby = 5;
+		vm.currentPage = 1;
+		vm.itemsPerPage = vm.viewby;
+		vm.maxSize = 5;
+		vm.numPages;
+		vm.pageNumberOptions = [{value: 3, name: "3"}, {value: 5, name: "5"}, {value: 10, name: "10"}];
+
+
+		vm.setPage = function(pageNum){
+			vm.currentPage = pageNum;
+		}
+
+		vm.pageChanged = function(){
+			console.log('pagina cambiada a...',vm.currentPage);
+		}
+
+		vm.setItemsPerPage = function(num) {
+			vm.itemsPerPage = num.value;
+			vm.currentPage = 1;
+			vm.numPages=Math.ceil(vm.allUsers.length/num.value);
+			console.log(num);
+		}
+		//end table pagination
+
 		vm.sortType = 'srv.project.name';
 		vm.sortReverse = true;
 		vm.sortTypeClient = '';
@@ -72,11 +98,16 @@
 					vm.allProviderProjects.forEach(function(each){
 						if (each.status === 1){
 							hasPendings = true;
-							i = i +1;
+							i = i +1;º
 						}
 
 					});
 					if (hasPendings) toastr.info("Té " + i + " projectes(s) per confirmar");
+
+					//provprojets table pagination
+					vm.totalItems = vm.allProviderProjects.length;
+					vm.numPages = Math.ceil(vm.allProviderProjects.length/vm.viewby);
+					vm.pageNumberOptions.push({value: vm.totalItems, name: "Tots"});
 
 				}
 			});
