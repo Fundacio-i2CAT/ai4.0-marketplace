@@ -92,144 +92,42 @@
 										</tr>
 								</tbody>
 							</table>
-							<div class="col-xs-6 col-sm-6">
-								<div class="pull-left">
-									<form class="form-inline top1">
-										<div class="form-group">
-											<span for="viewby" class="text text-help">{{'PAGINATION-ROWSXPAGE' | translate}}&nbsp;&nbsp;</span>
-											<select id="viewby" name="viewby" ng-init="provprojects.viewby = provprojects.pageNumberOptions[1]" class="form-control input-sm top05" ng-options="item.value for item in provprojects.pageNumberOptions" ng-model="provprojects.viewby" ng-change="provprojects.setItemsPerPage(provprojects.viewby)">
-												<!-- <option value="" disabled>5</option> -->
-											</select>
+							<div class="row">
+								<div class="col-xs-6 col-sm-6">
+									<div class="pull-left">
+										<form class="form-inline top1">
+											<div class="form-group">
+												<span for="viewby" class="text text-help">{{'PAGINATION-ROWSXPAGE' | translate}}&nbsp;&nbsp;</span>
+												<select id="viewby" name="viewby" ng-init="provprojects.viewby = provprojects.pageNumberOptions[1]" class="form-control input-sm top05" ng-options="item.value for item in provprojects.pageNumberOptions" ng-model="provprojects.viewby" ng-change="provprojects.setItemsPerPage(provprojects.viewby)">
+													<!-- <option value="" disabled>5</option> -->
+												</select>
 
-										</div>
-									</form>
+											</div>
+										</form>
+									</div>
+								</div>
+								<div class="col-xs-6 col-sm-6">
+									<div class="pull-right">
+										<ul
+											uib-pagination
+											class="pagination-sm"
+											force-ellipses="true"
+											first-text="{{'PAGINATION-START' | translate}}"
+											last-text="Final"
+											previous-text="Anerior"
+											next-text="Següent"
+											total-items="provprojects.totalItems"
+											items-per-page="provprojects.itemsPerPage"
+											num-pages="provprojects.numPages"
+											max-size="provprojects.maxSize"
+											boundary-links="true"
+											direction-links="false"
+											ng-model="provprojects.currentPage"
+											ng-change="provprojects.pageChanged()"></ul>
+									</div>
 								</div>
 							</div>
-							<div class="col-xs-6 col-sm-6">
-								<div class="pull-right">
-									<ul
-										uib-pagination
-										class="pagination-sm"
-										force-ellipses="true"
-										first-text="{{'PAGINATION-START' | translate}}"
-										last-text="Final"
-										previous-text="Anerior"
-										next-text="Següent"
-										total-items="provprojects.totalItems"
-										items-per-page="provprojects.itemsPerPage"
-										num-pages="provprojects.numPages"
-										max-size="provprojects.maxSize"
-										boundary-links="true"
-										direction-links="false"
-										ng-model="provprojects.currentPage"
-										ng-change="provprojects.pageChanged()"></ul>
-
-								</div>
-							</div>
-
-
-
 							<span us-spinner="{radius:30, width:8, length: 16}" spinner-key="spinner-1"></span>
 						</div>
 					</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <div class="col-lg-6" style="margin-top: 9em">
-	<div class="panel panel-default">
-		<div class="panel-heading"><h3>Holaaaa</h3></div>
-		<div class="panel-body">
-			<table class="table table-condensed" style="border-collapse:collapse;">
-				<thead>
-					<tr><th>&nbsp;</th>
-					<th>Job Name</th>
-					<th>Description</th>
-					<th>Provider Name</th>
-					<th>Region</th>
-					<th>Status</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr data-toggle="collapse" data-target="#demo1" class="accordion-toggle">
-					<td><button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-eye-open"></span></button></td>
-					<td>OBS Name</td>
-					<td>OBS Description</td>
-					<td>hpcloud</td>
-					<td>nova</td>
-					<td> created</td>
-				</tr>
-				<tr>
-					<td colspan="12" class="hiddenRow">
-						<div class="accordian-body collapse" id="demo1">
-							<table class="table table-striped">
-								<thead>
-									<tr><td><a href="WorkloadURL">Workload link</a></td><td>Bandwidth: Dandwidth Details</td><td>OBS Endpoint: end point</td></tr>
-									<tr><th>Access Key</th><th>Secret Key</th><th>Status </th><th> Created</th><th> Expires</th><th>Actions</th></tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>access-key-1</td>
-										<td>secretKey-1</td>
-										<td>Status</td>
-										<td>some date</td>
-										<td>some date</td>
-										<td>
-											<a href="#" class="btn btn-default btn-sm">
-												<i class="glyphicon glyphicon-cog"></i>
-											</a>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</td>
-				</tr>
-				<tr data-toggle="collapse" data-target="#demo2" class="accordion-toggle">
-					<td><button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-eye-open"></span></button></td>
-					<td>OBS Name</td>
-					<td>OBS Description</td>
-					<td>hpcloud</td>
-					<td>nova</td>
-					<td> created</td>
-				</tr>
-				<tr>
-					<td colspan="6" class="hiddenRow"><div id="demo2" class="accordian-body collapse">Demo2</div></td>
-				</tr>
-				<tr data-toggle="collapse" data-target="#demo3" class="accordion-toggle">
-					<td><button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-eye-open"></span></button></td>
-					<td>OBS Name</td>
-					<td>OBS Description</td>
-					<td>hpcloud</td>
-					<td>nova</td>
-					<td> created</td>
-				</tr>
-				<tr>
-					<td colspan="6" class="hiddenRow"><div id="demo3" class="accordian-body collapse">Demo3</div></td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-</div>
-</div> -->
-
-
-
-
-
-
-
-
 		</div>

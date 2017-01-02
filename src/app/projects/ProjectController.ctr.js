@@ -72,6 +72,14 @@
 					toastr.error('Hi ha hagut un errror al obtenir els projectes...', 'Hi ha un problema');
 				} else {
 					vm.allClientProjects = response.data.result;
+
+					//clientprojects table paginations
+					vm.totalItems = vm.allClientProjects.length;
+					vm.numPages = Math.ceil(vm.allClientProjects.length/vm.viewby);
+					vm.pageNumberOptionsClient = vm.pageNumberOptions;
+					vm.pageNumberOptionsClient.push({value: vm.totalItems, name: "Tots"});
+
+
 				}
 			});
 			progressbar.complete();
