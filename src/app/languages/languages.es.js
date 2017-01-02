@@ -121,10 +121,13 @@
 					'EDIT-USER-TITLE': 'Editar Usuario',
 					'EDIT-USER-SAVEDATA': 'Guardar Datos',
 					'SRV-DETAIL-MSG': 'Es necesario cuenta de Cliente per consumir este Servicio',
-					'FILTER-PLACEHOLDER-USERS': 'Filtrar Usuarios',
+					'FILTER-PLACEHOLDER-USERS': 'Filtrar por dato',
 					//publicar Servei
 					'PUBL-SRV-TITLE': 'Publicar Servicio',
-					'PUBL-SRV-BTN': 'Publicar Nuevo Servicio'
+					'PUBL-SRV-BTN': 'Publicar Nuevo Servicio',
+					'PAGINATION-START': 'Inicio',
+					'PAGINATION-END': 'Final',
+					'PAGINATION-ROWSXPAGE': 'Items'
 
 
 				});

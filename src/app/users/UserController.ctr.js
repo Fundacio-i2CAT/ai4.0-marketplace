@@ -17,14 +17,13 @@
 		vm.allUsers=[];
 
 		vm.sortType;
-		vm.sortReverse = true;
-
+		vm.sortReverse = false;
 
 		//table pagination
 		vm.viewby = 5;
 		vm.currentPage = 1;
 		vm.itemsPerPage = vm.viewby;
-		vm.maxSize = 8;
+		vm.maxSize = 5;
 		vm.numPages;
 		vm.setPage = function(pageNum){
 			vm.currentPage = pageNum;
@@ -39,10 +38,7 @@
 			vm.currentPage = 1;
 			vm.numPages=Math.ceil(vm.allUsers.length/num);
 		}
-
-
-
-
+		//end table pagination
 
 		function setActive(userlist) {
 			angular.forEach(userlist, function (user) {
@@ -53,7 +49,6 @@
 				}
 			});
 		}
-
 
 		//get all users
 		vm.getAllUsers = function(){
@@ -154,7 +149,6 @@
 			});
 		};
 
-
 		vm.goUserDetail = function(user) {
 			vm.userDetail = user;
 			ngDialog.open({
@@ -164,8 +158,6 @@
 				controller: 'UserController',
 				data: user
 			});
-
-
 		}
 
 		vm.editUser = function(user) {

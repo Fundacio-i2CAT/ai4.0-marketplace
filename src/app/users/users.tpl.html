@@ -1,9 +1,3 @@
-<style>
-<!-- .pagination>li>a, select option {
-  color: #446e9b;
-} -->
-
-</style>
 
 <div class="container">
   <div class="page-header">
@@ -17,121 +11,147 @@
   </div>
   <div class="row">
     <div class="col-xs-12">
-			<div class="table-responsive">
-	      <table class="table table-hover table-striped" id="userstable">
-	        <thead>
-	          <tr>
-	            <th>
+      <div class="table-responsive">
+        <table class="table table-hover table-striped" id="userstable">
+          <thead>
+            <tr>
+              <th>
                 <a ng-click="users.sortType = 'name'; users.sortReverse = !users.sortReverse">
                   {{'REG-NAME' | translate}}
                   <span ng-show="users.sortType == 'name' && !users.sortReverse" class="fa fa-sort-alpha-asc"></span>
                   <span ng-show="users.sortType == 'name' && users.sortReverse" class="fa fa-sort-alpha-desc"></span>
-                <a/>
-              </th>
-	            <th class="centered">
-                <a ng-click="users.sortType = 'surname'; users.sortReverse = !users.sortReverse">
-                  {{'REG-SURNAME' | translate}}
-                  <span ng-show="users.sortType == 'surname' && !users.sortReverse" class="fa fa-sort-alpha-asc"></span>
-                  <span ng-show="users.sortType == 'surname' && users.sortReverse" class="fa fa-sort-alpha-desc"></span>
-                <a/>
-              </th>
-							<th class="centered">
-                <a ng-click="users.sortType = 'company'; users.sortReverse = !users.sortReverse">
-                  {{'REG-COMPANY' | translate}}
-                  <span ng-show="users.sortType == 'company' && !users.sortReverse" class="fa fa-sort-alpha-asc"></span>
-                  <span ng-show="users.sortType == 'company' && users.sortReverse" class="fa fa-sort-alpha-desc"></span>
-                <a/>
-              </th>
-							<th class="centered">
-                <a ng-click="users.sortType = 'jobPosition'; users.sortReverse = !users.sortReverse">
-                  {{'REG-COMPANY-POSITION' | translate}}
-                  <span ng-show="users.sortType == 'jobPosition' && !users.sortReverse" class="fa fa-sort-alpha-asc"></span>
-                  <span ng-show="users.sortType == 'jobPosition' && users.sortReverse" class="fa fa-sort-alpha-desc"></span>
-                <a/>
-              </th>
-							<th class="centered">
-                <a ng-click="users.sortType = 'providerRole'; users.sortReverse = !users.sortReverse">
-                  {{'CATAL-PROVEIDOR' | translate}}
-                  <span ng-show="users.sortType == 'providerRole' && !users.sortReverse" class="fa fa-sort-amount-desc"></span>
-                  <span ng-show="users.sortType == 'providerRole' && users.sortReverse" class="fa fa-sort-amount-asc"></span>
-                <a/>
-              </th>
-							<th class="centered">
-                <a ng-click="users.sortType = 'clientRole'; users.sortReverse = !users.sortReverse">
-                  {{'SRV-CLIENT' | translate}}
-                  <span ng-show="users.sortType == 'clientRole' && !users.sortReverse" class="fa fa-sort-amount-desc"></span>
-                  <span ng-show="users.sortType == 'clientRole' && users.sortReverse" class="fa fa-sort-amount-asc"></span>
-                <a/>
-              </th>
-	            <th class="centered">
-                <a ng-click="users.sortType = 'phone'; users.sortReverse = !users.sortReverse">
-                  {{'REG-COMPANY-PHONE' | translate}}
-                  <span ng-show="users.sortType == 'phone' && !users.sortReverse" class="fa fa-sort-amount-desc"></span>
-                  <span ng-show="users.sortType == 'phone' && users.sortReverse" class="fa fa-sort-amount-asc"></span>
-                <a/>
-              </th>
-							<th class="centered">
-                <a ng-click="users.sortType = 'activated'; users.sortReverse = !users.sortReverse">
-                  {{'SRV-ESTAT' | translate}}
-                  <span ng-show="users.sortType == 'activated' && !users.sortReverse" class="fa fa-sort-amount-desc"></span>
-                  <span ng-show="users.sortType == 'activated' && users.sortReverse" class="fa fa-sort-amount-asc"></span>
-                <a/>
-              </th>
-							<th class="centered">
-                {{'SRV-ACCIONS' | translate}}
-              </th>
-	          </tr>
-	        </thead>
-	        <tbody>
-	          <!-- <tr ng-repeat="user in users.allUsers | orderBy:users.sortType:users.sortReverse| filter: searchingWord | limitTo : 5"> -->
-            <tr ng-repeat="user in users.allUsers.slice(((users.currentPage-1)*users.itemsPerPage), ((users.currentPage)*users.itemsPerPage)) | orderBy:users.sortType:users.sortReverse | filter: searchingWord">
-	            <td ng-click="users.goUserDetail(user)">{{user.name}}</td>
-	            <td ng-click="users.goUserDetail(user)" class="centered">{{user.surname}}</td>
-							<td ng-click="users.goUserDetail(user)" class="centered">{{user.company}}</td>
-							<td ng-click="users.goUserDetail(user)" class="centered">{{user.jobPosition}}</td>
-							<td ng-click="users.goUserDetail(user)" class="centered text"><span class="label" ng-class="user.providerRole ? 'label-primary' : 'label-default'"><i class="fa" ng-class="user.providerRole ? 'fa-check' : 'fa-close'"></i></span></td>
-							<td ng-click="users.goUserDetail(user)" class="centered text"><span class="label" ng-class="user.clientRole ? 'label-primary' : 'label-default'"><i class="fa" ng-class="user.clientRole ? 'fa-check' : 'fa-close'"></i></span></td>
-	            <td ng-click="users.goUserDetail(user)" class="centered">{{user.phone}}</td>
-	            <td ng-click="users.goUserDetail(user)" class="centered">
-	              <span ng-if="user.activated" class="bg-primary fon12" style="font-size:13px">{{'ACTIU' | translate}}</span>
-                <span ng-if="!user.activated" class="bg-danger fon12" style="font-size:13px">{{'PARAT' | translate}}</span>
-	            </td>
-							<td class="centered">
-								<button ng-click="users.editUser(user)" type="button" class="btn btn-default btn-xs"><i class="fa fa-pencil"></i></button>
-								<button ng-click="users.goDeleteUser(user)" type="button" class="btn btn-default btn-xs"><i class="fa fa-trash"></i></button>
-							</td>
-	          </tr>
-	        </tbody>
-	      </table>
-        <div class="col-xs-12">
-          <div class="pull-left">
-            <form class="form-inline">
-              <div class="form-group">
-                <label for="viewby" style="vertical-align:bottom;">Items per pàgina&nbsp;&nbsp;</label>
-                <select id="viewby" name="viewby" class="form-control input-sm top1" ng-model="users.viewby" ng-change="users.setItemsPerPage(users.viewby)">
-                  <option value="3">3</option>
-                  <option value="5">5</option>
-                  <option value="10">10</option>
-                  <option value="{{users.totalItems}}">Tots</option>
+                  <a/>
+                </th>
+                <th class="centered">
+                  <a ng-click="users.sortType = 'surname'; users.sortReverse = !users.sortReverse">
+                    {{'REG-SURNAME' | translate}}
+                    <span ng-show="users.sortType == 'surname' && !users.sortReverse" class="fa fa-sort-alpha-asc"></span>
+                    <span ng-show="users.sortType == 'surname' && users.sortReverse" class="fa fa-sort-alpha-desc"></span>
+                    <a/>
+                  </th>
+                  <th class="centered">
+                    <a ng-click="users.sortType = 'company'; users.sortReverse = !users.sortReverse">
+                      {{'REG-COMPANY' | translate}}
+                      <span ng-show="users.sortType == 'company' && !users.sortReverse" class="fa fa-sort-alpha-asc"></span>
+                      <span ng-show="users.sortType == 'company' && users.sortReverse" class="fa fa-sort-alpha-desc"></span>
+                      <a/>
+                    </th>
+                    <th class="centered">
+                      <a ng-click="users.sortType = 'jobPosition'; users.sortReverse = !users.sortReverse">
+                        {{'REG-COMPANY-POSITION' | translate}}
+                        <span ng-show="users.sortType == 'jobPosition' && !users.sortReverse" class="fa fa-sort-alpha-asc"></span>
+                        <span ng-show="users.sortType == 'jobPosition' && users.sortReverse" class="fa fa-sort-alpha-desc"></span>
+                        <a/>
+                      </th>
+                      <th class="centered">
+                        <a ng-click="users.sortType = 'providerRole'; users.sortReverse = !users.sortReverse">
+                          {{'CATAL-PROVEIDOR' | translate}}
+                          <span ng-show="users.sortType == 'providerRole' && !users.sortReverse" class="fa fa-sort-amount-desc"></span>
+                          <span ng-show="users.sortType == 'providerRole' && users.sortReverse" class="fa fa-sort-amount-asc"></span>
+                          <a/>
+                        </th>
+                        <th class="centered">
+                          <a ng-click="users.sortType = 'clientRole'; users.sortReverse = !users.sortReverse">
+                            {{'SRV-CLIENT' | translate}}
+                            <span ng-show="users.sortType == 'clientRole' && !users.sortReverse" class="fa fa-sort-amount-desc"></span>
+                            <span ng-show="users.sortType == 'clientRole' && users.sortReverse" class="fa fa-sort-amount-asc"></span>
+                            <a/>
+                          </th>
+                          <th class="centered">
+                            <a ng-click="users.sortType = 'phone'; users.sortReverse = !users.sortReverse">
+                              {{'REG-COMPANY-PHONE' | translate}}
+                              <span ng-show="users.sortType == 'phone' && !users.sortReverse" class="fa fa-sort-amount-desc"></span>
+                              <span ng-show="users.sortType == 'phone' && users.sortReverse" class="fa fa-sort-amount-asc"></span>
+                              <a/>
+                            </th>
+                            <th class="centered">
+                              <a ng-click="users.sortType = 'activated'; users.sortReverse = !users.sortReverse">
+                                {{'SRV-ESTAT' | translate}}
+                                <span ng-show="users.sortType == 'activated' && !users.sortReverse" class="fa fa-sort-amount-desc"></span>
+                                <span ng-show="users.sortType == 'activated' && users.sortReverse" class="fa fa-sort-amount-asc"></span>
+                                <a/>
+                              </th>
+                              <th class="centered">
+                                {{'SRV-ACCIONS' | translate}}
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <!-- <tr ng-repeat="user in users.allUsers | orderBy:users.sortType:users.sortReverse| filter: searchingWord | limitTo : 5"> -->
+                            <tr ng-repeat="user in users.allUsers.slice(((users.currentPage-1)*users.itemsPerPage), ((users.currentPage)*users.itemsPerPage)) | orderBy:users.sortType:users.sortReverse | filter: searchingWord">
+                              <td ng-click="users.goUserDetail(user)">{{user.name}}</td>
+                              <td ng-click="users.goUserDetail(user)" class="centered">{{user.surname}}</td>
+                              <td ng-click="users.goUserDetail(user)" class="centered">{{user.company}}</td>
+                              <td ng-click="users.goUserDetail(user)" class="centered">{{user.jobPosition}}</td>
+                              <td ng-click="users.goUserDetail(user)" class="centered text">
+                                <span class="label" ng-class="user.providerRole ? 'label-primary' : 'label-default'">
+                                  <i class="fa" ng-class="user.providerRole ? 'fa-check' : 'fa-close'"></i>
+                                </span>
+                              </td>
+                              <td ng-click="users.goUserDetail(user)" class="centered text">
+                                <span class="label" ng-class="user.clientRole ? 'label-primary' : 'label-default'">
+                                  <i class="fa" ng-class="user.clientRole ? 'fa-check' : 'fa-close'"></i>
+                                </span>
+                              </td>
+                              <td ng-click="users.goUserDetail(user)" class="centered">{{user.phone}}</td>
+                              <td ng-click="users.goUserDetail(user)" class="centered">
+                                <span ng-if="user.activated" class="bg-primary fon12" style="font-size:13px">{{'ACTIU' | translate}}</span>
+                                <span ng-if="!user.activated" class="bg-danger fon12" style="font-size:13px">{{'PARAT' | translate}}</span>
+                              </td>
+                              <td class="centered">
+                                <button ng-click="users.editUser(user)" type="button" class="btn btn-default btn-xs">
+                                  <i class="fa fa-pencil"></i>
+                                </button>
+                                <button ng-click="users.goDeleteUser(user)" type="button" class="btn btn-default btn-xs">
+                                  <i class="fa fa-trash"></i>
+                                </button>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <div class="col-xs-6 col-sm-6">
+                          <div class="pull-left">
+                            <form class="form-inline top1">
+                              <div class="form-group">
+                                <span for="viewby" class="text text-help">{{'PAGINATION-ROWSXPAGE' | translate}}&nbsp;&nbsp;</span>
+                                <select style="width:60px" ng-init="users.viewby" id="viewby" name="viewby" class="form-control input-sm top05" ng-model="users.viewby" ng-change="users.setItemsPerPage(users.viewby)">
+                                  <option value="" disabled selected>Select your option</option>
+                                  <option value="3">3</option>
+                                  <option value="5">5</option>
+                                  <option value="10">10</option>
+                                  <option value="{{users.totalItems}}">Tots</option>
+                                </select>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-6">
+                          <div class="pull-right">
+                            <ul
+                              uib-pagination
+                              class="pagination-sm"
+                              force-ellipses="true"
+                              first-text="{{'PAGINATION-START' | translate}}"
+                              last-text="Final"
+                              previous-text="Anerior"
+                              next-text="Següent"
+                              total-items="users.totalItems"
+                              items-per-page="users.itemsPerPage"
+                              num-pages="users.numPages"
+                              max-size="users.maxSize"
+                              boundary-links="true"
+                              direction-links="false"
+                              ng-model="users.currentPage"
+                              ng-change="users.pageChanged()"></ul>
 
-                </select>
-              </div>
-            </form>
-          </div>
-
-         <div class="pull-right">
-           <ul uib-pagination total-items="users.totalItems" items-per-page="users.itemsPerPage" num-pages="users.numPages" max-size="users.maxSize" boundary-links="true" direction-links="true" ng-model="users.currentPage" ng-change="users.pageChanged()"></ul>
-
-         </div>
-           </div>
-	    </div>
-    </div>
-  </div>
-  <!-- <pre>allUsers.length  {{users.allUsers.length}}  ______ numPages {{users.numPages}}</pre>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- <pre>allUsers.length  {{users.allUsers.length}}  ______ numPages {{users.numPages}}</pre>
   <pre>{{users.allUsers | json}}</pre> -->
-
-
-	    </div>
-    </div>
-  </div>
-</div>
+                </div>
+              </div>
+            </div>
+          </div>
