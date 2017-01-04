@@ -60,10 +60,10 @@
 				if (response.status == 200) {
 					setActive(response.data.result);
 					vm.allUsers = response.data._embedded.people;
-					var mockusers = UsersMockFacltory;
-					angular.forEach(mockusers, function (each, index){
-						vm.allUsers.push(each);
-					});
+					// var mockusers = UsersMockFacltory;
+					// angular.forEach(mockusers, function (each, index){
+					// 	vm.allUsers.push(each);
+					// });
 
 					//table pagination
 					vm.totalItems = vm.allUsers.length;
@@ -194,8 +194,14 @@
 		};
 
 		vm.doDeleteUser = function(user) {
-			toastr.info('Sorry, this functionality is not implemented yet. Take a look at the console.', 'Nice To have, delete user!');
-			$log.log('userToRemove::',user);
+			UserFactory.deleteUser(user.id).then(function(response){
+				$log.log('deleteUser::::', response);
+				toastr.info('Usuari eliminat correctament','Eliminar Usuari');
+				vm.getAllUsers();
+			}, function(error){
+				toastr.error('S\'ha produït un error i no s\'ha pogut eliminar l\'usuari','Error eliminant Usuari');
+				$log.log('deleteUser error:::', error);
+			});
 			ngDialog.close();
 		};
 

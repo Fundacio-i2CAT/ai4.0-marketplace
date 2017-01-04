@@ -23,6 +23,7 @@
 		factory.deleteSession = deleteSession;
 		factory.getUserByName = getUserByName;
 		factory.getUserById = getUserById;
+		factory.deleteUser = deleteUser;
 
 		//get all users
 		function getAllUsers () {
@@ -62,6 +63,13 @@
 			var url = [host,'api/users/', id].join('');
 			return $http.get(url).then(handleSuccess, handleError);
 		}
+
+		//deleteUser
+		function deleteUser(id) {
+			var url = [host, 'api/crud/users/', id].join('');
+			return $http.delete(url).then(handleSuccess, handleError);
+		}
+
 
 
 		///////////////////////////////   private functions   ///////////////////////////////////////////////////
