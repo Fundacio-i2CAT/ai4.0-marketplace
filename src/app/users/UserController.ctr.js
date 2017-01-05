@@ -172,9 +172,12 @@
 			});
 		};
 
-		vm.updateUser = function(user) {
-			toastr.info('Sorry, this functionality is not implemented yet. Take a look at the console.', 'Nice To have edit user!');
-			$log.log('userToEdit::',user);
+		vm.updateUser = function(model) {
+			UserFactory.updateUser(model).then(function(response){
+				$log.log(response);
+			}, function (error){
+				$log.log(error);
+			});
 			ngDialog.close();
 		};
 

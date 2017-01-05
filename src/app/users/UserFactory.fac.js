@@ -24,6 +24,7 @@
 		factory.getUserByName = getUserByName;
 		factory.getUserById = getUserById;
 		factory.deleteUser = deleteUser;
+		factory.updateUser = updateUser;
 
 		//get all users
 		function getAllUsers () {
@@ -70,7 +71,11 @@
 			return $http.delete(url).then(handleSuccess, handleError);
 		}
 
-
+		//updateUser
+		function updateUser(user) {
+			var url = [host, 'api/crud/users/', user.id].join('');
+			return $http.put(url, user).then(handleSuccess, handleError);
+		}
 
 		///////////////////////////////   private functions   ///////////////////////////////////////////////////
 		function handleSuccess(response){
