@@ -18,11 +18,9 @@
 		}
 
 		function setUser(user) {
-
 			currentUser.user = user;
 			currentUser.role = user.role;
 			currentUser.user.provider_id = user.id;
-
 
 			LocalStorageFactory.setValue('user', currentUser);
 			$rootScope.$broadcast('userrole', currentUser);
@@ -36,29 +34,6 @@
 			if (currentUser.role === ROLES.admin.role) {
 				$location.path(ROLES.admin.state);
 			}
-
-
-			//temporal hasta que back devuelva el objeto user entero after login
-			//obtener el role del usuario loggeado
-			// var temp = user;
-			// UserFactory.getUserById(temp.id)
-			// 	.then(function (response){
-			// 		currentUser.user = temp;
-			// 		currentUser.user.name = response.data.user_name;
-			// 		currentUser.role = temp.role;
-			// 		currentUser.user.provider_id = response.data.partner._id;
-			// 		LocalStorageFactory.setValue('user', currentUser);
-			// 		$rootScope.$broadcast('userrole', currentUser);
-			//
-			// 		if (currentUser.role === ROLES.provider.role) {
-			// 			$location.path(ROLES.provider.state);
-			// 		}
-			// 		if (currentUser.role === ROLES.client.role) {
-			// 			$location.path(ROLES.client.state);
-			// 		}
-			//
-			// 	});
-			//final de temporal
 		}
 
 		function setLocalStorageCurrentUser(user) {
@@ -86,12 +61,12 @@
 
 
 		return {
-			getCurrentUser:				getCurrentUser,
-			setUser:					setUser,
-			removeCurrentUser:			removeCurrentUser,
-			setProviderRole:			setProviderRole,
-			getRole:					getRole,
-			setClientRole:				setClientRole,
+			getCurrentUser:							getCurrentUser,
+			setUser:										setUser,
+			removeCurrentUser:					removeCurrentUser,
+			setProviderRole:						setProviderRole,
+			getRole:										getRole,
+			setClientRole:							setClientRole,
 			setLocalStorageCurrentUser:	setLocalStorageCurrentUser
 		};
 
