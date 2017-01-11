@@ -5,15 +5,16 @@
 		.module('marketplace')
 		.constant('ROLES', {
 			provider: {
-				role: 'Partner.Provider',
+				role: 'User.Provider',
 				state: 'provprojects'
 			},
 			client: {
-				role: 'Partner.Client',
+				role: 'User.Client',
 				state: 'clientprojects'
 			},
 			admin: {
-				role: 'Admin'
+				role: 'User.Administrator',
+				state: 'users'
 			}
 		});
 
