@@ -33,21 +33,21 @@
         templateUrl: 'app/projects/provider/index-prov.tpl.html',
         controller: 'ProjectController',
         controllerAs: 'provprojects',
-        need: 'Partner.Provider'
+        need: 'User.Provider'
       })
       .state('publishsrv', {
         url: '/publishsrv',
         templateUrl: 'app/projects/publish_service/publishsrv.tpl.html',
         controller: 'PublishSrvController',
         controllerAs: 'publishsrv',
-        need: 'Partner.Provider'
+        need: 'User.Provider'
       })
       .state('clientprojects', {
         url: '/clientprojects',
         templateUrl: 'app/projects/client/index-client.tpl.html',
         controller: 'ProjectController',
         controllerAs: 'clientprojects'/*,
-        need: 'Partner.Client'*/
+        need: 'User.Client'*/
       })
       .state('project-new', {
         url: '/clientproject/new',
@@ -73,7 +73,7 @@
         templateUrl: 'app/projects/provider/provinstances.tpl.html',
         controller: 'ProvInstancesController',
         controllerAs: 'provinstances',
-        need: 'Partner.Provider'
+        need: 'User.Provider'
       })
       .state('login', {
         url: '/login',
@@ -92,7 +92,7 @@
         templateUrl: 'app/users/users.tpl.html',
         controller: 'UserController',
         controllerAs: 'users'
-        // need: 'Partner.Provider'
+        // need: 'User.Provider'
       })
       // .state('tatami', {
       //   url: '/tatami',
