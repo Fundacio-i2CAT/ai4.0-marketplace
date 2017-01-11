@@ -18,15 +18,15 @@
 					password: vm.credentials.password
 				};
 				UserFactory.openSession(user).then(function(response){
-					if (response.data.status === 'fail') {
-						toastr.error("L'usuari i el password no coincideixen.", 'Accés incorrecte');
+					if (response.status === 401) {
+						toastr.error("L'usuari o el password no coincideixen.", 'Accés incorrecte');
 						vm.credentials = {};
 					} else {
 						//local storage and broadcoast userrole
 						CurrentUserFactory.setUser(response.data);
-						toastr.success("Hola, " + user.user_name, 'Accés correcte');
+						toastr.success("Hola, " + response.data.user_name, 'Accés correcte');
 						$location.path('catalog');
-					}	
+					}
 				});
 			};
 
