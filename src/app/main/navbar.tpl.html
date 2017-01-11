@@ -15,9 +15,9 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><a class="toclose" ui-sref="catalog">{{ 'CATALEG-NAV' | translate }}</a></li>
-        <li><a ng-if="menuUser.role==='Partner.Provider'" class="toclose" ui-sref="provprojects">{{ 'SERVEIS-NAV' | translate }}</a></li>
-        <li><a ng-if="menuUser.role==='Partner.Client'" class="toclose" ui-sref="clientprojects">{{ 'PROJECTES-NAV' | translate }}</a></li>
-        <li><a class="toclose" ui-sref="users">{{ 'USERS-NAV' | translate }}</a></li>
+        <li><a ng-if="menuUser.role==='User.Provider'" class="toclose" ui-sref="provprojects">{{ 'SERVEIS-NAV' | translate }}</a></li>
+        <li><a ng-if="menuUser.role==='User.Client'" class="toclose" ui-sref="clientprojects">{{ 'PROJECTES-NAV' | translate }}</a></li>
+        <li><a ng-if="menuUser.role==='User.Administrator'" class="toclose" ui-sref="users">{{ 'USERS-NAV' | translate }}</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li ng-click="setLanguage('CAT')"><a class="lang catala">CAT</a></li>

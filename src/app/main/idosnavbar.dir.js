@@ -5,7 +5,7 @@
 		.directive('idosnavbar', idosnavbar);
 
 	idosnavbar.$inject = ['localStorageService', 'CurrentUserFactory', '$translate'];
-	
+
 	/**
 	* Directiva que proporciona el template del header de la aplicacion
 	*/
@@ -36,7 +36,7 @@
 				});
 
 				var menuUser = {
-					isLogged : null	
+					isLogged : null
 				};
 
 				scope.isUserSession = function() {
@@ -49,7 +49,7 @@
 						scope.menuUser = menuUser;
 					}
 				}
-				
+
 				scope.$on('userrole', function (event, data) {
 					menuUser = data;
 					if (menuUser.user && menuUser.role) {
@@ -58,7 +58,7 @@
 					} else {
 						scope.menuUser = {};
 					}
-					
+
 				});
 
 				scope.logout = function () {
@@ -70,7 +70,7 @@
 				};
 
 				scope.isUserSession();
-	
+
 			}
 		};
 		return directive;
