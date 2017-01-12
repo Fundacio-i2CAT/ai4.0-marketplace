@@ -42,7 +42,6 @@
 				scope.isUserSession = function() {
 					var user = localStorageService.get('user');
 					if (user) {
-						CurrentUserFactory.setLocalStorageCurrentUser(user);
 						menuUser.user = user.user;
 						menuUser.role = user.role;
 						menuUser.isLogged = true;
