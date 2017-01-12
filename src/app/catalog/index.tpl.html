@@ -6,61 +6,55 @@
 		<ul class="nav nav-tabs">
 			<li class="active"><a data-target="#all" data-toggle="tab">{{ 'CATAL-TOTS' | translate }}</a></li>
 			<li ng-click="catalog.getAllServicesByService_type(type.name)" ng-repeat="type in catalog.allTypes"><a data-target="#{{type.name}}" data-toggle="tab">{{catalog.getDescriptionServiceType(type.name)}}</a></li>
-			
+
 		</ul>
 	</div>
 	<div class="tab-content">
 		<!-- tab1  -->
 		<div class="tab-pane fade in active difuminar" id="all"> <!-- inici tab1  -->
-		<div class="pull-left catalog-item" ng-repeat="one in catalog.allServices">
+		<div class="pull-left catalog-item" ng-repeat="one in catalog.allServices | orderBy: '-created_at'">
 			<div class="panel panel-default panel-catalog" ng-click="catalog.seeDetail(one._id)">
 				<div show-hover class="panel-body cata">
 					<h3 class="panel-title overf"><strong>{{one.name}}</strong></h3>
 					<br/>
-					
+
 					<div style="height: 65px; margin-bottom: 5px;" class="sumary kkk">
 						<p>{{one.summary}}</p>
 					</div>
 					<div><strong>{{ 'CATAL-PROVEIDOR' | translate }} </strong>{{one.provider.name}}</div>
-					
+
 				</div>
 				<div class="panel-footer">
 					<span class="label" ng-class="(one.service_type === 'iss') ? 'label-primary' : 'label-danger'">{{catalog.getDescriptionServiceType(one.service_type)}}</span>
-					<!-- <span ng-repeat="sec in one.sectors">
-						<span class="label label-default">{{sec}}</span>
-					</span> -->
 					<img height="25" class="pull-right" ng-src="assets/images/Logos/{{catalog.getProviderImage(one.provider.name)}}" alt="">
 				</div>
 			</div>
 		</div>
 		</div> <!--final tab1  -->
-		
+
 		<!-- tab2  -->
 		<div class="tab-pane difuminar" id="app"> <!-- inici tab2 -->
-		<div class="catalog-item pull-left" ng-repeat="one in catalog.genericServices">
+		<div class="catalog-item pull-left" ng-repeat="one in catalog.genericServices | orderBy: '-created_at'">
 			<div class="panel panel-danger panel-catalog" ng-click="catalog.seeDetail(one._id)">
 				<div show-hover class="panel-body cata">
 					<h3 class="panel-title overf"><strong>{{one.name}}</strong></h3>
 					<br/>
-					
+
 					<div style="height: 65px; margin-bottom: 5px;" class="sumary kkk">
 						<p>{{one.summary}}</p>
 					</div>
 					<div><strong>{{ 'CATAL-PROVEIDOR' | translate }} </strong>{{one.provider.name}}</div>
-					
+
 				</div>
 				<div class="panel-footer">
 					<span class="label" ng-class="(one.service_type === 'iss') ? 'label-primary' : 'label-danger'">{{catalog.getDescriptionServiceType(one.service_type)}}</span>
-					<!-- <span ng-repeat="sec in one.sectors">
-						<span class="label label-default">{{sec}}</span>
-					</span> -->
-					<img height="25" class="pull-right" ng-src="assets/images/Logos/{{catalog.getProviderImage(one.provider.name)}}" alt="">
+					<img height="25" class="pull-right" ng-src="assets/images/Logos/{{catalog.getProviderImage(one.provider.name)}}" alºt="">
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="tab-pane" id="iss">
-		<div class="catalog-item pull-left" ng-repeat="one in catalog.genericServices">
+		<div class="catalog-item pull-left" ng-repeat="one in catalog.genericServices | orderBy: '-created_at'">
 			<div class="panel panel-primary panel-catalog" ng-click="catalog.seeDetail(one._id)">
 				<div show-hover class="panel-body cata">
 					<h3 style="color: #666" class="panel-title overf"><strong>{{one.name}}</strong></h3>
@@ -69,7 +63,7 @@
 						<p>{{one.summary}}</p>
 					</div>
 					<div><strong>{{ 'CATAL-PROVEIDOR' | translate }} </strong>{{one.provider.name}}</div>
-					
+
 				</div>
 				<div class="panel-footer">
 					<span class="label" ng-class="(one.service_type === 'iss') ? 'label-primary' : 'label-danger'">{{catalog.getDescriptionServiceType(one.service_type)}}</span>

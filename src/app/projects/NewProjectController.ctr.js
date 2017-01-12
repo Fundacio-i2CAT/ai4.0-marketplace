@@ -5,13 +5,13 @@
 		.module('marketplace')
 		.controller('NewProjectController', NewProjectController);
 
-		NewProjectController.$inject = ['toastr','CurrentUserFactory', 'ROLES', '$log', 'ServiceFactory', 'ProjectFactory', '$location', '$state'];
+		NewProjectController.$inject = ['toastr','LocalStorageFactory', 'ROLES', '$log', 'ServiceFactory', 'ProjectFactory', '$location', '$state'];
 
-		function NewProjectController(toastr, CurrentUserFactory, ROLES, $log, ServiceFactory, ProjectFactory, $location, $state) {
+		function NewProjectController(toastr, LocalStorageFactory, ROLES, $log, ServiceFactory, ProjectFactory, $location, $state) {
 			var vm = this;
 			vm.allServices = [];
 
-			var user = CurrentUserFactory.getCurrentUser();
+			var user = LocalStorageFactory.getValue('user');
 
 			var client_id;
 			var services = [];
