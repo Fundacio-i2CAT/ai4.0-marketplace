@@ -29,7 +29,7 @@
 		vm.setItemsPerPage = function(num) {
 			vm.itemsPerPage = num.value;
 			vm.currentPage = 1;
-			vm.numPages=Math.ceil(vm.allUsers.length/num.value);
+			vm.numPages=Math.ceil(vm.allClientProjects.length/num.value);
 			console.log(num);
 		}
 		//end table pagination
