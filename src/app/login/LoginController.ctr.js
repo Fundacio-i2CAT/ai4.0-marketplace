@@ -10,15 +10,18 @@
 		function LoginController ($location, toastr, CurrentUserFactory, UserFactory, LocalStorageFactory){
 			var vm = this;
 			vm.credentials = {};
+			vm.loginPressed = null;
 			// vm.paladire = null;
 
 			vm.doLogin = function (){
+				vm.loginPressed = true;
 				var user = {
 					user_name: vm.credentials.username,
 					password: vm.credentials.password
 				};
 				UserFactory.openSession(user).then(function(response){
 					if (response.status === 401) {
+						vm.loginPressed = false;
 						toastr.error("L'usuari o el password no coincideixen.", 'Accés incorrecte');
 						vm.credentials = {};
 					} else {

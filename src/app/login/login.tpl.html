@@ -17,12 +17,25 @@
 					<input type="password" ng-model="login.credentials.password" class="form-control" id="loginpassword" placeholder="{{ 'LOG-PASSWORD-PLACEHOLDER' | translate }}" required>
 
 				</div>
-				<button type="submit" class="btn btn-success btn-block" ng-disabled="logUser.$invalid">{{ 'LOG-LOGIN' | translate }}</button>
+				<button ng-if="!login.loginPressed" type="submit" class="btn btn-success btn-block" ng-disabled="logUser.$invalid">{{ 'LOG-LOGIN' | translate }}</button>
 				<br/>
-				<ul class="list list-unstyled">
-					<li class="pull-left"><a ui-sref="register" class="login-link"><strong>{{ 'LOG-CREATE-ACCOUNT' | translate }}</strong></a></li>
-					<!-- <li class="pull-right"><a ui-sref="forgotpass" class="login-link"><strong>{{ 'LOG-FORGOT-PASS' | translate }}</strong></a></li> -->
-				</ul>
+				<div class="row" ng-if="!login.loginPressed">
+					<div class="col-xs-12">
+						<ul class="list list-unstyled">
+							<li class="pull-left"><a ui-sref="register" class="login-link"><strong>{{ 'LOG-CREATE-ACCOUNT' | translate }}</strong></a></li>
+							<!-- <li class="pull-right"><a ui-sref="forgotpass" class="login-link"><strong>{{ 'LOG-FORGOT-PASS' | translate }}</strong></a></li> -->
+						</ul>
+					</div>
+				</div>
+				<div class="row difuminar" ng-if="login.loginPressed">
+					<div class="col-xs-12">
+						<div class="progress">
+						  <div class="progress-bar progress-bar-striped active" role="progressbar"
+						  aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+						  </div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</form>
