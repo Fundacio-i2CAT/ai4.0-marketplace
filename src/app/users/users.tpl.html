@@ -114,18 +114,9 @@
                             <form class="form-inline top1">
                               <div class="form-group">
                                 <span for="viewby" class="text text-help">{{'PAGINATION-ROWSXPAGE' | translate}}&nbsp;&nbsp;</span>
-                                <!-- <select ng-init="users.viewby" id="viewby" name="viewby" class="form-control input-sm top05" ng-model="users.viewby" ng-change="users.setItemsPerPage(users.viewby)">
-                                  <option value="" disabled selected>Select your option</option>
-                                  <option value="3">3</option>
-                                  <option value="5">5</option>
-                                  <option value="10">10</option>
-                                  <option value="{{users.totalItems}}">Tots</option>
-                                </select> -->
-
                                 <select id="viewby" name="viewby" ng-init="users.viewby = users.pageNumberOptions[1]" class="form-control input-sm top05" ng-options="item.value for item in users.pageNumberOptions" ng-model="users.viewby" ng-change="users.setItemsPerPage(users.viewby)">
                                   <!-- <option value="" disabled>5</option> -->
                                 </select>
-
                               </div>
                             </form>
                           </div>
@@ -154,8 +145,6 @@
                       </div>
                     </div>
                   </div>
-                  <!-- <pre>allUsers.length  {{users.allUsers.length}}  ______ numPages {{users.numPages}}</pre>
-  <pre>{{users.allUsers | json}}</pre> -->
                 </div>
               </div>
             </div>
