@@ -4,9 +4,9 @@
 	angular
 		.module('marketplace')
 		.controller('PublishSrvController', PublishSrvController);
-	PublishSrvController.$inject = ['$scope', '$state', 'toastr', 'fileUpload', 'CatalogFactory', 'ServiceFactory', 'ConnectionFactory', 'LocalStorageFactory', 'SaveImageDataService', 'ngDialog'];
+	PublishSrvController.$inject = ['$scope', '$state', 'toastr', 'fileUpload', 'CatalogFactory', 'ServiceFactory', 'ConnectionFactory', 'LocalStorageFactory', 'SaveImageDataService', 'ngDialog', 'InfrastructureFactory'];
 
-	function PublishSrvController($scope, $state, toastr, fileUpload, CatalogFactory, ServiceFactory, ConnectionFactory, LocalStorageFactory, SaveImageDataService, ngDialog) {
+	function PublishSrvController($scope, $state, toastr, fileUpload, CatalogFactory, ServiceFactory, ConnectionFactory, LocalStorageFactory, SaveImageDataService, ngDialog, InfrastructureFactory) {
 		var vm = this;
 		var host = ConnectionFactory.host;
 		vm.allTemplates = [];
@@ -15,7 +15,7 @@
 		vm.isLoadedImage = false;
 		vm.showbar = false;
 		vm.selectedRowId = null;
-
+		vm.iaasSelected = null;
 
 		vm.types = [{name: 'Number'}, {name: 'String'}];
 		vm.discImageFormat = [{name: 'QCOW2'}, {name: 'VDI'}];
@@ -49,6 +49,23 @@
 				cpus: 4
 			}
 		];
+
+		//get the allowed infrastructure service providers (i2dat / adam)
+		vm.getInfrastructureProvider = function() {
+			InfrastructureFactory.getInfrastructureProvider().then(function (response){
+				vm.iaasProvider = response;
+			}, function(error){
+				console.log(error);
+			});
+		}
+
+		vm.getInfrastructureProvider();
+
+		//get flavors when a infrastructure provider is selected
+		vm.setIaasProvider = function(iaas) {
+			console.log(iaas);
+			vm.iaasSelected = true;
+		};
 
 		$scope.$on('uploadOk', function (event, data) {
 			console.log(data);

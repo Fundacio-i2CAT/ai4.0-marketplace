@@ -102,52 +102,59 @@
 					</div>
 				</div>
 				<div class="oneTemplate clearfix">
-					<!-- <h4 class="templateTitle">IAAS *<br/>
-						<small>Seleccionar un proveïdor d'Infraestructura</small>
+					<h4 class="templateTitle">IAAS *<br/>
+						<small>Servei d'Infraestructura</small>
 					</h4>
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fieldblock">
+						<select class="form-control" name="" ng-options="iaas as iaas.name for iaas in staticform.iaasProvider" ng-model="staticform.srv.iaas" ng-change="staticform.setIaasProvider(staticform.srv.iaas)">
+							<option value="" disabled>Selecciona un Servei de Infraestructura</option>
+						</select>
+					</div>
 
-					</div> -->
 
-					<h4 class="templateTitle">Flavors *<br/>
-						<small>Clicar una Flavor per seleccionar-lo</small>
-					</h4>
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fieldblock">
-						<table class="table table-striped table-hover flavor-table">
-							<thead>
-								<tr>
-									<th>Nom</th>
-									<th>Memòria MB</th>
-									<th>Disk</th>
-									<th>CUPS</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr ng-repeat="flavor in staticform.flavors" id="{{$index}}" ng-model="staticform.srv.flavor" ng-class="(flavor.id == staticform.selectedRowId) ? 'success': ''" ng-click="staticform.srv.flavor = flavor;staticform.selectedRow(flavor.id)">
-									<td>{{flavor.name}}</td>
-									<td>{{flavor.memory}}</td>
-									<td>{{flavor.disk}}</td>
-									<td>{{flavor.cpus}}</td>
-								</tr>
-							</tbody>
-						</table>
 
-						<div ng-show="staticform.srv.flavor">
-							<h5><strong>Flavor seleccionat</strong></h5>
 
-							<table class="table table-striped flavor-table" >
+					<div class="top2" ng-if="staticform.iaasSelected">
+						<h4 class="templateTitle">Flavors *<br/>
+							<small>Clicar una Flavor per seleccionar-lo</small>
+						</h4>
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fieldblock">
+							<table class="table table-striped table-hover flavor-table">
+								<thead>
+									<tr>
+										<th>Nom</th>
+										<th>Memòria MB</th>
+										<th>Disk</th>
+										<th>CUPS</th>
+									</tr>
+								</thead>
 								<tbody>
-									<tr class="info">
-										<td>{{staticform.srv.flavor.name}}</td>
-										<td>{{staticform.srv.flavor.memory}}</td>
-										<td>{{staticform.srv.flavor.disk}}</td>
-										<td>{{staticform.srv.flavor.cpus}}</td>
+									<tr ng-repeat="flavor in staticform.flavors" id="{{$index}}" ng-model="staticform.srv.flavor" ng-class="(flavor.id == staticform.selectedRowId) ? 'success': ''" ng-click="staticform.srv.flavor = flavor;staticform.selectedRow(flavor.id)">
+										<td>{{flavor.name}}</td>
+										<td>{{flavor.memory}}</td>
+										<td>{{flavor.disk}}</td>
+										<td>{{flavor.cpus}}</td>
 									</tr>
 								</tbody>
 							</table>
+
+							<div ng-show="staticform.srv.flavor">
+								<h5><strong>Flavor seleccionat</strong></h5>
+
+								<table class="table table-striped flavor-table" >
+									<tbody>
+										<tr class="info">
+											<td>{{staticform.srv.flavor.name}}</td>
+											<td>{{staticform.srv.flavor.memory}}</td>
+											<td>{{staticform.srv.flavor.disk}}</td>
+											<td>{{staticform.srv.flavor.cpus}}</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+
+
 						</div>
-
-
 					</div>
 				</div>
 				<div class="oneTemplate clearfix">
