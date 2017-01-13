@@ -29,13 +29,16 @@
 		vm.setItemsPerPage = function(num) {
 			vm.itemsPerPage = num.value;
 			vm.currentPage = 1;
-			if (vm.allClientProjects.length > 0) {
 				vm.numPages=Math.ceil(vm.allClientProjects.length/num.value);
-			} else {
-				vm.numPages = 0;
-			}
+
 			console.log(num);
-		}
+		};
+
+		vm.setItemsPerPageProvider = function(num) {
+			vm.itemsPerPage = num.value;
+			vm.currentPage = 1;
+			vm.numPages=Math.ceil(vm.allProviderProjects.length/num.value);
+		};
 		//end table pagination
 
 		vm.sortType = 'srv.project.name';
@@ -110,7 +113,7 @@
 					vm.allProviderProjects.forEach(function(each){
 						if (each.status === 1){
 							hasPendings = true;
-							i = i +1;º
+							i = i +1;
 						}
 
 					});
