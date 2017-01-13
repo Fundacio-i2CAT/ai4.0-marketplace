@@ -66,7 +66,7 @@
 			ServiceFactory.createService(model).then(function (response){
 				console.log(response);
 				toastr.success('Servei publicat correctament', 'Publicació de Servei');
-				$state.go('provprojects');
+				$state.go('catalog');
 			}, function (error) {
 				console.log(error);
 				toastr.error('No s\'ha pogut publicar el Servei', 'Error al publicar el Servei');
