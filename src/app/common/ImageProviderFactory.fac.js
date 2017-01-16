@@ -22,10 +22,8 @@
 						image = 'logo_degradat_72.jpg';
 					break;
 					case 'Adam':
-						image = 'Adam_72.jpg';
-					break;
 					default:
-					image = 'Adam_72.jpg';
+						image = 'Adam_72.jpg';
 					break;
 				}
 				return image;
