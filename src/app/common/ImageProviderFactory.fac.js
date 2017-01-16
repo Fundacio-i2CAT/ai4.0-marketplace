@@ -8,11 +8,11 @@
 		ImageProviderFactory.$inject = [];
 
 		function ImageProviderFactory() {
-			
+
 			var imageProvider = {};
 			imageProvider.getProviderImage = getProviderImage;
 			imageProvider.getServiceImage = getServiceImage;
-			
+
 
 			/*Logos de providers*/
 			function getProviderImage(name) {
@@ -23,6 +23,9 @@
 					break;
 					case 'Adam':
 						image = 'Adam_72.jpg';
+					break;
+					default:
+					image = 'Adam_72.jpg';
 					break;
 				}
 				return image;

@@ -6,7 +6,6 @@
 		<ul class="nav nav-tabs">
 			<li class="active"><a data-target="#all" data-toggle="tab">{{ 'CATAL-TOTS' | translate }}</a></li>
 			<li ng-click="catalog.getAllServicesByService_type(type.name)" ng-repeat="type in catalog.allTypes"><a data-target="#{{type.name}}" data-toggle="tab">{{catalog.getDescriptionServiceType(type.name)}}</a></li>
-
 		</ul>
 	</div>
 	<div class="tab-content">
@@ -26,7 +25,7 @@
 				</div>
 				<div class="panel-footer">
 					<span class="label" ng-class="(one.service_type === 'iss') ? 'label-primary' : 'label-danger'">{{catalog.getDescriptionServiceType(one.service_type)}}</span>
-					<img height="25" class="pull-right" ng-src="assets/images/Logos/{{catalog.getProviderImage(one.provider.name)}}" alt="">
+					<img height="25" class="pull-right" ng-src="assets/images/Logos/{{catalog.getProviderImage(one.provider.name || 'default')}}" alt="">
 				</div>
 			</div>
 		</div>
