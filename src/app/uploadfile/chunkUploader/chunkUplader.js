@@ -150,7 +150,7 @@
 					    var file_input = $('#file_input');
 					    file_input.on("change", onFileSelected);
 					    file_input.on('click mouseover', function(){
-					    	$('#help-text').html('Formats Imatge de Disc: .vdi, .qcow2')
+					    	$('#help-text').html("Ext:  .vdi, .qcow2")
 					    });
 					    /*var upload_button = $('#upload_button');
 					    upload_button.on('click', onFileSelected);*/
