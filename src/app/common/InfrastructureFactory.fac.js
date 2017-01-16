@@ -24,9 +24,27 @@
         return promise;
       };
 
+      var getFlavorsFromPop = function(pop_id) {
+        var path = ['api/services/flavors/', pop_id].join(''),
+            url = [host, path].join('');
+        var deferred = $q.defer();
+
+        var promise = $http.get(url).then(function(response){
+          return response.data;
+        }, function(error){
+          deferred.reject(error);
+        });
+
+        return promise;
+      }
+
+
       return {
         getInfrastructureProvider: function() {
           return getInfrastructureProvider();
+        },
+        getFlavorsFromPop: function(pop_id) {
+          return getFlavorsFromPop(pop_id);
         }
       };
 
