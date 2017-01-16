@@ -127,7 +127,34 @@
 					'PUBL-SRV-BTN': 'Publicar Nou Servei',
 					'PAGINATION-START': 'Inici',
 					'PAGINATION-END': 'Final',
-					'PAGINATION-ROWSXPAGE': 'Items'
+					'PAGINATION-ROWSXPAGE': 'Items',
+					'PUBLISH-INFO-BTN': 'Com Publicar un Servei',
+					'SERVICE-TYPE': 'Tipus de Servei',
+					'SRV-NAME-PLACE': 'Nom del Servei',
+					'SRV-DESC-PLACE': 'Descripció del Servei',
+					'SRV-SELECT-DEFAULT': 'Selecciona un tipus de servei',
+					'SRV-SUM-PLACE': 'Sumari del Servei',
+					'CUSTOMER-PARAMS': 'Paràmetres del consumidor',
+					'CONF': 'Configuració',
+					'CONF-PATH': 'Ruta arxiu de configuració',
+					'FIELD-NAME': 'Nom del camp',
+					'TYPE-TITLE': 'Tipus',
+					'TYPE-PLACE': 'Tipus de dada',
+					'FIELD-DESC': 'Descripció del camp',
+					'IAAS-SRV': 'Servei d\'Infraestructura',
+					'IAAS-SRV-PLACE': 'Selecciona un Servei d\'Infraestructura',
+					'SELECT-FLAVOR': 'Selecciona un Flavor',
+					'MEMORY-LABEL': 'Memòria MB',
+					'DISK-LABEL': 'Disc',
+					'CPUS-LABEL': 'CPUs',
+					'ACTIVATED-LABEL': 'Activat',
+					'SELECTED-FLAVOR': 'Flavor Seleccionat',
+					'RUNTIME-PARAMS': 'Paràmetres de Runtime',
+					'DISC-IMAGE': 'Imatge de Disc',
+					'DISC-IMAGE-TYPE': 'Tipus d\'imatge de Disc',
+					'DISC-IMAGE-TYPE-HELP': 'Formats d\'imatge de Disc'
+
+
 
 
 				})

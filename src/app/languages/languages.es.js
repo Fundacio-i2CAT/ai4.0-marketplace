@@ -127,7 +127,35 @@
 					'PUBL-SRV-BTN': 'Publicar Nuevo Servicio',
 					'PAGINATION-START': 'Inicio',
 					'PAGINATION-END': 'Final',
-					'PAGINATION-ROWSXPAGE': 'Items'
+					'PAGINATION-ROWSXPAGE': 'Items',
+					'PUBLISH-INFO-BTN': 'Como Publicar un Servicio',
+					'SERVICE-TYPE': 'Tipo de Servicio',
+					'SRV-NAME-PLACE': 'Nombre del Servicio',
+					'SRV-DESC-PLACE': 'Descripción del Servicio',
+					'SRV-SELECT-DEFAULT': 'Selecciona un tipo de servicio',
+					'SRV-SUM-PLACE': 'Sumario del Servicio',
+					'CUSTOMER-PARAMS': 'Parámetros del consumidor',
+					'CONF': 'Configuración',
+					'CONF-PATH': 'Ruta arxivo de configuración',
+					'FIELD-NAME': 'Nombre del campo',
+					'TYPE-TITLE': 'Tipo',
+					'TYPE-PLACE': 'Tipo de dato',
+					'FIELD-DESC': 'Descripción del campo',
+					'IAAS-SRV': 'Servicio de Infraestructura',
+					'IAAS-SRV-PLACE': 'Selecciona un Servicio de Infraestructura',
+					'SELECT-FLAVOR': 'Selecciona un Flavor',
+					'MEMORY-LABEL': 'Memoria MB',
+					'DISK-LABEL': 'Disco',
+					'CPUS-LABEL': 'CPUs',
+					'ACTIVATED-LABEL': 'Activado',
+					'SELECTED-FLAVOR': 'Flavor Seleccionado',
+					'RUNTIME-PARAMS': 'Parámetros de Runtime',
+					'DISC-IMAGE': 'Imagen de Disco',
+					'DISC-IMAGE-TYPE': 'Tipo de imagen de Disco',
+					'DISC-IMAGE-TYPE-HELP': 'Formatos de imagen de Disco'
+
+
+
 
 
 				});
