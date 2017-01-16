@@ -19,41 +19,20 @@
 
 		vm.types = [{name: 'Number'}, {name: 'String'}];
 		vm.discImageFormat = [{name: 'QCOW2'}, {name: 'VDI'}];
-		vm.flavors = [
-			{
-				id: 1,
-				name: 'm1.tiny',
-				memory: 512,
-				disk: 1,
-				cpus: 1
-			},
-			{
-				id: 2,
-				name: 'm1.small',
-				memory: 2048,
-				disk: 20,
-				cpus: 1
-			},
-			{
-				id: 3,
-				name: 'm1.medium',
-				memory: 4096,
-				disk: 40,
-				cpus: 2
-			},
-			{
-				id: 4,
-				name: 'm1.large',
-				memory: 8192,
-				disk: 80,
-				cpus: 4
-			}
-		];
 
 		//get the allowed infrastructure service providers (i2dat / adam)
 		vm.getInfrastructureProvider = function() {
 			InfrastructureFactory.getInfrastructureProvider().then(function (response){
 				vm.iaasProvider = response;
+			}, function(error){
+				console.log(error);
+			});
+		};
+
+		function getFlavorsFromPop(pop_id) {
+			InfrastructureFactory.getFlavorsFromPop(pop_id).then(function(response){
+				console.log(response);
+				vm.flavors = response.flavors;
 			}, function(error){
 				console.log(error);
 			});
@@ -63,7 +42,7 @@
 
 		//get flavors when a infrastructure provider is selected
 		vm.setIaasProvider = function(iaas) {
-			console.log(iaas);
+			getFlavorsFromPop(iaas.pop_id);
 			vm.iaasSelected = true;
 		};
 
