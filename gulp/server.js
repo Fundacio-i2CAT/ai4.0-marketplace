@@ -40,7 +40,7 @@ function browserSyncInit(baseDir, browser) {
     server: server,
     browser: browser,
     port: 80,
-    notify: false
+    // notify: false
   });
 }
 
