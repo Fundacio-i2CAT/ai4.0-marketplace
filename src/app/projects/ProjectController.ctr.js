@@ -50,6 +50,9 @@
 
 		vm.model = {};
 		var services = [];
+
+		var user = LocalStorageFactory.getValue('user');
+
 		//getAll projects
 		vm.getAll = function(){
 			ProjectFactory.getAll().then(function(response){
@@ -96,6 +99,14 @@
 			});
 			progressbar.complete();
 		};
+
+		if (user.role === ROLES.provider.role && $state.current.name === ROLES.provider.state) {
+			vm.getProviderProjectsByPartnerId(user.user.provider_id);
+		}
+
+		if (user.role === ROLES.client.role && $state.current.name === ROLES.client.state) {
+			vm.getClientProjectsByPartnerId(user.user.provider_id);
+		}
 
 		/*
 			Devuelve una imagen u otra según el tipo de servicio
@@ -206,15 +217,17 @@
 			// var progressbar = ProgressFactory.progressBarConfigure();
 			// progressbar.start();
 			ProjectFactory.runProject(srv._id).then(function (response){
-				$log.log('running project::: ', response);
+				// $log.log('running project::: ', response);
 				if (response.status === 200) {
 					var internalPromise = $interval(function(){
 						ProjectFactory.getProjectState(srv._id).then(function(response){
-							$log.log('getProjectState::: ', response);
+							// $log.log('getProjectState::: ', response);
 							if (response.data.status === 5) {
 								srv.showSpinner = false;
 								$interval.cancel(internalPromise);
-								$state.reload();
+								// $state.reload();
+								toastr.success('Projecte arrencat correctament', 'Arrencar Serveis');
+								vm.getClientProjectsByPartnerId(user.user.provider_id);
 							}
 						});
 					}, 30000);
@@ -235,16 +248,18 @@
 		vm.stopProject = function (srv) {
 			srv.showSpinner = true;
 			ProjectFactory.stopProject(srv._id).then(function (response){
-				$log.log('stopping project::: ', response);
+				// $log.log('stopping project::: ', response);
 				if (response.status === 200) {
 					var internalPromise = $interval(function(){
 						ProjectFactory.getProjectState(srv._id).then(function(response){
-							$log.log('getProjectState::: ', response);
+							// $log.log('getProjectState::: ', response);
 							if (response.data.status === 6) {
 								srv.showSpinner = false;
 								$interval.cancel(internalPromise);
-								$state.reload();
-								toastr.success('Serveis del Projecte aturats correctament', 'Aturar Serveis projecte')
+								// $state.reload();
+								toastr.success('Projecte aturat correctament', 'Aturar Serveis');
+								vm.getClientProjectsByPartnerId(user.user.provider_id);
+
 							}
 						});
 					}, 8000);
@@ -309,16 +324,6 @@
 
 		if ($stateParams.id) {
 			vm.getProjectById($stateParams.id);
-		}
-
-		var user = LocalStorageFactory.getValue('user');
-
-		if (user.role === ROLES.provider.role && $state.current.name === ROLES.provider.state) {
-			vm.getProviderProjectsByPartnerId(user.user.provider_id);
-		}
-
-		if (user.role === ROLES.client.role && $state.current.name === ROLES.client.state) {
-			vm.getClientProjectsByPartnerId(user.user.provider_id);
 		}
 
 		vm.startSpin = function() {
