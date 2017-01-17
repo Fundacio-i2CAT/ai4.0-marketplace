@@ -29,35 +29,35 @@
       <table id="clientprojectstable" class="table table-responsive table-hover">
         <thead>
           <tr>
-            <th class="col-xs-3">
+            <th>
               <a ng-click="clientprojects.sortTypeClient = 'name'; clientprojects.sortReverseClient = !clientprojects.sortReverseClient">
                 {{ 'SRV-PROJECTE' | translate}}
                 <span ng-show="clientprojects.sortTypeClient == 'name' && !clientprojects.sortReverseClient" class="fa fa-sort-alpha-asc"></span>
                 <span ng-show="clientprojects.sortTypeClient == 'name' && clientprojects.sortReverseClient" class="fa fa-sort-alpha-desc"></span>
                 <a/>
               </th>
-              <th>
+              <th class="col-xs-2">
                 <a ng-click="clientprojects.sortTypeClient = 'status'; clientprojects.sortReverseClient = !clientprojects.sortReverseClient">
                   {{ 'SRV-ESTAT' | translate}}
                   <span ng-show="clientprojects.sortTypeClient == 'status' && !clientprojects.sortReverseClient" class="fa fa-sort-amount-desc"></span>
                   <span ng-show="clientprojects.sortTypeClient == 'status' && clientprojects.sortReverseClient" class="fa fa-sort-amount-asc"></span>
                   <a/>
                 </th>
-                <th class="col-xs-2">
+                <th>
                   <a ng-click="clientprojects.sortTypeClient = 'created_at'; clientprojects.sortReverseClient = !clientprojects.sortReverseClient">
                     {{ 'SRV-SOLICITUD' | translate}}
                     <span ng-show="clientprojects.sortTypeClient == 'created_at' && !clientprojects.sortReverseClient" class="fa fa-sort-amount-asc"></span>
                     <span ng-show="clientprojects.sortTypeClient == 'created_at' && clientprojects.sortReverseClient" class="fa fa-sort-amount-desc"></span>
                     <a/>
                   </th>
-                  <th class="col-xs-3">
+                  <th>
                     <a ng-click="clientprojects.sortTypeClient = 'services[0].service.name'; clientprojects.sortReverseClient = !clientprojects.sortReverseClient">
                       {{ 'SERV-TITOL' | translate}}
                       <span ng-show="clientprojects.sortTypeClient == 'services[0].service.name' && !clientprojects.sortReverseClient" class="fa fa-sort-alpha-asc"></span>
                       <span ng-show="clientprojects.sortTypeClient == 'services[0].service.name' && clientprojects.sortReverseClient" class="fa fa-sort-alpha-desc"></span>
                       <a/>
                     </th>
-                    <th class="col-xs-2">{{ 'SRV-ACCIONS' | translate}}</th>
+                    <th><span ng-show="false" class="pull-right">{{ 'SRV-ACCIONS' | translate}}</span></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -77,14 +77,11 @@
                         <li ng-repeat="one in srv.services">{{one.service.name}}</li>
                       </ul>
                     </td>
-                    <td class="vert-align">
+                    <td ng-hide="clientprojects.kkk" class="vert-align">
                       <span class="pull-right">&nbsp;&nbsp;&nbsp;<a ng-click="clientprojects.confirmDeleteProject(srv)" class="btn btn-default btn-xs">
                           <i class="fa fa-trash-o"></i>
                         </a>
                       </span>
-                      <!-- <span class="pull-right">&nbsp;&nbsp;&nbsp;<a ng-click="clientprojects.launchDeleteProjectDialog(srv)" class="btn btn-default btn-xs">
-														<i class="fa fa-trash-o"></i></a>
-													</span> -->
                       <span class="pull-right" ng-if="srv.status >= 3 || srv.status < 6">
                         <a ng-show="srv.status === 3" class="btn btn-xs btn-default" ng-click="clientprojects.instantiateService(srv)">
                           <i class="fa fa-plug"></i>&nbsp;&nbsp;Instanciar
@@ -99,6 +96,12 @@
                         </button>
                       </span>
                     </td>
+                    <td ng-show="clientprojects.kkk" class="vert-align col-xs-2 difuminar">
+                      <div class="progress" style="margin-bottom:0;">
+          						  <div class="progress-bar progress-bar-striped active" role="progressbar" style="width:100%">
+          						  </div>
+          						</div>
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -108,7 +111,7 @@
 										<form class="form-inline top1">
 											<div class="form-group">
 												<span for="viewby" class="text text-help">{{'PAGINATION-ROWSXPAGE' | translate}}&nbsp;&nbsp;</span>
-												<select id="viewby" name="viewby" ng-init="clientprojects.viewby = clientprojects.pageNumberOptions[1]" class="form-control input-sm top05" ng-options="item.value for item in clientprojects.pageNumberOptions" ng-model="clientprojects.viewby" ng-change="clientprojects.setItemsPerPage(clientprojects.viewby)">
+												<select id="viewby" name="viewby" ng-init="clientprojects.viewby = clientprojects.pageNumberOptions[3]" class="form-control input-sm top05" ng-options="item.value for item in clientprojects.pageNumberOptions" ng-model="clientprojects.viewby" ng-change="clientprojects.setItemsPerPage(clientprojects.viewby)">
 													<!-- <option value="" disabled>5</option> -->
 												</select>
 

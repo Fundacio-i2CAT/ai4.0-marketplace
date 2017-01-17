@@ -8,14 +8,15 @@
 	ProjectController.$inject = ['$rootScope', '$interval', 'toastr', 'ProjectFactory', '$log', '$state', 'UserFactory', 'ProgressFactory', '$location', 'ServiceFactory', '$stateParams', 'CurrentUserFactory', 'ROLES', 'usSpinnerService', 'ImageProviderFactory', 'LiteralFactory', 'ngDialog', 'ShareDataFactory', '$timeout', 'LocalStorageFactory'];
 	function ProjectController ($rootScope, $interval, toastr, ProjectFactory, $log, $state, UserFactory, ProgressFactory, $location, ServiceFactory, $stateParams, CurrentUserFactory, ROLES, usSpinnerService, ImageProviderFactory, LiteralFactory, ngDialog, ShareDataFactory, $timeout, LocalStorageFactory){
 		var vm = this;
+		vm.kkk = false;
 
 		//table pagination
-		vm.viewby = 5;
+		vm.viewby = 30;
 		vm.currentPage = 1;
 		vm.itemsPerPage = vm.viewby;
-		vm.maxSize = 5;
+		vm.maxSize = 30;
 		vm.numPages;
-		vm.pageNumberOptions = [{value: 3, name: "3"}, {value: 5, name: "5"}, {value: 10, name: "10"}];
+		vm.pageNumberOptions = [{value: 3, name: "3"}, {value: 5, name: "5"}, {value: 10, name: "10"}, {value: 30, name: "30"}];
 
 
 		vm.setPage = function(pageNum){
@@ -226,6 +227,7 @@
 
 		//stopProject (by Client user)
 		vm.stopProject = function (id) {
+			vm.kkk = true;
 			ProjectFactory.stopProject(id).then(function (response){
 				$log.log('stopping project::: ', response);
 				if (response.status === 200) {
@@ -233,6 +235,7 @@
 						ProjectFactory.getProjectState(id).then(function(response){
 							$log.log('getProjectState::: ', response);
 							if (response.data.status === 6) {
+								vm.kkk = false;
 								$interval.cancel(internalPromise);
 								$state.reload();
 								toastr.success('Serveis del Projecte aturats correctament', 'Aturar Serveis projecte')
