@@ -87,6 +87,7 @@
 					}
 				],
 				flavor: srv.flavor.name,
+				pop_id: srv.iaas.pop_id,
 				name_image: imageData.name_image,
 				vm_image: imageData.vm_image,
 				vm_image_format: (srv.diskImageType.name == undefined || srv.diskImageType.name == null) ? 'qcow2' : srv.diskImageType.name,
