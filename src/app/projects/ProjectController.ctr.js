@@ -80,6 +80,10 @@
 					toastr.error('Hi ha hagut un errror al obtenir els projectes...', 'Hi ha un problema');
 				} else {
 					vm.allClientProjects = response.data.result;
+					angular.forEach(vm.allClientProjects, function(each, index){
+						each.showSpinner = false;
+					})
+
 
 					//clientprojects table paginations
 					vm.totalItems = vm.allClientProjects.length;
@@ -197,16 +201,18 @@
 		};
 
 		//runProject (by Client user)
-		vm.runProject = function (id) {
+		vm.runProject = function (srv) {
+			srv.showSpinner = true;
 			// var progressbar = ProgressFactory.progressBarConfigure();
 			// progressbar.start();
-			ProjectFactory.runProject(id).then(function (response){
+			ProjectFactory.runProject(srv._id).then(function (response){
 				$log.log('running project::: ', response);
 				if (response.status === 200) {
 					var internalPromise = $interval(function(){
-						ProjectFactory.getProjectState(id).then(function(response){
+						ProjectFactory.getProjectState(srv._id).then(function(response){
 							$log.log('getProjectState::: ', response);
 							if (response.data.status === 5) {
+								srv.showSpinner = false;
 								$interval.cancel(internalPromise);
 								$state.reload();
 							}
@@ -226,16 +232,16 @@
 		};
 
 		//stopProject (by Client user)
-		vm.stopProject = function (id) {
-			vm.kkk = true;
-			ProjectFactory.stopProject(id).then(function (response){
+		vm.stopProject = function (srv) {
+			srv.showSpinner = true;
+			ProjectFactory.stopProject(srv._id).then(function (response){
 				$log.log('stopping project::: ', response);
 				if (response.status === 200) {
 					var internalPromise = $interval(function(){
-						ProjectFactory.getProjectState(id).then(function(response){
+						ProjectFactory.getProjectState(srv._id).then(function(response){
 							$log.log('getProjectState::: ', response);
 							if (response.data.status === 6) {
-								vm.kkk = false;
+								srv.showSpinner = false;
 								$interval.cancel(internalPromise);
 								$state.reload();
 								toastr.success('Serveis del Projecte aturats correctament', 'Aturar Serveis projecte')

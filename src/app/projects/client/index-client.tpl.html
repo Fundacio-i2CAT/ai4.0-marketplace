@@ -16,9 +16,6 @@
     </div>
   </div>
   <div class="row tabla-client">
-
-
-
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
       <div class="row">
         <div class="col-xs-4 col-xs-offset-8">
@@ -77,7 +74,7 @@
                         <li ng-repeat="one in srv.services">{{one.service.name}}</li>
                       </ul>
                     </td>
-                    <td ng-hide="clientprojects.kkk" class="vert-align">
+                    <td ng-hide="srv.showSpinner" class="vert-align col-xs-2" style="width:130px;">
                       <span class="pull-right">&nbsp;&nbsp;&nbsp;<a ng-click="clientprojects.confirmDeleteProject(srv)" class="btn btn-default btn-xs">
                           <i class="fa fa-trash-o"></i>
                         </a>
@@ -86,17 +83,17 @@
                         <a ng-show="srv.status === 3" class="btn btn-xs btn-default" ng-click="clientprojects.instantiateService(srv)">
                           <i class="fa fa-plug"></i>&nbsp;&nbsp;Instanciar
                         </a>
-                        <button ng-show="srv.status === 6" class="btn btn-success btn-xs" ng-click="clientprojects.runProject(srv._id)">
+                        <button ng-show="srv.status === 6" class="btn btn-success btn-xs" ng-click="clientprojects.runProject(srv)">
                           <i class="fa fa-play"></i>&nbsp;&nbsp;
                           {{ 'PROJ-ARRENCAR' | translate }}
                         </button>
-                        <button ng-show="srv.status === 5" class="btn btn-danger btn-xs" ng-click="clientprojects.stopProject(srv._id);">
+                        <button ng-show="srv.status === 5" class="btn btn-danger btn-xs" ng-click="clientprojects.stopProject(srv);">
                           <i class="fa fa-stop"></i>&nbsp;&nbsp;
                           {{ 'PROJ-ATURAR' | translate }}
                         </button>
                       </span>
                     </td>
-                    <td ng-show="clientprojects.kkk" class="vert-align col-xs-2 difuminar">
+                    <td ng-show="srv.showSpinner" class="vert-align col-xs-2 difuminar" style="width:130px;">
                       <div class="progress" style="margin-bottom:0;">
           						  <div class="progress-bar progress-bar-striped active" role="progressbar" style="width:100%">
           						  </div>
