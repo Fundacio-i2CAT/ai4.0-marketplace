@@ -8,7 +8,6 @@
 	ProjectController.$inject = ['$rootScope', '$interval', 'toastr', 'ProjectFactory', '$log', '$state', 'UserFactory', 'ProgressFactory', '$location', 'ServiceFactory', '$stateParams', 'CurrentUserFactory', 'ROLES', 'usSpinnerService', 'ImageProviderFactory', 'LiteralFactory', 'ngDialog', 'ShareDataFactory', '$timeout', 'LocalStorageFactory'];
 	function ProjectController ($rootScope, $interval, toastr, ProjectFactory, $log, $state, UserFactory, ProgressFactory, $location, ServiceFactory, $stateParams, CurrentUserFactory, ROLES, usSpinnerService, ImageProviderFactory, LiteralFactory, ngDialog, ShareDataFactory, $timeout, LocalStorageFactory){
 		var vm = this;
-		vm.kkk = false;
 
 		//table pagination
 		vm.viewby = 30;
@@ -47,6 +46,7 @@
 		vm.sortTypeClient = '';
 		vm.sortReverseClient = false;
 		vm.showIp = false;
+		vm.showRTParams = false;
 
 		vm.model = {};
 		var services = [];
@@ -100,14 +100,6 @@
 			progressbar.complete();
 		};
 
-		if (user.role === ROLES.provider.role && $state.current.name === ROLES.provider.state) {
-			vm.getProviderProjectsByPartnerId(user.user.provider_id);
-		}
-
-		if (user.role === ROLES.client.role && $state.current.name === ROLES.client.state) {
-			vm.getClientProjectsByPartnerId(user.user.provider_id);
-		}
-
 		/*
 			Devuelve una imagen u otra según el tipo de servicio
 		*/
@@ -144,6 +136,14 @@
 			});
 			progressbar.complete();
 		};
+
+		if (user.role === ROLES.provider.role && $state.current.name === ROLES.provider.state) {
+			vm.getProviderProjectsByPartnerId(user.user.provider_id);
+		}
+
+		if (user.role === ROLES.client.role && $state.current.name === ROLES.client.state) {
+			vm.getClientProjectsByPartnerId(user.user.provider_id);
+		}
 
 		vm.confirmProviderProject = function (srv) {
 			/////////////////////////////////////////////////////////////////////
