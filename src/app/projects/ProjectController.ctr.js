@@ -143,6 +143,17 @@
 
 		if (user.role === ROLES.client.role && $state.current.name === ROLES.client.state) {
 			vm.getClientProjectsByPartnerId(user.user.provider_id);
+			var instantiatedService = ShareDataFactory.getData();
+			if (instantiatedService.hasOwnProperty('project_id')) {
+				angular.forEach(vm.allClientProjects, function (each, index){
+					console.log(each);
+					if (instantiatedService.project_id === each._id) {
+						console.log(each);
+					}
+				});
+			}
+
+
 		}
 
 		vm.confirmProviderProject = function (srv) {
