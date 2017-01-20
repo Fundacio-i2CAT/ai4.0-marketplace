@@ -233,7 +233,7 @@
 					var internalPromise = $interval(function(){
 						ProjectFactory.getProjectState(srv._id).then(function(response){
 							// $log.log('getProjectState::: ', response);
-							if (response.data.status === 5) {
+							if (response.data.state.status === 5) {
 								srv.showSpinner = false;
 								$interval.cancel(internalPromise);
 								// $state.reload();
@@ -264,7 +264,7 @@
 					var internalPromise = $interval(function(){
 						ProjectFactory.getProjectState(srv._id).then(function(response){
 							// $log.log('getProjectState::: ', response);
-							if (response.data.status === 6) {
+							if (response.data.state.status === 6) {
 								srv.showSpinner = false;
 								$interval.cancel(internalPromise);
 								// $state.reload();
