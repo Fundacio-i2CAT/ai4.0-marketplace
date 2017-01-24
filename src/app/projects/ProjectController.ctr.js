@@ -345,6 +345,7 @@
 			usSpinnerService.stop('spinner-1');
 		};
 
+		//Instantiate service button (as a client), pass the service data and open dialog
 		vm.instantiateService = function(srv) {
 			var service_id = srv.services[0].service._id;
 			ServiceFactory.instantiateService(service_id).then(function(response) {
@@ -369,6 +370,7 @@
 			});
 		}
 
+		//confirm message for deleting project as a Client
 		vm.confirmDeleteProject = function(project) {
 			vm.projectToRemove = project;
 			ngDialog.open({
@@ -380,9 +382,11 @@
 			});
 		};
 
+		//close dialog
 		vm.closeDialog = function() {
 			ngDialog.close();
 		}
+
 
 
 	}
