@@ -394,7 +394,7 @@
 				className: 'ngdialog-theme-default',
 				appendClassName: 'create-service',
 				controller: 'PublishSrvController',
-				controllerAs: 'createprov'
+				controllerAs: 'createproj'
 			});
 		};
 

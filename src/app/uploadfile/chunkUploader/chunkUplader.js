@@ -88,13 +88,17 @@
 													console.log('response2222:::::', response);
 													//save to imageData in ImageDataService
 											    SaveImageDataService.saveImageData(response);
-												    $("#upload").html('<span class="text text-success"><i class="fa fa-check"></i>Imatge carregada amb èxit.</span>');
+												    // $("#upload").html('<span class="text text-success"><i class="fa fa-check"></i>Imatge carregada amb èxit.</span>');
+														$("#upload").html('<p class="bg-success"><i class="fa fa-check"></i>&nbsp;Imatge carregada amb èxit.</p>').css('padding', '.5em');
+														$('#advice').html('').css('padding', 0);
+														$("#init").html('');
+														$("#progress").html('');
 												}
 											    });
 											},
 										    	error: function() {
-											    $("#upload").html('<span class="text text-danger"><i class="fa fa-close"></i>No s\'ha pogut carregar la imatge.</span>');
-
+											    	// $("#upload").html('<span class="text text-danger"><i class="fa fa-close"></i>No s\'ha pogut carregar la imatge.</span>');
+														$("#upload-error").html('<i class="fa fa-close"></i>&nbsp;No s\'ha pogut carregar la imatge.').css('padding', '.5em');
 											}
 										    })
 										}
@@ -139,7 +143,7 @@
 						var start = j*chunk_size;
 						var stop = (j+1)*chunk_size-1;
 						$("#init").html('La imatge es pujarà en '+total_steps+' parts');
-
+						$('#advice').html('Sisplau, no tancar la finestra mentre es puja la imatge.').css('padding', '.5em');
 						$('#progressbar').html(progress_bar);
 
 						// Llamada para subir la primera parte (el resto sube recursivamente
@@ -149,9 +153,9 @@
 
 					    var file_input = $('#file_input');
 					    file_input.on("change", onFileSelected);
-					    file_input.on('click mouseover', function(){
-					    	$('#help-text').html("Ext:  .vdi, .qcow2")
-					    });
+					    // file_input.on('click mouseover', function(){
+					    // 	$('#help-text').html("Ext:  .vdi, .qcow2");
+					    // });
 					    /*var upload_button = $('#upload_button');
 					    upload_button.on('click', onFileSelected);*/
 

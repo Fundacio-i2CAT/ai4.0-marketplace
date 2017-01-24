@@ -1,9 +1,11 @@
 <style media="screen">
   .ngdialog.ngdialog-theme-default .ngdialog-content {
-    width: 60%;
+    width: 80%;
     overflow: scroll;
     padding: 2em;
-    height: 350px;
+    <!-- height: auto; -->
+    height: 100%;
+    min-height: 100%;
   }
 </style>
 <div class="">
@@ -11,17 +13,239 @@
   <form class="create-service-form" name="createserviceform" id="createserviceform">
     <uib-tabset class="top3">
       <uib-tab index="0" heading="Dades Generals">
-          <div class="panel panel-default">
+          <div class="panel panel-default padding1">
             <div class="panel-body">
               <div class="row">
                 <div class="col-xs-12">
                   <h5 class="text text-primary top1">
-                    
+                    Basic info
                   </h5>
+                </div>
+              </div>
+              <div class="form-fields">
+                <div class="row">
+                  <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                    <div class="top1">
+                      <label for="name">{{'LABEL-NOM' | translate}} *</label>
+                      <input type="text" name="name" class="form-control" ng-model="createproj.srv.title" placeholder="{{ 'SRV-NAME-PLACE' | translate }}" required />
+                    </div>
+                  </div>
+                  <div class="col-xs-4">
+        						<div class="top1">
+                      <label for="type">{{ 'SERVICE-TYPE' | translate }} *</label>
+          						<select name="type" class="form-control" ng-options="item.description for item in createproj.allTypes" ng-model="createproj.srv.type" required>
+          							<option value="" disabled>{{ 'SRV-SELECT-DEFAULT' | translate }}</option>
+          						</select>
+        						</div>
+        					</div>
+                </div>
+                <div class="row top1">
+                  <div class="col-xs-12">
+            				<label for="">{{'LABEL-DESC' | translate}} *</label>
+            				<textarea rows="2" type="text" class="form-control" ng-model="createproj.srv.description" placeholder="{{ 'SRV-DESC-PLACE' | translate }}" required></textarea>
+            			</div>
+            			<div class="col-xs-12 top1">
+            				<label for="">{{'LABEL-SUMARI' | translate}} *</label>
+            				<input type="text" class="form-control" ng-model="createproj.srv.summary" placeholder="{{'SRV-SUM-PLACE' | translate}}" required>
+            			</div>
                 </div>
               </div>
             </div>
           </div>
+      </uib-tab>
+      <uib-tab index="1" heading="Paràmetres">
+        <div class="panel panel-default padding1">
+          <div class="panel panel-body">
+            <div class="row">
+              <div class="col-xs-12">
+                <h5 class="text text-primary top1">Paràmetres del Consumidor</h5>
+              </div>
+            </div>
+            <div class="top1 clearfix">
+    					<div class="row">
+    						<div class="col-xs-12">
+    							<label for="filepath">{{ 'CONF' | translate }} *</label>
+    							<input type="text" ng-model="createproj.srv.path" placeholder="{{ 'CONF-PATH' | translate }}" class="form-control" required>
+    						</div>
+    					</div>
+  						<div class="col-xs-12">
+                <ul class="list list-inline top1">
+    							<li class="col-xs-12 col-sm-12 col-md-3">
+    							<label for="name">{{ 'LABEL-NOM' | translate }} *</label>
+    								<input type="text" name="name" ng-model="createproj.srv.fields.field1.name" placeholder="{{ 'FIELD-NAME' | translate }}" class="form-control" required/>
+    							</li>
+    							<li class="col-xs-12 col-sm-12 col-md-2">
+    							<label for="type">{{ 'TYPE-TITLE' | translate }} *</label>
+    								<select class="form-control" ng-options="item.name for item in createproj.types" ng-model="createproj.srv.fields.field1.type" required>
+    									<option value="" disabled>{{ 'TYPE-PLACE' | translate }}</option>
+    								</select>
+    							</li>
+    							<li class="col-xs-12 col-sm-12 col-md-1">
+    								<label for="required">Oblig.</label><br/>
+    								<input type="checkbox" class="form-control centered check-required" name="required" ng-model="createproj.srv.fields.field1.required">
+    							</li>
+    							<li class="col-xs-12 col-sm-12 col-md-6">
+    								<label for="description">{{ 'LABEL-DESC' | translate }} *</label>
+    								<input type="text" name="description" class="form-control" ng-model="createproj.srv.fields.field1.desc" placeholder="{{ 'FIELD-DESC' | translate }}"  required/>
+    							</li>
+    						</ul>
+  						</div>
+              <div class="col-xs-12">
+    						<ul class="list list-inline top1">
+    							<li class="col-xs-12 col-sm-12 col-md-3">
+    								<input type="text" name="name" ng-model="createproj.srv.fields.field2.name" placeholder="{{ 'FIELD-NAME' | translate }}" class="form-control"/>
+    							</li>
+    							<li class="col-xs-12 col-sm-12 col-md-2">
+    								<select class="form-control" ng-options="item.name for item in createproj.types" ng-model="createproj.srv.fields.field2.type">
+    									<option value="" disabled>{{ 'TYPE-PLACE' | translate }}</option>
+    								</select>
+    							</li>
+    							<li class="col-xs-12 col-sm-12 col-md-1">
+    								<input type="checkbox" class="form-control centered check-required" name="required" ng-model="createproj.srv.fields.field2.required">
+    							</li>
+    							<li class="col-xs-12 col-sm-12 col-md-6">
+    								<input type="text" name="description" class="form-control" ng-model="createproj.srv.fields.field2.desc" placeholder="{{ 'FIELD-DESC' | translate }}" />
+    							</li>
+    						</ul>
+              </div>
+              <div class="col-xs-12">
+    						<ul class="list list-inline top1">
+    							<li class="col-xs-12 col-sm-12 col-md-3">
+    								<input type="text" name="name" ng-model="createproj.srv.fields.field2.name" placeholder="{{ 'FIELD-NAME' | translate }}" class="form-control"/>
+    							</li>
+    							<li class="col-xs-12 col-sm-12 col-md-2">
+    								<select class="form-control" ng-options="item.name for item in createproj.types" ng-model="createproj.srv.fields.field3.type">
+    									<option value="" disabled>{{ 'TYPE-PLACE' | translate }}</option>
+    								</select>
+    							</li>
+    							<li class="col-xs-12 col-sm-12 col-md-1">
+    								<input type="checkbox" class="form-control centered check-required" name="required" ng-model="createproj.srv.fields.field3.required">
+    							</li>
+    							<li class="col-xs-12 col-sm-12 col-md-6">
+    								<input type="text" name="description" class="form-control" ng-model="createproj.srv.fields.field3.desc" placeholder="{{ 'FIELD-DESC' | translate }}" />
+    							</li>
+    						</ul>
+    					</div>
+            </div>
+            <div class="top2">
+    					<h5 class="text text-primary">{{ 'RUNTIME-PARAMS' | translate }}</h5>
+              <label class="top1">{{ 'RUNTIME-PARAMS' | translate }} *</label>
+    					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    						<ul class="list list-inline">
+    							<li class="col-xs-12 col-sm-12 col-md-3">
+    							<label for="name">{{ 'LABEL-NOM' | translate }} *</label>
+    								<input type="text" name="name" ng-model="createproj.srv.rtime.name" placeholder="{{ 'SRV-NAME-PLACE' | translate }}" class="form-control" required/>
+    							</li>
+    							<li class="col-xs-12 col-sm-12 col-md-2">
+    							<label for="type">{{ 'TYPE-TITLE' | translate }} *</label>
+    								<select class="form-control" ng-options="item.name for item in createproj.types" ng-model="createproj.srv.rtime.type" required>
+    									<option value="" disabled>{{ 'TYPE-PLACE' | translate }}</option>
+    								</select>
+    							</li>
+    							<li class="col-xs-12 col-sm-12 col-md-1">
+    								<label for="required">Oblig.</label><br/>
+    								<input type="checkbox" class="form-control centered check-required" name="required" ng-model="createproj.srv.rtime.required">
+    							</li>
+    							<li class="col-xs-12 col-sm-12 col-md-6">
+    								<label for="description">{{ 'LABEL-DESC' | translate }} *</label>
+    								<input type="text" name="description" class="form-control" ng-model="createproj.srv.rtime.desc" placeholder="{{ 'FIELD-DESC' | translate }}"  required/>
+    							</li>
+    						</ul>
+    					</div>
+    				</div>
+          </div>
+        </div>
+      </uib-tab>
+      <uib-tab index="2" heading="Infraestructura">
+        <div class="panel panel-default padding1">
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-xs-12">
+                <h5 class="text text-primary top1">{{ 'IAAS-SRV' | translate }}</h5>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <label class="top1">Proveïdor *<label/>
+  						<select class="form-control" name="" ng-options="iaas as iaas.name for iaas in createproj.iaasProvider" ng-model="createproj.srv.iaas" ng-change="createproj.setIaasProvider(createproj.srv.iaas)">
+  							<option value="" disabled>{{ 'IAAS-SRV-PLACE' | translate }}</option>
+  						</select>
+  					</div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 top2" ng-if="createproj.iaasSelected">
+  						<h5>Flavor *<br/>
+  							<!-- <small>{{ 'SELECT-FLAVOR' | translate }}</small> -->
+  						</h5>
+  						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 table-responsive ">
+  							<table class="table table-striped table-hover flavor-table">
+  								<thead>
+  									<tr>
+  										<th>{{ 'LABEL-NOM' | translate }}</th>
+  										<th>{{ 'MEMORY-LABEL' | translate }}</th>
+  										<th>{{ 'DISK-LABEL' | translate }}</th>
+  										<th>{{ 'CPUS-LABEL' | translate }}</th>
+  										<th style="width:20px;">{{ 'ACTIVATED-LABEL' | translate }}</th>
+  									</tr>
+  								</thead>
+  								<tbody>
+  									<tr id="{{$index}}"
+  											ng-repeat="flavor in createproj.flavors"
+  											ng-model="createproj.srv.flavor"
+  											ng-class="(flavor.name == createproj.selectedRowId) ? 'success': ''"
+  											ng-click="createproj.srv.flavor = flavor;createproj.selectedRow(flavor.name)">
+  										<td>{{flavor.name}}</td>
+  										<td>{{flavor.ram}}</td>
+  										<td>{{flavor.disk}}</td>
+  										<td>{{flavor.vcpus}}</td>
+  										<td>
+  											<input
+  												style="width:20px;"
+  												type="checkbox"
+  												class="form-control selected-flavor"
+  												name="selectedFlavor"
+  												ng-checked="flavor.name == createproj.selectedRowId" />
+  										</td>
+  									</tr>
+  								</tbody>
+  							</table>
+                </div>
+  							<div ng-show="createproj.srv.flavor">
+  								<h5><strong>{{ 'SELECTED-FLAVOR' | translate }}</strong></h5>
+  								<table class="table table-striped flavor-table" >
+  									<tbody>
+  										<tr class="info">
+  											<td>{{createproj.srv.flavor.name}}</td>
+  											<td>{{createproj.srv.flavor.ram}}</td>
+  											<td>{{createproj.srv.flavor.disk}}</td>
+  											<td>{{createproj.srv.flavor.vcpus}}</td>
+  										</tr>
+  									</tbody>
+  								</table>
+  							</div>
+  						</div>
+
+          </div>
+        </div>
+      </uib-tab>
+      <uib-tab index="3" heading="Imatge de Disc">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-xs-12">
+                <h5 class="text text-primary top1">Imatge de Disc</h5>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-12">
+              <label class="top1">Tipus d'Imatge *</label>
+              <select name="" class="form-control" ng-model="createproj.srv.diskImageType" ng-options="item.name for item in createproj.discImageFormat" required>
+                <option value="" disabled>{{ 'DISC-IMAGE-TYPE' | translate }}</option>
+              </select>
+              <br/>
+            </div>
+            <div class="col-xs-12 col-sm-12">
+              <label class="top1">Imatge *</label>
+              <chunkdirective></chunkdirective>
+            </div>
+          </div>
+        </div>
       </uib-tab>
     </ui-tabset>
   </form>

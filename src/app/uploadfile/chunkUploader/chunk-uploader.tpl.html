@@ -1,22 +1,24 @@
 <div>
 	<form name="upload_form" id="upload_form">
-		<input class="form-control" accept=".vdi, .VDI, .img, .IMG, .qcow2, .QCOW2" name="file_input" id="file_input" type="file" class="file" placeholder="files">
+		<input ng-disabled="!$parent.$parent.createproj.srv.diskImageType" class="form-control" accept=".vdi, .VDI, .img, .IMG, .qcow2, .QCOW2" name="file_input" id="file_input" type="file" class="file" placeholder="files">
 	</form>
 	<small id="help-text" class="form-text text-muted"></small>
 	<br/>
-	<br/>
 	<!-- <div id="progressbar"></div> -->
 	<div class="row">
-		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<!-- mensaje no cerrar ventana -->
+			<p id="advice" class="bg-primary"></p>
 			<p name="init" id="init"></p>
 			<p name="progress" id="progress"></p>
 		</div>
 
-		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-			<p name="upload" id="upload"></p>
+		<div class="col-xs-12 col-sm-612 col-md-12 col-lg-12">
+			<p class="bg-success" name="upload" id="upload"></p>
+			<p class="bg-danger" name="upload-error" id="upload-error"></p>
 		</div>
 	</div>
 	<!-- <p name="end" id="end"></p> -->
 	<!-- <p name="md5" id="md5"></p> -->
-	
+
 </div>
