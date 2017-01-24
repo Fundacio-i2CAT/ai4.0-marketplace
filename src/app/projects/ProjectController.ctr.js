@@ -385,9 +385,18 @@
 		//close dialog
 		vm.closeDialog = function() {
 			ngDialog.close();
-		}
+		};
 
-
+		//launch createServiceDialog
+		vm.goCreateServiceDialog = function() {
+			ngDialog.open({
+				template: 'app/projects/create_service/createService/createServiceDialog.tpl.html',
+				className: 'ngdialog-theme-default',
+				appendClassName: 'create-service',
+				controller: 'PublishSrvController',
+				controllerAs: 'createprov'
+			});
+		};
 
 	}
 

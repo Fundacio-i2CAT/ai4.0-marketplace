@@ -11,7 +11,9 @@
 					<button ui-sref="publishsrv" class="btn btn-default btn-sm"><i class="fa fa-plus-square"></i><span class="icon-left">{{'PUBL-SRV-BTN' | translate}}</span></button>
 				</div>
 				<div class="pull-right publish">
-					<button class="btn btn-default btn-sm"><i class="fa fa-plus-square"></i><span class="icon-left">{{'PUBL-SRV-BTN' | translate}} Dialog</span></button>
+					<button class="btn btn-default btn-sm" ng-click="provprojects.goCreateServiceDialog()">
+						<i class="fa fa-plus-square"></i><span class="icon-left">{{'PUBL-SRV-BTN' | translate}} Dialog</span>
+					</button>
 				</div>
 			</div>
 			<div class="row">
