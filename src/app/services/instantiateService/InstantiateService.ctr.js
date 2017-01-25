@@ -29,12 +29,12 @@
 
 			function getFieldsFromJson (services) {
 				var obj = {}, kk = [];
-				angular.forEach(services, function(each, index){
+				angular.forEach(services, function(each){
 					if (each.path) {
 						obj.path = each.path;
 					}
 
-					angular.forEach(each.fields, function (field, index){
+					angular.forEach(each.fields, function (field){
 						kk.push(field);
 					});
 				});
@@ -45,16 +45,16 @@
 
 			function buildFormFromJson(srv) {
 				var listOfFields = [];
-				angular.forEach(srv.fields, function(field, index){
+				angular.forEach(srv.fields, function(field){
 					if (field.type == undefined) field.type = 'String';
 					var form = {
 						key: field.name,
-	    				type: (field.type == 'integer') ? 'number' : field.type,
-	    				placeholder: field.name
+						type: (field.type == 'integer') ? 'number' : field.type,
+						placeholder: field.name
 					}
 					listOfFields.push(form);
 				});
-				console.log('buildFormFromJson', listOfFields);
+				$log.log('buildFormFromJson', listOfFields);
 				return listOfFields;
 			}
 
@@ -65,7 +65,7 @@
 					"properties": {},
 					"required": []
 				};
-				angular.forEach(srv.fields, function(field, index){
+				angular.forEach(srv.fields, function(field){
 					tempSchema.properties[field.name] = {
 						"title": (field.required) ? field.name + ' *' : field.name,
 						"type": field.type,
@@ -73,7 +73,7 @@
 					}
 					if (field.required) tempSchema.required.push(field.name);
 				});
-				console.log('buildSchemaFromJson',tempSchema);
+				$log.log('buildSchemaFromJson',tempSchema);
 				return tempSchema;
 			}
 
@@ -88,17 +88,17 @@
 					consumer_params: []
 				};
 
-				angular.forEach(service.data, function (each, index){
+				angular.forEach(service.data, function (each){
 					var temp = {
 						path: each.path,
 						fields: []
 					};
-					angular.forEach(each.fields, function (field, index){
-						var field = {
+					angular.forEach(each.fields, function (field){
+						var _field = {
 							name: field.name,
 							value: srvModel[field.name]
 						};
-						temp.fields.push(field);
+						temp.fields.push(_field);
 					});
 					serv.consumer_params.push(temp);
 				});
@@ -111,12 +111,12 @@
 				var projId = service.project_id;
 				vm.startSpin();
 				ServiceFactory.instantiateSrvConsumerParams(model, projId).then(function(response) {
-					console.log('instantiateSrvConsumerParams:::', response);
+					$log.log('instantiateSrvConsumerParams:::', response);
 
 					if (response.status === 200) {
 						var internalPromise = $interval(function(){
 							ProjectFactory.getProjectState(projId).then(function(response){
-								console.log('getprojectState::::', response);
+								$log.log('getprojectState::::', response);
 								if (response.data.status == 'fail') {
 									toastr.error('No s\'ha pogut instanciar el projecte perque s\'ha produït un error', 'Error al Instanciar Projecte');
 									return;
@@ -164,17 +164,17 @@
 				"name",
 				{
 					"key": "email",
-    				"type": "email",
-    				"placeholder": "Correu electrònic"
+					"type": "email",
+					"placeholder": "Correu electrònic"
 				},
 				{
 					"key": "comment",
-    				"type": "textarea",
-    				"placeholder": "Make a comment"
+					"type": "textarea",
+					"placeholder": "Make a comment"
 				},
 				{
 					"type": "submit",
-    			"style": "btn-info btn-block",
+				"style": "btn-info btn-block",
 					"title": "Enviar dades"
 				}
 			];

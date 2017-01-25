@@ -9,11 +9,10 @@
 
 	function UserFactory($http, ConnectionFactory) {
 		var host = ConnectionFactory.host;
-		var getAllUsersUrlFirst = [host, 'api/users'].join(''),
-				getAllUsersUrl  = [host, 'api/crud/users'].join(''),
-				openSessionUrl = [host,'api/session'].join(''),
-				setUserUrl = [host, 'api/users'].join(''),
-				deleteSessionUrl = [host, 'api/session'].join('');
+		var getAllUsersUrl  = [host, 'api/crud/users'].join(''),
+			openSessionUrl = [host,'api/session'].join(''),
+			setUserUrl = [host, 'api/users'].join(''),
+			deleteSessionUrl = [host, 'api/session'].join('');
 
 
 		var factory = {};

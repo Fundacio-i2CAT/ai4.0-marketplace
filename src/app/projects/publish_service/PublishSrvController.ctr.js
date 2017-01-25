@@ -4,9 +4,9 @@
 	angular
 		.module('marketplace')
 		.controller('PublishSrvController', PublishSrvController);
-	PublishSrvController.$inject = ['$scope', '$state', 'toastr', 'fileUpload', 'CatalogFactory', 'ServiceFactory', 'ConnectionFactory', 'LocalStorageFactory', 'SaveImageDataService', 'ngDialog', 'InfrastructureFactory'];
+	PublishSrvController.$inject = ['$scope', '$state', 'toastr', 'fileUpload', 'CatalogFactory', 'ServiceFactory', 'ConnectionFactory', 'LocalStorageFactory', 'SaveImageDataService', 'ngDialog', 'InfrastructureFactory', '$log'];
 
-	function PublishSrvController($scope, $state, toastr, fileUpload, CatalogFactory, ServiceFactory, ConnectionFactory, LocalStorageFactory, SaveImageDataService, ngDialog, InfrastructureFactory) {
+	function PublishSrvController($scope, $state, toastr, fileUpload, CatalogFactory, ServiceFactory, ConnectionFactory, LocalStorageFactory, SaveImageDataService, ngDialog, InfrastructureFactory, $log) {
 		var vm = this;
 		var host = ConnectionFactory.host;
 		vm.allTemplates = [];
@@ -25,16 +25,16 @@
 			InfrastructureFactory.getInfrastructureProvider().then(function (response){
 				vm.iaasProvider = response;
 			}, function(error){
-				console.log(error);
+				$log.log(error);
 			});
 		};
 
 		function getFlavorsFromPop(pop_id) {
 			InfrastructureFactory.getFlavorsFromPop(pop_id).then(function(response){
-				console.log(response);
+				$log.log(response);
 				vm.flavors = response.flavors;
 			}, function(error){
-				console.log(error);
+				$log.log(error);
 			});
 		}
 
@@ -47,9 +47,9 @@
 		};
 
 		$scope.$on('uploadOk', function (event, data) {
-			console.log(data);
+			$log.log(data);
 			vm.showbar = false;
-	        vm.isLoadedImage = SaveImageDataService.isUploadedImage();
+			vm.isLoadedImage = SaveImageDataService.isUploadedImage();
 		});
 
 		vm.createTemplate = function() {
@@ -60,11 +60,11 @@
 		vm.launchTemplate = function(srv) {
 			var model = buildPublishServiceJSON(srv);
 			ServiceFactory.createService(model).then(function (response){
-				console.log(response);
+				$log.log(response);
 				toastr.success('Servei publicat correctament', 'Publicació de Servei');
 				$state.go('catalog');
 			}, function (error) {
-				console.log(error);
+				$log.log(error);
 				toastr.error('No s\'ha pogut publicar el Servei', 'Error al publicar el Servei');
 				$state.go('provprojects');
 			});
@@ -80,6 +80,8 @@
 				summary: srv.summary,
 				service_type: srv.type.name,
 				provider: provider.user.provider_id,
+				price_initial: srv.price.initial,
+				price_x_hour: srv.price.perhour,
 				consumer_params: [
 					{
 						path: srv.path,
@@ -104,7 +106,7 @@
 			//obtenir els templates dinamicament
 			if (srv.fields) {
 				var listOfFields = [];
-				angular.forEach(srv.fields, function (field, index){
+				angular.forEach(srv.fields, function (field){
 					var fieldOK = {
 						name: field.name,
 						type: field.type.name,
@@ -115,7 +117,7 @@
 				});
 				srvToSave.consumer_params[0].fields = listOfFields;
 			}
-			console.log(srvToSave);
+			$log.log(srvToSave);
 			return srvToSave;
 		}
 
@@ -124,15 +126,15 @@
 		}
 
 		vm.uploadFile = function(){
-	        var file = vm.myFile;
-	        console.log('file is ', file);
-	        var uploadUrl = host + "api/services/vmimage";
-	        // fileUpload.uploadFileToUrl(file, uploadUrl);
-	        fileUpload.uploadFileToUrl(file, uploadUrl);
-	        vm.showbar = true;
-	    };
+			var file = vm.myFile;
+			$log.log('file is ', file);
+			var uploadUrl = host + "api/services/vmimage";
+			// fileUpload.uploadFileToUrl(file, uploadUrl);
+			fileUpload.uploadFileToUrl(file, uploadUrl);
+			vm.showbar = true;
+		};
 
-	    vm.getAllTypes = function () {
+		vm.getAllTypes = function () {
 			CatalogFactory.getAllTypes().then(function (response){
 				if (response.status === 200) {
 					vm.allTypes = response.data;
@@ -148,16 +150,16 @@
 		/* ngDialog Explanation modal */
 		vm.showExplanationModal = function() {
 			ngDialog.open({
-        		template: 'app/projects/publish_service/explanationModal/explanation-modal.tpl.html',
-        		className: 'ngdialog-theme-default',
-        		controller: 'PublishSrvController',
-        		controllerAs: 'publishsrv',
-        		appendClassName: 'ngdialog-publish'
-        	});
+				template: 'app/projects/publish_service/explanationModal/explanation-modal.tpl.html',
+				className: 'ngdialog-theme-default',
+				controller: 'PublishSrvController',
+				controllerAs: 'publishsrv',
+				appendClassName: 'ngdialog-publish'
+			});
 		};
 
 		vm.selectFlavor = function(flavor) {
-			console.log(flavor);
+			$log.log(flavor);
 		};
 
 		vm.selectedRow = function(id) {
@@ -166,7 +168,7 @@
 
 		/* codigo para formulario dinamico */
 		vm.plantilles = [{id: 'plantilla1'}];
-  		vm.allFields = [{id: 'field1'}];
+		vm.allFields = [{id: 'field1'}];
 		vm.addTemplate = function() {
 			var newItemNo = vm.plantilles.length+1;
 			vm.plantilles.push({'id':'plantilla'+newItemNo});

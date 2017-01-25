@@ -5,8 +5,8 @@
 		.module('marketplace')
 		.controller('ProjectController', ProjectController);
 
-	ProjectController.$inject = ['$rootScope', '$interval', 'toastr', 'ProjectFactory', '$log', '$state', 'UserFactory', 'ProgressFactory', '$location', 'ServiceFactory', '$stateParams', 'CurrentUserFactory', 'ROLES', 'usSpinnerService', 'ImageProviderFactory', 'LiteralFactory', 'ngDialog', 'ShareDataFactory', '$timeout', 'LocalStorageFactory'];
-	function ProjectController ($rootScope, $interval, toastr, ProjectFactory, $log, $state, UserFactory, ProgressFactory, $location, ServiceFactory, $stateParams, CurrentUserFactory, ROLES, usSpinnerService, ImageProviderFactory, LiteralFactory, ngDialog, ShareDataFactory, $timeout, LocalStorageFactory){
+	ProjectController.$inject = ['$rootScope', '$interval', '$state', 'toastr', 'ProjectFactory', '$log', 'UserFactory', 'ProgressFactory', '$location', 'ServiceFactory', '$stateParams', 'CurrentUserFactory', 'ROLES', 'usSpinnerService', 'ImageProviderFactory', 'LiteralFactory', 'ngDialog', 'ShareDataFactory', '$timeout', 'LocalStorageFactory'];
+	function ProjectController ($rootScope, $interval, $state, toastr, ProjectFactory, $log, UserFactory, ProgressFactory, $location, ServiceFactory, $stateParams, CurrentUserFactory, ROLES, usSpinnerService, ImageProviderFactory, LiteralFactory, ngDialog, ShareDataFactory, $timeout, LocalStorageFactory){
 		var vm = this;
 
 		//table pagination
@@ -23,7 +23,7 @@
 		}
 
 		vm.pageChanged = function(){
-			console.log('pagina cambiada a...',vm.currentPage);
+			$log.log('pagina cambiada a...',vm.currentPage);
 		}
 
 		vm.setItemsPerPage = function(num) {
@@ -31,7 +31,7 @@
 			vm.currentPage = 1;
 				vm.numPages=Math.ceil(vm.allClientProjects.length/num.value);
 
-			console.log(num);
+			$log.log(num);
 		};
 
 		vm.setItemsPerPageProvider = function(num) {
@@ -83,7 +83,7 @@
 					toastr.error('Hi ha hagut un errror al obtenir els projectes...', 'Hi ha un problema');
 				} else {
 					vm.allClientProjects = response.data.result;
-					angular.forEach(vm.allClientProjects, function(each, index){
+					angular.forEach(vm.allClientProjects, function(each){
 						each.showSpinner = false;
 					})
 
@@ -145,10 +145,10 @@
 			vm.getClientProjectsByPartnerId(user.user.provider_id);
 			var instantiatedService = ShareDataFactory.getData();
 			if (instantiatedService.hasOwnProperty('project_id')) {
-				angular.forEach(vm.allClientProjects, function (each, index){
-					console.log(each);
+				angular.forEach(vm.allClientProjects, function (each){
+					$log.log(each);
 					if (instantiatedService.project_id === each._id) {
-						console.log(each);
+						$log.log(each);
 					}
 				});
 			}

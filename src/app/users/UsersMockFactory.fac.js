@@ -22,7 +22,7 @@
             mail: 'david@i2cat.net',
             city: 'Barcelona',
             country: 'Espanya',
-            cp: 08123,
+            cp: '08123',
             description: 'Software Developer at I2cat',
             legal: false
         },
@@ -39,7 +39,7 @@
             mail: 'enciam@i2cat.net',
             city: 'Barcelona',
             country: 'Espanya',
-            cp: 08080,
+            cp: '08080',
             description: 'Software Engineer at I2cat',
             legal: false
         },
@@ -56,7 +56,7 @@
             mail: 'fontpineda@cloudsystems.cat',
             city: 'Barcelona',
             country: 'França',
-            cp: 08041,
+            cp: '08041',
             description: 'Product Manager at I2cat',
             legal: true
         },
@@ -73,7 +73,7 @@
             mail: 'david@i2cat.net',
             city: 'Barcelona',
             country: 'Espanya',
-            cp: 08123,
+            cp: '08123',
             description: 'Software Developer at I2cat',
             legal: false
         },
@@ -90,7 +90,7 @@
             mail: 'enciam@i2cat.net',
             city: 'Barcelona',
             country: 'Espanya',
-            cp: 08080,
+            cp: '08080',
             description: 'Software Engineer at I2cat',
             legal: false
         },
@@ -107,7 +107,7 @@
             mail: 'fontpineda@cloudsystems.cat',
             city: 'Barcelona',
             country: 'França',
-            cp: 08041,
+            cp: '08041',
             description: 'Product Manager at I2cat',
             legal: true
         },
@@ -124,7 +124,7 @@
             mail: 'david@i2cat.net',
             city: 'Barcelona',
             country: 'Espanya',
-            cp: 08123,
+            cp: '08123',
             description: 'Software Developer at I2cat',
             legal: false
         },
@@ -141,7 +141,7 @@
             mail: 'enciam@i2cat.net',
             city: 'Barcelona',
             country: 'Espanya',
-            cp: 08080,
+            cp: '08080',
             description: 'Software Engineer at I2cat',
             legal: false
         },
@@ -158,7 +158,7 @@
             mail: 'fontpineda@cloudsystems.cat',
             city: 'Barcelona',
             country: 'França',
-            cp: 08041,
+            cp: '08041',
             description: 'Product Manager at I2cat',
             legal: true
         },
@@ -175,7 +175,7 @@
             mail: 'david@i2cat.net',
             city: 'Barcelona',
             country: 'Espanya',
-            cp: 08123,
+            cp: '08123',
             description: 'Software Developer at I2cat',
             legal: false
         },
@@ -192,7 +192,7 @@
             mail: 'enciam@i2cat.net',
             city: 'Barcelona',
             country: 'Espanya',
-            cp: 08080,
+            cp: '08080',
             description: 'Software Engineer at I2cat',
             legal: false
         },
@@ -209,7 +209,7 @@
             mail: 'fontpineda@cloudsystems.cat',
             city: 'Barcelona',
             country: 'França',
-            cp: 08041,
+            cp: '08041',
             description: 'Product Manager at I2cat',
             legal: true
         },
@@ -226,7 +226,7 @@
             mail: 'david@i2cat.net',
             city: 'Barcelona',
             country: 'Espanya',
-            cp: 08123,
+            cp: '08123',
             description: 'Software Developer at I2cat',
             legal: false
         },
@@ -243,7 +243,7 @@
             mail: 'enciam@i2cat.net',
             city: 'Barcelona',
             country: 'Espanya',
-            cp: 08080,
+            cp: '08080',
             description: 'Software Engineer at I2cat',
             legal: false
         },
@@ -260,7 +260,7 @@
             mail: 'fontpineda@cloudsystems.cat',
             city: 'Barcelona',
             country: 'França',
-            cp: 08041,
+            cp: '08041',
             description: 'Product Manager at I2cat',
             legal: true
         },
@@ -277,7 +277,7 @@
             mail: 'david@i2cat.net',
             city: 'Barcelona',
             country: 'Espanya',
-            cp: 08123,
+            cp: '08123',
             description: 'Software Developer at I2cat',
             legal: false
         },
@@ -294,7 +294,7 @@
             mail: 'enciam@i2cat.net',
             city: 'Barcelona',
             country: 'Espanya',
-            cp: 08080,
+            cp: '08080',
             description: 'Software Engineer at I2cat',
             legal: false
         },
@@ -311,7 +311,7 @@
             mail: 'fontpineda@cloudsystems.cat',
             city: 'Barcelona',
             country: 'França',
-            cp: 08041,
+            cp: '08041',
             description: 'Product Manager at I2cat',
             legal: true
         },
@@ -328,7 +328,7 @@
             mail: 'david@i2cat.net',
             city: 'Barcelona',
             country: 'Espanya',
-            cp: 08123,
+            cp: '08123',
             description: 'Software Developer at I2cat',
             legal: false
         },
@@ -345,7 +345,7 @@
             mail: 'enciam@i2cat.net',
             city: 'Barcelona',
             country: 'Espanya',
-            cp: 08080,
+            cp: '08080',
             description: 'Software Engineer at I2cat',
             legal: false
         },
@@ -362,7 +362,7 @@
             mail: 'fontpineda@cloudsystems.cat',
             city: 'Barcelona',
             country: 'França',
-            cp: 08041,
+            cp: '08041',
             description: 'Product Manager at I2cat',
             legal: true
         },
@@ -379,7 +379,7 @@
             mail: 'david@i2cat.net',
             city: 'Barcelona',
             country: 'Espanya',
-            cp: 08123,
+            cp: '08123',
             description: 'Software Developer at I2cat',
             legal: false
         },
@@ -396,7 +396,7 @@
             mail: 'enciam@i2cat.net',
             city: 'Barcelona',
             country: 'Espanya',
-            cp: 08080,
+            cp: '08080',
             description: 'Software Engineer at I2cat',
             legal: false
         },
@@ -413,7 +413,7 @@
             mail: 'fontpineda@cloudsystems.cat',
             city: 'Barcelona',
             country: 'França',
-            cp: 08041,
+            cp: '08041',
             description: 'Product Manager at I2cat',
             legal: true
         }

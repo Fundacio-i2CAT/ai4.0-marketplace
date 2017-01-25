@@ -33,14 +33,14 @@
 		}
 
 		vm.pageChanged = function(){
-			console.log('pagina cambiada a...',vm.currentPage);
+			$log.log('pagina cambiada a...',vm.currentPage);
 		}
 
 		vm.setItemsPerPage = function(num) {
 			vm.itemsPerPage = num.value;
 			vm.currentPage = 1;
 			vm.numPages=Math.ceil(vm.allUsers.length/num.value);
-			console.log(num);
+			$log.log(num);
 		}
 		//end table pagination
 
