@@ -152,9 +152,20 @@
 					'RUNTIME-PARAMS': 'Parámetros de Runtime',
 					'DISC-IMAGE': 'Imagen de Disco',
 					'DISC-IMAGE-TYPE': 'Tipo de imagen de Disco',
-					'DISC-IMAGE-TYPE-HELP': 'Formatos de imagen de Disco'
-
-
+					'DISC-IMAGE-TYPE-HELP': 'Formatos de imagen de Disco',
+					//create Service
+					'GENERAL-DATA': 'Datos Generales',
+					'PARAMS': 'Parámetros',
+					'INFRASTRUCT': 'Infraestructura',
+					'PRICE': 'Precios',
+					'INFO': 'Información',
+					'BASIC-INFO': 'Información básica',
+					'IMAGE': 'Imagen',
+					'CONSUME-SRV': 'Tarifas de Consumo',
+					'SRV-INSTANT': 'Instanciación del Servicio',
+					'SRV-STABLISH': 'Arrancar Servicio',
+					'HOUR-PRICE': 'Precio por Hora',
+					'RATING': 'Tarifa horaria'
 
 
 

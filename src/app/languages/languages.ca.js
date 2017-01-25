@@ -151,9 +151,21 @@
 					'SELECTED-FLAVOR': 'Flavor Seleccionat',
 					'RUNTIME-PARAMS': 'Paràmetres de Runtime',
 					'DISC-IMAGE': 'Imatge de Disc',
-					'DISC-IMAGE-TYPE': 'Tipus d\'imatge de Disc',
-					'DISC-IMAGE-TYPE-HELP': 'Formats d\'imatge de Disc'
-
+					'DISC-IMAGE-TYPE': 'Tipus d\'imatge',
+					'DISC-IMAGE-TYPE-HELP': 'Formats d\'imatge de Disc',
+					//create Service tabs
+					'GENERAL-DATA': 'Dades Generals',
+					'PARAMS': 'Paràmetres',
+					'INFRASTRUCT': 'Infraestructura',
+					'PRICE': 'Preus',
+					'INFO': 'Informació',
+					'BASIC-INFO': 'Informació bàsica',
+					'IMAGE': 'Imatge',
+					'CONSUME-SRV': 'Tarifes de Consum',
+					'SRV-INSTANT': 'Instanciació del Servei',
+					'SRV-STABLISH': 'Arrancar Servei',
+					'HOUR-PRICE': 'Preu per Hora',
+					'RATING': 'Tarifa horària'
 
 
 
