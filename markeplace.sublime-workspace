@@ -7,33 +7,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "src/app/services/instantiateService/InstantiateService.ctr.js",
-			"settings":
-			{
-				"buffer_size": 4031,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/app/common/Connection.fac.js",
-			"settings":
-			{
-				"buffer_size": 404,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/app/services/instantiateService/instantiateSrv-dialog.tpl.html",
-			"settings":
-			{
-				"buffer_size": 1152,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -73,22 +46,28 @@
 	"expanded_folders":
 	[
 		"/home/enric/www/marketplace",
-		"/home/enric/www/marketplace/src/app",
-		"/home/enric/www/marketplace/src/app/common",
-		"/home/enric/www/marketplace/src/app/services",
-		"/home/enric/www/marketplace/src/app/services/instantiateService"
+		"/home/enric/www/marketplace/src",
+		"/home/enric/www/marketplace/src/app"
 	],
 	"file_history":
 	[
+		"/home/enric/www/marketplace/src/app/uploadfile/chunkUploader/chunkUplader.js",
+		"/home/enric/www/marketplace/src/app/services/instantiateService/InstantiateService.ctr.js",
+		"/home/enric/www/marketplace/src/app/login/checkmail.directive.js",
+		"/home/enric/www/marketplace/src/app/projects/create_service/createService/createServiceDialog.tpl.html",
+		"/home/enric/www/marketplace/src/app/projects/publish_service/PublishSrvController.ctr.js",
+		"/home/enric/www/marketplace/src/app/users/UserFactory.fac.js",
+		"/home/enric/www/marketplace/src/app/uploadfile/fileUploadService.srv.js",
+		"/home/enric/www/marketplace/src/app/users/UsersMockFactory.fac.js",
+		"/home/enric/www/marketplace/src/app/uploadfile/fileModelDirective.dir.js",
+		"/home/enric/www/marketplace/src/app/users/UserController.ctr.js",
 		"/home/enric/www/marketplace/src/app/common/Connection.fac.js",
 		"/home/enric/www/marketplace/src/app/services/instantiateService/instantiateSrv-dialog.tpl.html",
-		"/home/enric/www/marketplace/src/app/services/instantiateService/InstantiateService.ctr.js",
 		"/home/enric/www/marketplace/.gitignore",
 		"/home/enric/www/radar/frontend/src/app/gestor/gestor.tpl.html",
 		"/home/enric/www/radar/frontend/src/app/gestor/gestor.less",
 		"/home/enric/www/radar/frontend/src/app/gestor/gestor.controller.ctr.js",
 		"/home/enric/www/marketplace/src/app/projects/publish_service/publishsrv_form.tpl.html",
-		"/home/enric/www/marketplace/src/app/projects/publish_service/PublishSrvController.ctr.js",
 		"/home/enric/www/marketplace/src/app/uploadfile/uploadfile.js",
 		"/home/enric/www/marketplace/src/app/projects/publish_service/publishsrv-dynamicform.tpl.html",
 		"/home/enric/www/marketplace/src/app/projects/publish_service/publishsrv.tpl.html",
@@ -96,7 +75,7 @@
 	],
 	"find":
 	{
-		"height": 25.0
+		"height": 24.0
 	},
 	"find_in_files":
 	{
@@ -110,6 +89,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"$",
+			"var ",
+			"console",
 			"obj"
 		],
 		"highlight": true,
@@ -128,102 +110,14 @@
 	"groups":
 	[
 		{
-			"selected": 1,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "src/app/services/instantiateService/InstantiateService.ctr.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4031,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1038,
-								1038
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 255.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/app/common/Connection.fac.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 404,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								388,
-								388
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "src/app/services/instantiateService/instantiateSrv-dialog.tpl.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1152,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 25.0
+		"height": 24.0
 	},
 	"input":
 	{
@@ -260,7 +154,7 @@
 	"project": "markeplace.sublime-project",
 	"replace":
 	{
-		"height": 46.0
+		"height": 44.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -269,6 +163,42 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"chunk",
+				"src/app/uploadfile/chunkUploader/chunkUplader.js"
+			],
+			[
+				"chunkupl",
+				"src/app/uploadfile/chunkUploader/chunkUplader.js"
+			],
+			[
+				"checkmail",
+				"src/app/login/checkmail.directive.js"
+			],
+			[
+				"instanti",
+				"src/app/services/instantiateService/InstantiateService.ctr.js"
+			],
+			[
+				"publishserv",
+				"src/app/projects/publish_service/PublishSrvController.ctr.js"
+			],
+			[
+				"usermoc",
+				"src/app/users/UsersMockFactory.fac.js"
+			],
+			[
+				"userfac",
+				"src/app/users/UserFactory.fac.js"
+			],
+			[
+				"usercontro",
+				"src/app/users/UserController.ctr.js"
+			],
+			[
+				"filemode",
+				"src/app/uploadfile/fileModelDirective.dir.js"
+			],
 			[
 				"connec",
 				"src/app/common/Connection.fac.js"
@@ -310,7 +240,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 248.0,
+	"side_bar_width": 252.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
