@@ -6,11 +6,5 @@ coverage/
 .tmp/
 dist/
 src/app/common/Connection.fac.js
-<<<<<<< HEAD
-anella.sublime-project
-anella.sublime-workspace
-.gitignore
-=======
-marketplace.sublime-project
-marketplace.sublime-workspace
->>>>>>> 12c28259cdb8c7f6ba6465beb54463a6133148f7
+*.sublime-project
+*.sublime-workspace
