@@ -7,12 +7,12 @@
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<div class="row">
-				<div class="pull-right publish">
+				<!-- <div class="pull-right publish">
 					<button ui-sref="publishsrv" class="btn btn-default btn-sm"><i class="fa fa-plus-square"></i><span class="icon-left">{{'PUBL-SRV-BTN' | translate}}</span></button>
-				</div>
+				</div> -->
 				<div class="pull-right publish">
 					<button class="btn btn-default btn-sm" ng-click="provprojects.goCreateServiceDialog()">
-						<i class="fa fa-plus-square"></i><span class="icon-left">{{'PUBL-SRV-BTN' | translate}} Dialog</span>
+						<i class="fa fa-plus-square"></i><span class="icon-left">{{'PUBL-SRV-BTN' | translate}}</span>
 					</button>
 				</div>
 			</div>
@@ -75,7 +75,11 @@
 												{{srv.client.user_name}}
 											</td>
 											<td class="vert-align">
-												<p ng-if="srv.status !== 8" ><span translate="{{provprojects.getLiteralStatus(srv.status)}}" class="label label-status" ng-class="(srv.status < 3) ? 'label-danger' : 'label-success'">{{(srv.status < 3) ? 'Pendent' : 'Confirmat'}}</span></p>
+												<p ng-if="srv.status !== 8" ><span translate="{{provprojects.getLiteralStatus(srv.status)}}" class="label label-status"
+													ng-class="(srv.status < 3) ? 'label-danger' : 'label-success'">
+													<p ng-if="srv.status !== 8" ><span translate="{{provprojects.getLiteralStatus(srv.status)}}" class="label label-status">
+													{{(srv.status < 3) ? 'Pendent' : 'Confirmat'}}
+												</span></p>
 												<p ng-if="srv.status === 8"><span class="label label-status label-success">Inactiu</span></p>
 											</td>
 											<td class="vert-align">

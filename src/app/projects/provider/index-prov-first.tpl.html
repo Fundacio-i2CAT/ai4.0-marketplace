@@ -29,16 +29,16 @@
 										<p>Contexte</p>
 									<h4>{{srv.context_type}}</h4>
 								</li> -->
-								
-								
+
+
 								<li class=" prov-lists">
 									<p>Creació</p>
 									<h4><span class="label label-default">{{srv.created_at | date: 'dd-MM-yyyy'}}</span></h4>
 								</li>
 								<li class="prov-lists">
 									<p>Status</p>
-									<h4 ng-if="srv.status !== 8" ><span class="label" ng-class="(srv.status < 3) ? 'label-danger' : 'label-info'"><i class="fa" ng-class="(srv.status < 3) ? 'fa-exclamation-triangle' : 'fa-check-square-o'"></i> {{(srv.status < 3) ? 'Pendent' : 'Confirmat'}}</span></h4>
-									<h4 ng-if="srv.status === 8"><span class="label label-warning"><i class="fa fa-user"></i>Deshabilitat</span></h4>
+									<!-- <h4 ng-if="srv.status !== 8" ><span class="label" ng-class="(srv.status < 3) ? 'label-danger' : 'label-info'"><i class="fa" ng-class="(srv.status < 3) ? 'fa-exclamation-triangle' : 'fa-check-square-o'"></i> {{(srv.status < 3) ? 'Pendent' : 'Confirmat'}}</span></h4>
+									<h4 ng-if="srv.status === 8"><span class="label label-warning"><i class="fa fa-user"></i>Deshabilitat</span></h4> -->
 								</li>
 								<li class="prov-lists pull-right" ng-if="srv.status !== 8">
 									<br/><br/>

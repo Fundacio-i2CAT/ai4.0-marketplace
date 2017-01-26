@@ -100,7 +100,7 @@
 															"md5sum": md5sum
 														}),
 											dataType: "json",
-											success: function(response) {
+											success: function() {
 												$.ajax({
 												url: backend_url+"/upload",
 												type: "post",

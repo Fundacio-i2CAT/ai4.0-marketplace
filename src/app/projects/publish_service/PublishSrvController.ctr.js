@@ -16,6 +16,7 @@
 		vm.showbar = false;
 		vm.selectedRowId = null;
 		vm.iaasSelected = null;
+		vm.hideButtons = false;
 
 		vm.types = [{name: 'Number'}, {name: 'String'}];
 		vm.discImageFormat = [{name: 'QCOW2'}, {name: 'VDI'}];
@@ -189,6 +190,11 @@
 				vm.allFields.splice(lastItem);
 			}
 		};
+
+		vm.closeDialog = function() {
+				ngDialog.close();
+		};
+
 	}
 
 })();

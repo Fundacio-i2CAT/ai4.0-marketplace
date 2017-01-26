@@ -3,16 +3,15 @@
     width: 80%;
     overflow: scroll;
     padding: 2em;
-    <!-- height: auto; -->
     height: 100%;
-    min-height: 100%;
+    min-height: 700px;
   }
 </style>
 <div class="">
   <h4 class="text text-primary">{{'PUBL-SRV-BTN' | translate}}</h4>
   <form class="create-service-form" name="createserviceform" id="createserviceform">
     <uib-tabset class="top3">
-      <uib-tab index="0" heading="{{ 'GENERAL-DATA' | translate }}">
+      <uib-tab select="createproj.hideButtons = false" index="0" heading="{{ 'GENERAL-DATA' | translate }}">
           <div class="panel panel-default padding1">
             <div class="panel-body">
               <div class="row">
@@ -53,7 +52,7 @@
             </div>
           </div>
       </uib-tab>
-      <uib-tab index="1" heading="{{ 'PARAMS' | translate }}">
+      <uib-tab index="1" heading="{{ 'PARAMS' | translate }}" select="createproj.hideButtons = false">
         <div class="panel panel-default padding1">
           <div class="panel panel-body">
             <div class="row">
@@ -155,7 +154,7 @@
           </div>
         </div>
       </uib-tab>
-      <uib-tab index="2" heading="{{ 'INFRASTRUCT' | translate }}">
+      <uib-tab index="2" heading="{{ 'INFRASTRUCT' | translate }}" select="createproj.hideButtons = false">
         <div class="panel panel-default padding1">
           <div class="panel-body">
             <div class="row">
@@ -222,7 +221,7 @@
           </div>
         </div>
       </uib-tab>
-      <uib-tab index="3" heading="{{ 'DISC-IMAGE' | translate }}">
+      <uib-tab index="3" heading="{{ 'DISC-IMAGE' | translate }}" select="createproj.hideButtons = false">
         <div class="panel panel-default">
           <div class="panel-body">
             <div class="row">
@@ -244,7 +243,7 @@
           </div>
         </div>
       </uib-tab>
-      <uib-tab index="4">
+      <uib-tab index="4" select="createproj.hideButtons = false">
         <uib-tab-heading>
           <!-- <i class="fa fa-credit-card"></i> Preus -->
           {{ 'PRICE' | translate }}
@@ -277,12 +276,26 @@
           </div>
         </div>
       </uib-tab>
-      <uib-tab index="5">
+      <uib-tab index="5" select="createproj.hideButtons = true">
         <uib-tab-heading>
           <i class="fa fa-info-circle"></i> {{ 'INFO' | translate }}
         </uib-tab-heading>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </div>
+        </div>
       </uib-tab>
-    </ui-tabset>
+
+    </uib-tabset>
+    <div class="row" ng-show="!createproj.hideButtons">
+      <div class="col-xs-3 col-xs-offset-3 top3">
+        <button ng-disabled="createserviceform.$invalid" ng-click="createproj.launchTemplate(createproj.srv)" class="btn btn-success btn-block">{{ 'PUBL-SRV-TITLE' | translate }}</button>
+      </div>
+      <div class="col-xs-3 top3">
+        <a class="btn btn-danger btn-block" ng-click="createproj.closeDialog();">&nbsp;&nbsp;Cancelar</a>
+      </div>
+    </div>
   </form>
 
 
