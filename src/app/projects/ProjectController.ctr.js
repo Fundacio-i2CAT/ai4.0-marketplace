@@ -41,9 +41,9 @@
 		};
 		//end table pagination
 
-		vm.sortType = 'srv.project.name';
+		vm.sortType = 'created_at';
 		vm.sortReverse = true;
-		vm.sortTypeClient = '';
+		vm.sortTypeClient = '-created_at';
 		vm.sortReverseClient = false;
 		vm.showIp = false;
 		vm.showRTParams = false;

@@ -16,7 +16,7 @@
 		vm.userToEdit = {};
 		vm.allUsers=[];
 
-		vm.sortType;
+		vm.sortType = '';
 		vm.sortReverse = false;
 
 		//table pagination
