@@ -54,7 +54,7 @@
                       <span ng-show="clientprojects.sortTypeClient == 'services[0].service.name' && clientprojects.sortReverseClient" class="fa fa-sort-alpha-desc"></span>
                       <a/>
                     </th>
-                    <th ng-show="srv.showRTParams">RunTime Params</th>
+                    <th>Paràms. d'Execució</th>
                     <th><span ng-show="false" class="pull-right">{{ 'SRV-ACCIONS' | translate}}</span></th>
                   </tr>
                 </thead>
@@ -75,9 +75,10 @@
                         <li ng-repeat="one in srv.services">{{one.service.name}}</li>
                       </ul>
                     </td>
-                    <td ng-show="srv.showRTParams">
-                      <span>Floating IP</span>
+                    <td ng-show="srv.runtime_params[0]">
+                      <span ng-repeat="run in srv.runtime_params" uib-popover="{{run.value}}" popover-title="{{run.desc}}"><code>{{run.name}}</code><br/></span>
                     </td>
+                    <td ng-show="!srv.runtime_params[0]"></td>
                     <td ng-hide="srv.showSpinner" class="vert-align col-xs-2" style="width:140px;">
                       <span class="pull-right">&nbsp;&nbsp;&nbsp;<a ng-click="clientprojects.confirmDeleteProject(srv)" class="btn btn-default btn-xs">
                           <i class="fa fa-trash-o"></i>
