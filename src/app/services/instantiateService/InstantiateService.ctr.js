@@ -125,8 +125,6 @@
 								if (response.data.state.status === 5) {
 									$interval.cancel(internalPromise);
 									toastr.success('El Projecte s\'ha instanciat correctament', 'Instanciar Projecte');
-									//aqui fer servir servei per setejar el runtime params
-									ShareDataFactory.setData(response.data);
 									close();
 								} else if (response.data.state.status === 7) {
 									$interval.cancel(internalPromise);
