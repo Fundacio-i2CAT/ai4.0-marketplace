@@ -13,39 +13,39 @@
 						<p>{{detailsrv.currentService.description}}</p><br/>
 
 						<!-- <p><img class="img-thumbnail catalog" src="assets/logos_mkp/{{catalog.getImage(one.name)}}" alt="Imatge servei"></p> -->
-						<p><strong><span class="text text-primary">PROVEIDOR</span></strong></p>
+						<p><strong><span class="text text-primary uppercase">{{'CATAL-PROVEIDOR' | translate}}</span></strong></p>
 						<div class="row">
 							<div class="col-xs-12 col-sm-1 col-md-1 col-lg-1">
 								<p>{{detailsrv.nameProvider}}</p><br/>
 							</div>
 							<div class="col-xs-12 col-sm-2 col-sm-offset-1 col-md-2 col-md-offset-1 col-lg-2 col-lg-offset-1">
-								<img class="logo-prov-detail" width="150" ng-src="assets/images/Logos/{{detailsrv.getProviderImage(detailsrv.nameProvider)}}" alt="Imatge Proveïdor">
+								<img class="logo-prov-detail" width="150" ng-src="assets/images/Logos/{{detailsrv.getProviderImage(detailsrv.nameProvider)}}" alt="Provider image">
 							</div>
 						</div>
 
-						<p><strong><span class="text text-primary">TIPUS DE SERVEI</span></strong></p>
+						<p><strong><span class="text text-primary uppercase">{{ 'SERVICE-TYPE' | translate }}</span></strong></p>
 						<p>{{detailsrv.currentService.service_type}}</p><br/>
-						<p><strong><span class="text text-primary">PREUS</span></strong></p>
+						<p><strong><span class="text text-primary uppercase">{{ 'PRICE' | translate }}</span></strong></p>
 						<div class="row">
 							<div class="col-xs-12 col-sm-12">
-								<h5><span class="text text-primary">Establiment Servei</span></h5>
+								<h5><span class="text text-primary">{{ 'SRV-INSTANT' | translate }}</span></h5>
 								<p>0.00 €</p>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-xs-12 col-sm-12">
-								<h5><span class="text text-primary">Consum per Hora</span></h5>
+								<h5><span class="text text-primary">{{ 'CONSUM-PER-HOUR' | translate }}</span></h5>
 								<p>0.00 €</p>
 							</div>
 						</div>
-						<p><strong><span class="text text-primary">SECTORS</span></strong></p>
+						<p><strong><span class="text text-primary uppercase">{{ 'DETAIL-SECTORS' | translate }}</span></strong></p>
 						<ul class="list list-unstyled list-inline">
 							<li ng-repeat="one in detailsrv.currentService.sectors">
 								{{one}}
 							</li>
 						</ul>
 						<br/>
-						<p><strong><span class="text text-primary">LINK</span></strong></p>
+						<p><strong><span class="text text-primary uppercase">{{ 'DETAIL-LINK' | translate }}</span></strong></p>
 						<p ng-if="detailsrv.nameProvider == 'Eurecat'"><a target="_blank" href="http://eurecat.org/es/">{{detailsrv.currentService.link}}</a></p>
 						<p ng-if="detailsrv.nameProvider != 'Eurecat'"><a target="_blank" href="{{detailsrv.currentService.link}}">{{detailsrv.currentService.link}}</a></p>
 					</div>
@@ -53,11 +53,11 @@
 						<div class="row boton-contractar">
 							<div ng-if="detailsrv.currentUser == null || detailsrv.currentUser.role == 'Partner.Provider'" class="col-xs-4 col-xs-offset-4">
 
-								<a ng-click="detailsrv.goToLogin()" class="btn btn-primary btn-md btn-block">Login</a>
+								<a ng-click="detailsrv.goToLogin()" class="btn btn-primary btn-md btn-block">{{ 'LOG-LOGIN' | translate }}</a>
 								<h6 class="text text-help">{{'SRV-DETAIL-MSG' | translate}}</h6>
 							</div>
 							<div ng-if="detailsrv.currentUser.role == 'Partner.Client'" class="col-xs-4 col-xs-offset-4">
-								<a ng-click="detailsrv.goToProjects()" class="btn btn-primary btn-md btn-block">Instanciar Servei</a>
+								<a ng-click="detailsrv.goToProjects()" class="btn btn-primary btn-md btn-block">{{ 'SRV-INSTANCE' | translate }}</a>
 							</div>
 						</div>
 					</div>

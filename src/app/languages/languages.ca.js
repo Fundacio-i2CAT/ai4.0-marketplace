@@ -26,6 +26,10 @@
 					'SRV-CREACIO':'Creació',
 					'SRV-ACCIONS':'Accions',
 					'SRV-SERVEI': 'Servei',
+					'CONSUM-PER-HOUR': 'Consum per Hora',
+					'DETAIL-SECTORS': 'Sectors',
+					'DETAIL-LINK': 'Enllaç',
+					'SRV-INSTANCE': 'Instanciar Servei', 
 					//projectes
 					'PROJ-CLIENT':'PROJECTES',
 					'FILTER-PLACEHOLDER-PROJ': 'Filtrar Projectes',
