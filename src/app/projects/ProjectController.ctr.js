@@ -156,7 +156,7 @@
 			/////////////////////////////////////////////////////////////////////
 			ProjectFactory.confirmProviderProject(srv).then(function(response){
 				if (response.status === 200) {
-					$state.reload();
+					srv.status = 3;
 				} else {
 					toastr.error("No s'ha pogut confirmar el Servei...", 'Hi ha un error');
 				}
@@ -167,7 +167,9 @@
 			/////////////////////////////////////////////////////////////////////
 			ProjectFactory.disableProviderProject(srv).then(function(response){
 				if (response.status === 200) {
-					$state.reload();
+					srv.status = 1;
+				} else {
+					toastr.error("No s'ha pogut desactivar el Servei...", 'Hi ha un error');
 				}
 			});
 		};
