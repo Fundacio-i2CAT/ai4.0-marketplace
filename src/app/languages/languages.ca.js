@@ -29,7 +29,8 @@
 					'CONSUM-PER-HOUR': 'Consum per Hora',
 					'DETAIL-SECTORS': 'Sectors',
 					'DETAIL-LINK': 'Enllaç',
-					'SRV-INSTANCE': 'Instanciar Servei', 
+					'SRV-INSTANCE': 'Instanciar Servei',
+					'RUN-TIMES': 'Paràmetres d\'Execució', 
 					//projectes
 					'PROJ-CLIENT':'PROJECTES',
 					'FILTER-PLACEHOLDER-PROJ': 'Filtrar Projectes',
