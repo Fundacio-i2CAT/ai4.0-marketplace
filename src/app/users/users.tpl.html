@@ -77,8 +77,8 @@
                             </tr>
                           </thead>
                           <tbody>
-                            <!-- <tr ng-repeat="user in users.allUsers | orderBy:users.sortType:users.sortReverse| filter: searchingWord | limitTo : 5"> -->
-                            <tr ng-repeat="user in users.allUsers.slice(((users.currentPage-1)*users.itemsPerPage), ((users.currentPage)*users.itemsPerPage)) | orderBy:users.sortType:users.sortReverse | filter: searchingWord">
+                            <tr ng-repeat="user in users.allUsers | orderBy:users.sortType:users.sortReverse| filter: searchingWord">
+                            <!-- <tr ng-repeat="user in users.allUsers.slice(((users.currentPage-1)*users.itemsPerPage), ((users.currentPage)*users.itemsPerPage)) | orderBy:users.sortType:users.sortReverse | filter: searchingWord"> -->
                               <td ng-click="users.goUserDetail(user)">{{user.name}}</td>
                               <td ng-click="users.goUserDetail(user)" class="centered">{{user.surname}}</td>
                               <td ng-click="users.goUserDetail(user)" class="centered">{{user.company}}</td>
@@ -109,18 +109,17 @@
                             </tr>
                           </tbody>
                         </table>
-                        <div class="col-xs-6 col-sm-6">
+                        <!-- <div class="col-xs-6 col-sm-6">
                           <div class="pull-left">
                             <form class="form-inline top1">
                               <div class="form-group">
                                 <span for="viewby" class="text text-help">{{'PAGINATION-ROWSXPAGE' | translate}}&nbsp;&nbsp;</span>
                                 <select id="viewby" name="viewby" ng-init="users.viewby = users.pageNumberOptions[1]" class="form-control input-sm top05" ng-options="item.value for item in users.pageNumberOptions" ng-model="users.viewby" ng-change="users.setItemsPerPage(users.viewby)">
-                                  <!-- <option value="" disabled>5</option> -->
                                 </select>
                               </div>
                             </form>
                           </div>
-                        </div>
+                        </div> -->
                         <div class="col-xs-6 col-sm-6">
                           <div class="pull-right">
                             <ul
@@ -129,7 +128,7 @@
                               force-ellipses="true"
                               first-text="{{'PAGINATION-START' | translate}}"
                               last-text="Final"
-                              previous-text="Anerior"
+                              previous-text="Anterior"
                               next-text="Següent"
                               total-items="users.totalItems"
                               items-per-page="users.itemsPerPage"

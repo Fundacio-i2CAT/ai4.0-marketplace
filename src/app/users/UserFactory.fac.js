@@ -17,6 +17,7 @@
 
 		var factory = {};
 		factory.getAllUsers = getAllUsers;
+		factory.getAllUsersPerPage = getAllUsersPerPage;
 		factory.openSession = openSession;
 		factory.setUser = setUser;
 		factory.deleteSession = deleteSession;
@@ -28,6 +29,12 @@
 		//get all users
 		function getAllUsers () {
 			return $http.get(getAllUsersUrl).then(handleSuccess, handleError);
+		}
+
+		//get all users pagination
+		function getAllUsersPerPage(num) {
+				var url = [getAllUsersUrl,'?page=',num].join('');
+				return $http.get(url).then(handleSuccess, handleError);
 		}
 
 		//open session
