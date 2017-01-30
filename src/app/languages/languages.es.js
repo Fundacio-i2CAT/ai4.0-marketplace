@@ -30,6 +30,7 @@
 					'DETAIL-SECTORS': 'Sectores',
 					'DETAIL-LINK': 'Enlace',
 					'SRV-INSTANCE': 'Instanciar Servicio',
+					'RUN-TIMES': 'Parámetros de Ejecución',
 					//projectes
 					'PROJ-CLIENT':'PROYECTOS',
 					'FILTER-PLACEHOLDER-PROJ': 'Filtrar Proyectos',

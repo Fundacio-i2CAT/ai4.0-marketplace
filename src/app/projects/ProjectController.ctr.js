@@ -9,7 +9,7 @@
 	function ProjectController ($sce, $rootScope, $interval, $state, toastr, ProjectFactory, $log, UserFactory, ProgressFactory, $location, ServiceFactory, $stateParams, CurrentUserFactory, ROLES, usSpinnerService, ImageProviderFactory, LiteralFactory, ngDialog, ShareDataFactory, $timeout, LocalStorageFactory){
 		var vm = this;
 				vm.kk;
-		 vm.htmlPopover = $sce.trustAsHtml('<code>'+ vm.kk + '</code>');
+		vm.showRuntime = false;
 
 
 		//table pagination
@@ -85,6 +85,10 @@
 				if (response.data.status === 'fail') {
 					toastr.error('Hi ha hagut un errror al obtenir els projectes...', 'Hi ha un problema');
 				} else {
+
+					angular.forEach(response.data.result, function(each){
+						if(each.runtime_params.length > 0) vm.showRuntime = true;
+					});
 					vm.allClientProjects = response.data.result;
 					angular.forEach(vm.allClientProjects, function(each){
 						each.showSpinner = false;
