@@ -25,17 +25,19 @@
 
 						<p><strong><span class="text text-primary uppercase">{{ 'SERVICE-TYPE' | translate }}</span></strong></p>
 						<p>{{detailsrv.currentService.service_type}}</p><br/>
-						<p><strong><span class="text text-primary uppercase">{{ 'PRICE' | translate }}</span></strong></p>
-						<div class="row">
-							<div class="col-xs-12 col-sm-12">
-								<h5><span class="text text-primary">{{ 'SRV-INSTANT' | translate }}</span></h5>
-								<p>0.00 €</p>
+						<div ng-if="detailsrv.currentService.price_initial && detailsrv.currentService.price_x_hour">
+							<p><strong><span class="text text-primary uppercase">{{ 'PRICE' | translate }}</span></strong></p>
+							<div class="row" ng-if="detailsrv.currentService.price_initial">
+								<div class="col-xs-12 col-sm-12">
+									<h5><span class="text text-primary">{{ 'SRV-INSTANT' | translate }}</span></h5>
+									<p>{{ detailsrv.currentService.price_initial }}€</p>
+								</div>
 							</div>
-						</div>
-						<div class="row">
-							<div class="col-xs-12 col-sm-12">
-								<h5><span class="text text-primary">{{ 'CONSUM-PER-HOUR' | translate }}</span></h5>
-								<p>0.00 €</p>
+							<div class="row" ng-if="detailsrv.currentService.price_x_hour">
+								<div class="col-xs-12 col-sm-12">
+									<h5><span class="text text-primary">{{ 'CONSUM-PER-HOUR' | translate }}</span></h5>
+									<p>{{ detailsrv.currentService.price_x_hour }}€</p>
+								</div>
 							</div>
 						</div>
 						<p><strong><span class="text text-primary uppercase">{{ 'DETAIL-SECTORS' | translate }}</span></strong></p>
@@ -52,7 +54,6 @@
 					<div class="col-xs-12">
 						<div class="row boton-contractar">
 							<div ng-if="detailsrv.currentUser == null || detailsrv.currentUser.role == 'Partner.Provider'" class="col-xs-4 col-xs-offset-4">
-
 								<a ng-click="detailsrv.goToLogin()" class="btn btn-primary btn-md btn-block">{{ 'LOG-LOGIN' | translate }}</a>
 								<h6 class="text text-help">{{'SRV-DETAIL-MSG' | translate}}</h6>
 							</div>
