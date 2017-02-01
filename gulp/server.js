@@ -41,7 +41,7 @@ function browserSyncInit(baseDir, browser) {
     browser: browser,
     port: 80,
     notify: false,
-    ghostmode: false
+    ghostMode: false
   });
 }
 
