@@ -63,10 +63,12 @@
 			ServiceFactory.createService(model).then(function (response){
 				$log.log(response);
 				toastr.success('Servei publicat correctament', 'Publicació de Servei');
+				ngDialog.close();
 				$state.go('catalog');
 			}, function (error) {
 				$log.log(error);
 				toastr.error('No s\'ha pogut publicar el Servei', 'Error al publicar el Servei');
+				ngDialog.close();
 				$state.go('provprojects');
 			});
 		};

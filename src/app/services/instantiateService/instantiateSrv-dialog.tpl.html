@@ -11,19 +11,19 @@
 </style>
 <div class="container" style="width:100%">
 	<div class="row">
-		<h4 class="text text-primary">Instanciar Servei</h4>
-		<h4><small>Servei </small><span class="text text-default">{{instancesrv.service.srv.name}}</span> - <small>Proveidor</small> {{instancesrv.service.srv.services[0].provider.name}}</h4>
+		<h4 class="text text-primary">{{ 'SRV-INSTANCE' | translate }}</h4>
+		<h4><small>{{ 'SRV-SERVEI' | translate }} </small><span class="text text-default">{{instancesrv.service.srv.name}}</span> - <small>Proveidor</small> {{instancesrv.service.srv.services[0].provider.name}}</h4>
 		<br/>
-		<h4><small>Paràmetres del consumidor</small></h4>
+		<h4><small>{{ 'CUSTOMER-PARAMS' | translate }}</small></h4>
 		<div class="top2">
 		    <form name="instantiate_service">
 		    	<div sf-schema="instancesrv.schema" sf-form="instancesrv.form" sf-model="instancesrv.model"></div>
 		    	<div class="row">
 		    		<div class="col-xs-3 col-xs-offset-3">
-			    		<button class="btn btn-success btn-sm btn-block" ng-disabled="instantiate_service.$invalid || instantiate_service.$pristine" ng-click="instancesrv.InstantiateSrv(instancesrv.model)" type="submit">Enviar Dades</button>
+			    		<button class="btn btn-primary btn-sm btn-block" ng-disabled="instantiate_service.$invalid || instantiate_service.$pristine" ng-click="instancesrv.InstantiateSrv(instancesrv.model)" type="submit">{{ 'SRV-INSTANCE' | translate }}</button>
 						</div>
 			    	<div class="col-xs-3">
-			    		<button class="btn btn-danger btn-sm btn-block" ng-click="instancesrv.closeDialog()" type="button">Cancelar</button>
+			    		<button class="btn btn-default btn-sm btn-block" ng-click="instancesrv.closeDialog()" type="button">Cancelar</button>
 			    	</div>
 		    	</div>
 		    </form>
