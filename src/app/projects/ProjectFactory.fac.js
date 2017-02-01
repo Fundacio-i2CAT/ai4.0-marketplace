@@ -122,6 +122,27 @@
 			return $http.get(url).then(handleSuccess, handleError);
 		}
 
+		/**
+		*	manage error run/stop projectes
+		* @param
+		*/
+		function errorManagementRunningStopping() {
+			//si el projecte ja està running
+			// if (response.data.status === 6) {
+			// 	srv.showSpinner = false;
+			// 	$interval.cancel(internalPromise);
+			// 	var backmessage;
+			// 	if ($translate.use() == 'CAT') {
+			// 		backmessage = response.data.message.ca;
+			// 	} else if ($translate.use() == 'CAST') {
+			// 		backmessage = response.data.message.es;
+			// 	}
+			//
+			// 	toastr.success(backmessage, response.data.code);
+			// 	vm.getClientProjectsByPartnerId(user.user.provider_id);
+			// }
+		}
+
 
 		///////////////////////////////   private functions   ///////////////////////////////////////////////////
 		function handleSuccess(response){

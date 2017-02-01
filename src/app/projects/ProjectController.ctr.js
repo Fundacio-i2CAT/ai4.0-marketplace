@@ -5,8 +5,8 @@
 		.module('marketplace')
 		.controller('ProjectController', ProjectController);
 
-	ProjectController.$inject = ['$sce', '$rootScope', '$interval', '$state', 'toastr', 'ProjectFactory', '$log', 'UserFactory', 'ProgressFactory', '$location', 'ServiceFactory', '$stateParams', 'CurrentUserFactory', 'ROLES', 'usSpinnerService', 'ImageProviderFactory', 'LiteralFactory', 'ngDialog', 'ShareDataFactory', '$timeout', 'LocalStorageFactory'];
-	function ProjectController ($sce, $rootScope, $interval, $state, toastr, ProjectFactory, $log, UserFactory, ProgressFactory, $location, ServiceFactory, $stateParams, CurrentUserFactory, ROLES, usSpinnerService, ImageProviderFactory, LiteralFactory, ngDialog, ShareDataFactory, $timeout, LocalStorageFactory){
+	ProjectController.$inject = ['$sce', '$rootScope', '$interval', '$state', 'toastr', 'ProjectFactory', '$log', 'UserFactory', 'ProgressFactory', '$location', 'ServiceFactory', '$stateParams', 'CurrentUserFactory', 'ROLES', 'usSpinnerService', 'ImageProviderFactory', 'LiteralFactory', 'ngDialog', 'ShareDataFactory', '$timeout', 'LocalStorageFactory', '$translate'];
+	function ProjectController ($sce, $rootScope, $interval, $state, toastr, ProjectFactory, $log, UserFactory, ProgressFactory, $location, ServiceFactory, $stateParams, CurrentUserFactory, ROLES, usSpinnerService, ImageProviderFactory, LiteralFactory, ngDialog, ShareDataFactory, $timeout, LocalStorageFactory, $translate){
 		var vm = this;
 				vm.kk;
 		vm.showRuntime = false;
@@ -231,16 +231,34 @@
 					var internalPromise = $interval(function(){
 						ProjectFactory.getProjectState(srv._id).then(function(response){
 							// $log.log('getProjectState::: ', response);
-							if (response.data.state.status === 5) {
+							if (response.data.status === 5) {
 								srv.showSpinner = false;
 								$interval.cancel(internalPromise);
-								// $state.reload();
 								toastr.success('Projecte arrencat correctament', 'Arrencar Serveis');
 								vm.getClientProjectsByPartnerId(user.user.provider_id);
 							}
+						}, function(error){
+							console.log(error);
 						});
 					}, 30000);
 				}
+
+
+				//si el projecte ja està running
+				if (response.status === 409) {
+					srv.showSpinner = false;
+					var backmessage;
+					if ($translate.use() == 'CAT') {
+						backmessage = response.data.message.ca;
+					} else if ($translate.use() == 'CAST') {
+						backmessage = response.data.message.es;
+					}
+					srv.status = response.data.status;
+					toastr.success(backmessage, response.data.code);
+					vm.getClientProjectsByPartnerId(user.user.provider_id);
+				}
+
+
 			});
 			// progressbar.complete();
 		}
@@ -262,39 +280,37 @@
 					var internalPromise = $interval(function(){
 						ProjectFactory.getProjectState(srv._id).then(function(response){
 							// $log.log('getProjectState::: ', response);
-							if (response.data.state.status === 6) {
+							if (response.data.status === 6) {
 								srv.showSpinner = false;
 								$interval.cancel(internalPromise);
-								// $state.reload();
 								toastr.success('Projecte aturat correctament', 'Aturar Serveis');
 								vm.getClientProjectsByPartnerId(user.user.provider_id);
-
 							}
+
+						}, function (error){
+							console.log(error);
 						});
 					}, 8000);
 
-					//it works! (this could was inside the 'if (response.status == 5)')
-
-					// $timeout( function(){
-					// 	ProjectFactory.getProjectState(id).then(function(response){
-					// 		vm.allClientProjects.forEach(function(each) {
-					// 			if (each._id === id) {
-					// 				each.status = 6;
-					// 			}
-					// 		});
-					// 	});
-					// }, 30000);
-					//
-					// var internalPromiseStop = $interval(function(){
-					// 	ProjectFactory.getProjectState(id).then(function(response){
-					// 		if (response.data.status === 6) {
-					// 			$interval.cancel(internalPromiseStop);
-					// 			vm.stopSpin();
-					// 			$state.reload();
-					// 		}
-					// 	});
-					// }, 30000);
 				}
+
+
+				//si el projecte ja està running
+				if (response.status === 409) {
+					srv.showSpinner = false;
+					var backmessage;
+					if ($translate.use() == 'CAT') {
+						backmessage = response.data.message.ca;
+					} else if ($translate.use() == 'CAST') {
+						backmessage = response.data.message.es;
+					}
+					srv.status = response.data.status;
+					toastr.success(backmessage, response.data.code);
+					vm.getClientProjectsByPartnerId(user.user.provider_id);
+				}
+
+
+
 			});
 		};
 
@@ -323,6 +339,25 @@
 
 		vm.getLiteralStatus = function(status){
 			return LiteralFactory.getLiteralStatus(status);
+		};
+
+		vm.getStatusClass = function(status){
+			var className;
+			switch (status) {
+				case 3:
+				case 6:
+					className = 'label-default';
+				break;
+				case 9:
+					className = 'label-warning';
+				break;
+				case 5:
+					className = 'label-success';
+				break;
+			}
+
+			return className;
+
 		};
 
 		vm.getProjectState = function(id){

@@ -75,12 +75,54 @@
 												{{srv.client.user_name}}
 											</td>
 											<td class="vert-align">
-												<p ng-if="srv.status !== 8" ><span translate="{{provprojects.getLiteralStatus(srv.status)}}" class="label label-status"
+
+
+
+
+
+
+												<!-- <span ng-if="srv.status !== 8" >
+													<span translate="{{provprojects.getLiteralStatus(srv.status)}}" class="label label-status"
 													ng-class="(srv.status < 3) ? 'label-danger' : 'label-success'">
-													<p ng-if="srv.status !== 8" ><span translate="{{provprojects.getLiteralStatus(srv.status)}}" class="label label-status">
+													</span>
+												</span>
+
+												<span ng-if="srv.status !== 8" >
+													<span translate="{{provprojects.getLiteralStatus(srv.status)}}" class="label label-status">
 													{{(srv.status < 3) ? 'Pendent' : 'Confirmat'}}
-												</span></p>
-												<p ng-if="srv.status === 8"><span class="label label-status label-success">Inactiu</span></p>
+													</span>
+												</span>
+
+
+												<span ng-if="srv.status === 8">
+													<span class="label label-status label-success">Inactiu</span>
+												</span> -->
+
+
+
+												<span ng-if="srv.status !== 8" >
+													<span translate="{{provprojects.getLiteralStatus(srv.status)}}" class="label label-status"
+													ng-class="provprojects.getStatusClass(srv.status)">
+													</span>
+												</span>
+
+												<span ng-if="srv.status !== 8" >
+													<span translate="{{provprojects.getLiteralStatus(srv.status)}}" class="label label-status">
+													{{(srv.status < 3) ? 'Pendent' : 'Confirmat'}}
+													</span>
+												</span>
+
+
+												<span ng-if="srv.status === 8">
+													<span class="label label-status label-default">Inactiu</span>
+												</span>
+
+
+
+
+
+
+
 											</td>
 											<td class="vert-align">
 												{{srv.project.name}}

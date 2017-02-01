@@ -55,6 +55,7 @@
                       <a/>
                     </th>
                     <th ng-if="clientprojects.showRuntime">{{ 'RUN-TIMES' | translate }}</th>
+                    <th ng-if="!clientprojects.showRuntime"></th>
                     <th><span ng-show="false" class="pull-right">{{ 'SRV-ACCIONS' | translate}}</span></th>
                   </tr>
                 </thead>
@@ -65,7 +66,7 @@
 
                     </td>
                     <td show-services class="vert-align">
-                      <span class="label label-status" ng-class="(srv.status === 3 || srv.status == 6) ? 'label-default' : 'label-success'" translate="{{clientprojects.getLiteralStatus(srv.status)}}">
+                      <span class="label label-status" ng-class="clientprojects.getStatusClass(srv.status)" translate="{{clientprojects.getLiteralStatus(srv.status)}}">
 												{{clientprojects.getLiteralStatus(srv.status)}}
                       </span>
                     </td>

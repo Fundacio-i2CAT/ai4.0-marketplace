@@ -26,6 +26,8 @@
 					break;
 				case 7: output = 'ERROR'
 					break;
+				case 9: output = 'PENDENT'
+					break;
 			}
 			return output;
 		}
