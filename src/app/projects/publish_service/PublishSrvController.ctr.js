@@ -86,12 +86,7 @@
 				provider: provider.user.provider_id,
 				price_initial: srv.price.initial,
 				price_x_hour: srv.price.perhour,
-				consumer_params: [
-					{
-						path: srv.path,
-						fields: []
-					}
-				],
+				consumer_params: [],
 				flavor: srv.flavor.name,
 				pop_id: srv.iaas.pop_id,
 				name_image: imageData.name_image,
@@ -108,19 +103,44 @@
 			};
 
 			//obtenir els templates dinamicament
-			if (srv.fields) {
-				var listOfFields = [];
-				angular.forEach(srv.fields, function (field){
-					var fieldOK = {
-						name: field.name,
-						type: field.type.name,
-						required: field.required,
-						desc: field.type.name
+			if (srv.customerParams) {
+				var templatesList = [];
+				angular.forEach(srv.customerParams, function (template){
+					console.log(template);
+					var fieldsList = [];
+					angular.forEach(template.choices, function (choice){
+						var field = {
+							name: choice.name,
+							type: choice.type.name,
+							required: choice.required,
+							desc: choice.description
+						};
+						fieldsList.push(field);
+					});
+					var plantilla = {
+						path: template.path,
+						fields: fieldsList
 					};
-					listOfFields.push(fieldOK);
+					templatesList.push(plantilla);
 				});
-				srvToSave.consumer_params[0].fields = listOfFields;
+				srvToSave.consumer_params = templatesList;
 			}
+
+
+			//obtenir 1 path amb n fields (static)
+			// if (srv.fields) {
+			// 	var listOfFields = [];
+			// 	angular.forEach(srv.fields, function (field){
+			// 		var fieldOK = {
+			// 			name: field.name,
+			// 			type: field.type.name,
+			// 			required: field.required,
+			// 			desc: field.type.name
+			// 		};
+			// 		listOfFields.push(fieldOK);
+			// 	});
+			// 	srvToSave.consumer_params[0].fields = listOfFields;
+			// }
 			$log.log(srvToSave);
 			return srvToSave;
 		}
