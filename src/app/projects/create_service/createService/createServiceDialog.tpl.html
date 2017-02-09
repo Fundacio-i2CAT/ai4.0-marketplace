@@ -395,10 +395,13 @@
             <uib-tab index="6" select="createproj.hideButtons = false" heading="Dynamic form">
               <div class="panel panel-default">
                 <div class="panel-body">
-
+                  <div class="row">
+                    <div class="col-xs-12">
+                      <h5 class="text text-primary top1 bottom2">{{ 'CUSTOMER-PARAMS' | translate }}</h5>
+                    </div>
+                  </div>
                   <div class="param-template" ng-repeat="template in createproj.templates">
-                    <h5 class="text text-primary">Development</h5>
-                    Template {{$index}}
+
                     <!-- formulary content -->
                     <div class="row">
                       <div class="col-xs-12">
@@ -406,25 +409,25 @@
                         <input type="text" ng-model="createproj.templates[$index].path" placeholder="{{ 'CONF-PATH' | translate }}" class="form-control" required />
                       </div>
                     </div>
-                    <div class="col-xs-12 difuminar" ng-if="createproj.choices.length">
-                      <ul class="list list-inline top1">
-                        <li class="col-xs-12 col-sm-12 col-md-3">
-                          <label for="name">{{ 'LABEL-NOM' | translate }} *</label>
-                        </li>
-                        <li class="col-xs-12 col-sm-12 col-md-2">
-                          <label for="type">{{ 'TYPE-TITLE' | translate }} *</label>
-                        </li>
-                        <li class="col-xs-12 col-sm-12 col-md-1">
-                          <label for="required">Oblig.</label><br/>
-                        </li>
-                        <li class="col-xs-11 col-sm-11 col-md-5">
-                          <label for="description">{{ 'LABEL-DESC' | translate }} *</label>
-                        </li>
-                        <li class="col-xs-1 col-sm-1 col-md-1"></li>
-                      </ul>
-                    </div>
+
                     <div class="col-xs-12" ng-repeat="param in template.choices">
-                      Param {{$index}}
+                      <div class="col-xs-12 difuminar">
+                        <ul class="list list-inline top1">
+                          <li class="col-xs-12 col-sm-12 col-md-3">
+                            <label for="name">{{ 'LABEL-NOM' | translate }} *</label>
+                          </li>
+                          <li class="col-xs-12 col-sm-12 col-md-2">
+                            <label for="type">{{ 'TYPE-TITLE' | translate }} *</label>
+                          </li>
+                          <li class="col-xs-12 col-sm-12 col-md-1">
+                            <label for="required">Oblig.</label><br/>
+                          </li>
+                          <li class="col-xs-11 col-sm-11 col-md-5">
+                            <label for="description">{{ 'LABEL-DESC' | translate }} *</label>
+                          </li>
+                          <li class="col-xs-1 col-sm-1 col-md-1"></li>
+                        </ul>
+                      </div>
                       <ul class="list list-inline top1">
                         <li class="col-xs-12 col-sm-12 col-md-3">
                           <input type="text" name="name" ng-model="createproj.templates[$parent.$index].choices[$index].name" placeholder="{{ 'FIELD-NAME' | translate }}" class="form-control" required/>
@@ -441,7 +444,7 @@
                           <input type="text" name="description" class="form-control" ng-model="createproj.templates[$parent.$index].choices[$index].description" placeholder="{{ 'FIELD-DESC' | translate }}" required/>
                         </li>
                         <li class="col-xs-1 col-sm-1 col-md-1">
-                          <a class="btn btn-danger btn-xs top1" style="color:white;" ng-hide="$first" ng-if="template.choices.length > 1" ng-show="$last" ng-click="createproj.removeParam(template)">
+                          <a class="btn btn-default btn-xs top1" style="color:white;" ng-if="template.choices.length > 0" ng-show="$last" ng-click="createproj.removeParam(template)">
                             <i class="fa fa-minus"></i>
                           </a>
                         </li>
@@ -450,14 +453,14 @@
                     <div class="row">
                       <div class="col-xs-12 left1 pull-left clearfix top1">
                         <a class="btn btn-xs btn-primary" ng-click="createproj.addNewParam(createproj.templates[$index])">
-                          <i class="fa fa-plus"></i>&nbsp;Add param</a>
+                          <i class="fa fa-plus"></i>&nbsp;{{'PARAM' | translate}}</a>
                       </div>
                     </div>
                   </div> <!-- ng-repeat templates -->
                   <div class="row">
                     <div class="col-xs-12 left1 pull-left clearfix top1">
-                      <a class="btn btn-xs btn-warning" ng-click="createproj.addNewTemplate()"><i class="fa fa-plus"></i>&nbsp;Template</a>
-                      <a class="btn btn-xs btn-danger" ng-click="createproj.removeTemplate()"><i class="fa fa-minus"></i>&nbsp;&nbsp;Template</a>
+                      <a class="btn btn-xs btn-primary" ng-click="createproj.addNewTemplate()"><i class="fa fa-plus"></i>&nbsp;Plantilla</a>
+                      <a class="btn btn-xs btn-default" ng-if="createproj.templates.length > 0" ng-hide="$first" ng-click="createproj.removeTemplate()"><i class="fa fa-minus"></i>&nbsp;&nbsp;Plantilla</a>
                     </div>
                   </div>
                   <div class="row clearfix">

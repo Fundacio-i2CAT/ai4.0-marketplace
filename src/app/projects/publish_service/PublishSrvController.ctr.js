@@ -59,6 +59,7 @@
 
 		/* codigo para formulario estatico*/
 		vm.launchTemplate = function(srv) {
+			srv.customerParams = vm.templates;
 			var model = buildPublishServiceJSON(srv);
 			ServiceFactory.createService(model).then(function (response){
 				$log.log(response);
@@ -201,6 +202,7 @@
 
 		//DYNAMIC FORM TAMPLATES
 		vm.templates = [];
+		vm.showLabels = false;
 
 		vm.addNewTemplate = function() {
 			var newTemplateNo = vm.templates.length + 1;
@@ -219,8 +221,10 @@
 		vm.choices = [];
 
 	  vm.addNewParam = function(currentTemplate) {
+			vm.showLabels = true;
 			var newItemNo = currentTemplate.choices.length+1;
 			currentTemplate.choices.push({'id':'field'+newItemNo});
+			if (currentTemplate.choices.length === 0) vm.showLabels = false;
 
 	    // var newItemNo = vm.choices.length+1;
 	    // vm.choices.push({'id':'field'+newItemNo});
