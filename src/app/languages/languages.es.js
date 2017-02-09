@@ -161,6 +161,7 @@
 					//create Service
 					'GENERAL-DATA': 'Datos Generales',
 					'PARAMS': 'Parámetros',
+					'PARAM': 'Parámetro',
 					'INFRASTRUCT': 'Infraestructura',
 					'PRICE': 'Precios',
 					'INFO': 'Información',

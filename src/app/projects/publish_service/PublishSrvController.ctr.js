@@ -59,6 +59,7 @@
 
 		/* codigo para formulario estatico*/
 		vm.launchTemplate = function(srv) {
+			srv.customerParams = vm.templates;
 			var model = buildPublishServiceJSON(srv);
 			ServiceFactory.createService(model).then(function (response){
 				$log.log(response);
@@ -85,12 +86,7 @@
 				provider: provider.user.provider_id,
 				price_initial: srv.price.initial,
 				price_x_hour: srv.price.perhour,
-				consumer_params: [
-					{
-						path: srv.path,
-						fields: []
-					}
-				],
+				consumer_params: [],
 				flavor: srv.flavor.name,
 				pop_id: srv.iaas.pop_id,
 				name_image: imageData.name_image,
@@ -107,19 +103,44 @@
 			};
 
 			//obtenir els templates dinamicament
-			if (srv.fields) {
-				var listOfFields = [];
-				angular.forEach(srv.fields, function (field){
-					var fieldOK = {
-						name: field.name,
-						type: field.type.name,
-						required: field.required,
-						desc: field.type.name
+			if (srv.customerParams) {
+				var templatesList = [];
+				angular.forEach(srv.customerParams, function (template){
+					console.log(template);
+					var fieldsList = [];
+					angular.forEach(template.choices, function (choice){
+						var field = {
+							name: choice.name,
+							type: choice.type.name,
+							required: choice.required,
+							desc: choice.description
+						};
+						fieldsList.push(field);
+					});
+					var plantilla = {
+						path: template.path,
+						fields: fieldsList
 					};
-					listOfFields.push(fieldOK);
+					templatesList.push(plantilla);
 				});
-				srvToSave.consumer_params[0].fields = listOfFields;
+				srvToSave.consumer_params = templatesList;
 			}
+
+
+			//obtenir 1 path amb n fields (static)
+			// if (srv.fields) {
+			// 	var listOfFields = [];
+			// 	angular.forEach(srv.fields, function (field){
+			// 		var fieldOK = {
+			// 			name: field.name,
+			// 			type: field.type.name,
+			// 			required: field.required,
+			// 			desc: field.type.name
+			// 		};
+			// 		listOfFields.push(fieldOK);
+			// 	});
+			// 	srvToSave.consumer_params[0].fields = listOfFields;
+			// }
 			$log.log(srvToSave);
 			return srvToSave;
 		}
@@ -170,32 +191,71 @@
 		};
 
 		/* codigo para formulario dinamico */
-		vm.plantilles = [{id: 'plantilla1'}];
-		vm.allFields = [{id: 'field1'}];
-		vm.addTemplate = function() {
-			var newItemNo = vm.plantilles.length+1;
-			vm.plantilles.push({'id':'plantilla'+newItemNo});
-		};
-		vm.removeTemplate = function() {
-			if (vm.plantilles.length != 1) {
-				var lastItem = vm.plantilles.length-1;
-				vm.plantilles.splice(lastItem);
-			}
-		};
-		vm.addField = function() {
-			var fieldNum = vm.allFields.length+1;
-			vm.allFields.push({'id':'fields'+fieldNum});
-		};
-		vm.removeField = function() {
-			if (vm.allFields.length != 1) {
-				var lastItem = vm.allFields.length-1;
-				vm.allFields.splice(lastItem);
-			}
-		};
+		// vm.plantilles = [{id: 'plantilla1'}];
+		// vm.allFields = [{id: 'field1'}];
+		// vm.addTemplate = function() {
+		// 	var newItemNo = vm.plantilles.length+1;
+		// 	vm.plantilles.push({'id':'plantilla'+newItemNo});
+		// };
+		// vm.removeTemplate = function() {
+		// 	if (vm.plantilles.length != 1) {
+		// 		var lastItem = vm.plantilles.length-1;
+		// 		vm.plantilles.splice(lastItem);
+		// 	}
+		// };
+		// vm.addField = function() {
+		// 	var fieldNum = vm.allFields.length+1;
+		// 	vm.allFields.push({'id':'fields'+fieldNum});
+		// };
+		// vm.removeField = function() {
+		// 	if (vm.allFields.length != 1) {
+		// 		var lastItem = vm.allFields.length-1;
+		// 		vm.allFields.splice(lastItem);
+		// 	}
+		// };
 
 		vm.closeDialog = function() {
 				ngDialog.close();
 		};
+
+
+
+		//DYNAMIC FORM TAMPLATES
+		vm.templates = [];
+		vm.showLabels = false;
+
+		vm.addNewTemplate = function() {
+			var newTemplateNo = vm.templates.length + 1;
+			vm.templates.push({
+				'id': newTemplateNo,
+				'choices': []
+			});
+		};
+
+		vm.removeTemplate = function() {
+			var lastTemplate = vm.templates.length - 1;
+			vm.templates.splice(lastTemplate);
+		};
+
+		//DYNAMIC FORM FIELDS
+		vm.choices = [];
+
+	  vm.addNewParam = function(currentTemplate) {
+			vm.showLabels = true;
+			var newItemNo = currentTemplate.choices.length+1;
+			currentTemplate.choices.push({'id':'field'+newItemNo});
+			if (currentTemplate.choices.length === 0) vm.showLabels = false;
+
+	    // var newItemNo = vm.choices.length+1;
+	    // vm.choices.push({'id':'field'+newItemNo});
+	  };
+
+	  vm.removeParam = function(currentTemplate) {
+	    var lastItem = currentTemplate.choices.length-1;
+	    currentTemplate.choices.splice(lastItem);
+	  };
+
+
 
 	}
 
