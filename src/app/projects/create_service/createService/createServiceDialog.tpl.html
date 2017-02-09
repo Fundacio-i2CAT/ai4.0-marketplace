@@ -314,7 +314,8 @@
 
           <div class="row" ng-show="!createproj.hideButtons">
             <div class="col-xs-3 col-xs-offset-3 top3">
-              <button ng-disabled="createserviceform.$invalid" ng-click="createproj.launchTemplate(createproj.srv)" class="btn btn-primary btn-block">{{ 'PUBL-SRV-TITLE' | translate }}</button>
+              <!-- <button ng-disabled="createserviceform.$invalid" ng-click="createproj.launchTemplate(createproj.srv)" class="btn btn-primary btn-block">{{ 'PUBL-SRV-TITLE' | translate }}</button> -->
+              <button ng-click="createproj.launchTemplate(createproj.srv)" class="btn btn-primary btn-block">{{ 'PUBL-SRV-TITLE' | translate }}</button>
             </div>
             <div class="col-xs-3 top3">
               <a class="btn btn-default btn-block" ng-click="createproj.closeDialog();">&nbsp;&nbsp;Cancelar</a>
@@ -440,7 +441,7 @@
                           <input type="text" name="description" class="form-control" ng-model="createproj.templates[$parent.$index].choices[$index].description" placeholder="{{ 'FIELD-DESC' | translate }}" required/>
                         </li>
                         <li class="col-xs-1 col-sm-1 col-md-1">
-                          <a class="btn btn-danger btn-xs top1" style="color:white;" ng-hide="$first" ng-if="createproj.choices.length > 1" ng-show="$last && createproj.choices.length" ng-click="createproj.removeParam()">
+                          <a class="btn btn-danger btn-xs top1" style="color:white;" ng-hide="$first" ng-if="template.choices.length > 1" ng-show="$last" ng-click="createproj.removeParam(template)">
                             <i class="fa fa-minus"></i>
                           </a>
                         </li>

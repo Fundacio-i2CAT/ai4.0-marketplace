@@ -170,28 +170,28 @@
 		};
 
 		/* codigo para formulario dinamico */
-		vm.plantilles = [{id: 'plantilla1'}];
-		vm.allFields = [{id: 'field1'}];
-		vm.addTemplate = function() {
-			var newItemNo = vm.plantilles.length+1;
-			vm.plantilles.push({'id':'plantilla'+newItemNo});
-		};
-		vm.removeTemplate = function() {
-			if (vm.plantilles.length != 1) {
-				var lastItem = vm.plantilles.length-1;
-				vm.plantilles.splice(lastItem);
-			}
-		};
-		vm.addField = function() {
-			var fieldNum = vm.allFields.length+1;
-			vm.allFields.push({'id':'fields'+fieldNum});
-		};
-		vm.removeField = function() {
-			if (vm.allFields.length != 1) {
-				var lastItem = vm.allFields.length-1;
-				vm.allFields.splice(lastItem);
-			}
-		};
+		// vm.plantilles = [{id: 'plantilla1'}];
+		// vm.allFields = [{id: 'field1'}];
+		// vm.addTemplate = function() {
+		// 	var newItemNo = vm.plantilles.length+1;
+		// 	vm.plantilles.push({'id':'plantilla'+newItemNo});
+		// };
+		// vm.removeTemplate = function() {
+		// 	if (vm.plantilles.length != 1) {
+		// 		var lastItem = vm.plantilles.length-1;
+		// 		vm.plantilles.splice(lastItem);
+		// 	}
+		// };
+		// vm.addField = function() {
+		// 	var fieldNum = vm.allFields.length+1;
+		// 	vm.allFields.push({'id':'fields'+fieldNum});
+		// };
+		// vm.removeField = function() {
+		// 	if (vm.allFields.length != 1) {
+		// 		var lastItem = vm.allFields.length-1;
+		// 		vm.allFields.splice(lastItem);
+		// 	}
+		// };
 
 		vm.closeDialog = function() {
 				ngDialog.close();
@@ -219,7 +219,6 @@
 		vm.choices = [];
 
 	  vm.addNewParam = function(currentTemplate) {
-			console.log(currentTemplate);
 			var newItemNo = currentTemplate.choices.length+1;
 			currentTemplate.choices.push({'id':'field'+newItemNo});
 
@@ -227,9 +226,9 @@
 	    // vm.choices.push({'id':'field'+newItemNo});
 	  };
 
-	  vm.removeParam = function() {
-	    var lastItem = vm.choices.length-1;
-	    vm.choices.splice(lastItem);
+	  vm.removeParam = function(currentTemplate) {
+	    var lastItem = currentTemplate.choices.length-1;
+	    currentTemplate.choices.splice(lastItem);
 	  };
 
 
