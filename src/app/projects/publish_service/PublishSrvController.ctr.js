@@ -197,6 +197,43 @@
 				ngDialog.close();
 		};
 
+
+
+		//DYNAMIC FORM TAMPLATES
+		vm.templates = [];
+
+		vm.addNewTemplate = function() {
+			var newTemplateNo = vm.templates.length + 1;
+			vm.templates.push({
+				'id': newTemplateNo,
+				'choices': []
+			});
+		};
+
+		vm.removeTemplate = function() {
+			var lastTemplate = vm.templates.length - 1;
+			vm.templates.splice(lastTemplate);
+		};
+
+		//DYNAMIC FORM FIELDS
+		vm.choices = [];
+
+	  vm.addNewParam = function(currentTemplate) {
+			console.log(currentTemplate);
+			var newItemNo = currentTemplate.choices.length+1;
+			currentTemplate.choices.push({'id':'field'+newItemNo});
+
+	    // var newItemNo = vm.choices.length+1;
+	    // vm.choices.push({'id':'field'+newItemNo});
+	  };
+
+	  vm.removeParam = function() {
+	    var lastItem = vm.choices.length-1;
+	    vm.choices.splice(lastItem);
+	  };
+
+
+
 	}
 
 })();

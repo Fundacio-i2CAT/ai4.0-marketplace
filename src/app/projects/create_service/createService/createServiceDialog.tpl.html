@@ -391,7 +391,83 @@
                 </div>
               </div>
             </uib-tab>
+            <uib-tab index="6" select="createproj.hideButtons = false" heading="Dynamic form">
+              <div class="panel panel-default">
+                <div class="panel-body">
 
+                  <div class="param-template" ng-repeat="template in createproj.templates">
+                    <h5 class="text text-primary">Development</h5>
+                    Template {{$index}}
+                    <!-- formulary content -->
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <label for="filepath">{{ 'CONF' | translate }} *</label>
+                        <input type="text" ng-model="createproj.templates[$index].path" placeholder="{{ 'CONF-PATH' | translate }}" class="form-control" required />
+                      </div>
+                    </div>
+                    <div class="col-xs-12 difuminar" ng-if="createproj.choices.length">
+                      <ul class="list list-inline top1">
+                        <li class="col-xs-12 col-sm-12 col-md-3">
+                          <label for="name">{{ 'LABEL-NOM' | translate }} *</label>
+                        </li>
+                        <li class="col-xs-12 col-sm-12 col-md-2">
+                          <label for="type">{{ 'TYPE-TITLE' | translate }} *</label>
+                        </li>
+                        <li class="col-xs-12 col-sm-12 col-md-1">
+                          <label for="required">Oblig.</label><br/>
+                        </li>
+                        <li class="col-xs-11 col-sm-11 col-md-5">
+                          <label for="description">{{ 'LABEL-DESC' | translate }} *</label>
+                        </li>
+                        <li class="col-xs-1 col-sm-1 col-md-1"></li>
+                      </ul>
+                    </div>
+                    <div class="col-xs-12" ng-repeat="param in template.choices">
+                      Param {{$index}}
+                      <ul class="list list-inline top1">
+                        <li class="col-xs-12 col-sm-12 col-md-3">
+                          <input type="text" name="name" ng-model="createproj.templates[$parent.$index].choices[$index].name" placeholder="{{ 'FIELD-NAME' | translate }}" class="form-control" required/>
+                        </li>
+                        <li class="col-xs-12 col-sm-12 col-md-2">
+                          <select class="form-control" ng-options="item.name for item in createproj.types" ng-model="createproj.templates[$parent.$index].choices[$index].type" required>
+                            <option value="" disabled>{{ 'TYPE-PLACE' | translate }}</option>
+                          </select>
+                        </li>
+                        <li class="col-xs-12 col-sm-12 col-md-1">
+                          <input type="checkbox" class="form-control centered check-required" name="required" ng-model="createproj.templates[$parent.$index].choices[$index].required">
+                        </li>
+                        <li class="col-xs-11 col-sm-11 col-md-5">
+                          <input type="text" name="description" class="form-control" ng-model="createproj.templates[$parent.$index].choices[$index].description" placeholder="{{ 'FIELD-DESC' | translate }}" required/>
+                        </li>
+                        <li class="col-xs-1 col-sm-1 col-md-1">
+                          <a class="btn btn-danger btn-xs top1" style="color:white;" ng-hide="$first" ng-if="createproj.choices.length > 1" ng-show="$last && createproj.choices.length" ng-click="createproj.removeParam()">
+                            <i class="fa fa-minus"></i>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>  <!-- ng-repeat params -->
+                    <div class="row">
+                      <div class="col-xs-12 left1 pull-left clearfix top1">
+                        <a class="btn btn-xs btn-primary" ng-click="createproj.addNewParam(createproj.templates[$index])">
+                          <i class="fa fa-plus"></i>&nbsp;Add param</a>
+                      </div>
+                    </div>
+                  </div> <!-- ng-repeat templates -->
+                  <div class="row">
+                    <div class="col-xs-12 left1 pull-left clearfix top1">
+                      <a class="btn btn-xs btn-warning" ng-click="createproj.addNewTemplate()"><i class="fa fa-plus"></i>&nbsp;Template</a>
+                      <a class="btn btn-xs btn-danger" ng-click="createproj.removeTemplate()"><i class="fa fa-minus"></i>&nbsp;&nbsp;Template</a>
+                    </div>
+                  </div>
+                  <div class="row clearfix">
+                    <div class="col-xs-12">
+                      <pre class="top2">{{createproj.templates | json}}</pre>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </uib-tab>
           </uib-tabset>
           <!-- <div class="row" ng-show="!createproj.hideButtons">
             <div class="col-xs-3 col-xs-offset-3 top3">
