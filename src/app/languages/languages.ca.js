@@ -30,7 +30,7 @@
 					'DETAIL-SECTORS': 'Sectors',
 					'DETAIL-LINK': 'Enllaç',
 					'SRV-INSTANCE': 'Instanciar Servei',
-					'RUN-TIMES': 'Paràmetres d\'Execució', 
+					'RUN-TIMES': 'Paràmetres d\'Execució',
 					//projectes
 					'PROJ-CLIENT':'PROJECTES',
 					'FILTER-PLACEHOLDER-PROJ': 'Filtrar Projectes',
@@ -161,6 +161,7 @@
 					//create Service tabs
 					'GENERAL-DATA': 'Dades Generals',
 					'PARAMS': 'Paràmetres',
+					'PARAM': 'Paràmetre',
 					'INFRASTRUCT': 'Infraestructura',
 					'PRICE': 'Preus',
 					'INFO': 'Informació',
