@@ -23,17 +23,18 @@
         controller: 'CatalogController',
         controllerAs: 'catalog'
       })
-      // .state('projects', {
-      //   url: '/projects',
-      //   templateUrl: 'app/projects/index.tpl.html', controller: 'ProjectController', controllerAs: 'projects'/*,
-      //   need: 'admindoscat'*/
-      // })
       .state('provprojects', {
         url: '/provprojects',
         templateUrl: 'app/projects/provider/index-prov.tpl.html',
         controller: 'ProjectController',
         controllerAs: 'provprojects',
         need: 'User.Provider'
+      })
+      .state('ownprojects', {
+        url: '/ownprojects',
+        templateUrl: 'app/projects/provider/ownprojects/index-ownprov.tpl.html',
+        controller: 'OwnProjectController',
+        controllerAs: 'ownproj'
       })
       .state('publishsrv', {
         url: '/publishsrv',
