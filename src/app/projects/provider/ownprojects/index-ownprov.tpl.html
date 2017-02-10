@@ -4,15 +4,102 @@
       Mis Servicios
     </h2>
   </div>
+  <!-- Inactive projects  -->
   <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 top2">
+      <span class="label label-default" style="padding:.7em;padding-bottom:.8em;">Serveis No Publicats&nbsp;&nbsp;<span class="badge">{{ownproj.allMyInactiveProjects.length}}</span></span>
+    </div>
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      {{ownproj.text}}
-    </div>
+      <div class="top2">
+        <div class="table-responsive">
+          <table id="myInactiveProjects" class="table table-hover table-striped">
+            <thead>
+              <tr>
+                <th class="col-xs-9">
+                  <a ng-click="ownproj.sortType = 'service.name'; ownproj.sortReverse = !ownproj.sortReverse">
+                    {{ 'SRV-SERVEI' | translate }}
+                    <span ng-show="ownproj.sortType == 'service.name' && !ownproj.sortReverse" class="fa fa-sort-alpha-asc"></span>
+                    <span ng-show="ownproj.sortType == 'service.name' && ownproj.sortReverse" class="fa fa-sort-alpha-desc"></span>
+                  <a/>
+                </th>
+                <th class="col-xs-3">{{ 'SRV-ACCIONS' | translate }}</th>
+              </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    ng-repeat="inactive in ownproj.allMyInactiveProjects | orderBy:ownproj.sortType:ownproj.sortReverse | filter: searchingWord">
+                    <td class="vert-align">
+                      {{inactive.name}}
+                    </td>
+                    <td class="vert-align">
+                      <button class="btn btn-default btn-xs">
+                        <i class="fa fa-eye"></i>
+                        &nbsp;Info
+                      </button>
+                      <button class="btn btn-primary btn-xs">
+                        <i class="fa fa-check"></i>
+                        &nbsp;Some
+                      </button>
+                      <button class="btn btn-default btn-xs">
+                        <i class="fa fa-remove"></i>
+                        &nbsp;Else
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
 
-    <div class="top2">
-      <pre ng-if="ownproj.allMyProjects">
-        {{ownproj.allMyProjects | json}}
-      </pre>
+      <!-- Active projects -->
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 top2">
+          <span class="label label-default label-grey" style="padding:.7em;padding-bottom:.8em;">Serveis Publicats&nbsp;&nbsp;<span class="badge">{{ownproj.allMyActiveProjects.length}}</span></span>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="top2">
+            <div class="table-responsive">
+              <table id="myActiveProjects" class="table table-hover table-striped">
+                <thead>
+                  <tr>
+                    <th class="col-xs-9">
+                      <a ng-click="ownproj.sortType = 'service.name'; ownproj.sortReverse = !ownproj.sortReverse">
+                        {{ 'SRV-SERVEI' | translate }}
+                        <span ng-show="ownproj.sortType == 'service.name' && !ownproj.sortReverse" class="fa fa-sort-alpha-asc"></span>
+                        <span ng-show="ownproj.sortType == 'service.name' && ownproj.sortReverse" class="fa fa-sort-alpha-desc"></span>
+                      <a/>
+                    </th>
+                    <th class="col-xs-3">{{ 'SRV-ACCIONS' | translate }}</th>
+                  </tr>
+                    </thead>
+                    <tbody>
+                      <tr
+                        ng-repeat="active in ownproj.allMyActiveProjects | orderBy:ownproj.sortType:ownproj.sortReverse | filter: searchingWord">
+                        <td class="vert-align">
+                          {{active.name}}
+                        </td>
+                        <td class="vert-align">
+                          <button class="btn btn-default btn-xs">
+                            <i class="fa fa-eye"></i>
+                            &nbsp;Info
+                          </button>
+                          <button class="btn btn-primary btn-xs">
+                            <i class="fa fa-check"></i>
+                            &nbsp;Some
+                          </button>
+                          <button class="btn btn-default btn-xs">
+                            <i class="fa fa-remove"></i>
+                            &nbsp;Else
+                          </button>
+
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
     </div>
-  </div>
-</div>
