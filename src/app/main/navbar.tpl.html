@@ -18,6 +18,7 @@
         <li><a ng-if="menuUser.role==='User.Provider'" href="#" class="toclose" ui-sref="provprojects">{{ 'SERVEIS-NAV' | translate }}</a></li>
         <li><a ng-if="menuUser.role==='User.Client'" href="#" class="toclose" ui-sref="clientprojects">{{ 'PROJECTES-NAV' | translate }}</a></li>
         <li><a ng-if="menuUser.role==='User.Administrator'" href="#" class="toclose" ui-sref="users">{{ 'USERS-NAV' | translate }}</a></li>
+        <li><a ng-if="menuUser.role==='User.Provider'" href="#" class="toclose" ui-sref="ownprojects">Servicios propios</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li ng-click="setLanguage('CAT')"><a class="lang catala">CAT</a></li>

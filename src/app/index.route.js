@@ -34,7 +34,8 @@
         url: '/ownprojects',
         templateUrl: 'app/projects/provider/ownprojects/index-ownprov.tpl.html',
         controller: 'OwnProjectController',
-        controllerAs: 'ownproj'
+        controllerAs: 'ownproj',
+        need: 'User.Provider'
       })
       .state('publishsrv', {
         url: '/publishsrv',
