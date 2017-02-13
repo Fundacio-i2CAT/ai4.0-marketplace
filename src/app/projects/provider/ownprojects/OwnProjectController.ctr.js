@@ -10,8 +10,6 @@
     function OwnProjectController(OwnProjectFactory, toastr) {
       var vm = this;
       vm.text = 'OwnProjectController';
-      vm.allMyActiveProjects = [];
-      vm.allMyInactiveProjects = [];
       //sortin table
       vm.sortType = 'created_at';
   		vm.sortReverse = true;
@@ -19,6 +17,8 @@
 
 
       vm.getAllOwnProjects = function() {
+        vm.allMyActiveProjects = [];
+        vm.allMyInactiveProjects = [];
         OwnProjectFactory.getAllOwnProjects().then(function(response){
           activeProjects(response.result);
         }, function (error){
@@ -40,6 +40,32 @@
           }
         });
       }
+
+      vm.publishSrvInCatalogue = function(srv) {
+          console.log(srv);
+          OwnProjectFactory.publishServiceInCatalogue(srv._id).then(function(response){
+            console.log(response);
+            toastr.info('Servei publicat al Catàleg correctament', 'Publicació de Servei');
+            vm.getAllOwnProjects();
+          }, function(error){
+            console.log(error);
+          })
+      };
+
+      vm.hideSrvInCatalogue = function(srv) {
+          console.log(srv);
+          OwnProjectFactory.hideServiceInCatalogue(srv._id).then(function(response){
+            console.log(response);
+            toastr.info('Servei descatalogat correctament', 'Ocultació de Servei');
+            vm.getAllOwnProjects();
+          }, function(error){
+            console.log(error);
+          })
+      };
+
+
+
+
 
     }
 })();

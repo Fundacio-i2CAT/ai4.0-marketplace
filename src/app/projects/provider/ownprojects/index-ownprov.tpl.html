@@ -32,9 +32,9 @@
                       {{inactive.name}}
                     </td>
                     <td class="vert-align">
-                      <button class="btn btn-default btn-xs">
-                        <i class="fa fa-eye"></i>
-                        &nbsp;Info
+                      <button class="btn btn-default btn-xs" ng-click="ownproj.publishSrvInCatalogue(inactive)">
+                        <i class="fa fa-newspaper-o"></i>
+                        &nbsp;Publicar
                       </button>
                       <button class="btn btn-primary btn-xs">
                         <i class="fa fa-check"></i>
@@ -81,9 +81,9 @@
                           {{active.name}}
                         </td>
                         <td class="vert-align">
-                          <button class="btn btn-default btn-xs">
-                            <i class="fa fa-eye"></i>
-                            &nbsp;Info
+                          <button class="btn btn-default btn-xs" ng-click="ownproj.hideSrvInCatalogue(active)">
+                            <i class="fa fa-ban"></i>
+                            &nbsp;Ocultar
                           </button>
                           <button class="btn btn-primary btn-xs">
                             <i class="fa fa-check"></i>

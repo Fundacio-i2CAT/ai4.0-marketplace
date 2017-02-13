@@ -24,12 +24,45 @@
         });
 
         return promise;
+      };
 
+      var publishServiceInCatalogue = function (srvId) {
+        var path = ['api/services/',srvId].join(''),
+            url = [host, path].join('');
+        var deferred = $q.defer();
+
+        var promise = $http.put(url, {activated: true}).then(function(response){
+          console.log(response);
+        }, function (error) {
+          console.log(error);
+        });
+
+        return promise;
+      };
+
+      var hideServiceInCatalogue = function (srvId) {
+        var path = ['api/services/',srvId].join(''),
+            url = [host, path].join('');
+        var deferred = $q.defer();
+
+        var promise = $http.put(url, {activated: false}).then(function(response){
+          console.log(response);
+        }, function (error) {
+          console.log(error);
+        });
+
+        return promise;
       };
 
       return {
           getAllOwnProjects: function () {
             return getAllOwnProjects();
+          },
+          publishServiceInCatalogue: function (srvId) {
+            return publishServiceInCatalogue(srvId);
+          },
+          hideServiceInCatalogue: function (srvId) {
+            return hideServiceInCatalogue(srvId);
           }
       };
 
