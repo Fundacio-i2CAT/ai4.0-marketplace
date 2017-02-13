@@ -33,8 +33,9 @@
 
         var promise = $http.put(url, {activated: true}).then(function(response){
           console.log(response);
+          return response.data;
         }, function (error) {
-          console.log(error);
+          deferred.reject(error);
         });
 
         return promise;
@@ -47,11 +48,33 @@
 
         var promise = $http.put(url, {activated: false}).then(function(response){
           console.log(response);
+          return response.data;
         }, function (error) {
-          console.log(error);
+          deferred.reject(error);
         });
 
         return promise;
+      };
+
+      var createAnonymousProject = function (srv) {
+        var path = 'api/projects',
+            url = [host, path].join('');
+        var deferred = $q.defer();
+        var body = {
+          "services": [{
+            "service": srv._id
+          }],
+          "client": srv.provider
+        };
+
+        var promise = $http.post(url, body).then(function (response){
+          return response.data;
+        }, function (error){
+          deferred.reject(error);
+        });
+
+        return promise;
+
       };
 
       return {
@@ -63,6 +86,9 @@
           },
           hideServiceInCatalogue: function (srvId) {
             return hideServiceInCatalogue(srvId);
+          },
+          createAnonymousProject: function (srv) {
+            return createAnonymousProject(srv);
           }
       };
 

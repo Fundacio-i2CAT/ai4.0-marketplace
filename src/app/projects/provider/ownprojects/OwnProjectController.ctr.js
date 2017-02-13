@@ -42,7 +42,6 @@
       }
 
       vm.publishSrvInCatalogue = function(srv) {
-          console.log(srv);
           OwnProjectFactory.publishServiceInCatalogue(srv._id).then(function(response){
             console.log(response);
             toastr.info('Servei publicat al Catàleg correctament', 'Publicació de Servei');
@@ -53,7 +52,6 @@
       };
 
       vm.hideSrvInCatalogue = function(srv) {
-          console.log(srv);
           OwnProjectFactory.hideServiceInCatalogue(srv._id).then(function(response){
             console.log(response);
             toastr.info('Servei descatalogat correctament', 'Ocultació de Servei');
@@ -63,7 +61,13 @@
           })
       };
 
-
+      vm.createAnonymousProject = function(srv) {
+        OwnProjectFactory.createAnonymousProject(srv).then(function(response) {
+          console.log(response);
+        }, function (error) {
+          console.log(error);
+        });
+      }
 
 
 
