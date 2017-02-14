@@ -28,7 +28,7 @@
                 <tbody>
                   <tr ng-repeat-start="inactive in ownproj.allMyInactiveProjects | orderBy:ownproj.sortTypeInactive:ownproj.sortInactiveReverse | filter: searchingWord">
                     <td ng-click="inactive.isExpanded = !inactive.isExpanded" class="vert-align" data-toggle="collapse" data-target="#kkk{{$index}}" class="clickable">
-                      {{inactive.name}}&nbsp;<i ng-if="!inactive.isExpanded" class="fa fa-angle-right"></i><i class="fa fa-angle-down" ng-if="inactive.isExpanded"></i>
+                      {{inactive.name}}<span ng-if="inactive.instances.length">&nbsp;<i ng-if="!inactive.isExpanded" class="fa fa-angle-right"></i><i class="fa fa-angle-down" ng-if="inactive.isExpanded"></i></span>
                     </td>
                     <td class="vert-align">
                       <button class="btn btn-primary btn-xs" ng-click="ownproj.publishSrvInCatalogue(inactive)">
@@ -44,7 +44,6 @@
                   <tr ng-repeat-end>
                     <td colspan="2">
                       <div class="collapse" id="kkk{{$index}}">
-
                           <ul style="margin-left: 2em;padding-top:.3em;" class="list-inline bg-warning" ng-repeat="one in inactive.instances">
                               <li class="">
                                 {{one.name}}
@@ -58,9 +57,9 @@
                                 {{one.created_at | date: 'dd-MM-yyyy' }}
                               </li>
                               <li class="pull-right clearfix">
-                                <button ng-if="one.status == 3" type="button" class="btn btn-xs btn-success"><i class="fa fa-play"></i>&nbsp;Arrancar</button>
-                                <button ng-if="one.status == 3" type="button" class="btn btn-xs btn-danger"><i class="fa fa-pause"></i>&nbsp;Parar</button>
-                                <button ng-if="one.status == 3" type="button" class="btn btn-xs btn-default"><i class="fa fa-plug"></i>&nbsp;Instanciar</button>
+                                <button ng-if="one.status == 3" type="button" class="btn btn-xs btn-success"><i class="fa fa-play"></i></button>
+                                <button ng-if="one.status == 3" type="button" class="btn btn-xs btn-danger"><i class="fa fa-pause"></i></button>
+                                <button ng-if="one.status == 3" type="button" class="btn btn-xs btn-default"><i class="fa fa-plug"></i></button>
                                 <button type="button" class="btn btn-xs btn-default"><i class="fa fa-trash"></i></button>
                               </li>
                           </ul>
@@ -97,10 +96,9 @@
                   </tr>
                     </thead>
                     <tbody>
-                      <tr
-                        ng-repeat="active in ownproj.allMyActiveProjects | orderBy:ownproj.sortTypeActive:ownproj.sortActiveReverse | filter: searchingWord">
-                        <td class="vert-align">
-                          {{active.name}}
+                      <tr ng-repeat-start="active in ownproj.allMyActiveProjects | orderBy:ownproj.sortTypeActive:ownproj.sortActiveReverse | filter: searchingWord">
+                        <td ng-click="active.isExpanded = !active.isExpanded" class="vert-align" data-toggle="collapse" data-target="#qqq{{$index}}" class="clickable">
+                          {{active.name}}<span ng-if="active.instances.length">&nbsp;<i ng-if="!active.isExpanded" class="fa fa-angle-right"></i><i class="fa fa-angle-down" ng-if="active.isExpanded"></i></span>
                         </td>
                         <td class="vert-align">
                           <button class="btn btn-default btn-xs" ng-click="ownproj.hideSrvInCatalogue(active)">
@@ -111,6 +109,32 @@
                             <i class="fa fa-plus-square"></i>
                             &nbsp;Proyecto
                           </button>
+                        </td>
+                      </tr>
+                      <tr ng-repeat-end>
+                        <td colspan="2">
+                          <div class="collapse" id="qqq{{$index}}">
+                              <ul style="margin-left: 2em;padding-top:.3em;" class="list-inline bg-warning" ng-repeat="one in active.instances">
+                                  <li class="">
+                                    {{one.name}}
+                                  </li>
+                                  <li class="">
+                                    <span class="label label-status" ng-class="ownproj.getStatusClass(one.status)" translate="{{ownproj.getLiteralStatus(one.status)}}" style="margin:0.5em;">
+              												{{ownproj.getLiteralStatus(one.status)}}
+                                    </span>
+                                  </li>
+                                  <li class="">
+                                    {{one.created_at | date: 'dd-MM-yyyy' }}
+                                  </li>
+                                  <li class="pull-right clearfix">
+                                    <button ng-if="one.status == 3" type="button" class="btn btn-xs btn-success"><i class="fa fa-play"></i></button>
+                                    <button ng-if="one.status == 3" type="button" class="btn btn-xs btn-danger"><i class="fa fa-pause"></i></button>
+                                    <button ng-if="one.status == 3" type="button" class="btn btn-xs btn-default"><i class="fa fa-plug"></i></button>
+                                    <button type="button" class="btn btn-xs btn-default"><i class="fa fa-trash"></i></button>
+                                  </li>
+                              </ul>
+
+                          </div>
                         </td>
                       </tr>
                     </tbody>

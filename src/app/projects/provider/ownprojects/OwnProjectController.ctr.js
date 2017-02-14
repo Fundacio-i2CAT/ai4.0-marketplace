@@ -35,6 +35,7 @@
           vm.allAnonymousProjects = response.result;
           // $log.log('allAnonymousProjects:::', vm.allAnonymousProjects);
           setInstancesPerProject(vm.allMyInactiveProjects, vm.allAnonymousProjects);
+          setInstancesPerProject(vm.allMyActiveProjects, vm.allAnonymousProjects);
           // $log.log('allMyInactiveProjects:::', vm.allMyInactiveProjects);
         }, function (error){
           $log.log(error);
@@ -98,6 +99,10 @@
       vm.createAnonymousProject = function(srv) {
         OwnProjectFactory.createAnonymousProject(srv).then(function(response) {
           toastr.success('Projecte creat correctament', 'Creació Projecte');
+
+          vm.getAllOwnProjects();
+          vm.getAllMyAnonymousProjects();
+
         }, function (error) {
           $log.log(error);
         });
