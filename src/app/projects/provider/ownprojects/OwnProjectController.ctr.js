@@ -5,9 +5,9 @@
     .module('marketplace')
     .controller('OwnProjectController', OwnProjectController);
 
-    OwnProjectController.$inject = ['OwnProjectFactory', 'toastr', '$log'];
+    OwnProjectController.$inject = ['OwnProjectFactory', 'toastr', '$log', 'LiteralFactory'];
 
-    function OwnProjectController(OwnProjectFactory, toastr, $log) {
+    function OwnProjectController(OwnProjectFactory, toastr, $log, LiteralFactory) {
       var vm = this;
       vm.text = 'OwnProjectController';
       //sortin table
@@ -15,6 +15,7 @@
       vm.sortTypeInactive = 'created_at';
   		vm.sortActiveReverse = true;
       vm.sortInactiveReverse = true;
+      vm.isExpanded = false;
 
       vm.getAllOwnProjects = function() {
         vm.allMyActiveProjects = [],
@@ -34,7 +35,7 @@
           vm.allAnonymousProjects = response.result;
           // $log.log('allAnonymousProjects:::', vm.allAnonymousProjects);
           setInstancesPerProject(vm.allMyInactiveProjects, vm.allAnonymousProjects);
-          $log.log('allMyInactiveProjects:::', vm.allMyInactiveProjects);
+          // $log.log('allMyInactiveProjects:::', vm.allMyInactiveProjects);
         }, function (error){
           $log.log(error);
         });
@@ -101,6 +102,31 @@
           $log.log(error);
         });
       };
+
+      vm.getStatusClass = function(status){
+  			var className;
+  			switch (status) {
+  				case 3:
+  				case 6:
+  					className = 'label-default';
+  				break;
+  				case 9:
+  					className = 'label-warning';
+  				break;
+  				case 5:
+  					className = 'label-success';
+  				break;
+  			}
+
+  			return className;
+
+  		};
+
+      vm.getLiteralStatus = function(status){
+  			return LiteralFactory.getLiteralStatus(status);
+  		};
+
+
 
     }
 })();

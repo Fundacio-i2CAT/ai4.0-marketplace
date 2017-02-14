@@ -26,10 +26,9 @@
               </tr>
                 </thead>
                 <tbody>
-                  <tr data-toggle="collapse" data-target="#kkk{{$index}}" class="clickable"
-                    ng-repeat-start="inactive in ownproj.allMyInactiveProjects | orderBy:ownproj.sortTypeInactive:ownproj.sortInactiveReverse | filter: searchingWord">
-                    <td class="vert-align">
-                      {{inactive.name}}
+                  <tr ng-repeat-start="inactive in ownproj.allMyInactiveProjects | orderBy:ownproj.sortTypeInactive:ownproj.sortInactiveReverse | filter: searchingWord">
+                    <td ng-click="inactive.isExpanded = !inactive.isExpanded" class="vert-align" data-toggle="collapse" data-target="#kkk{{$index}}" class="clickable">
+                      {{inactive.name}}&nbsp;<i ng-if="!inactive.isExpanded" class="fa fa-angle-right"></i><i class="fa fa-angle-down" ng-if="inactive.isExpanded"></i>
                     </td>
                     <td class="vert-align">
                       <button class="btn btn-primary btn-xs" ng-click="ownproj.publishSrvInCatalogue(inactive)">
@@ -45,7 +44,27 @@
                   <tr ng-repeat-end>
                     <td colspan="2">
                       <div class="collapse" id="kkk{{$index}}">
-                        {{inactive | json}}
+
+                          <ul class="list-inline bg-success" ng-repeat="one in inactive.instances">
+                              <li class="">
+                                {{one.name}}
+                              </li>
+                              <li class="">
+                                <span class="label label-status" ng-class="ownproj.getStatusClass(one.status)" translate="{{ownproj.getLiteralStatus(one.status)}}" style="margin:0.5em;">
+          												{{ownproj.getLiteralStatus(one.status)}}
+                                </span>
+                              </li>
+                              <li class="">
+                                {{one.created_at | date: 'dd-MM-yyyy' }}
+                              </li>
+                              <li class="pull-right clearfix">
+                                <button ng-if="one.status == 3" type="button" class="btn btn-xs btn-success"><i class="fa fa-play"></i>&nbsp;Arrancar</button>
+                                <button ng-if="one.status == 3" type="button" class="btn btn-xs btn-danger"><i class="fa fa-pause"></i>&nbsp;Parar</button>
+                                <button ng-if="one.status == 3" type="button" class="btn btn-xs btn-default"><i class="fa fa-plug"></i>&nbsp;Instanciar</button>
+                                <button type="button" class="btn btn-xs btn-default"><i class="fa fa-trash"></i></button>
+                              </li>
+                          </ul>
+
                       </div>
                     </td>
                   </tr>
