@@ -15,19 +15,19 @@
           <table id="myInactiveProjects" class="table table-hover table-striped">
             <thead>
               <tr>
-                <th class="col-xs-9">
+                <th class="col-xs-10 col-sm-9 col-md-9 col-lg-10">
                   <a ng-click="ownproj.sortTypeInactive = 'service.name'; ownproj.sortInactiveReverse = !ownproj.sortInactiveReverse">
                     {{ 'SRV-SERVEI' | translate }}
                     <span ng-show="ownproj.sortTypeInactive == 'service.name' && !ownproj.sortInactiveReverse" class="fa fa-sort-alpha-asc"></span>
                     <span ng-show="ownproj.sortTypeInactive == 'service.name' && ownproj.sortInactiveReverse" class="fa fa-sort-alpha-desc"></span>
                   <a/>
                 </th>
-                <th class="col-xs-3">{{ 'SRV-ACCIONS' | translate }}</th>
+                <th class="col-xs-2 col-sm-3 col-md-3 col-lg-2">{{ 'SRV-ACCIONS' | translate }}</th>
               </tr>
                 </thead>
                 <tbody>
-                  <tr
-                    ng-repeat="inactive in ownproj.allMyInactiveProjects | orderBy:ownproj.sortTypeInactive:ownproj.sortInactiveReverse | filter: searchingWord">
+                  <tr data-toggle="collapse" data-target="#kkk{{$index}}" class="clickable"
+                    ng-repeat-start="inactive in ownproj.allMyInactiveProjects | orderBy:ownproj.sortTypeInactive:ownproj.sortInactiveReverse | filter: searchingWord">
                     <td class="vert-align">
                       {{inactive.name}}
                     </td>
@@ -40,6 +40,13 @@
                         <i class="fa fa-plus-square"></i>
                         &nbsp;Proyecto
                       </button>
+                    </td>
+                  </tr>
+                  <tr ng-repeat-end>
+                    <td colspan="2">
+                      <div class="collapse" id="kkk{{$index}}">
+                        {{inactive | json}}
+                      </div>
                     </td>
                   </tr>
                 </tbody>
@@ -60,14 +67,14 @@
               <table id="myActiveProjects" class="table table-hover table-striped">
                 <thead>
                   <tr>
-                    <th class="col-xs-9">
+                    <th class="col-xs-10 col-sm-9 col-md-9 col-lg-10">
                       <a ng-click="ownproj.sortTypeActive = 'name'; ownproj.sortActiveReverse = !ownproj.sortActiveReverse">
                         {{ 'SRV-SERVEI' | translate }}
                         <span ng-show="ownproj.sortTypeActive == 'name' && !ownproj.sortActiveReverse" class="fa fa-sort-alpha-asc"></span>
                         <span ng-show="ownproj.sortTypeActive == 'name' && ownproj.sortActiveReverse" class="fa fa-sort-alpha-desc"></span>
                       <a/>
                     </th>
-                    <th class="col-xs-3">{{ 'SRV-ACCIONS' | translate }}</th>
+                    <th class="col-xs-2 col-sm-3 col-md-3 col-lg-2">{{ 'SRV-ACCIONS' | translate }}</th>
                   </tr>
                     </thead>
                     <tbody>

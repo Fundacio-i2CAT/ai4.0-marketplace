@@ -77,6 +77,24 @@
 
       };
 
+      var getAllMyAnonymousProjects = function() {
+        var currentProvider = angular.fromJson(LocalStorageFactory.getValue('user')),
+            providerId = currentProvider.user.id;
+        var path = ['api/clients/', providerId, '/projects'].join(''),
+            url = [host,path].join('');
+        var deferred = $q.defer();
+
+        var promise = $http.get(url).then(function(response){
+          return response.data;
+        }, function (error) {
+          deferred.reject(error);
+        });
+
+        return promise;
+
+      };
+
+
       return {
           getAllOwnProjects: function () {
             return getAllOwnProjects();
@@ -89,6 +107,9 @@
           },
           createAnonymousProject: function (srv) {
             return createAnonymousProject(srv);
+          },
+          getAllMyAnonymousProjects: function () {
+            return getAllMyAnonymousProjects();
           }
       };
 
