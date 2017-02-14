@@ -11,8 +11,10 @@
       var vm = this;
       vm.text = 'OwnProjectController';
       //sortin table
-      vm.sortType = 'created_at';
-  		vm.sortReverse = true;
+      vm.sortTypeActive = 'created_at';
+      vm.sortTypeInactive = 'created_at';
+  		vm.sortActiveReverse = true;
+      vm.sortInactiveReverse = true;
 
 
 
