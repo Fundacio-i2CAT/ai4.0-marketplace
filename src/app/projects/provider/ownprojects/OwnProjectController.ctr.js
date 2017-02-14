@@ -104,22 +104,7 @@
       };
 
       vm.getStatusClass = function(status){
-  			var className;
-  			switch (status) {
-  				case 3:
-  				case 6:
-  					className = 'label-default';
-  				break;
-  				case 9:
-  					className = 'label-warning';
-  				break;
-  				case 5:
-  					className = 'label-success';
-  				break;
-  			}
-
-  			return className;
-
+  			return LiteralFactory.getStatusClass(status);
   		};
 
       vm.getLiteralStatus = function(status){
