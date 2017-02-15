@@ -44,7 +44,7 @@
                   <tr ng-repeat-end>
                     <td colspan="2">
                       <div class="collapse" id="kkk{{$index}}">
-                          <ul style="margin-left: 2em;padding-top:.3em;" class="list-inline bg-warning" ng-repeat="one in inactive.instances">
+                          <ul style="margin-left: 2em;padding-top:.3em;" class="list-inline bg-warning bg-unpublish" ng-repeat="one in inactive.instances">
                               <li class="">
                                 {{one.name}}
                               </li>
@@ -114,7 +114,7 @@
                       <tr ng-repeat-end>
                         <td colspan="2">
                           <div class="collapse" id="qqq{{$index}}">
-                              <ul style="margin-left: 2em;padding-top:.3em;" class="list-inline bg-warning" ng-repeat="one in active.instances">
+                              <ul style="margin-left: 2em;padding-top:.3em;" class="list-inline bg-warning bg-publish" ng-repeat="one in active.instances">
                                   <li class="">
                                     {{one.name}}
                                   </li>
