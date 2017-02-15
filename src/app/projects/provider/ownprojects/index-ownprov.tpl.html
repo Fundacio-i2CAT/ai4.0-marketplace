@@ -28,7 +28,7 @@
                 <tbody>
                   <tr ng-repeat-start="inactive in ownproj.allMyInactiveProjects | orderBy:ownproj.sortTypeInactive:ownproj.sortInactiveReverse | filter: searchingWord">
                     <td ng-click="inactive.isExpanded = !inactive.isExpanded" class="vert-align" data-toggle="collapse" data-target="#kkk{{$index}}" class="clickable">
-                      {{inactive.name}}<span ng-if="inactive.instances.length">&nbsp;<i ng-if="!inactive.isExpanded" class="fa fa-angle-right"></i><i class="fa fa-angle-down" ng-if="inactive.isExpanded"></i></span>
+                      {{inactive.name}} <!--  - {{inactive.created_at | date: 'dd-MM-yyyy'}} --><span ng-if="inactive.instances.length">&nbsp;<i ng-if="!inactive.isExpanded" class="fa fa-angle-right"></i><i class="fa fa-angle-down" ng-if="inactive.isExpanded"></i></span>
                     </td>
                     <td class="vert-align">
                       <button class="btn btn-primary btn-xs" ng-click="ownproj.publishSrvInCatalogue(inactive)">
@@ -98,7 +98,7 @@
                     <tbody>
                       <tr ng-repeat-start="active in ownproj.allMyActiveProjects | orderBy:ownproj.sortTypeActive:ownproj.sortActiveReverse | filter: searchingWord">
                         <td ng-click="active.isExpanded = !active.isExpanded" class="vert-align" data-toggle="collapse" data-target="#qqq{{$index}}" class="clickable">
-                          {{active.name}}<span ng-if="active.instances.length">&nbsp;<i ng-if="!active.isExpanded" class="fa fa-angle-right"></i><i class="fa fa-angle-down" ng-if="active.isExpanded"></i></span>
+                          {{active.name}} <!-- - {{active.created_at | date: 'dd-MM-yyyy'}} --><span ng-if="active.instances.length">&nbsp;<i ng-if="!active.isExpanded" class="fa fa-angle-right"></i><i class="fa fa-angle-down" ng-if="active.isExpanded"></i></span>
                         </td>
                         <td class="vert-align">
                           <button class="btn btn-default btn-xs" ng-click="ownproj.hideSrvInCatalogue(active)">
