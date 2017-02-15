@@ -5,9 +5,9 @@
     .module('marketplace')
     .controller('OwnProjectController', OwnProjectController);
 
-    OwnProjectController.$inject = ['OwnProjectFactory', 'toastr', '$log', 'LiteralFactory'];
+    OwnProjectController.$inject = ['OwnProjectFactory', 'toastr', '$log', 'LiteralFactory', 'ngDialog', 'ProjectFactory'];
 
-    function OwnProjectController(OwnProjectFactory, toastr, $log, LiteralFactory) {
+    function OwnProjectController(OwnProjectFactory, toastr, $log, LiteralFactory, ngDialog, ProjectFactory) {
       var vm = this;
       vm.text = 'OwnProjectController';
       //sortin table
@@ -116,6 +116,15 @@
   			return LiteralFactory.getLiteralStatus(status);
   		};
 
+      //confirm message for deleting project as a Client
+  		vm.confirmDeleteProject = function(project) {
+        ProjectFactory.confirmDeleteProject(project, vm);
+  		};
+
+      //close dialog
+  		vm.closeDialog = function() {
+  			ngDialog.close();
+  		};
 
 
     }
