@@ -5,9 +5,9 @@
     .module('marketplace')
     .factory('OwnProjectFactory', OwnProjectFactory);
 
-    OwnProjectFactory.$inject = ['$http', '$q', 'ConnectionFactory', 'LocalStorageFactory'];
+    OwnProjectFactory.$inject = ['$http', '$q', 'ConnectionFactory', 'LocalStorageFactory', 'ngDialog'];
 
-    function OwnProjectFactory($http, $q, ConnectionFactory, LocalStorageFactory) {
+    function OwnProjectFactory($http, $q, ConnectionFactory, LocalStorageFactory, ngDialog) {
       var host = ConnectionFactory.host;
 
       var getAllOwnProjects = function (user) {
@@ -93,6 +93,7 @@
         return promise;
 
       };
+
 
 
       return {
