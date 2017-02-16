@@ -5,9 +5,9 @@
     .module('marketplace')
     .controller('OwnProjectController', OwnProjectController);
 
-    OwnProjectController.$inject = ['OwnProjectFactory', 'toastr', '$log', 'LiteralFactory', 'ngDialog', 'ProjectFactory', '$state', 'ServiceFactory', 'ShareDataFactory'];
+    OwnProjectController.$inject = ['OwnProjectFactory', 'toastr', '$log', 'LiteralFactory', 'ngDialog', 'ProjectFactory', '$state', 'ServiceFactory', 'ShareDataFactory', '$interval', '$translate'];
 
-    function OwnProjectController(OwnProjectFactory, toastr, $log, LiteralFactory, ngDialog, ProjectFactory, $state, ServiceFactory, ShareDataFactory) {
+    function OwnProjectController(OwnProjectFactory, toastr, $log, LiteralFactory, ngDialog, ProjectFactory, $state, ServiceFactory, ShareDataFactory, $interval, $translate) {
       var vm = this;
       vm.text = 'OwnProjectController';
       //sortin table
@@ -69,6 +69,7 @@
         angular.forEach(list, function (each){
           each.instances = [];
           angular.forEach(list2, function (myProject){
+            myProject.showProgressBar = false;
             if (each._id === myProject.services[0].service._id) {
               each.instances.push(myProject);
             }
@@ -163,9 +164,90 @@
   			});
   		}
 
+      //////////////////////////////////////////////////////////////////////////
+      //stopOwnProject
+  		vm.stopOwnProject = function (srv) {
+  			srv.showProgressBar = true;
+  			ProjectFactory.stopProject(srv._id).then(function (response){
+  				// $log.log('stopping project::: ', response);
+  				if (response.status === 200) {
+  					var internalPromise = $interval(function(){
+  						ProjectFactory.getProjectState(srv._id).then(function(response){
+  							// $log.log('getProjectState::: ', response);
+  							if (response.data.status === 6) {
+  								srv.showProgressBar = false;
+  								$interval.cancel(internalPromise);
+  								toastr.success('Projecte aturat correctament', 'Aturar Serveis');
+  								vm.getClientProjectsByPartnerId(user.user.provider_id);
+  							}
+
+  						}, function (error){
+  							console.log(error);
+  						});
+  					}, 8000);
+
+  				}
+
+  				//si el projecte ja està running
+  				if (response.status === 409) {
+  					srv.showProgressBar = false;
+  					var backmessage;
+  					if ($translate.use() == 'CAT') {
+  						backmessage = response.data.message.ca;
+  					} else if ($translate.use() == 'CAST') {
+  						backmessage = response.data.message.es;
+  					}
+  					srv.status = response.data.status;
+  					toastr.success(backmessage, response.data.code);
+  					vm.getClientProjectsByPartnerId(user.user.provider_id);
+  				}
+
+  			});
+  		}; //end of stopOwnProject
+
+      //////////////////////////////////////////////////////////////////////////
+      //runOwnProject
+  		vm.runOwnProject = function (srv) {
+  			srv.showProgressBar = true;
+  			// var progressbar = ProgressFactory.progressBarConfigure();
+  			// progressbar.start();
+  			ProjectFactory.runProject(srv._id).then(function (response){
+  				// $log.log('running project::: ', response);
+  				if (response.status === 200) {
+  					var internalPromise = $interval(function(){
+  						ProjectFactory.getProjectState(srv._id).then(function(response){
+  							// $log.log('getProjectState::: ', response);
+  							if (response.data.status === 5) {
+  								srv.showProgressBar = false;
+  								$interval.cancel(internalPromise);
+  								toastr.success('Projecte arrencat correctament', 'Arrencar Serveis');
+  								vm.getClientProjectsByPartnerId(user.user.provider_id);
+  							}
+  						}, function(error){
+  							console.log(error);
+  						});
+  					}, 30000);
+  				}
 
 
+  				//si el projecte ja està running
+  				if (response.status === 409) {
+  					srv.showProgressBar = false;
+  					var backmessage;
+  					if ($translate.use() == 'CAT') {
+  						backmessage = response.data.message.ca;
+  					} else if ($translate.use() == 'CAST') {
+  						backmessage = response.data.message.es;
+  					}
+  					srv.status = response.data.status;
+  					toastr.success(backmessage, response.data.code);
+  					vm.getClientProjectsByPartnerId(user.user.provider_id);
+  				}
 
+
+  			});
+  			// progressbar.complete();
+  		}
 
 
 

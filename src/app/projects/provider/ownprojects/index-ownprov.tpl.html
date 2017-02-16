@@ -7,7 +7,8 @@
   <!-- Inactive projects  -->
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 top2">
-      <span class="label label-default" style="padding:.7em;padding-bottom:.8em;">{{'NO-PUBLISH-SRV' | translate}}&nbsp;&nbsp;<span class="badge left1">{{ownproj.allMyInactiveProjects.length}}</span></span>
+      <span class="label label-default" style="padding:.7em;padding-bottom:.8em;">{{'NO-PUBLISH-SRV' | translate}}&nbsp;&nbsp;<span class="badge left1">{{ownproj.allMyInactiveProjects.length}}</span>
+      </span>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
       <div class="top1">
@@ -20,22 +21,115 @@
                     {{ 'SRV-SERVEI' | translate }}
                     <span ng-show="ownproj.sortTypeInactive == 'service.name' && !ownproj.sortInactiveReverse" class="fa fa-sort-alpha-asc"></span>
                     <span ng-show="ownproj.sortTypeInactive == 'service.name' && ownproj.sortInactiveReverse" class="fa fa-sort-alpha-desc"></span>
-                  <a/>
-                </th>
-                <th class="col-xs-2 col-sm-3 col-md-3 col-lg-2">{{ 'SRV-ACCIONS' | translate }}</th>
-              </tr>
+                    <a/>
+                  </th>
+                  <th class="col-xs-2 col-sm-3 col-md-3 col-lg-2">{{ 'SRV-ACCIONS' | translate }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat-start="inactive in ownproj.allMyInactiveProjects | orderBy:ownproj.sortTypeInactive:ownproj.sortInactiveReverse | filter: searchingWord">
+                  <td ng-click="inactive.isExpanded = !inactive.isExpanded" class="vert-align" data-toggle="collapse" data-target="#kkk{{$index}}" class="clickable">
+                    {{inactive.name}}
+                    <!--  - {{inactive.created_at | date: 'dd-MM-yyyy'}} -->
+                    <span ng-if="inactive.instances.length">&nbsp;<i ng-if="!inactive.isExpanded" class="fa fa-angle-right"></i>
+                      <i class="fa fa-angle-down" ng-if="inactive.isExpanded"></i>
+                    </span>
+                  </td>
+                  <td class="vert-align">
+                    <button class="btn btn-primary btn-xs" ng-click="ownproj.publishSrvInCatalogue(inactive)">
+                      <i class="fa fa-check-circle"></i>
+                      &nbsp;Publicar
+                    </button>
+                    <button class="btn btn-default btn-xs" ng-click="ownproj.createAnonymousProject(inactive)">
+                      <i class="fa fa-plus-square"></i>
+                      &nbsp;{{'SRV-PROJECTE' | translate}}
+                    </button>
+                  </td>
+                </tr>
+                <tr ng-repeat-end>
+                  <td colspan="2">
+                    <div class="collapse" id="kkk{{$index}}">
+                      <ul style="margin-left: 2em;padding-top:.3em;" class="list-inline bg-warning bg-unpublish" ng-repeat="one in inactive.instances">
+                        <li class="">
+                          {{one.name}}
+                        </li>
+                        <li class="">
+                          <span class="label label-status" ng-class="ownproj.getStatusClass(one.status)" translate="{{ownproj.getLiteralStatus(one.status)}}" style="margin:0.5em;">
+                            {{ownproj.getLiteralStatus(one.status)}}
+                          </span>
+                        </li>
+                        <li class="">
+                          {{one.created_at | date: 'dd-MM-yyyy' }}
+                        </li>
+                        <li ng-show="!one.showProgressBar" class="pull-right clearfix">
+                          <button ng-if="one.status == 6" type="button" class="btn btn-xs btn-success">
+                            <i class="fa fa-play"></i>
+                          </button>
+                          <button ng-if="one.status == 5" type="button" class="btn btn-xs btn-danger" ng-click="ownproj.runOwnProject(one)">
+                            <i class="fa fa-pause"></i>
+                          </button>
+                          <button ng-if="one.status == 3" type="button" class="btn btn-xs btn-default" ng-click="ownproj.instantiateService(one)">
+                            <i class="fa fa-plug"></i>
+                          </button>
+                          <button type="button" class="btn btn-xs btn-default" ng-click="ownproj.confirmDeleteProject(one)">
+                            <i class="fa fa-trash"></i>
+                          </button>
+                        </li>
+                        <li ng-show="one.showProgressBar" style="width:180px;" class="pull-right clearfix">
+                            <div class="progress progressbar-ownproject">
+                						  <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" style="width:100%">
+                						  </div>
+                						</div>
+                        </li>
+                      </ul>
+
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Active projects -->
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 top2">
+        <span class="label label-default label-grey" style="padding:.7em;padding-bottom:.8em;">{{'PUBLISH-SRV' | translate}}&nbsp;&nbsp;<span class="badge left1">{{ownproj.allMyActiveProjects.length}}</span>
+        </span>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="top1">
+          <div class="table-responsive">
+            <table id="myActiveProjects" class="table table-hover table-striped">
+              <thead>
+                <tr>
+                  <th class="col-xs-10 col-sm-9 col-md-9 col-lg-10">
+                    <a ng-click="ownproj.sortTypeActive = 'name'; ownproj.sortActiveReverse = !ownproj.sortActiveReverse">
+                      {{ 'SRV-SERVEI' | translate }}
+                      <span ng-show="ownproj.sortTypeActive == 'name' && !ownproj.sortActiveReverse" class="fa fa-sort-alpha-asc"></span>
+                      <span ng-show="ownproj.sortTypeActive == 'name' && ownproj.sortActiveReverse" class="fa fa-sort-alpha-desc"></span>
+                      <a/>
+                    </th>
+                    <th class="col-xs-2 col-sm-3 col-md-3 col-lg-2">{{ 'SRV-ACCIONS' | translate }}</th>
+                  </tr>
                 </thead>
                 <tbody>
-                  <tr ng-repeat-start="inactive in ownproj.allMyInactiveProjects | orderBy:ownproj.sortTypeInactive:ownproj.sortInactiveReverse | filter: searchingWord">
-                    <td ng-click="inactive.isExpanded = !inactive.isExpanded" class="vert-align" data-toggle="collapse" data-target="#kkk{{$index}}" class="clickable">
-                      {{inactive.name}} <!--  - {{inactive.created_at | date: 'dd-MM-yyyy'}} --><span ng-if="inactive.instances.length">&nbsp;<i ng-if="!inactive.isExpanded" class="fa fa-angle-right"></i><i class="fa fa-angle-down" ng-if="inactive.isExpanded"></i></span>
+                  <tr ng-repeat-start="active in ownproj.allMyActiveProjects | orderBy:ownproj.sortTypeActive:ownproj.sortActiveReverse | filter: searchingWord">
+                    <td ng-click="active.isExpanded = !active.isExpanded" class="vert-align" data-toggle="collapse" data-target="#qqq{{$index}}" class="clickable">
+                      {{active.name}}
+                      <!-- - {{active.created_at | date: 'dd-MM-yyyy'}} -->
+                      <span ng-if="active.instances.length">&nbsp;<i ng-if="!active.isExpanded" class="fa fa-angle-right"></i>
+                        <i class="fa fa-angle-down" ng-if="active.isExpanded"></i>
+                      </span>
                     </td>
                     <td class="vert-align">
-                      <button class="btn btn-primary btn-xs" ng-click="ownproj.publishSrvInCatalogue(inactive)">
-                        <i class="fa fa-check-circle"></i>
-                        &nbsp;Publicar
+                      <button class="btn btn-default btn-xs" ng-click="ownproj.hideSrvInCatalogue(active)">
+                        <i class="fa fa-ban"></i>
+                        &nbsp;Ocultar
                       </button>
-                      <button class="btn btn-default btn-xs" ng-click="ownproj.createAnonymousProject(inactive)">
+                      <button class="btn btn-primary btn-xs" ng-click="ownproj.createAnonymousProject(active)">
                         <i class="fa fa-plus-square"></i>
                         &nbsp;{{'SRV-PROJECTE' | translate}}
                       </button>
@@ -43,27 +137,34 @@
                   </tr>
                   <tr ng-repeat-end>
                     <td colspan="2">
-                      <div class="collapse" id="kkk{{$index}}">
-                          <ul style="margin-left: 2em;padding-top:.3em;" class="list-inline bg-warning bg-unpublish" ng-repeat="one in inactive.instances">
-                              <li class="">
-                                {{one.name}}
-                              </li>
-                              <li class="">
-                                <span class="label label-status" ng-class="ownproj.getStatusClass(one.status)" translate="{{ownproj.getLiteralStatus(one.status)}}" style="margin:0.5em;">
-          												{{ownproj.getLiteralStatus(one.status)}}
-                                </span>
-                              </li>
-                              <li class="">
-                                {{one.created_at | date: 'dd-MM-yyyy' }}
-                              </li>
-                              <li class="pull-right clearfix">
-                                <button ng-if="one.status == 6" type="button" class="btn btn-xs btn-success"><i class="fa fa-play"></i></button>
-                                <button ng-if="one.status == 5" type="button" class="btn btn-xs btn-danger"><i class="fa fa-pause"></i></button>
-                                <button ng-if="one.status == 3" type="button" class="btn btn-xs btn-default" ng-click="ownproj.instantiateService(one)"><i class="fa fa-plug"></i></button>
-                                <button type="button" class="btn btn-xs btn-default" ng-click="ownproj.confirmDeleteProject(one)"><i class="fa fa-trash"></i></button>
-                              </li>
-                          </ul>
-
+                      <div class="collapse" id="qqq{{$index}}">
+                        <ul style="margin-left: 2em;padding-top:.3em;" class="list-inline bg-warning bg-publish" ng-repeat="one in active.instances">
+                          <li class="">
+                            {{one.name}}
+                          </li>
+                          <li class="">
+                            <span class="label label-status" ng-class="ownproj.getStatusClass(one.status)" translate="{{ownproj.getLiteralStatus(one.status)}}" style="margin:0.5em;">
+                              {{ownproj.getLiteralStatus(one.status)}}
+                            </span>
+                          </li>
+                          <li class="">
+                            {{one.created_at | date: 'dd-MM-yyyy' }}
+                          </li>
+                          <li class="pull-right clearfix">
+                            <button ng-if="one.status == 3" type="button" class="btn btn-xs btn-success">
+                              <i class="fa fa-play"></i>
+                            </button>
+                            <button ng-if="one.status == 3" type="button" class="btn btn-xs btn-danger">
+                              <i class="fa fa-pause"></i>
+                            </button>
+                            <button ng-if="one.status == 3" type="button" class="btn btn-xs btn-default" ng-click="ownproj.instantiateService(one)">
+                              <i class="fa fa-plug"></i>
+                            </button>
+                            <button type="button" class="btn btn-xs btn-default" ng-click="ownproj.confirmDeleteProject(one)">
+                              <i class="fa fa-trash"></i>
+                            </button>
+                          </li>
+                        </ul>
                       </div>
                     </td>
                   </tr>
@@ -73,74 +174,4 @@
           </div>
         </div>
       </div>
-
-      <!-- Active projects -->
-      <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 top2">
-          <span class="label label-default label-grey" style="padding:.7em;padding-bottom:.8em;">{{'PUBLISH-SRV' | translate}}&nbsp;&nbsp;<span class="badge left1">{{ownproj.allMyActiveProjects.length}}</span></span>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-          <div class="top1">
-            <div class="table-responsive">
-              <table id="myActiveProjects" class="table table-hover table-striped">
-                <thead>
-                  <tr>
-                    <th class="col-xs-10 col-sm-9 col-md-9 col-lg-10">
-                      <a ng-click="ownproj.sortTypeActive = 'name'; ownproj.sortActiveReverse = !ownproj.sortActiveReverse">
-                        {{ 'SRV-SERVEI' | translate }}
-                        <span ng-show="ownproj.sortTypeActive == 'name' && !ownproj.sortActiveReverse" class="fa fa-sort-alpha-asc"></span>
-                        <span ng-show="ownproj.sortTypeActive == 'name' && ownproj.sortActiveReverse" class="fa fa-sort-alpha-desc"></span>
-                      <a/>
-                    </th>
-                    <th class="col-xs-2 col-sm-3 col-md-3 col-lg-2">{{ 'SRV-ACCIONS' | translate }}</th>
-                  </tr>
-                    </thead>
-                    <tbody>
-                      <tr ng-repeat-start="active in ownproj.allMyActiveProjects | orderBy:ownproj.sortTypeActive:ownproj.sortActiveReverse | filter: searchingWord">
-                        <td ng-click="active.isExpanded = !active.isExpanded" class="vert-align" data-toggle="collapse" data-target="#qqq{{$index}}" class="clickable">
-                          {{active.name}} <!-- - {{active.created_at | date: 'dd-MM-yyyy'}} --><span ng-if="active.instances.length">&nbsp;<i ng-if="!active.isExpanded" class="fa fa-angle-right"></i><i class="fa fa-angle-down" ng-if="active.isExpanded"></i></span>
-                        </td>
-                        <td class="vert-align">
-                          <button class="btn btn-default btn-xs" ng-click="ownproj.hideSrvInCatalogue(active)">
-                            <i class="fa fa-ban"></i>
-                            &nbsp;Ocultar
-                          </button>
-                          <button class="btn btn-primary btn-xs" ng-click="ownproj.createAnonymousProject(active)">
-                            <i class="fa fa-plus-square"></i>
-                            &nbsp;{{'SRV-PROJECTE' | translate}}
-                          </button>
-                        </td>
-                      </tr>
-                      <tr ng-repeat-end>
-                        <td colspan="2">
-                          <div class="collapse" id="qqq{{$index}}">
-                              <ul style="margin-left: 2em;padding-top:.3em;" class="list-inline bg-warning bg-publish" ng-repeat="one in active.instances">
-                                  <li class="">
-                                    {{one.name}}
-                                  </li>
-                                  <li class="">
-                                    <span class="label label-status" ng-class="ownproj.getStatusClass(one.status)" translate="{{ownproj.getLiteralStatus(one.status)}}" style="margin:0.5em;">
-              												{{ownproj.getLiteralStatus(one.status)}}
-                                    </span>
-                                  </li>
-                                  <li class="">
-                                    {{one.created_at | date: 'dd-MM-yyyy' }}
-                                  </li>
-                                  <li class="pull-right clearfix">
-                                    <button ng-if="one.status == 3" type="button" class="btn btn-xs btn-success"><i class="fa fa-play"></i></button>
-                                    <button ng-if="one.status == 3" type="button" class="btn btn-xs btn-danger"><i class="fa fa-pause"></i></button>
-                                    <button ng-if="one.status == 3" type="button" class="btn btn-xs btn-default" ng-click="ownproj.instantiateService(one)"><i class="fa fa-plug"></i></button>
-                                    <button type="button" class="btn btn-xs btn-default" ng-click="ownproj.confirmDeleteProject(one)"><i class="fa fa-trash"></i></button>
-                                  </li>
-                              </ul>
-
-                          </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
     </div>
