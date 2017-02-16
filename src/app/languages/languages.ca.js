@@ -30,7 +30,7 @@
 					'DETAIL-SECTORS': 'Sectors',
 					'DETAIL-LINK': 'Enllaç',
 					'SRV-INSTANCE': 'Instanciar Servei',
-					'RUN-TIMES': 'Paràmetres d\'Execució', 
+					'RUN-TIMES': 'Paràmetres d\'Execució',
 					//projectes
 					'PROJ-CLIENT':'PROJECTES',
 					'FILTER-PLACEHOLDER-PROJ': 'Filtrar Projectes',
@@ -170,7 +170,12 @@
 					'SRV-INSTANT': 'Instanciació del Servei',
 					'SRV-STABLISH': 'Arrancar Servei',
 					'HOUR-PRICE': 'Preu per Hora',
-					'RATING': 'Tarifa horària'
+					'RATING': 'Tarifa horària',
+					//own projects
+					'NO-PUBLISH-SRV': 'Serveis no publicats',
+					'PUBLISH-SRV': 'Serveis publicats',
+					'OWN-SRVS': 'Serveis propis'
+
 
 
 

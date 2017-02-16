@@ -1,13 +1,13 @@
 <div class="container">
   <div class="page-header">
     <h2 class="text text-danger">
-      Mis Servicios
+      {{'OWN-SRVS' | translate}}
     </h2>
   </div>
   <!-- Inactive projects  -->
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 top2">
-      <span class="label label-default" style="padding:.7em;padding-bottom:.8em;">Serveis No Publicats&nbsp;&nbsp;<span class="badge left1">{{ownproj.allMyInactiveProjects.length}}</span></span>
+      <span class="label label-default" style="padding:.7em;padding-bottom:.8em;">{{'NO-PUBLISH-SRV' | translate}}&nbsp;&nbsp;<span class="badge left1">{{ownproj.allMyInactiveProjects.length}}</span></span>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
       <div class="top1">
@@ -37,7 +37,7 @@
                       </button>
                       <button class="btn btn-default btn-xs" ng-click="ownproj.createAnonymousProject(inactive)">
                         <i class="fa fa-plus-square"></i>
-                        &nbsp;Proyecto
+                        &nbsp;{{'SRV-PROJECTE' | translate}}
                       </button>
                     </td>
                   </tr>
@@ -77,7 +77,7 @@
       <!-- Active projects -->
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 top2">
-          <span class="label label-default label-grey" style="padding:.7em;padding-bottom:.8em;">Serveis Publicats&nbsp;&nbsp;<span class="badge left1">{{ownproj.allMyActiveProjects.length}}</span></span>
+          <span class="label label-default label-grey" style="padding:.7em;padding-bottom:.8em;">{{'PUBLISH-SRV' | translate}}&nbsp;&nbsp;<span class="badge left1">{{ownproj.allMyActiveProjects.length}}</span></span>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
           <div class="top1">
@@ -107,7 +107,7 @@
                           </button>
                           <button class="btn btn-primary btn-xs" ng-click="ownproj.createAnonymousProject(active)">
                             <i class="fa fa-plus-square"></i>
-                            &nbsp;Proyecto
+                            &nbsp;{{'SRV-PROJECTE' | translate}}
                           </button>
                         </td>
                       </tr>
