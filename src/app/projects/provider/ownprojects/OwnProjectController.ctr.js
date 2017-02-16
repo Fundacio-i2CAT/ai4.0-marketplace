@@ -9,13 +9,15 @@
 
     function OwnProjectController(OwnProjectFactory, toastr, $log, LiteralFactory, ngDialog, ProjectFactory, $state, ServiceFactory, ShareDataFactory, $interval, $translate) {
       var vm = this;
-      vm.text = 'OwnProjectController';
+      // var user = LocalStorageFactory.getValue('user');
+
       //sortin table
       vm.sortTypeActive = 'created_at';
       vm.sortTypeInactive = 'created_at';
   		vm.sortActiveReverse = true;
       vm.sortInactiveReverse = true;
       vm.isExpanded = false;
+
 
       vm.getAllOwnProjects = function() {
         vm.allMyActiveProjects = [],
@@ -178,7 +180,9 @@
   								srv.showProgressBar = false;
   								$interval.cancel(internalPromise);
   								toastr.success('Projecte aturat correctament', 'Aturar Serveis');
-  								vm.getClientProjectsByPartnerId(user.user.provider_id);
+                  srv.status = 6;
+                //   vm.getAllOwnProjects();
+                //   vm.getAllMyAnonymousProjects();
   							}
 
   						}, function (error){
@@ -199,7 +203,8 @@
   					}
   					srv.status = response.data.status;
   					toastr.success(backmessage, response.data.code);
-  					vm.getClientProjectsByPartnerId(user.user.provider_id);
+  					// vm.getAllOwnProjects();
+            // vm.getAllMyAnonymousProjects();
   				}
 
   			});
@@ -221,7 +226,9 @@
   								srv.showProgressBar = false;
   								$interval.cancel(internalPromise);
   								toastr.success('Projecte arrencat correctament', 'Arrencar Serveis');
-  								vm.getClientProjectsByPartnerId(user.user.provider_id);
+                  srv.status = 5;
+                  // vm.getAllOwnProjects();
+                  // vm.getAllMyAnonymousProjects();
   							}
   						}, function(error){
   							console.log(error);
@@ -241,7 +248,8 @@
   					}
   					srv.status = response.data.status;
   					toastr.success(backmessage, response.data.code);
-  					vm.getClientProjectsByPartnerId(user.user.provider_id);
+            // vm.getAllOwnProjects();
+            // vm.getAllMyAnonymousProjects();
   				}
 
 
