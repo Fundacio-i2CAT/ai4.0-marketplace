@@ -174,7 +174,9 @@
 					//own projects
 					'NO-PUBLISH-SRV': 'Serveis no publicats',
 					'PUBLISH-SRV': 'Serveis publicats',
-					'OWN-SRVS': 'Serveis propis'
+					'OWN-SRVS': 'Serveis propis',
+					'EXIST-PROJ': 'Projectes guardats',
+					'EXIST-SRV': 'Serveis guardats'
 
 
 
