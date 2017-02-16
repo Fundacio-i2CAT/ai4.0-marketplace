@@ -59,7 +59,7 @@
                               <li class="pull-right clearfix">
                                 <button ng-if="one.status == 3" type="button" class="btn btn-xs btn-success"><i class="fa fa-play"></i></button>
                                 <button ng-if="one.status == 3" type="button" class="btn btn-xs btn-danger"><i class="fa fa-pause"></i></button>
-                                <button ng-if="one.status == 3" type="button" class="btn btn-xs btn-default"><i class="fa fa-plug"></i></button>
+                                <button ng-if="one.status == 3" type="button" class="btn btn-xs btn-default" ng-click="ownproj.instantiateService(one)"><i class="fa fa-plug"></i></button>
                                 <button type="button" class="btn btn-xs btn-default" ng-click="ownproj.confirmDeleteProject(one)"><i class="fa fa-trash"></i></button>
                               </li>
                           </ul>

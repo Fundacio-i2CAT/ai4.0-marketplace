@@ -5,9 +5,9 @@
     .module('marketplace')
     .controller('OwnProjectController', OwnProjectController);
 
-    OwnProjectController.$inject = ['OwnProjectFactory', 'toastr', '$log', 'LiteralFactory', 'ngDialog', 'ProjectFactory'];
+    OwnProjectController.$inject = ['OwnProjectFactory', 'toastr', '$log', 'LiteralFactory', 'ngDialog', 'ProjectFactory', '$state', 'ServiceFactory', 'ShareDataFactory'];
 
-    function OwnProjectController(OwnProjectFactory, toastr, $log, LiteralFactory, ngDialog, ProjectFactory) {
+    function OwnProjectController(OwnProjectFactory, toastr, $log, LiteralFactory, ngDialog, ProjectFactory, $state, ServiceFactory, ShareDataFactory) {
       var vm = this;
       vm.text = 'OwnProjectController';
       //sortin table
@@ -125,6 +125,48 @@
   		vm.closeDialog = function() {
   			ngDialog.close();
   		};
+
+      vm.deleteProject = function(id){
+  			ProjectFactory.deleteProject(id).then(function(response){
+  				if(response.status===200){
+  					toastr.info("Projecte eliminat correctament", "Eliminar Projecte");
+  					$state.reload();
+  				} else {
+  					toastr.error("No s'ha pogut borrar el projecte");
+  				}
+  				vm.closeDialog();
+  			});
+  		};
+
+      //Instantiate service button (as a client), pass the service data and open dialog
+  		vm.instantiateService = function(srv) {
+  			var service_id = srv.services[0].service._id;
+  			ServiceFactory.instantiateService(service_id).then(function(response) {
+  				var dataToSend = {
+  					json: response.data,
+  					service_id: service_id,
+  					project_id: srv._id,
+  					srv: srv
+  				}
+  				ShareDataFactory.setData(dataToSend);
+  				launchDialog();
+  			});
+  		};
+
+      //launch dialog
+  		function launchDialog () {
+  			ngDialog.open({
+  				template: 'app/services/instantiateService/instantiateSrv-dialog.tpl.html',
+  				className: 'ngdialog-theme-default',
+  				controller: 'InstantiateServiceController',
+  				controllerAs: 'instancesrv'
+  			});
+  		}
+
+
+
+
+
 
 
     }
