@@ -5,8 +5,8 @@
 		.module('marketplace')
 		.factory('ProjectFactory', ProjectFactory);
 
-	ProjectFactory.$inject = ['$http', 'ConnectionFactory'];
-	function ProjectFactory($http, ConnectionFactory){
+	ProjectFactory.$inject = ['$http', 'ConnectionFactory', 'ngDialog'];
+	function ProjectFactory($http, ConnectionFactory, ngDialog){
 		var host = ConnectionFactory.host;
 
 		var factory = {};
@@ -22,6 +22,7 @@
 		factory.deleteProject = deleteProject;
 		factory.getProjectState = getProjectState;
 		factory.stopProject = stopProject;
+		factory.confirmDeleteProject = confirmDeleteProject;
 
 
 		/*
@@ -121,6 +122,19 @@
 			var url = [host, 'api/projects/', id, '/state'].join('');
 			return $http.get(url).then(handleSuccess, handleError);
 		}
+
+		//launch confirm diaglog on press delete button
+		function confirmDeleteProject(project, vm) {
+			vm.projectToRemove = project;
+			ngDialog.open({
+				template: 'app/projects/client/delete-project/delete_project.tpl.html',
+				className: 'ngdialog-theme-default',
+				appendClassName: 'delete-project',
+				controller: 'OwnProjectController',
+				data: vm
+			});
+		};
+
 
 		/**
 		*	manage error run/stop projectes

@@ -13,12 +13,18 @@
           <span class="icon-left">{{ 'CREAR-PROJ' | translate}}</span>
         </a>
       </span>
+
+
     </div>
   </div>
   <div class="row tabla-client">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
       <div class="row">
-        <div class="col-xs-4 col-xs-offset-8">
+        <div class="col-xs-8">
+          <span class="label label-default pull-left" style="padding:.7em;padding-bottom:.8em;">{{'EXIST-PROJ' | translate}}&nbsp;&nbsp;<span class="badge left1">{{clientprojects.allClientProjects.length}}</span>
+          </span>
+        </div>
+        <div class="col-xs-4">
           <input type="text" placeholder="{{ 'FILTER-PLACEHOLDER-PROJ' | translate}}" class="form-control input-sm pull-left" ng-model="searchword"/>
           <br/>
         </div>
@@ -83,7 +89,7 @@
                         popover-animation="true"
                         uib-popover-html="'<code>{{run.value}}</code>'"
                         popover-title="{{run.desc}}">
-                          <kbd><i class="fa fa-plus-square"></i>&nbsp;{{run.name}}</kbd>
+                          <code><i class="fa fa-plus-square"></i>&nbsp;{{run.name}}</code>
                       </span>
                     </td>
                     <td ng-show="!srv.runtime_params[0]"></td>
