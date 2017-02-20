@@ -49,17 +49,25 @@
                 <tr ng-repeat-end>
                   <td colspan="2">
                     <div class="collapse" id="kkk{{$index}}">
-                      <ul style="margin-left: 2em;padding-top:.3em;" class="list-inline bg-warning bg-unpublish" ng-repeat="one in inactive.instances">
-                        <li class="">
-                          {{one.name}}
-                        </li>
-                        <li class="">
+                      <ul style="margin-left: 1em;padding-top:.3em;" class="list-inline bg-warning bg-unpublish row" ng-repeat="one in inactive.instances">
+                        <li class="col-xs-2">{{one.name}}</li>
+                        <li class="col-xs-1">
                           <span class="label label-status" ng-class="ownproj.getStatusClass(one.status)" translate="{{ownproj.getLiteralStatus(one.status)}}" style="margin:0.5em;">
                             {{ownproj.getLiteralStatus(one.status)}}
                           </span>
                         </li>
-                        <li class="">
+                        <li class="col-xs-1">
                           {{one.created_at | date: 'dd-MM-yyyy' }}
+                        </li>
+                        <li class="" ng-show="one.runtime_params[0]" style="cursor:pointer;">
+                          <span
+                            class="capitalize"
+                            ng-repeat="run in one.runtime_params"
+                            popover-animation="true"
+                            uib-popover-html="'<code>{{run.value}}</code>'"
+                            popover-title="{{run.desc}}">
+                              <code><i class="fa fa-plus-square"></i>&nbsp;{{run.name}}</code>
+                          </span>
                         </li>
                         <li ng-show="!one.showProgressBar" class="pull-right clearfix">
                           <button ng-if="one.status == 6" type="button" class="btn btn-xs btn-success" ng-click="ownproj.runOwnProject(one)">
@@ -138,23 +146,23 @@
                   <tr ng-repeat-end>
                     <td colspan="2">
                       <div class="collapse" id="qqq{{$index}}">
-                        <ul style="margin-left: 2em;padding-top:.3em;" class="list-inline bg-warning bg-publish" ng-repeat="one in active.instances">
-                          <li class="">
+                        <ul style="margin-left: 1em;padding-top:.3em;" class="list-inline bg-warning bg-publish row" ng-repeat="one in active.instances">
+                          <li class="col-xs-2">
                             {{one.name}}
                           </li>
-                          <li class="">
+                          <li class="col-xs-1">
                             <span class="label label-status" ng-class="ownproj.getStatusClass(one.status)" translate="{{ownproj.getLiteralStatus(one.status)}}" style="margin:0.5em;">
                               {{ownproj.getLiteralStatus(one.status)}}
                             </span>
                           </li>
-                          <li class="">
+                          <li "col-xs-2">
                             {{one.created_at | date: 'dd-MM-yyyy' }}
                           </li>
-                          <li class="pull-right clearfix">
-                            <button ng-if="one.status == 3" type="button" class="btn btn-xs btn-success" ng-click="ownproj.runOwnProject(one)">
+                          <li ng-show="!one.showProgressBar" class="pull-right clearfix">
+                            <button ng-if="one.status == 6" type="button" class="btn btn-xs btn-success" ng-click="ownproj.runOwnProject(one)">
                               <i class="fa fa-play"></i>
                             </button>
-                            <button ng-if="one.status == 3" type="button" class="btn btn-xs btn-danger" ng-click="ownproj.stopOwnProject(one)">
+                            <button ng-if="one.status == 5" type="button" class="btn btn-xs btn-danger" ng-click="ownproj.stopOwnProject(one)">
                               <i class="fa fa-pause"></i>
                             </button>
                             <button ng-if="one.status == 3" type="button" class="btn btn-xs btn-default" ng-click="ownproj.instantiateService(one)">
@@ -163,6 +171,12 @@
                             <button type="button" class="btn btn-xs btn-default" ng-click="ownproj.confirmDeleteProject(one)">
                               <i class="fa fa-trash"></i>
                             </button>
+                          </li>
+                          <li ng-show="one.showProgressBar" style="width:180px;" class="pull-right clearfix">
+                              <div class="progress progressbar-ownproject">
+                  						  <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" style="width:100%">
+                  						  </div>
+                  						</div>
                           </li>
                         </ul>
                       </div>
