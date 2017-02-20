@@ -84,7 +84,8 @@
           OwnProjectFactory.publishServiceInCatalogue(srv._id).then(function(response){
             $log.log(response);
             toastr.info('Servei publicat al Catàleg correctament', 'Publicació de Servei');
-            vm.getAllOwnProjects();
+              vm.getAllOwnProjects();
+              vm.getAllMyAnonymousProjects();
           }, function(error){
             $log.log(error);
           })
@@ -94,6 +95,7 @@
           OwnProjectFactory.hideServiceInCatalogue(srv._id).then(function(response){
             toastr.info('Servei descatalogat correctament', 'Ocultació de Servei');
             vm.getAllOwnProjects();
+            vm.getAllMyAnonymousProjects();
           }, function(error){
             $log.log(error);
           })
