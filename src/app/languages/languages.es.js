@@ -171,7 +171,13 @@
 					'SRV-INSTANT': 'Instanciación del Servicio',
 					'SRV-STABLISH': 'Arrancar Servicio',
 					'HOUR-PRICE': 'Precio por Hora',
-					'RATING': 'Tarifa horaria'
+					'RATING': 'Tarifa horaria',
+					//own projects
+					'NO-PUBLISH-SRV': 'Servicios no publicados',
+					'PUBLISH-SRV': 'Servicios publicados',
+					'OWN-SRVS': 'Servicios propios',
+					'EXIST-PROJ': 'Proyectos guardados',
+					'EXIST-SRV': 'Servicios guardados'
 
 
 

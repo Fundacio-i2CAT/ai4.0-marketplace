@@ -11,6 +11,7 @@
 		var literalFactory = {};
 
 		literalFactory.getLiteralStatus = getLiteralStatus;
+		literalFactory.getStatusClass = getStatusClass;
 
 		function getLiteralStatus(status) {
 			var output = null;
@@ -31,6 +32,28 @@
 			}
 			return output;
 		}
+
+		function getStatusClass(status) {
+			var className;
+			switch (status) {
+				case 3:
+				case 6:
+					className = 'label-default';
+				break;
+				case 9:
+					className = 'label-warning';
+				break;
+				case 5:
+					className = 'label-success';
+				break;
+			}
+
+			return className;
+		}
+
+
+
+
 
 		return literalFactory;
 	}

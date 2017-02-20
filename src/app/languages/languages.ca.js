@@ -171,7 +171,14 @@
 					'SRV-INSTANT': 'Instanciació del Servei',
 					'SRV-STABLISH': 'Arrancar Servei',
 					'HOUR-PRICE': 'Preu per Hora',
-					'RATING': 'Tarifa horària'
+					'RATING': 'Tarifa horària',
+					//own projects
+					'NO-PUBLISH-SRV': 'Serveis no publicats',
+					'PUBLISH-SRV': 'Serveis publicats',
+					'OWN-SRVS': 'Serveis propis',
+					'EXIST-PROJ': 'Projectes guardats',
+					'EXIST-SRV': 'Serveis guardats'
+
 
 
 
