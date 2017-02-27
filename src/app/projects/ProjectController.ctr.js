@@ -13,10 +13,10 @@
 
 
 		//table pagination
-		vm.viewby = 30;
+		vm.viewby = 10;
 		vm.currentPage = 1;
 		vm.itemsPerPage = vm.viewby;
-		vm.maxSize = 30;
+		vm.maxSize = 10;
 		vm.numPages;
 		vm.pageNumberOptions = [{value: 3, name: "3"}, {value: 5, name: "5"}, {value: 10, name: "10"}, {value: 30, name: "30"}];
 

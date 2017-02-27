@@ -79,7 +79,7 @@
 												{{srv.client.user_name}}
 											</td>
 											<td class="vert-align">
-												<span ng-if="srv.status !== 8" >
+												<!-- <span ng-if="srv.status !== 8" >
 													<span translate="{{provprojects.getLiteralStatus(srv.status)}}" class="label label-status"
 													ng-class="provprojects.getStatusClass(srv.status)">
 													</span>
@@ -92,6 +92,12 @@
 												</span>
 												<span ng-if="srv.status === 8">
 													<span class="label label-status label-default">Inactiu</span>
+												</span> -->
+												<span class="label label-success label-status" ng-if="srv.status == 5">
+													Actiu
+												</span>
+												<span class="label label-default label-status" ng-if="srv.status == 6 || srv.status == 8 || srv.status == 10">
+													Inactiu
 												</span>
 											</td>
 											<td class="vert-align">
@@ -101,13 +107,17 @@
 												{{srv.created_at | date: 'dd-MM-yyyy'}}
 											</td>
 											<td class="vert-align">
-												<button ng-click="provprojects.confirmProviderProject(srv)" class="btn btn-success btn-xs" ng-if='srv.status <= 2'>
-												<i class="fa fa-check"></i>
-												{{ 'ACTIVAR' | translate }}
-												</button>
-												<button ng-click="provprojects.disableProviderProject(srv)" class="btn btn-danger btn-xs" ng-if='srv.status >= 3 && srv.status <= 5'>
+												<button ng-click="provprojects.disableProviderProject(srv)" class="btn btn-warning btn-xs" ng-if='srv.status == 3'>
 												<i class="fa fa-remove"></i>
 												{{ 'DESACTIVAR' | translate }}
+												</button>
+												<button class="btn btn-danger btn-xs" ng-if='srv.status > 3'>
+												<i class="fa fa-ban"></i>
+													Denegar
+												</button>
+												<button class="btn btn-primary btn-xs" ng-if='srv.status == 10 || srv.status > 3'>
+												<i class="fa fa-refresh"></i>
+													Reaprobar
 												</button>
 											</td>
 										</tr>
@@ -119,7 +129,7 @@
 										<form class="form-inline top1">
 											<div class="form-group">
 												<span for="viewby" class="text text-help">{{'PAGINATION-ROWSXPAGE' | translate}}&nbsp;&nbsp;</span>
-												<select id="viewby" name="viewby" ng-init="provprojects.viewby = provprojects.pageNumberOptions[3]" class="form-control input-sm top05" ng-options="item.value for item in provprojects.pageNumberOptions" ng-model="provprojects.viewby" ng-change="provprojects.setItemsPerPageProvider(provprojects.viewby)">
+												<select id="viewby" name="viewby" ng-init="provprojects.viewby = provprojects.pageNumberOptions[2]" class="form-control input-sm top05" ng-options="item.value for item in provprojects.pageNumberOptions" ng-model="provprojects.viewby" ng-change="provprojects.setItemsPerPageProvider(provprojects.viewby)">
 													<!-- <option value="" disabled>5</option> -->
 												</select>
 
