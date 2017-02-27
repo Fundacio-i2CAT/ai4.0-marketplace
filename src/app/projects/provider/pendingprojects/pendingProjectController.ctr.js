@@ -35,7 +35,6 @@
   			vm.itemsPerPage = num.value;
   			vm.currentPage = 1;
   				vm.numPages=Math.ceil(vm.allPendingProviderProjects.length/num.value);
-
   			$log.log(num);
   		};
 
@@ -74,7 +73,7 @@
             $state.reload();
 
   				} else {
-  					toastr.error("No s'ha pogut confirmar el Servei...", 'Hi ha un error');
+  					toastr.error("No s'ha pogut confirmar el Servei...", 'Error de Confirmació');
   				}
   			});
   		};
