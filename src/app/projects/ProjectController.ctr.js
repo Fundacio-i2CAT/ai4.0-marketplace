@@ -170,6 +170,14 @@
 			});
 		};
 
+		vm.denyConfirmedProject = function(srv) {
+			alert('Deny this project!!');
+		}
+
+		vm.reacceptConfirmedProject = function(srv) {
+			alert('Reaccept this project!!');
+		}
+
 		//ir a vista detalle del servicio host/services/detail/:id
 		vm.goServiceDetail = function(servId) {
 			var url = ['services/detail/', servId].join('');
