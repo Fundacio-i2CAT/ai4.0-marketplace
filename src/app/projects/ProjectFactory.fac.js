@@ -5,8 +5,8 @@
 		.module('marketplace')
 		.factory('ProjectFactory', ProjectFactory);
 
-	ProjectFactory.$inject = ['$http', 'ConnectionFactory', 'ngDialog'];
-	function ProjectFactory($http, ConnectionFactory, ngDialog){
+	ProjectFactory.$inject = ['$http', 'ConnectionFactory', 'ngDialog', 'LocalStorageFactory'];
+	function ProjectFactory($http, ConnectionFactory, ngDialog, LocalStorageFactory){
 		var host = ConnectionFactory.host;
 
 		var factory = {};
@@ -23,6 +23,7 @@
 		factory.getProjectState = getProjectState;
 		factory.stopProject = stopProject;
 		factory.confirmDeleteProject = confirmDeleteProject;
+		factory.getPendingProviderProjectsByPartnerId = getPendingProviderProjectsByPartnerId;
 
 
 		/*
@@ -54,11 +55,21 @@
 		}
 
 		/*
+			Provider
+			get all pending projects by partnerId
+		*/
+		function getPendingProviderProjectsByPartnerId () {
+			var user = LocalStorageFactory.getValue('user');
+			var url = [host, 'api/sprojects/provider/', user.user.provider_id, '/status?status=1'].join('');
+			return $http.get(url).then(handleSuccess, handleError);
+		}
+
+		/*
 			ProviderProject
 			confirmació projecte (edicio de prop 'status')
 		*/
 		function confirmProviderProject(srv) {
-			var url = [host, 'api/sprojects/', srv._id].join('');
+			var url = [host, 'api/sprojects/', srv.sproject].join('');
 			var status = {
 				status: 3
 			};
