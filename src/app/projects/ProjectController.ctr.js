@@ -13,10 +13,10 @@
 
 
 		//table pagination
-		vm.viewby = 30;
+		vm.viewby = 10;
 		vm.currentPage = 1;
 		vm.itemsPerPage = vm.viewby;
-		vm.maxSize = 30;
+		vm.maxSize = 10;
 		vm.numPages;
 		vm.pageNumberOptions = [{value: 3, name: "3"}, {value: 5, name: "5"}, {value: 10, name: "10"}, {value: 30, name: "30"}];
 
@@ -122,13 +122,7 @@
 				if (response.data.status === 'fail') {
 					toastr.error('Hi ha hagut un error al obtenir els projectes...', 'Hi ha un problema');
 				} else {
-					vm.allProviderProjects = [];
-
-					angular.forEach(response.data.result, function(service){
-						if (service.status != 1) {
-							vm.allProviderProjects.push(service);
-						}
-					});
+					vm.allProviderProjects = response.data.result;
 
 					// provprojets table pagination
 					vm.totalItems = vm.allProviderProjects.length;
@@ -163,10 +157,30 @@
 			/////////////////////////////////////////////////////////////////////
 			ProjectFactory.disableProviderProject(srv).then(function(response){
 				if (response.status === 200) {
-					srv.status = 1;
+					toastr.info('Projecte deshabilitat correctament', 'Deshabilitar projecte');
+					$state.reload();
 				} else {
 					toastr.error("No s'ha pogut desactivar el Servei...", 'Hi ha un error');
 				}
+			});
+		};
+
+		vm.denyConfirmedProject = function(srv) {
+			ProjectFactory.denyProviderProject(srv).then(function(response){
+				if (response.status === 200) {
+					toastr.info('El Projecte ha estat denegat correctament', 'Denegació de Projecte');
+					$state.reload();
+				}
+			});
+		}
+
+		vm.reacceptConfirmedProject = function(srv) {
+			ProjectFactory.reacceptProviderProject(srv).then(function(response){
+				if (response.status === 200) {
+					toastr.success('El Projecte ha estat Reacceptat correctament', 'Reacceptació de Projecte');
+					$state.reload();
+				}
+				$state.reload();
 			});
 		};
 
