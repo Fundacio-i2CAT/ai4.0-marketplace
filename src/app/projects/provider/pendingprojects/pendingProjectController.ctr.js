@@ -34,7 +34,7 @@
   		vm.setItemsPerPage = function(num) {
   			vm.itemsPerPage = num.value;
   			vm.currentPage = 1;
-  				vm.numPages=Math.ceil(vm.allPendingProviderProjects.length/num.value);
+  			vm.numPages=Math.ceil(vm.allPendingProviderProjects.length/num.value);
   			$log.log(num);
   		};
 
@@ -42,8 +42,13 @@
 
       vm.getPendingProviderProjectsByPartnerId = function () {
         ProjectFactory.getPendingProviderProjectsByPartnerId().then(function (response){
-          $log.log('allPendingProviderProjects:::', response.data.result);
           vm.allPendingProviderProjects = response.data.result;
+
+          // provprojets table pagination
+					vm.totalItems = vm.allPendingProviderProjects.length;
+					vm.numPages = Math.ceil(vm.allPendingProviderProjects.length/vm.viewby);
+					vm.pageNumberOptions.push({value: vm.totalItems, name: "Tots"});
+
           if (response.data.result.length > 0) {
             toastr.info("Té " + response.data.result.length + " projectes(s) per confirmar");
           }

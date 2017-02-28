@@ -122,13 +122,7 @@
 				if (response.data.status === 'fail') {
 					toastr.error('Hi ha hagut un error al obtenir els projectes...', 'Hi ha un problema');
 				} else {
-					vm.allProviderProjects = [];
-
-					angular.forEach(response.data.result, function(service){
-						if (service.status != 1) {
-							vm.allProviderProjects.push(service);
-						}
-					});
+					vm.allProviderProjects = response.data.result;
 
 					// provprojets table pagination
 					vm.totalItems = vm.allProviderProjects.length;
@@ -163,7 +157,7 @@
 			/////////////////////////////////////////////////////////////////////
 			ProjectFactory.disableProviderProject(srv).then(function(response){
 				if (response.status === 200) {
-					srv.status = 1;
+					// srv.status = 1;
 				} else {
 					toastr.error("No s'ha pogut desactivar el Servei...", 'Hi ha un error');
 				}
@@ -171,12 +165,22 @@
 		};
 
 		vm.denyConfirmedProject = function(srv) {
-			alert('Deny this project!!');
+			ProjectFactory.denyProviderProject(srv).then(function(response){
+				if (response.status === 200) {
+					toastr.info('El Projecte ha estat denegat correctament', 'Denegació de Projecte');
+					$state.reload();
+				}
+			});
 		}
 
 		vm.reacceptConfirmedProject = function(srv) {
-			alert('Reaccept this project!!');
-		}
+			ProjectFactory.confirmProviderProject(srv).then(function(response){
+				if (response.status === 200) {
+					toastr.success('El Projecte ha estat Reacceptat correctament', 'Reacceptació de Projecte');
+					$state.reload();
+				}
+			});
+		};
 
 		//ir a vista detalle del servicio host/services/detail/:id
 		vm.goServiceDetail = function(servId) {

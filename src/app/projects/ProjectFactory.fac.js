@@ -24,7 +24,8 @@
 		factory.stopProject = stopProject;
 		factory.confirmDeleteProject = confirmDeleteProject;
 		factory.getPendingProviderProjectsByPartnerId = getPendingProviderProjectsByPartnerId;
-
+		factory.denyProviderProject = denyProviderProject;
+		factory.reacceptProviderProject = reacceptProviderProject;
 
 		/*
 			clientProjectsRest
@@ -51,7 +52,8 @@
 		*/
 		function getProviderProjectsByPartnerId (partnerId) {
 			var url = [host, 'api/providers/', partnerId, '/projects'].join('');
-			return $http.get(url).then(handleSuccess, handleError);
+			var newAmazingUrl = [host, 'api/sprojects/provider/', partnerId, '/status?status=3,5,6,8'].join('');
+			return $http.get(newAmazingUrl).then(handleSuccess, handleError);
 		}
 
 		/*
@@ -66,12 +68,37 @@
 
 		/*
 			ProviderProject
-			confirmació projecte (edicio de prop 'status')
+			confirmació projecte status: 3
 		*/
 		function confirmProviderProject(srv) {
-			var url = [host, 'api/sprojects/', srv.sproject].join('');
+			var url = [host, 'api/sprojects/', srv._id].join('');
+			var newURL = [host, '/api/project/',srv._id, '/state'].join('');
 			var status = {
 				status: 3
+			};
+			return $http.put(url, status).then(handleSuccess, handleError);
+		}
+
+		/*
+			ProviderProject
+			denegació de projecte status: 10
+		*/
+		function denyProviderProject(srv) {
+			var url = [host, 'api/project/',srv._id, '/state'].join('');
+			var status = {
+				status: 10
+			};
+			return $http.put(url, status).then(handleSuccess, handleError);
+		}
+
+		/*
+			ProviderProject
+			reacceptació de projecte status: 5
+		*/
+		function reacceptProviderProject(srv) {
+			var url = [host, 'api/project/',srv._id, '/state'].join('');
+			var status = {
+				status: 5
 			};
 			return $http.put(url, status).then(handleSuccess, handleError);
 		}
@@ -81,11 +108,12 @@
 			deshabilitació projecte ()
 		*/
 		function disableProviderProject(srv) {
-			var url = [host, 'api/sprojects/', srv._id].join('');
+			// var url = [host, 'api/sprojects/', srv._id].join('');
+			var newUrl = [host, 'api/project/', srv._id, '/state'].join('');
 			var status = {
 				status: 8
 			};
-			return $http.put(url, status).then(handleSuccess, handleError);
+			return $http.put(newUrl, status).then(handleSuccess, handleError);
 		}
 
 		//create new client project
