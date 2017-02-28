@@ -169,6 +169,7 @@
 			ProjectFactory.denyProviderProject(srv).then(function(response){
 				if (response.status === 200) {
 					toastr.info('El Projecte ha estat denegat correctament', 'Denegació de Projecte');
+					ngDialog.close();
 					$state.reload();
 				}
 			});
@@ -405,6 +406,18 @@
 				template: 'app/projects/client/delete-project/delete_project.tpl.html',
 				className: 'ngdialog-theme-default',
 				appendClassName: 'delete-project',
+				controller: 'ProjectController',
+				data: vm
+			});
+		};
+
+		//confirm message for denying project
+		vm.confirmDenyProject = function(project) {
+			vm.projectToDeny = project;
+			ngDialog.open({
+				template: 'app/projects/provider/denyproject/deny_project.tpl.html',
+				className: 'ngdialog-theme-default',
+				appendClassName: 'deny-project',
 				controller: 'ProjectController',
 				data: vm
 			});

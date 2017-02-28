@@ -105,7 +105,7 @@
                       <i class="fa fa-remove"></i>
                       {{ 'DESACTIVAR' | translate }}
                     </button>
-                    <button ng-click="provprojects.denyConfirmedProject(srv)" class="btn btn-danger btn-xs" ng-if='srv.status > 3 && srv.status < 10'>
+                    <button ng-click="provprojects.confirmDenyProject(srv)" class="btn btn-danger btn-xs" ng-if='srv.status > 3 && srv.status < 10'>
                       <i class="fa fa-ban"></i>
                       Denegar
                     </button>
