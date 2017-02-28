@@ -95,7 +95,7 @@
                     </span>
                   </td>
                   <td class="vert-align">
-                    {{srv.name}}
+                    {{srv.name}} - {{srv.status}}
                   </td>
                   <td class="vert-align">
                     {{srv.created_at | date: 'dd-MM-yyyy'}}
@@ -105,11 +105,11 @@
                       <i class="fa fa-remove"></i>
                       {{ 'DESACTIVAR' | translate }}
                     </button>
-                    <button ng-click="provprojects.denyConfirmedProject(srv)" class="btn btn-danger btn-xs" ng-if='srv.status == 5'>
+                    <button ng-click="provprojects.denyConfirmedProject(srv)" class="btn btn-danger btn-xs" ng-if='srv.status > 3 && srv.status < 10'>
                       <i class="fa fa-ban"></i>
                       Denegar
                     </button>
-                    <button ng-click="provprojects.reacceptConfirmedProject(srv)" class="btn btn-primary btn-xs" ng-if='srv.status == 8'>
+                    <button ng-click="provprojects.reacceptConfirmedProject(srv)" class="btn btn-primary btn-xs" ng-if='srv.status == 10'>
                       <i class="fa fa-refresh"></i>
                       Reaprobar
                     </button>

@@ -157,7 +157,8 @@
 			/////////////////////////////////////////////////////////////////////
 			ProjectFactory.disableProviderProject(srv).then(function(response){
 				if (response.status === 200) {
-					// srv.status = 1;
+					toastr.info('Projecte deshabilitat correctament', 'Deshabilitar projecte');
+					$state.reload();
 				} else {
 					toastr.error("No s'ha pogut desactivar el Servei...", 'Hi ha un error');
 				}
@@ -174,11 +175,12 @@
 		}
 
 		vm.reacceptConfirmedProject = function(srv) {
-			ProjectFactory.confirmProviderProject(srv).then(function(response){
+			ProjectFactory.reacceptProviderProject(srv).then(function(response){
 				if (response.status === 200) {
 					toastr.success('El Projecte ha estat Reacceptat correctament', 'Reacceptació de Projecte');
 					$state.reload();
 				}
+				$state.reload();
 			});
 		};
 

@@ -52,7 +52,7 @@
 		*/
 		function getProviderProjectsByPartnerId (partnerId) {
 			var url = [host, 'api/providers/', partnerId, '/projects'].join('');
-			var newAmazingUrl = [host, 'api/sprojects/provider/', partnerId, '/status?status=3,5,6,8'].join('');
+			var newAmazingUrl = [host, 'api/sprojects/provider/', partnerId, '/status?status=3,5,6,8,10'].join('');
 			return $http.get(newAmazingUrl).then(handleSuccess, handleError);
 		}
 
@@ -76,7 +76,7 @@
 			var status = {
 				status: 3
 			};
-			return $http.put(url, status).then(handleSuccess, handleError);
+			return $http.put(newURL, status).then(handleSuccess, handleError);
 		}
 
 		/*
@@ -111,7 +111,7 @@
 			// var url = [host, 'api/sprojects/', srv._id].join('');
 			var newUrl = [host, 'api/project/', srv._id, '/state'].join('');
 			var status = {
-				status: 8
+				status: 1
 			};
 			return $http.put(newUrl, status).then(handleSuccess, handleError);
 		}
