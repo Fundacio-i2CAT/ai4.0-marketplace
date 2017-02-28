@@ -122,19 +122,15 @@
 				if (response.data.status === 'fail') {
 					toastr.error('Hi ha hagut un error al obtenir els projectes...', 'Hi ha un problema');
 				} else {
-					vm.allProviderProjects = response.data.result;
-					var hasPendings = false;
-					var i = 0;
-					vm.allProviderProjects.forEach(function(each){
-						if (each.status === 1){
-							hasPendings = true;
-							i = i +1;
+					vm.allProviderProjects = [];
+
+					angular.forEach(response.data.result, function(service){
+						if (service.status != 1) {
+							vm.allProviderProjects.push(service);
 						}
-
 					});
-					if (hasPendings) toastr.info("Té " + i + " projectes(s) per confirmar");
 
-					//provprojets table pagination
+					// provprojets table pagination
 					vm.totalItems = vm.allProviderProjects.length;
 					vm.numPages = Math.ceil(vm.allProviderProjects.length/vm.viewby);
 					vm.pageNumberOptions.push({value: vm.totalItems, name: "Tots"});
@@ -341,7 +337,7 @@
 			return LiteralFactory.getLiteralStatus(status);
 		};
 
-		vm.getLiteralStatus = function(status){
+		vm.getStatusClass = function(status){
 			return LiteralFactory.getStatusClass(status);
 		};
 
