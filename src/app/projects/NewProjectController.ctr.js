@@ -5,9 +5,9 @@
 		.module('marketplace')
 		.controller('NewProjectController', NewProjectController);
 
-		NewProjectController.$inject = ['toastr','LocalStorageFactory', 'ROLES', '$log', 'ServiceFactory', 'ProjectFactory', '$location'];
+		NewProjectController.$inject = ['toastr','LocalStorageFactory', 'ROLES', '$log', 'ServiceFactory', 'ProjectFactory', '$location', '$translate'];
 
-		function NewProjectController(toastr, LocalStorageFactory, ROLES, $log, ServiceFactory, ProjectFactory, $location) {
+		function NewProjectController(toastr, LocalStorageFactory, ROLES, $log, ServiceFactory, ProjectFactory, $location, $translate) {
 			var vm = this;
 			vm.allServices = [];
 
@@ -38,9 +38,18 @@
 						toastr.info('Projecte creat correctament', 'Creació de Projecte');
 						$location.path("/clientprojects");
 					}
-					if (response.status != 201) {
-						toastr.error('No s\'ha pogut crear el projecte', 'Error en la Creació de Projecte');
-						$location.path("/catalog");
+					if (response.status == 409) {
+					    var backmessage;
+					    if ($translate.use() == 'CAT') {
+						backmessage = response.data.message.ca;
+					    } else if ($translate.use() == 'CAST') {
+						backmessage = response.data.message.es;
+					    }
+					    toastr.error(backmessage, response.data.code);
+					    $location.path('/catalog');
+					} else if (response.status != 201) {
+                                            toastr.error('No s\'ha pogut crear el projecte', 'Error en la Creació de Projecte');
+					    $location.path("/catalog");
 					}
 				});
 			};
