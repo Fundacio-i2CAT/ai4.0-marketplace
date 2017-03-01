@@ -21,7 +21,7 @@
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
       <div class="row">
         <div class="col-xs-8">
-          <span class="label label-default pull-left" style="padding:.7em;padding-bottom:.8em;">{{'EXIST-PROJ' | translate}}&nbsp;&nbsp;<span class="badge left1">{{clientprojects.allClientProjects.length}}</span>
+          <span class="label label-default pull-left" style="padding:.7em;padding-bottom:.4em;">{{'EXIST-PROJ' | translate}}&nbsp;&nbsp;<span class="badge left1">{{clientprojects.allClientProjects.length}}</span>
           </span>
         </div>
         <div class="col-xs-4">
@@ -109,6 +109,16 @@
                         <button ng-show="srv.status === 5" class="btn btn-danger btn-xs" ng-click="clientprojects.stopProject(srv);">
                           <i class="fa fa-stop"></i>&nbsp;&nbsp;
                           {{ 'PROJ-ATURAR' | translate }}
+                        </button>
+                        <button
+                          ng-show="srv.status === 10"
+                          popover-placement="top-right"
+                          uib-popover-html="clientprojects.htmlPopover"
+                          popover-title="Prov&nbsp;&nbsp;{{srv.services[0].provider.user_name}}"
+                          popover-animation="true"
+                          class="btn btn-success btn-xs disabled">
+                          <i class="fa fa-ban"></i>&nbsp;&nbsp;
+                          {{ 'PROJ-ARRENCAR' | translate }}
                         </button>
                       </span>
                     </td>
