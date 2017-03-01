@@ -37,6 +37,8 @@
 					'CREAR-PROJ': 'Nou Projecte',
 					'PROJ-ARRENCAR': 'Arrencar',
 					'PROJ-ATURAR': 'Aturar',
+					'PENDING-PROJ': 'Projectes pendents de Confirmar',
+					'CONFIRM-PROJ': 'Projectes Confirmats',
 					//estats
 					'PENDENT': 'Pendent',
 					'CONFIRMAT': 'Confirmat',
