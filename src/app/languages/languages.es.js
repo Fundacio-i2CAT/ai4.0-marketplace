@@ -39,6 +39,7 @@
 					'PROJ-ATURAR': 'Parar',
 					'PENDING-PROJ': 'Proyectos pendientes de Confirmar',
 					'CONFIRM-PROJ': 'Proyectos Confirmados',
+					'REACCEPT-PROJ': 'Reaprobar',
 					//estats
 					'PENDENT': 'Pendiente',
 					'CONFIRMAT': 'Confirmado',
