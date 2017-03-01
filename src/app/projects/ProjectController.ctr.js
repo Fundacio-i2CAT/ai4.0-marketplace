@@ -5,12 +5,11 @@
 		.module('marketplace')
 		.controller('ProjectController', ProjectController);
 
-	ProjectController.$inject = ['$sce', '$rootScope', '$interval', '$state', 'toastr', 'ProjectFactory', '$log', 'UserFactory', 'ProgressFactory', '$location', 'ServiceFactory', '$stateParams', 'CurrentUserFactory', 'ROLES', 'usSpinnerService', 'ImageProviderFactory', 'LiteralFactory', 'ngDialog', 'ShareDataFactory', '$timeout', 'LocalStorageFactory', '$translate'];
-	function ProjectController ($sce, $rootScope, $interval, $state, toastr, ProjectFactory, $log, UserFactory, ProgressFactory, $location, ServiceFactory, $stateParams, CurrentUserFactory, ROLES, usSpinnerService, ImageProviderFactory, LiteralFactory, ngDialog, ShareDataFactory, $timeout, LocalStorageFactory, $translate){
+	ProjectController.$inject = ['$scope', '$sce', '$interval', '$state', 'toastr', 'ProjectFactory', '$log', 'UserFactory', 'ProgressFactory', '$location', 'ServiceFactory', '$stateParams', 'CurrentUserFactory', 'ROLES', 'usSpinnerService', 'ImageProviderFactory', 'LiteralFactory', 'ngDialog', 'ShareDataFactory', '$timeout', 'LocalStorageFactory', '$translate'];
+	function ProjectController ($scope, $sce, $interval, $state, toastr, ProjectFactory, $log, UserFactory, ProgressFactory, $location, ServiceFactory, $stateParams, CurrentUserFactory, ROLES, usSpinnerService, ImageProviderFactory, LiteralFactory, ngDialog, ShareDataFactory, $timeout, LocalStorageFactory, $translate){
 		var vm = this;
 				vm.kk;
 		vm.showRuntime = false;
-
 
 		//table pagination
 		vm.viewby = 10;
@@ -438,6 +437,22 @@
 				controllerAs: 'createproj'
 			});
 		};
+
+		setPopover($translate.use());
+
+		function setPopover(lang) {
+			var x;
+			if (lang == 'CAST') {
+				x = $sce.trustAsHtml('<h5><strong>Proyecto Denegado...</strong></h5><span class="text text-warning"><i class="fa fa-warning"></i></span>&nbsp;&nbsp;<span class="text text-danger">Póngase en contacto con el proveedor del Servicio.</span>');
+			} else if (lang == 'CAT'){
+				x = $sce.trustAsHtml('<h5><strong>Projecte Denegat...</strong></h5><span class="text text-warning"><i class="fa fa-warning"></i></span>&nbsp;&nbsp;<span class="text text-danger">Possis en contacte amb el proveïdor del Servei.</span>');
+			}
+			vm.htmlPopover = x;
+		}
+
+		$scope.$on('setLang', function (event, data){
+			setPopover(data);
+		});
 
 	}
 
