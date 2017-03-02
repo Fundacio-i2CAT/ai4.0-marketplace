@@ -4,44 +4,161 @@
     padding:2em;
     margin-top:2em;
     width: 70%;
-    height: 340px;
-    overflow:hidden;
+    height: 85%;
+    overflow:scroll;
 
     .confirm-dialog {
         margin-top:2em;
         padding:2em;
-
     }
-
   }
 </style>
 
-<div>
-  <div class="confirm-dialog" style="padding-bottom: 2em;">
-    <div class="panel panel-default" style="height:280px">
-      <div class="panel-body">
-        <h4>
-          <span class="text text-primary">{{ngDialogData.name}}</span>
-        </h4>
-        <div class="row top3">
-          <div class="col-xs-6">
-            <h4>Data inici</h4>
-            <input type="date" name="date1" ng-model="pricing.date.inici" class="form-control input-sm" value="">
+<div style="padding-bottom: 2em;">
+
+  <uib-tabset class="top2">
+    <uib-tab index="0">
+      <uib-tab-heading>
+        <i class='fa fa-info-circle'></i>&nbsp;Informació
+      </uib-tab-heading>
+      <div class="panel panel-default padding1">
+        <div class="panel-body">
+          <div class="row bottom2">
+            <div class="col-xs-12 col-md-6">
+              <h4>
+                <small>CLIENT&nbsp;</small><span class="text text-primary">{{ngDialogData.client.user_name}}</span>
+              </h4>
+              <h4>
+                <small>SRV&nbsp;</small><span class="text text-primary">{{ngDialogData.services[0].service.name}}</span>
+              </h4>
+            </div>
+            <div class="col-xs-12 col-md-6">
+              <h4>
+                <small>PROJ&nbsp;</small><span class="text text-primary">{{ngDialogData.name}}</span>
+              </h4>
+            </div>
           </div>
-          <div class="col-xs-6">
-            <h4>Data final</h4>
-            <input type="date" name="date2" ng-model="pricing.date.final" class="form-control input-sm" value="">
+          <div class="row top1">
+            <div class="col-xs-12 col-md-6">
+              <h5 class="text text-primary">
+                Sumari
+              </h5>
+              <p>
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </p>
+            </div>
+            <div class="col-xs-12 col-md-6">
+              <h5 class="text text-primary">
+                Descripció
+              </h5>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              </p>
+            </div>
           </div>
-          <div class="row">
-            <div class="col-xs-12 top2">
-              <div class="col-xs-6 col-xs-offset-3">
-                <button type="button" class="btn btn-md btn-block btn-primary" ng-click="pricing.sendDates(pricing.date, ngDialogData)">Submit</button>
+        </div>
+      </div>
+    </uib-tab>
+    <uib-tab index="1">
+      <uib-tab-heading>
+        <i class='fa fa-database'></i>&nbsp;Dades Consum
+      </uib-tab-heading>
+      <div class="panel panel-default">
+        <div class="panel-body">
+
+          <div class="" ng-if="!pricing.consumeHistory">
+            <form class="" name="consum" ng-submit="pricing.getConsumptionData(pricing.date, ngDialogData)">
+              <div class="row">
+                <div class="col-xs-6">
+                  <h5 class="text text-primary">
+                    Data Inici
+                  </h5>
+                  <div class="col-xs-8 top1">
+                    <input type="date" id="initial" name="initial" placeholder="yyyy-MM-dd" ng-model="pricing.date.initial" class="form-control input-sm" value="">
+
+                  </div>
+                </div>
+                <div class="col-xs-6">
+                  <h5 class="text text-primary">
+                    Data Final
+                  </h5>
+                  <div class="col-xs-8 top1">
+                    <input type="date" id="final" name="final" ng-model="pricing.date.final" class="form-control input-sm" value="">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12 top2">
+                    <div class="col-xs-4 col-xs-offset-4">
+                      <button type="button" class="btn btn-sm btn-block btn-primary" ng-click="pricing.getConsumptionData(pricing.date, ngDialogData)">
+                        Enviar Dates
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div ng-if="pricing.consumeHistory" class="">
+            <div class="row">
+              <div class="col-xs-8">
+                <div class="">
+                  <span class="text-primary">Tiempo transcurrido <span class="badge">{{pricing.consumeHistory.total_delta}}</span></span>
+                </div>
+                <div class="">
+                  <span class="text-primary">Minutos totales <span class="badge badge">{{pricing.consumeHistory.total_minutes}}</span></span>
+                </div>
+              </div>
+              <div class="col-xs-4">
+                <button type="button" name="button" ng-click="pricing.consumeHistory=null">Canviar Periode</button>
+              </div>
+            </div>
+            <br/>
+            <div class="row">
+              <div class="col-xs-12">
+                <ul class="col-xs-12 col-sm-6 list list-unstyled list-group" ng-repeat="one in pricing.consumeHistory.lapses">
+                  <li class="list-group-item active">
+                    <h5 class="list-group-item-heading">
+                      Intervalo {{$index + 1}}
+                    </h5>
+                  </li>
+                  <li class="list-group-item">
+                    <h5 class="list-group-item-heading text-primary">Tiempo Transcurrido</h5>
+                    {{ one.delta }}
+                  </li>
+                  <li class="list-group-item">
+                    <h5 class="list-group-item-heading text-primary">Inici</h5>
+                    {{ one.t0 | date: 'dd-MM-yyyy' }}
+                  </li>
+                  <li class="list-group-item">
+                    <h5 class="list-group-item-heading text-primary">Final</h5>
+                    {{ one.t1 | date: 'dd-MM-yyyy - HH:mm:ss' }}
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </uib-tab>
+    <uib-tab index="2">
+      <uib-tab-heading>
+        <i class='fa fa-area-chart'></i>&nbsp;Estadístiques
+      </uib-tab-heading>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h5 class="text text-primary">
+            Estadístiques del consum
+          </h5>
+        </div>
+      </div>
+    </uib-tab>
+  </uib-tabset>
 
-  </div>
+
+
+
+
+
+
 </div>
