@@ -438,6 +438,18 @@
 			});
 		};
 
+		//launch pricing Dialog
+		vm.goPricingDialog = function(srv) {
+			ngDialog.open({
+				template: 'app/projects/pricing/pricing.tpl.html',
+				className: 'ngdialog-theme-default',
+				appendClassName: 'pricing',
+				controller: 'PricingController',
+				controllerAs: 'pricing',
+				data: srv
+			});
+		};
+
 		setPopover($translate.use());
 
 		function setPopover(lang) {
