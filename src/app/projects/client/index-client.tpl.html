@@ -89,7 +89,8 @@
                         popover-animation="true"
                         uib-popover-html="'<code>{{run.value}}</code>'"
                         popover-title="{{run.desc}}">
-                          <code><i class="fa fa-plus-square"></i>&nbsp;{{run.name}}</code>
+                          <code ng-if="srv.status == 10" class="code-disabled"><i class="fa fa-ban"></i>&nbsp;{{run.name}}</code>
+                          <code ng-if="srv.status != 10"><i class="fa fa-plus-square"></i>&nbsp;{{run.name}}</code>
                       </span>
                     </td>
                     <td ng-show="!srv.runtime_params[0]"></td>
@@ -114,7 +115,7 @@
                           ng-show="srv.status === 10"
                           popover-placement="top-right"
                           uib-popover-html="clientprojects.htmlPopover"
-                          popover-title="Prov&nbsp;&nbsp;{{srv.services[0].provider.user_name}}"
+                          popover-title="Projecte Denegat..."
                           popover-animation="true"
                           class="btn btn-success btn-xs disabled">
                           <i class="fa fa-ban"></i>&nbsp;&nbsp;
