@@ -191,7 +191,10 @@
 					'TIME-LAPSE': 'Intervalo',
 					'ELAPSED-TIME': 'Tiempo transcurrido',
 					'TOTAL-ELAPSED-TIME': 'Tiempo total transcurrido',
-					'TOTAL-MINUTES': 'Minutos totales'
+					'TOTAL-MINUTES': 'Minutos totales',
+					'NO-INSTANCE': 'Sin Instancia',
+					'NO-CONSUM': 'Sin Consumo',
+					'NO-CONSUM-MSSG': 'No hay registrado ningún consumo de este Servicio en este periodo.'
 
 
 
