@@ -47,6 +47,7 @@
 					'PARAT': 'Inactiu',
 					'ACTIVAR': 'Confirmar',
 					'DESACTIVAR': 'Desactivar',
+					'DENEGAT': 'Denegat',
 					//new project
 					'NEWPROJ': 'NOU PROJECTE',
 					'LABEL-NOM': 'Nom',

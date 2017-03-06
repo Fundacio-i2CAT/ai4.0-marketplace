@@ -47,6 +47,7 @@
 					'PARAT': 'Inactivo',
 					'ACTIVAR': 'Habilitar',
 					'DESACTIVAR': 'Deshabilitar',
+					'DENEGAT': 'Denegado',
 					//new project
 					'NEWPROJ': 'NUEVO PROYECTO',
 					'LABEL-NOM': 'Nombre',

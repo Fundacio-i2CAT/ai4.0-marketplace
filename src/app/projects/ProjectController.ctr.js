@@ -455,9 +455,9 @@
 		function setPopover(lang) {
 			var x;
 			if (lang == 'CAST') {
-				x = $sce.trustAsHtml('<h5><strong>Proyecto Denegado...</strong></h5><span class="text text-warning"><i class="fa fa-warning"></i></span>&nbsp;&nbsp;<span class="text text-danger">Póngase en contacto con el proveedor del Servicio.</span>');
+				x = $sce.trustAsHtml('<span class="text text-warning"><i class="fa fa-warning"></i></span>&nbsp;&nbsp;<span class="text text-danger">Póngase en contacto con el proveedor del Servicio.</span>');
 			} else if (lang == 'CAT'){
-				x = $sce.trustAsHtml('<h5><strong>Projecte Denegat...</strong></h5><span class="text text-warning"><i class="fa fa-warning"></i></span>&nbsp;&nbsp;<span class="text text-danger">Possis en contacte amb el proveïdor del Servei.</span>');
+				x = $sce.trustAsHtml('<span class="text text-warning"><i class="fa fa-warning"></i></span>&nbsp;&nbsp;<span class="text text-danger">Possis en contacte amb el proveïdor del Servei.</span>');
 			}
 			vm.htmlPopover = x;
 		}

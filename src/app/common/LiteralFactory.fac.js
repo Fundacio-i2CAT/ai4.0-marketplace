@@ -25,10 +25,11 @@
 					break;
 				case 6: output = 'PARAT';
 					break;
-				case 7: output = 'ERROR'
+				case 7: output = 'ERROR';
 					break;
 				case 9: output = 'PENDENT'
 					break;
+				case 10: output = 'DENEGAT'
 			}
 			return output;
 		}
@@ -45,6 +46,9 @@
 				break;
 				case 5:
 					className = 'label-success';
+				break;
+				case 10:
+					className = 'label-danger';
 				break;
 			}
 
