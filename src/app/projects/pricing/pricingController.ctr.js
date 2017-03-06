@@ -9,7 +9,11 @@
 
     function PricingController($log, ProjectFactory) {
       var vm = this;
-          vm.consumeHistory;
+      vm.consumeHistory;
+      vm.noConsumption = false;
+      vm.showEmptyData = false;
+      vm.consumeHistory = [];
+
       var mock = {
           "lapses": [
             {
@@ -40,10 +44,14 @@
         var final = angular.element('#final').val();
 
         ProjectFactory.getConsumptionData(initial, final, srv).then(function(response){
-          if (response.data.lapses.length>0) {
+          if (response.status == 404) {
+            vm.noConsumption = true;
+          }
+          if (response.data.lapses && response.data.lapses.length>0) {
             vm.consumeHistory = response.data;
-          } else {
-            vm.consumeHistory = mock;
+          }
+          if (response.data.lapses && response.data.lapses.length === 0) {
+            vm.showEmptyData = true;
           }
         }, function (error){
           console.log(error);
