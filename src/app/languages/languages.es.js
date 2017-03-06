@@ -180,7 +180,18 @@
 					'PUBLISH-SRV': 'Servicios publicados',
 					'OWN-SRVS': 'Servicios propios',
 					'EXIST-PROJ': 'Proyectos guardados',
-					'EXIST-SRV': 'Servicios guardados'
+					'EXIST-SRV': 'Servicios guardados',
+					//consum register
+					'CONSUM-DATA': 'Datos de Consumo',
+					'CUSTOMER': 'CLIENTE',
+					'CONSUM-PROJ': 'PROYECTO',
+					'CONSUM-DATE1': 'Fecha de Inicio',
+					'CONSUM-DATE2': 'Fecha Final',
+					'CONSUM-SEND': 'Obtener Consumo',
+					'TIME-LAPSE': 'Intervalo',
+					'ELAPSED-TIME': 'Tiempo transcurrido',
+					'TOTAL-ELAPSED-TIME': 'Tiempo total transcurrido',
+					'TOTAL-MINUTES': 'Minutos totales'
 
 
 
