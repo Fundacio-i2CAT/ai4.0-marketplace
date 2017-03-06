@@ -5,16 +5,16 @@
     .module('marketplace')
     .controller('PricingController', PricingController);
 
-    PricingController.$inject = ['$log', 'ProjectFactory'];
+    PricingController.$inject = ['$log', 'ProjectFactory', '$translate'];
 
-    function PricingController($log, ProjectFactory) {
+    function PricingController($log, ProjectFactory, $translate) {
       var vm = this;
       vm.consumeHistory;
       vm.noConsumption = false;
       vm.showEmptyData = false;
       vm.consumeHistory = [];
 
-      var mock = {
+      var mockData = {
           "lapses": [
             {
               "delta": "0:04:45.179000",
@@ -46,6 +46,7 @@
         ProjectFactory.getConsumptionData(initial, final, srv).then(function(response){
           if (response.status == 404) {
             vm.noConsumption = true;
+            vm.backMessage = ($translate.use()=='CAT') ? response.data.message.ca : response.data.message.es
           }
           if (response.data.lapses && response.data.lapses.length>0) {
             vm.consumeHistory = response.data;
