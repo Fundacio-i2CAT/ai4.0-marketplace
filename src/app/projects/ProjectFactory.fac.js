@@ -26,6 +26,7 @@
 		factory.getPendingProviderProjectsByPartnerId = getPendingProviderProjectsByPartnerId;
 		factory.denyProviderProject = denyProviderProject;
 		factory.reacceptProviderProject = reacceptProviderProject;
+		factory.getConsumptionData = getConsumptionData;
 
 		/*
 			clientProjectsRest
@@ -174,6 +175,12 @@
 			});
 		};
 
+		//get the consume data
+		function getConsumptionData (initialDate, finalDate, srv) {
+			// var url = [host+'api/billing/', srv._id, '?start_date=', '2017-01-01', '&end_date=', '2017-03-01'].join('');
+			var url = [host+'api/billing/', srv._id, '?start_date=', initialDate, '&end_date=', finalDate].join('');
+			return $http.get(url).then(handleSuccess, handleError);
+		}
 
 		/**
 		*	manage error run/stop projectes

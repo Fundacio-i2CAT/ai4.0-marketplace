@@ -74,16 +74,16 @@
               <tbody>
                 <tr
                   ng-repeat="srv in provprojects.allProviderProjects.slice(((provprojects.currentPage-1)*provprojects.itemsPerPage), ((provprojects.currentPage)*provprojects.itemsPerPage)) | orderBy:provprojects.sortType:provprojects.sortReverse | filter: searchingWord">
-                  <td>
+                  <td ng-click="provprojects.goPricingDialog(srv)">
                     <img width="60px" class="img-thumbnail" ng-src="assets/logos_mkp/{{provprojects.getImage(srv.service.name)}}" alt="Imatge servei"/>
                   </td>
-                  <td class="vert-align">
+                  <td class="vert-align" ng-click="provprojects.goPricingDialog(srv)">
                     {{srv.name}}
                   </td>
-                  <td class="vert-align">
+                  <td class="vert-align" ng-click="provprojects.goPricingDialog(srv)">
                     {{srv.client.user_name}}
                   </td>
-                  <td class="vert-align">
+                  <td class="vert-align" ng-click="provprojects.goPricingDialog(srv)">
                     <span class="label label-success label-status" ng-if="srv.status == 5">
                       Actiu
                     </span>
@@ -94,10 +94,10 @@
                       Confirmat
                     </span>
                   </td>
-                  <td class="vert-align">
+                  <td class="vert-align" ng-click="provprojects.goPricingDialog(srv)">
                     {{srv.name}}
                   </td>
-                  <td class="vert-align">
+                  <td class="vert-align" ng-click="provprojects.goPricingDialog(srv)">
                     {{srv.created_at | date: 'dd-MM-yyyy'}}
                   </td>
                   <td class="vert-align">
