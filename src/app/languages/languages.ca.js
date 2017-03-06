@@ -194,7 +194,8 @@
 					'TOTAL-MINUTES': 'Minutos totales',
 					'NO-INSTANCE': 'Sense Instància',
 					'NO-CONSUM': 'Sense Consum',
-					'NO-CONSUM-MSSG': 'No hi ha enregistrat cap consum d\'aquest Servei en aquest periode'
+					'NO-CONSUM-MSSG': 'No hi ha enregistrat cap consum d\'aquest Servei en aquest periode',
+					'PERIOD-BUTTON': 'Canviar Dates'
 
 
 

@@ -194,7 +194,8 @@
 					'TOTAL-MINUTES': 'Minutos totales',
 					'NO-INSTANCE': 'Sin Instancia',
 					'NO-CONSUM': 'Sin Consumo',
-					'NO-CONSUM-MSSG': 'No hay registrado ningún consumo de este Servicio en este periodo.'
+					'NO-CONSUM-MSSG': 'No hay registrado ningún consumo de este Servicio en este periodo.',
+					'PERIOD-BUTTON': 'Cambiar Fechas'
 
 
 
