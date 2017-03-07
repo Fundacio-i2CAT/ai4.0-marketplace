@@ -37,6 +37,9 @@
 					'CREAR-PROJ': 'Nuevo Proyecto',
 					'PROJ-ARRENCAR': 'Lanzar',
 					'PROJ-ATURAR': 'Parar',
+					'PENDING-PROJ': 'Proyectos pendientes de Confirmar',
+					'CONFIRM-PROJ': 'Proyectos Confirmados',
+					'REACCEPT-PROJ': 'Reaprobar',
 					//estats
 					'PENDENT': 'Pendiente',
 					'CONFIRMAT': 'Confirmado',
@@ -44,6 +47,7 @@
 					'PARAT': 'Inactivo',
 					'ACTIVAR': 'Habilitar',
 					'DESACTIVAR': 'Deshabilitar',
+					'DENEGAT': 'Denegado',
 					//new project
 					'NEWPROJ': 'NUEVO PROYECTO',
 					'LABEL-NOM': 'Nombre',
@@ -177,7 +181,22 @@
 					'PUBLISH-SRV': 'Servicios publicados',
 					'OWN-SRVS': 'Servicios propios',
 					'EXIST-PROJ': 'Proyectos guardados',
-					'EXIST-SRV': 'Servicios guardados'
+					'EXIST-SRV': 'Servicios guardados',
+					//consum register
+					'CONSUM-DATA': 'Datos de Consumo',
+					'CUSTOMER': 'CLIENTE',
+					'CONSUM-PROJ': 'PROYECTO',
+					'CONSUM-DATE1': 'Fecha de Inicio',
+					'CONSUM-DATE2': 'Fecha Final',
+					'CONSUM-SEND': 'Obtener Consumo',
+					'TIME-LAPSE': 'Intervalo',
+					'ELAPSED-TIME': 'Tiempo transcurrido',
+					'TOTAL-ELAPSED-TIME': 'Tiempo total transcurrido',
+					'TOTAL-MINUTES': 'Minutos totales',
+					'NO-INSTANCE': 'Sin Instancia',
+					'NO-CONSUM': 'Sin Consumo',
+					'NO-CONSUM-MSSG': 'No hay registrado ningún consumo de este Servicio en este periodo.',
+					'PERIOD-BUTTON': 'Cambiar Fechas'
 
 
 

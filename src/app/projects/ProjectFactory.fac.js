@@ -5,8 +5,8 @@
 		.module('marketplace')
 		.factory('ProjectFactory', ProjectFactory);
 
-	ProjectFactory.$inject = ['$http', 'ConnectionFactory', 'ngDialog'];
-	function ProjectFactory($http, ConnectionFactory, ngDialog){
+	ProjectFactory.$inject = ['$http', 'ConnectionFactory', 'ngDialog', 'LocalStorageFactory'];
+	function ProjectFactory($http, ConnectionFactory, ngDialog, LocalStorageFactory){
 		var host = ConnectionFactory.host;
 
 		var factory = {};
@@ -23,7 +23,10 @@
 		factory.getProjectState = getProjectState;
 		factory.stopProject = stopProject;
 		factory.confirmDeleteProject = confirmDeleteProject;
-
+		factory.getPendingProviderProjectsByPartnerId = getPendingProviderProjectsByPartnerId;
+		factory.denyProviderProject = denyProviderProject;
+		factory.reacceptProviderProject = reacceptProviderProject;
+		factory.getConsumptionData = getConsumptionData;
 
 		/*
 			clientProjectsRest
@@ -50,17 +53,53 @@
 		*/
 		function getProviderProjectsByPartnerId (partnerId) {
 			var url = [host, 'api/providers/', partnerId, '/projects'].join('');
+			var newAmazingUrl = [host, 'api/sprojects/provider/', partnerId, '/status?status=3,5,6,8,10'].join('');
+			return $http.get(newAmazingUrl).then(handleSuccess, handleError);
+		}
+
+		/*
+			Provider
+			get all pending projects by partnerId
+		*/
+		function getPendingProviderProjectsByPartnerId () {
+			var user = LocalStorageFactory.getValue('user');
+			var url = [host, 'api/sprojects/provider/', user.user.provider_id, '/status?status=1'].join('');
 			return $http.get(url).then(handleSuccess, handleError);
 		}
 
 		/*
 			ProviderProject
-			confirmació projecte (edicio de prop 'status')
+			confirmació projecte status: 3
 		*/
 		function confirmProviderProject(srv) {
 			var url = [host, 'api/sprojects/', srv._id].join('');
+			var newURL = [host, '/api/project/',srv._id, '/state'].join('');
 			var status = {
 				status: 3
+			};
+			return $http.put(newURL, status).then(handleSuccess, handleError);
+		}
+
+		/*
+			ProviderProject
+			denegació de projecte status: 10
+		*/
+		function denyProviderProject(srv) {
+			var url = [host, 'api/project/',srv._id, '/state'].join('');
+			var status = {
+				status: 10
+			};
+			return $http.put(url, status).then(handleSuccess, handleError);
+		}
+
+		/*
+			ProviderProject
+			reacceptació de projecte status: 5
+		*/
+		function reacceptProviderProject(srv) {
+			var url = [host, 'api/project/',srv._id, '/state'].join('');
+			var status = {
+				status: 5
 			};
 			return $http.put(url, status).then(handleSuccess, handleError);
 		}
@@ -70,11 +109,12 @@
 			deshabilitació projecte ()
 		*/
 		function disableProviderProject(srv) {
-			var url = [host, 'api/sprojects/', srv._id].join('');
+			// var url = [host, 'api/sprojects/', srv._id].join('');
+			var newUrl = [host, 'api/project/', srv._id, '/state'].join('');
 			var status = {
-				status: 8
+				status: 1
 			};
-			return $http.put(url, status).then(handleSuccess, handleError);
+			return $http.put(newUrl, status).then(handleSuccess, handleError);
 		}
 
 		//create new client project
@@ -135,6 +175,12 @@
 			});
 		};
 
+		//get the consume data
+		function getConsumptionData (initialDate, finalDate, srv) {
+			// var url = [host+'api/billing/', srv._id, '?start_date=', '2017-01-01', '&end_date=', '2017-03-01'].join('');
+			var url = [host+'api/billing/', srv._id, '?start_date=', initialDate, '&end_date=', finalDate].join('');
+			return $http.get(url).then(handleSuccess, handleError);
+		}
 
 		/**
 		*	manage error run/stop projectes

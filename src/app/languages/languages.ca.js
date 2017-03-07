@@ -37,6 +37,9 @@
 					'CREAR-PROJ': 'Nou Projecte',
 					'PROJ-ARRENCAR': 'Arrencar',
 					'PROJ-ATURAR': 'Aturar',
+					'PENDING-PROJ': 'Projectes pendents de Confirmar',
+					'CONFIRM-PROJ': 'Projectes Confirmats',
+					'REACCEPT-PROJ': 'Reaprovar',
 					//estats
 					'PENDENT': 'Pendent',
 					'CONFIRMAT': 'Confirmat',
@@ -44,6 +47,7 @@
 					'PARAT': 'Inactiu',
 					'ACTIVAR': 'Confirmar',
 					'DESACTIVAR': 'Desactivar',
+					'DENEGAT': 'Denegat',
 					//new project
 					'NEWPROJ': 'NOU PROJECTE',
 					'LABEL-NOM': 'Nom',
@@ -177,8 +181,22 @@
 					'PUBLISH-SRV': 'Serveis publicats',
 					'OWN-SRVS': 'Serveis propis',
 					'EXIST-PROJ': 'Projectes guardats',
-					'EXIST-SRV': 'Serveis guardats'
-
+					'EXIST-SRV': 'Serveis guardats',
+					//consum register
+					'CONSUM-DATA': 'Dades de Consum',
+					'CUSTOMER': 'CLIENT',
+					'CONSUM-PROJ': 'PROJECTE',
+					'CONSUM-DATE1': 'Data d\'Inici',
+					'CONSUM-DATE2': 'Data Final',
+					'CONSUM-SEND': 'Obenir Consum',
+					'TIME-LAPSE': 'Interval',
+					'ELAPSED-TIME': 'Temps transcorregut',
+					'TOTAL-ELAPSED-TIME': 'Temps total transcorregut',
+					'TOTAL-MINUTES': 'Minutos totales',
+					'NO-INSTANCE': 'Sense Instància',
+					'NO-CONSUM': 'Sense Consum',
+					'NO-CONSUM-MSSG': 'No hi ha enregistrat cap consum d\'aquest Servei en aquest periode',
+					'PERIOD-BUTTON': 'Canviar Dates'
 
 
 

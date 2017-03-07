@@ -5,18 +5,17 @@
 		.module('marketplace')
 		.controller('ProjectController', ProjectController);
 
-	ProjectController.$inject = ['$sce', '$rootScope', '$interval', '$state', 'toastr', 'ProjectFactory', '$log', 'UserFactory', 'ProgressFactory', '$location', 'ServiceFactory', '$stateParams', 'CurrentUserFactory', 'ROLES', 'usSpinnerService', 'ImageProviderFactory', 'LiteralFactory', 'ngDialog', 'ShareDataFactory', '$timeout', 'LocalStorageFactory', '$translate'];
-	function ProjectController ($sce, $rootScope, $interval, $state, toastr, ProjectFactory, $log, UserFactory, ProgressFactory, $location, ServiceFactory, $stateParams, CurrentUserFactory, ROLES, usSpinnerService, ImageProviderFactory, LiteralFactory, ngDialog, ShareDataFactory, $timeout, LocalStorageFactory, $translate){
+	ProjectController.$inject = ['$scope', '$sce', '$interval', '$state', 'toastr', 'ProjectFactory', '$log', 'UserFactory', 'ProgressFactory', '$location', 'ServiceFactory', '$stateParams', 'CurrentUserFactory', 'ROLES', 'usSpinnerService', 'ImageProviderFactory', 'LiteralFactory', 'ngDialog', 'ShareDataFactory', '$timeout', 'LocalStorageFactory', '$translate'];
+	function ProjectController ($scope, $sce, $interval, $state, toastr, ProjectFactory, $log, UserFactory, ProgressFactory, $location, ServiceFactory, $stateParams, CurrentUserFactory, ROLES, usSpinnerService, ImageProviderFactory, LiteralFactory, ngDialog, ShareDataFactory, $timeout, LocalStorageFactory, $translate){
 		var vm = this;
 				vm.kk;
 		vm.showRuntime = false;
 
-
 		//table pagination
-		vm.viewby = 30;
+		vm.viewby = 10;
 		vm.currentPage = 1;
 		vm.itemsPerPage = vm.viewby;
-		vm.maxSize = 30;
+		vm.maxSize = 10;
 		vm.numPages;
 		vm.pageNumberOptions = [{value: 3, name: "3"}, {value: 5, name: "5"}, {value: 10, name: "10"}, {value: 30, name: "30"}];
 
@@ -123,18 +122,8 @@
 					toastr.error('Hi ha hagut un error al obtenir els projectes...', 'Hi ha un problema');
 				} else {
 					vm.allProviderProjects = response.data.result;
-					var hasPendings = false;
-					var i = 0;
-					vm.allProviderProjects.forEach(function(each){
-						if (each.status === 1){
-							hasPendings = true;
-							i = i +1;
-						}
 
-					});
-					if (hasPendings) toastr.info("Té " + i + " projectes(s) per confirmar");
-
-					//provprojets table pagination
+					// provprojets table pagination
 					vm.totalItems = vm.allProviderProjects.length;
 					vm.numPages = Math.ceil(vm.allProviderProjects.length/vm.viewby);
 					vm.pageNumberOptions.push({value: vm.totalItems, name: "Tots"});
@@ -167,10 +156,31 @@
 			/////////////////////////////////////////////////////////////////////
 			ProjectFactory.disableProviderProject(srv).then(function(response){
 				if (response.status === 200) {
-					srv.status = 1;
+					toastr.info('Projecte deshabilitat correctament', 'Deshabilitar projecte');
+					$state.reload();
 				} else {
 					toastr.error("No s'ha pogut desactivar el Servei...", 'Hi ha un error');
 				}
+			});
+		};
+
+		vm.denyConfirmedProject = function(srv) {
+			ProjectFactory.denyProviderProject(srv).then(function(response){
+				if (response.status === 200) {
+					toastr.info('El Projecte ha estat denegat correctament', 'Denegació de Projecte');
+					ngDialog.close();
+					$state.reload();
+				}
+			});
+		}
+
+		vm.reacceptConfirmedProject = function(srv) {
+			ProjectFactory.reacceptProviderProject(srv).then(function(response){
+				if (response.status === 200) {
+					toastr.success('El Projecte ha estat Reacceptat correctament', 'Reacceptació de Projecte');
+					$state.reload();
+				}
+				$state.reload();
 			});
 		};
 
@@ -341,7 +351,7 @@
 			return LiteralFactory.getLiteralStatus(status);
 		};
 
-		vm.getLiteralStatus = function(status){
+		vm.getStatusClass = function(status){
 			return LiteralFactory.getStatusClass(status);
 		};
 
@@ -400,6 +410,18 @@
 			});
 		};
 
+		//confirm message for denying project
+		vm.confirmDenyProject = function(project) {
+			vm.projectToDeny = project;
+			ngDialog.open({
+				template: 'app/projects/provider/denyproject/deny_project.tpl.html',
+				className: 'ngdialog-theme-default',
+				appendClassName: 'deny-project',
+				controller: 'ProjectController',
+				data: vm
+			});
+		};
+
 		//close dialog
 		vm.closeDialog = function() {
 			ngDialog.close();
@@ -415,6 +437,34 @@
 				controllerAs: 'createproj'
 			});
 		};
+
+		//launch pricing Dialog
+		vm.goPricingDialog = function(srv) {
+			ngDialog.open({
+				template: 'app/projects/pricing/pricing.tpl.html',
+				className: 'ngdialog-theme-default',
+				appendClassName: 'pricing',
+				controller: 'PricingController',
+				controllerAs: 'pricing',
+				data: srv
+			});
+		};
+
+		setPopover($translate.use());
+
+		function setPopover(lang) {
+			var x;
+			if (lang == 'CAST') {
+				x = $sce.trustAsHtml('<span class="text text-warning"><i class="fa fa-warning"></i></span>&nbsp;&nbsp;<span class="text text-danger">Póngase en contacto con el proveedor del Servicio.</span>');
+			} else if (lang == 'CAT'){
+				x = $sce.trustAsHtml('<span class="text text-warning"><i class="fa fa-warning"></i></span>&nbsp;&nbsp;<span class="text text-danger">Possis en contacte amb el proveïdor del Servei.</span>');
+			}
+			vm.htmlPopover = x;
+		}
+
+		$scope.$on('setLang', function (event, data){
+			setPopover(data);
+		});
 
 	}
 

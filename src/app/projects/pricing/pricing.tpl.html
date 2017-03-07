@@ -1,0 +1,147 @@
+<style media="screen">
+  .ngdialog.ngdialog-theme-default.pricing .ngdialog-content {
+    margin-top: 2em;
+    padding: 2em;
+    margin-top: 2em;
+    width: 70%;
+    height: 90%;
+    overflow: scroll;
+
+    .confirm-dialog {
+      margin-top: 2em;
+      padding: 2em;
+    }
+  }
+
+</style>
+<div style="padding-bottom: 2em;">
+  <uib-tabset class="top2">
+    <uib-tab index="0">
+      <uib-tab-heading>
+        <i class='fa fa-database'></i>&nbsp;{{ 'CONSUM-DATA' | translate }}
+      </uib-tab-heading>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="row bottom2">
+            <div class="col-xs-12 col-md-6">
+              <h5>
+                <small>{{'CUSTOMER' | translate}}&nbsp;</small>
+                <span class="text text-primary">{{ngDialogData.client.user_name}}</span>
+              </h5>
+              <h5>
+                <small>SRV&nbsp;</small>
+                <span class="text text-primary">{{ngDialogData.services[0].service.name}}</span>
+              </h5>
+            </div>
+            <div class="col-xs-12 col-md-6">
+              <h5>
+                <small>{{ 'CONSUM-PROJ' | translate}}&nbsp;</small>
+                <span class="text text-primary">{{ngDialogData.name}}</span>
+              </h5>
+            </div>
+          </div>
+          <div ng-if="!pricing.noConsumption && !pricing.showEmptyData && !pricing.consumeHistory.lapses.length > 0">
+            <form class="" name="consum" ng-submit="pricing.getConsumptionData(pricing.date, ngDialogData)">
+              <div class="row">
+                <div class="col-xs-6">
+                  <h5 class="text text-primary">
+                    {{'CONSUM-DATE1' | translate}}
+                  </h5>
+                  <div class="col-xs-8 top1">
+                    <input type="date" id="initial" name="initial" placeholder="yyyy-MM-dd" ng-model="pricing.date.initial" class="form-control input-sm">
+
+                  </div>
+                </div>
+                <div class="col-xs-6">
+                  <h5 class="text text-primary">
+                    {{'CONSUM-DATE2' | translate}}
+                  </h5>
+                  <div class="col-xs-8 top1">
+                    <input type="date" id="final" name="final" placeholder="yyyy-MM-dd" ng-model="pricing.date.final" class="form-control input-sm">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12">
+                    <div class="col-xs-4 col-xs-offset-4 top3">
+                      <button type="button" ng-disabled="!pricing.date.initial || !pricing.date.final" class="btn btn-sm btn-block btn-primary top3" ng-click="pricing.getConsumptionData(pricing.date, ngDialogData)">
+                        {{ 'CONSUM-SEND' | translate }}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="" ng-if="pricing.noConsumption">
+            <div class="alert alert-warning alert-dismissible" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close" ng-click="pricing.noConsumption = false">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <strong>{{'NO-INSTANCE' | translate}}.</strong>&nbsp;{{pricing.backMessage}}.
+            </br/>
+          </div>
+        </div>
+        <div class="" ng-if="pricing.showEmptyData">
+          <div class="alert alert-info alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close" ng-click="pricing.showEmptyData = false">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <strong>{{'NO-CONSUM' | translate}}.</strong>&nbsp;{{'NO-CONSUM-MSSG' | translate}}.
+          </div>
+        </div>
+        <div ng-if="pricing.consumeHistory.lapses.length > 0">
+          <div class="row">
+            <div class="col-xs-8">
+              <div class="">
+                <span class="text-primary">{{ 'TOTAL-ELAPSED-TIME' | translate }}
+                  <span class="badge">{{pricing.consumeHistory.total_delta}}</span>
+                </span>
+              </div>
+              <div class="">
+                <span class="text-primary">{{ 'TOTAL-MINUTES' | translate }}
+                  <span class="badge badge">{{pricing.consumeHistory.total_minutes}}</span>
+                </span>
+              </div>
+            </div>
+            <div class="col-xs-4">
+              <div class="pull-right">
+                <button type="button" class="btn btn-xs btn-primary" ng-click="pricing.consumeHistory.lapses=[]">{{'PERIOD-BUTTON' | translate}}</button>
+              </div>
+            </div>
+          </div>
+          <br/>
+          <div class="row">
+            <div class="col-xs-12">
+              <ul class="col-xs-12 col-sm-4 list list-unstyled list-group top1" ng-repeat="one in pricing.consumeHistory.lapses">
+                <li class="">
+                  <p class="list-group-item-heading">
+                    <i class="fa fa-clock-o"></i>&nbsp;{{'TIME-LAPSE' | translate}}&nbsp;{{$index + 1}}
+                  </p>
+                </li>
+                <li class="list-group-item">
+                  <h5 class="list-group-item-heading text-success">
+                    <strong>{{ 'ELAPSED-TIME' | translate }}</strong>
+                  </h5>
+                  {{ one.delta }}
+                </li>
+                <li class="list-group-item">
+                  <h5 class="list-group-item-heading text-primary">
+                    <strong>{{ 'PAGINATION-START' | translate}}</strong>
+                  </h5>
+                  {{ one.t0 | date: 'dd-MM-yyyy' }}
+                </li>
+                <li class="list-group-item">
+                  <h5 class="list-group-item-heading text-primary">
+                    <strong>{{'PAGINATION-END' | translate}}</strong>
+                  </h5>
+                  {{ one.t1 | date: 'dd-MM-yyyy - HH:mm:ss' }}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </uib-tab>
+</uib-tabset>
+</div>

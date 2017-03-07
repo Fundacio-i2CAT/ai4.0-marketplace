@@ -50,6 +50,22 @@ browserSync.use(browserSyncSpa({
 }));
 
 gulp.task('serve', ['watch'], function () {
+    var express = require('express');
+    var app = express();
+    app.use('/', express.static('.tmp/serve'));
+    app.use('/app', express.static('src/app'));
+    app.use('/bower_components', express.static('bower_components'));
+    app.use('/assets', express.static('src/assets'));
+    var port = 80;
+    app.all('/*', function(req, res, next) {
+	res.sendFile('index.html', { root: '.tmp/serve' });
+    });
+    app.listen(port, function() {
+	console.log('Express server listening on port ' + port);
+    });
+});
+
+gulp.task('serve:browsersync', ['watch'], function () {
   browserSyncInit([path.join(conf.paths.tmp, '/serve'), conf.paths.src]);
 });
 

@@ -4,12 +4,12 @@
 		.module('marketplace')
 		.directive('idosnavbar', idosnavbar);
 
-	idosnavbar.$inject = ['localStorageService', 'CurrentUserFactory', '$translate'];
+	idosnavbar.$inject = ['localStorageService', 'CurrentUserFactory', '$translate', '$rootScope'];
 
 	/**
 	* Directiva que proporciona el template del header de la aplicacion
 	*/
-	function idosnavbar(localStorageService, CurrentUserFactory, $translate){
+	function idosnavbar(localStorageService, CurrentUserFactory, $translate, $rootScope){
 		var directive = {
 			restrict: 'E',
 			templateUrl: 'app/main/navbar.tpl.html',
@@ -66,6 +66,7 @@
 
 				scope.setLanguage = function (langKey){
 					$translate.use(langKey);
+					$rootScope.$broadcast('setLang', langKey);
 				};
 
 				scope.isUserSession();

@@ -1,16 +1,17 @@
 <style media="screen">
-  .ngdialog.ngdialog-theme-default.delete-project .ngdialog-content {
+  .ngdialog.ngdialog-theme-default.deny-project .ngdialog-content {
     margin-top:2em;
     padding:2em;
     margin-top:2em;
     width: 40%;
-    height: 180px;
+    height: 25%;
+    min-height:180px;
     overflow:hidden;
 
     .confirm-dialog {
         margin-top:2em;
         padding:2em;
-
+        height: 100%
     }
 
   }
@@ -20,9 +21,9 @@
   <div class="confirm-dialog" style="padding-bottom: 2em;">
     <div class="panel panel-default">
       <div class="panel-body">
-        <h4>{{'DEL-PROJ-MSG' | translate}} <span class="text text-primary">{{ngDialogData.projectToRemove.name}}</span> ?</h4>
+        <h4>Segur que vols Denegar el projecte <span class="text text-primary">{{ngDialogData.projectToDeny.name}}</span> ?</h4>
         <br/>
-        <button ng-click="ngDialogData.deleteProject(ngDialogData.projectToRemove._id)" class="btn btn-sm btn-primary" type="button">Eliminar</button>
+        <button ng-click="ngDialogData.denyConfirmedProject(ngDialogData.projectToDeny);ngDialogData.closeDialog()" class="btn btn-sm btn-primary" type="button">Denegar</button>
         <button ng-click="ngDialogData.closeDialog()" class="btn btn-sm btn-default" type="button">Cancelar</button>
       </div>
     </div>
