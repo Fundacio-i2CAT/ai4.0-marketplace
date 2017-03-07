@@ -100,13 +100,13 @@
 															"md5sum": md5sum
 														}),
 											dataType: "json",
-											success: function() {
+											success: function(data) {
 												$.ajax({
 												url: backend_url+"/upload",
 												type: "post",
 												timeout: 10*60*1000,
 												contentType: "application/json",
-												data: JSON.stringify({ "filename": final_filename }),
+												data: JSON.stringify({ "filename": final_filename, "filename_uuid": data.filename_uuid }),
 												dataType: "json",
 													success: function(response) {
 														//save to imageData in ImageDataService
