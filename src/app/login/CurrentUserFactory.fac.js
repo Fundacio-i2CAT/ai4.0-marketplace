@@ -5,8 +5,8 @@
 		.module('marketplace')
 		.factory('CurrentUserFactory', CurrentUserFactory);
 
-	CurrentUserFactory.$inject = ['$log', 'LocalStorageFactory', '$rootScope', 'UserFactory', '$location', 'ROLES'];
-	function CurrentUserFactory($log, LocalStorageFactory, $rootScope, UserFactory, $location, ROLES) {
+	CurrentUserFactory.$inject = ['$log', '$http', 'LocalStorageFactory', '$rootScope', 'UserFactory', '$location', 'ROLES'];
+	function CurrentUserFactory($log, $http, LocalStorageFactory, $rootScope, UserFactory, $location, ROLES) {
 		var currentUser = {
 			user: {},
 			role: {}
@@ -21,6 +21,8 @@
 			currentUser.user = user;
 			currentUser.role = user.role;
 			currentUser.user.provider_id = user.id;
+
+			$http.defaults.headers.common['Authorization'] = user.token;
 
 			LocalStorageFactory.setValue('user', currentUser);
 			$rootScope.$broadcast('userrole', currentUser);
