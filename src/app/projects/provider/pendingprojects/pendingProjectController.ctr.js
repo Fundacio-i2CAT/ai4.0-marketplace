@@ -42,15 +42,19 @@
 
       vm.getPendingProviderProjectsByPartnerId = function () {
         ProjectFactory.getPendingProviderProjectsByPartnerId().then(function (response){
-          vm.allPendingProviderProjects = response.data.result;
+          if (response.data.status != 200) {
+            toastr.error('Hi ha hagut un error al obtenir els projectes pendents...', 'Hi ha un problema');
+          } else {
+            vm.allPendingProviderProjects = response.data.response.result;
 
-          // provprojets table pagination
-					vm.totalItems = vm.allPendingProviderProjects.length;
-					vm.numPages = Math.ceil(vm.allPendingProviderProjects.length/vm.viewby);
-					vm.pageNumberOptions.push({value: vm.totalItems, name: "Tots"});
+            // provprojets table pagination
+  					vm.totalItems = vm.allPendingProviderProjects.length;
+  					vm.numPages = Math.ceil(vm.allPendingProviderProjects.length/vm.viewby.value);
+  					vm.pageNumberOptions.push({value: vm.totalItems, name: "Tots"});
 
-          if (response.data.result.length > 0) {
-            toastr.info("Té " + response.data.result.length + " projectes(s) per confirmar");
+            if (vm.allPendingProviderProjects.length > 0) {
+              toastr.info("Té " + vm.allPendingProviderProjects.length + " projectes(s) per confirmar");
+            }
           }
         }, function (error){});
       };
