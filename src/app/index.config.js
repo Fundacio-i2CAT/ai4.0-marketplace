@@ -4,7 +4,8 @@
   angular
     .module('marketplace')
     .config(config)
-    .config(securithation);
+    .config(addInterceptor);
+    // .config(securithation);
 
   /** @ngInject */
   function config($logProvider, toastrConfig, localStorageServiceProvider) {
@@ -45,5 +46,11 @@
     }
     $httpProvider.defaults.headers.common['Authorization'] = token;
   }
+
+  function addInterceptor($httpProvider) {
+    $httpProvider.interceptors.push('InterceptorService');
+  }
+
+
 
 })();
