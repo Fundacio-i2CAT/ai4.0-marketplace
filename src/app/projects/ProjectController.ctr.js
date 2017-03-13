@@ -102,6 +102,8 @@
 
 
 				}
+			}, function (error){
+				console.log(error);
 			});
 			progressbar.complete();
 		};
@@ -118,7 +120,7 @@
 			progressbar.start();
 
 			ProjectFactory.getProviderProjectsByPartnerId(partnerId).then(function(response) {
-				if (response.data.status != 200) {
+				if (response.data.status != 200 && response.status != 403) {
 					toastr.error('Hi ha hagut un error al obtenir els projectes...', 'Hi ha un problema');
 				} else {
 					vm.allProviderProjects = response.data.response.result;
