@@ -73,7 +73,7 @@
 		*/
 		function confirmProviderProject(srv) {
 			var url = [host, 'api/sprojects/', srv._id].join('');
-			var newURL = [host, '/api/project/',srv._id, '/state'].join('');
+			var newURL = [host, 'api/project/',srv._id, '/state'].join('');
 			var status = {
 				status: 3
 			};
