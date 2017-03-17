@@ -131,6 +131,8 @@
 					vm.pageNumberOptions.push({value: vm.totalItems, name: "Tots"});
 
 				}
+			}, function (error){
+				$log.log('getProviderProjectsByPartnerId::: error::::', error);
 			});
 			progressbar.complete();
 		};
