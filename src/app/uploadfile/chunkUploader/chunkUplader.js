@@ -5,8 +5,13 @@
 		.module('marketplace')
 		.factory('ChunkUploader', ChunkUploader);
 
-		ChunkUploader.$inject = ['ConnectionFactory', 'SaveImageDataService', '$translate'];
-		function ChunkUploader (ConnectionFactory, SaveImageDataService, $translate) {
+		ChunkUploader.$inject = ['ConnectionFactory', 'SaveImageDataService', '$translate', 'LocalStorageFactory'];
+		function ChunkUploader (ConnectionFactory, SaveImageDataService, $translate, LocalStorageFactory) {
+		    var user = LocalStorageFactory.getValue('user');
+		    var token = '';
+		    if (user) {
+			token = user.user.token;
+		    }
 			function chunk(scope) {
 				angular.element(document).ready(function() {
 					var total_steps = 0,
@@ -67,6 +72,7 @@
 									data: formData,
 									processData: false,
 									contentType: false,
+								        headers: {"Authorization": token},
 									success: function(){
 									step = step+1;
 									if ( step < total_steps ) {
@@ -95,7 +101,8 @@
 											timeout: 10*60*1000,
 											type: "post",
 											contentType: "application/json",
-											data: JSON.stringify({ "filename": final_filename,
+										        headers: {"Authorization": token},
+										        data: JSON.stringify({ "filename": final_filename,
 															"uuid": uuid,
 															"md5sum": md5sum
 														}),
@@ -106,6 +113,7 @@
 												type: "post",
 												timeout: 10*60*1000,
 												contentType: "application/json",
+								                                headers: {"Authorization": token},
 												data: JSON.stringify({ "filename": final_filename, "filename_uuid": data.filename_uuid }),
 												dataType: "json",
 													success: function(response) {
