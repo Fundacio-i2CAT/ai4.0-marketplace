@@ -19,7 +19,7 @@
           toastr.error(message, 'Sessió caducada')
           $http.defaults.headers.common['Authorization'] = '';
           CurrentUserFactory.removeCurrentUser();
-  				LocalStorageFactory.removeItem('user');
+          LocalStorageFactory.removeItem('user');
           $state.go('login');
         }
         return;
