@@ -11,7 +11,7 @@
 			var directive = {
 				restrict: 'E',
 				templateUrl: 'app/uploadfile/chunkUploader/chunk-uploader.tpl.html',
-				link: function (scope, element, attrs) {
+				link: function (scope) {
 
 					ChunkUploader.chunk(scope);
 				}

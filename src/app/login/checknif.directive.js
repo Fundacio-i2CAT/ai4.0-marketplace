@@ -10,7 +10,7 @@
 			var directive = {
 				restrict: 'A',
 				scope: false,
-				link: function (scope, element, attrs) {
+				link: function (scope, element) {
 					scope.showNifError = undefined;
 					element.on('blur change keyup keypress', function(event){
 						var temp;

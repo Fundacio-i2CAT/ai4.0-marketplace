@@ -5,9 +5,9 @@
 		.module('marketplace')
 		.controller('LoginController', LoginController);
 
-		LoginController.$inject=['$location', 'toastr', 'CurrentUserFactory', 'UserFactory', 'LocalStorageFactory', '$http'];
+		LoginController.$inject=['$location', 'toastr', 'CurrentUserFactory', 'UserFactory', 'LocalStorageFactory'];
 
-		function LoginController ($location, toastr, CurrentUserFactory, UserFactory, LocalStorageFactory, $http){
+		function LoginController ($location, toastr, CurrentUserFactory, UserFactory, LocalStorageFactory){
 			var vm = this;
 			vm.credentials = {};
 			vm.loginPressed = null;

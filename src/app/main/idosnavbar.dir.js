@@ -15,7 +15,7 @@
 			templateUrl: 'app/main/navbar.tpl.html',
 			controller: 'LoginController',
 			controllerAs: 'logindirective',
-			link: function (scope, element, attrs) {
+			link: function (scope) {
 
 				angular.element('.lang.catala').addClass('active');
 

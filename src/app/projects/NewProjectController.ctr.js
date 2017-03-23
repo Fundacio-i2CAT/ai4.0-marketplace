@@ -39,17 +39,17 @@
 						$location.path("/clientprojects");
 					}
 					if (response.status == 409) {
-					    var backmessage;
-					    if ($translate.use() == 'CAT') {
-						backmessage = response.data.message.ca;
-					    } else if ($translate.use() == 'CAST') {
-						backmessage = response.data.message.es;
-					    }
-					    toastr.error(backmessage, response.data.code);
-					    $location.path('/catalog');
+							var backmessage;
+							if ($translate.use() == 'CAT') {
+								backmessage = response.data.message.ca;
+							} else if ($translate.use() == 'CAST') {
+								backmessage = response.data.message.es;
+							}
+							toastr.error(backmessage, response.data.code);
+							$location.path('/catalog');
 					} else if (response.status != 201) {
-                                            toastr.error('No s\'ha pogut crear el projecte', 'Error en la Creació de Projecte');
-					    $location.path("/catalog");
+							toastr.error('No s\'ha pogut crear el projecte', 'Error en la Creació de Projecte');
+							$location.path("/catalog");
 					}
 				});
 			};

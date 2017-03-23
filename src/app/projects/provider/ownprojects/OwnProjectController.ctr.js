@@ -14,7 +14,7 @@
       //sortin table
       vm.sortTypeActive = 'created_at';
       vm.sortTypeInactive = 'created_at';
-  		vm.sortActiveReverse = true;
+      vm.sortActiveReverse = true;
       vm.sortInactiveReverse = true;
       vm.isExpanded = false;
 
@@ -92,7 +92,7 @@
       };
 
       vm.hideSrvInCatalogue = function(srv) {
-          OwnProjectFactory.hideServiceInCatalogue(srv._id).then(function(response){
+          OwnProjectFactory.hideServiceInCatalogue(srv._id).then(function(){
             toastr.info('Servei descatalogat correctament', 'Ocultació de Servei');
             vm.getAllOwnProjects();
             vm.getAllMyAnonymousProjects();
@@ -102,7 +102,7 @@
       };
 
       vm.createAnonymousProject = function(srv) {
-        OwnProjectFactory.createAnonymousProject(srv).then(function(response) {
+        OwnProjectFactory.createAnonymousProject(srv).then(function() {
           toastr.success('Projecte creat correctament', 'Creació Projecte');
 
           vm.getAllOwnProjects();
@@ -114,150 +114,137 @@
       };
 
       vm.getStatusClass = function(status){
-  			return LiteralFactory.getStatusClass(status);
-  		};
+        return LiteralFactory.getStatusClass(status);
+      };
 
       vm.getLiteralStatus = function(status){
-  			return LiteralFactory.getLiteralStatus(status);
-  		};
+        return LiteralFactory.getLiteralStatus(status);
+      };
 
       //confirm message for deleting project as a Client
-  		vm.confirmDeleteProject = function(project) {
+      vm.confirmDeleteProject = function(project) {
         ProjectFactory.confirmDeleteProject(project, vm);
-  		};
+      };
 
       //close dialog
-  		vm.closeDialog = function() {
-  			ngDialog.close();
-  		};
+      vm.closeDialog = function() {
+        ngDialog.close();
+      };
 
       vm.deleteProject = function(id){
-  			ProjectFactory.deleteProject(id).then(function(response){
-  				if(response.status===200){
-  					toastr.info("Projecte eliminat correctament", "Eliminar Projecte");
-  					$state.reload();
-  				} else {
-  					toastr.error("No s'ha pogut borrar el projecte");
-  				}
-  				vm.closeDialog();
-  			});
-  		};
+        ProjectFactory.deleteProject(id).then(function(response){
+          if(response.status===200){
+            toastr.info("Projecte eliminat correctament", "Eliminar Projecte");
+            $state.reload();
+          } else {
+            toastr.error("No s'ha pogut borrar el projecte");
+          }
+          vm.closeDialog();
+        });
+      };
 
       //Instantiate service button (as a client), pass the service data and open dialog
-  		vm.instantiateService = function(srv) {
-  			var service_id = srv.services[0].service._id;
-  			ServiceFactory.instantiateService(service_id).then(function(response) {
-  				var dataToSend = {
-  					json: response.data,
-  					service_id: service_id,
-  					project_id: srv._id,
-  					srv: srv
-  				}
-  				ShareDataFactory.setData(dataToSend);
-  				launchDialog();
-  			});
-  		};
+      vm.instantiateService = function(srv) {
+        var service_id = srv.services[0].service._id;
+        ServiceFactory.instantiateService(service_id).then(function(response) {
+          var dataToSend = {
+            json: response.data,
+            service_id: service_id,
+            project_id: srv._id,
+            srv: srv
+          }
+          ShareDataFactory.setData(dataToSend);
+          launchDialog();
+        });
+      };
 
       //launch dialog
-  		function launchDialog () {
-  			ngDialog.open({
-  				template: 'app/services/instantiateService/instantiateSrv-dialog.tpl.html',
-  				className: 'ngdialog-theme-default',
-  				controller: 'InstantiateServiceController',
-  				controllerAs: 'instancesrv'
-  			});
-  		}
+      function launchDialog () {
+        ngDialog.open({
+          template: 'app/services/instantiateService/instantiateSrv-dialog.tpl.html',
+          className: 'ngdialog-theme-default',
+          controller: 'InstantiateServiceController',
+          controllerAs: 'instancesrv'
+        });
+      }
 
       //////////////////////////////////////////////////////////////////////////
       //stopOwnProject
-  		vm.stopOwnProject = function (srv) {
-  			srv.showProgressBar = true;
-  			ProjectFactory.stopProject(srv._id).then(function (response){
-  				// $log.log('stopping project::: ', response);
-  				if (response.status === 200) {
-  					var internalPromise = $interval(function(){
-  						ProjectFactory.getProjectState(srv._id).then(function(response){
-  							// $log.log('getProjectState::: ', response);
-  							if (response.data.status === 6) {
-  								srv.showProgressBar = false;
-  								$interval.cancel(internalPromise);
-  								toastr.success('Projecte aturat correctament', 'Aturar Serveis');
+      vm.stopOwnProject = function (srv) {
+        srv.showProgressBar = true;
+        ProjectFactory.stopProject(srv._id).then(function (response){
+          // $log.log('stopping project::: ', response);
+          if (response.status === 200) {
+            var internalPromise = $interval(function(){
+              ProjectFactory.getProjectState(srv._id).then(function(response){
+                // $log.log('getProjectState::: ', response);
+                if (response.data.status === 6) {
+                  srv.showProgressBar = false;
+                  $interval.cancel(internalPromise);
+                  toastr.success('Projecte aturat correctament', 'Aturar Serveis');
                   srv.status = 6;
-                //   vm.getAllOwnProjects();
-                //   vm.getAllMyAnonymousProjects();
-  							}
+                }
+              }, function (error){
+                $log.log(error);
+              });
+            }, 8000);
+          }
+          //si el projecte ja està running
+          if (response.status === 409) {
+            srv.showProgressBar = false;
+            var backmessage;
+            if ($translate.use() == 'CAT') {
+              backmessage = response.data.message.ca;
+            } else if ($translate.use() == 'CAST') {
+              backmessage = response.data.message.es;
+            }
+            srv.status = response.data.status;
+            toastr.success(backmessage, response.data.code);
+          }
 
-  						}, function (error){
-  							console.log(error);
-  						});
-  					}, 8000);
-
-  				}
-
-  				//si el projecte ja està running
-  				if (response.status === 409) {
-  					srv.showProgressBar = false;
-  					var backmessage;
-  					if ($translate.use() == 'CAT') {
-  						backmessage = response.data.message.ca;
-  					} else if ($translate.use() == 'CAST') {
-  						backmessage = response.data.message.es;
-  					}
-  					srv.status = response.data.status;
-  					toastr.success(backmessage, response.data.code);
-  					// vm.getAllOwnProjects();
-            // vm.getAllMyAnonymousProjects();
-  				}
-
-  			});
-  		}; //end of stopOwnProject
+        });
+      }; //end of stopOwnProject
 
       //////////////////////////////////////////////////////////////////////////
       //runOwnProject
-  		vm.runOwnProject = function (srv) {
-  			srv.showProgressBar = true;
-  			// var progressbar = ProgressFactory.progressBarConfigure();
-  			// progressbar.start();
-  			ProjectFactory.runProject(srv._id).then(function (response){
-  				// $log.log('running project::: ', response);
-  				if (response.status === 200) {
-  					var internalPromise = $interval(function(){
-  						ProjectFactory.getProjectState(srv._id).then(function(response){
-  							// $log.log('getProjectState::: ', response);
-  							if (response.data.status === 5) {
-  								srv.showProgressBar = false;
-  								$interval.cancel(internalPromise);
-  								toastr.success('Projecte arrencat correctament', 'Arrencar Serveis');
+      vm.runOwnProject = function (srv) {
+        srv.showProgressBar = true;
+        // var progressbar = ProgressFactory.progressBarConfigure();
+        // progressbar.start();
+        ProjectFactory.runProject(srv._id).then(function (response){
+          // $log.log('running project::: ', response);
+          if (response.status === 200) {
+            var internalPromise = $interval(function(){
+              ProjectFactory.getProjectState(srv._id).then(function(response){
+                // $log.log('getProjectState::: ', response);
+                if (response.data.status === 5) {
+                  srv.showProgressBar = false;
+                  $interval.cancel(internalPromise);
+                  toastr.success('Projecte arrencat correctament', 'Arrencar Serveis');
                   srv.status = 5;
-                  // vm.getAllOwnProjects();
-                  // vm.getAllMyAnonymousProjects();
-  							}
-  						}, function(error){
-  							console.log(error);
-  						});
-  					}, 30000);
-  				}
+                }
+              }, function(error){
+                $log.log(error);
+              });
+            }, 30000);
+          }
 
 
-  				//si el projecte ja està running
-  				if (response.status === 409) {
-  					srv.showProgressBar = false;
-  					var backmessage;
-  					if ($translate.use() == 'CAT') {
-  						backmessage = response.data.message.ca;
-  					} else if ($translate.use() == 'CAST') {
-  						backmessage = response.data.message.es;
-  					}
-  					srv.status = response.data.status;
-  					toastr.success(backmessage, response.data.code);
-            // vm.getAllOwnProjects();
-            // vm.getAllMyAnonymousProjects();
-  				}
-
-
-  			});
-  			// progressbar.complete();
-  		}
+          //si el projecte ja està running
+          if (response.status === 409) {
+            srv.showProgressBar = false;
+            var backmessage;
+            if ($translate.use() == 'CAT') {
+              backmessage = response.data.message.ca;
+            } else if ($translate.use() == 'CAST') {
+              backmessage = response.data.message.es;
+            }
+            srv.status = response.data.status;
+            toastr.success(backmessage, response.data.code);
+          }
+        });
+        // progressbar.complete();
+      }
 
 
 

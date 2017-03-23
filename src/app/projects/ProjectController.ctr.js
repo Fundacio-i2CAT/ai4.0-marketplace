@@ -103,7 +103,7 @@
 
 				}
 			}, function (error){
-				console.log(error);
+				$log.log(error);
 			});
 			progressbar.complete();
 		};
@@ -252,7 +252,7 @@
 								vm.getClientProjectsByPartnerId(user.user.provider_id);
 							}
 						}, function(error){
-							console.log(error);
+							$log.log(error);
 						});
 					}, 30000);
 				}
@@ -302,7 +302,7 @@
 							}
 
 						}, function (error){
-							console.log(error);
+							$log.log(error);
 						});
 					}, 8000);
 
