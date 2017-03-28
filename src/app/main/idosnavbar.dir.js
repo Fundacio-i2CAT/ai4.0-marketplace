@@ -4,12 +4,12 @@
 		.module('marketplace')
 		.directive('idosnavbar', idosnavbar);
 
-	idosnavbar.$inject = ['localStorageService', 'CurrentUserFactory', '$translate', '$rootScope'];
+	idosnavbar.$inject = ['localStorageService', '$translate', '$rootScope'];
 
 	/**
 	* Directiva que proporciona el template del header de la aplicacion
 	*/
-	function idosnavbar(localStorageService, CurrentUserFactory, $translate, $rootScope){
+	function idosnavbar(localStorageService, $translate, $rootScope){
 		var directive = {
 			restrict: 'E',
 			templateUrl: 'app/main/navbar.tpl.html',
