@@ -35,10 +35,8 @@
       vm.getAllMyAnonymousProjects = function() {
         OwnProjectFactory.getAllMyAnonymousProjects().then(function(response){
           vm.allAnonymousProjects = response.result;
-          // $log.log('allAnonymousProjects:::', vm.allAnonymousProjects);
           setInstancesPerProject(vm.allMyInactiveProjects, vm.allAnonymousProjects);
           setInstancesPerProject(vm.allMyActiveProjects, vm.allAnonymousProjects);
-          // $log.log('allMyInactiveProjects:::', vm.allMyInactiveProjects);
         }, function (error){
           $log.log(error);
         });
@@ -86,6 +84,7 @@
             toastr.info('Servei publicat al Catàleg correctament', 'Publicació de Servei');
               vm.getAllOwnProjects();
               vm.getAllMyAnonymousProjects();
+              // $state.reload();
           }, function(error){
             $log.log(error);
           })
@@ -96,6 +95,7 @@
             toastr.info('Servei descatalogat correctament', 'Ocultació de Servei');
             vm.getAllOwnProjects();
             vm.getAllMyAnonymousProjects();
+            // $state.reload();
           }, function(error){
             $log.log(error);
           })
@@ -107,7 +107,7 @@
 
           vm.getAllOwnProjects();
           vm.getAllMyAnonymousProjects();
-
+          // $state.reload();
         }, function (error) {
           $log.log(error);
         });

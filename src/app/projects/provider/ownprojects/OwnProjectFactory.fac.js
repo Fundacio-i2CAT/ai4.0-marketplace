@@ -10,8 +10,8 @@
     function OwnProjectFactory($http, $q, ConnectionFactory, LocalStorageFactory, $log) {
       var host = ConnectionFactory.host;
 
-      var getAllOwnProjects = function (user) {
-        // var user = angular.fromJson(LocalStorageFactory.getValue('user'));
+      var getAllOwnProjects = function () {
+        var user = angular.fromJson(LocalStorageFactory.getValue('user'));
         var path = ['api/services/provider/', user.user.id].join(''),
             url = [host, path].join('');
 
