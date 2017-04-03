@@ -18,12 +18,12 @@
 							<div class="col-xs-12 col-sm-1 col-md-1 col-lg-1">
 								<p>{{detailsrv.nameProvider}}</p><br/>
 							</div>
-							<div class="col-xs-12 col-sm-2 col-sm-offset-1 col-md-2 col-md-offset-1 col-lg-2 col-lg-offset-1">
-								<img class="logo-prov-detail" width="150" ng-src="assets/images/Logos/{{detailsrv.getProviderImage(detailsrv.nameProvider)}}" alt="Provider image">
+							<div class="col-xs-12">
+								<img class="logo-prov-detail" width="100" ng-src="assets/images/Logos/{{detailsrv.getServiceLogo(detailsrv.currentService.name)}}" alt="Provider image">
 							</div>
 						</div>
 
-						<p><strong><span class="text text-primary uppercase">{{ 'SERVICE-TYPE' | translate }}</span></strong></p>
+						<p class="top2"><strong><span class="text text-primary uppercase">{{ 'SERVICE-TYPE' | translate }}</span></strong></p>
 						<p>{{detailsrv.currentService.service_type}}</p><br/>
 						<div ng-if="detailsrv.currentService.price_initial && detailsrv.currentService.price_x_hour">
 							<p><strong><span class="text text-primary uppercase">{{ 'PRICE' | translate }}</span></strong></p>

@@ -58,6 +58,11 @@
 			$state.go('clientprojects');
 		}
 
+		//get the provider logo
+		vm.getServiceLogo = function (name) {
+			return ImageProviderFactory.getCatalogServiceLogo(name);
+		};
+
 
 
 		vm.getServiceById(serviceId);
