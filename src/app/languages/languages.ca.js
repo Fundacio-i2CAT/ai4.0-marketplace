@@ -129,7 +129,7 @@
 					'USER-DETAIL-UNACTIVATED': 'Desactivat',
 					'EDIT-USER-TITLE': 'Editar Usuari',
 					'EDIT-USER-SAVEDATA': 'Guardar Dades',
-					'SRV-DETAIL-MSG': 'És necessari conte de Client per consumir aquest Servei',
+					'SRV-DETAIL-MSG': 'És necessari compte de Client per consumir aquest Servei',
 					'FILTER-PLACEHOLDER-USERS': 'Filtrar per dada',
 					//publicar Servei
 					'PUBL-SRV-TITLE': 'Crear Servei',
