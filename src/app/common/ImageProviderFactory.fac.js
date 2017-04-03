@@ -12,6 +12,7 @@
 			var imageProvider = {};
 			imageProvider.getProviderImage = getProviderImage;
 			imageProvider.getServiceImage = getServiceImage;
+			imageProvider.getCatalogServiceLogo = getCatalogServiceLogo;
 
 
 			/*Logos de providers*/
@@ -28,6 +29,8 @@
 				}
 				return image;
 			}
+
+
 
 			/*Imatges de Serveis*/
 			function getServiceImage(name) {
@@ -50,6 +53,36 @@
 				}
 				return image;
 			}
+
+
+
+			/*Logos dels proveïdors al cataleg*/
+			function getCatalogServiceLogo (provider) {
+				var image = null;
+
+				switch (provider) {
+					case 'IoT Starter Kit':
+						image = 'uoci2cat.png';
+					break;
+					case 'Node-RED':
+						image = 'node-red-icon.png';
+					break;
+					case 'Ubuntu Zesty Zapus a Adam':
+						image = 'ubuntu.png';
+					break;
+					case 'Plastic Injection Molding Monitoring':
+						image = 'logo_degradat_72.jpg';
+					break;
+					case 'iThinkUPC':
+						image = 'itk-big-crop.png';
+					break;
+				}
+
+				return image;ç
+
+			}
+
+
 
 			return imageProvider;
 		}
