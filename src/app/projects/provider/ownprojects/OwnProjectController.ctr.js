@@ -5,9 +5,9 @@
     .module('marketplace')
     .controller('OwnProjectController', OwnProjectController);
 
-    OwnProjectController.$inject = ['OwnProjectFactory', 'toastr', '$log', 'LiteralFactory', 'ngDialog', 'ProjectFactory', '$state', 'ServiceFactory', 'ShareDataFactory', '$interval', '$translate'];
+    OwnProjectController.$inject = ['OwnProjectFactory', 'toastr', '$log', 'LiteralFactory', 'ngDialog', 'ProjectFactory', '$state', 'ServiceFactory', 'ShareDataFactory', '$interval', '$translate', '$document'];
 
-    function OwnProjectController(OwnProjectFactory, toastr, $log, LiteralFactory, ngDialog, ProjectFactory, $state, ServiceFactory, ShareDataFactory, $interval, $translate) {
+    function OwnProjectController(OwnProjectFactory, toastr, $log, LiteralFactory, ngDialog, ProjectFactory, $state, ServiceFactory, ShareDataFactory, $interval, $translate, $document) {
       var vm = this;
       // var user = LocalStorageFactory.getValue('user');
 
@@ -167,6 +167,34 @@
           controllerAs: 'instancesrv'
         });
       }
+
+        // //////////////////////////////////////////////////////////////////////////
+        // //getProjectKey
+        vm.getProjectKey = function (srv) {
+            function download(filename, text) {
+                var element = $document[0].createElement('a');
+                element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+                element.setAttribute('download', filename);
+                element.style.display = 'none';
+                $document[0].body.appendChild(element);
+                element.click();
+                $document[0].body.removeChild(element);
+            }
+            srv.showProgressBar = true;
+            ProjectFactory.getProjectKey(srv._id).then(function(response) {
+                if (response.status === 200) {
+                    var internalPromise = $interval(function(){
+                        srv.showProgressBar = false;
+                        $interval.cancel(internalPromise);
+                        download('clau.pem', response.data.response.key);
+                        toastr.success('Clau obtinguda correctament', 'Obtenció de clau RSA');
+                    }, function (error){
+                        $log.log(error);
+                        toastr.error("No s'ha pogut obtenir la clau");
+                    }, 8000);
+                }
+            });
+        }
 
       //////////////////////////////////////////////////////////////////////////
       //stopOwnProject
