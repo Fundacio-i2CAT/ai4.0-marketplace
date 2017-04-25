@@ -29,7 +29,7 @@
 					'CONSUM-PER-HOUR': 'Consumo por Hora',
 					'DETAIL-SECTORS': 'Sectores',
 					'DETAIL-LINK': 'Enlace',
-					'SRV-INSTANCE': 'Instanciar Servicio',
+					'SRV-INSTANCE': 'Instanciar',
 					'RUN-TIMES': 'Parámetros de Ejecución',
 					//projectes
 					'PROJ-CLIENT':'PROYECTOS',
