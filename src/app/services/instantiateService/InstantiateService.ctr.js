@@ -50,7 +50,7 @@
 					var form = {
 						key: field.name,
 						type: (field.type == 'integer') ? 'number' : field.type,
-						placeholder: field.name
+						placeholder: field.desc
 					}
 					listOfFields.push(form);
 				});
