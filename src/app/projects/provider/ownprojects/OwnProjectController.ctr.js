@@ -185,11 +185,10 @@
                     srv.showProgressBar = false;
                     download('clau.pem', response.data.response.key);
                     toastr.success('Clau obtinguda correctament', 'Obtenció de clau RSA');
-                }
-            }, function (error){
-		srv.showProgressBar = false;
-                $log.log(error);
-                toastr.error("No s'ha pogut obtenir la clau");
+                } else {
+                    srv.showProgressBar = false;
+                    toastr.error("No s'ha pogut obtenir la clau");
+		}
             });
 	}
 
