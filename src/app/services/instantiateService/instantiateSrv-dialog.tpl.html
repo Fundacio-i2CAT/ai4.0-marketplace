@@ -1,7 +1,7 @@
 <style>
 	.ngdialog.ngdialog-theme-default .ngdialog-content {
 		width: 50%;
-		height: 400px;
+
 		overflow:scroll;
 		padding: 2em !important;
 	}
@@ -9,12 +9,12 @@
 		margin-bottom: 0;
 	}
 </style>
-<div class="container" style="width:100%">
+<div class="container" style="width:100%;height:100%">
 	<div class="row">
 		<h4 class="text text-primary">{{ 'SRV-INSTANCE' | translate }}</h4>
 		<h4><small>{{ 'SRV-SERVEI' | translate }} </small><span class="text text-default">{{instancesrv.service.srv.name}}</span> - <small>Proveidor</small> {{instancesrv.service.srv.services[0].provider.name}}</h4>
 		<br/>
-		<h4><small>{{ 'CUSTOMER-PARAMS' | translate }}</small></h4>
+		<h4><small ng-show="instancesrv.form.length>0">{{ 'CUSTOMER-PARAMS' | translate }}</small></h4>
 		<div class="top2">
 		    <form name="instantiate_service">
 		    	<div sf-schema="instancesrv.schema" sf-form="instancesrv.form" sf-model="instancesrv.model"></div>
