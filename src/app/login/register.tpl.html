@@ -1,13 +1,10 @@
 <div class="container">
-	<div class="page-header">
-		<!-- <h3>{{'REG-TITLE' | translate}} <small>{{'REG-SUBTITLE' | translate}}</small></h3> -->
-	</div>
-	<form id="register" name="registerForm" ng-submit="register.doRegister(register.credentials)">
+	<form style="margin-top:3em;" id="register" name="registerForm" ng-submit="register.doRegister(register.credentials)">
 		<div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
 			<div class="well">
 				<div class="form-group">
 					<label for="registerrole">{{ 'REG-ROLE-LABEL' | translate }} *</label>
-					<select ng-model="register.credentials.role" value="client" class="form-control input-sm">
+					<select ng-model="register.credentials.role" required class="form-control input-sm">
 						<option value="" disabled selected>{{ 'REG-ROLE-TITLE' | translate }}</option>
 						<option value="client">{{ 'REG-ROLE-CLIENT' | translate }}</option>
 						<option value="provider">{{ 'REG-ROLE-PROVIDER' | translate }}</option>
@@ -16,7 +13,7 @@
 				<div class="form-group">
 					<label for="registermail">{{ 'REG-MAIL' | translate }} *</label>
 					<input checkmail type="email" class="form-control input-sm" ng-model="register.credentials.email" id="registermail" placeholder="{{'REG-MAIL-PLACEHOLDER' | translate}}" required>
-					<div ng-show="showMailError" class="alert alert-danger alert-dismissible register-error-message" role="alert">
+					<div ng-if="showMailError" class="alert alert-danger alert-dismissible register-error-message" role="alert">
 						<button ng-click="showMailError = undefined" type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 						<i class="fa fa-warning"></i>&nbsp;{{ 'REG-EMAIL-ERROR' | translate }}
 					</div>
