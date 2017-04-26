@@ -98,6 +98,8 @@
 					'REG-NEEDED-TEXT': 'Es necesario para procesar la solicitud',
 					'REG-RECIVE-MAILS': 'Quiero recibir correos electrónicos de la PI4.0 y estoy de acuerdo con que la PI4.0 guarde mis datos personales.',
 					'REG-REGISTER-BUTTON': 'Registrarme',
+					'REG-ACTIVE-COUNT-TITLE': 'Cuenta pendiente de confirmación',
+					'REG-ACTIVE-COUNT-BODY': 'Gracias por registrarse en la Plataforma Industrial 4.0; en breve recibirá un correo electrónico avisándole de que su cuenta se ha activado por parte del administrador.',
 					//log in
 					'LOG-TITLE': 'Acceso',
 					'LOG-SUBTITLE': 'Usuario',
