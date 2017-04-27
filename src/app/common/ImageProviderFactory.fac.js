@@ -76,9 +76,12 @@
 					case 'iThinkUPC':
 						image = 'itk-big-crop.png';
 					break;
+					default:
+						image = 'Plataforma.png';
+						break;
 				}
 
-				return image;ç
+				return image;
 
 			}
 
