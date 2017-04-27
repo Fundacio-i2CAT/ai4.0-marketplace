@@ -342,7 +342,7 @@
               <button ng-disabled="createserviceform.$invalid" ng-click="createproj.launchTemplate(createproj.srv)" class="btn btn-primary btn-block">{{ 'PUBL-SRV-TITLE' | translate }}</button>
             </div>
             <div class="col-xs-3 top3">
-              <a class="btn btn-default btn-block" ng-click="createproj.closeDialog();">&nbsp;&nbsp;Cancelar</a>
+              <a class="btn btn-default btn-block" ng-click="createproj.closeDialog();">&nbsp;&nbsp;Cancel·lar</a>
             </div>
           </div>
 
@@ -407,10 +407,113 @@
               <div class="row">
                 <div class="col-xs-12">
                   <div class="modal-img">
-                    <img width="100%" class="img form-explanation" src="assets/images/publish-form/ceratesrv1.png" alt="Formulari publicació servei foto2">
+                    <img width="100%" class="img form-explanation" src="assets/images/publish-form/cs-consumer.png" alt="Formulari publicació servei foto2">
                   </div>
                 </div>
               </div>
+
+	      <div class="left1">
+		<h5 class="top1">
+		  <strong>Paràmetres II</strong>
+		</h5>
+		<h5 class="text text-primary">Paràmetres de Runtime</h5>
+
+		<p>Es corresponen amb aquells paràmetres que no son definits per l'usuari i depenen de
+		  l'assignació de recursos i/o de l'entorn en temps d'execució de la màquina virtual que prestarà
+		  el servei. Actualment només s'admet com a únic paràmetre vàlid l'adreça ip (<i>floating_ip</i>)
+		  d'accés al servei
+		  assignada pel proveïdor de infraestructura.</p>
+		<ul class="list list-unstyled">
+		  <li>
+		    <strong class="text text-primary">Nom</strong>
+		    floating_ip</li>
+		  <li>
+		    <strong class="text text-primary">Tipus</strong>
+		    String</li>
+		  <li>
+		    <strong class="text text-primary">Descripció</strong>
+		    Adreça IP del servei</li>
+		</ul>
+	      </div>
+
+	      <div class="row">
+		<div class="col-xs-12">
+		  <div class="modal-img">
+		    <img width="100%" class="img form-explanation" src="assets/images/publish-form/cs-runtime.png" alt="Formulari publicació servei foto2">
+		  </div>
+		</div>
+	      </div>
+
+	      <div class="left1">
+		<h5 class="top1">
+		  <strong>Infraestructura</strong>
+		</h5>
+		<h5 class="text text-primary">Servei de infraestructura</h5>
+
+		<p>Permet triar entre diferents proveïdors de infraestructura (<i>centre de dades</i>)
+		  sobre els quals s'instanciarà
+		  el servei pels clients. Un cop seleccionat el centre de dades en concret, el proveïdor
+		  haurà de seleccionar el <i>flavor</i> o tipus de màquina en quant a nombre de processadors
+		  (<i>cores</i>), memòria RAM i l'espai de disc disponibles.</p>
+		<ul class="list list-unstyled">
+		  <li>
+		    <strong class="text text-primary">Proveïdor</strong>
+		    Seleccionable entre els integrats a la plataforma</li>
+		  <li>
+		    <strong class="text text-primary">Memòria MB</strong>
+		    RAM</li>
+		  <li>
+		    <strong class="text text-primary">Disc</strong>
+		    Espai en GB del disc de la màquina virtual que allotjarà el servei</li>
+		  <li>
+		    <strong class="text text-primary">CPUs</strong>
+		    Número de nuclis de la màquina virtual</li>
+		</ul>
+	      </div>
+
+	      <div class="row">
+		<div class="col-xs-12">
+		  <div class="modal-img">
+		    <img width="100%" class="img form-explanation" src="assets/images/publish-form/cs-infra.png" alt="Formulari publicació servei foto2">
+		  </div>
+		</div>
+	      </div>
+
+	      <div class="left1">
+		<h5 class="top1">
+		  <strong>Imatge de Disc</strong>
+		</h5>
+		<h5 class="text text-primary">Imatge de Disc</h5>
+
+		<p>Apartat que possibilita la pujada de la imatge de màquina virtual
+		a triar entre diferents formats suportats per la plataforma</p>
+		<ul class="list list-unstyled">
+		  <li>
+		    <strong class="text text-primary">Tipus d'imatge</strong>
+		    QCOW2, VDI, ...</li>
+		  <li>
+		    <strong class="text text-primary">Imatge</strong>
+		    Permet pujar el fitxer</li>
+		</ul>
+	      </div>
+
+	      <div class="left1">
+		<h5 class="top1">
+		  <strong>Preus</strong>
+		</h5>
+		<h5 class="text text-primary">Tarifes de Consum</h5>
+
+		<p>Permet fixar les tarifes per consum.</p>
+		<ul class="list list-unstyled">
+		  <li>
+		    <strong class="text text-primary">Instanciació de servei</strong>
+		    Preu en € corresponent a la instanciació del servei per part del client.</li>
+		  <li>
+		    <strong class="text text-primary">Preu per Hora</strong>
+		    Tarifa per hora de consum</li>
+		</ul>
+	      </div>
+
 
             </div>
           </div>
@@ -421,7 +524,7 @@
               <button ng-disabled="createserviceform.$invalid" ng-click="createproj.launchTemplate(createproj.srv)" class="btn btn-success btn-block">{{ 'PUBL-SRV-TITLE' | translate }}</button>
             </div>
             <div class="col-xs-3 top3">
-              <a class="btn btn-danger btn-block" ng-click="createproj.closeDialog();">&nbsp;&nbsp;Cancelar</a>
+              <a class="btn btn-danger btn-block" ng-click="createproj.closeDialog();">&nbsp;&nbsp;Cancel·lar</a>
             </div>
           </div> -->
     </form>
