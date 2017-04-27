@@ -9,7 +9,7 @@
 
 	function UserFactory($http, ConnectionFactory) {
 		var host = ConnectionFactory.host;
-		var getAllUsersUrl  = [host, 'api/crud/users'].join(''),
+		var getAllUsersUrl  = [host, 'api/crud/users?skip=0&limit=10'].join(''),
 			openSessionUrl = [host,'api/session'].join(''),
 			setUserUrl = [host, 'api/users'].join(''),
 			deleteSessionUrl = [host, 'api/session'].join('');
@@ -33,7 +33,7 @@
 
 		//get all users pagination
 		function getAllUsersPerPage(num) {
-				var url = [getAllUsersUrl,'?page=',num].join('');
+				var url = [getAllUsersUrl,'?skip=',num,'&limit=10'].join('');
 				return $http.get(url).then(handleSuccess, handleError);
 		}
 
@@ -79,7 +79,7 @@
 
 		//updateUser
 		function updateUser(user) {
-			var url = [host, 'api/crud/users/', user.id].join('');
+			var url = [host, 'api/crud/users/', user._id].join('');
 			return $http.put(url, user).then(handleSuccess, handleError);
 		}
 

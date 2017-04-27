@@ -63,11 +63,11 @@
 			UserFactory.getAllUsers().then(function(response) {
 				if (response.status == 200) {
 					setActive(response.data.result);
-					vm.allUsers = response.data._embedded.people;
+					vm.allUsers = response.data.result;
 					//table pagination implemented
-					vm.totalItems = response.data.page.totalElements;
-					vm.currentEurecatPaginationPage = response.data.page.number;
-					vm.sizeEurecatPagination = response.data.page.size;
+					vm.totalItems = response.data.count;
+					vm.currentEurecatPaginationPage = response.data.skip;
+					vm.sizeEurecatPagination = response.data.limit;
 
 
 					//table pagination
