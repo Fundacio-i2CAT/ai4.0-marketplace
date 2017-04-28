@@ -84,7 +84,7 @@
 					RegisterFactory.doRegister(userInfo).then(function (response){
 						$log.debug(response);
 						if (response) {
-							if (response.status === 201) {
+							if (response.status === 204) {
 								//show message with register confirmation
 								toastr.info('Registre realitzat correctament', 'Registre correcte');
 								vm.launchDialog();
