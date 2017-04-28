@@ -1,0 +1,23 @@
+<style media="screen">
+  .ngdialog.ngdialog-theme-default .ngdialog-content {
+    width: 80%;
+    overflow: scroll;
+    padding: 2em;
+  }
+
+</style>
+
+<div class="">
+  <h4 class="text text-primary">{{ 'REG-ACTIVE-COUNT-TITLE' | translate }}</h4>
+    <div class="panel panel-default" style="margin-top: 1em;">
+      <div class="panel-body">
+        <p>
+        {{ 'REG-ACTIVE-COUNT-BODY' | translate }}
+        </p>
+        <br/>
+        <p>
+          <button ng-click="register.goCatalog();" class="btn btn-sm btn-primary pull-right" type="button">Ok</button>
+        </p>
+      </div>
+    </div>
+</div>
