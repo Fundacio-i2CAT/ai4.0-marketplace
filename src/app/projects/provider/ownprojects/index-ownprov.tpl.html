@@ -175,7 +175,7 @@
                             <button ng-if="one.status == 5" type="button" class="btn btn-xs btn-danger" ng-click="ownproj.stopOwnProject(one)">
                               <i class="fa fa-pause"></i>
                             </button>
-                            <button ng-if="one.status == 3" type="button" class="btn btn-xs btn-default" ng-click="ownproj.instantiateService(one)">
+                            <button ng-if="one.status == 3 && !one.instantiated" type="button" class="btn btn-xs btn-default" ng-click="ownproj.instantiateService(one)">
                               <i class="fa fa-plug"></i>
                             </button>
                             <button type="button" class="btn btn-xs btn-default" ng-click="ownproj.confirmDeleteProject(one)">
