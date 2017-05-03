@@ -20,7 +20,11 @@
 		    	<div sf-schema="instancesrv.schema" sf-form="instancesrv.form" sf-model="instancesrv.model"></div>
 		    	<div class="row">
 		    		<div class="col-xs-3 col-xs-offset-3">
-			    		<button class="btn btn-primary btn-sm btn-block" ng-disabled="instantiate_service.$invalid" ng-click="instancesrv.InstantiateSrv(instancesrv.model)" type="submit">{{ 'SRV-INSTANCE' | translate }}</button>
+			    		<button class="btn btn-primary btn-sm btn-block"
+									ng-disabled="instantiate_service.$invalid"
+									ng-click="instancesrv.InstantiateSrv(instancesrv.model); instancesrv.hideInstantiateButton(instancesrv.service)"
+									type="submit">{{ 'SRV-INSTANCE' | translate }}
+							</button>
 						</div>
 			    	<div class="col-xs-3">
 			    		<button class="btn btn-default btn-sm btn-block" ng-click="instancesrv.closeDialog()" type="button">Cancelar</button>

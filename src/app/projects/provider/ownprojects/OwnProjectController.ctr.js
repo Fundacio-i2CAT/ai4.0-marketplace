@@ -5,9 +5,9 @@
     .module('marketplace')
     .controller('OwnProjectController', OwnProjectController);
 
-    OwnProjectController.$inject = ['OwnProjectFactory', 'toastr', '$log', 'LiteralFactory', 'ngDialog', 'ProjectFactory', '$state', 'ServiceFactory', 'ShareDataFactory', '$interval', '$translate'];
+    OwnProjectController.$inject = ['$scope', 'OwnProjectFactory', 'toastr', '$log', 'LiteralFactory', 'ngDialog', 'ProjectFactory', '$state', 'ServiceFactory', 'ShareDataFactory', '$interval', '$translate'];
 
-    function OwnProjectController(OwnProjectFactory, toastr, $log, LiteralFactory, ngDialog, ProjectFactory, $state, ServiceFactory, ShareDataFactory, $interval, $translate) {
+    function OwnProjectController($scope, OwnProjectFactory, toastr, $log, LiteralFactory, ngDialog, ProjectFactory, $state, ServiceFactory, ShareDataFactory, $interval, $translate) {
       var vm = this;
       // var user = LocalStorageFactory.getValue('user');
 
@@ -18,6 +18,10 @@
       vm.sortInactiveReverse = true;
       vm.isExpanded = false;
 
+
+      $scope.$on('hideButton', function(event, data) {
+        data.instantiated = true;
+      });
 
       vm.getAllOwnProjects = function() {
         vm.allMyActiveProjects = [],

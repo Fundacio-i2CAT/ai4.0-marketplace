@@ -100,7 +100,7 @@
                         </a>
                       </span>
                       <span class="pull-right" ng-if="srv.status >= 3 || srv.status < 6">
-                        <a ng-show="srv.status === 3" class="btn btn-xs btn-default" ng-click="clientprojects.instantiateService(srv)">
+                        <a ng-show="srv.status === 3 && !srv.instantiated" class="btn btn-xs btn-default" ng-click="clientprojects.instantiateService(srv)">
                           <i class="fa fa-plug"></i>&nbsp;&nbsp;Instanciar
                         </a>
                         <button ng-show="srv.status === 6" class="btn btn-success btn-xs" ng-click="clientprojects.runProject(srv)">
