@@ -55,6 +55,11 @@
 
 		var user = LocalStorageFactory.getValue('user');
 
+		//retrieve the instantiate service event
+		$scope.$on('hideButton', function(event, data) {
+			data.instantiated = true;
+		});
+
 		//getAll projects
 		vm.getAll = function(){
 			ProjectFactory.getAll().then(function(response){
