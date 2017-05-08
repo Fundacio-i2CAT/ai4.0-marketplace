@@ -30,9 +30,9 @@
         },
         responseError: function (rejection) {
           // $log.log('responseError::', rejection);
-          if (rejection && rejection.data.code == 'TOKEN_EXPIRED') {
-            var kkk = $injector.get('SessionFactory');
-            kkk.sessionIsExpird(rejection);
+          if (rejection && rejection.status == 403) {
+            var sessionService = $injector.get('SessionFactory');
+            sessionService.sessionIsExpird(rejection);
           }
           return $q.reject(rejection);
         }
