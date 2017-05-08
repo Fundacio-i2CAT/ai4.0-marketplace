@@ -19,10 +19,14 @@
 			return $http.post(registerUrl, credentials).then(handleSuccess, handleError);
 		}
 
+		function recoverPassword(mail) {
+			var recoverUrl = [host, 'api/change/password'].join('');
+			return $http.post(recoverUrl, {email: mail}).then(handleSuccess, handleError);
+		}
 
 		///////////////////////////////   private functions   ///////////////////////////////////////////////////
 		function handleSuccess(response){
-			return response;	
+			return response;
 		}
 
 		function handleError(error){
@@ -30,7 +34,8 @@
 		}
 
 		return {
-			doRegister: doRegister
+			doRegister: doRegister,
+			recoverPassword:recoverPassword
 		};
 
 	}
