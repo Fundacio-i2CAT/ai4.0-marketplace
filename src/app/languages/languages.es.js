@@ -198,9 +198,12 @@
 					'NO-INSTANCE': 'Sin Instancia',
 					'NO-CONSUM': 'Sin Consumo',
 					'NO-CONSUM-MSSG': 'No hay registrado ningún consumo de este Servicio en este periodo.',
-					'PERIOD-BUTTON': 'Cambiar Fechas'
+					'PERIOD-BUTTON': 'Cambiar Fechas',
 					//mail RECOVER
-					
+					'RECOVER-TITLE': 'Recuperar Contraseña',
+					'RECOVER-BODY': 'Introduzca su correo electrónico i recibirá un enlace para reestablecer su contrasenya',
+					'RECOVER-SEND': 'Enviar Correo',
+					'RECOVER-LABEL': 'Correo electrónico'
 
 
 				});

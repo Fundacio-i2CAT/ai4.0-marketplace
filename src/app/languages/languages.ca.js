@@ -198,10 +198,12 @@
 					'NO-INSTANCE': 'Sense Instància',
 					'NO-CONSUM': 'Sense Consum',
 					'NO-CONSUM-MSSG': 'No hi ha enregistrat cap consum d\'aquest Servei en aquest periode',
-					'PERIOD-BUTTON': 'Canviar Dates'
+					'PERIOD-BUTTON': 'Canviar Dates',
 					//mail RECOVER
-					
-
+					'RECOVER-TITLE': 'Recuperar Contrasenya',
+					'RECOVER-BODY': 'Introdueixi el seu correu electrònic i rebrà un enllaç per reestablir la seva contrasenya',
+					'RECOVER-SEND': 'Enviar Correu',
+					'RECOVER-LABEL': 'Correu electrònic'
 
 
 

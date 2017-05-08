@@ -5,13 +5,16 @@
 		.module('marketplace')
 		.controller('LoginController', LoginController);
 
-		LoginController.$inject=['$location', 'toastr', 'CurrentUserFactory', 'UserFactory', 'LocalStorageFactory', 'ngDialog'];
+		LoginController.$inject=['$location', 'toastr', 'CurrentUserFactory', 'UserFactory', 'LocalStorageFactory', 'ngDialog', 'RegisterFactory'];
 
-		function LoginController ($location, toastr, CurrentUserFactory, UserFactory, LocalStorageFactory, ngDialog){
+		function LoginController ($location, toastr, CurrentUserFactory, UserFactory, LocalStorageFactory, ngDialog, RegisterFactory){
 			var vm = this;
 			vm.credentials = {};
 			vm.loginPressed = null;
-			// vm.paladire = null;
+			vm.reset = null;
+			vm.recover_success = false;
+			vm.recover_error = false;
+
 
 			vm.doLogin = function (){
 				vm.loginPressed = true;
@@ -50,6 +53,22 @@
 				});
 			};
 
+			vm.sendMailRecover = function(model) {
+				vm.recover_success = false;
+				vm.recover_error = false;
+				if (!model) {
+					return;
+				} else {
+					RegisterFactory.recoverPassword(model).then(function (response) {
+							if (response && response.status == 404) {
+								vm.recover_error = true;
+							}
+							if (response && response.status == 204) {
+								vm.recover_success = true;
+							}
+					});
+				}
+			}
 
 
 		}
