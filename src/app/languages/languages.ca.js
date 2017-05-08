@@ -111,7 +111,7 @@
 					'LOG-NOUSER': 'Si no disposes d\'usuari, fes clic per registrar-te',
 					'LOG-REGISTER-BUTTON': 'Registre',
 					'LOG-CREATE-ACCOUNT': 'Crear compte',
-					'LOG-FORGOT-PASS': 'He olvidado la contraseña',
+					'LOG-FORGOT-PASS': 'Recuperar contrasenya',
 					//forgot
 					'FORGOT-SENDMAIL': 'Enviar correu',
 					'FORGOT-MAIL-PLACEHOLDER': 'Introdueix el teu correu',
@@ -199,6 +199,9 @@
 					'NO-CONSUM': 'Sense Consum',
 					'NO-CONSUM-MSSG': 'No hi ha enregistrat cap consum d\'aquest Servei en aquest periode',
 					'PERIOD-BUTTON': 'Canviar Dates'
+					//mail RECOVER
+					
+
 
 
 

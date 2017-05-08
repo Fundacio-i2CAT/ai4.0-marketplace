@@ -5,9 +5,9 @@
 		.module('marketplace')
 		.controller('LoginController', LoginController);
 
-		LoginController.$inject=['$location', 'toastr', 'CurrentUserFactory', 'UserFactory', 'LocalStorageFactory'];
+		LoginController.$inject=['$location', 'toastr', 'CurrentUserFactory', 'UserFactory', 'LocalStorageFactory', 'ngDialog'];
 
-		function LoginController ($location, toastr, CurrentUserFactory, UserFactory, LocalStorageFactory){
+		function LoginController ($location, toastr, CurrentUserFactory, UserFactory, LocalStorageFactory, ngDialog){
 			var vm = this;
 			vm.credentials = {};
 			vm.loginPressed = null;
@@ -39,6 +39,17 @@
 				toastr.info("Sessió tancada correctament.", 'Adéu');
 				$location.path('login');
 			};
+
+			vm.goResetPass = function () {
+				ngDialog.open({
+					template: 'app/login/reset-pass/reset-password-dialog.tpl.html',
+					className: 'ngdialog-theme-default',
+					appendClassName: 'reset-password',
+					controller: 'LoginController',
+					controllerAs: 'login'
+				});
+			};
+
 
 
 		}
