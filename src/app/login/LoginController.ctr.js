@@ -28,10 +28,21 @@
 						toastr.error("L'usuari o el password no coincideixen.", 'Accés incorrecte');
 						vm.credentials = {};
 					} else {
-						//local storage and broadcoast userrole
-						CurrentUserFactory.setUser(response.data);
-						toastr.success("Hola, " + response.data.user_name, 'Accés correcte');
-						$location.path('catalog');
+						if (response.data && response.data.password == false) {
+							ngDialog.open({
+								template: 'app/login/reset-pass/reset-password-login-dialog.tpl.html',
+								className: 'ngdialog-theme-default',
+								appendClassName: 'reset-password-login',
+								controller: 'LoginController',
+								controllerAs: 'login'
+							});
+						} else {
+							//local storage and broadcoast userrole
+							CurrentUserFactory.setUser(response.data);
+							toastr.success("Hola, " + response.data.user_name, 'Accés correcte');
+							$location.path('catalog');
+						}
+
 					}
 				});
 			};
