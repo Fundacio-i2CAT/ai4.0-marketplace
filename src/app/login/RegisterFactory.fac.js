@@ -24,6 +24,15 @@
 			return $http.post(recoverUrl, {email: mail}).then(handleSuccess, handleError);
 		}
 
+		function setNewPassword(pass, id) {
+			var url = [host, 'api/change/password/', id].join(''),
+					body = {
+						password: pass.temp,
+						original_poassword: pass.new
+					}
+			return $http.put(url).then(handleSuccess, handleError);
+		}
+
 		///////////////////////////////   private functions   ///////////////////////////////////////////////////
 		function handleSuccess(response){
 			return response;
@@ -35,7 +44,8 @@
 
 		return {
 			doRegister: doRegister,
-			recoverPassword:recoverPassword
+			recoverPassword: recoverPassword,
+			setNewPassword: setNewPassword
 		};
 
 	}

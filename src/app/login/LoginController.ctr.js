@@ -5,15 +5,17 @@
 		.module('marketplace')
 		.controller('LoginController', LoginController);
 
-		LoginController.$inject=['$location', 'toastr', 'CurrentUserFactory', 'UserFactory', 'LocalStorageFactory', 'ngDialog', 'RegisterFactory'];
+		LoginController.$inject=['$rootScope', '$state', '$location', 'toastr', 'CurrentUserFactory', 'UserFactory', 'LocalStorageFactory', 'ngDialog', 'RegisterFactory', 'ShareDataFactory'];
 
-		function LoginController ($location, toastr, CurrentUserFactory, UserFactory, LocalStorageFactory, ngDialog, RegisterFactory){
+		function LoginController ($rootScope, $state, $location, toastr, CurrentUserFactory, UserFactory, LocalStorageFactory, ngDialog, RegisterFactory, ShareDataFactory){
 			var vm = this;
 			vm.credentials = {};
 			vm.loginPressed = null;
 			vm.reset = null;
 			vm.recover_success = false;
 			vm.recover_error = false;
+			vm.passNotEquals = false;
+			vm.pass={};
 
 
 			vm.doLogin = function (){
@@ -23,6 +25,7 @@
 					password: vm.credentials.password
 				};
 				UserFactory.openSession(user).then(function(response){
+					ShareDataFactory.setData(response.data.id);
 					if (response.status === 401) {
 						vm.loginPressed = false;
 						toastr.error("L'usuari o el password no coincideixen.", 'Accés incorrecte');
@@ -38,7 +41,8 @@
 								closeByDocument: false,
 								showClose: true,
 								controller: 'LoginController',
-								controllerAs: 'login'
+								controllerAs: 'login',
+								data: vm.currentUserId
 							});
 						} else {
 							//local storage and broadcoast userrole
@@ -83,7 +87,39 @@
 							}
 					});
 				}
-			}
+			};
+
+			$rootScope.$on('ngDialog.closing', function (e, $dialog) {
+			    // vm.loginPressed = false;
+					$state.reload();
+			});
+
+			vm.resetPassword = function (pass, chicha) {
+				if (pass.new !== pass.rep) {
+						vm.pass.new = '';
+						vm.pass.rep = '';
+						vm.differentPass = true;
+						return;
+				} else {
+					var id = ShareDataFactory.getData();
+					RegisterFactory.setNewPassword(vm.pass, id).then(function(response) {
+						console.log(response);
+						if (response && response != undefined && response.status_code==204) {
+							CurrentUserFactory.setUser(response.data);
+							toastr.success("Hola, " + response.data.user_name, 'Accés correcte');
+							$location.path('catalog');
+						} else {
+							alert('mostrar error backend');
+							console.log('response:::', response);
+						}
+					}, function (error) {
+						console.log('error:::', error);
+					});
+				}
+			};
+
+
+
 
 
 		}
