@@ -33,6 +33,10 @@
 								template: 'app/login/reset-pass/reset-password-login-dialog.tpl.html',
 								className: 'ngdialog-theme-default',
 								appendClassName: 'reset-password-login',
+								closeByEscape: false,
+								closeByNavigation: false,
+								closeByDocument: false,
+								showClose: true,
 								controller: 'LoginController',
 								controllerAs: 'login'
 							});
