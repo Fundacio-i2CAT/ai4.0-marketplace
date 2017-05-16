@@ -344,7 +344,7 @@
 
           <div class="row" ng-show="!createproj.hideButtons">
             <div class="col-xs-3 col-xs-offset-3 top3">
-              <button  ng-click="createproj.launchTemplate(createproj.srv)" class="btn btn-primary btn-block">{{ 'PUBL-SRV-TITLE' | translate }}</button>
+              <button  ng-disabled="createserviceform.$invalid" ng-click="createproj.launchTemplate(createproj.srv)" class="btn btn-primary btn-block">{{ 'PUBL-SRV-TITLE' | translate }}</button>
             </div>
             <div class="col-xs-3 top3">
               <a class="btn btn-default btn-block" ng-click="createproj.closeDialog();">&nbsp;&nbsp;Cancel·lar</a>
