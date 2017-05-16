@@ -31,7 +31,7 @@
 						toastr.error("L'usuari o el password no coincideixen.", 'Accés incorrecte');
 						vm.credentials = {};
 					} else {
-						if (response.data && response.data.password == false) {
+						if (response.data && response.data.password == true) {
 							ngDialog.open({
 								template: 'app/login/reset-pass/reset-password-login-dialog.tpl.html',
 								className: 'ngdialog-theme-default',
@@ -101,17 +101,17 @@
 						vm.differentPass = true;
 						return;
 				} else {
+					this.$hide();
 					var id = ShareDataFactory.getData();
 					RegisterFactory.setNewPassword(vm.pass, id).then(function(response) {
 						console.log(response);
-						if (response && response != undefined && response.status_code==204) {
-							CurrentUserFactory.setUser(response.data);
-							toastr.success("Hola, " + response.data.user_name, 'Accés correcte');
-							$location.path('catalog');
+						if (response && response != undefined && response.data.status_code==204) {
+							$state.reload();
 						} else {
-							alert('mostrar error backend');
-							console.log('response:::', response);
+							toastr.info('Hi ha hagut un error al restablir la contrasenya. Pot continuar fent servir la contrasenya generada per la Plataforma.', 'Contrasenya no restablerta');
+
 						}
+
 					}, function (error) {
 						console.log('error:::', error);
 					});
