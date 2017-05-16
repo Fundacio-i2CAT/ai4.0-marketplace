@@ -4,9 +4,9 @@
 	angular
 		.module('marketplace')
 		.controller('PublishSrvController', PublishSrvController);
-	PublishSrvController.$inject = ['$scope', '$state', 'toastr', 'fileUpload', 'CatalogFactory', 'ServiceFactory', 'ConnectionFactory', 'LocalStorageFactory', 'SaveImageDataService', 'ngDialog', 'InfrastructureFactory', '$log'];
+	PublishSrvController.$inject = ['$scope', '$state', 'toastr', 'fileUpload', 'CatalogFactory', 'ServiceFactory', 'ConnectionFactory', 'LocalStorageFactory', 'SaveImageDataService', 'ngDialog', 'InfrastructureFactory', '$log', '$base64'];
 
-	function PublishSrvController($scope, $state, toastr, fileUpload, CatalogFactory, ServiceFactory, ConnectionFactory, LocalStorageFactory, SaveImageDataService, ngDialog, InfrastructureFactory, $log) {
+	function PublishSrvController($scope, $state, toastr, fileUpload, CatalogFactory, ServiceFactory, ConnectionFactory, LocalStorageFactory, SaveImageDataService, ngDialog, InfrastructureFactory, $log, $base64) {
 		var vm = this;
 		var host = ConnectionFactory.host;
 		vm.allTemplates = [];
@@ -17,6 +17,8 @@
 		vm.selectedRowId = null;
 		vm.iaasSelected = null;
 		vm.hideButtons = false;
+
+
 
 		vm.types = [{name: 'Number'}, {name: 'String'}];
 		vm.discImageFormat = [{name: 'QCOW2'}, {name: 'VDI'}];
@@ -77,8 +79,13 @@
 		function buildPublishServiceJSON (srv) {
 			var provider = getCurrentProvider('user');
 			var imageData = SaveImageDataService.getImageData();
-
+			var logobase;
+			if (vm.myFile && vm.myFile != undefined) {
+				logobase = $base64.encode(vm.myFile);
+				console.log(logobase);
+			}
 			var srvToSave = {
+				service_icon: logobase,
 				name: srv.title,
 				description: srv.description,
 				summary: srv.summary,
@@ -212,7 +219,10 @@
 			currentTemplate.choices.splice(lastItem);
 		};
 
-
+		vm.uploadLogo = function () {
+			var file = vm.myFile;
+			console.log('myFile::::', file);
+		};
 
 	}
 
