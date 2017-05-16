@@ -203,8 +203,13 @@
 					'RECOVER-TITLE': 'Recuperar Contrasenya',
 					'RECOVER-BODY': 'Introdueixi el seu correu electrònic i rebrà un enllaç per reestablir la seva contrasenya',
 					'RECOVER-SEND': 'Enviar Correu',
-					'RECOVER-LABEL': 'Correu electrònic'
-
+					'RECOVER-LABEL': 'Correu electrònic',
+					'RECOV-LOGIN-SENDDATA': 'Enviar Dades',
+					'RECOV-LOGIN-TITLE': 'Entrar nova contrasenya',
+					'RECOV-LOGIN-BODY': 'La seva actual contrasenya d\'accès ha estat generada de forma automàtica pel sistema. Sisplau introdueixi de nou la contrasenya rebuda al seu correu i seguidament introdueixi la seva nova contrasenya.',
+					'RECOV-LOGIN-PROV-LABEL': 'Contrasenya de restauració',
+					'RECOV-LOGIN-NEW-LABEL': 'Nova contrasenya',
+					'RECOV-LOGIN-REP-LABEL': 'Repetició de la nova contrasenya'
 
 
 				})
