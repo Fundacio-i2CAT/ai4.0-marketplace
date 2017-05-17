@@ -15,7 +15,6 @@
 
           if (user) {
             config.headers['Authorization'] = user.user.token;
-            console.log(user.user.token);
           } else if (token){
             config.headers['Authorization'] = token;
           } else {
