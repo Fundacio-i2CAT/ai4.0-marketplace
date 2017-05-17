@@ -42,12 +42,17 @@
                 </div>
               </div>
               <div class="row top1">
-                <div class="col-xs-12">
+                <div class="col-xs-8">
                   <label for="">{{'LABEL-DESC' | translate}}
                     *</label>
                   <textarea rows="2" type="text" class="form-control" ng-model="createproj.srv.description" placeholder="{{ 'SRV-DESC-PLACE' | translate }}" required></textarea>
                 </div>
-                <div class="col-xs-12 top1">
+                <div class="col-xs-4">
+                  <label for="">Logotip del servei</label>
+                  <input type="file" ng-model="createproj.srv.loguito" ng-change="createproj.uploadLogo()" file-model="createproj.myFile" class="form-control" />
+                  <!-- <button type="button" ng-click="createproj.uploadLogo()" class="btn btn-sm btn-block btn-primary">Pujar Imatge</button> -->
+                </div>
+                <div class="col-xs-8 top1">
                   <label for="">{{'LABEL-SUMARI' | translate}}
                     *</label>
                   <input type="text" class="form-control" ng-model="createproj.srv.summary" placeholder="{{'SRV-SUM-PLACE' | translate}}" required>
@@ -339,7 +344,7 @@
 
           <div class="row" ng-show="!createproj.hideButtons">
             <div class="col-xs-3 col-xs-offset-3 top3">
-              <button ng-disabled="createserviceform.$invalid" ng-click="createproj.launchTemplate(createproj.srv)" class="btn btn-primary btn-block">{{ 'PUBL-SRV-TITLE' | translate }}</button>
+              <button  ng-disabled="createserviceform.$invalid" ng-click="createproj.launchTemplate(createproj.srv)" class="btn btn-primary btn-block">{{ 'PUBL-SRV-TITLE' | translate }}</button>
             </div>
             <div class="col-xs-3 top3">
               <a class="btn btn-default btn-block" ng-click="createproj.closeDialog();">&nbsp;&nbsp;Cancel·lar</a>
