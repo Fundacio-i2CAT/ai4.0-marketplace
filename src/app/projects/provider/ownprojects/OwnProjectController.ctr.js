@@ -172,6 +172,31 @@
         });
       }
 
+        // //////////////////////////////////////////////////////////////////////////
+        // //getProjectKey
+        vm.getProjectKey = function (srv) {
+            function download(filename, text) {
+		var anchor = angular.element('<a/>');
+		anchor.attr({
+			href: 'data:text/plain;charset=utf-8,' + encodeURIComponent(text),
+			target: '_blank',
+			download: filename
+		})[0].click();
+            }
+            srv.showProgressBar = true;
+            ProjectFactory.getProjectKey(srv._id).then(function(response) {
+                if (response.status === 200) {
+                    srv.showProgressBar = false;
+                    download('clau.pem', response.data.response.key);
+                    toastr.success('Clau obtinguda correctament', 'Obtenció de clau RSA');
+                } else {
+                    srv.showProgressBar = false;
+                    toastr.error("No s'ha pogut obtenir la clau");
+		}
+            });
+	}
+
+
       //////////////////////////////////////////////////////////////////////////
       //stopOwnProject
       vm.stopOwnProject = function (srv) {
