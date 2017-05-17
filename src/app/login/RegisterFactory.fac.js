@@ -28,8 +28,8 @@
 			//set token headers
 			var url = [host, 'api/change/password/', id].join(''),
 					body = {
-					password: pass.temp,
-					original_password: pass.new
+					password: pass.new,
+					original_password: pass.temp
 				}
 			return $http.put(url, body).then(handleSuccess, handleError);
 		}

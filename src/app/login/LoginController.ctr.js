@@ -109,13 +109,13 @@
 					var id = ShareDataFactory.getData();
 					RegisterFactory.setNewPassword(vm.pass, id).then(function(response) {
 						console.log(response);
-						if (response && response != undefined && response.data.status_code==204) {
+						if (response && response != undefined && response.status==204) {
 							LocalStorageFactory.removeItem('token');
 							$state.reload();
 							toastr.success('La contrasenya s\'ha restablert correctament', 'Contrasenya restablerta');
 						} else {
 							toastr.info('Hi ha hagut un error al restablir la contrasenya. Pot continuar fent servir la contrasenya generada per la Plataforma.', 'Contrasenya no restablerta');
-							
+
 						}
 
 					}, function (error) {
