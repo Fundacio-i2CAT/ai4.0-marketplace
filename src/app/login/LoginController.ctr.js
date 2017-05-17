@@ -24,7 +24,10 @@
 					user_name: vm.credentials.username,
 					password: vm.credentials.password
 				};
-				UserFactory.openSession(user).then(function(response){
+				UserFactory.openSession(user).then(function(response) {
+					if (response && response.data.token) {
+						LocalStorageFactory.setValue('token', response.data.token);
+					}
 					ShareDataFactory.setData(response.data.id);
 					if (response.status === 401) {
 						vm.loginPressed = false;
@@ -58,6 +61,7 @@
 			vm.doLogout = function () {
 				CurrentUserFactory.removeCurrentUser();
 				LocalStorageFactory.removeItem('user');
+				LocalStorageFactory.removeItem('token');
 				toastr.info("Sessió tancada correctament.", 'Adéu');
 				$location.path('login');
 			};
