@@ -26,21 +26,11 @@
 
 		function setNewPassword(pass, id) {
 			//set token headers
-			var currentTok = LocalStorageFactory.getValue('token'),
-					authHeader;
-			if (currentTok) {
-				authHeader = {
-					headers: { 'Authorization': currentTok }
-				}
-				$http.defaults.headers.common['Authorization'] = currentTok;
-			}
-
 			var url = [host, 'api/change/password/', id].join(''),
 					body = {
-						headers: { 'Authorization': currentTok },
-						password: pass.temp,
-						original_poassword: pass.new
-					}
+					password: pass.temp,
+					original_password: pass.new
+				}
 			return $http.put(url, body).then(handleSuccess, handleError);
 		}
 
