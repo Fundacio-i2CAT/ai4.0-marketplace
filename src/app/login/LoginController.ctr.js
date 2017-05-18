@@ -24,7 +24,10 @@
 					user_name: vm.credentials.username,
 					password: vm.credentials.password
 				};
-				UserFactory.openSession(user).then(function(response){
+				UserFactory.openSession(user).then(function(response) {
+					if (response && response.data.token) {
+						LocalStorageFactory.setValue('token', response.data.token);
+					}
 					ShareDataFactory.setData(response.data.id);
 					if (response.status === 401) {
 						vm.loginPressed = false;
@@ -58,6 +61,7 @@
 			vm.doLogout = function () {
 				CurrentUserFactory.removeCurrentUser();
 				LocalStorageFactory.removeItem('user');
+				LocalStorageFactory.removeItem('token');
 				toastr.info("Sessió tancada correctament.", 'Adéu');
 				$location.path('login');
 			};
@@ -105,7 +109,8 @@
 					var id = ShareDataFactory.getData();
 					RegisterFactory.setNewPassword(vm.pass, id).then(function(response) {
 						console.log(response);
-						if (response && response != undefined && response.data.status_code==204) {
+						if (response && response != undefined && response.status==204) {
+							LocalStorageFactory.removeItem('token');
 							$state.reload();
 							toastr.success('La contrasenya s\'ha restablert correctament', 'Contrasenya restablerta');
 						} else {

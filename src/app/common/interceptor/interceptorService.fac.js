@@ -11,8 +11,12 @@
       return {
         request: function (config) {
           var user = LocalStorageFactory.getValue('user');
+          var token = LocalStorageFactory.getValue('token');
+
           if (user) {
             config.headers['Authorization'] = user.user.token;
+          } else if (token){
+            config.headers['Authorization'] = token;
           } else {
             config.headers['Authorization'] = '';
           }

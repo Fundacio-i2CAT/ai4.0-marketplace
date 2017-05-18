@@ -5,9 +5,9 @@
 		.module('marketplace')
 		.factory('RegisterFactory', RegisterFactory);
 
-	RegisterFactory.$inject = ['$http', 'ConnectionFactory'];
+	RegisterFactory.$inject = ['$http', 'ConnectionFactory', 'LocalStorageFactory'];
 
-	function RegisterFactory($http, ConnectionFactory) {
+	function RegisterFactory($http, ConnectionFactory, LocalStorageFactory) {
 		var host = ConnectionFactory.host;
 
 		var registerUrl = [host, 'api/register'].join('');
@@ -25,12 +25,13 @@
 		}
 
 		function setNewPassword(pass, id) {
+			//set token headers
 			var url = [host, 'api/change/password/', id].join(''),
 					body = {
-						password: pass.temp,
-						original_poassword: pass.new
-					}
-			return $http.put(url).then(handleSuccess, handleError);
+					password: pass.new,
+					original_password: pass.temp
+				}
+			return $http.put(url, body).then(handleSuccess, handleError);
 		}
 
 		///////////////////////////////   private functions   ///////////////////////////////////////////////////
