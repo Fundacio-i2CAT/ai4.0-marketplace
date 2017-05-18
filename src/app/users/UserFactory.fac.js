@@ -10,6 +10,7 @@
 	function UserFactory($http, ConnectionFactory) {
 		var host = ConnectionFactory.host;
 		var getAllUsersUrl  = [host, 'api/crud/users?skip=0&limit=10'].join(''),
+				getUsersPagination = [host, 'api/crud/users'].join(''),
 			openSessionUrl = [host,'api/session'].join(''),
 			setUserUrl = [host, 'api/users'].join(''),
 			deleteSessionUrl = [host, 'api/session'].join('');
@@ -32,8 +33,8 @@
 		}
 
 		//get all users pagination
-		function getAllUsersPerPage(num) {
-				var url = [getAllUsersUrl,'?skip=',num,'&limit=10'].join('');
+		function getAllUsersPerPage(pageNum) {
+				var url = [getUsersPagination, '?skip=', (pageNum-1), '&limit=10'].join('');
 				return $http.get(url).then(handleSuccess, handleError);
 		}
 
