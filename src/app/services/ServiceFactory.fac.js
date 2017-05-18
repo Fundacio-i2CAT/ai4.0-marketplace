@@ -16,7 +16,7 @@
 		factory.createService = createService;
 		factory.instantiateService = instantiateService;
 		factory.instantiateSrvConsumerParams = instantiateSrvConsumerParams;
-
+		factory.getBase64 = getBase64;
 
 		//instantiateService
 		function instantiateService (id) {
@@ -44,6 +44,18 @@
 			var url = [host, 'api/services'].join('');
 			return $http.post(url, srv).then(handleSuccess, handleError);
 
+		}
+
+		function getBase64 (file) {
+			var reader = new FileReader();
+
+			reader.readAsDataURL(file);
+			reader.onload = function () {
+				return reader.result;
+			};
+			reader.onerror = function (error) {
+				console.log('onError::: ', error);
+			};
 		}
 
 		///////////////////////////////   private functions   ///////////////////////////////////////////////////

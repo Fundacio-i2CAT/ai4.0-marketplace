@@ -49,7 +49,7 @@
                 </div>
                 <div class="col-xs-4">
                   <label for="">Logotip del servei</label>
-                  <input type="file" ng-model="createproj.srv.loguito" ng-change="createproj.uploadLogo()" file-model="createproj.myFile" class="form-control" />
+                  <input type="file" ng-model="createproj.srv.loguito" onchange="angular.element(this).scope().uploadLogo(this)" file-model="createproj.myFile" class="form-control" />
                   <!-- <button type="button" ng-click="createproj.uploadLogo()" class="btn btn-sm btn-block btn-primary">Pujar Imatge</button> -->
                 </div>
                 <div class="col-xs-8 top1">
