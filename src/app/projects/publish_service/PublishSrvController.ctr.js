@@ -95,7 +95,6 @@
 				name_image: imageData.name_image,
 				vm_image: imageData.vm_image,
 				vm_image_format: (srv.diskImageType.name == undefined || srv.diskImageType.name == null) ? 'qcow2' : srv.diskImageType.name,
-				service_icon: vm.coded,
 				runtime_params: [
 					{
 						name: srv.rtime.name,
@@ -130,6 +129,7 @@
 				srvToSave.consumer_params = templatesList;
 			}
 
+			srvToSave.service_icon = vm.coded;
 			// $log.log(srvToSave);
 			return srvToSave;
 		}
