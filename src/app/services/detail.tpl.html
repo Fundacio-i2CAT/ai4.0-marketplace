@@ -19,7 +19,8 @@
 								<p>{{detailsrv.nameProvider}}</p><br/>
 							</div>
 							<div class="col-xs-12">
-								<img class="logo-prov-detail" width="100" ng-src="assets/images/Logos/{{detailsrv.getServiceLogo(detailsrv.currentService.name)}}" alt="Provider image">
+								<img ng-if="!detailsrv.currentService.service_icon" class="logo-prov-detail" width="100" ng-src="assets/images/Logos/{{detailsrv.getServiceLogo(detailsrv.currentService.name)}}" alt="Provider image" />
+								<img ng-if="detailsrv.currentService.service_icon" class="logo-prov-detail" width="100" height="auto" ng-src="{{detailsrv.currentService.service_icon}}" alt="" />
 							</div>
 						</div>
 
