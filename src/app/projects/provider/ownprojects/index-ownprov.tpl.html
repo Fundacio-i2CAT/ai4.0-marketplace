@@ -73,9 +73,6 @@
                           <button ng-if="one.status == 6" type="button" class="btn btn-xs btn-success" ng-click="ownproj.runOwnProject(one)">
                             <i class="fa fa-play"></i>
                           </button>
-			  <button ng-if="one.status == 5" type="button" class="btn btn-xs btn-warning" ng-click="ownproj.getProjectKey(one)">
-                            <i class="fa fa-key"></i>
-                          </button>
                           <button ng-if="one.status == 5" type="button" class="btn btn-xs btn-danger" ng-click="ownproj.stopOwnProject(one)">
                             <i class="fa fa-pause"></i>
                           </button>
@@ -174,9 +171,6 @@
                           <li ng-show="!one.showProgressBar" style="margin-right:1em;" class="pull-right clearfix">
                             <button ng-if="one.status == 6" type="button" class="btn btn-xs btn-success" ng-click="ownproj.runOwnProject(one)">
                               <i class="fa fa-play"></i>
-                            </button>
-			    <button ng-if="one.status == 5" type="button" class="btn btn-xs btn-warning" ng-click="ownproj.getProjectKey(one)">
-                              <i class="fa fa-key"></i>
                             </button>
                             <button ng-if="one.status == 5" type="button" class="btn btn-xs btn-danger" ng-click="ownproj.stopOwnProject(one)">
                               <i class="fa fa-pause"></i>
