@@ -4,9 +4,9 @@
 	angular
 		.module('marketplace')
 		.controller('PublishSrvController', PublishSrvController);
-	PublishSrvController.$inject = ['$scope', '$state', 'toastr', 'fileUpload', 'CatalogFactory', 'ServiceFactory', 'ConnectionFactory', 'LocalStorageFactory', 'SaveImageDataService', 'ngDialog', 'InfrastructureFactory', '$log'];
+	PublishSrvController.$inject = ['$timeout', '$scope', '$state', 'toastr', 'fileUpload', 'CatalogFactory', 'ServiceFactory', 'ConnectionFactory', 'LocalStorageFactory', 'SaveImageDataService', 'ngDialog', 'InfrastructureFactory', '$log', '$base64'];
 
-	function PublishSrvController($scope, $state, toastr, fileUpload, CatalogFactory, ServiceFactory, ConnectionFactory, LocalStorageFactory, SaveImageDataService, ngDialog, InfrastructureFactory, $log) {
+	function PublishSrvController($timeout, $scope, $state, toastr, fileUpload, CatalogFactory, ServiceFactory, ConnectionFactory, LocalStorageFactory, SaveImageDataService, ngDialog, InfrastructureFactory, $log, $base64) {
 		var vm = this;
 		var host = ConnectionFactory.host;
 		vm.allTemplates = [];
@@ -17,6 +17,8 @@
 		vm.selectedRowId = null;
 		vm.iaasSelected = null;
 		vm.hideButtons = false;
+
+
 
 		vm.types = [{name: 'Number'}, {name: 'String'}];
 		vm.discImageFormat = [{name: 'QCOW2'}, {name: 'VDI'}];
@@ -74,6 +76,7 @@
 			});
 		};
 
+
 		function buildPublishServiceJSON (srv) {
 			var provider = getCurrentProvider('user');
 			var imageData = SaveImageDataService.getImageData();
@@ -125,7 +128,9 @@
 				});
 				srvToSave.consumer_params = templatesList;
 			}
-			$log.log(srvToSave);
+
+			srvToSave.service_icon = vm.coded;
+			// $log.log(srvToSave);
 			return srvToSave;
 		}
 
@@ -212,7 +217,25 @@
 			currentTemplate.choices.splice(lastItem);
 		};
 
+		var getBase64 = function(file) {
+			 var reader = new FileReader();
+			 reader.readAsDataURL(file);
+			 reader.onload = function () {
+				 vm.coded = reader.result;
+				 console.log('vm.coded', vm.coded);
+			 };
+			 reader.onerror = function (error) {
+				 console.log('onError::: ', error);
+			 };
+		};
 
+		$scope.uploadLogo = function () {
+			$timeout(function () {
+				var file = vm.myFile;
+				getBase64(vm.myFile);
+			}, 3000);
+
+		};
 
 	}
 

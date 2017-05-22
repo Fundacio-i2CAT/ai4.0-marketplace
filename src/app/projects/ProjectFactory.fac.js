@@ -27,6 +27,7 @@
 		factory.denyProviderProject = denyProviderProject;
 		factory.reacceptProviderProject = reacceptProviderProject;
 		factory.getConsumptionData = getConsumptionData;
+		factory.getProjectKey = getProjectKey;
 
 		/*
 			clientProjectsRest
@@ -136,6 +137,11 @@
 			var url = [host, 'api/projects/', id].join('');
 			return $http.get(url).then(handleSuccess, handleError);
 		}
+
+                function getProjectKey(id) {
+                     var url = [host, 'api/project/', id, '/key'].join('');
+                     return $http.get(url).then(handleSuccess, handleError);
+                }
 
 		//runProject(by Client id)
 		function runProject(id) {
