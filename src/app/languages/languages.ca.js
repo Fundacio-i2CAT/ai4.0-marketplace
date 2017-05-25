@@ -29,7 +29,7 @@
 					'CONSUM-PER-HOUR': 'Consum per Hora',
 					'DETAIL-SECTORS': 'Sectors',
 					'DETAIL-LINK': 'Enllaç',
-					'SRV-INSTANCE': 'Instanciar Servei',
+					'SRV-INSTANCE': 'Instanciar',
 					'RUN-TIMES': 'Paràmetres d\'Execució',
 					//projectes
 					'PROJ-CLIENT':'PROJECTES',
@@ -98,6 +98,8 @@
 					'REG-NEEDED-TEXT': 'És necessari per processar la sol·licitud.',
 					'REG-RECIVE-MAILS': 'Vull rebre correus electrònics des de la PI4.0 i estic d’acord en que la PI4.0 guardi les meves dades personals.',
 					'REG-REGISTER-BUTTON': 'Registrar-me',
+					'REG-ACTIVE-COUNT-TITLE': 'Compte pendent de confirmació',
+					'REG-ACTIVE-COUNT-BODY': 'Gràcies per registrar-se a la Plataforma Industrial 4.0; en breu rebrà un correu electrònic avisant-lo de que el seu compte ha estat activat per part de l\'administrador.',
 					//log in
 					'LOG-TITLE': 'Accés',
 					'LOG-SUBTITLE': 'Usuari',
@@ -109,7 +111,7 @@
 					'LOG-NOUSER': 'Si no disposes d\'usuari, fes clic per registrar-te',
 					'LOG-REGISTER-BUTTON': 'Registre',
 					'LOG-CREATE-ACCOUNT': 'Crear compte',
-					'LOG-FORGOT-PASS': 'He olvidado la contraseña',
+					'LOG-FORGOT-PASS': 'Recuperar contrasenya',
 					//forgot
 					'FORGOT-SENDMAIL': 'Enviar correu',
 					'FORGOT-MAIL-PLACEHOLDER': 'Introdueix el teu correu',
@@ -129,7 +131,7 @@
 					'USER-DETAIL-UNACTIVATED': 'Desactivat',
 					'EDIT-USER-TITLE': 'Editar Usuari',
 					'EDIT-USER-SAVEDATA': 'Guardar Dades',
-					'SRV-DETAIL-MSG': 'És necessari conte de Client per consumir aquest Servei',
+					'SRV-DETAIL-MSG': 'És necessari compte de Client per consumir aquest Servei',
 					'FILTER-PLACEHOLDER-USERS': 'Filtrar per dada',
 					//publicar Servei
 					'PUBL-SRV-TITLE': 'Crear Servei',
@@ -196,8 +198,18 @@
 					'NO-INSTANCE': 'Sense Instància',
 					'NO-CONSUM': 'Sense Consum',
 					'NO-CONSUM-MSSG': 'No hi ha enregistrat cap consum d\'aquest Servei en aquest periode',
-					'PERIOD-BUTTON': 'Canviar Dates'
-
+					'PERIOD-BUTTON': 'Canviar Dates',
+					//mail RECOVER
+					'RECOVER-TITLE': 'Recuperar Contrasenya',
+					'RECOVER-BODY': 'Introdueixi el seu correu electrònic i rebrà un enllaç per reestablir la seva contrasenya',
+					'RECOVER-SEND': 'Enviar Correu',
+					'RECOVER-LABEL': 'Correu electrònic',
+					'RECOV-LOGIN-SENDDATA': 'Enviar Dades',
+					'RECOV-LOGIN-TITLE': 'Entrar nova contrasenya',
+					'RECOV-LOGIN-BODY': 'La seva actual contrasenya d\'accès ha estat generada de forma automàtica pel sistema. Sisplau introdueixi de nou la contrasenya rebuda al seu correu i seguidament introdueixi la seva nova contrasenya.',
+					'RECOV-LOGIN-PROV-LABEL': 'Contrasenya de restauració',
+					'RECOV-LOGIN-NEW-LABEL': 'Nova contrasenya',
+					'RECOV-LOGIN-REP-LABEL': 'Repetició de la nova contrasenya'
 
 
 				})

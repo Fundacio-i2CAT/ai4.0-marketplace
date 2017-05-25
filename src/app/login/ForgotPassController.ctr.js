@@ -6,7 +6,7 @@
 		.controller('ForgotPassController', ForgotPassController);
 
 	ForgotPassController.$inject = [];
-	
+
 	function ForgotPassController() {
 		/*var vm = this;
 
@@ -14,4 +14,4 @@
 			var destiny = credentials.mail;
 		};*/
 	}
-})()
+})();

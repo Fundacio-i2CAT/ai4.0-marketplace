@@ -22,7 +22,7 @@
 						});
 					}
 				});
-			}			
+			}
 		};
 
 		vm.getAllServices = function () {
@@ -42,7 +42,7 @@
 			var services = [],
 				genericServices = [];
 			vm.genericServices = [];
-			
+
 			CatalogFactory.getAllServices().then(function (response) {
 				if (response.data.status === 'ok') {
 					services = response.data.result;
@@ -66,12 +66,16 @@
 		*/
 		vm.getImage = function (name) {
 			return ImageProviderFactory.getServiceImage(name);
-		}
+		};
+
+		vm.getServiceLogo = function (name) {
+			return ImageProviderFactory.getCatalogServiceLogo(name);
+		};
 
 		vm.getDescriptionServiceType = function(name){
 			var description;
-			servicesTypes.forEach(function(item){				
-				if (item.name === name) description = item.description;				
+			servicesTypes.forEach(function(item){
+				if (item.name === name) description = item.description;
 			});
 			return description;
 		};
@@ -86,7 +90,7 @@
 
 		vm.getAllTypes();
 		vm.getAllServices();
-		
+
 	}
 
 })();

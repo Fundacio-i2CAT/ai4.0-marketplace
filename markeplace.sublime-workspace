@@ -7,13 +7,6 @@
 	},
 	"buffers":
 	[
-		{
-			"settings":
-			{
-				"buffer_size": 0,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -52,11 +45,13 @@
 	},
 	"expanded_folders":
 	[
-		"/home/enric/www/marketplace",
-		"/home/enric/www/marketplace/src/app"
+		"/home/enric/www/marketplace"
 	],
 	"file_history":
 	[
+		"/home/enric/www/marketplace/src/app/projects/provider/pendingprojects/pendingProjectController.ctr.js",
+		"/home/enric/www/marketplace/src/app/projects/provider/ownprojects/OwnProjectController.ctr.js",
+		"/home/enric/www/marketplace/src/app/common/Connection.fac.js",
 		"/home/enric/www/marketplace/src/app/uploadfile/chunkUploader/chunkUplader.js",
 		"/home/enric/www/marketplace/src/app/services/instantiateService/InstantiateService.ctr.js",
 		"/home/enric/www/marketplace/src/app/login/checkmail.directive.js",
@@ -67,7 +62,6 @@
 		"/home/enric/www/marketplace/src/app/users/UsersMockFactory.fac.js",
 		"/home/enric/www/marketplace/src/app/uploadfile/fileModelDirective.dir.js",
 		"/home/enric/www/marketplace/src/app/users/UserController.ctr.js",
-		"/home/enric/www/marketplace/src/app/common/Connection.fac.js",
 		"/home/enric/www/marketplace/src/app/services/instantiateService/instantiateSrv-dialog.tpl.html",
 		"/home/enric/www/marketplace/.gitignore",
 		"/home/enric/www/radar/frontend/src/app/gestor/gestor.tpl.html",
@@ -81,7 +75,7 @@
 	],
 	"find":
 	{
-		"height": 24.0
+		"height": 38.0
 	},
 	"find_in_files":
 	{
@@ -95,6 +89,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"console",
+			"console$log",
+			"console",
 			"$",
 			"var ",
 			"console",
@@ -116,37 +113,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"default_dir": "/home/enric/www/marketplace",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -199,6 +167,18 @@
 		"selected_items":
 		[
 			[
+				"pendingproje",
+				"src/app/projects/provider/pendingprojects/pendingProjectController.ctr.js"
+			],
+			[
+				"ownproject",
+				"src/app/projects/provider/ownprojects/OwnProjectController.ctr.js"
+			],
+			[
+				"connection",
+				"src/app/common/Connection.fac.js"
+			],
+			[
 				"chunk",
 				"src/app/uploadfile/chunkUploader/chunkUplader.js"
 			],
@@ -237,10 +217,6 @@
 			[
 				"connec",
 				"src/app/common/Connection.fac.js"
-			],
-			[
-				"connection",
-				"src/app/common/Connection.fac.js"
 			]
 		],
 		"width": 0.0
@@ -275,7 +251,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 245.0,
+	"side_bar_width": 248.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

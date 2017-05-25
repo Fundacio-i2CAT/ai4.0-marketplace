@@ -27,6 +27,7 @@
 		factory.denyProviderProject = denyProviderProject;
 		factory.reacceptProviderProject = reacceptProviderProject;
 		factory.getConsumptionData = getConsumptionData;
+		factory.getProjectKey = getProjectKey;
 
 		/*
 			clientProjectsRest
@@ -52,9 +53,8 @@
 			get all projects by partnerId
 		*/
 		function getProviderProjectsByPartnerId (partnerId) {
-			var url = [host, 'api/providers/', partnerId, '/projects'].join('');
-			var newAmazingUrl = [host, 'api/sprojects/provider/', partnerId, '/status?status=3,5,6,8,10'].join('');
-			return $http.get(newAmazingUrl).then(handleSuccess, handleError);
+			var url = [host, 'api/sprojects/provider/', partnerId, '/status?status=3,5,6,8,10'].join('');
+			return $http.get(url).then(handleSuccess, handleError);
 		}
 
 		/*
@@ -72,12 +72,11 @@
 			confirmació projecte status: 3
 		*/
 		function confirmProviderProject(srv) {
-			var url = [host, 'api/sprojects/', srv._id].join('');
-			var newURL = [host, 'api/project/',srv._id, '/state'].join('');
+			var url = [host, 'api/project/',srv._id, '/state'].join('');
 			var status = {
 				status: 3
 			};
-			return $http.put(newURL, status).then(handleSuccess, handleError);
+			return $http.put(url, status).then(handleSuccess, handleError);
 		}
 
 		/*
@@ -139,6 +138,11 @@
 			return $http.get(url).then(handleSuccess, handleError);
 		}
 
+                function getProjectKey(id) {
+                     var url = [host, 'api/project/', id, '/key'].join('');
+                     return $http.get(url).then(handleSuccess, handleError);
+                }
+
 		//runProject(by Client id)
 		function runProject(id) {
 			var url = [host, 'api/project/', id, '/state'].join('');
@@ -173,7 +177,7 @@
 				controller: 'OwnProjectController',
 				data: vm
 			});
-		};
+		}
 
 		//get the consume data
 		function getConsumptionData (initialDate, finalDate, srv) {
@@ -182,26 +186,6 @@
 			return $http.get(url).then(handleSuccess, handleError);
 		}
 
-		/**
-		*	manage error run/stop projectes
-		* @param
-		*/
-		function errorManagementRunningStopping() {
-			//si el projecte ja està running
-			// if (response.data.status === 6) {
-			// 	srv.showSpinner = false;
-			// 	$interval.cancel(internalPromise);
-			// 	var backmessage;
-			// 	if ($translate.use() == 'CAT') {
-			// 		backmessage = response.data.message.ca;
-			// 	} else if ($translate.use() == 'CAST') {
-			// 		backmessage = response.data.message.es;
-			// 	}
-			//
-			// 	toastr.success(backmessage, response.data.code);
-			// 	vm.getClientProjectsByPartnerId(user.user.provider_id);
-			// }
-		}
 
 
 		///////////////////////////////   private functions   ///////////////////////////////////////////////////

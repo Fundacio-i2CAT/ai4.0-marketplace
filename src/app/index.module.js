@@ -15,6 +15,7 @@
 								'angularSpinner',
 								'vcRecaptcha',
 								'ngDialog',
-								'schemaForm']);
+								'schemaForm',
+								'base64']);
 
 })();

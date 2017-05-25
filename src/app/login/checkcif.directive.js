@@ -10,7 +10,7 @@
 		var directive = {
 			restrict: 'A',
 			scope: false,
-			link: function(scope, element, attrs) {
+			link: function(scope, element) {
 				scope.showCifError = undefined;
 				element.on('blur change keyup keypress', function(event) {
 					var temp,
@@ -33,4 +33,4 @@
 
 		return directive;
 	}
-})()
+})();

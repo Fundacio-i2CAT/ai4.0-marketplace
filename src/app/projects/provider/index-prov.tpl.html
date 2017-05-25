@@ -78,7 +78,7 @@
                     <img width="60px" class="img-thumbnail" ng-src="assets/logos_mkp/{{provprojects.getImage(srv.service.name)}}" alt="Imatge servei"/>
                   </td>
                   <td class="vert-align" ng-click="provprojects.goPricingDialog(srv)">
-                    {{srv.name}}
+                    {{srv.services[0].service.name}}
                   </td>
                   <td class="vert-align" ng-click="provprojects.goPricingDialog(srv)">
                     {{srv.client.user_name}}

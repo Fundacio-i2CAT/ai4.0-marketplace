@@ -5,12 +5,12 @@
     .module('marketplace')
     .factory('OwnProjectFactory', OwnProjectFactory);
 
-    OwnProjectFactory.$inject = ['$http', '$q', 'ConnectionFactory', 'LocalStorageFactory', 'ngDialog'];
+    OwnProjectFactory.$inject = ['$http', '$q', 'ConnectionFactory', 'LocalStorageFactory', '$log'];
 
-    function OwnProjectFactory($http, $q, ConnectionFactory, LocalStorageFactory, ngDialog) {
+    function OwnProjectFactory($http, $q, ConnectionFactory, LocalStorageFactory, $log) {
       var host = ConnectionFactory.host;
 
-      var getAllOwnProjects = function (user) {
+      var getAllOwnProjects = function () {
         var user = angular.fromJson(LocalStorageFactory.getValue('user'));
         var path = ['api/services/provider/', user.user.id].join(''),
             url = [host, path].join('');
@@ -32,7 +32,7 @@
         var deferred = $q.defer();
 
         var promise = $http.put(url, {activated: true}).then(function(response){
-          console.log(response);
+          $log.log(response);
           return response.data;
         }, function (error) {
           deferred.reject(error);
@@ -47,7 +47,7 @@
         var deferred = $q.defer();
 
         var promise = $http.put(url, {activated: false}).then(function(response){
-          console.log(response);
+          $log.log(response);
           return response.data;
         }, function (error) {
           deferred.reject(error);

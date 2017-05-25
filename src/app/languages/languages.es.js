@@ -29,7 +29,7 @@
 					'CONSUM-PER-HOUR': 'Consumo por Hora',
 					'DETAIL-SECTORS': 'Sectores',
 					'DETAIL-LINK': 'Enlace',
-					'SRV-INSTANCE': 'Instanciar Servicio',
+					'SRV-INSTANCE': 'Instanciar',
 					'RUN-TIMES': 'Parámetros de Ejecución',
 					//projectes
 					'PROJ-CLIENT':'PROYECTOS',
@@ -98,6 +98,8 @@
 					'REG-NEEDED-TEXT': 'Es necesario para procesar la solicitud',
 					'REG-RECIVE-MAILS': 'Quiero recibir correos electrónicos de la PI4.0 y estoy de acuerdo con que la PI4.0 guarde mis datos personales.',
 					'REG-REGISTER-BUTTON': 'Registrarme',
+					'REG-ACTIVE-COUNT-TITLE': 'Cuenta pendiente de confirmación',
+					'REG-ACTIVE-COUNT-BODY': 'Gracias por registrarse en la Plataforma Industrial 4.0; en breve recibirá un correo electrónico avisándole de que su cuenta se ha activado por parte del administrador.',
 					//log in
 					'LOG-TITLE': 'Acceso',
 					'LOG-SUBTITLE': 'Usuario',
@@ -109,7 +111,7 @@
 					'LOG-NOUSER': 'Si no dispones de usuario, haz clic para registrarte',
 					'LOG-REGISTER-BUTTON': 'Registro',
 					'LOG-CREATE-ACCOUNT': 'Crear cuenta',
-					'LOG-FORGOT-PASS': 'He oblidat la contrasenya',
+					'LOG-FORGOT-PASS': 'Recuperar contraseña',
 					//forgot
 					'FORGOT-SENDMAIL': 'Enviar correo',
 					'FORGOT-MAIL-PLACEHOLDER': 'Introduce tu correo',
@@ -196,7 +198,18 @@
 					'NO-INSTANCE': 'Sin Instancia',
 					'NO-CONSUM': 'Sin Consumo',
 					'NO-CONSUM-MSSG': 'No hay registrado ningún consumo de este Servicio en este periodo.',
-					'PERIOD-BUTTON': 'Cambiar Fechas'
+					'PERIOD-BUTTON': 'Cambiar Fechas',
+					//mail RECOVER
+					'RECOVER-TITLE': 'Recuperar Contraseña',
+					'RECOVER-BODY': 'Introduzca su correo electrónico i recibirá un enlace para reestablecer su contrasenya',
+					'RECOVER-SEND': 'Enviar Correo',
+					'RECOVER-LABEL': 'Correo electrónico',
+					'RECOV-LOGIN-SENDDATA': 'Enviar Datos',
+					'RECOV-LOGIN-TITLE': 'Introducir nueva contraseña',
+					'RECOV-LOGIN-BODY': 'Su contraseña acutal de acceso ha sido generada de forma automàtica por el sistema. Porfavor introduzca de nuevo la contraseña que ha recibido por correo y a continuación introduzca su nueva contraseña.',
+					'RECOV-LOGIN-PROV-LABEL': 'Contraseña de restauración',
+					'RECOV-LOGIN-NEW-LABEL': 'Nueva contraseña',
+					'RECOV-LOGIN-REP-LABEL': 'Repetición nueva contraseña'
 
 
 

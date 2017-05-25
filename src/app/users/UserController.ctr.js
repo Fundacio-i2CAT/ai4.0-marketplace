@@ -20,23 +20,25 @@
 		vm.sortReverse = false;
 
 		//table pagination
-		vm.viewby = 20;
+		vm.viewby = 10;
 		vm.currentPage = 1;
 		vm.itemsPerPage = vm.viewby;
 		vm.maxSize = 5;
 		vm.numPages;
 		// vm.pageNumberOptions = [{value: 3, name: "3"}, {value: 5, name: "5"}, {value: 10, name: "10"}];
 
-
 		vm.setPage = function(pageNum){
 			vm.currentPage = pageNum;
 		}
 
 		vm.pageChanged = function(){
-			$log.log('pagina cambiada a...',vm.currentPage);
 			UserFactory.getAllUsersPerPage(vm.currentPage).then(function(response){
 				if (response.status == 200) {
-					vm.allUsers = response.data._embedded.people;
+					vm.allUsers = response.data.result;
+					vm.totalItems = response.data.count;
+					// vm.currentEurecatPaginationPage = response.data.skip;
+					vm.sizeEurecatPagination = response.data.limit;
+					vm.numPages=Math.ceil(vm.totalItems/vm.itemsPerPage);
 				}
 			});
 		}
@@ -63,11 +65,11 @@
 			UserFactory.getAllUsers().then(function(response) {
 				if (response.status == 200) {
 					setActive(response.data.result);
-					vm.allUsers = response.data._embedded.people;
+					vm.allUsers = response.data.result;
 					//table pagination implemented
-					vm.totalItems = response.data.page.totalElements;
-					vm.currentEurecatPaginationPage = response.data.page.number;
-					vm.sizeEurecatPagination = response.data.page.size;
+					vm.totalItems = response.data.count;
+					// vm.currentEurecatPaginationPage = response.data.skip;
+					vm.sizeEurecatPagination = response.data.limit;
 
 
 					//table pagination

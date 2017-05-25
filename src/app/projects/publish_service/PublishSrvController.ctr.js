@@ -4,9 +4,9 @@
 	angular
 		.module('marketplace')
 		.controller('PublishSrvController', PublishSrvController);
-	PublishSrvController.$inject = ['$scope', '$state', 'toastr', 'fileUpload', 'CatalogFactory', 'ServiceFactory', 'ConnectionFactory', 'LocalStorageFactory', 'SaveImageDataService', 'ngDialog', 'InfrastructureFactory', '$log'];
+	PublishSrvController.$inject = ['$timeout', '$scope', '$state', 'toastr', 'fileUpload', 'CatalogFactory', 'ServiceFactory', 'ConnectionFactory', 'LocalStorageFactory', 'SaveImageDataService', 'ngDialog', 'InfrastructureFactory', '$log', '$base64'];
 
-	function PublishSrvController($scope, $state, toastr, fileUpload, CatalogFactory, ServiceFactory, ConnectionFactory, LocalStorageFactory, SaveImageDataService, ngDialog, InfrastructureFactory, $log) {
+	function PublishSrvController($timeout, $scope, $state, toastr, fileUpload, CatalogFactory, ServiceFactory, ConnectionFactory, LocalStorageFactory, SaveImageDataService, ngDialog, InfrastructureFactory, $log, $base64) {
 		var vm = this;
 		var host = ConnectionFactory.host;
 		vm.allTemplates = [];
@@ -17,6 +17,8 @@
 		vm.selectedRowId = null;
 		vm.iaasSelected = null;
 		vm.hideButtons = false;
+
+
 
 		vm.types = [{name: 'Number'}, {name: 'String'}];
 		vm.discImageFormat = [{name: 'QCOW2'}, {name: 'VDI'}];
@@ -74,6 +76,7 @@
 			});
 		};
 
+
 		function buildPublishServiceJSON (srv) {
 			var provider = getCurrentProvider('user');
 			var imageData = SaveImageDataService.getImageData();
@@ -106,7 +109,7 @@
 			if (srv.customerParams) {
 				var templatesList = [];
 				angular.forEach(srv.customerParams, function (template){
-					console.log(template);
+					$log.log(template);
 					var fieldsList = [];
 					angular.forEach(template.choices, function (choice){
 						var field = {
@@ -126,22 +129,8 @@
 				srvToSave.consumer_params = templatesList;
 			}
 
-
-			//obtenir 1 path amb n fields (static)
-			// if (srv.fields) {
-			// 	var listOfFields = [];
-			// 	angular.forEach(srv.fields, function (field){
-			// 		var fieldOK = {
-			// 			name: field.name,
-			// 			type: field.type.name,
-			// 			required: field.required,
-			// 			desc: field.type.name
-			// 		};
-			// 		listOfFields.push(fieldOK);
-			// 	});
-			// 	srvToSave.consumer_params[0].fields = listOfFields;
-			// }
-			$log.log(srvToSave);
+			srvToSave.service_icon = vm.coded;
+			// $log.log(srvToSave);
 			return srvToSave;
 		}
 
@@ -190,30 +179,6 @@
 			vm.selectedRowId = id;
 		};
 
-		/* codigo para formulario dinamico */
-		// vm.plantilles = [{id: 'plantilla1'}];
-		// vm.allFields = [{id: 'field1'}];
-		// vm.addTemplate = function() {
-		// 	var newItemNo = vm.plantilles.length+1;
-		// 	vm.plantilles.push({'id':'plantilla'+newItemNo});
-		// };
-		// vm.removeTemplate = function() {
-		// 	if (vm.plantilles.length != 1) {
-		// 		var lastItem = vm.plantilles.length-1;
-		// 		vm.plantilles.splice(lastItem);
-		// 	}
-		// };
-		// vm.addField = function() {
-		// 	var fieldNum = vm.allFields.length+1;
-		// 	vm.allFields.push({'id':'fields'+fieldNum});
-		// };
-		// vm.removeField = function() {
-		// 	if (vm.allFields.length != 1) {
-		// 		var lastItem = vm.allFields.length-1;
-		// 		vm.allFields.splice(lastItem);
-		// 	}
-		// };
-
 		vm.closeDialog = function() {
 				ngDialog.close();
 		};
@@ -240,22 +205,37 @@
 		//DYNAMIC FORM FIELDS
 		vm.choices = [];
 
-	  vm.addNewParam = function(currentTemplate) {
+		vm.addNewParam = function(currentTemplate) {
 			vm.showLabels = true;
 			var newItemNo = currentTemplate.choices.length+1;
 			currentTemplate.choices.push({'id':'field'+newItemNo});
 			if (currentTemplate.choices.length === 0) vm.showLabels = false;
+		};
 
-	    // var newItemNo = vm.choices.length+1;
-	    // vm.choices.push({'id':'field'+newItemNo});
-	  };
+		vm.removeParam = function(currentTemplate) {
+			var lastItem = currentTemplate.choices.length-1;
+			currentTemplate.choices.splice(lastItem);
+		};
 
-	  vm.removeParam = function(currentTemplate) {
-	    var lastItem = currentTemplate.choices.length-1;
-	    currentTemplate.choices.splice(lastItem);
-	  };
+		var getBase64 = function(file) {
+			 var reader = new FileReader();
+			 reader.readAsDataURL(file);
+			 reader.onload = function () {
+				 vm.coded = reader.result;
+				 console.log('vm.coded', vm.coded);
+			 };
+			 reader.onerror = function (error) {
+				 console.log('onError::: ', error);
+			 };
+		};
 
+		$scope.uploadLogo = function () {
+			$timeout(function () {
+				var file = vm.myFile;
+				getBase64(vm.myFile);
+			}, 3000);
 
+		};
 
 	}
 

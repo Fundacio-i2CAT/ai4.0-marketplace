@@ -5,9 +5,9 @@
 			.module('marketplace')
 			.controller('RegisterController', RegisterController);
 
-		RegisterController.$inject = ['RegisterFactory', '$log', 'toastr', '$state', 'DataValidationFactory'];
+		RegisterController.$inject = ['RegisterFactory', '$log', 'toastr', '$state', 'DataValidationFactory', 'ngDialog'];
 
-		function RegisterController (RegisterFactory, $log, toastr, $state, DataValidationFactory) {
+		function RegisterController (RegisterFactory, $log, toastr, $state, DataValidationFactory, ngDialog) {
 			var vm = this;
 			var passwordOk;
 			vm.showRegisterError = false;
@@ -54,7 +54,7 @@
 					}
 				}
 
-				
+
 
 				var userInfo;
 				passwordOk = validPassword(credentials.password, credentials.repeatpassword);
@@ -84,10 +84,10 @@
 					RegisterFactory.doRegister(userInfo).then(function (response){
 						$log.debug(response);
 						if (response) {
-							if (response.status === 201) {
+							if (response.status === 204) {
 								//show message with register confirmation
 								toastr.info('Registre realitzat correctament', 'Registre correcte');
-								$state.go('catalog');
+								vm.launchDialog();
 							} else if (response.status === 409) {
 								toastr.error("L'Usuari ja està registrat", 'Error en el registre');
 							}
@@ -95,5 +95,23 @@
 					});
 				}
 			};
+
+			//dialog for register confirmation
+			//launch dialog
+			vm.launchDialog = function () {
+				ngDialog.open({
+					template: 'app/login/confirmation/register_confirmation.tpl.html',
+					className: 'ngdialog-theme-default',
+					controller: 'RegisterController',
+					controllerAs: 'register'
+				});
+			}
+
+			vm.goCatalog = function () {
+					ngDialog.close();
+					$state.go('catalog');
+			};
+
+
 		}
 })();

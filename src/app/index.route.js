@@ -94,22 +94,8 @@
         templateUrl: 'app/users/users.tpl.html',
         controller: 'UserController',
         controllerAs: 'users'
-        // need: 'User.Provider'
-      })
-      // .state('tatami', {
-      //   url: '/tatami',
-      //   templateUrl: 'app/tatami/tatami.tpl.html',
-      //   controller: 'TatamiController',
-      //   controllerAs: 'tatami',
-      //   //need: 'admindoscat'
-      // })
-      // .state('forgotpass', {
-      //   url: '/forgot',
-      //   templateUrl: 'app/login/forgotpass.tpl.html',
-      //   controller: 'ForgotPassController',
-      //   controllerAs: 'forgot',
-      //   //need: 'admindoscat'
-      // });
+
+      });
 
       $urlRouterProvider.otherwise('/catalog');
   }
@@ -121,29 +107,22 @@
     // .run(lookAtLocationChange)
 
     function setStatePermission ($rootScope, $state, CurrentUserFactory){
-        $rootScope.$on('$stateChangeStart', function(event, destiny) {
+        var statePermission = $rootScope.$on('$stateChangeStart', function(event, destiny) {
             var userRole = CurrentUserFactory.getRole();
             if (destiny.need && userRole !== destiny.need) {
               event.preventDefault();
               $state.go('catalog');
             }
         });
+        statePermission();
     }
 
-    function scrollToTop ($rootScope) {
-      $rootScope.$on('$stateChangeSuccess', function () {
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
+    function scrollToTop ($rootScope, $document) {
+      var stateWatcher = $rootScope.$on('$stateChangeSuccess', function () {
+        $document.body.scrollTop = 0;
+        $document.documentElement.scrollTop = 0;
       });
+      stateWatcher();
     }
-
-    /*function lookAtLocationChange($rootScope) {
-      //$routeChangeStart
-      //$locationChangeStart, $locationChangeSuccess
-      $rootScope.$on('$locationChangeStart', function (event, next) {
-          console.log('event', event);
-          console.log('next', next);
-      });
-    }*/
 
 })();

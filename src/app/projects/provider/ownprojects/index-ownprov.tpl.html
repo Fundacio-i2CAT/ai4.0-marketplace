@@ -155,7 +155,7 @@
                               {{ownproj.getLiteralStatus(one.status)}}
                             </span>
                           </li>
-                          <li "col-xs-2">
+                          <li class="col-xs-2">
                             {{one.created_at | date: 'dd-MM-yyyy' }}
                           </li>
                           <li class="" ng-show="one.runtime_params[0]" style="cursor:pointer;">
@@ -175,7 +175,7 @@
                             <button ng-if="one.status == 5" type="button" class="btn btn-xs btn-danger" ng-click="ownproj.stopOwnProject(one)">
                               <i class="fa fa-pause"></i>
                             </button>
-                            <button ng-if="one.status == 3" type="button" class="btn btn-xs btn-default" ng-click="ownproj.instantiateService(one)">
+                            <button ng-if="one.status == 3 && !one.instantiated" type="button" class="btn btn-xs btn-default" ng-click="ownproj.instantiateService(one)">
                               <i class="fa fa-plug"></i>
                             </button>
                             <button type="button" class="btn btn-xs btn-default" ng-click="ownproj.confirmDeleteProject(one)">

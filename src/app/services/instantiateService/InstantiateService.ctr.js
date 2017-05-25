@@ -5,12 +5,16 @@
 		.module('marketplace')
 		.controller('InstantiateServiceController', InstantiateServiceController);
 
-		InstantiateServiceController.$inject = ['ShareDataFactory', '$log', 'ngDialog', 'ServiceFactory', '$interval', 'usSpinnerService', 'ProjectFactory', '$state', 'toastr'];
-		function InstantiateServiceController(ShareDataFactory, $log, ngDialog, ServiceFactory, $interval, usSpinnerService, ProjectFactory, $state, toastr) {
+		InstantiateServiceController.$inject = ['$rootScope', 'ShareDataFactory', '$log', 'ngDialog', 'ServiceFactory', '$interval', 'usSpinnerService', 'ProjectFactory', '$state', 'toastr'];
+		function InstantiateServiceController($rootScope, ShareDataFactory, $log, ngDialog, ServiceFactory, $interval, usSpinnerService, ProjectFactory, $state, toastr) {
 			var vm = this;
 			vm.model = {}, vm.form = {}, vm.schema = {};
 			var service = ShareDataFactory.getData();
 			vm.service = service;
+
+			vm.hideInstantiateButton = function (srv) {
+				$rootScope.$broadcast('hideButton', srv.srv);
+			}
 
 			//build form
 			/*if (angular.isArray(service.data)) {
@@ -50,7 +54,7 @@
 					var form = {
 						key: field.name,
 						type: (field.type == 'integer') ? 'number' : field.type,
-						placeholder: field.name
+						placeholder: field.desc
 					}
 					listOfFields.push(form);
 				});

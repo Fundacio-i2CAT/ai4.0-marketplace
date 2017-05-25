@@ -11,8 +11,12 @@
       return {
         request: function (config) {
           var user = LocalStorageFactory.getValue('user');
+          var token = LocalStorageFactory.getValue('token');
+
           if (user) {
             config.headers['Authorization'] = user.user.token;
+          } else if (token){
+            config.headers['Authorization'] = token;
           } else {
             config.headers['Authorization'] = '';
           }
@@ -30,9 +34,9 @@
         },
         responseError: function (rejection) {
           // $log.log('responseError::', rejection);
-          if (rejection && rejection.data.code == 'TOKEN_EXPIRED') {
-            var kkk = $injector.get('SessionFactory');
-            kkk.sessionIsExpird(rejection);
+          if (rejection && rejection.status == 403) {
+            var sessionService = $injector.get('SessionFactory');
+            sessionService.sessionIsExpird(rejection);
           }
           return $q.reject(rejection);
         }

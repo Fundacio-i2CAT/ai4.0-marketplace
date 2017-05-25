@@ -55,6 +55,11 @@
 
 		var user = LocalStorageFactory.getValue('user');
 
+		//retrieve the instantiate service event
+		$scope.$on('hideButton', function(event, data) {
+			data.instantiated = true;
+		});
+
 		//getAll projects
 		vm.getAll = function(){
 			ProjectFactory.getAll().then(function(response){
@@ -103,7 +108,7 @@
 
 				}
 			}, function (error){
-				console.log(error);
+				$log.log(error);
 			});
 			progressbar.complete();
 		};
@@ -252,7 +257,7 @@
 								vm.getClientProjectsByPartnerId(user.user.provider_id);
 							}
 						}, function(error){
-							console.log(error);
+							$log.log(error);
 						});
 					}, 30000);
 				}
@@ -302,7 +307,7 @@
 							}
 
 						}, function (error){
-							console.log(error);
+							$log.log(error);
 						});
 					}, 8000);
 
