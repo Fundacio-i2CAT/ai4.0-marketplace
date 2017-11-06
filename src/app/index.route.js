@@ -11,11 +11,17 @@
       enabled:true
     });
     $stateProvider
+      // .state('home', {
+      //   url: '/',
+      //   templateUrl: 'app/main/main.html',
+      //   controller: 'MainController',
+      //   controllerAs: 'main'
+      // })
       .state('home', {
         url: '/',
-        templateUrl: 'app/main/main.html',
-        controller: 'MainController',
-        controllerAs: 'main'
+        templateUrl: 'app/catalog/index.tpl.html',
+        controller: 'CatalogController',
+        controllerAs: 'catalog'
       })
       .state('catalog', {
         url: '/catalog',
